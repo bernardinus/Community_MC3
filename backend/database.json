@@ -1,0 +1,56 @@
+{
+    "now_showing": [
+        {
+            "name": "The AB Cafe",
+            "band": "X Band",
+            "latitude": -6.175110,
+            "longitude": 106.865036,
+            "start_time": 1594218718,
+            "end_time": 1594233118,
+            "registered": 0
+        },
+        {
+            "name": "123 Venue",
+            "band": "X Band",
+            "latitude": -6.162945,
+            "longitude": 106.866098,
+            "start_time": 1594218718,
+            "end_time": 1594233118,
+            "registered": 1
+        },
+        {
+            "name": "ABC Cafe",
+            "band": "X Band",
+            "latitude": -6.161644,
+            "longitude": 106.875944,
+            "start_time": 1594301518,
+            "end_time": 1594305118,
+            "registered": 0
+        },
+        {
+            "name": "The 123 Cafe",
+            "band": "X Band",
+            "latitude": -6.161644,
+            "longitude": 106.875944,
+            "start_time": 1594294318,
+            "end_time": 1594297918,
+            "registered": 0
+        }
+    ],
+    "musician": {
+        "soloist": [
+            {
+                "id": 1,
+                "name": "artist"
+            }
+        ]
+    },
+    "user": [
+        {
+            "id": 1,
+            "email": "artist@artist.com",
+            "password": "asdasdad",
+            "role": "musician"
+        }
+    ]
+}
