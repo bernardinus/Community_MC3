@@ -1,0 +1,62 @@
+/* 
+  Localizable.strings
+  CommunityMC3
+
+  Created by Bryanza on 16/07/20.
+  Copyright © 2020 Apple Developer Academy. All rights reserved.
+*/
+
+"Explore" = "Explore";
+"Highlights" = "Highlights";
+"Show all" = "Show all";
+"New Comer" = "New Comer";
+"Latest Video" = "Latest Video";
+"Search" = "Search";
+"Activity" = "Activity";
+"Profile" = "Profile";
+
+"new notifications" = "new notifications";
+"followed you" = "followed you";
+"posted" = "posted";
+"new audio" = "new audio";
+"new video" = "new video";
+
+"Trending Now" = "Trending Now";
+"Latest Music" = "Latest Music";
+"Featured Artist" = "Featured Artist";
+"Guitarist" = "Guitarist";
+"Vocalist" = "Vocalist";
+"Violin" = "Violin";
+
+"Random Spotlight" = "Random Spotlight";
+"Pianist" = "Pianist";
+"View" = "View";
+"Randomize" = "Randomize";
+
+"Artist" = "Artist";
+"Drummer" = "Drummer";
+"followers" = "followers";
+"following" = "following";
+"Band" = "Band";
+
+"Sign In" = "Sign In";
+"Signing up to see our top picks for you" = "Signing up to see our top picks for you";
+"Email Address" = "Email Address";
+"Password" = "Password";
+"Let's" = "Let's";
+"Full Name" = "Full Name";
+"Get Started" = "Get Started";
+
+"About" = "Tentang";
+"Audio" = "Musik";
+"Gallery" = "Galeri";
+"History" = "History";
+"Settings" = "Setelan";
+"Genre" = "Aliran";
+"Classic" = "Klasik";
+"Photo" = "Photo";
+
+"Sign Out" = "Sign Out"
+"Are you sure want to sign out?" = "Are you sure want to sign out?"
+"Cancel" = "Cancel"
+"Save" = "Save"

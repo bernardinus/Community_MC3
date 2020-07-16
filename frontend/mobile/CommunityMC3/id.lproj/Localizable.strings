@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  CommunityMC3
+
+  Created by Bryanza on 16/07/20.
+  Copyright © 2020 Apple Developer Academy. All rights reserved.
+*/
+
+"Explore" = "Jelajahi";
+"Highlights" = "Terkini";
+"Show all" = "Lihat Semua";
+"New Comer" = "Terbaru";
+"Latest Video" = "Video Terbaru";
+"Search" = "Pencarian";
+"Activity" = "Aktivitas";
+"Profile" = "Profil";
+
+"new notifications" = "notifikasi baru";
+"followed you" = "mengikuti kamu";
+"posted" = "merilis";
+"new audio" = "musik baru";
+"new video" = "video baru";
+
+"Trending Now" = "Tren Saat ini";
+"Latest Music" = "Musik Terbaru";
+"Featured Artist" = "Artis Unggulan";
+"Guitarist" = "Gitaris";
+"Vocalist" = "Vokalis";
+"Violin" = "Pemain Biola";
+
+"Random Spotlight" = "Sorotan Acak";
+"Pianist" = "Pemain Piano";
+"View" = "Lihat";
+"Randomize" = "Acak";
+
+"Artist" = "Musisi";
+"Drummer" = "Pemain Drum";
+"followers" = "pengikut";
+"following" = "mengikuti";
+"Band" = "Group";
+
+"Sign In" = "Masuk";
+"Signing up to see our top picks for you" = "Daftar untuk melihat koleksi unggulan kami";
+"Email Address" = "Alamat E-mail";
+"Password" = "Kata Sandi";
+"Let's" = "Ayo";
+"Full Name" = "Nama Lengkap";
+"Get Started" = "Mulai";
+
+"About" = "Tentang";
+"Audio" = "Musik";
+"Gallery" = "Galeri";
+"History" = "Riwayat";
+"Settings" = "Setelan";
+"Genre" = "Aliran";
+"Classic" = "Klasik";
+"Photo" = "Foto";
+
+"Sign Out" = "Keluar"
+"Are you sure want to sign out?" = "Apakah anda yakin ingin keluar?"
+"Cancel" = "Batalkan"
+"Save" = "Simpan"
+
+
+
