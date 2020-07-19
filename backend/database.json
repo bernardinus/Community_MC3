@@ -37,11 +37,45 @@
             "registered": 0
         }
     ],
+    "video": {
+        "Rock": [
+            {
+                "name": "My New Song",
+                "musician": "TheBee Band"
+            }
+        ],
+        "Punk": [
+            {
+                "name": "This time",
+                "musician": "ABand"
+            }
+        ]
+    },
     "musician": {
         "soloist": [
             {
                 "id": 1,
                 "name": "artist"
+            },
+            {
+                "id": 2,
+                "name": "Brandon George"
+            },
+            {
+                "id": 3,
+                "name": "Livia Gouse"
+            },
+            {
+                "id": 4,
+                "name": "Terry"
+            },
+            {
+                "id": 5,
+                "name": "Carla"
+            },
+            {
+                "id": 6,
+                "name": "Charlie"
             }
         ]
     },
@@ -51,6 +85,42 @@
             "email": "artist@artist.com",
             "password": "asdasdad",
             "role": "musician"
+        },
+        {
+            "id": 2,
+            "email": "brandon@george.com",
+            "password": "123123",
+            "role": "Guitarist"
+        },
+        {
+            "id": 3,
+            "email": "livia@gouse.com",
+            "password": "qweqwe",
+            "role": "Vocalist"
+        },
+        {
+            "id": 4,
+            "email": "terry@asd.com",
+            "password": "zxczxc",
+            "role": "Vocalist"
+        },
+        {
+            "id": 5,
+            "email": "carla@123.com",
+            "password": "poipoi",
+            "role": "Guitarist"
+        },
+        {
+            "id": 6,
+            "email": "charlie@zxc.com",
+            "password": "098098",
+            "role": "Violin"
+        },
+        {
+            "id": 3,
+            "email": "livia@gouse.com",
+            "password": "qweqwe",
+            "role": "Vocalist"
         }
     ]
 }

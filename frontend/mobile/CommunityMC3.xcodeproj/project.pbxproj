@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1503D3824C4B6F100AE317E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1503D3724C4B6F100AE317E /* CloudKit.framework */; };
+		A1503D3A24C4B79900AE317E /* LoginScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1503D3924C4B79900AE317E /* LoginScreen.storyboard */; };
+		A1503D3C24C4BA9B00AE317E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1503D3B24C4BA9B00AE317E /* LoginController.swift */; };
 		A16B44A324B2FBF300053D6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44A224B2FBF300053D6C /* AppDelegate.swift */; };
 		A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44A424B2FBF300053D6C /* SceneDelegate.swift */; };
 		A16B44A724B2FBF300053D6C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44A624B2FBF300053D6C /* FirstViewController.swift */; };
@@ -39,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A1503D3524C4B6CE00AE317E /* CommunityMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityMC3.entitlements; sourceTree = "<group>"; };
+		A1503D3724C4B6F100AE317E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		A1503D3924C4B79900AE317E /* LoginScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginScreen.storyboard; sourceTree = "<group>"; };
+		A1503D3B24C4BA9B00AE317E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		A16B449F24B2FBF200053D6C /* CommunityMC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityMC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16B44A224B2FBF300053D6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16B44A424B2FBF300053D6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1503D3824C4B6F100AE317E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1503D3624C4B6F100AE317E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1503D3724C4B6F100AE317E /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A16B449624B2FBF200053D6C = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +110,7 @@
 				A16B44BA24B2FBF700053D6C /* CommunityMC3Tests */,
 				A16B44C524B2FBF700053D6C /* CommunityMC3UITests */,
 				A16B44A024B2FBF200053D6C /* Products */,
+				A1503D3624C4B6F100AE317E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +127,7 @@
 		A16B44A124B2FBF300053D6C /* CommunityMC3 */ = {
 			isa = PBXGroup;
 			children = (
+				A1503D3524C4B6CE00AE317E /* CommunityMC3.entitlements */,
 				A16B44A224B2FBF300053D6C /* AppDelegate.swift */,
 				A16B44A424B2FBF300053D6C /* SceneDelegate.swift */,
 				A16B44A624B2FBF300053D6C /* FirstViewController.swift */,
@@ -121,6 +139,8 @@
 				A16B44D424B2FC7E00053D6C /* ThirdViewController.swift */,
 				A1A96B3524BFF12700EF12AB /* Localizable.strings */,
 				A1A96B3724C050F100EF12AB /* SettingController.swift */,
+				A1503D3924C4B79900AE317E /* LoginScreen.storyboard */,
+				A1503D3B24C4BA9B00AE317E /* LoginController.swift */,
 			);
 			path = CommunityMC3;
 			sourceTree = "<group>";
@@ -251,6 +271,7 @@
 				A16B44B124B2FBF600053D6C /* LaunchScreen.storyboard in Resources */,
 				A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */,
 				A16B44AE24B2FBF600053D6C /* Assets.xcassets in Resources */,
+				A1503D3A24C4B79900AE317E /* LoginScreen.storyboard in Resources */,
 				A16B44AC24B2FBF300053D6C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +303,7 @@
 				A16B44D524B2FC7E00053D6C /* ThirdViewController.swift in Sources */,
 				A16B44A324B2FBF300053D6C /* AppDelegate.swift in Sources */,
 				A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */,
+				A1503D3C24C4BA9B00AE317E /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +489,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommunityMC3/CommunityMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CommunityMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -484,7 +508,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommunityMC3/CommunityMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CommunityMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
