@@ -181,6 +181,8 @@
 			children = (
 				EADBB5A824C5BB2F00CD2C92 /* VideoPlayer View */,
 				EA14E8FE24C557090021DF77 /* TrackPlayer View */,
+				A1C0EBB424C54EED008D8D8F /* Setting View */,
+				A1C0EBB324C54ED9008D8D8F /* Login View */,
 				A15C4D1424C5032700ED0C0E /* Favourites View */,
 				A15C4D1524C5033800ED0C0E /* SearchView */,
 				A15C4D1624C5034A00ED0C0E /* Explorer View */,
@@ -192,9 +194,6 @@
 				A16B44B224B2FBF600053D6C /* Info.plist */,
 				A15C4D1724C5038C00ED0C0E /* DB_Model.xcdatamodeld */,
 				A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */,
-				A1A96B3724C050F100EF12AB /* SettingController.swift */,
-				A1503D3924C4B79900AE317E /* LoginScreen.storyboard */,
-				A1503D3B24C4BA9B00AE317E /* LoginController.swift */,
 			);
 			path = CommunityMC3;
 			sourceTree = "<group>";
@@ -233,6 +232,25 @@
 				EADBB5AB24C5BB6E00CD2C92 /* VideoPlayerViewController.swift */,
 			);
 			path = "VideoPlayer View";
+            
+            sourceTree = "<group>";
+        };
+		A1C0EBB324C54ED9008D8D8F /* Login View */ = {
+			isa = PBXGroup;
+			children = (
+				A1503D3924C4B79900AE317E /* LoginScreen.storyboard */,
+				A1503D3B24C4BA9B00AE317E /* LoginController.swift */,
+			);
+			path = "Login View";
+			sourceTree = "<group>";
+		};
+		A1C0EBB424C54EED008D8D8F /* Setting View */ = {
+			isa = PBXGroup;
+			children = (
+				A1A96B3724C050F100EF12AB /* SettingController.swift */,
+			);
+			path = "Setting View";
+            
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

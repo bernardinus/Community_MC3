@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   CommunityMC3
 
@@ -56,10 +56,10 @@
 "Classic" = "Klasik";
 "Photo" = "Foto";
 
-"Sign Out" = "Keluar"
-"Are you sure want to sign out?" = "Apakah anda yakin ingin keluar?"
-"Cancel" = "Batalkan"
-"Save" = "Simpan"
+"Sign Out" = "Keluar";
+"Are you sure want to sign out?" = "Apakah anda yakin ingin keluar?";
+"Cancel" = "Batalkan";
+"Save" = "Simpan";
 
 
 
