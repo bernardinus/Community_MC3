@@ -10,7 +10,8 @@ import UIKit
 
 enum ExplorerSection:Int {
     case TrendingNow = 0
-    case Count = 1
+    case DiscoverNew = 1
+    case Count = 2
 }
 
 class ExplorerView: UIViewController {
@@ -38,6 +39,12 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             cell.HeaderName.text = "header"
             return cell
         }
+        if(section == ExplorerSection.DiscoverNew.rawValue)
+        {
+            var cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+            cell.HeaderName.text = "header"
+            return cell
+        }
         return mainTableView.dequeueReusableCell(withIdentifier: "headerCell")!
     }
     
@@ -51,11 +58,24 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3 // temp
+        if(section == ExplorerSection.TrendingNow.rawValue)
+        {
+            return 3 // Trending Now
+        }
+        if(section == ExplorerSection.DiscoverNew.rawValue)
+        {
+            return 1 // Discover New
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
+        {
+            var cell = mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
+            return cell
+        }
+        if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
             var cell = mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
             return cell
