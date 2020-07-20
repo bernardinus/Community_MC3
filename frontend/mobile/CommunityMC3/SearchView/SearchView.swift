@@ -1,5 +1,5 @@
 //
-//  ThirdViewController.swift
+//  SecondViewController.swift
 //  CommunityMC3
 //
 //  Created by Bryanza on 06/07/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class SearchView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,3 +17,4 @@ class ThirdViewController: UIViewController {
 
 
 }
+
