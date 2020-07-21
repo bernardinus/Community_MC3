@@ -27,7 +27,7 @@ class RegisterController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        passwordField.placeholder = ""
+//        passwordField.placeholder = ""
         passwordField.isSecureTextEntry = true
     }
     
@@ -91,6 +91,7 @@ class RegisterController: UIViewController {
             print(record)
             
             DispatchQueue.main.async {
+                UserDefaults.standard.set(self.emailField.text, forKey: "email")
         //                self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
                 self.performSegue(withIdentifier: "registerMain", sender: self)

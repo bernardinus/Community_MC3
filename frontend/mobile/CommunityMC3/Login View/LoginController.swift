@@ -22,7 +22,7 @@ class LoginController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        passwordField.placeholder = ""
+//        passwordField.placeholder = ""
         passwordField.isSecureTextEntry = true
     }
     
@@ -82,6 +82,7 @@ class LoginController: UIViewController {
                         if register.value(forKey: "email") as? String == self.emailField.text ?? "" && register.value(forKey: "password") as? String == self.passwordField.text ?? "" {
                                 print(register)
     //                            self.tableView.reloadData()
+                                UserDefaults.standard.set(self.emailField.text, forKey: "email")
                                 self.emailField.text = ""
                                 self.passwordField.text = ""
                                 self.performSegue(withIdentifier: "loginMain", sender: self)
