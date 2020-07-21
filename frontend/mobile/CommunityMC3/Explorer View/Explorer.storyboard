@@ -15,11 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5tN-aT-8KT">
-                                <rect key="frame" x="-9" y="-9" width="430" height="159"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.27843137254901962" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-zq-DCP">
                                 <rect key="frame" x="0.0" y="128" width="414" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -38,14 +33,35 @@
                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-4q-ZNf">
+                                <rect key="frame" x="364" y="77.5" width="30" height="27"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MaG-mU-nyc"/>
+                                    <constraint firstAttribute="width" constant="30" id="TQ9-MK-fxf"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rnE-yC-QxV">
+                                <rect key="frame" x="327" y="79.5" width="27" height="26.5"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="WhA-4a-Z2c"/>
+                                    <constraint firstAttribute="height" constant="27" id="adT-Bd-nce"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="1wn-NP-AiM"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="aBB-zB-Hcd" secondAttribute="bottom" constant="16" id="4hh-ez-kLC"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="7we-69-Slh"/>
+                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="leading" secondItem="rnE-yC-QxV" secondAttribute="trailing" constant="10" id="AVS-gc-huV"/>
                             <constraint firstAttribute="bottom" secondItem="B4j-zq-DCP" secondAttribute="bottom" id="ITn-0i-u79"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="27" id="LjB-en-XoN"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="rnE-yC-QxV" secondAttribute="bottom" constant="22" id="R5P-YU-5X0"/>
+                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="32" id="cWP-jm-xh1"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="yIX-4q-ZNf" secondAttribute="trailing" constant="20" id="j0C-eR-WP8"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="n1i-BJ-Xb4"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="q0l-SW-Hrv"/>
                         </constraints>
@@ -64,6 +80,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="safari" catalog="system" width="128" height="121"/>
         <image name="safari.fill" catalog="system" width="128" height="121"/>
     </resources>
