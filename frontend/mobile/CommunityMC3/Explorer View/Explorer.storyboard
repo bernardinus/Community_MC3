@@ -53,6 +53,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Explore" image="safari" catalog="system" selectedImage="safari.fill" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="Title" id="5bR-eU-aGB"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mainTableView" destination="B4j-zq-DCP" id="TlL-Ba-pTT"/>
                     </connections>

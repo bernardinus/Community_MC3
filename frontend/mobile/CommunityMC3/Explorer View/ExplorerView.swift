@@ -148,7 +148,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            return 130
+            return 135
         }
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
         {
