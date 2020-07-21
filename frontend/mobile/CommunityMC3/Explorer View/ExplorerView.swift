@@ -13,7 +13,8 @@ enum ExplorerSection:Int {
     case DiscoverNew = 1
     case LatestMusic = 2
     case FeaturedArtist = 3
-    case Count = 4
+    case FeaturedVideos = 4
+    case Count = 5
 }
 
 class ExplorerView: UIViewController {
@@ -29,6 +30,7 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "DiscoverNewCell", bundle:nil), forCellReuseIdentifier: "discoverNewCell")
         mainTableView.register(UINib(nibName: "LatestMusicCell", bundle:nil), forCellReuseIdentifier: "latestMusicCell")
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
+        mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
 
     }
 
@@ -62,11 +64,18 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             cell.HeaderName.text = "Featured Artist"
             return cell
         }
+        if(section == ExplorerSection.FeaturedVideos.rawValue)
+        {
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+            cell.HeaderName.text = "Featured Videos"
+            return cell
+        }
+        
         return mainTableView.dequeueReusableCell(withIdentifier: "headerCell")!
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        44
+        55
     }
     
     
@@ -90,6 +99,10 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
             return 1 // Featured Artist
+        }
+        if(section == ExplorerSection.FeaturedVideos.rawValue)
+        {
+            return 3 // Featured Videos
         }
         return 0
     }
@@ -115,6 +128,11 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
             return cell
         }
+        if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
+        {
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredVideosCell") as! FeaturedVideosCell
+            return cell
+        }
 
         return mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell")!
     }
@@ -131,6 +149,10 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
             return 130
+        }
+        if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
+        {
+            return 160
         }
         return 108
     }

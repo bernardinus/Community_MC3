@@ -29,6 +29,8 @@
 		A16B44C724B2FBF700053D6C /* CommunityMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44C624B2FBF700053D6C /* CommunityMC3UITests.swift */; };
 		A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44D424B2FC7E00053D6C /* FavouritesView.swift */; };
 		A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A96B3724C050F100EF12AB /* SettingController.swift */; };
+		B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74C59F924C6E38D00C978F3 /* FeaturedVideosCell.swift */; };
+		B74C59FC24C6E38D00C978F3 /* FeaturedVideosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B74C59FA24C6E38D00C978F3 /* FeaturedVideosCell.xib */; };
 		B7DAF5DB24C6919D00FC6EFB /* DiscoverNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DAF5D924C6919D00FC6EFB /* DiscoverNewCell.swift */; };
 		B7DAF5DC24C6919D00FC6EFB /* DiscoverNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DAF5DA24C6919D00FC6EFB /* DiscoverNewCell.xib */; };
 		B7DAF5DF24C698B400FC6EFB /* LatestMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DAF5DD24C698B400FC6EFB /* LatestMusicCell.swift */; };
@@ -92,6 +94,8 @@
 		A1A96B3024BFEFD400EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A1A96B3724C050F100EF12AB /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityMC3.entitlements; sourceTree = "<group>"; };
+		B74C59F924C6E38D00C978F3 /* FeaturedVideosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedVideosCell.swift; sourceTree = "<group>"; };
+		B74C59FA24C6E38D00C978F3 /* FeaturedVideosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedVideosCell.xib; sourceTree = "<group>"; };
 		B7DAF5D924C6919D00FC6EFB /* DiscoverNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNewCell.swift; sourceTree = "<group>"; };
 		B7DAF5DA24C6919D00FC6EFB /* DiscoverNewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverNewCell.xib; sourceTree = "<group>"; };
 		B7DAF5DD24C698B400FC6EFB /* LatestMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMusicCell.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 				B7A0BADD24C6D4B100292AA3 /* Discover New */,
 				B7A0BADC24C6D49600292AA3 /* Latest Music */,
 				B7A0BAE024C6D4D200292AA3 /* Featured Artists */,
+				B74C59F824C6E35B00C978F3 /* Featured Videos */,
 				A15C4D1A24C5300A00ED0C0E /* Explorer.storyboard */,
 				A16B44A624B2FBF300053D6C /* ExplorerView.swift */,
 				A15C4D2424C5370C00ED0C0E /* HeaderCell.swift */,
@@ -249,6 +254,15 @@
 				A1A96B3724C050F100EF12AB /* SettingController.swift */,
 			);
 			path = "Setting View";
+			sourceTree = "<group>";
+		};
+		B74C59F824C6E35B00C978F3 /* Featured Videos */ = {
+			isa = PBXGroup;
+			children = (
+				B74C59F924C6E38D00C978F3 /* FeaturedVideosCell.swift */,
+				B74C59FA24C6E38D00C978F3 /* FeaturedVideosCell.xib */,
+			);
+			path = "Featured Videos";
 			sourceTree = "<group>";
 		};
 		B7A0BADC24C6D49600292AA3 /* Latest Music */ = {
@@ -413,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A15C4D2724C5370C00ED0C0E /* HeaderCell.xib in Resources */,
+				B74C59FC24C6E38D00C978F3 /* FeaturedVideosCell.xib in Resources */,
 				A16B44B124B2FBF600053D6C /* LaunchScreen.storyboard in Resources */,
 				A15C4D1B24C5300A00ED0C0E /* Explorer.storyboard in Resources */,
 				A15C4D1D24C5303200ED0C0E /* Favourites.storyboard in Resources */,
@@ -453,6 +468,7 @@
 			files = (
 				B7DAF5E724C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.swift in Sources */,
 				A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */,
+				B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */,
 				A15C4D2224C5367400ED0C0E /* TrendingNowCell.swift in Sources */,
 				B7DAF5E324C6A6EE00FC6EFB /* FeaturedArtistCell.swift in Sources */,
 				A16B44A924B2FBF300053D6C /* SearchView.swift in Sources */,
