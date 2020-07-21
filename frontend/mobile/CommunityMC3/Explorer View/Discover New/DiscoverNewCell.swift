@@ -10,7 +10,7 @@ import UIKit
 
 class DiscoverNewCell: UITableViewCell {
 
-    @IBOutlet weak var CellName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
