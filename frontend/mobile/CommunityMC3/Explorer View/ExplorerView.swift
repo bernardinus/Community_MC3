@@ -20,6 +20,7 @@ enum ExplorerSection:Int {
 class ExplorerView: UIViewController {
 
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var notificationsIconImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class ExplorerView: UIViewController {
 
     }
 
+     
 
 }
 
@@ -83,7 +85,6 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         55
     }
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return ExplorerSection.Count.rawValue
     }
@@ -91,6 +92,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
+            
             return 3 // Trending Now
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
@@ -149,18 +151,21 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
-           return 90
+            return 140
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            return 135
+            return 160
         }
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
         {
             return 160
         }
-        return 108
+        return 110
     }
     
+    @IBAction func tappedRightButton(sender: AnyObject){
+        
+    }
     
 }

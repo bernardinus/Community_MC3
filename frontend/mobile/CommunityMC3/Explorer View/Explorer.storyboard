@@ -33,39 +33,48 @@
                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-4q-ZNf">
-                                <rect key="frame" x="370" y="83.5" width="24" height="24"/>
-                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vx-K0-Zue">
+                                <rect key="frame" x="329.5" y="76" width="24.5" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="9tO-Yc-zP4"/>
-                                    <constraint firstAttribute="height" constant="27" id="i2r-kY-ToG"/>
+                                    <constraint firstAttribute="width" constant="24.5" id="5Mw-Ki-but"/>
+                                    <constraint firstAttribute="height" constant="30" id="vNb-Xh-zWV"/>
                                 </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rnE-yC-QxV">
-                                <rect key="frame" x="330" y="84.5" width="24" height="23.5"/>
-                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="bell.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="uXS-s2-pdM" kind="show" id="rac-uh-SeC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-DC-VAe">
+                                <rect key="frame" x="364" y="76" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="1eS-H7-F0J"/>
-                                    <constraint firstAttribute="height" constant="24" id="skY-gI-fwX"/>
+                                    <constraint firstAttribute="height" constant="30" id="FbQ-pT-E5A"/>
+                                    <constraint firstAttribute="width" constant="30" id="xz0-Bj-ZnE"/>
                                 </constraints>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="person.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="1wn-NP-AiM"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="aBB-zB-Hcd" secondAttribute="bottom" constant="16" id="4hh-ez-kLC"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="7we-69-Slh"/>
+                            <constraint firstItem="xwv-DC-VAe" firstAttribute="leading" secondItem="9vx-K0-Zue" secondAttribute="trailing" constant="10" id="B0M-2B-K6m"/>
                             <constraint firstAttribute="bottom" secondItem="B4j-zq-DCP" secondAttribute="bottom" id="ITn-0i-u79"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="27" id="LjB-en-XoN"/>
-                            <constraint firstItem="rnE-yC-QxV" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="40" id="X45-ko-Cq2"/>
+                            <constraint firstItem="xwv-DC-VAe" firstAttribute="leading" secondItem="9vx-K0-Zue" secondAttribute="trailing" constant="10" id="bJn-CW-iyI"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="xwv-DC-VAe" secondAttribute="trailing" constant="20" id="hCL-9S-hK3"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="n1i-BJ-Xb4"/>
-                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="rnE-yC-QxV" secondAttribute="bottom" constant="20" id="pEY-Ct-LML"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="q0l-SW-Hrv"/>
-                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="yIX-4q-ZNf" secondAttribute="bottom" constant="19" id="uDf-Mx-k0v"/>
-                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="38" id="umE-Dm-Wyw"/>
-                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="leading" secondItem="rnE-yC-QxV" secondAttribute="trailing" constant="16" id="uw2-cW-hJQ"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="yIX-4q-ZNf" secondAttribute="trailing" constant="20" id="zJN-QV-6s5"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="xwv-DC-VAe" secondAttribute="bottom" constant="22" id="uLM-XT-VuO"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="9vx-K0-Zue" secondAttribute="bottom" constant="22" id="yCq-JV-1vk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -74,11 +83,32 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mainTableView" destination="B4j-zq-DCP" id="TlL-Ba-pTT"/>
+                        <segue destination="tiY-jC-7Eb" kind="show" identifier="trendingSegue" id="QC2-W3-4hc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+        </scene>
+        <!--TrendingNowList-->
+        <scene sceneID="xXd-od-IIP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrendingNowList" id="tiY-jC-7Eb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1hR-Yc-mO8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1X-WZ-WJo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="272" y="93"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="mdN-pV-VEV">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="NotificationsVC" storyboardName="Notifications" id="uXS-s2-pdM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4zw-EG-V8Z"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3w-b2-DPu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1486" y="-560"/>
         </scene>
     </scenes>
     <resources>
