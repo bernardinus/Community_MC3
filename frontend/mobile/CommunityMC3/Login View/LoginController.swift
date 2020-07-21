@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class LoginController: UIViewController {
 
@@ -41,14 +42,53 @@ class LoginController: UIViewController {
     @IBAction func loginUser(_ sender: UIButton) {
         switch sender {
         case loginButton:
-            if let oldAccount = Account.loginAccount(context: getViewContext(), accountEmail: emailField.text ?? "", accountPassword: passwordField.text ?? "") {
-                emailField.text = ""
-                passwordField.text = ""
-                print(oldAccount)
-                self.performSegue(withIdentifier: "loginMain", sender: self)
-            }
+            loginToCloudKit()
         default:
             return
+        }
+    }
+    
+    func loginToCoreData() {
+        if let oldAccount = Account.loginAccount(context: getViewContext(), accountEmail: emailField.text ?? "", accountPassword: passwordField.text ?? "") {
+            emailField.text = ""
+            passwordField.text = ""
+            print(oldAccount)
+            self.performSegue(withIdentifier: "loginMain", sender: self)
+        }
+    }
+    
+    func loginToCloudKit() {
+        // 1. tunjuk databasenya apa
+        let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+//        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+        
+        // 2. kita tentuin recordnya
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "Register", predicate: predicate)
+        
+        // 3. execute querynya
+        database.perform(query, inZoneWith: nil) { records, error in
+            
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            
+            print(records)
+            
+            if let fetchedRecords = records {
+                let registers = fetchedRecords
+                for register in registers {
+                    DispatchQueue.main.async {
+                        if register.value(forKey: "email") as? String == self.emailField.text ?? "" && register.value(forKey: "password") as? String == self.passwordField.text ?? "" {
+                                print(register)
+    //                            self.tableView.reloadData()
+                                self.emailField.text = ""
+                                self.passwordField.text = ""
+                                self.performSegue(withIdentifier: "loginMain", sender: self)
+                            }
+                    }
+                }
+            }
         }
     }
     
