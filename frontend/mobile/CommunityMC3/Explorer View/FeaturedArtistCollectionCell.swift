@@ -10,6 +10,7 @@ import UIKit
 
 class FeaturedArtistCollectionCell: UICollectionViewCell {
 
+    @IBOutlet weak var artistImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

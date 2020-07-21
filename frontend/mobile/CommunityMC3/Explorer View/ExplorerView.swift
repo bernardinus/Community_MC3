@@ -56,7 +56,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             cell.HeaderName.text = "Latest Music"
             return cell
         }
-        if(section == ExplorerSection.LatestMusic.rawValue)
+        if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Featured Artist"
@@ -120,6 +120,18 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
+        {
+            return 88
+        }
+        if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
+        {
+           return 90
+        }
+        if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
+        {
+            return 130
+        }
         return 108
     }
     

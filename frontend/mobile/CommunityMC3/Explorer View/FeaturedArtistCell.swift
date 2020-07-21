@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FeaturedArtistCell: UITableViewCell {
+class FeaturedArtistCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    
+    @IBOutlet weak var featuredArtistsCollectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.featuredArtistsCollectionView.dataSource = self
+        self.featuredArtistsCollectionView.delegate = self
+        self.featuredArtistsCollectionView.register(UINib.init(nibName: "FeaturedArtistCollectionCell", bundle: nil), forCellWithReuseIdentifier: "artistCollectionViewCell")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,5 +24,16 @@ class FeaturedArtistCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = featuredArtistsCollectionView.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
+        
+        return cell
+    }
+    
     
 }
