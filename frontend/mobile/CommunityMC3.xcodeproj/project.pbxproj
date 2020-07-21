@@ -28,7 +28,13 @@
 		A16B44BC24B2FBF700053D6C /* CommunityMC3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44BB24B2FBF700053D6C /* CommunityMC3Tests.swift */; };
 		A16B44C724B2FBF700053D6C /* CommunityMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44C624B2FBF700053D6C /* CommunityMC3UITests.swift */; };
 		A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44D424B2FC7E00053D6C /* FavouritesView.swift */; };
+		A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1A96B3524BFF12700EF12AB /* Localizable.strings */; };
 		A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A96B3724C050F100EF12AB /* SettingController.swift */; };
+		A1EA07F824C5C3AD00945C97 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EA07F724C5C3AD00945C97 /* RegisterController.swift */; };
+		EA650D5524C557680093EEE6 /* TrackPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */; };
+		EADBB5A524C560F300CD2C92 /* TrackPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADBB5A424C560F300CD2C92 /* TrackPlayerViewController.swift */; };
+		EADBB5AA24C5BB5000CD2C92 /* VideoPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EADBB5A924C5BB5000CD2C92 /* VideoPlayer.storyboard */; };
+		EADBB5AC24C5BB6E00CD2C92 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADBB5AB24C5BB6E00CD2C92 /* VideoPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +84,15 @@
 		A16B44D424B2FC7E00053D6C /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		A1A96B2F24BFEFD400EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
 		A1A96B3024BFEFD400EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A1A96B3424BFF12700EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A1A96B3624BFF14400EF12AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1A96B3724C050F100EF12AB /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityMC3.entitlements; sourceTree = "<group>"; };
+		A1EA07F724C5C3AD00945C97 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackPlayer.storyboard; sourceTree = "<group>"; };
+		EADBB5A424C560F300CD2C92 /* TrackPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackPlayerViewController.swift; sourceTree = "<group>"; };
+		EADBB5A924C5BB5000CD2C92 /* VideoPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoPlayer.storyboard; sourceTree = "<group>"; };
+		EADBB5AB24C5BB6E00CD2C92 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +184,10 @@
 		A16B44A124B2FBF300053D6C /* CommunityMC3 */ = {
 			isa = PBXGroup;
 			children = (
+				EADBB5A824C5BB2F00CD2C92 /* VideoPlayer View */,
+				EA14E8FE24C557090021DF77 /* TrackPlayer View */,
+				A1C0EBB424C54EED008D8D8F /* Setting View */,
+				A1C0EBB324C54ED9008D8D8F /* Login View */,
 				A15C4D1424C5032700ED0C0E /* Favourites View */,
 				A15C4D1524C5033800ED0C0E /* SearchView */,
 				A15C4D1624C5034A00ED0C0E /* Explorer View */,
@@ -180,11 +197,9 @@
 				A16B44AD24B2FBF600053D6C /* Assets.xcassets */,
 				A16B44AF24B2FBF600053D6C /* LaunchScreen.storyboard */,
 				A16B44B224B2FBF600053D6C /* Info.plist */,
+				A1A96B3524BFF12700EF12AB /* Localizable.strings */,
 				A15C4D1724C5038C00ED0C0E /* DB_Model.xcdatamodeld */,
 				A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */,
-				A1A96B3724C050F100EF12AB /* SettingController.swift */,
-				A1503D3924C4B79900AE317E /* LoginScreen.storyboard */,
-				A1503D3B24C4BA9B00AE317E /* LoginController.swift */,
 			);
 			path = CommunityMC3;
 			sourceTree = "<group>";
@@ -205,6 +220,42 @@
 				A16B44C824B2FBF700053D6C /* Info.plist */,
 			);
 			path = CommunityMC3UITests;
+			sourceTree = "<group>";
+		};
+		A1C0EBB324C54ED9008D8D8F /* Login View */ = {
+			isa = PBXGroup;
+			children = (
+				A1503D3924C4B79900AE317E /* LoginScreen.storyboard */,
+				A1503D3B24C4BA9B00AE317E /* LoginController.swift */,
+				A1EA07F724C5C3AD00945C97 /* RegisterController.swift */,
+			);
+			path = "Login View";
+			sourceTree = "<group>";
+		};
+		A1C0EBB424C54EED008D8D8F /* Setting View */ = {
+			isa = PBXGroup;
+			children = (
+				A1A96B3724C050F100EF12AB /* SettingController.swift */,
+			);
+			path = "Setting View";
+			sourceTree = "<group>";
+		};
+		EA14E8FE24C557090021DF77 /* TrackPlayer View */ = {
+			isa = PBXGroup;
+			children = (
+				EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */,
+				EADBB5A424C560F300CD2C92 /* TrackPlayerViewController.swift */,
+			);
+			path = "TrackPlayer View";
+			sourceTree = "<group>";
+		};
+		EADBB5A824C5BB2F00CD2C92 /* VideoPlayer View */ = {
+			isa = PBXGroup;
+			children = (
+				EADBB5A924C5BB5000CD2C92 /* VideoPlayer.storyboard */,
+				EADBB5AB24C5BB6E00CD2C92 /* VideoPlayerViewController.swift */,
+			);
+			path = "VideoPlayer View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,13 +365,16 @@
 			files = (
 				A15C4D2724C5370C00ED0C0E /* HeaderCell.xib in Resources */,
 				A16B44B124B2FBF600053D6C /* LaunchScreen.storyboard in Resources */,
+				A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */,
 				A15C4D1B24C5300A00ED0C0E /* Explorer.storyboard in Resources */,
 				A15C4D1D24C5303200ED0C0E /* Favourites.storyboard in Resources */,
 				A16B44AE24B2FBF600053D6C /* Assets.xcassets in Resources */,
 				A1503D3A24C4B79900AE317E /* LoginScreen.storyboard in Resources */,
+				EADBB5AA24C5BB5000CD2C92 /* VideoPlayer.storyboard in Resources */,
 				A16B44AC24B2FBF300053D6C /* Main.storyboard in Resources */,
 				A15C4D2324C5367400ED0C0E /* TrendingNowCell.xib in Resources */,
 				A15C4D1024C502EF00ED0C0E /* Search.storyboard in Resources */,
+				EA650D5524C557680093EEE6 /* TrackPlayer.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +401,7 @@
 			files = (
 				A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */,
 				A15C4D2224C5367400ED0C0E /* TrendingNowCell.swift in Sources */,
+				A1EA07F824C5C3AD00945C97 /* RegisterController.swift in Sources */,
 				A16B44A924B2FBF300053D6C /* SearchView.swift in Sources */,
 				A16B44A724B2FBF300053D6C /* ExplorerView.swift in Sources */,
 				A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */,
@@ -354,7 +409,9 @@
 				A16B44A324B2FBF300053D6C /* AppDelegate.swift in Sources */,
 				A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */,
 				A15C4D1924C5038C00ED0C0E /* DB_Model.xcdatamodeld in Sources */,
+				EADBB5AC24C5BB6E00CD2C92 /* VideoPlayerViewController.swift in Sources */,
 				A1503D3C24C4BA9B00AE317E /* LoginController.swift in Sources */,
+				EADBB5A524C560F300CD2C92 /* TrackPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +463,15 @@
 				A1A96B3024BFEFD400EF12AB /* id */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A1A96B3524BFF12700EF12AB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1A96B3424BFF12700EF12AB /* id */,
+				A1A96B3624BFF14400EF12AB /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
