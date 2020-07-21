@@ -11,7 +11,8 @@ import UIKit
 enum ExplorerSection:Int {
     case TrendingNow = 0
     case DiscoverNew = 1
-    case Count = 2
+    case LatestMusic = 2
+    case Count = 3
 }
 
 class ExplorerView: UIViewController {
@@ -24,6 +25,11 @@ class ExplorerView: UIViewController {
         
         mainTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
         mainTableView.register(UINib(nibName: "HeaderCell", bundle:nil), forCellReuseIdentifier: "headerCell")
+        mainTableView.register(UINib(nibName: "DiscoverNewCell", bundle:nil), forCellReuseIdentifier: "discoverNewCell")
+        mainTableView.register(UINib(nibName: "LatestMusicCell", bundle:nil), forCellReuseIdentifier: "latestMusicCell")
+
+
+        
 
     }
 
@@ -35,14 +41,20 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
-            var cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "header"
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+            cell.HeaderName.text = "Trending Now"
             return cell
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
         {
-            var cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "header"
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+            cell.HeaderName.text = "Discover New"
+            return cell
+        }
+        if(section == ExplorerSection.LatestMusic.rawValue)
+        {
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+            cell.HeaderName.text = "Latest Music"
             return cell
         }
         return mainTableView.dequeueReusableCell(withIdentifier: "headerCell")!
@@ -66,18 +78,27 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             return 1 // Discover New
         }
+        if(section == ExplorerSection.LatestMusic.rawValue)
+        {
+            return 3 // Latest Music
+        }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
         {
-            var cell = mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
             return cell
         }
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
-            var cell = mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "discoverNewCell") as! DiscoverNewCell
+            return cell
+        }
+        if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
+        {
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
             return cell
         }
         return mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell")!
