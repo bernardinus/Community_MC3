@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Account" representedClassName="Account" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
@@ -9,7 +9,7 @@
         <attribute name="cover" optional="YES" attributeType="Binary"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="favourites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="album" inverseEntity="Favourites"/>
-        <relationship name="musics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="album" inverseEntity="Track"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="album" inverseEntity="Track"/>
         <relationship name="userData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="album" inverseEntity="UserData"/>
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="album" inverseEntity="Videos"/>
     </entity>
@@ -34,11 +34,11 @@
         <attribute name="fileData" optional="YES" attributeType="Binary"/>
         <attribute name="genre" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="musics" inverseEntity="Album"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="tracks" inverseEntity="Album"/>
         <relationship name="favourites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="track" inverseEntity="Favourites"/>
         <relationship name="featured" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Featured" inverseName="track" inverseEntity="Featured"/>
         <relationship name="uploadedData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UploadedData" inverseName="track" inverseEntity="UploadedData"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="musics" inverseEntity="UserData"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="tracks" inverseEntity="UserData"/>
     </entity>
     <entity name="UploadedData" representedClassName="UploadedData" syncable="YES" codeGenerationType="class">
         <attribute name="uploadedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -59,8 +59,8 @@
         <relationship name="album" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="userData" inverseEntity="Album"/>
         <relationship name="favourites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="userData" inverseEntity="Favourites"/>
         <relationship name="featured" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Featured" inverseName="user" inverseEntity="Featured"/>
-        <relationship name="musics" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="user" inverseEntity="Track"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photos" inverseName="userData" inverseEntity="Photos"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="user" inverseEntity="Track"/>
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="user" inverseEntity="Videos"/>
     </entity>
     <entity name="Videos" representedClassName="Videos" syncable="YES" codeGenerationType="class">
