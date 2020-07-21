@@ -10,7 +10,12 @@ import UIKit
 
 class TrendingNowCell: UITableViewCell {
 
-    @IBOutlet weak var CellName: UILabel!
+    @IBOutlet weak var trackTitleLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var musicImageView: UIImageView!
+    @IBOutlet weak var favoriteIconButton: UIButton!
+    @IBOutlet weak var trackTimerLabel: UILabel!
+    @IBOutlet weak var playMusicButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

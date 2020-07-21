@@ -12,7 +12,8 @@ enum ExplorerSection:Int {
     case TrendingNow = 0
     case DiscoverNew = 1
     case LatestMusic = 2
-    case Count = 3
+    case FeaturedArtist = 3
+    case Count = 4
 }
 
 class ExplorerView: UIViewController {
@@ -27,9 +28,7 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "HeaderCell", bundle:nil), forCellReuseIdentifier: "headerCell")
         mainTableView.register(UINib(nibName: "DiscoverNewCell", bundle:nil), forCellReuseIdentifier: "discoverNewCell")
         mainTableView.register(UINib(nibName: "LatestMusicCell", bundle:nil), forCellReuseIdentifier: "latestMusicCell")
-
-
-        
+        mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
 
     }
 
@@ -57,6 +56,12 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             cell.HeaderName.text = "Latest Music"
             return cell
         }
+        if(section == ExplorerSection.LatestMusic.rawValue)
+        {
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
+            cell.HeaderName.text = "Featured Artist"
+            return cell
+        }
         return mainTableView.dequeueReusableCell(withIdentifier: "headerCell")!
     }
     
@@ -82,6 +87,10 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             return 3 // Latest Music
         }
+        if(section == ExplorerSection.FeaturedArtist.rawValue)
+        {
+            return 1 // Featured Artist
+        }
         return 0
     }
     
@@ -101,6 +110,12 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
             return cell
         }
+        if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
+        {
+            let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
+            return cell
+        }
+
         return mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell")!
     }
     
