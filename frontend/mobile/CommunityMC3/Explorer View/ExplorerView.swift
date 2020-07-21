@@ -44,30 +44,35 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Trending Now"
+            cell.seeMoreButton.setTitle("See more >", for: .normal)
             return cell
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Discover New"
+            cell.seeMoreButton.isHidden = true
             return cell
         }
         if(section == ExplorerSection.LatestMusic.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Latest Music"
+            cell.seeMoreButton.setTitle("See more >", for: .normal)
             return cell
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Featured Artist"
+            cell.seeMoreButton.setTitle("More artist >", for: .normal)
             return cell
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Featured Videos"
+            cell.seeMoreButton.setTitle("More videos >", for: .normal)
             return cell
         }
         

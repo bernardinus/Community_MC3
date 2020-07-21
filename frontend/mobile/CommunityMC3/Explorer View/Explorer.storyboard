@@ -34,19 +34,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-4q-ZNf">
-                                <rect key="frame" x="364" y="77.5" width="30" height="27"/>
+                                <rect key="frame" x="370" y="83.5" width="24" height="24"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="MaG-mU-nyc"/>
-                                    <constraint firstAttribute="width" constant="30" id="TQ9-MK-fxf"/>
+                                    <constraint firstAttribute="width" constant="24" id="9tO-Yc-zP4"/>
+                                    <constraint firstAttribute="height" constant="27" id="i2r-kY-ToG"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rnE-yC-QxV">
-                                <rect key="frame" x="327" y="79.5" width="27" height="26.5"/>
+                                <rect key="frame" x="330" y="84.5" width="24" height="23.5"/>
                                 <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="WhA-4a-Z2c"/>
-                                    <constraint firstAttribute="height" constant="27" id="adT-Bd-nce"/>
+                                    <constraint firstAttribute="width" constant="24" id="1eS-H7-F0J"/>
+                                    <constraint firstAttribute="height" constant="24" id="skY-gI-fwX"/>
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
@@ -56,14 +56,16 @@
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="1wn-NP-AiM"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="aBB-zB-Hcd" secondAttribute="bottom" constant="16" id="4hh-ez-kLC"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="7we-69-Slh"/>
-                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="leading" secondItem="rnE-yC-QxV" secondAttribute="trailing" constant="10" id="AVS-gc-huV"/>
                             <constraint firstAttribute="bottom" secondItem="B4j-zq-DCP" secondAttribute="bottom" id="ITn-0i-u79"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="27" id="LjB-en-XoN"/>
-                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="rnE-yC-QxV" secondAttribute="bottom" constant="22" id="R5P-YU-5X0"/>
-                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="32" id="cWP-jm-xh1"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="yIX-4q-ZNf" secondAttribute="trailing" constant="20" id="j0C-eR-WP8"/>
+                            <constraint firstItem="rnE-yC-QxV" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="40" id="X45-ko-Cq2"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="n1i-BJ-Xb4"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="rnE-yC-QxV" secondAttribute="bottom" constant="20" id="pEY-Ct-LML"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="q0l-SW-Hrv"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="yIX-4q-ZNf" secondAttribute="bottom" constant="19" id="uDf-Mx-k0v"/>
+                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="38" id="umE-Dm-Wyw"/>
+                            <constraint firstItem="yIX-4q-ZNf" firstAttribute="leading" secondItem="rnE-yC-QxV" secondAttribute="trailing" constant="16" id="uw2-cW-hJQ"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="yIX-4q-ZNf" secondAttribute="trailing" constant="20" id="zJN-QV-6s5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
