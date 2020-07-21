@@ -153,20 +153,14 @@
 		A15C4D1624C5034A00ED0C0E /* Explorer View */ = {
 			isa = PBXGroup;
 			children = (
+				B7A0BADF24C6D4BA00292AA3 /* Trending Now */,
+				B7A0BADD24C6D4B100292AA3 /* Discover New */,
+				B7A0BADC24C6D49600292AA3 /* Latest Music */,
+				B7A0BAE024C6D4D200292AA3 /* Featured Artists */,
 				A15C4D1A24C5300A00ED0C0E /* Explorer.storyboard */,
 				A16B44A624B2FBF300053D6C /* ExplorerView.swift */,
 				A15C4D2424C5370C00ED0C0E /* HeaderCell.swift */,
 				A15C4D2524C5370C00ED0C0E /* HeaderCell.xib */,
-				A15C4D2024C5367400ED0C0E /* TrendingNowCell.swift */,
-				A15C4D2124C5367400ED0C0E /* TrendingNowCell.xib */,
-				B7DAF5D924C6919D00FC6EFB /* DiscoverNewCell.swift */,
-				B7DAF5DA24C6919D00FC6EFB /* DiscoverNewCell.xib */,
-				B7DAF5DD24C698B400FC6EFB /* LatestMusicCell.swift */,
-				B7DAF5DE24C698B400FC6EFB /* LatestMusicCell.xib */,
-				B7DAF5E124C6A6EE00FC6EFB /* FeaturedArtistCell.swift */,
-				B7DAF5E224C6A6EE00FC6EFB /* FeaturedArtistCell.xib */,
-				B7DAF5E524C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.swift */,
-				B7DAF5E624C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.xib */,
 			);
 			path = "Explorer View";
 			sourceTree = "<group>";
@@ -255,6 +249,44 @@
 				A1A96B3724C050F100EF12AB /* SettingController.swift */,
 			);
 			path = "Setting View";
+			sourceTree = "<group>";
+		};
+		B7A0BADC24C6D49600292AA3 /* Latest Music */ = {
+			isa = PBXGroup;
+			children = (
+				B7DAF5DD24C698B400FC6EFB /* LatestMusicCell.swift */,
+				B7DAF5DE24C698B400FC6EFB /* LatestMusicCell.xib */,
+			);
+			path = "Latest Music";
+			sourceTree = "<group>";
+		};
+		B7A0BADD24C6D4B100292AA3 /* Discover New */ = {
+			isa = PBXGroup;
+			children = (
+				B7DAF5D924C6919D00FC6EFB /* DiscoverNewCell.swift */,
+				B7DAF5DA24C6919D00FC6EFB /* DiscoverNewCell.xib */,
+			);
+			path = "Discover New";
+			sourceTree = "<group>";
+		};
+		B7A0BADF24C6D4BA00292AA3 /* Trending Now */ = {
+			isa = PBXGroup;
+			children = (
+				A15C4D2024C5367400ED0C0E /* TrendingNowCell.swift */,
+				A15C4D2124C5367400ED0C0E /* TrendingNowCell.xib */,
+			);
+			path = "Trending Now";
+			sourceTree = "<group>";
+		};
+		B7A0BAE024C6D4D200292AA3 /* Featured Artists */ = {
+			isa = PBXGroup;
+			children = (
+				B7DAF5E124C6A6EE00FC6EFB /* FeaturedArtistCell.swift */,
+				B7DAF5E224C6A6EE00FC6EFB /* FeaturedArtistCell.xib */,
+				B7DAF5E524C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.swift */,
+				B7DAF5E624C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.xib */,
+			);
+			path = "Featured Artists";
 			sourceTree = "<group>";
 		};
 		EA14E8FE24C557090021DF77 /* TrackPlayer View */ = {
