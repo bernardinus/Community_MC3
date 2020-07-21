@@ -104,5 +104,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         return mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell")!
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 108
+    }
+    
     
 }
