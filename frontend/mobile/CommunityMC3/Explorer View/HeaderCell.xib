@@ -16,6 +16,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNK-TL-dNo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLn-JT-gu7">
                         <rect key="frame" x="24" y="23" width="136" height="22"/>
                         <constraints>
@@ -28,17 +32,17 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kv1-zU-LYM">
                         <rect key="frame" x="10" y="23" width="6" height="22"/>
-                        <color key="backgroundColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.41176470588235292" green="0.47450980392156861" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="6" id="Uul-0r-u9W"/>
                             <constraint firstAttribute="height" constant="22" id="czK-Rr-5Tj"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRt-IL-Laf">
-                        <rect key="frame" x="184" y="19" width="120" height="30"/>
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vRt-IL-Laf">
+                        <rect key="frame" x="14" y="19" width="290" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Eeg-dz-Gmz"/>
-                            <constraint firstAttribute="width" constant="120" id="Www-9b-nSA"/>
+                            <constraint firstAttribute="width" constant="290" id="Www-9b-nSA"/>
                         </constraints>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                         <state key="normal" title="Button">
@@ -54,19 +58,27 @@
                     <constraint firstItem="yLn-JT-gu7" firstAttribute="leading" secondItem="kv1-zU-LYM" secondAttribute="trailing" constant="8" id="40K-0b-jrD"/>
                     <constraint firstAttribute="trailing" secondItem="vRt-IL-Laf" secondAttribute="trailing" constant="16" id="5sO-5G-ZzQ"/>
                     <constraint firstAttribute="bottom" secondItem="yLn-JT-gu7" secondAttribute="bottom" constant="10" id="FFN-2E-l1x"/>
+                    <constraint firstAttribute="trailing" secondItem="aNK-TL-dNo" secondAttribute="trailing" id="JYu-Xs-gSB"/>
                     <constraint firstAttribute="bottom" secondItem="vRt-IL-Laf" secondAttribute="bottom" constant="6" id="R9o-AA-jg8"/>
+                    <constraint firstItem="aNK-TL-dNo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZjC-1q-q8T"/>
                     <constraint firstItem="kv1-zU-LYM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zsa-UU-mk9"/>
                     <constraint firstItem="vRt-IL-Laf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="bfQ-0F-lfN"/>
+                    <constraint firstItem="aNK-TL-dNo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fq1-LS-jFC"/>
                     <constraint firstItem="yLn-JT-gu7" firstAttribute="firstBaseline" secondItem="vRt-IL-Laf" secondAttribute="baseline" id="iLi-Sk-k6v"/>
+                    <constraint firstItem="aNK-TL-dNo" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="jZA-4y-Bxs"/>
+                    <constraint firstItem="aNK-TL-dNo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pxQ-3L-ATj"/>
+                    <constraint firstAttribute="bottom" secondItem="aNK-TL-dNo" secondAttribute="bottom" id="py9-Ue-jHf"/>
                     <constraint firstAttribute="bottom" secondItem="kv1-zU-LYM" secondAttribute="bottom" constant="10" id="ucA-33-Nbm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="HeaderName" destination="yLn-JT-gu7" id="YtV-TE-HeT"/>
+                <outlet property="headerBackgroundView" destination="aNK-TL-dNo" id="Qof-iP-tQa"/>
+                <outlet property="sectionBlock" destination="kv1-zU-LYM" id="Zn4-PZ-yvC"/>
                 <outlet property="seeMoreButton" destination="vRt-IL-Laf" id="esF-fK-g8x"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="152.34375"/>
+            <point key="canvasLocation" x="131.8840579710145" y="152.00892857142856"/>
         </tableViewCell>
     </objects>
 </document>

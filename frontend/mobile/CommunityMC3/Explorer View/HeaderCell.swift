@@ -9,12 +9,13 @@
 import UIKit
 
 class HeaderCell: UITableViewCell {
-
-    var callBack: (() -> Void)? = nil
     
+    @IBOutlet weak var headerBackgroundView: UIView!
     @IBOutlet weak var HeaderName: UILabel!
     @IBOutlet weak var seeMoreButton: UIButton!
+    @IBOutlet weak var sectionBlock: UIView!
     
+    var callBack: (() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

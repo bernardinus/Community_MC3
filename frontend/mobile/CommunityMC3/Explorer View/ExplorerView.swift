@@ -34,9 +34,6 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
 
     }
-
-     
-
 }
 
 extension ExplorerView:UITableViewDelegate, UITableViewDataSource
@@ -46,10 +43,14 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Trending Now"
+            cell.HeaderName.textColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
+            cell.sectionBlock.backgroundColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
             cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.seeMoreButton.setTitleColor(UIColor.white, for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "trendingSegue", sender: nil)
             }
+            cell.headerBackgroundView.layer.backgroundColor = #colorLiteral(red: 0.2784313725, green: 0, blue: 0.7843137255, alpha: 1)
             return cell
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
@@ -104,7 +105,6 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
-            
             return 3 // Trending Now
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
@@ -163,7 +163,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
-            return 140
+            return 80
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
