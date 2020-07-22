@@ -12,11 +12,17 @@ import CloudKit
 import MediaPlayer
 
 class UploadController: UIViewController {
+    var document: String!
     
     @IBOutlet weak var testButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if document != nil {
+            print(document)
+//            testButton.titleLabel?.text = document
+        }
+        doSubmission(document: document)
     }
     
     @IBAction func uploadNow(_ sender: UIButton) {
@@ -30,14 +36,14 @@ class UploadController: UIViewController {
         return documentsDirectory
     }
 
-    class func getMusicURL() -> URL {
-        return getDocumentsDirectory().appendingPathComponent("whistle.m4a")
+    class func getMusicURL(document: String) -> URL {
+        return getDocumentsDirectory().appendingPathComponent(document)
     }
     
     func startUploading() {
         // 3
-        let audioURL = UploadController.getMusicURL()
-        print(audioURL.absoluteString)
+//        let audioURL = UploadController.getMusicURL()
+//        print(audioURL.absoluteString)
 
         // 4
         let settings = [
@@ -48,28 +54,30 @@ class UploadController: UIViewController {
         ]
     }
     
-    func doSubmission() {
+    func doSubmission(document: String) {
         let musicRecord = CKRecord(recordType: "Uploads")
-//        musicRecord["genre"] = genre as CKRecordValue
-//        musicRecord["comments"] = comments as CKRecordValue
+        musicRecord["genre"] = "Blues" as CKRecordValue
+        musicRecord["name"] = document as CKRecordValue
+        musicRecord["email"] = "mnb@mnb" as CKRecordValue
 
-        let audioURL = UploadController.getMusicURL()
+        let audioURL = UploadController.getMusicURL(document: document)
         let musicAsset = CKAsset(fileURL: audioURL)
-        musicRecord["audio"] = musicAsset
+        musicRecord["fileData"] = musicAsset
 
         CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(musicRecord) { [unowned self] record, error in
             DispatchQueue.main.async {
-//                if let error = error {
-//                    self.status.text = "Error: \(error.localizedDescription)"
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+//                    self.testButton.titleLabel!.text =
 //                    self.spinner.stopAnimating()
-//                } else {
+                } else {
 //                    self.view.backgroundColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 1)
-//                    self.status.text = "Done!"
+//                    self.testButton.titleLabel!.text = "Done!"
 //                    self.spinner.stopAnimating()
-//
+                    print("Done!")
 //                    ViewController.isDirty = true
-//                }
-//
+                }
+
 //                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneTapped))
             }
         }
@@ -124,5 +132,27 @@ extension UploadController: MPMediaPickerControllerDelegate, UINavigationControl
                 player.play()
            }
        }
+    }
+}
+
+//MARK: - Ext. Delegate DocumentPicker
+extension UploadController: UIDocumentPickerDelegate {
+    func openDocumentPicker() {
+        let documentsPicker = UIDocumentPickerViewController(documentTypes: ["public.image", "public.jpeg", "public.png"], in: .open)
+        documentsPicker.delegate = self
+        documentsPicker.modalPresentationStyle = .fullScreen
+//        self.presentationController?.present(documentsPicker, animated: true, completion: nil)
+    }
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard controller.documentPickerMode == .open, let url = urls.first, url.startAccessingSecurityScopedResource() else { return }
+//        defer { url.stopAccessingSecurityScopedResource() }
+
+        guard let image = UIImage(contentsOfFile: url.path) else { return }
+//        self.delegate?.didSelect(image: image)
+        controller.dismiss(animated: true)
+    }
+
+    public func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        controller.dismiss(animated: true)
     }
 }
