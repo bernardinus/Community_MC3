@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="featuredVideosCell" id="KGk-i7-Jjw" customClass="FeaturedVideosCell" customModule="CommunityMC3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVV-jm-Cea">
+                        <rect key="frame" x="8" y="8" width="304" height="144"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAg-zz-aoB">
+                        <rect key="frame" x="10" y="10" width="300" height="140"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" image="play.fill" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="gVV-jm-Cea" secondAttribute="bottom" constant="8" id="03O-Tp-yhD"/>
+                    <constraint firstItem="gVV-jm-Cea" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="0Ke-3e-Pcg"/>
+                    <constraint firstAttribute="trailing" secondItem="pAg-zz-aoB" secondAttribute="trailing" constant="10" id="6p8-Ih-SCu"/>
+                    <constraint firstItem="pAg-zz-aoB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="BJ5-zK-dmc"/>
+                    <constraint firstItem="gVV-jm-Cea" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HWX-lF-dBH"/>
+                    <constraint firstItem="gVV-jm-Cea" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PIP-Io-mXF"/>
+                    <constraint firstAttribute="trailing" secondItem="gVV-jm-Cea" secondAttribute="trailing" constant="8" id="Qib-H0-NfP"/>
+                    <constraint firstAttribute="bottom" secondItem="pAg-zz-aoB" secondAttribute="bottom" constant="10" id="Qmh-zm-xKc"/>
+                    <constraint firstItem="gVV-jm-Cea" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="f8k-qt-BCB"/>
+                    <constraint firstItem="pAg-zz-aoB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="k3G-ua-IDJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="videoPlayButton" destination="pAg-zz-aoB" id="gWl-Tt-9z6"/>
+                <outlet property="videoThumbnailImage" destination="gVV-jm-Cea" id="33m-77-lMh"/>
+            </connections>
+            <point key="canvasLocation" x="99" y="135"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+    </resources>
+</document>

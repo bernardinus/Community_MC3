@@ -1,5 +1,5 @@
 //
-//  HeaderCell.swift
+//  TrendingNowCell.swift
 //  CommunityMC3
 //
 //  Created by Bernardinus on 20/07/20.
@@ -8,11 +8,14 @@
 
 import UIKit
 
-class HeaderCell: UITableViewCell {
+class TrendingNowCell: UITableViewCell {
 
-    @IBOutlet weak var HeaderName: UILabel!
-    @IBOutlet weak var seeMoreButton: UIButton!
-    
+    @IBOutlet weak var trackTitleLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var musicImageView: UIImageView!
+    @IBOutlet weak var favoriteIconButton: UIButton!
+    @IBOutlet weak var trackTimerLabel: UILabel!
+    @IBOutlet weak var playMusicButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,7 +11,6 @@ import UIKit
 class HeaderCell: UITableViewCell {
 
     @IBOutlet weak var HeaderName: UILabel!
-    @IBOutlet weak var seeMoreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

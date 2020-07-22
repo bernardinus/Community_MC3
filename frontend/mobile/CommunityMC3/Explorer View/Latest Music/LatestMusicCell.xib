@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell autoresizesSubviews="NO" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="latestMusicCell" id="KGk-i7-Jjw" customClass="LatestMusicCell" customModule="CommunityMC3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="325" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vFO-ID-8Sp">
+                        <rect key="frame" x="0.0" y="0.0" width="123" height="90"/>
+                        <color key="backgroundColor" red="0.1058823529" green="0.01176470588" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="123" id="oW2-Fe-dGS"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bN-2d-6Pj">
+                        <rect key="frame" x="0.0" y="0.0" width="123" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="123" id="WV0-9h-B8e"/>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="" image="play.fill" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                        </state>
+                        <state key="selected" image="stop.fill" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebG-W1-7F7">
+                        <rect key="frame" x="131" y="12" width="74.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="fBB-Ii-iBS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A68-SF-7N4">
+                        <rect key="frame" x="131" y="36" width="65.5" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="gcH-jp-IC7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="vFO-ID-8Sp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0JG-GQ-Z3W"/>
+                    <constraint firstItem="9bN-2d-6Pj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Me5-E0-aZ9"/>
+                    <constraint firstItem="A68-SF-7N4" firstAttribute="top" secondItem="ebG-W1-7F7" secondAttribute="bottom" constant="4" id="NnL-Gn-nPT"/>
+                    <constraint firstItem="vFO-ID-8Sp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Vsb-Sc-Vke"/>
+                    <constraint firstItem="9bN-2d-6Pj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Y7A-uW-bjp"/>
+                    <constraint firstItem="A68-SF-7N4" firstAttribute="leading" secondItem="vFO-ID-8Sp" secondAttribute="trailing" constant="8" id="ea4-AS-Sxw"/>
+                    <constraint firstItem="9bN-2d-6Pj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="j2j-pU-WO1"/>
+                    <constraint firstAttribute="bottom" secondItem="A68-SF-7N4" secondAttribute="bottom" constant="36" id="kn5-sB-NbN"/>
+                    <constraint firstItem="A68-SF-7N4" firstAttribute="top" secondItem="ebG-W1-7F7" secondAttribute="bottom" constant="4" id="n1k-hc-oUG"/>
+                    <constraint firstAttribute="bottom" secondItem="vFO-ID-8Sp" secondAttribute="bottom" id="sVY-A1-ta7"/>
+                    <constraint firstAttribute="bottom" secondItem="9bN-2d-6Pj" secondAttribute="bottom" id="seu-ws-5I6"/>
+                    <constraint firstItem="ebG-W1-7F7" firstAttribute="leading" secondItem="vFO-ID-8Sp" secondAttribute="trailing" constant="8" id="ug8-Tb-ymh"/>
+                    <constraint firstItem="vFO-ID-8Sp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="v7k-FF-Itl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="artistNameLabel" destination="A68-SF-7N4" id="HoN-hY-Vm5"/>
+                <outlet property="musicImageView" destination="9bN-2d-6Pj" id="hma-VX-epa"/>
+                <outlet property="playMusicButton" destination="9bN-2d-6Pj" id="Y58-fi-p0V"/>
+                <outlet property="trackTitleLabel" destination="ebG-W1-7F7" id="4LS-XO-ae5"/>
+            </connections>
+            <point key="canvasLocation" x="136.95652173913044" y="138.61607142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
+        <image name="stop.fill" catalog="system" width="128" height="113"/>
+    </resources>
+</document>

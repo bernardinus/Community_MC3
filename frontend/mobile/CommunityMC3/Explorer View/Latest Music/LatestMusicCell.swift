@@ -1,18 +1,19 @@
 //
-//  HeaderCell.swift
+//  LatestMusicCell.swift
 //  CommunityMC3
 //
-//  Created by Bernardinus on 20/07/20.
+//  Created by Theofani on 21/07/20.
 //  Copyright © 2020 Apple Developer Academy. All rights reserved.
 //
 
 import UIKit
 
-class HeaderCell: UITableViewCell {
+class LatestMusicCell: UITableViewCell {
 
-    @IBOutlet weak var HeaderName: UILabel!
-    @IBOutlet weak var seeMoreButton: UIButton!
-    
+    @IBOutlet weak var playMusicButton: UIButton!
+    @IBOutlet weak var trackTitleLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var musicImageView: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
