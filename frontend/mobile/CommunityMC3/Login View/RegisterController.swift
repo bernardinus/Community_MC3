@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 import Foundation
 
 class RegisterController: UIViewController {
@@ -26,7 +27,7 @@ class RegisterController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        passwordField.placeholder = ""
+//        passwordField.placeholder = ""
         passwordField.isSecureTextEntry = true
     }
     
@@ -57,28 +58,48 @@ class RegisterController: UIViewController {
 //    }
     
     @IBAction func registerUser(_ sender: UIButton) {
-    //        let newTask = Task(context: getViewContext())
-        if let newAccount = Account.registerAccount(context: getViewContext(), accountEmail: emailField.text ?? "", accountPassword: passwordField.text ?? "") {
-            emailField.text = ""
-            passwordField.text = ""
-            print(newAccount)
-            self.performSegue(withIdentifier: "registerMain", sender: self)
-            }
+        registerToCloudKit()
     }
-}
-
-struct CoreDataHelper {
-    var context: NSManagedObjectContext
     
-    func fetchAll<T: NSManagedObject>() -> [T] {
-        let request = T.fetchRequest()
-        do {
-            return try context.fetch(request) as? [T] ?? []
-        } catch {
-            return []
+    func registerToCoreData() {
+            //        let newTask = Task(context: getViewContext())
+        if let newAccount = Account.registerAccount(context: getViewContext(), accountEmail: emailField.text ?? "", accountPassword: passwordField.text ?? "") {
+        emailField.text = ""
+        passwordField.text = ""
+        print(newAccount)
+        self.performSegue(withIdentifier: "registerMain", sender: self)
+        }
+    }
+    
+    func registerToCloudKit() {
+         // 1. buat dulu recordnya
+        let newRecord = CKRecord(recordType: "Register")
+
+        // 2. set propertynya
+        newRecord.setValue(emailField.text ?? "", forKey: "email")
+        newRecord.setValue(passwordField.text ?? "", forKey: "password")
+
+        // 3. execute save or insert
+        let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+//        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+        //        print(CKContainer.default())
+        database.save(newRecord) { record, error in
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            
+            print(record)
+            
+            DispatchQueue.main.async {
+                UserDefaults.standard.set(self.emailField.text, forKey: "email")
+        //                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+                self.performSegue(withIdentifier: "registerMain", sender: self)
+            }
         }
     }
 }
+
 
 extension UIViewController {
     
