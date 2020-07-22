@@ -38,6 +38,8 @@
 		A16B44BC24B2FBF700053D6C /* CommunityMC3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44BB24B2FBF700053D6C /* CommunityMC3Tests.swift */; };
 		A16B44C724B2FBF700053D6C /* CommunityMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44C624B2FBF700053D6C /* CommunityMC3UITests.swift */; };
 		A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44D424B2FC7E00053D6C /* FavouritesView.swift */; };
+		A1824D9A24C7E3E200C68182 /* Account+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9924C7E3E200C68182 /* Account+Extension.swift */; };
+		A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */; };
 		A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1A96B3524BFF12700EF12AB /* Localizable.strings */; };
 		A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A96B3724C050F100EF12AB /* SettingController.swift */; };
 		A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3FFED24C6A84500CA2228 /* Test.storyboard */; };
@@ -117,6 +119,8 @@
 		A16B44C624B2FBF700053D6C /* CommunityMC3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityMC3UITests.swift; sourceTree = "<group>"; };
 		A16B44C824B2FBF700053D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A16B44D424B2FC7E00053D6C /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		A1824D9924C7E3E200C68182 /* Account+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Account+Extension.swift"; path = "CommunityMC3/Login View/Account+Extension.swift"; sourceTree = SOURCE_ROOT; };
+		A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A1A96B2F24BFEFD400EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
 		A1A96B3024BFEFD400EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A1A96B3424BFF12700EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				A1432F5424C69958007656B1 /* ImagePicker.swift */,
 				A1689D3A24C7D76500A49732 /* CoreDataHelper.swift */,
 				A1689D3824C7D67700A49732 /* AlertViewHelper.swift */,
+				A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 		A1689D3C24C7D7D800A49732 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A1824D9924C7E3E200C68182 /* Account+Extension.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 				B74C5A0624C714AF00C978F3 /* TrendingNowVC.swift in Sources */,
 				B74C5A0224C711FA00C978F3 /* NotificationsVC.swift in Sources */,
 				A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */,
+				A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */,
 				A1689CEB24C7A6D300A49732 /* SelectFileView.swift in Sources */,
 				B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */,
 				A15C4D2224C5367400ED0C0E /* TrendingNowCell.swift in Sources */,
@@ -588,6 +595,7 @@
 				A15C4D1924C5038C00ED0C0E /* DB_Model.xcdatamodeld in Sources */,
 				B7DAF5DB24C6919D00FC6EFB /* DiscoverNewCell.swift in Sources */,
 				EADBB5AC24C5BB6E00CD2C92 /* VideoPlayerViewController.swift in Sources */,
+				A1824D9A24C7E3E200C68182 /* Account+Extension.swift in Sources */,
 				A1503D3C24C4BA9B00AE317E /* LoginController.swift in Sources */,
 				B7DAF5DF24C698B400FC6EFB /* LatestMusicCell.swift in Sources */,
 				EADBB5A524C560F300CD2C92 /* TrackPlayerViewController.swift in Sources */,
