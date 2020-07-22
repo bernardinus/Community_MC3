@@ -42,6 +42,10 @@
 		A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A96B3724C050F100EF12AB /* SettingController.swift */; };
 		A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3FFED24C6A84500CA2228 /* Test.storyboard */; };
 		A1F9E59024C768AD0029CF0E /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F9E58F24C768AD0029CF0E /* UploadController.swift */; };
+		B73C835F24C7F89C0047B4EC /* FeaturedArtistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73C835E24C7F89C0047B4EC /* FeaturedArtistView.storyboard */; };
+		B73C836124C7F8AC0047B4EC /* FeaturedArtistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73C836024C7F8AC0047B4EC /* FeaturedArtistVC.swift */; };
+		B73C836324C7F8BC0047B4EC /* FeaturedVideosView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73C836224C7F8BC0047B4EC /* FeaturedVideosView.storyboard */; };
+		B73C836524C7F8CC0047B4EC /* FeaturedVideosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73C836424C7F8CC0047B4EC /* FeaturedVideosVC.swift */; };
 		B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74C59F924C6E38D00C978F3 /* FeaturedVideosCell.swift */; };
 		B74C59FC24C6E38D00C978F3 /* FeaturedVideosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B74C59FA24C6E38D00C978F3 /* FeaturedVideosCell.xib */; };
 		B74C5A0024C7070200C978F3 /* TrendingNowList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74C59FF24C7070200C978F3 /* TrendingNowList.storyboard */; };
@@ -127,6 +131,10 @@
 		A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityMC3.entitlements; sourceTree = "<group>"; };
 		A1E3FFED24C6A84500CA2228 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		A1F9E58F24C768AD0029CF0E /* UploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
+		B73C835E24C7F89C0047B4EC /* FeaturedArtistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeaturedArtistView.storyboard; sourceTree = "<group>"; };
+		B73C836024C7F8AC0047B4EC /* FeaturedArtistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedArtistVC.swift; sourceTree = "<group>"; };
+		B73C836224C7F8BC0047B4EC /* FeaturedVideosView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeaturedVideosView.storyboard; sourceTree = "<group>"; };
+		B73C836424C7F8CC0047B4EC /* FeaturedVideosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedVideosVC.swift; sourceTree = "<group>"; };
 		B74C59F924C6E38D00C978F3 /* FeaturedVideosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedVideosCell.swift; sourceTree = "<group>"; };
 		B74C59FA24C6E38D00C978F3 /* FeaturedVideosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedVideosCell.xib; sourceTree = "<group>"; };
 		B74C59FF24C7070200C978F3 /* TrendingNowList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrendingNowList.storyboard; sourceTree = "<group>"; };
@@ -355,6 +363,8 @@
 			children = (
 				B74C59F924C6E38D00C978F3 /* FeaturedVideosCell.swift */,
 				B74C59FA24C6E38D00C978F3 /* FeaturedVideosCell.xib */,
+				B73C836224C7F8BC0047B4EC /* FeaturedVideosView.storyboard */,
+				B73C836424C7F8CC0047B4EC /* FeaturedVideosVC.swift */,
 			);
 			path = "Featured Videos";
 			sourceTree = "<group>";
@@ -397,6 +407,8 @@
 				B7DAF5E224C6A6EE00FC6EFB /* FeaturedArtistCell.xib */,
 				B7DAF5E524C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.swift */,
 				B7DAF5E624C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.xib */,
+				B73C835E24C7F89C0047B4EC /* FeaturedArtistView.storyboard */,
+				B73C836024C7F8AC0047B4EC /* FeaturedArtistVC.swift */,
 			);
 			path = "Featured Artists";
 			sourceTree = "<group>";
@@ -533,6 +545,7 @@
 				A15C4D1B24C5300A00ED0C0E /* Explorer.storyboard in Resources */,
 				A15C4D1D24C5303200ED0C0E /* Favourites.storyboard in Resources */,
 				A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */,
+				B73C836324C7F8BC0047B4EC /* FeaturedVideosView.storyboard in Resources */,
 				A16B44AE24B2FBF600053D6C /* Assets.xcassets in Resources */,
 				A1503D3A24C4B79900AE317E /* LoginScreen.storyboard in Resources */,
 				EADBB5AA24C5BB5000CD2C92 /* VideoPlayer.storyboard in Resources */,
@@ -543,6 +556,7 @@
 				A16B44AC24B2FBF300053D6C /* Main.storyboard in Resources */,
 				A165069224C7DD46005822E7 /* SettingScreen.storyboard in Resources */,
 				A15C4D2324C5367400ED0C0E /* TrendingNowCell.xib in Resources */,
+				B73C835F24C7F89C0047B4EC /* FeaturedArtistView.storyboard in Resources */,
 				B7DAF5DC24C6919D00FC6EFB /* DiscoverNewCell.xib in Resources */,
 				B74C5A0424C713DD00C978F3 /* Notifications.storyboard in Resources */,
 				A15C4D1024C502EF00ED0C0E /* Search.storyboard in Resources */,
@@ -574,6 +588,7 @@
 			files = (
 				B7DAF5E724C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.swift in Sources */,
 				B74C5A0624C714AF00C978F3 /* TrendingNowVC.swift in Sources */,
+				B73C836124C7F8AC0047B4EC /* FeaturedArtistVC.swift in Sources */,
 				B74C5A0224C711FA00C978F3 /* NotificationsVC.swift in Sources */,
 				A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */,
 				A1689CEB24C7A6D300A49732 /* SelectFileView.swift in Sources */,
@@ -583,6 +598,7 @@
 				A1F9E59024C768AD0029CF0E /* UploadController.swift in Sources */,
 				B7DAF5E324C6A6EE00FC6EFB /* FeaturedArtistCell.swift in Sources */,
 				A16B44A924B2FBF300053D6C /* SearchView.swift in Sources */,
+				B73C836524C7F8CC0047B4EC /* FeaturedVideosVC.swift in Sources */,
 				A16B44A724B2FBF300053D6C /* ExplorerView.swift in Sources */,
 				A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */,
 				A15C4D2624C5370C00ED0C0E /* HeaderCell.swift in Sources */,
