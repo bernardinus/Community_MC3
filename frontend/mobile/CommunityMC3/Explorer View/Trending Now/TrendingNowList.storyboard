@@ -30,7 +30,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Mu-k6-hkY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Trending Now" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="lgC-bK-6So"/>
+                    <navigationItem key="navigationItem" title="Trending Now" largeTitleDisplayMode="never" id="lgC-bK-6So"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0S-Jc-bol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

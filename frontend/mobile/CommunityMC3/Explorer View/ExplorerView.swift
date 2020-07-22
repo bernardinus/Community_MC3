@@ -64,6 +64,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Latest Music"
             cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "latestMusicSegue", sender: nil)
+            }
             return cell
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
@@ -71,6 +74,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Featured Artist"
             cell.seeMoreButton.setTitle("More artist >", for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "featuredArtistSegue", sender: nil)
+            }
             return cell
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
@@ -78,6 +84,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Featured Videos"
             cell.seeMoreButton.setTitle("More videos >", for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "featuredVideoSegue", sender: nil)
+            }
             return cell
         }
         
