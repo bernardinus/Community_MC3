@@ -175,9 +175,6 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         return 110
     }
-    
-    @IBAction func tappedRightButton(sender: AnyObject){
-        
-    }
+
     
 }
