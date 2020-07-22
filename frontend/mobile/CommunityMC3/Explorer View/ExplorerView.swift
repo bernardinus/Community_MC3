@@ -47,6 +47,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Trending Now"
             cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "trendingSegue", sender: nil)
+            }
             return cell
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)

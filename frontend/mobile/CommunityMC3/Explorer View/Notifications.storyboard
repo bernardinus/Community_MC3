@@ -14,7 +14,19 @@
                     <view key="view" contentMode="scaleToFill" id="1iT-A7-5jo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lCr-Bw-JEJ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lCr-Bw-JEJ" firstAttribute="top" secondItem="Kxs-W6-54x" secondAttribute="top" id="9WJ-cD-vh5"/>
+                            <constraint firstItem="Kxs-W6-54x" firstAttribute="trailing" secondItem="lCr-Bw-JEJ" secondAttribute="trailing" id="J3h-7j-biD"/>
+                            <constraint firstItem="Kxs-W6-54x" firstAttribute="bottom" secondItem="lCr-Bw-JEJ" secondAttribute="bottom" id="YTf-Sa-L7L"/>
+                            <constraint firstItem="lCr-Bw-JEJ" firstAttribute="leading" secondItem="Kxs-W6-54x" secondAttribute="leading" id="fbq-he-xQL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Kxs-W6-54x"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notifications" largeTitleDisplayMode="never" id="ykU-FY-Oi9"/>

@@ -10,6 +10,8 @@ import UIKit
 
 class HeaderCell: UITableViewCell {
 
+    var callBack: (() -> Void)? = nil
+    
     @IBOutlet weak var HeaderName: UILabel!
     @IBOutlet weak var seeMoreButton: UIButton!
     
@@ -24,4 +26,11 @@ class HeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func tapSeeMore(_ sender: Any) {
+        self.callBack!()
+    }
+    
+    func setCallBack(callback: (() -> Void)?){
+        self.callBack = callback
+    }
 }

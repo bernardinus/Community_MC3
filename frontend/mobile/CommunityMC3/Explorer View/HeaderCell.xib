@@ -44,6 +44,9 @@
                         <state key="normal" title="Button">
                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="tapSeeMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BKq-qv-ET2"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
