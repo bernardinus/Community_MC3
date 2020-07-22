@@ -35,6 +35,20 @@
                                 <color key="textColor" red="0.46264415980000001" green="0.50248801710000002" blue="0.97260147330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kps-pa-Web">
+                                <rect key="frame" x="20" y="626" width="41" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.46264415980000001" green="0.50248801710000002" blue="0.97260147330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="3ef-7M-5zR">
+                                <rect key="frame" x="353" y="626" width="41" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.46264415980000001" green="0.50248801710000002" blue="0.97260147330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuF-UQ-BCi">
                                 <rect key="frame" x="61" y="501" width="293" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -71,13 +85,32 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="repeat"/>
                                 <connections>
-                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="m5B-tT-pmS"/>
+                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="Ve5-e5-zdt"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8w-HM-Yla">
+                                <rect key="frame" x="26" y="754" width="38" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="repeatPlaylist"/>
+                                <connections>
+                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="lyL-c9-50y"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YZ-RV-Guz">
+                                <rect key="frame" x="26" y="753" width="38" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="repeatOneTrackOnly"/>
+                                <connections>
+                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="z0b-gH-0x2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpi-yp-x4I">
                                 <rect key="frame" x="344" y="747" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shuffle"/>
+                                <connections>
+                                    <action selector="shuffleButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="9GQ-mc-1x9"/>
+                                </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7WD-vs-KVV">
                                 <rect key="frame" x="18" y="604" width="378" height="30"/>
@@ -96,6 +129,11 @@
                                     <action selector="pauseAndPlayButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="LKU-ua-yk1"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xz-73-wvY">
+                                <rect key="frame" x="344" y="747" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="shuffleActive"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QWl-O2-JWf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -106,7 +144,14 @@
                         <outlet property="pauseButton" destination="R3S-Rh-h0p" id="yzB-tb-wpk"/>
                         <outlet property="playButton" destination="ffr-5y-SKW" id="DA4-V0-CbJ"/>
                         <outlet property="prevButton" destination="ePr-0b-4Sy" id="SoN-gS-ApV"/>
+                        <outlet property="repeatButtonActive" destination="l8w-HM-Yla" id="gQJ-8y-2rR"/>
+                        <outlet property="repeatButtonNonActive" destination="YQW-bd-esj" id="YuI-JJ-UQ9"/>
+                        <outlet property="repeatOneTrackOnlyButton" destination="0YZ-RV-Guz" id="Nn2-bm-Pjy"/>
+                        <outlet property="shuffleButton" destination="Fpi-yp-x4I" id="DKk-BT-gjm"/>
+                        <outlet property="shuffleButtonActive" destination="4Xz-73-wvY" id="8WW-pu-h3T"/>
                         <outlet property="trackCoverImageView" destination="2Zp-QL-Jxt" id="Mex-RD-Wbh"/>
+                        <outlet property="trackCurrentTimeLabel" destination="kps-pa-Web" id="otf-Vg-xUa"/>
+                        <outlet property="trackDurationLabel" destination="3ef-7M-5zR" id="Rru-NR-qME"/>
                         <outlet property="trackProgressSlider" destination="7WD-vs-KVV" id="GbR-7b-avf"/>
                         <outlet property="trackTitleLabel" destination="wuF-UQ-BCi" id="CbF-HD-XtF"/>
                     </connections>
@@ -120,7 +165,10 @@
         <image name="Play" width="50" height="50"/>
         <image name="pause" width="51" height="50"/>
         <image name="repeat" width="35" height="36"/>
+        <image name="repeatOneTrackOnly" width="35" height="35"/>
+        <image name="repeatPlaylist" width="105" height="122"/>
         <image name="shuffle" width="35" height="36"/>
+        <image name="shuffleActive" width="35" height="39"/>
         <image name="skip-back" width="51" height="50"/>
         <image name="skip-forward" width="51" height="50"/>
         <systemColor name="systemBackgroundColor">
