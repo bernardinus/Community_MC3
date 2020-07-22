@@ -67,18 +67,6 @@ class RegisterController: UIViewController {
     }
 }
 
-struct CoreDataHelper {
-    var context: NSManagedObjectContext
-    
-    func fetchAll<T: NSManagedObject>() -> [T] {
-        let request = T.fetchRequest()
-        do {
-            return try context.fetch(request) as? [T] ?? []
-        } catch {
-            return []
-        }
-    }
-}
 
 extension UIViewController {
     
