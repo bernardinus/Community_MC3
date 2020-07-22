@@ -296,7 +296,6 @@
 				A1A96B3524BFF12700EF12AB /* Localizable.strings */,
 				A15C4D1724C5038C00ED0C0E /* DB_Model.xcdatamodeld */,
 				A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */,
-				A1F9E58F24C768AD0029CF0E /* UploadController.swift */,
 			);
 			path = CommunityMC3;
 			sourceTree = "<group>";
@@ -341,6 +340,7 @@
 		A1E3FFEF24C6A8CB00CA2228 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				A1F9E58F24C768AD0029CF0E /* UploadController.swift */,
 				A1E3FFED24C6A84500CA2228 /* Test.storyboard */,
 			);
 			path = Test;

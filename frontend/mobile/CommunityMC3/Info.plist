@@ -34,7 +34,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
+					<string>SelectFileView</string>
 				</dict>
 			</array>
 		</dict>
@@ -69,6 +69,8 @@
 	<string>Hey folks, please allow the application to open the camera, due to capture your picture from camera. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Hey folks, please allow the application to open the library, to select image from it and upload your picture. </string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Hey folks, please allow the application to open the media, to select your library from it and upload your file. </string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
