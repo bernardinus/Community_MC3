@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import AVFoundation
 
 class Upload: NSObject {
     var recordID: CKRecord.ID!
@@ -22,6 +23,7 @@ class DocumentTableViewController: UITableViewController {
     var documents: [CKRecord] = []
     var uploads: [Upload] = []
     var selectRow = 0
+    var audioPlayer: AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +106,15 @@ class DocumentTableViewController: UITableViewController {
 
                         DispatchQueue.main.async {
 //                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .plain, target: self, action: #selector(self.listenTapped))
+                            do {
+                                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.file)
+                                self.audioPlayer.play()
+                            } catch {
+                                print("play failed")
+//                                let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing your whistle; please try re-recording.", preferredStyle: .alert)
+//                                ac.addAction(UIAlertAction(title: "OK", style: .default))
+//                                present(ac, animated: true)
+                            }
                         }
                     }
                 }
