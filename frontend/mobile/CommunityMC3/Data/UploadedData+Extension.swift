@@ -7,3 +7,32 @@
 //
 
 import Foundation
+
+struct UploadedDataStruct
+{
+    // param
+    var uploadedDate:Date
+        
+    // ref
+    var track:TrackDataStruct?
+    var video:VideosDataStruct?
+}
+
+
+/*
+extension Photos
+{
+        
+    
+    static func createPhoto(photoData:PhotoData) -> Photos?
+    {
+        if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
+        {
+            photo.userData = photoData.userData
+            return photo
+        }
+        
+        return nil
+    }
+}
+ */

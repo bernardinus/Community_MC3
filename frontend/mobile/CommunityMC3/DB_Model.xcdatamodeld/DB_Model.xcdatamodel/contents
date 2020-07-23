@@ -21,7 +21,6 @@
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="favourites" inverseEntity="Videos"/>
     </entity>
     <entity name="Featured" representedClassName="Featured" syncable="YES" codeGenerationType="class">
-        <attribute name="genre" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <relationship name="track" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="featured" inverseEntity="Track"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="featured" inverseEntity="UserData"/>
@@ -66,6 +65,8 @@
     </entity>
     <entity name="Videos" representedClassName="Videos" syncable="YES" codeGenerationType="class">
         <attribute name="fileData" optional="YES" attributeType="Binary"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="videos" inverseEntity="Album"/>
         <relationship name="favourites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="videos" inverseEntity="Favourites"/>
         <relationship name="featured" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Featured" inverseName="video" inverseEntity="Featured"/>
@@ -76,11 +77,11 @@
         <element name="Account" positionX="-317.44921875" positionY="-1.84375" width="116.09765625" height="88"/>
         <element name="Album" positionX="290.34765625" positionY="199.671875" width="128" height="133"/>
         <element name="Favourites" positionX="389.140625" positionY="-73.453125" width="128" height="118"/>
-        <element name="Featured" positionX="-159.36328125" positionY="-274.71875" width="128" height="118"/>
+        <element name="Featured" positionX="-159.36328125" positionY="-274.71875" width="128" height="103"/>
         <element name="Photos" positionX="-350.52734375" positionY="184.328125" width="128" height="73"/>
         <element name="Track" positionX="124.33203125" positionY="-152.55078125" width="128" height="163"/>
         <element name="UploadedData" positionX="198.18359375" positionY="76.49609375" width="128" height="88"/>
         <element name="UserData" positionX="-90.140625" positionY="-13.3203125" width="128" height="283"/>
-        <element name="Videos" positionX="28.5546875" positionY="351.3515625" width="128" height="133"/>
+        <element name="Videos" positionX="28.5546875" positionY="351.3515625" width="128" height="163"/>
     </elements>
 </model>

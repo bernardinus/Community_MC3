@@ -9,6 +9,13 @@
 import Foundation
 import CoreData
 
+struct AccountDataStruct
+{
+    var email:String
+    var password:String
+    
+    var user:UserDataStruct?
+}
 
 extension Account {
     

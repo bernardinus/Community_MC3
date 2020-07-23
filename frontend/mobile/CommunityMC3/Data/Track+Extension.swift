@@ -7,3 +7,32 @@
 //
 
 import Foundation
+import AVFoundation
+
+struct TrackDataStruct
+{
+    var genre:String
+    var name:String
+
+    var audioData:AVAudioPlayer?
+    
+    var album:Album?
+}
+
+/*
+extension Track
+{
+        
+    
+    static func createTrack(trackData:TrackData) -> Track?
+    {
+        if let track:Track = CoreDataHelper.save(value: trackData.asDict())
+        {
+            track.user = trackData.user
+            return track
+        }
+        
+        return nil
+    }
+}
+ */
