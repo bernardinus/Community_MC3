@@ -9,38 +9,22 @@
 import Foundation
 
 
-//struct UserData
-//{
-//    var user_id:Int16 = 0 // self updating
-//    var profilePicture:Data = Data(base64Encoded: "")!
-//    var password:String
-//    var name:String
-//    var email:String
-//    var profPicImgName:String
-//
-//    init(name:String, email:String, profPicImgName:String) {
-//        self.name = name
-//        self.email = email
-//        self.profPicImgName = profPicImgName
-//        self.password = name.components(separatedBy: " ").first!
-//    }
-//
-//    func asDict()->[String:Any]
-//    {
-//        return [
-//            "user_id":user_id,
-//            "profilePicture":profilePicture,
-//            "name": name,
-//            "email": email,
-//            "password":password
-//            ]
-//    }
-//}
+// specific ID
+public var FeaturedID_Artist = "featuredArtist"
 
+struct FeaturedDataStruct
+{
+    var id:String
+    var track:[TrackDataStruct]?
+    var user:[UserDataStruct]?
+    var videos:[VideosDataStruct]?
+}
+
+/*
 extension Featured
 {
     private static var entityName:String = "Featured"
-    public static var FeaturedArtistID = "featuredArtist"
+    
     
     static func fetchFeaturedWith(id:String)->[Featured]
     {
@@ -51,5 +35,5 @@ extension Featured
         return featuredArtist
     }
 }
-
+*/
 

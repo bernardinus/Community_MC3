@@ -9,47 +9,18 @@
 import Foundation
 import UIKit
 
-struct AlbumData
+struct AlbumDataStruct
 {
-    var cover:Data = Data(base64Encoded: "")!
+    var cover:UIImage?
     var name:String
-    
-    var favourites:Favourites?
-    var tracks:[Track]
-    var userData:UserData?
-    var videos:[Videos]
-    
-    
-    init(imageFile:UIImage,
-         name:String,
-         favourites:Favourites? = nil,
-         userData:UserData? = nil,
-         tracks:[Track] = [],
-         videos:[Videos] = []
-         )
-    {
-        self.cover = imageFile.pngData()!
-        self.name = name
-        self.favourites = favourites
-        self.userData = userData
-        self.tracks = tracks
-        self.videos = videos
-    }
-    
-    func asDict()->[String:Any]
-    {
-        return [
-            "cover":cover,
-            "name":name
-            ]
-    }
 }
 
+/*
 extension Album
 {
         
     
-    static func createAlbum(albumData:AlbumData) -> Album?
+    static func createAlbum(albumData:AlbumDataStruct) -> Album?
     {
         if let album:Album = CoreDataHelper.save(value: albumData.asDict())
         {
@@ -64,3 +35,4 @@ extension Album
         return nil
     }
 }
+ */
