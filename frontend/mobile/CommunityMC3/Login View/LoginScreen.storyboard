@@ -104,6 +104,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wrong username or password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNH-uZ-fN4">
+                                <rect key="frame" x="155" y="273" width="239" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Hsa-SJ-8n8"/>
@@ -113,6 +120,7 @@
                         <outlet property="emailField" destination="adB-lg-BJP" id="gl7-cE-2Bf"/>
                         <outlet property="loginButton" destination="FcE-WL-1FA" id="JXU-Ru-PUs"/>
                         <outlet property="passwordField" destination="Oly-v8-ssm" id="8pb-jx-M97"/>
+                        <outlet property="wrongLabel" destination="HNH-uZ-fN4" id="17b-N7-CVW"/>
                         <segue destination="1fn-f7-sA2" kind="presentation" identifier="loginMain" modalPresentationStyle="fullScreen" id="xN3-fS-K2l"/>
                     </connections>
                 </viewController>
@@ -327,7 +335,7 @@
         <image name="login" width="1125" height="2436"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f0o-3Q-oSI"/>
+        <segue reference="xN3-fS-K2l"/>
         <segue reference="01e-90-aO5"/>
     </inferredMetricsTieBreakers>
 </document>

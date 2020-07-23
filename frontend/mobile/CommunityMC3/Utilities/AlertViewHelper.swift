@@ -21,7 +21,8 @@ enum AlertViewType
 
 class AlertViewHelper
 {
-
+    var a:(()->Void)? = nil
+    
     class func createAlertView(type:AlertViewType,
                                rightHandler:((UIAlertAction) -> Void)? = nil,
                                leftHandler:((UIAlertAction) -> Void)? = nil,

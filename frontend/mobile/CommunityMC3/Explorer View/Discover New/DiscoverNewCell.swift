@@ -11,6 +11,7 @@ import UIKit
 class DiscoverNewCell: UITableViewCell {
 
     
+    @IBOutlet weak var tapSurpriseButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
