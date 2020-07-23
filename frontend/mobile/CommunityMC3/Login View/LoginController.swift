@@ -14,6 +14,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var wrongLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +87,9 @@ class LoginController: UIViewController {
                                 self.emailField.text = ""
                                 self.passwordField.text = ""
                                 self.performSegue(withIdentifier: "loginMain", sender: self)
-                            }
+                        }else{
+                            self.wrongLabel.isHidden = false
+                        }
                     }
                 }
             }

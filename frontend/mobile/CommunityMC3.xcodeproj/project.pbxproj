@@ -49,6 +49,8 @@
 		A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44D424B2FC7E00053D6C /* FavouritesView.swift */; };
 		A1824D9A24C7E3E200C68182 /* Account+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9924C7E3E200C68182 /* Account+Extension.swift */; };
 		A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */; };
+		A19C320224C89FF100A4506F /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C320124C89FF100A4506F /* FileSystemManager.swift */; };
+		A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */; };
 		A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1A96B3524BFF12700EF12AB /* Localizable.strings */; };
 		A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A96B3724C050F100EF12AB /* SettingController.swift */; };
 		A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3FFED24C6A84500CA2228 /* Test.storyboard */; };
@@ -139,6 +141,8 @@
 		A16B44D424B2FC7E00053D6C /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		A1824D9924C7E3E200C68182 /* Account+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Account+Extension.swift"; path = "CommunityMC3/Data/Account+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A19C320124C89FF100A4506F /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
+		A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewController.swift; sourceTree = "<group>"; };
 		A1A96B2F24BFEFD400EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
 		A1A96B3024BFEFD400EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A1A96B3424BFF12700EF12AB /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				A1689D3A24C7D76500A49732 /* CoreDataHelper.swift */,
 				A1689D3824C7D67700A49732 /* AlertViewHelper.swift */,
 				A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */,
+				A19C320124C89FF100A4506F /* FileSystemManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -329,7 +334,6 @@
 				A1A96B3524BFF12700EF12AB /* Localizable.strings */,
 				A15C4D1724C5038C00ED0C0E /* DB_Model.xcdatamodeld */,
 				A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */,
-				A1F9E58F24C768AD0029CF0E /* UploadController.swift */,
 			);
 			path = CommunityMC3;
 			sourceTree = "<group>";
@@ -374,7 +378,9 @@
 		A1E3FFEF24C6A8CB00CA2228 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				A1F9E58F24C768AD0029CF0E /* UploadController.swift */,
 				A1E3FFED24C6A84500CA2228 /* Test.storyboard */,
+				A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -625,7 +631,9 @@
 				A16B44A324B2FBF300053D6C /* AppDelegate.swift in Sources */,
 				A134D2AB24C91BC9009A054F /* UploadedData+Extension.swift in Sources */,
 				A1689D3424C7B14000A49732 /* SelectViewCell.swift in Sources */,
+				A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */,
 				A1689D3B24C7D76500A49732 /* CoreDataHelper.swift in Sources */,
+				A19C320224C89FF100A4506F /* FileSystemManager.swift in Sources */,
 				A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */,
 				A134D2A324C908F3009A054F /* Album+Extension.swift in Sources */,
 				A15C4D1924C5038C00ED0C0E /* DB_Model.xcdatamodeld in Sources */,
