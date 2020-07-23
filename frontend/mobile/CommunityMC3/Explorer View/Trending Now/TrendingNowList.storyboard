@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VL6-7y-oVE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g12-Mt-eYD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -12,34 +12,57 @@
             <objects>
                 <viewController storyboardIdentifier="trendingList" id="dVK-ma-5OF" customClass="TrendingNowVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MKE-9W-qYS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4wc-iX-Cxu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dVK-ma-5OF" id="80L-EC-EIk"/>
+                                    <outlet property="delegate" destination="dVK-ma-5OF" id="5ds-28-Rqk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4wc-iX-Cxu" firstAttribute="leading" secondItem="8Mu-k6-hkY" secondAttribute="leading" id="41I-TS-ZAi"/>
+                            <constraint firstItem="4wc-iX-Cxu" firstAttribute="bottom" secondItem="8Mu-k6-hkY" secondAttribute="bottom" id="ZmH-aW-BxK"/>
+                            <constraint firstItem="4wc-iX-Cxu" firstAttribute="top" secondItem="8Mu-k6-hkY" secondAttribute="top" id="aMC-l8-XfI"/>
+                            <constraint firstItem="8Mu-k6-hkY" firstAttribute="trailing" secondItem="4wc-iX-Cxu" secondAttribute="trailing" id="hF7-xA-Y1H"/>
+                            <constraint firstItem="4wc-iX-Cxu" firstAttribute="centerX" secondItem="MKE-9W-qYS" secondAttribute="centerX" id="jL6-RM-xYm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8Mu-k6-hkY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Trending Now" largeTitleDisplayMode="never" id="lgC-bK-6So"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="trendingTableView" destination="4wc-iX-Cxu" id="gVg-kX-nej"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0S-Jc-bol" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063.768115942029" y="140.625"/>
+            <point key="canvasLocation" x="2884.057971014493" y="140.625"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hbw-ie-Elb">
+        <!--Item-->
+        <scene sceneID="Sq1-VP-VA0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VL6-7y-oVE" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g12-Mt-eYD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="H1C-vb-wox"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Muq-VI-06P">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Pdv-ua-a0o">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="dVK-ma-5OF" kind="relationship" relationship="rootViewController" id="8Ef-Im-ial"/>
+                        <segue destination="dVK-ma-5OF" kind="relationship" relationship="rootViewController" id="OiC-if-8TD"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="idu-S7-ygG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LaQ-Fo-A2z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153.62318840579712" y="140.625"/>
+            <point key="canvasLocation" x="1973.913043478261" y="140.625"/>
         </scene>
     </scenes>
 </document>

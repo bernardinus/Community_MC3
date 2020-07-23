@@ -1,36 +1,35 @@
 //
-//  TrendingNowVC.swift
+//  LatestMusicVC.swift
 //  CommunityMC3
 //
-//  Created by Theofani on 21/07/20.
+//  Created by Theofani on 22/07/20.
 //  Copyright © 2020 Apple Developer Academy. All rights reserved.
 //
 
 import UIKit
 
-class TrendingNowVC: UIViewController {
+class LatestMusicVC: UIViewController {
 
-    @IBOutlet weak var trendingTableView: UITableView!
+    @IBOutlet weak var latestMusicTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        trendingTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
+        latestMusicTableView.register(UINib(nibName: "LatestMusicCell", bundle: nil), forCellReuseIdentifier: "latestMusicCell")
     }
 
 }
 
-extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource
+extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
 {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = trendingTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
+        let cell = latestMusicTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
         return cell
     }
-   
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88
+        return 110
     }
 }
