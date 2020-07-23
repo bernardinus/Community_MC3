@@ -9,10 +9,13 @@
 import UIKit
 
 class HeaderCell: UITableViewCell {
-
+    
+    @IBOutlet weak var headerBackgroundView: UIView!
     @IBOutlet weak var HeaderName: UILabel!
     @IBOutlet weak var seeMoreButton: UIButton!
+    @IBOutlet weak var sectionBlock: UIView!
     
+    var callBack: (() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,4 +27,11 @@ class HeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func tapSeeMore(_ sender: Any) {
+        self.callBack!()
+    }
+    
+    func setCallBack(callback: (() -> Void)?){
+        self.callBack = callback
+    }
 }
