@@ -23,6 +23,8 @@ class UploadFileView: UIViewController
         table.register(descTitleTableViewCell.nib(), forCellReuseIdentifier: descTitleTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
+        
+        table.separatorColor = UIColor.clear
     }
 
     
@@ -98,9 +100,6 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             
              return cell
         }
-    
-        
-
 
     func didChangeSwitch( sender: UISwitch)
     {
