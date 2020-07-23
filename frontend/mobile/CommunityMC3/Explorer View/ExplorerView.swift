@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BonsaiController
 
 enum ExplorerSection:Int {
     case TrendingNow = 0
@@ -15,6 +16,13 @@ enum ExplorerSection:Int {
     case FeaturedArtist = 3
     case FeaturedVideos = 4
     case Count = 5
+}
+
+private enum TransitionType {
+    case none
+    case bubble
+    case slide(fromDirection: Direction)
+    case menu(fromDirection: Direction)
 }
 
 class ExplorerView: UIViewController {
@@ -33,6 +41,93 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
 
+    }
+    
+    @IBAction func accountButtonTouched(_ sender: Any)
+    {
+        print("Bottom Button Action")
+        showSmallVC(transition: .slide(fromDirection: .bottom))
+    }
+    private var transitionType: TransitionType = .none
+    private func showSmallVC(transition: TransitionType) {
+        
+        transitionType = transition
+        let sb = UIStoryboard(name: "SmallViewController", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SmallVC") as! SmallViewController
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+        present(vc, animated: true, completion: nil)
+    }
+    
+    // MARK: Storyboard
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Prepare Segue")
+        
+        if segue.destination is SmallViewController {
+            transitionType = .slide(fromDirection: .bottom)
+            segue.destination.transitioningDelegate = self
+            segue.destination.modalPresentationStyle = .custom
+        }
+    }
+    
+}
+
+// MARK:- BonsaiController Delegate
+extension ExplorerView: BonsaiControllerDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        var blurEffectStyle = UIBlurEffect.Style.dark
+        
+        if #available(iOS 13.0, *) {
+            blurEffectStyle = .systemChromeMaterial
+        }
+        
+        let backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        switch transitionType {
+        case .none:
+            return nil
+            
+        case .bubble:
+            
+//            // With Blur Style
+//            // return BonsaiController(fromView: popButton, blurEffectStyle: blurEffectStyle,  presentedViewController: presented, delegate: self)
+//
+//            // With Background Color
+//            return BonsaiController(fromView: popButton, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
+            return nil
+            
+        case .slide(let fromDirection), .menu(let fromDirection):
+            
+            // With Blur Style
+            // return BonsaiController(fromDirection: fromDirection, blurEffectStyle: blurEffectStyle, presentedViewController: presented, delegate: self)
+            
+            // With Background Color
+            return BonsaiController(fromDirection: fromDirection, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
+        }
+    }
+    
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+        
+        switch transitionType {
+        case .none:
+            return CGRect(origin: .zero, size: containerViewFrame.size)
+        case .slide:
+            return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 4), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
+        case .bubble:
+            return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 4), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / 2))
+        case .menu(let fromDirection):
+            var origin = CGPoint.zero
+            if fromDirection == .right {
+                origin = CGPoint(x: containerViewFrame.width / 2, y: 0)
+            }
+            return CGRect(origin: origin, size: CGSize(width: containerViewFrame.width / 2, height: containerViewFrame.height))
+        }
+    }
+    
+    func didDismiss() {
+        print("didDismiss")
     }
 }
 

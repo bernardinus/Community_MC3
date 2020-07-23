@@ -1,0 +1,6 @@
+framework module Pods_CommunityMC3 {
+  umbrella header "Pods-CommunityMC3-umbrella.h"
+
+  export *
+  module * { export * }
+}
