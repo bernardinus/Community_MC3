@@ -7,25 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		92135CF424C9423600BFEE97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92135CDB24C9423600BFEE97 /* Assets.xcassets */; };
-		92135CF524C9423600BFEE97 /* albumListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CDD24C9423600BFEE97 /* albumListTableViewCell.swift */; };
-		92135CF624C9423600BFEE97 /* albumTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92135CDE24C9423600BFEE97 /* albumTitleTableViewCell.xib */; };
-		92135CF724C9423600BFEE97 /* albumTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CDF24C9423600BFEE97 /* albumTitleTableViewCell.swift */; };
-		92135CF824C9423600BFEE97 /* albumListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92135CE024C9423600BFEE97 /* albumListTableViewCell.xib */; };
-		92135CF924C9423600BFEE97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92135CE124C9423600BFEE97 /* LaunchScreen.storyboard */; };
-		92135CFA24C9423600BFEE97 /* UploadFileVIew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92135CE324C9423600BFEE97 /* UploadFileVIew.storyboard */; };
-		92135CFB24C9423600BFEE97 /* UploadFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CE524C9423600BFEE97 /* UploadFileView.swift */; };
-		92135CFC24C9423600BFEE97 /* GenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CE724C9423600BFEE97 /* GenreTableViewCell.swift */; };
-		92135CFD24C9423600BFEE97 /* GenreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92135CE824C9423600BFEE97 /* GenreTableViewCell.xib */; };
-		92135CFE24C9423600BFEE97 /* descTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92135CEA24C9423600BFEE97 /* descTitleTableViewCell.xib */; };
-		92135CFF24C9423600BFEE97 /* descTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CEB24C9423600BFEE97 /* descTitleTableViewCell.swift */; };
-		92135D0024C9423600BFEE97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CEC24C9423600BFEE97 /* AppDelegate.swift */; };
-		92135D0124C9423600BFEE97 /* trackUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CEE24C9423600BFEE97 /* trackUpload.swift */; };
-		92135D0224C9423600BFEE97 /* addCoverImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CEF24C9423600BFEE97 /* addCoverImage.swift */; };
-		92135D0324C9423600BFEE97 /* addCoverImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92135CF024C9423600BFEE97 /* addCoverImage.xib */; };
-		92135D0424C9423600BFEE97 /* trackUpload.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92135CF124C9423600BFEE97 /* trackUpload.xib */; };
-		92135D0524C9423600BFEE97 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92135CF224C9423600BFEE97 /* Info.plist */; };
-		92135D0624C9423600BFEE97 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92135CF324C9423600BFEE97 /* SceneDelegate.swift */; };
+		A11A9FE724C94A58008D7867 /* albumListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A9FD624C94A58008D7867 /* albumListTableViewCell.swift */; };
+		A11A9FE824C94A58008D7867 /* albumTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FD724C94A58008D7867 /* albumTitleTableViewCell.xib */; };
+		A11A9FE924C94A58008D7867 /* albumTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A9FD824C94A58008D7867 /* albumTitleTableViewCell.swift */; };
+		A11A9FEA24C94A58008D7867 /* albumListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FD924C94A58008D7867 /* albumListTableViewCell.xib */; };
+		A11A9FEB24C94A58008D7867 /* UploadFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A9FDA24C94A58008D7867 /* UploadFileView.swift */; };
+		A11A9FEC24C94A58008D7867 /* GenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A9FDC24C94A58008D7867 /* GenreTableViewCell.swift */; };
+		A11A9FED24C94A58008D7867 /* GenreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FDD24C94A58008D7867 /* GenreTableViewCell.xib */; };
+		A11A9FEE24C94A58008D7867 /* descTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FDF24C94A58008D7867 /* descTitleTableViewCell.xib */; };
+		A11A9FEF24C94A58008D7867 /* descTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A9FE024C94A58008D7867 /* descTitleTableViewCell.swift */; };
+		A11A9FF024C94A58008D7867 /* UploadFileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FE124C94A58008D7867 /* UploadFileView.storyboard */; };
+		A11A9FF124C94A58008D7867 /* UploadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A9FE324C94A58008D7867 /* UploadTableViewCell.swift */; };
+		A11A9FF224C94A58008D7867 /* UploadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FE424C94A58008D7867 /* UploadTableViewCell.xib */; };
+		A11A9FF324C94A58008D7867 /* AddCoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11A9FE524C94A58008D7867 /* AddCoverTableViewCell.swift */; };
+		A11A9FF424C94A58008D7867 /* AddCoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FE624C94A58008D7867 /* AddCoverTableViewCell.xib */; };
 		A134D29E24C8EA41009A054F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D29D24C8EA41009A054F /* FileManager.swift */; };
 		A134D2A024C907B4009A054F /* Featured+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D29F24C907B4009A054F /* Featured+Extension.swift */; };
 		A134D2A324C908F3009A054F /* Album+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D2A224C908F3009A054F /* Album+Extension.swift */; };
@@ -118,25 +113,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		92135CDB24C9423600BFEE97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		92135CDD24C9423600BFEE97 /* albumListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = albumListTableViewCell.swift; sourceTree = "<group>"; };
-		92135CDE24C9423600BFEE97 /* albumTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = albumTitleTableViewCell.xib; sourceTree = "<group>"; };
-		92135CDF24C9423600BFEE97 /* albumTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = albumTitleTableViewCell.swift; sourceTree = "<group>"; };
-		92135CE024C9423600BFEE97 /* albumListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = albumListTableViewCell.xib; sourceTree = "<group>"; };
-		92135CE224C9423600BFEE97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		92135CE424C9423600BFEE97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UploadFileVIew.storyboard; sourceTree = "<group>"; };
-		92135CE524C9423600BFEE97 /* UploadFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadFileView.swift; sourceTree = "<group>"; };
-		92135CE724C9423600BFEE97 /* GenreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreTableViewCell.swift; sourceTree = "<group>"; };
-		92135CE824C9423600BFEE97 /* GenreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenreTableViewCell.xib; sourceTree = "<group>"; };
-		92135CEA24C9423600BFEE97 /* descTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = descTitleTableViewCell.xib; sourceTree = "<group>"; };
-		92135CEB24C9423600BFEE97 /* descTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = descTitleTableViewCell.swift; sourceTree = "<group>"; };
-		92135CEC24C9423600BFEE97 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92135CEE24C9423600BFEE97 /* trackUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trackUpload.swift; sourceTree = "<group>"; };
-		92135CEF24C9423600BFEE97 /* addCoverImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addCoverImage.swift; sourceTree = "<group>"; };
-		92135CF024C9423600BFEE97 /* addCoverImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addCoverImage.xib; sourceTree = "<group>"; };
-		92135CF124C9423600BFEE97 /* trackUpload.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = trackUpload.xib; sourceTree = "<group>"; };
-		92135CF224C9423600BFEE97 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92135CF324C9423600BFEE97 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A11A9FD624C94A58008D7867 /* albumListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = albumListTableViewCell.swift; sourceTree = "<group>"; };
+		A11A9FD724C94A58008D7867 /* albumTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = albumTitleTableViewCell.xib; sourceTree = "<group>"; };
+		A11A9FD824C94A58008D7867 /* albumTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = albumTitleTableViewCell.swift; sourceTree = "<group>"; };
+		A11A9FD924C94A58008D7867 /* albumListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = albumListTableViewCell.xib; sourceTree = "<group>"; };
+		A11A9FDA24C94A58008D7867 /* UploadFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadFileView.swift; sourceTree = "<group>"; };
+		A11A9FDC24C94A58008D7867 /* GenreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreTableViewCell.swift; sourceTree = "<group>"; };
+		A11A9FDD24C94A58008D7867 /* GenreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenreTableViewCell.xib; sourceTree = "<group>"; };
+		A11A9FDF24C94A58008D7867 /* descTitleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = descTitleTableViewCell.xib; sourceTree = "<group>"; };
+		A11A9FE024C94A58008D7867 /* descTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = descTitleTableViewCell.swift; sourceTree = "<group>"; };
+		A11A9FE124C94A58008D7867 /* UploadFileView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UploadFileView.storyboard; sourceTree = "<group>"; };
+		A11A9FE324C94A58008D7867 /* UploadTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTableViewCell.swift; sourceTree = "<group>"; };
+		A11A9FE424C94A58008D7867 /* UploadTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadTableViewCell.xib; sourceTree = "<group>"; };
+		A11A9FE524C94A58008D7867 /* AddCoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCoverTableViewCell.swift; sourceTree = "<group>"; };
+		A11A9FE624C94A58008D7867 /* AddCoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCoverTableViewCell.xib; sourceTree = "<group>"; };
 		A134D29D24C8EA41009A054F /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A134D29F24C907B4009A054F /* Featured+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Featured+Extension.swift"; path = "CommunityMC3/Data/Featured+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		A134D2A224C908F3009A054F /* Album+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Album+Extension.swift"; sourceTree = "<group>"; };
@@ -247,63 +237,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		92135CDA24C9423600BFEE97 /* Upload */ = {
+		A11A9FD424C94A58008D7867 /* UploadFileView */ = {
 			isa = PBXGroup;
 			children = (
-				92135CDB24C9423600BFEE97 /* Assets.xcassets */,
-				92135CDC24C9423600BFEE97 /* Album  */,
-				92135CE124C9423600BFEE97 /* LaunchScreen.storyboard */,
-				92135CE324C9423600BFEE97 /* UploadFileVIew.storyboard */,
-				92135CE524C9423600BFEE97 /* UploadFileView.swift */,
-				92135CE624C9423600BFEE97 /* Genre */,
-				92135CE924C9423600BFEE97 /* Description */,
-				92135CEC24C9423600BFEE97 /* AppDelegate.swift */,
-				92135CED24C9423600BFEE97 /* Upload Track */,
-				92135CF224C9423600BFEE97 /* Info.plist */,
-				92135CF324C9423600BFEE97 /* SceneDelegate.swift */,
+				A11A9FD524C94A58008D7867 /* Album  */,
+				A11A9FDA24C94A58008D7867 /* UploadFileView.swift */,
+				A11A9FDB24C94A58008D7867 /* Genre */,
+				A11A9FDE24C94A58008D7867 /* Description */,
+				A11A9FE124C94A58008D7867 /* UploadFileView.storyboard */,
+				A11A9FE224C94A58008D7867 /* Upload track */,
 			);
-			name = Upload;
-			path = ../../../../../Downloads/MC3/Upload/Upload;
+			path = UploadFileView;
 			sourceTree = "<group>";
 		};
-		92135CDC24C9423600BFEE97 /* Album  */ = {
+		A11A9FD524C94A58008D7867 /* Album  */ = {
 			isa = PBXGroup;
 			children = (
-				92135CDD24C9423600BFEE97 /* albumListTableViewCell.swift */,
-				92135CDE24C9423600BFEE97 /* albumTitleTableViewCell.xib */,
-				92135CDF24C9423600BFEE97 /* albumTitleTableViewCell.swift */,
-				92135CE024C9423600BFEE97 /* albumListTableViewCell.xib */,
+				A11A9FD624C94A58008D7867 /* albumListTableViewCell.swift */,
+				A11A9FD724C94A58008D7867 /* albumTitleTableViewCell.xib */,
+				A11A9FD824C94A58008D7867 /* albumTitleTableViewCell.swift */,
+				A11A9FD924C94A58008D7867 /* albumListTableViewCell.xib */,
 			);
 			path = "Album ";
 			sourceTree = "<group>";
 		};
-		92135CE624C9423600BFEE97 /* Genre */ = {
+		A11A9FDB24C94A58008D7867 /* Genre */ = {
 			isa = PBXGroup;
 			children = (
-				92135CE724C9423600BFEE97 /* GenreTableViewCell.swift */,
-				92135CE824C9423600BFEE97 /* GenreTableViewCell.xib */,
+				A11A9FDC24C94A58008D7867 /* GenreTableViewCell.swift */,
+				A11A9FDD24C94A58008D7867 /* GenreTableViewCell.xib */,
 			);
 			path = Genre;
 			sourceTree = "<group>";
 		};
-		92135CE924C9423600BFEE97 /* Description */ = {
+		A11A9FDE24C94A58008D7867 /* Description */ = {
 			isa = PBXGroup;
 			children = (
-				92135CEA24C9423600BFEE97 /* descTitleTableViewCell.xib */,
-				92135CEB24C9423600BFEE97 /* descTitleTableViewCell.swift */,
+				A11A9FDF24C94A58008D7867 /* descTitleTableViewCell.xib */,
+				A11A9FE024C94A58008D7867 /* descTitleTableViewCell.swift */,
 			);
 			path = Description;
 			sourceTree = "<group>";
 		};
-		92135CED24C9423600BFEE97 /* Upload Track */ = {
+		A11A9FE224C94A58008D7867 /* Upload track */ = {
 			isa = PBXGroup;
 			children = (
-				92135CEE24C9423600BFEE97 /* trackUpload.swift */,
-				92135CEF24C9423600BFEE97 /* addCoverImage.swift */,
-				92135CF024C9423600BFEE97 /* addCoverImage.xib */,
-				92135CF124C9423600BFEE97 /* trackUpload.xib */,
+				A11A9FE324C94A58008D7867 /* UploadTableViewCell.swift */,
+				A11A9FE424C94A58008D7867 /* UploadTableViewCell.xib */,
+				A11A9FE524C94A58008D7867 /* AddCoverTableViewCell.swift */,
+				A11A9FE624C94A58008D7867 /* AddCoverTableViewCell.xib */,
 			);
-			path = "Upload Track";
+			path = "Upload track";
 			sourceTree = "<group>";
 		};
 		A134D2A124C908D3009A054F /* Data */ = {
@@ -422,7 +406,7 @@
 		A16B44A124B2FBF300053D6C /* CommunityMC3 */ = {
 			isa = PBXGroup;
 			children = (
-				92135CDA24C9423600BFEE97 /* Upload */,
+				A11A9FD424C94A58008D7867 /* UploadFileView */,
 				A1689CE724C7A69300A49732 /* SelectFile View */,
 				A1E3FFEF24C6A8CB00CA2228 /* Test */,
 				A1432F5324C69879007656B1 /* Utilities */,
@@ -673,41 +657,38 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92135CFE24C9423600BFEE97 /* descTitleTableViewCell.xib in Resources */,
 				A1689D3524C7B14000A49732 /* SelectViewCell.xib in Resources */,
 				A15C4D2724C5370C00ED0C0E /* HeaderCell.xib in Resources */,
 				B758B53C24C7EFA200826CC5 /* LatestMusicView.storyboard in Resources */,
-				92135CF924C9423600BFEE97 /* LaunchScreen.storyboard in Resources */,
 				B74C59FC24C6E38D00C978F3 /* FeaturedVideosCell.xib in Resources */,
 				A16B44B124B2FBF600053D6C /* LaunchScreen.storyboard in Resources */,
+				A11A9FF424C94A58008D7867 /* AddCoverTableViewCell.xib in Resources */,
 				A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */,
 				A15C4D1B24C5300A00ED0C0E /* Explorer.storyboard in Resources */,
-				92135D0324C9423600BFEE97 /* addCoverImage.xib in Resources */,
 				A15C4D1D24C5303200ED0C0E /* Favourites.storyboard in Resources */,
 				A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */,
-				92135CFA24C9423600BFEE97 /* UploadFileVIew.storyboard in Resources */,
+				A11A9FEE24C94A58008D7867 /* descTitleTableViewCell.xib in Resources */,
+				A11A9FE824C94A58008D7867 /* albumTitleTableViewCell.xib in Resources */,
+				A11A9FF024C94A58008D7867 /* UploadFileView.storyboard in Resources */,
 				B73C836324C7F8BC0047B4EC /* FeaturedVideosView.storyboard in Resources */,
 				A16B44AE24B2FBF600053D6C /* Assets.xcassets in Resources */,
 				A1503D3A24C4B79900AE317E /* LoginScreen.storyboard in Resources */,
 				EADBB5AA24C5BB5000CD2C92 /* VideoPlayer.storyboard in Resources */,
+				A11A9FF224C94A58008D7867 /* UploadTableViewCell.xib in Resources */,
 				B7DAF5E024C698B400FC6EFB /* LatestMusicCell.xib in Resources */,
+				A11A9FEA24C94A58008D7867 /* albumListTableViewCell.xib in Resources */,
 				B7DAF5E824C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.xib in Resources */,
 				B7DAF5E424C6A6EE00FC6EFB /* FeaturedArtistCell.xib in Resources */,
-				92135D0524C9423600BFEE97 /* Info.plist in Resources */,
 				B74C5A0024C7070200C978F3 /* TrendingNowList.storyboard in Resources */,
 				A16B44AC24B2FBF300053D6C /* Main.storyboard in Resources */,
-				92135CF624C9423600BFEE97 /* albumTitleTableViewCell.xib in Resources */,
 				A165069224C7DD46005822E7 /* SettingScreen.storyboard in Resources */,
 				A15C4D2324C5367400ED0C0E /* TrendingNowCell.xib in Resources */,
 				B73C835F24C7F89C0047B4EC /* FeaturedArtistView.storyboard in Resources */,
-				92135D0424C9423600BFEE97 /* trackUpload.xib in Resources */,
-				92135CF824C9423600BFEE97 /* albumListTableViewCell.xib in Resources */,
+				A11A9FED24C94A58008D7867 /* GenreTableViewCell.xib in Resources */,
 				B7DAF5DC24C6919D00FC6EFB /* DiscoverNewCell.xib in Resources */,
 				B74C5A0424C713DD00C978F3 /* Notifications.storyboard in Resources */,
-				92135CFD24C9423600BFEE97 /* GenreTableViewCell.xib in Resources */,
 				A15C4D1024C502EF00ED0C0E /* Search.storyboard in Resources */,
 				EA650D5524C557680093EEE6 /* TrackPlayer.storyboard in Resources */,
-				92135CF424C9423600BFEE97 /* Assets.xcassets in Resources */,
 				A1689CE924C7A6AB00A49732 /* SelectFileView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,7 +718,6 @@
 				B74C5A0624C714AF00C978F3 /* TrendingNowVC.swift in Sources */,
 				B73C836124C7F8AC0047B4EC /* FeaturedArtistVC.swift in Sources */,
 				B74C5A0224C711FA00C978F3 /* NotificationsVC.swift in Sources */,
-				92135D0124C9423600BFEE97 /* trackUpload.swift in Sources */,
 				A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */,
 				A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */,
 				A1689CEB24C7A6D300A49732 /* SelectFileView.swift in Sources */,
@@ -745,33 +725,33 @@
 				A134D2AF24C91BDB009A054F /* Videos+Extension.swift in Sources */,
 				A15C4D2224C5367400ED0C0E /* TrendingNowCell.swift in Sources */,
 				A1432F5524C69958007656B1 /* ImagePicker.swift in Sources */,
-				92135D0024C9423600BFEE97 /* AppDelegate.swift in Sources */,
-				92135CFF24C9423600BFEE97 /* descTitleTableViewCell.swift in Sources */,
+				A11A9FEF24C94A58008D7867 /* descTitleTableViewCell.swift in Sources */,
 				A134D2A924C91BBC009A054F /* Track+Extension.swift in Sources */,
 				A1F9E59024C768AD0029CF0E /* UploadController.swift in Sources */,
 				A134D2A524C91B99009A054F /* Favourites+Extension.swift in Sources */,
+				A11A9FF124C94A58008D7867 /* UploadTableViewCell.swift in Sources */,
 				B7DAF5E324C6A6EE00FC6EFB /* FeaturedArtistCell.swift in Sources */,
 				A16B44A924B2FBF300053D6C /* SearchView.swift in Sources */,
 				B73C836524C7F8CC0047B4EC /* FeaturedVideosVC.swift in Sources */,
-				92135CFC24C9423600BFEE97 /* GenreTableViewCell.swift in Sources */,
+				A11A9FEC24C94A58008D7867 /* GenreTableViewCell.swift in Sources */,
 				A16B44A724B2FBF300053D6C /* ExplorerView.swift in Sources */,
 				A134D2AD24C91BD4009A054F /* UserData+Extension.swift in Sources */,
 				A134D2A724C91BAB009A054F /* Photos+Extension.swift in Sources */,
 				A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */,
 				A15C4D2624C5370C00ED0C0E /* HeaderCell.swift in Sources */,
-				92135CF724C9423600BFEE97 /* albumTitleTableViewCell.swift in Sources */,
+				A11A9FE924C94A58008D7867 /* albumTitleTableViewCell.swift in Sources */,
 				A134D29E24C8EA41009A054F /* FileManager.swift in Sources */,
-				92135CF524C9423600BFEE97 /* albumListTableViewCell.swift in Sources */,
-				92135D0224C9423600BFEE97 /* addCoverImage.swift in Sources */,
+				A11A9FE724C94A58008D7867 /* albumListTableViewCell.swift in Sources */,
 				A1689D3924C7D67700A49732 /* AlertViewHelper.swift in Sources */,
 				A1689D3724C7B5F200A49732 /* DataManager.swift in Sources */,
 				A134D2A024C907B4009A054F /* Featured+Extension.swift in Sources */,
+				A11A9FF324C94A58008D7867 /* AddCoverTableViewCell.swift in Sources */,
 				A16B44A324B2FBF300053D6C /* AppDelegate.swift in Sources */,
 				B758B53E24C7F33900826CC5 /* LatestMusicVC.swift in Sources */,
 				A134D2AB24C91BC9009A054F /* UploadedData+Extension.swift in Sources */,
 				A1689D3424C7B14000A49732 /* SelectViewCell.swift in Sources */,
 				A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */,
-				92135CFB24C9423600BFEE97 /* UploadFileView.swift in Sources */,
+				A11A9FEB24C94A58008D7867 /* UploadFileView.swift in Sources */,
 				A1689D3B24C7D76500A49732 /* CoreDataHelper.swift in Sources */,
 				A19C320224C89FF100A4506F /* FileSystemManager.swift in Sources */,
 				A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */,
@@ -780,7 +760,6 @@
 				B7DAF5DB24C6919D00FC6EFB /* DiscoverNewCell.swift in Sources */,
 				EADBB5AC24C5BB6E00CD2C92 /* VideoPlayerViewController.swift in Sources */,
 				A1824D9A24C7E3E200C68182 /* Account+Extension.swift in Sources */,
-				92135D0624C9423600BFEE97 /* SceneDelegate.swift in Sources */,
 				A1503D3C24C4BA9B00AE317E /* LoginController.swift in Sources */,
 				B7DAF5DF24C698B400FC6EFB /* LatestMusicCell.swift in Sources */,
 				EADBB5A524C560F300CD2C92 /* TrackPlayerViewController.swift in Sources */,
@@ -820,22 +799,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		92135CE124C9423600BFEE97 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				92135CE224C9423600BFEE97 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		92135CE324C9423600BFEE97 /* UploadFileVIew.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				92135CE424C9423600BFEE97 /* Base */,
-			);
-			name = UploadFileVIew.storyboard;
-			sourceTree = "<group>";
-		};
 		A16B44AA24B2FBF300053D6C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

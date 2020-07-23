@@ -9,27 +9,12 @@
 import Foundation
 import UIKit
 
-struct PhotoData
+struct PhotoDataStruct
 {
-    var fileData:Data = Data(base64Encoded: "")!
-    var userData:UserData
-    
-    init(imageFile:UIImage,
-         userData:UserData
-         )
-    {
-        self.fileData = imageFile.pngData()!
-        self.userData = userData
-    }
-    
-    func asDict()->[String:Any]
-    {
-        return [
-            "fileData":fileData
-            ]
-    }
+    var fileData:UIImage?
 }
 
+/*
 extension Photos
 {
         
@@ -38,10 +23,10 @@ extension Photos
     {
         if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
         {
-            photo.userData = photoData.userData
             return photo
         }
         
         return nil
     }
 }
+ */

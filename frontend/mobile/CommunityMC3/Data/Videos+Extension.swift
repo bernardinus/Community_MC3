@@ -7,3 +7,36 @@
 //
 
 import Foundation
+import AVKit
+
+struct VideosDataStruct
+{
+    // normal param
+    var genre:String
+    var name:String
+    
+    // asset
+    var videoData:AVPlayer?
+    
+    
+    // ref
+    var album:Album?
+}
+
+/*
+extension Photos
+{
+        
+    
+    static func createPhoto(photoData:PhotoData) -> Photos?
+    {
+        if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
+        {
+            photo.userData = photoData.userData
+            return photo
+        }
+        
+        return nil
+    }
+}
+*/
