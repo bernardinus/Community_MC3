@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,11 +90,12 @@
                         <segue destination="OIS-hv-iKV" kind="show" identifier="latestMusicSegue" id="oTx-jy-Ir1"/>
                         <segue destination="mZP-Rz-hSD" kind="show" identifier="featuredArtistSegue" id="4tE-vJ-1xM"/>
                         <segue destination="GLy-4k-NtZ" kind="show" identifier="featuredVideoSegue" id="Qls-Xd-44Q"/>
+                        <segue destination="JxN-T9-nVB" kind="show" identifier="trackPlayerSegue" id="bJ0-fh-f0R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="732" y="-298"/>
         </scene>
         <!--TrendingNowList-->
         <scene sceneID="xXd-od-IIP">
@@ -136,6 +137,16 @@
             </objects>
             <point key="canvasLocation" x="859" y="130"/>
         </scene>
+        <!--TrackPlayer-->
+        <scene sceneID="Kbs-bt-qVR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="JxN-T9-nVB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vlr-Vr-W0K"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Qf-Rp-1qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1383" y="-212"/>
+        </scene>
         <!--FeaturedVideosView-->
         <scene sceneID="Wo8-p2-apo">
             <objects>
@@ -148,9 +159,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bell.fill" catalog="system" width="128" height="124"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="safari" catalog="system" width="128" height="121"/>
-        <image name="safari.fill" catalog="system" width="128" height="121"/>
+        <image name="bell.fill" catalog="system" width="64" height="62"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="safari" catalog="system" width="64" height="60"/>
+        <image name="safari.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

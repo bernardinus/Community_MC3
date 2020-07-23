@@ -30,6 +30,10 @@ class ExplorerView: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var notificationsIconImage: UIImageView!
     
+    let documentController = DocumentTableViewController.shared
+    var tracks = [TrackDataStruct]()
+    var selectedRow = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -40,6 +44,11 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "LatestMusicCell", bundle:nil), forCellReuseIdentifier: "latestMusicCell")
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
+        
+        documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
+            self.tracks = tracks
+//            print("count ", tracks.count)
+        }
 
     }
     
@@ -62,7 +71,17 @@ class ExplorerView: UIViewController {
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("Prepare Segue")
-        
+        if segue.identifier == "latestMusicSegue" {
+//            print("masuk ", tracks.count)
+            let navPage = segue.destination as! UINavigationController
+            let latestMusicPage = navPage.topViewController as! LatestMusicVC
+            latestMusicPage.tracks = tracks
+        }
+        if segue.identifier == "trackPlayerSegue" {
+            if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
+               trackPlayerPage.track = tracks[selectedRow]
+            }
+        }
         if segue.destination is SmallViewController {
             transitionType = .slide(fromDirection: .bottom)
             segue.destination.transitioningDelegate = self
@@ -208,7 +227,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.LatestMusic.rawValue)
         {
-            return 3 // Latest Music
+//            return 3 // Latest Music
+//            print("hitung ", tracks.count)
+            return tracks.count
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
@@ -235,6 +256,18 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
+            cell.trackTitleLabel.text = tracks[indexPath.row].name
+            cell.artistNameLabel.text = tracks[indexPath.row].email
+            cell.track = tracks[indexPath.row]
+            cell.mainTableView = mainTableView
+//            print("masuk ", cell.player)
+            if cell.player {
+//                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }else{
+//                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            }
             return cell
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
@@ -269,6 +302,28 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             return 160
         }
         return 110
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        selectRow = indexPath.row
+    //        self.performSegue(withIdentifier: "uploadTest", sender: self)
+        if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
+        {
+        }
+        if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
+        {
+        }
+        if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
+        {
+            selectedRow = indexPath.row
+            self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+        }
+        if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
+        {
+        }
+        if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
+        {
+        }
     }
 
     
