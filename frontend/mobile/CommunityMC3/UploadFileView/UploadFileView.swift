@@ -45,6 +45,14 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             }
         return 44
     }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+        {
+        if indexPath.row == 0
+        {
+            return 70
+            }
+        return 44
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
