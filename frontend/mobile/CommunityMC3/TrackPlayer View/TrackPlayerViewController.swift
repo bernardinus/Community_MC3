@@ -43,7 +43,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     func prepareTrack() {
-        let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
+        let audioPath = Bundle.main.path(forResource: "\(trackPlaylist[counter])", ofType: "mp3")!
         var error : NSError? = nil
         do {
             trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
@@ -87,9 +87,14 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
        {
         if trackPlayer!.isPlaying
            {
-               trackProgressSlider.minimumValue = 0.0
-               trackProgressSlider.maximumValue = Float(trackPlayer!.duration)
-               trackProgressSlider.setValue(Float(trackPlayer!.currentTime), animated: true)
+                trackProgressSlider.minimumValue = 0.0
+                trackProgressSlider.maximumValue = Float(trackPlayer!.duration)
+                trackProgressSlider.setValue(Float(trackPlayer!.currentTime), animated: true)
+            
+                let minute = Int(trackPlayer!.duration / 60)
+                let second = Int(trackPlayer!.duration) - minute * 60
+            
+            trackCurrentTimeLabel.text = "\(minute):\(String(format: "%2d", second))"
            }
        }
     
@@ -159,8 +164,8 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     @IBAction func repeatButtonAction(_ sender: UIButton) {
         if sender == repeatButtonNonActive {
             repeatOneTrackOnlyButton.isHidden = true
-            repeatButtonActive.isHidden = true
-            repeatButtonNonActive.isHidden = false
+            repeatButtonActive.isHidden = false
+            repeatButtonNonActive.isHidden = true
             
             repeatPlaylistBoolean = true
         }else if sender == repeatButtonActive{
@@ -198,7 +203,4 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
             trackPlaylist.append(contentsOf: trackListTemp)
         }
     }
-    
-    
-    
 }

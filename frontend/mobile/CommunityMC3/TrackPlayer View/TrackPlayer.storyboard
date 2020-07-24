@@ -93,7 +93,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="repeatPlaylist"/>
                                 <connections>
-                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="lyL-c9-50y"/>
+                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="y1W-CI-2be"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YZ-RV-Guz">
@@ -101,7 +101,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="repeatOneTrackOnly"/>
                                 <connections>
-                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="z0b-gH-0x2"/>
+                                    <action selector="repeatButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="Wi8-Tc-qol"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpi-yp-x4I">
@@ -133,6 +133,9 @@
                                 <rect key="frame" x="344" y="747" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="shuffleActive"/>
+                                <connections>
+                                    <action selector="shuffleButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="Tld-O6-ln5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QWl-O2-JWf"/>
