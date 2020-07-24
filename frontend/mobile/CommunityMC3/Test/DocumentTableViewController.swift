@@ -8,6 +8,7 @@
 
 import UIKit
 import CloudKit
+import AVFoundation
 
 class Upload: NSObject {
     var recordID: CKRecord.ID!
@@ -22,16 +23,92 @@ class DocumentTableViewController: UITableViewController {
     var documents: [CKRecord] = []
     var uploads: [Upload] = []
     var selectRow = 0
+    var audioPlayer: AVAudioPlayer!
+    
+    static let shared  = DocumentTableViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getFromCloudKit()
+//        getFromCloudKit()
     }
     
-    func getFromDevice() {
+    func uploadProfile(name: String, email: String, genre: String, myImage: UIImage) {
+        let profileRecord = CKRecord(recordType: "Profiles")
+        profileRecord["genre"] = genre as CKRecordValue
+        profileRecord["name"] = name as CKRecordValue
+        profileRecord["email"] = email as CKRecordValue
+
+        
+        let data = myImage.pngData(); // UIImage -> NSData, see also UIImageJPEGRepresentation
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+        do {
+            try data!.write(to: url!, options: [])
+        } catch let e as NSError {
+            print("Error! \(e)");
+            return
+        }
+        profileRecord["fileData"] = CKAsset(fileURL: url!)
+
+        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(profileRecord) { record, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    // Delete the temporary file
+                    do { try FileManager.default.removeItem(at: url!) }
+                    catch let e { print("Error deleting temp file: \(e)") }
+                    print("Done!")
+                }
+            }
+        }
+    }
+    
+    func getProfilesFromCloudKit(completionHandler: @escaping ([PhotoDataStruct]) -> Void) {
+        var photos = [PhotoDataStruct]()
+        // 1. tunjuk databasenya apa
+           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           
+           // 2. kita tentuin recordnya
+           let predicate = NSPredicate(value: true)
+           let query = CKQuery(recordType: "Profiles", predicate: predicate)
+           
+           // 3. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
+               
+               if let err = error {
+                   print(err.localizedDescription)
+               }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                for record in fetchedRecords {
+//                    let temp = Upload()
+//                    let temp = TrackDataClass()
+                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
+                    let temp = PhotoDataStruct(
+                        fileURL: asset.fileURL!,
+                        email: (record.value(forKey: "email") as? String)!,
+                        genre: (record.value(forKey: "genre") as? String)!,
+                        name: (record.value(forKey: "name") as? String)!
+                    )
+//                    temp.audioData = try AVAudioPlayer(contentsOf: asset.fileURL)
+                    
+//                    temp.name = record.value(forKey: "name") as? String
+//                    temp.recordID = record.recordID
+                    photos.append(temp)
+//                    self.uploads.append(temp)
+                }
+                completionHandler(photos)
+               }
+           }
+//            print("panjang ", tracks.count)
+    }
+    
+    func getFromDevice(){
         let file = AppFile()
     //        _ = file.writeFile(containing: "This file was written for my tutorial on the iOS 11 Files app.\n\nThe text file was written to this app\'s Documents folder.", to: .Documents, withName: "textFile1.txt")
         let fetchedDocuments = file.list()
@@ -52,63 +129,90 @@ class DocumentTableViewController: UITableViewController {
         }
     }
     
-    func getFromCloudKit() {
+    func getUploadsFromCloudKit(tableView: UITableView, completionHandler: @escaping ([TrackDataStruct]) -> Void){
+        var tracks = [TrackDataStruct]()
         // 1. tunjuk databasenya apa
-               let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           
+           // 2. kita tentuin recordnya
+           let predicate = NSPredicate(value: true)
+           let query = CKQuery(recordType: "Uploads", predicate: predicate)
+           
+           // 3. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
                
-               // 2. kita tentuin recordnya
-               let predicate = NSPredicate(value: true)
-               let query = CKQuery(recordType: "Uploads", predicate: predicate)
-               
-               // 3. execute querynya
-               database.perform(query, inZoneWith: nil) { records, error in
-                   
-                   if let err = error {
-                       print(err.localizedDescription)
-                   }
-                   
-                   print(records)
-                   
-                   if let fetchedRecords = records {
-                    for record in fetchedRecords {
-                        let temp = Upload()
-                        temp.name = record.value(forKey: "name") as? String
-                        temp.recordID = record.recordID
-                        self.uploads.append(temp)
-                    }
-                       self.documents = fetchedRecords
-                       DispatchQueue.main.async {
-                           self.tableView.reloadData()
-                       }
-                   }
+               if let err = error {
+                   print(err.localizedDescription)
                }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                for record in fetchedRecords {
+//                    let temp = Upload()
+//                    let temp = TrackDataClass()
+                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
+                    let temp = TrackDataStruct(
+                        genre: (record.value(forKey: "genre") as? String)!,
+                        name: (record.value(forKey: "name") as? String)!,
+                        recordID: record.recordID,
+                        email: (record.value(forKey: "email") as? String)!,
+                        fileURL: asset.fileURL!
+                    )
+//                    temp.audioData = try AVAudioPlayer(contentsOf: asset.fileURL)
+                    
+//                    temp.name = record.value(forKey: "name") as? String
+//                    temp.recordID = record.recordID
+                    tracks.append(temp)
+//                    self.uploads.append(temp)
+                }
+//                   self.documents = fetchedRecords
+                   DispatchQueue.main.async {
+//                       self.tableView.reloadData()
+                    tableView.reloadData()
+                   }
+                completionHandler(tracks)
+               }
+           }
+//            print("panjang ", tracks.count)
     }
     
-    func downloadDocument(upload: Upload) {
+    func downloadDocument(upload: TrackDataStruct) {
 //        let spinner = UIActivityIndicatorView(style: .gray)
 //        spinner.tintColor = UIColor.black
 //        spinner.startAnimating()
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
 
-        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.fetch(withRecordID: upload.recordID) { [unowned self] record, error in
-            if let error = error {
-                DispatchQueue.main.async {
+//        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.fetch(withRecordID: upload.recordID) { [unowned self] record, error in
+//            if let error = error {
+//                DispatchQueue.main.async {
                     // meaningful error message here!
-                    print(error.localizedDescription)
+//                    print(error.localizedDescription)
 //                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(self.downloadTapped))
-                }
-            } else {
-                if let record = record {
-                    if let asset = record["fileData"] as? CKAsset {
-                        upload.file = asset.fileURL
+//                }
+//            } else {
+//                if let record = record {
+//                    if let asset = record["fileData"] as? CKAsset {
+//                        upload.file = asset.fileURL
+//                        upload.fileURL = asset.fileURL!
 
-                        DispatchQueue.main.async {
+        DispatchQueue.main.async {
 //                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .plain, target: self, action: #selector(self.listenTapped))
-                        }
-                    }
-                }
+            do {
+                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileURL)
+                self.audioPlayer.play()
+            } catch {
+                print("play failed")
+//                                let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing your whistle; please try re-recording.", preferredStyle: .alert)
+//                                ac.addAction(UIAlertAction(title: "OK", style: .default))
+//                                present(ac, animated: true)
             }
         }
+                        
+//                    }
+//                }
+//            }
+//        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,7 +237,7 @@ class DocumentTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        selectRow = indexPath.row
 //        self.performSegue(withIdentifier: "uploadTest", sender: self)
-        downloadDocument(upload: self.uploads[indexPath.row])
+//        downloadDocument(upload: self.uploads[indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
