@@ -8,12 +8,16 @@
 
 import UIKit
 
-class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var featuredArtistCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.featuredArtistCollectionView.register(UINib.init(nibName: "FeaturedArtistCollectionCell", bundle: nil), forCellWithReuseIdentifier: "artistCollectionViewCell")
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 180, height: 180)
+        featuredArtistCollectionView.collectionViewLayout = layout
 
     }
        
@@ -29,4 +33,8 @@ class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollection
            
            return cell
        }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 180, height: 180)
+    }
 }
