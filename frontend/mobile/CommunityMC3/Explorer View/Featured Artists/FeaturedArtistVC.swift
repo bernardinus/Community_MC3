@@ -8,28 +8,33 @@
 
 import UIKit
 
-class FeaturedArtistVC: UIViewController {
+class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var featuredArtistCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.featuredArtistCollectionView.register(UINib.init(nibName: "FeaturedArtistCollectionCell", bundle: nil), forCellWithReuseIdentifier: "artistCollectionViewCell")
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 180, height: 180)
+        featuredArtistCollectionView.collectionViewLayout = layout
 
-        // Do any additional setup after loading the view.
     }
-    
+       
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         super .viewWillDisappear(animated)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+           return 12
+       }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           let cell = featuredArtistCollectionView.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
+           
+           return cell
+       }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 180, height: 180)
     }
-    */
-
 }

@@ -10,13 +10,13 @@ import UIKit
 
 class FeaturedArtistCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var featuredArtistsCollectionView: UICollectionView!
+    @IBOutlet weak var featuredArtistsCollectionCell: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.featuredArtistsCollectionView.dataSource = self
-        self.featuredArtistsCollectionView.delegate = self
-        self.featuredArtistsCollectionView.register(UINib.init(nibName: "FeaturedArtistCollectionCell", bundle: nil), forCellWithReuseIdentifier: "artistCollectionViewCell")
+        self.featuredArtistsCollectionCell.dataSource = self
+        self.featuredArtistsCollectionCell.delegate = self
+        self.featuredArtistsCollectionCell.register(UINib.init(nibName: "FeaturedArtistCollectionCell", bundle: nil), forCellWithReuseIdentifier: "artistCollectionViewCell")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,7 +30,7 @@ class FeaturedArtistCell: UITableViewCell, UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = featuredArtistsCollectionView.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
+        let cell = featuredArtistsCollectionCell.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
         
         return cell
     }
