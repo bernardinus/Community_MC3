@@ -16,6 +16,12 @@ class TrendingNowVC: UIViewController {
         trendingTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        super .viewWillDisappear(animated)
+    }
+    
+    
 }
 
 extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource

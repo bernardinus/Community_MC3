@@ -7,3 +7,50 @@
 //
 
 import Foundation
+import AVFoundation
+import CloudKit
+
+struct TrackDataStruct
+{
+    var genre:String
+    var name:String
+    
+    var recordID: CKRecord.ID
+    var email: String
+    var fileURL: URL
+
+    var audioData:AVAudioPlayer?
+    
+    var album:Album?
+}
+
+//class TrackDataClass: NSObject
+//{
+//    var genre:String!
+//    var name:String!
+//
+//    var recordID: CKRecord.ID!
+//    var email: String!
+//
+//    var audioData:AVAudioPlayer?
+//
+//    var album:Album?
+//}
+
+/*
+extension Track
+{
+        
+    
+    static func createTrack(trackData:TrackData) -> Track?
+    {
+        if let track:Track = CoreDataHelper.save(value: trackData.asDict())
+        {
+            track.user = trackData.user
+            return track
+        }
+        
+        return nil
+    }
+}
+ */

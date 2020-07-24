@@ -8,26 +8,25 @@
 
 import Foundation
 
-struct FavouritesData
+struct FavouritesDataStruct
 {
     var id:Int = 0
-    var album:[Album]
-    var track:[Track]
-    var userData:UserData?
-    var videos:[Videos]
+    var album:[AlbumDataStruct]?
+    var track:[TrackDataStruct]?
+    var user:[UserDataStruct]?
+    var videos:[VideosDataStruct]?
     
     
     init(id:Int,
-         album:[Album] = [],
-         track:[Track] = [],
-         userData:UserData? = nil,
-         videos:[Videos] = []
-         )
+         album:[AlbumDataStruct] = [],
+         track:[TrackDataStruct] = [],
+         videos:[VideosDataStruct] = [],
+         user:[UserDataStruct]?
+        )
     {
         self.id = id
         self.album = album
         self.track = track
-        self.userData = userData
         self.videos = videos
     }
     
@@ -39,17 +38,17 @@ struct FavouritesData
     }
 }
 
+/*
 extension Favourites
 {
         
     
-    static func createFavourites(favouritesData:FavouritesData) -> Favourites?
+    static func createFavourites(favouritesData:FavouritesDataStruct) -> Favourites?
     {
         if let favourite:Favourites = CoreDataHelper.save(value: favouritesData.asDict())
         {
             favourite.album = Set(favouritesData.album.map({$0})) as NSSet
             favourite.track = Set(favouritesData.track.map({$0})) as NSSet
-            favourite.userData = favouritesData.userData
             favourite.videos = Set(favouritesData.videos.map({$0})) as NSSet
             return favourite
         }
@@ -57,3 +56,4 @@ extension Favourites
         return nil
     }
 }
+ */
