@@ -22,6 +22,11 @@ class LoginController: UIViewController {
         passwordField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
+    @IBAction func unwindToLoginController(_ segue:UIStoryboardSegue)
+    {
+        
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
 //        passwordField.placeholder = ""
         passwordField.isSecureTextEntry = true

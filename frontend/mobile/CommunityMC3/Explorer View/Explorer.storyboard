@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +45,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uXS-s2-pdM" kind="show" id="rac-uh-SeC"/>
+                                    <action selector="notificationButtonTouched:" destination="9pv-A4-QxB" eventType="touchUpInside" id="du2-TQ-zcz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-DC-VAe">
@@ -91,6 +91,9 @@
                         <segue destination="mZP-Rz-hSD" kind="show" identifier="featuredArtistSegue" id="4tE-vJ-1xM"/>
                         <segue destination="GLy-4k-NtZ" kind="show" identifier="featuredVideoSegue" id="Qls-Xd-44Q"/>
                         <segue destination="JxN-T9-nVB" kind="show" identifier="trackPlayerSegue" id="bJ0-fh-f0R"/>
+                        <segue destination="5z4-ln-AiY" kind="show" identifier="loginScreenSegue" id="6Az-ua-7Fs"/>
+                        <segue destination="uXS-s2-pdM" kind="show" identifier="notificationScreenSegue" id="Maa-z9-1mq"/>
+                        <segue destination="6Em-jn-1tB" kind="show" id="CKV-xZ-fOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -137,6 +140,16 @@
             </objects>
             <point key="canvasLocation" x="859" y="130"/>
         </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="Mdf-aL-qPP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="6Em-jn-1tB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="23g-eP-OCj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gMv-Tb-mut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1508" y="-327"/>
+        </scene>
         <!--TrackPlayer-->
         <scene sceneID="Kbs-bt-qVR">
             <objects>
@@ -157,11 +170,21 @@
             </objects>
             <point key="canvasLocation" x="1262" y="56"/>
         </scene>
+        <!--LoginScreen-->
+        <scene sceneID="JSK-lH-DO1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginScreen" id="5z4-ln-AiY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Tbt-5z-fsF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQW-0l-xIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1401" y="-483"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="bell.fill" catalog="system" width="64" height="62"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
-        <image name="safari" catalog="system" width="64" height="60"/>
-        <image name="safari.fill" catalog="system" width="64" height="60"/>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="safari" catalog="system" width="128" height="121"/>
+        <image name="safari.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

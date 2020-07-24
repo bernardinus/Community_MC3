@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -266,7 +266,6 @@
 				30DFE041381608564EB18E8D /* Pods-CommunityMC3Tests.debug.xcconfig */,
 				64E3FBC18FCDD9176F27A578 /* Pods-CommunityMC3Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -332,6 +331,15 @@
 			path = BonsaiTest;
 			sourceTree = "<group>";
 		};
+		A1313E1224CA6DCB000DA7A7 /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				B74C5A0324C713DD00C978F3 /* Notifications.storyboard */,
+				B74C5A0124C711FA00C978F3 /* NotificationsVC.swift */,
+			);
+			path = NotificationView;
+			sourceTree = "<group>";
+		};
 		A134D2A124C908D3009A054F /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,8 +398,6 @@
 				A16B44A624B2FBF300053D6C /* ExplorerView.swift */,
 				A15C4D2424C5370C00ED0C0E /* HeaderCell.swift */,
 				A15C4D2524C5370C00ED0C0E /* HeaderCell.xib */,
-				B74C5A0124C711FA00C978F3 /* NotificationsVC.swift */,
-				B74C5A0324C713DD00C978F3 /* Notifications.storyboard */,
 			);
 			path = "Explorer View";
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 				A1C0EBB324C54ED9008D8D8F /* Login View */,
 				A15C4D1424C5032700ED0C0E /* Favourites View */,
 				A15C4D1524C5033800ED0C0E /* SearchView */,
+				A1313E1224CA6DCB000DA7A7 /* NotificationView */,
 				A15C4D1624C5034A00ED0C0E /* Explorer View */,
 				A16B44A224B2FBF300053D6C /* AppDelegate.swift */,
 				A16B44A424B2FBF300053D6C /* SceneDelegate.swift */,

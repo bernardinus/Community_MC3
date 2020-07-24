@@ -29,6 +29,13 @@ class LatestMusicVC: UIViewController {
             }
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        super .viewWillDisappear(animated)
+    }
+
 
 }
 
@@ -51,6 +58,7 @@ extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
         self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)

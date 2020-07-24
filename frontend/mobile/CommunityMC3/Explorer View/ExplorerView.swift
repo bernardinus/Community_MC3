@@ -36,6 +36,9 @@ class ExplorerView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         // Do any additional setup after loading the view.
         
         mainTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
@@ -50,15 +53,30 @@ class ExplorerView: UIViewController {
 //            print("count ", tracks.count)
         }
 
+        
     }
+    
+    
     
     @IBAction func accountButtonTouched(_ sender: Any)
     {
-        print("Bottom Button Action")
-        showSmallVC(transition: .slide(fromDirection: .bottom))
+        self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
     }
+    
+    @IBAction func notificationButtonTouched(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
+    }
+    
+    @IBAction func unwindToExplorerView(_ segue:UIStoryboardSegue)
+    {
+        
+    }
+    
+    
     private var transitionType: TransitionType = .none
-    private func showSmallVC(transition: TransitionType) {
+    private func showSmallVC(transition: TransitionType)
+    {
         
         transitionType = transition
         let sb = UIStoryboard(name: "SmallViewController", bundle: nil)
@@ -73,8 +91,7 @@ class ExplorerView: UIViewController {
         print("Prepare Segue")
         if segue.identifier == "latestMusicSegue" {
 //            print("masuk ", tracks.count)
-            let navPage = segue.destination as! UINavigationController
-            let latestMusicPage = navPage.topViewController as! LatestMusicVC
+            let latestMusicPage = segue.destination as! LatestMusicVC
             latestMusicPage.tracks = tracks
         }
         if segue.identifier == "trackPlayerSegue" {
@@ -87,7 +104,17 @@ class ExplorerView: UIViewController {
             segue.destination.transitioningDelegate = self
             segue.destination.modalPresentationStyle = .custom
         }
+        else
+        {
+            
+            navigationController?.setNavigationBarHidden(false, animated: false)
+        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     
 }
 

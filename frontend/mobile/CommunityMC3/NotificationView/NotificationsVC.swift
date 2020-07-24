@@ -12,11 +12,22 @@ class NotificationsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.backItem?.title = ""
 
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        super .viewWillAppear(animated)
+    }
 
+    @IBAction func clearAllButtonTouched(_ sender: Any)
+    {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
