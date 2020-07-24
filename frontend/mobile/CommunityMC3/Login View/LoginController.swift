@@ -32,8 +32,8 @@ class LoginController: UIViewController {
         passwordField.isSecureTextEntry = true
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//       self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    override func viewWillAppear(_ animated: Bool) {
+       self.navigationController?.setNavigationBarHidden(true, animated: animated)
 //       super.viewWillAppear(animated)
 //    //           if(flag==0){
 //    //               tutor1View.alpha = 1
@@ -43,7 +43,7 @@ class LoginController: UIViewController {
 //    override func viewWillDisappear(_ animated: Bool) {
 //       self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //       super.viewWillDisappear(animated)
-//    }
+    }
     
     @IBAction func loginUser(_ sender: UIButton) {
         switch sender {
