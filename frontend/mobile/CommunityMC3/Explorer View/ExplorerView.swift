@@ -278,6 +278,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "discoverNewCell") as! DiscoverNewCell
+            cell.callBack = {
+                self.performSegue(withIdentifier: "randomSpotlightSegue", sender: nil)
+            }
             return cell
         }
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
