@@ -38,13 +38,33 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            if indexPath.row == 0
+            {
+                return 70
+                }
+            if indexPath.row == 1
+            {
+                return 70
+                }
+            if indexPath.row == 2
+            {
+                return 70
+                }
+            if indexPath.row == 3
+            {
+                return 70
+                }
+            if indexPath.row == 4
+            {
+                return 80
+                }
             if indexPath.row == 5
             {
                 
-                return 91
+                return 90
+                }
+            return 44
             }
-        return 44
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -53,7 +73,6 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             let customCell = tableView.dequeueReusableCell(withIdentifier: UploadTableViewCell.identifier, for : indexPath) as! UploadTableViewCell
             customCell.configure(with: "Write the title", imageName: "picture")
             return customCell
-            
         }
         else
         if indexPath.row == 1

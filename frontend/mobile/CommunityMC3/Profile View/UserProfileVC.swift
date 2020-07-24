@@ -1,14 +1,14 @@
 //
-//  NotificationsVC.swift
+//  UserProfileVC.swift
 //  CommunityMC3
 //
-//  Created by Theofani on 21/07/20.
+//  Created by Theofani on 24/07/20.
 //  Copyright © 2020 Apple Developer Academy. All rights reserved.
 //
 
 import UIKit
 
-class NotificationsVC: UIViewController {
+class UserProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

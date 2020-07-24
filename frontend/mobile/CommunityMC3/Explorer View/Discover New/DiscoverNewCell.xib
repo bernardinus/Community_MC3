@@ -25,6 +25,9 @@
                         <state key="normal" title="Tap to Surprise!" backgroundImage="surprise-red-button">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="randomSpotlightButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NXh-we-khe"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

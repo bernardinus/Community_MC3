@@ -16,6 +16,8 @@ class SettingController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var genreField: UITextField!
     
+    let documentController = DocumentTableViewController.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
@@ -23,6 +25,16 @@ class SettingController: UIViewController {
         let userDefault = UserDefaults.standard
         if let loadEmail = userDefault.string(forKey: "email"){
             emailField.text = loadEmail
+        }
+        documentController.getProfilesFromCloudKit { (profiles) in
+            for profile in profiles {
+                print(profile.name, profile.email, profile.genre)
+//                if photo.email == "mnb@mnb" {
+//                    if let data = NSData(contentsOf: photo.fileURL) {
+//                        self.settingImage.image = UIImage(data: data as Data)
+//                   }
+//                }
+            }
         }
     }
     
@@ -34,6 +46,7 @@ class SettingController: UIViewController {
     }
     
     @IBAction func saveSetting(_ sender: UIButton) {
+        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
     }
     
     func loadAlert() {
@@ -82,6 +95,8 @@ extension SettingController: UIImagePickerControllerDelegate, UINavigationContro
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        let videoURL = info[UIImagePickerController.InfoKey.phAsset]
+//        print(videoURL)
         if let imageTaken = info[.originalImage] as? UIImage {
             picker.dismiss(animated: true) {
                 self.settingImage?.image = imageTaken
