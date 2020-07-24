@@ -45,7 +45,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uXS-s2-pdM" kind="show" id="rac-uh-SeC"/>
+                                    <action selector="notificationButtonTouched:" destination="9pv-A4-QxB" eventType="touchUpInside" id="du2-TQ-zcz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-DC-VAe">
@@ -90,11 +90,15 @@
                         <segue destination="OIS-hv-iKV" kind="show" identifier="latestMusicSegue" id="oTx-jy-Ir1"/>
                         <segue destination="mZP-Rz-hSD" kind="show" identifier="featuredArtistSegue" id="4tE-vJ-1xM"/>
                         <segue destination="GLy-4k-NtZ" kind="show" identifier="featuredVideoSegue" id="Qls-Xd-44Q"/>
+                        <segue destination="JxN-T9-nVB" kind="show" identifier="trackPlayerSegue" id="bJ0-fh-f0R"/>
+                        <segue destination="5z4-ln-AiY" kind="show" identifier="loginScreenSegue" id="6Az-ua-7Fs"/>
+                        <segue destination="uXS-s2-pdM" kind="show" identifier="notificationScreenSegue" id="Maa-z9-1mq"/>
+                        <segue destination="6Em-jn-1tB" kind="show" id="CKV-xZ-fOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="732" y="-298"/>
         </scene>
         <!--TrendingNowList-->
         <scene sceneID="xXd-od-IIP">
@@ -136,6 +140,26 @@
             </objects>
             <point key="canvasLocation" x="859" y="130"/>
         </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="Mdf-aL-qPP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="6Em-jn-1tB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="23g-eP-OCj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gMv-Tb-mut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1508" y="-327"/>
+        </scene>
+        <!--TrackPlayer-->
+        <scene sceneID="Kbs-bt-qVR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="JxN-T9-nVB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vlr-Vr-W0K"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Qf-Rp-1qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1383" y="-212"/>
+        </scene>
         <!--FeaturedVideosView-->
         <scene sceneID="Wo8-p2-apo">
             <objects>
@@ -145,6 +169,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVC-e6-4jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1262" y="56"/>
+        </scene>
+        <!--LoginScreen-->
+        <scene sceneID="JSK-lH-DO1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginScreen" id="5z4-ln-AiY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Tbt-5z-fsF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQW-0l-xIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1401" y="-483"/>
         </scene>
     </scenes>
     <resources>

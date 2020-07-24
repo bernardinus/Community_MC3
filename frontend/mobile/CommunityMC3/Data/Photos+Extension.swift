@@ -11,7 +11,12 @@ import UIKit
 
 struct PhotoDataStruct
 {
-    var fileData:UIImage?
+//    var fileData:UIImage?
+    
+    var fileURL: URL
+    var email: String
+    var genre:String
+    var name: String
 }
 
 /*

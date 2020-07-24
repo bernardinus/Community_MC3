@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j3B-ba-NEl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SgY-hy-lOE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -37,29 +37,33 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="latestMusicTableView" destination="WuZ-Hn-2Mp" id="cUz-2f-W8y"/>
+                        <segue destination="cPY-9Q-7sD" kind="show" identifier="trackPlayerSegue" id="ESA-h1-IDU"/>
+                        <segue destination="vuZ-Ew-WbA" kind="show" identifier="videoPlayerSegue" id="STu-TD-3PM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uog-1c-t8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700" y="-63.616071428571423"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="uR7-du-ID7">
+        <!--TrackPlayer-->
+        <scene sceneID="Hzc-aH-zEh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j3B-ba-NEl" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z8Z-bJ-bGR">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="SgY-hy-lOE" kind="relationship" relationship="rootViewController" id="eSu-zi-105"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j2o-cM-iF3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="cPY-9Q-7sD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Z6z-kZ-Vys"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UUg-OM-uhn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210.1449275362319" y="-63.616071428571423"/>
+            <point key="canvasLocation" x="1348" y="-137"/>
+        </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="rf5-ig-nom">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="vuZ-Ew-WbA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="z7I-1B-eGU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qJd-hK-bL3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1390" y="-6"/>
         </scene>
     </scenes>
 </document>

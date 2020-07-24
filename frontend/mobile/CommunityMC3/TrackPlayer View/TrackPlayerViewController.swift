@@ -27,6 +27,8 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var shuffleButtonActive: UIButton!
     
+    var track: TrackDataStruct!
+    
     var trackPlayer: AVAudioPlayer?
     var displayLink : CADisplayLink! = nil
     var counter = 0
@@ -38,33 +40,52 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        retreiveTrack()
         prepareTrack()
         prepareAndCustomizeSlider()
     }
     
+    func retreiveTrack() {
+        if track != nil {
+            trackTitleLabel.text = track.name
+            artisLabel.text = track.email
+        }
+    }
+    
     func prepareTrack() {
-        let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
         var error : NSError? = nil
-        do {
-            trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
-            
-        } catch let error1 as NSError {
-            error = error1
+        if track != nil {
+            let audioPath = track.fileURL
+            do {
+                trackPlayer = try AVAudioPlayer(contentsOf: audioPath)
+                
+            } catch let error1 as NSError {
+                error = error1
+            }
+        }else {
+            let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
+            do {
+                trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
+                
+            } catch let error1 as NSError {
+                error = error1
+            }
         }
         let seconds = Int(trackPlayer!.duration)
-    let formatter = DateComponentsFormatter()
-    formatter.allowedUnits = [.hour, .minute, .second]
-    formatter.unitsStyle = .positional
-    
-    let formattedString = formatter.string(from: TimeInterval(seconds))!
-    trackDurationLabel.text = "\(formattedString)"
-    print(seconds)
-    
-    print(trackProgressSlider.maximumValue)
-    displayLink = CADisplayLink(target: self, selector: #selector(updateAudioProgressView))
-    displayLink.preferredFramesPerSecond = 1
-    displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
-    trackProgressSlider.setThumbImage(#imageLiteral(resourceName: "trackThumbTint"), for: .normal)
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        
+        let formattedString = formatter.string(from: TimeInterval(seconds))!
+        trackDurationLabel.text = "\(formattedString)"
+        print(seconds)
+        
+        print(trackProgressSlider.maximumValue)
+        displayLink = CADisplayLink(target: self, selector: #selector(updateAudioProgressView))
+        displayLink.preferredFramesPerSecond = 1
+        displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
+        trackProgressSlider.setThumbImage(#imageLiteral(resourceName: "trackThumbTint"), for: .normal)
         trackPlayer!.delegate = self
         if error == nil {
             trackPlayer!.delegate = self
@@ -199,6 +220,9 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         }
     }
     
-    
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        trackPlayer?.stop()
+        super .viewWillDisappear(animated)
+    }
 }

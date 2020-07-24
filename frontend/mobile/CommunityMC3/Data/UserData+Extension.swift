@@ -12,14 +12,17 @@ import UIKit
 struct UserDataStruct
 {
     // normal data
-    var followerCount:Int64
+    var followerCount:Int16?
     var genre:String
-    var instagram:String
+    var instagram:String?
     var isVerified:Bool = false // saved as Int(64)
     var name:String
-    var phoneNumber:String
-    var role:String
-    var whatsApp:String
+    var phoneNumber:String?
+    var role:String?
+    var whatsApp:String?
+    
+    var fileURL:URL
+    var email: String
     
     // asset
     var profilePicture:UIImage?
