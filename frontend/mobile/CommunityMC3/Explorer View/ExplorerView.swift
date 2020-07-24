@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BonsaiController
 
 enum ExplorerSection:Int {
     case TrendingNow = 0
@@ -17,13 +18,27 @@ enum ExplorerSection:Int {
     case Count = 5
 }
 
+private enum TransitionType {
+    case none
+    case bubble
+    case slide(fromDirection: Direction)
+    case menu(fromDirection: Direction)
+}
+
 class ExplorerView: UIViewController {
 
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var notificationsIconImage: UIImageView!
     
+    let documentController = DocumentTableViewController.shared
+    var tracks = [TrackDataStruct]()
+    var selectedRow = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         // Do any additional setup after loading the view.
         
         mainTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
@@ -32,11 +47,134 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "LatestMusicCell", bundle:nil), forCellReuseIdentifier: "latestMusicCell")
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
+        
+        documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
+            self.tracks = tracks
+//            print("count ", tracks.count)
+        }
 
+        
     }
+    
+    
+    
+    @IBAction func accountButtonTouched(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+    }
+    
+    @IBAction func notificationButtonTouched(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
+    }
+    
+    @IBAction func unwindToExplorerView(_ segue:UIStoryboardSegue)
+    {
+        
+    }
+    
+    
+    private var transitionType: TransitionType = .none
+    private func showSmallVC(transition: TransitionType)
+    {
+        
+        transitionType = transition
+        let sb = UIStoryboard(name: "SmallViewController", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "SmallVC") as! SmallViewController
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+        present(vc, animated: true, completion: nil)
+    }
+    
+    // MARK: Storyboard
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Prepare Segue")
+        if segue.identifier == "latestMusicSegue" {
+//            print("masuk ", tracks.count)
+            let latestMusicPage = segue.destination as! LatestMusicVC
+            latestMusicPage.tracks = tracks
+        }
+        if segue.identifier == "trackPlayerSegue" {
+            if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
+               trackPlayerPage.track = tracks[selectedRow]
+            }
+        }
+        if segue.destination is SmallViewController {
+            transitionType = .slide(fromDirection: .bottom)
+            segue.destination.transitioningDelegate = self
+            segue.destination.modalPresentationStyle = .custom
+        }
+        else
+        {
+            
+            navigationController?.setNavigationBarHidden(false, animated: false)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    
+}
 
-     
-
+// MARK:- BonsaiController Delegate
+extension ExplorerView: BonsaiControllerDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        var blurEffectStyle = UIBlurEffect.Style.dark
+        
+        if #available(iOS 13.0, *) {
+            blurEffectStyle = .systemChromeMaterial
+        }
+        
+        let backgroundColor = UIColor(white: 0, alpha: 0.5)
+        
+        switch transitionType {
+        case .none:
+            return nil
+            
+        case .bubble:
+            
+//            // With Blur Style
+//            // return BonsaiController(fromView: popButton, blurEffectStyle: blurEffectStyle,  presentedViewController: presented, delegate: self)
+//
+//            // With Background Color
+//            return BonsaiController(fromView: popButton, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
+            return nil
+            
+        case .slide(let fromDirection), .menu(let fromDirection):
+            
+            // With Blur Style
+            // return BonsaiController(fromDirection: fromDirection, blurEffectStyle: blurEffectStyle, presentedViewController: presented, delegate: self)
+            
+            // With Background Color
+            return BonsaiController(fromDirection: fromDirection, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
+        }
+    }
+    
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+        
+        switch transitionType {
+        case .none:
+            return CGRect(origin: .zero, size: containerViewFrame.size)
+        case .slide:
+            return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 4), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
+        case .bubble:
+            return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 4), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / 2))
+        case .menu(let fromDirection):
+            var origin = CGPoint.zero
+            if fromDirection == .right {
+                origin = CGPoint(x: containerViewFrame.width / 2, y: 0)
+            }
+            return CGRect(origin: origin, size: CGSize(width: containerViewFrame.width / 2, height: containerViewFrame.height))
+        }
+    }
+    
+    func didDismiss() {
+        print("didDismiss")
+    }
 }
 
 extension ExplorerView:UITableViewDelegate, UITableViewDataSource
@@ -46,7 +184,14 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Trending Now"
+            cell.HeaderName.textColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
+            cell.sectionBlock.backgroundColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
             cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.seeMoreButton.setTitleColor(UIColor.white, for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "trendingSegue", sender: nil)
+            }
+            cell.headerBackgroundView.layer.backgroundColor = #colorLiteral(red: 0.2784313725, green: 0, blue: 0.7843137255, alpha: 1)
             return cell
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
@@ -61,6 +206,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Latest Music"
             cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "latestMusicSegue", sender: nil)
+            }
             return cell
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
@@ -68,6 +216,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Featured Artist"
             cell.seeMoreButton.setTitle("More artist >", for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "featuredArtistSegue", sender: nil)
+            }
             return cell
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
@@ -75,6 +226,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
             cell.HeaderName.text = "Featured Videos"
             cell.seeMoreButton.setTitle("More videos >", for: .normal)
+            cell.callBack = {
+                self.performSegue(withIdentifier: "featuredVideoSegue", sender: nil)
+            }
             return cell
         }
         
@@ -92,7 +246,6 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
-            
             return 3 // Trending Now
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
@@ -101,7 +254,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.LatestMusic.rawValue)
         {
-            return 3 // Latest Music
+//            return 3 // Latest Music
+//            print("hitung ", tracks.count)
+            return tracks.count
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
@@ -123,11 +278,26 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "discoverNewCell") as! DiscoverNewCell
+            cell.callBack = {
+                self.performSegue(withIdentifier: "randomSpotlightSegue", sender: nil)
+            }
             return cell
         }
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
+            cell.trackTitleLabel.text = tracks[indexPath.row].name
+            cell.artistNameLabel.text = tracks[indexPath.row].email
+            cell.track = tracks[indexPath.row]
+            cell.mainTableView = mainTableView
+//            print("masuk ", cell.player)
+            if cell.player {
+//                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }else{
+//                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            }
             return cell
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
@@ -151,7 +321,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
-            return 140
+            return 80
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
@@ -164,8 +334,27 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         return 110
     }
     
-    @IBAction func tappedRightButton(sender: AnyObject){
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        selectRow = indexPath.row
+    //        self.performSegue(withIdentifier: "uploadTest", sender: self)
+        if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
+        {
+        }
+        if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
+        {
+        }
+        if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
+        {
+            selectedRow = indexPath.row
+            self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+        }
+        if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
+        {
+        }
+        if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
+        {
+        }
     }
+
     
 }

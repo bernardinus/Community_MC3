@@ -11,6 +11,9 @@ import UIKit
 class DiscoverNewCell: UITableViewCell {
 
     
+    @IBOutlet weak var tapSurpriseButton: UIButton!
+    
+    var callBack: (() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,4 +25,11 @@ class DiscoverNewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func randomSpotlightButton(_ sender: Any) {
+        self.callBack!()
+    }
+    
+    func setCallBack(callback: (() -> Void)?){
+        self.callBack = callback
+    }
 }

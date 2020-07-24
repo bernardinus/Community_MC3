@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-zq-DCP">
-                                <rect key="frame" x="0.0" y="128" width="414" height="768"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-zq-DCP">
+                                <rect key="frame" x="0.0" y="116" width="414" height="780"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="9pv-A4-QxB" id="aKi-mr-bZr"/>
@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vx-K0-Zue">
-                                <rect key="frame" x="329.5" y="76" width="24.5" height="30"/>
+                                <rect key="frame" x="329.5" y="80" width="24.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24.5" id="5Mw-Ki-but"/>
                                     <constraint firstAttribute="height" constant="30" id="vNb-Xh-zWV"/>
@@ -45,11 +45,11 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uXS-s2-pdM" kind="show" id="rac-uh-SeC"/>
+                                    <action selector="notificationButtonTouched:" destination="9pv-A4-QxB" eventType="touchUpInside" id="du2-TQ-zcz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-DC-VAe">
-                                <rect key="frame" x="364" y="76" width="30" height="30"/>
+                                <rect key="frame" x="364" y="80" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="FbQ-pT-E5A"/>
                                     <constraint firstAttribute="width" constant="30" id="xz0-Bj-ZnE"/>
@@ -59,12 +59,15 @@
                                 <state key="normal" image="person.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="accountButtonTouched:" destination="9pv-A4-QxB" eventType="touchUpInside" id="e5S-fq-ABo"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.27843137254901962" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="1wn-NP-AiM"/>
-                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="aBB-zB-Hcd" secondAttribute="bottom" constant="16" id="4hh-ez-kLC"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="aBB-zB-Hcd" secondAttribute="bottom" constant="4" id="4hh-ez-kLC"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="7we-69-Slh"/>
                             <constraint firstItem="xwv-DC-VAe" firstAttribute="leading" secondItem="9vx-K0-Zue" secondAttribute="trailing" constant="10" id="B0M-2B-K6m"/>
                             <constraint firstAttribute="bottom" secondItem="B4j-zq-DCP" secondAttribute="bottom" id="ITn-0i-u79"/>
@@ -73,8 +76,8 @@
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="xwv-DC-VAe" secondAttribute="trailing" constant="20" id="hCL-9S-hK3"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="n1i-BJ-Xb4"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="q0l-SW-Hrv"/>
-                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="xwv-DC-VAe" secondAttribute="bottom" constant="22" id="uLM-XT-VuO"/>
-                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="9vx-K0-Zue" secondAttribute="bottom" constant="22" id="yCq-JV-1vk"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="xwv-DC-VAe" secondAttribute="bottom" constant="6" id="uLM-XT-VuO"/>
+                            <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="9vx-K0-Zue" secondAttribute="bottom" constant="6" id="yCq-JV-1vk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -84,11 +87,19 @@
                     <connections>
                         <outlet property="mainTableView" destination="B4j-zq-DCP" id="TlL-Ba-pTT"/>
                         <segue destination="tiY-jC-7Eb" kind="show" identifier="trendingSegue" id="QC2-W3-4hc"/>
+                        <segue destination="OIS-hv-iKV" kind="show" identifier="latestMusicSegue" id="oTx-jy-Ir1"/>
+                        <segue destination="mZP-Rz-hSD" kind="show" identifier="featuredArtistSegue" id="4tE-vJ-1xM"/>
+                        <segue destination="GLy-4k-NtZ" kind="show" identifier="featuredVideoSegue" id="Qls-Xd-44Q"/>
+                        <segue destination="JxN-T9-nVB" kind="show" identifier="trackPlayerSegue" id="bJ0-fh-f0R"/>
+                        <segue destination="5z4-ln-AiY" kind="show" identifier="loginScreenSegue" id="6Az-ua-7Fs"/>
+                        <segue destination="uXS-s2-pdM" kind="show" identifier="notificationScreenSegue" id="Maa-z9-1mq"/>
+                        <segue destination="6Em-jn-1tB" kind="show" id="CKV-xZ-fOK"/>
+                        <segue destination="abV-a7-8U0" kind="show" identifier="randomSpotlightSegue" destinationCreationSelector="randomSpotlightSegue" id="Umn-HO-Qe5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="732" y="-298"/>
         </scene>
         <!--TrendingNowList-->
         <scene sceneID="xXd-od-IIP">
@@ -98,7 +109,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1X-WZ-WJo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272" y="93"/>
+            <point key="canvasLocation" x="102" y="40"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="mdN-pV-VEV">
@@ -108,7 +119,77 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3w-b2-DPu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1486" y="-560"/>
+            <point key="canvasLocation" x="1301" y="-630"/>
+        </scene>
+        <!--LatestMusicView-->
+        <scene sceneID="wFd-Gt-sRt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LatestMusicView" id="OIS-hv-iKV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lJz-PB-dl4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ovN-AE-tbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="462" y="130"/>
+        </scene>
+        <!--FeaturedArtistView-->
+        <scene sceneID="dps-eT-UN6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FeaturedArtistView" id="mZP-Rz-hSD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="k8b-F7-ad1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mlS-4R-kx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="859" y="130"/>
+        </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="Mdf-aL-qPP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="6Em-jn-1tB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="23g-eP-OCj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gMv-Tb-mut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1508" y="-327"/>
+        </scene>
+        <!--TrackPlayer-->
+        <scene sceneID="Kbs-bt-qVR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="JxN-T9-nVB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vlr-Vr-W0K"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Qf-Rp-1qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1383" y="-212"/>
+        </scene>
+        <!--FeaturedVideosView-->
+        <scene sceneID="Wo8-p2-apo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FeaturedVideosView" id="GLy-4k-NtZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uDZ-Fa-RCm"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sVC-e6-4jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="56"/>
+        </scene>
+        <!--LoginScreen-->
+        <scene sceneID="JSK-lH-DO1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginScreen" id="5z4-ln-AiY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Tbt-5z-fsF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LQW-0l-xIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1401" y="-483"/>
+        </scene>
+        <!--RandomSpotlight-->
+        <scene sceneID="RAs-BK-H7h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RandomSpotlight" id="abV-a7-8U0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="EiC-DP-Yia"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qkh-f7-HbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441" y="-109"/>
         </scene>
     </scenes>
     <resources>

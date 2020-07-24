@@ -8,19 +8,29 @@
 
 import UIKit
 
-class SelectFileView: UIDocumentBrowserViewController
+class SelectFileView: UIViewController
 {
 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
+    var fileList:[URL] = []
+    
+    var filteredList:[URL] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.register(UINib(nibName: "SelectViewCell", bundle:nil), forCellReuseIdentifier: "selectViewCell")
-        // Do any additional setup after loading the view.
+        searchBar.delegate = self
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "SelectViewCell", bundle:nil), forCellReuseIdentifier: "selectViewCell")
+        
+        fileList = FileManagers.getFileList()
+        filteredList = fileList
+        
     }
     
     @IBAction func cancelButtonTouched(_ sender: Any) {
@@ -37,19 +47,28 @@ class SelectFileView: UIDocumentBrowserViewController
     }
     */
 
-}
-
-extension SelectFileView:UIDocumentBrowserViewControllerDelegate
-{
+    func filter(filterText:String)
+    {
+        print("asd+\(filterText)+asd")
+        if(filterText.isEmpty || filterText == "")
+        {
+            filteredList = fileList
+        }
+        else
+        {
+            filteredList = fileList.filter{$0.lastPathComponent.lowercased().contains(filterText.lowercased())}
+        }
+        tableView.reloadData()
+    }
     
 }
 
-/*
+
 extension SelectFileView:UISearchBarDelegate
 {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        
+        filter(filterText: searchText)
     }
 }
 
@@ -57,17 +76,21 @@ extension SelectFileView:UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        10
+        filteredList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "selectViewCell") as! SelectViewCell
-        cell.fileName.text = "\(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "selectViewCell") as! SelectViewCell
+        cell.fileName.text = filteredList[indexPath.row].lastPathComponent
         print("\(indexPath.row)")
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        
+        // move to upload page for edit data
+        
+    }
 }
- */

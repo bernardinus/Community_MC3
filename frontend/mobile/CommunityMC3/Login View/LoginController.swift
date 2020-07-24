@@ -14,6 +14,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var wrongLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,18 @@ class LoginController: UIViewController {
         passwordField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
     }
     
+    @IBAction func unwindToLoginController(_ segue:UIStoryboardSegue)
+    {
+        
+    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
 //        passwordField.placeholder = ""
         passwordField.isSecureTextEntry = true
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//       self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    override func viewWillAppear(_ animated: Bool) {
+       self.navigationController?.setNavigationBarHidden(true, animated: animated)
 //       super.viewWillAppear(animated)
 //    //           if(flag==0){
 //    //               tutor1View.alpha = 1
@@ -37,7 +43,7 @@ class LoginController: UIViewController {
 //    override func viewWillDisappear(_ animated: Bool) {
 //       self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //       super.viewWillDisappear(animated)
-//    }
+    }
     
     @IBAction func loginUser(_ sender: UIButton) {
         switch sender {
@@ -86,7 +92,9 @@ class LoginController: UIViewController {
                                 self.emailField.text = ""
                                 self.passwordField.text = ""
                                 self.performSegue(withIdentifier: "loginMain", sender: self)
-                            }
+                        }else{
+                            self.wrongLabel.isHidden = false
+                        }
                     }
                 }
             }

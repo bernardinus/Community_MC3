@@ -14,14 +14,14 @@
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="album" inverseEntity="Videos"/>
     </entity>
     <entity name="Favourites" representedClassName="Favourites" syncable="YES" codeGenerationType="class">
-        <attribute name="user" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <relationship name="album" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="favourites" inverseEntity="Album"/>
         <relationship name="track" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="favourites" inverseEntity="Track"/>
         <relationship name="userData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="favourites" inverseEntity="UserData"/>
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="favourites" inverseEntity="Videos"/>
     </entity>
     <entity name="Featured" representedClassName="Featured" syncable="YES" codeGenerationType="class">
-        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
         <relationship name="track" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="featured" inverseEntity="Track"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserData" inverseName="featured" inverseEntity="UserData"/>
         <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="featured" inverseEntity="Videos"/>
@@ -65,6 +65,8 @@
     </entity>
     <entity name="Videos" representedClassName="Videos" syncable="YES" codeGenerationType="class">
         <attribute name="fileData" optional="YES" attributeType="Binary"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="videos" inverseEntity="Album"/>
         <relationship name="favourites" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="videos" inverseEntity="Favourites"/>
         <relationship name="featured" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Featured" inverseName="video" inverseEntity="Featured"/>
@@ -80,6 +82,6 @@
         <element name="Track" positionX="124.33203125" positionY="-152.55078125" width="128" height="163"/>
         <element name="UploadedData" positionX="198.18359375" positionY="76.49609375" width="128" height="88"/>
         <element name="UserData" positionX="-90.140625" positionY="-13.3203125" width="128" height="283"/>
-        <element name="Videos" positionX="28.5546875" positionY="351.3515625" width="128" height="133"/>
+        <element name="Videos" positionX="28.5546875" positionY="351.3515625" width="128" height="163"/>
     </elements>
 </model>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YUe-yu-ETE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notifications-->
+        <scene sceneID="RcL-0X-Hdr">
+            <objects>
+                <viewController id="YUe-yu-ETE" customClass="NotificationsVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1iT-A7-5jo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lCr-Bw-JEJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lCr-Bw-JEJ" firstAttribute="top" secondItem="Kxs-W6-54x" secondAttribute="top" id="9WJ-cD-vh5"/>
+                            <constraint firstItem="Kxs-W6-54x" firstAttribute="trailing" secondItem="lCr-Bw-JEJ" secondAttribute="trailing" id="J3h-7j-biD"/>
+                            <constraint firstItem="Kxs-W6-54x" firstAttribute="bottom" secondItem="lCr-Bw-JEJ" secondAttribute="bottom" id="YTf-Sa-L7L"/>
+                            <constraint firstItem="lCr-Bw-JEJ" firstAttribute="leading" secondItem="Kxs-W6-54x" secondAttribute="leading" id="fbq-he-xQL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kxs-W6-54x"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notifications" largeTitleDisplayMode="never" id="ykU-FY-Oi9">
+                        <barButtonItem key="rightBarButtonItem" title="Clear All" style="plain" id="Ywn-yD-dD6">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="clearAllButtonTouched:" destination="YUe-yu-ETE" id="1mn-6L-6UR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CwG-Ch-Wpv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="119.86607142857142"/>
+        </scene>
+    </scenes>
+</document>

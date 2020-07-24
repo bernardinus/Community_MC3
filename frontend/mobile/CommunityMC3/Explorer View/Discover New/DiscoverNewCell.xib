@@ -17,25 +17,35 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me0-wf-CZt">
-                        <rect key="frame" x="10" y="10" width="300" height="80"/>
-                        <color key="backgroundColor" red="0.97647058823529409" green="0.29803921568627451" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
-                        <state key="normal" title="Tap to Surprise!">
+                        <rect key="frame" x="25" y="15" width="270" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="jYn-Xc-gh1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                        <state key="normal" title="Tap to Surprise!" backgroundImage="surprise-red-button">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="randomSpotlightButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NXh-we-khe"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Me0-wf-CZt" secondAttribute="bottom" constant="10" id="2gd-NX-OVF"/>
-                    <constraint firstItem="Me0-wf-CZt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="A80-bg-8D6"/>
-                    <constraint firstItem="Me0-wf-CZt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="L2u-eB-5h1"/>
-                    <constraint firstAttribute="trailing" secondItem="Me0-wf-CZt" secondAttribute="trailing" constant="10" id="r5V-zH-7UW"/>
+                    <constraint firstAttribute="trailing" secondItem="Me0-wf-CZt" secondAttribute="trailing" constant="25" id="0e9-Rr-ULi"/>
+                    <constraint firstItem="Me0-wf-CZt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="DpZ-8z-qyh"/>
+                    <constraint firstItem="Me0-wf-CZt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="H1S-tt-HR9"/>
+                    <constraint firstItem="Me0-wf-CZt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VIM-Dw-8Pn"/>
                     <constraint firstItem="Me0-wf-CZt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ub1-1K-tU7"/>
-                    <constraint firstItem="Me0-wf-CZt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="xMx-6g-b6N"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="tapSurpriseButton" destination="Me0-wf-CZt" id="mnH-h4-kBY"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="147.99107142857142"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="surprise-red-button" width="717" height="216"/>
+    </resources>
 </document>
