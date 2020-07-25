@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 enum RandomSearch: Int {
     case Music = 0
@@ -14,7 +16,7 @@ enum RandomSearch: Int {
     case Count = 2
 }
 
-class RandomSpotlightViewController: UIViewController{
+class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
 
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,9 +29,17 @@ class RandomSpotlightViewController: UIViewController{
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var musicAndVideoTableView: UITableView!
     @IBOutlet weak var popUpContentView: UIView!
+    @IBOutlet weak var nextButton: UIButton!
     
     var test = false
     var musicGenreArray = ["Rock","Jazz","Pop","RnB","Acoustic","Blues"]
+    var trackPlayer: AVAudioPlayer?
+    var trackIndex = 0
+    var musicPlaylist = [""]
+    var index: IndexPath?
+    var videoList = [""]
+    var musicFilter = [String]()
+    var genreFilter = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +65,23 @@ class RandomSpotlightViewController: UIViewController{
         musicAndVideoTableView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellReuseIdentifier: "videoList")
         
         popUpContentView.layer.cornerRadius = 12
-        popUpContentView.isHidden = true
+        popUpView.isHidden = false
+        
+        nextButton.layer.cornerRadius = 20
+    }
+    
+    func generateThumbnail(path: URL) -> UIImage? {
+        do {
+            let asset = AVURLAsset(url: path, options: nil)
+            let imgGenerator = AVAssetImageGenerator(asset: asset)
+            imgGenerator.appliesPreferredTrackTransform = true
+            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 5, timescale: 1), actualTime: nil)
+            let thumbNail = UIImage(cgImage: cgImage)
+            return thumbNail
+        } catch let error {
+            print("*** Error generating thumbnail: \(error.localizedDescription)")
+            return nil
+        }
     }
     
     @IBAction func searchButtonAction(_ sender: UIButton) {
@@ -81,6 +107,9 @@ class RandomSpotlightViewController: UIViewController{
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
+            UIView.animate(withDuration: 2.0, delay: 2, options: .transitionCrossDissolve, animations: {
+                self.popUpView.isHidden = false
+            })
         })
         
         
@@ -118,7 +147,7 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == RandomSearch.Music.rawValue {
-            return 5
+            return musicPlaylist.count
         }else if section == RandomSearch.Video.rawValue{
             return 7
         }
@@ -128,10 +157,24 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == RandomSearch.Music.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "musicList", for: indexPath) as! MusicListCell
+            
+            cell.playButton.tag = indexPath.row
+            trackIndex = indexPath.row
+            cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayAudio(_:)), for: .touchUpInside)
+            cell.trackCurrent.text = "\(trackPlayer!.duration)"
+           
             return cell
         }else if indexPath.section == RandomSearch.Video.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "videoList", for: indexPath) as! VideoListCell
+            
+            let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
+            let urls = URL(fileURLWithPath: videoUrl!)
+            
             cell.videoThumbnailImage.layer.borderWidth = 2
+            cell.videoThumbnailImage.image = generateThumbnail(path: urls)
+            cell.playButton.tag = indexPath.row
+            cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayVideo(_:)), for: .touchUpInside)
+            
             return cell
         }
         return musicAndVideoTableView.dequeueReusableCell(withIdentifier: "musicList")!
@@ -151,31 +194,83 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! MusicGenreCell
-        cell.layer.borderWidth = 1
+        cell.layer.borderWidth = 1.5
         cell.layer.cornerRadius = 12
         cell.musicGenreLabel.text = musicGenreArray[indexPath.row]
-        for genre in musicGenreArray{
-            switch genre {
-            case "Rock":
-                cell.layer.borderColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+        switch cell.musicGenreLabel.text {
+            case "RnB":
+                cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
+            case "Jazz":
+            cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
             case "Pop":
-                cell.layer.borderColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
+                cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
             default:
                 break
-            }
         }
         return cell
     }
+    
+    @objc func clickPlayAudio(_ sender: UIButton) {
+        
+        let audioPath = Bundle.main.path(forResource: "\(musicPlaylist[sender.tag])", ofType: "mp3")!
+        var error : NSError? = nil
+        do {
+            trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
+            
+        } catch let error1 as NSError {
+            error = error1
+        }
+        trackPlayer!.delegate = self
+       
+        let selectedIndex = IndexPath(row: sender.tag, section: 0)
+        
+        index = selectedIndex
+        let minute = Int(trackPlayer!.duration / 60)
+        let second = Int(trackPlayer!.duration) - minute * 60
+        
+        let cell = musicAndVideoTableView.cellForRow(at: selectedIndex) as! MusicListCell
+        cell.trackCurrent.text = "\(minute):\(String(format: "%2d", second))"
+        
+        if (trackPlayer?.isPlaying)! {
+            trackPlayer?.pause()
+            
+            sender.setImage(#imageLiteral(resourceName: "Stop"), for: .normal)
+        }else {
+            if error == nil {
+                trackPlayer?.delegate = self
+                trackPlayer?.prepareToPlay()
+                trackPlayer?.play()
+                sender.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+            }
+        }
+        musicAndVideoTableView.reloadData()
+    }
+    
+    @objc func clickPlayVideo(_ sender: UIButton){
+        if let urlString = Bundle.main.path(forResource: "\(videoList[sender.tag])", ofType: "mp4"){
+            let video = AVPlayer(url: URL(fileURLWithPath: urlString))
+            let videoPlayer = AVPlayerViewController()
+            videoPlayer.player = video
+            
+            //enter video player mode
+            self.present(videoPlayer, animated: true, completion: {
+                video.play()
+                
+            })
+        }
+    }
+    
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
+
 class HalfSizePresentationController : UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
         get {
@@ -186,4 +281,3 @@ class HalfSizePresentationController : UIPresentationController {
         }
     }
 }
-
