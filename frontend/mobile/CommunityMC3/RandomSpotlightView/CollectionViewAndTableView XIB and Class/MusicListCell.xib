@@ -51,6 +51,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="playButton" destination="mXO-Xi-KeM" id="hgS-Xd-HJh"/>
                 <outlet property="trackArtist" destination="C97-0O-1Aw" id="J0G-GE-W1Q"/>
                 <outlet property="trackCurrent" destination="EME-88-qWd" id="iBd-Pt-jve"/>
                 <outlet property="trackTitle" destination="f9p-Uj-q0g" id="9CX-3J-7mP"/>
