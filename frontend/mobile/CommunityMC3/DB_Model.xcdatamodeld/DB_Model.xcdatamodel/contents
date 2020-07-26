@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Account" representedClassName="Account" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
@@ -27,6 +27,7 @@
         <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="featured" inverseEntity="Videos"/>
     </entity>
     <entity name="Photos" representedClassName="Photos" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="fileData" optional="YES" attributeType="Binary"/>
         <relationship name="userData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="photos" inverseEntity="UserData"/>
     </entity>
@@ -78,7 +79,7 @@
         <element name="Album" positionX="290.34765625" positionY="199.671875" width="128" height="133"/>
         <element name="Favourites" positionX="389.140625" positionY="-73.453125" width="128" height="118"/>
         <element name="Featured" positionX="-159.36328125" positionY="-274.71875" width="128" height="103"/>
-        <element name="Photos" positionX="-350.52734375" positionY="184.328125" width="128" height="73"/>
+        <element name="Photos" positionX="-350.52734375" positionY="184.328125" width="128" height="88"/>
         <element name="Track" positionX="124.33203125" positionY="-152.55078125" width="128" height="163"/>
         <element name="UploadedData" positionX="198.18359375" positionY="76.49609375" width="128" height="88"/>
         <element name="UserData" positionX="-90.140625" positionY="-13.3203125" width="128" height="283"/>

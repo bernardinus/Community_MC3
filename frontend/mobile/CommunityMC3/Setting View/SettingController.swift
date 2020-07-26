@@ -16,7 +16,8 @@ class SettingController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var genreField: UITextField!
     
-    let documentController = DocumentTableViewController.shared
+//    let documentController = DocumentTableViewController.shared
+    let uploadController = UploadController.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,20 @@ class SettingController: UIViewController {
         if let loadEmail = userDefault.string(forKey: "email"){
             emailField.text = loadEmail
         }
-        documentController.getProfilesFromCloudKit { (profiles) in
-            for profile in profiles {
-                print(profile.name, profile.email, profile.genre)
-//                if photo.email == "mnb@mnb" {
-//                    if let data = NSData(contentsOf: photo.fileURL) {
-//                        self.settingImage.image = UIImage(data: data as Data)
-//                   }
-//                }
+//        documentController.getProfilesFromCloudKit { (profiles) in
+//            for profile in profiles {
+//                print(profile.name, profile.email, profile.genre)
+//            }
+//        }
+        uploadController.getPhotosFromCloudKit { (photos) in
+            for photo in photos {
+                if photo.email == "mnb@mnb" {
+                    if let data = NSData(contentsOf: photo.fileURL) {
+                        DispatchQueue.main.async {
+                            self.settingImage.image = UIImage(data: data as Data)
+                        }
+                   }
+                }
             }
         }
     }
@@ -43,10 +50,12 @@ class SettingController: UIViewController {
     }
     
     @IBAction func logoutUser(_ sender: UIButton) {
+        loadAlert()
     }
     
     @IBAction func saveSetting(_ sender: UIButton) {
-        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
+//        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
+        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
     }
     
     func loadAlert() {
@@ -61,7 +70,7 @@ class SettingController: UIViewController {
         let signupAction = UIAlertAction(title: signupButtonText, style: UIAlertAction.Style.default, handler: nil)
         alert.addAction(cancelAction)
         alert.addAction(signupAction)
-    //    self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -85,7 +94,7 @@ extension SettingController: UIImagePickerControllerDelegate, UINavigationContro
         
         actionAlert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
             imagePicker.sourceType = .photoLibrary
-            imagePicker.mediaTypes = ["public.image", "public.movie"]
+            imagePicker.mediaTypes = ["public.image"]
             self.present(imagePicker, animated:true, completion: nil)
         })) // give the second option in alert controller to open Photo library
         
@@ -95,7 +104,7 @@ extension SettingController: UIImagePickerControllerDelegate, UINavigationContro
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        let videoURL = info[UIImagePickerController.InfoKey.phAsset]
+//        let videoURL = info[UIImagePickerController.InfoKey.phAsset] as? URL
 //        print(videoURL)
         if let imageTaken = info[.originalImage] as? UIImage {
             picker.dismiss(animated: true) {
