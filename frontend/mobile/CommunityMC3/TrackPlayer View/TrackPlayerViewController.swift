@@ -40,6 +40,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setNavigationBarHidden(false, animated: false)
         retreiveTrack()
         prepareTrack()
         prepareAndCustomizeSlider()
@@ -219,6 +220,9 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         }
     }
     
-    
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        trackPlayer?.stop()
+        super .viewWillDisappear(animated)
+    }
 }

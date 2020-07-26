@@ -50,12 +50,12 @@
 
 /* Begin PBXFileReference section */
 		032CAE0A403F5E0BD5A5D742CA038CB0 /* Pods-CommunityMC3-CommunityMC3UITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CommunityMC3-CommunityMC3UITests.modulemap"; sourceTree = "<group>"; };
-		08E09CF621EE03E0B2527845B114D531 /* Pods_CommunityMC3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CommunityMC3.framework; path = "Pods-CommunityMC3.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		08E09CF621EE03E0B2527845B114D531 /* Pods_CommunityMC3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommunityMC3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13ADC8B6C95EB3BFC7398523A6F5FFD1 /* Pods-CommunityMC3-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CommunityMC3-umbrella.h"; sourceTree = "<group>"; };
 		1EAA82BB193F6047A87B95B9CE8B9253 /* BonsaiController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BonsaiController.modulemap; sourceTree = "<group>"; };
 		20544401EB8E9C3EC240097A0DB5C7BE /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CommunityMC3-CommunityMC3UITests-umbrella.h"; sourceTree = "<group>"; };
 		224B553C87498EBF99B3F00443FCFDE0 /* BonsaiController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BonsaiController-Info.plist"; sourceTree = "<group>"; };
-		27B91A616D3E3D080255C6C93A591F62 /* BonsaiController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BonsaiController.framework; path = BonsaiController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B91A616D3E3D080255C6C93A591F62 /* BonsaiController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BonsaiController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE3B013BAC511E15130C37BE1729A2E /* Pods-CommunityMC3Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CommunityMC3Tests-umbrella.h"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		37D64D1034C10355A36A347D758AA5AD /* BonsaiController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BonsaiController.swift; path = BonsaiController/Classes/BonsaiController.swift; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 		86A7E98112B90679F3750CA6474BA979 /* Pods-CommunityMC3-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CommunityMC3-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8796CDDDFBFBC74760FCE4CD7803011C /* Pods-CommunityMC3-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3-acknowledgements.plist"; sourceTree = "<group>"; };
 		923029E3C91B440327345AA8C9438B08 /* Pods-CommunityMC3-CommunityMC3UITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3-CommunityMC3UITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B796F239F050249B817A51C51DE2FA92 /* Pods_CommunityMC3_CommunityMC3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CommunityMC3_CommunityMC3UITests.framework; path = "Pods-CommunityMC3-CommunityMC3UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B796F239F050249B817A51C51DE2FA92 /* Pods_CommunityMC3_CommunityMC3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommunityMC3_CommunityMC3UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA077799A8AF35AD952B453048D22F16 /* Pods-CommunityMC3Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CommunityMC3Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C835FC6CB8959C87065910ECA5E02593 /* BonsaiController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BonsaiController.release.xcconfig; sourceTree = "<group>"; };
 		CEAC8F7448FF13E95B2D53C381CF5129 /* Pods-CommunityMC3Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		D6D0EA47E210C844BEB457BD2217E9A4 /* Pods-CommunityMC3-CommunityMC3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3-CommunityMC3UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD812AD1C2C0C56C8CC0747D3FC682C5 /* Pods-CommunityMC3-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CommunityMC3-dummy.m"; sourceTree = "<group>"; };
 		DEFF9B2349EC9941910D630B99B96263 /* SlideInTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideInTransition.swift; path = BonsaiController/Classes/SlideInTransition.swift; sourceTree = "<group>"; };
-		E50862C988E72897C96A139E2C7C9EDD /* Pods_CommunityMC3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CommunityMC3Tests.framework; path = "Pods-CommunityMC3Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50862C988E72897C96A139E2C7C9EDD /* Pods_CommunityMC3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommunityMC3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9597A5C8C2F2538DB153243DB94D70C /* Pods-CommunityMC3Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3Tests-Info.plist"; sourceTree = "<group>"; };
 		EE8B7233B429CCE01004D12C6A5B7330 /* BubbleTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleTransition.swift; path = BonsaiController/Classes/BubbleTransition.swift; sourceTree = "<group>"; };
 		F61FAF055FDD0DF05901D0B21F4C4568 /* Pods-CommunityMC3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,7 +189,6 @@
 				DEFF9B2349EC9941910D630B99B96263 /* SlideInTransition.swift */,
 				DCE212D88426C24706C2C62FB4F443FE /* Support Files */,
 			);
-			name = BonsaiController;
 			path = BonsaiController;
 			sourceTree = "<group>";
 		};
@@ -523,6 +522,7 @@
 				PRODUCT_NAME = BonsaiController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -836,6 +836,7 @@
 				PRODUCT_NAME = BonsaiController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = "1,2";
