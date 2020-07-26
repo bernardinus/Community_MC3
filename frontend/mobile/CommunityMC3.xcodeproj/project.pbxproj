@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -266,7 +266,6 @@
 				30DFE041381608564EB18E8D /* Pods-CommunityMC3Tests.debug.xcconfig */,
 				64E3FBC18FCDD9176F27A578 /* Pods-CommunityMC3Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -455,7 +454,7 @@
 				A121CE9B24C96C6D00E1D48B /* BonsaiTest */,
 				A11A9FD424C94A58008D7867 /* UploadFileView */,
 				A1689CE724C7A69300A49732 /* SelectFile View */,
-				A1E3FFEF24C6A8CB00CA2228 /* Test */,
+				A1E3FFEF24C6A8CB00CA2228 /* Cloud */,
 				A1432F5324C69879007656B1 /* Utilities */,
 				A1689D3D24C7D7EE00A49732 /* Manager */,
 				A134D2A124C908D3009A054F /* Data */,
@@ -516,14 +515,14 @@
 			path = "Setting View";
 			sourceTree = "<group>";
 		};
-		A1E3FFEF24C6A8CB00CA2228 /* Test */ = {
+		A1E3FFEF24C6A8CB00CA2228 /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
 				A1F9E58F24C768AD0029CF0E /* UploadController.swift */,
 				A1E3FFED24C6A84500CA2228 /* Test.storyboard */,
 				A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */,
 			);
-			path = Test;
+			path = Cloud;
 			sourceTree = "<group>";
 		};
 		B74C59F824C6E35B00C978F3 /* Featured Videos */ = {

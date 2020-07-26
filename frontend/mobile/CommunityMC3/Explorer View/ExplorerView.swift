@@ -8,6 +8,7 @@
 
 import UIKit
 import BonsaiController
+import CloudKit
 
 enum ExplorerSection:Int {
     case TrendingNow = 0
@@ -31,7 +32,10 @@ class ExplorerView: UIViewController {
     @IBOutlet weak var notificationsIconImage: UIImageView!
     
     let documentController = DocumentTableViewController.shared
-    var tracks = [TrackDataStruct]()
+    let videoController = VideoPlayerViewController.shared
+//    var tracks = [TrackDataStruct]()
+//    var videos = [VideosDataStruct]()
+    var uploads = [UploadedDataStruct]()
     var selectedRow = 0
     
     override func viewDidLoad() {
@@ -46,8 +50,39 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
         
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
-            self.tracks = tracks
+//            self.tracks = tracks
+            for track in tracks {
+                let temp = UploadedDataStruct (
+                    uploadedDate: track.creationDate!,
+                    track: TrackDataStruct (
+                        genre: (track.value(forKey: "genre") as? String)!,
+                        name: (track.value(forKey: "name") as? String)!,
+                        recordID: track.recordID,
+                        email: (track.value(forKey: "email") as? String)!,
+                        fileURL: (track.value(forKey: "fileData") as? CKAsset)!.fileURL!
+                    )
+                )
+                self.uploads.append(temp)
+            }
 //            print("count ", tracks.count)
+        }
+        
+        documentController.getFilmsFromCloudKit { (videos) in
+//            self.videos = videos
+            for video in videos {
+                var temp = UploadedDataStruct (
+                    uploadedDate: video.creationDate!,
+                    video: VideosDataStruct (
+                        genre: (video.value(forKey: "genre") as? String)!,
+                        name: (video.value(forKey: "name") as? String)!,
+                        email: (video.value(forKey: "email") as? String)!,
+                        fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
+                    )
+                )
+                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+                temp.video?.fileURL = tmp
+                self.uploads.append(temp)
+            }
         }
 
     }
@@ -75,11 +110,17 @@ class ExplorerView: UIViewController {
 //            print("masuk ", tracks.count)
             let navPage = segue.destination as! UINavigationController
             let latestMusicPage = navPage.topViewController as! LatestMusicVC
-            latestMusicPage.tracks = tracks
+            latestMusicPage.uploads = uploads
+            latestMusicPage.mainTableView = mainTableView
         }
         if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
-               trackPlayerPage.track = tracks[selectedRow]
+                trackPlayerPage.track = uploads[selectedRow].track
+            }
+        }
+        if segue.identifier == "videoPlayerSegue" {
+            if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
+                videoPlayerPage.video = uploads[selectedRow].video
             }
         }
         if segue.destination is SmallViewController {
@@ -229,7 +270,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
 //            return 3 // Latest Music
 //            print("hitung ", tracks.count)
-            return tracks.count
+            return uploads.count
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
@@ -256,17 +297,24 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
-            cell.trackTitleLabel.text = tracks[indexPath.row].name
-            cell.artistNameLabel.text = tracks[indexPath.row].email
-            cell.track = tracks[indexPath.row]
             cell.mainTableView = mainTableView
-//            print("masuk ", cell.player)
-            if cell.player {
-//                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
-                cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            }else{
-//                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
-                cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            cell.upload = uploads[indexPath.row]
+            if uploads[indexPath.row].track != nil {
+                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
+                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
+    //            print("masuk ", cell.player)
+                if cell.player {
+    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                    cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                }else{
+    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                    cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                }
+            }
+            if uploads[indexPath.row].video != nil {
+                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
+                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
+//                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
             }
             return cell
         }
@@ -316,7 +364,12 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             selectedRow = indexPath.row
-            self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+            if uploads[selectedRow].video != nil {
+                self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
+            }
+            if uploads[selectedRow].track != nil {
+                self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+            }
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {

@@ -91,6 +91,7 @@
                         <segue destination="mZP-Rz-hSD" kind="show" identifier="featuredArtistSegue" id="4tE-vJ-1xM"/>
                         <segue destination="GLy-4k-NtZ" kind="show" identifier="featuredVideoSegue" id="Qls-Xd-44Q"/>
                         <segue destination="JxN-T9-nVB" kind="show" identifier="trackPlayerSegue" id="bJ0-fh-f0R"/>
+                        <segue destination="xfM-7w-Dmk" kind="show" identifier="videoPlayerSegue" id="U5X-An-pc9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -146,6 +147,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Qf-Rp-1qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1383" y="-212"/>
+        </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="eC7-Ui-KOS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="xfM-7w-Dmk" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NGV-zU-lYD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0FV-RF-FOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1361" y="-156"/>
         </scene>
         <!--FeaturedVideosView-->
         <scene sceneID="Wo8-p2-apo">

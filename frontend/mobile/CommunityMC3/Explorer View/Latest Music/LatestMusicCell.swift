@@ -16,7 +16,7 @@ class LatestMusicCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var musicImageView: UIButton!
     
-    var track: TrackDataStruct!
+    var upload: UploadedDataStruct!
     var player: Bool = false
     var audioPlayer: AVAudioPlayer!
     var mainTableView: UITableView!
@@ -28,28 +28,30 @@ class LatestMusicCell: UITableViewCell {
     }
     
     @IBAction func directPlay(_ sender: UIButton) {
-        player = true
-        mainTableView.reloadData()
-//        playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
-//        let playerGroup = DispatchGroup()
-//        playerGroup.enter()
-        DispatchQueue.main.async {
-            do {
-                self.audioPlayer = try AVAudioPlayer(contentsOf: self.track.fileURL)
-                self.audioPlayer.delegate = self
-                self.audioPlayer.play()
-//                playerGroup.leave()
-            } catch {
-                print("play failed")
+        if upload.track != nil {
+            player = true
+            mainTableView.reloadData()
+    //        playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+    //        let playerGroup = DispatchGroup()
+    //        playerGroup.enter()
+            DispatchQueue.main.async {
+                do {
+                    self.audioPlayer = try AVAudioPlayer(contentsOf: self.upload.track!.fileURL)
+                    self.audioPlayer.delegate = self
+                    self.audioPlayer.play()
+    //                playerGroup.leave()
+                } catch {
+                    print("play failed")
+                }
             }
+    //        playerGroup.notify(queue: .main) {
+    //        }
+    //        if player {
+    //            player = false
+    //        }else{
+    //            player = true
+    //        }
         }
-//        playerGroup.notify(queue: .main) {
-//        }
-//        if player {
-//            player = false
-//        }else{
-//            player = true
-//        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

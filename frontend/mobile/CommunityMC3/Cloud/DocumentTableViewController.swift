@@ -19,11 +19,14 @@ class Upload: NSObject {
 
 class DocumentTableViewController: UITableViewController {
     
-//    var documents: [String] = []
+    @IBOutlet weak var uploadButton: UIBarButtonItem!
+    //    var documents: [String] = []
     var documents: [CKRecord] = []
     var uploads: [Upload] = []
     var selectRow = 0
     var audioPlayer: AVAudioPlayer!
+    
+    var selectedVideo: URL!
     
     static let shared  = DocumentTableViewController()
 
@@ -31,8 +34,95 @@ class DocumentTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func uploadVideo(_ sender: UIBarButtonItem) {
+        openCameraAndLibrary()
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
 //        getFromCloudKit()
+//        getFilmsFromCloudKit { (videos) in
+//            if videos.count > 0 {
+//                let videoURL = videos[0].fileURL
+//                let player = AVPlayer(url: videoURL)
+//                let playerLayer = AVPlayerLayer(player: player)
+//                playerLayer.frame = self.view.bounds
+//                self.view.layer.addSublayer(playerLayer)
+//                player.play()
+//            }
+//        }
+    }
+    
+    func uploadFilm(name: String, email: String, genre: String, myVideo: URL?) {
+        let profileRecord = CKRecord(recordType: "Videos")
+        profileRecord["genre"] = genre as CKRecordValue
+        profileRecord["name"] = name as CKRecordValue
+        profileRecord["email"] = email as CKRecordValue
+        
+        if let videoURL = myVideo {
+          do {
+               let videoData = try Data(contentsOf: videoURL)
+                let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+                do {
+                    try videoData.write(to: url!, options: [])
+                } catch let e as NSError {
+                    print("Error! \(e)");
+                    return
+                }
+                profileRecord["fileData"] = CKAsset(fileURL: url!)
+
+                CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(profileRecord) { record, error in
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            print("Error: \(error.localizedDescription)")
+                        } else {
+                            // Delete the temporary file
+                            do { try FileManager.default.removeItem(at: url!) }
+                            catch let e { print("Error deleting temp file: \(e)") }
+                            print("Done!")
+                        }
+                    }
+                }
+             } catch let error {
+               print(error)
+             }
+        }
+    }
+    
+    func getFilmsFromCloudKit(completionHandler: @escaping ([CKRecord]) -> Void) {
+        var videos = [CKRecord]()
+        // 1. tunjuk databasenya apa
+           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           
+           // 2. kita tentuin recordnya
+           let predicate = NSPredicate(value: true)
+           let query = CKQuery(recordType: "Videos", predicate: predicate)
+           
+           // 3. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
+               
+               if let err = error {
+                   print(err.localizedDescription)
+               }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                for record in fetchedRecords {
+//                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
+//                    let temp = VideosDataStruct(
+//                        genre: (record.value(forKey: "genre") as? String)!,
+//                        name: (record.value(forKey: "name") as? String)!,
+//                        email: (record.value(forKey: "email") as? String)!,
+//                        fileURL: asset.fileURL!
+//                    )
+//                    videos.append(temp)
+                    videos.append(record)
+                }
+                completionHandler(videos)
+               }
+           }
+//            print("panjang ", tracks.count)
     }
     
     func uploadProfile(name: String, email: String, genre: String, myImage: UIImage) {
@@ -129,8 +219,8 @@ class DocumentTableViewController: UITableViewController {
         }
     }
     
-    func getUploadsFromCloudKit(tableView: UITableView, completionHandler: @escaping ([TrackDataStruct]) -> Void){
-        var tracks = [TrackDataStruct]()
+    func getUploadsFromCloudKit(tableView: UITableView, completionHandler: @escaping ([CKRecord]) -> Void){
+        var tracks = [CKRecord]()
         // 1. tunjuk databasenya apa
            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
            
@@ -151,19 +241,20 @@ class DocumentTableViewController: UITableViewController {
                 for record in fetchedRecords {
 //                    let temp = Upload()
 //                    let temp = TrackDataClass()
-                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
-                    let temp = TrackDataStruct(
-                        genre: (record.value(forKey: "genre") as? String)!,
-                        name: (record.value(forKey: "name") as? String)!,
-                        recordID: record.recordID,
-                        email: (record.value(forKey: "email") as? String)!,
-                        fileURL: asset.fileURL!
-                    )
+//                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
+//                    let temp = TrackDataStruct(
+//                        genre: (record.value(forKey: "genre") as? String)!,
+//                        name: (record.value(forKey: "name") as? String)!,
+//                        recordID: record.recordID,
+//                        email: (record.value(forKey: "email") as? String)!,
+//                        fileURL: asset.fileURL!
+//                    )
 //                    temp.audioData = try AVAudioPlayer(contentsOf: asset.fileURL)
                     
 //                    temp.name = record.value(forKey: "name") as? String
 //                    temp.recordID = record.recordID
-                    tracks.append(temp)
+//                    tracks.append(temp)
+                    tracks.append(record)
 //                    self.uploads.append(temp)
                 }
 //                   self.documents = fetchedRecords
@@ -249,3 +340,46 @@ class DocumentTableViewController: UITableViewController {
     }
     
 }
+
+// Extension to make more structured
+extension DocumentTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: Func to open camera and library function
+    func openCameraAndLibrary() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        let actionAlert = UIAlertController(title: "Browse attachment", message: "Choose source", preferredStyle: .alert)
+        actionAlert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
+            (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated:true, completion: nil)
+            }else{
+                print("Camera is not available at this device")
+            }
+        })) // give an option in alert controller to open camera
+        
+        actionAlert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.mediaTypes = ["public.movie"]
+            self.present(imagePicker, animated:true, completion: nil)
+        })) // give the second option in alert controller to open Photo library
+        
+        actionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil)) // give the third option in alert controller to cancel the form
+        
+        self.present(actionAlert, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        print("masuk")
+        if let videoURL = info[.mediaURL] as? URL {
+//            print("lebih")
+            picker.videoExportPreset = AVAssetExportPresetPassthrough
+            picker.dismiss(animated: true) {
+                self.selectedVideo = videoURL
+                print(videoURL)
+                self.uploadFilm(name: "test", email: "mnb@mnb", genre: "Pop", myVideo: videoURL)
+            }
+        }
+    }
+}
+

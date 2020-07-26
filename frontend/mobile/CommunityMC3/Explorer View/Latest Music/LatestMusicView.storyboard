@@ -38,6 +38,7 @@
                     <connections>
                         <outlet property="latestMusicTableView" destination="WuZ-Hn-2Mp" id="cUz-2f-W8y"/>
                         <segue destination="cPY-9Q-7sD" kind="show" identifier="trackPlayerSegue" id="ESA-h1-IDU"/>
+                        <segue destination="jRM-pd-Xge" kind="show" identifier="videoPlayerSegue" id="oCj-q9-kPT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uog-1c-t8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -53,6 +54,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUg-OM-uhn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1348" y="-137"/>
+        </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="6FC-7K-IHK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="jRM-pd-Xge" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4ys-We-xup"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mlm-r5-XFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1402" y="-45"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uR7-du-ID7">
