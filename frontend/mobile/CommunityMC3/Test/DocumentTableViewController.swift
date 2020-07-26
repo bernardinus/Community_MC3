@@ -132,7 +132,7 @@ class DocumentTableViewController: UITableViewController {
     func getUploadsFromCloudKit(tableView: UITableView, completionHandler: @escaping ([TrackDataStruct]) -> Void){
         var tracks = [TrackDataStruct]()
         // 1. tunjuk databasenya apa
-           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
            
            // 2. kita tentuin recordnya
            let predicate = NSPredicate(value: true)

@@ -11,6 +11,7 @@ import UIKit
 class FeaturedArtistCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var artistImageView: UIImageView!
+    var callBack: (() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

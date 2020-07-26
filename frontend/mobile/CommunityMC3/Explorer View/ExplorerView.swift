@@ -27,6 +27,7 @@ private enum TransitionType {
 
 class ExplorerView: UIViewController {
 
+    @IBOutlet weak var ExploreTitleLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var notificationsIconImage: UIImageView!
     
@@ -37,7 +38,8 @@ class ExplorerView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        ExploreTitleLabel.text = NSLocalizedString("Explore", comment: "")
+        
         
         // Do any additional setup after loading the view.
         
@@ -47,7 +49,9 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "LatestMusicCell", bundle:nil), forCellReuseIdentifier: "latestMusicCell")
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
-        
+        mainTableView.canCancelContentTouches = true
+//        mainTableView.delaysContentTouches = true;
+
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
             self.tracks = tracks
 //            print("count ", tracks.count)
@@ -61,6 +65,8 @@ class ExplorerView: UIViewController {
     @IBAction func accountButtonTouched(_ sender: Any)
     {
         self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+//        self.performSegue(withIdentifier: "test", sender: nil)
+//        self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
     }
     
     @IBAction func notificationButtonTouched(_ sender: Any)
@@ -88,18 +94,26 @@ class ExplorerView: UIViewController {
     
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Prepare Segue")
+        print("Prepare Segue \(segue.identifier)")
         if segue.identifier == "latestMusicSegue" {
 //            print("masuk ", tracks.count)
             let latestMusicPage = segue.destination as! LatestMusicVC
             latestMusicPage.tracks = tracks
         }
-        if segue.identifier == "trackPlayerSegue" {
+        else if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
                trackPlayerPage.track = tracks[selectedRow]
             }
         }
-        if segue.destination is SmallViewController {
+        else if segue.identifier == "loginScreenSegue"
+        {
+            let loginView = segue.destination as! LoginController
+            loginView.callBack = {
+                self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+                
+            }
+        }
+        else if segue.destination is SmallViewController {
             transitionType = .slide(fromDirection: .bottom)
             segue.destination.transitioningDelegate = self
             segue.destination.modalPresentationStyle = .custom
@@ -107,7 +121,7 @@ class ExplorerView: UIViewController {
         else
         {
             
-            navigationController?.setNavigationBarHidden(false, animated: false)
+//            navigationController?.setNavigationBarHidden(false, animated: false)
         }
     }
     
@@ -180,59 +194,50 @@ extension ExplorerView: BonsaiControllerDelegate {
 extension ExplorerView:UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Trending Now"
+            cell.HeaderName.text = NSLocalizedString("Trending Now", comment: "")
             cell.HeaderName.textColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
             cell.sectionBlock.backgroundColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
-            cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.seeMoreButton.setTitle(NSLocalizedString("See more >", comment: ""), for: .normal)
             cell.seeMoreButton.setTitleColor(UIColor.white, for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "trendingSegue", sender: nil)
             }
             cell.headerBackgroundView.layer.backgroundColor = #colorLiteral(red: 0.2784313725, green: 0, blue: 0.7843137255, alpha: 1)
-            return cell
         }
-        if(section == ExplorerSection.DiscoverNew.rawValue)
+        else if(section == ExplorerSection.DiscoverNew.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Discover New"
+            cell.HeaderName.text = NSLocalizedString("Discover New", comment: "")
             cell.seeMoreButton.isHidden = true
-            return cell
         }
-        if(section == ExplorerSection.LatestMusic.rawValue)
+        else if(section == ExplorerSection.LatestMusic.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Latest Music"
-            cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.HeaderName.text = NSLocalizedString("Latest Music", comment: "")
+            cell.seeMoreButton.setTitle(NSLocalizedString("See more >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "latestMusicSegue", sender: nil)
             }
-            return cell
         }
-        if(section == ExplorerSection.FeaturedArtist.rawValue)
+        else if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Featured Artist"
-            cell.seeMoreButton.setTitle("More artist >", for: .normal)
+            cell.HeaderName.text = NSLocalizedString("Featured Artist", comment: "")
+            cell.seeMoreButton.setTitle(NSLocalizedString("More artist >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "featuredArtistSegue", sender: nil)
             }
-            return cell
         }
-        if(section == ExplorerSection.FeaturedVideos.rawValue)
+        else if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Featured Videos"
-            cell.seeMoreButton.setTitle("More videos >", for: .normal)
+            cell.HeaderName.text = NSLocalizedString("Featured Videos", comment: "")
+            cell.seeMoreButton.setTitle(NSLocalizedString("More videos >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "featuredVideoSegue", sender: nil)
             }
-            return cell
         }
         
-        return mainTableView.dequeueReusableCell(withIdentifier: "headerCell")!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -303,6 +308,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
+            cell.callBack = {self.performSegue(withIdentifier: "artistPageSegue", sender: nil)}
+
             return cell
         }
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
@@ -355,6 +362,4 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
         }
     }
-
-    
 }

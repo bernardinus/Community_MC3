@@ -20,6 +20,15 @@ class DataManager
         return instance
     }
     
+    var selectedTrackData:TrackDataStruct? = nil
+    var selectedVideoData:VideosDataStruct? = nil
+    
+    var trendingNowList:[TrackDataStruct]? = nil
+    var latestList:[UploadedDataStruct]? = nil
+    var featuredArtistList:[UserDataStruct]? = nil
+    var featuredVideoLis:[VideosDataStruct]? = nil
+    
+    
     private init()
     {
         print("dataManager.init")
