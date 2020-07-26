@@ -73,7 +73,7 @@ class ExplorerView: UIViewController {
         documentController.getFilmsFromCloudKit { (videos) in
 //            self.videos = videos
             for video in videos {
-                var temp = UploadedDataStruct (
+                let temp = UploadedDataStruct (
                     uploadedDate: video.creationDate!,
                     video: VideosDataStruct (
                         genre: (video.value(forKey: "genre") as? String)!,
@@ -82,12 +82,13 @@ class ExplorerView: UIViewController {
                         fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
                     )
                 )
-                let tmp = self.videoController.retrieveVideo(video: temp.video)!
-                temp.video?.fileURL = tmp
+//                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+//                temp.video?.fileURL = tmp
                 self.uploads.append(temp)
             }
         }
-
+        
+//        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
         
     }
     
@@ -126,10 +127,12 @@ class ExplorerView: UIViewController {
         print("Prepare Segue")
         if segue.identifier == "latestMusicSegue" {
 //            print("masuk ", tracks.count)
-            let navPage = segue.destination as! UINavigationController
-            let latestMusicPage = navPage.topViewController as! LatestMusicVC
-            latestMusicPage.uploads = uploads
-            latestMusicPage.mainTableView = mainTableView
+//            let navPage = segue.destination as! UINavigationController
+//            let latestMusicPage = navPage.topViewController as! LatestMusicVC
+            if let latestMusicPage = segue.destination as? LatestMusicVC {
+                latestMusicPage.uploads = uploads
+                latestMusicPage.mainTableView = mainTableView
+            }
         }
         if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {

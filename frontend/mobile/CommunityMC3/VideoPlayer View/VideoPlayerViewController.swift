@@ -20,7 +20,7 @@ class VideoPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        video.fileURL = retrieveVideo(video: video)!
+        video.fileURL = retrieveVideo(video: video)!
         loadThumbnail()
     }
     
