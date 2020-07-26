@@ -16,11 +16,11 @@ class TrendingNowVC: UIViewController {
         trendingTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        super .viewWillDisappear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backItem?.title = ""        
     }
-    
     
 }
 

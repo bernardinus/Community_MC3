@@ -58,7 +58,8 @@ class RegisterController: UIViewController {
 //    }
     
     @IBAction func registerUser(_ sender: UIButton) {
-        registerToCloudKit()
+//        registerToCloudKit()
+        
     }
     
     func registerToCoreData() {

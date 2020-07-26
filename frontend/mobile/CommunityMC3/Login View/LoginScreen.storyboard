@@ -117,7 +117,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="chevron.left" catalog="system"/>
                                 <connections>
-                                    <segue destination="azw-hV-Y6n" kind="unwind" unwindAction="unwindToExplorerView:" id="syy-Ax-Wxj"/>
+                                    <segue destination="azw-hV-Y6n" kind="unwind" identifier="loggedInSegue" unwindAction="unwindToExplorerView:" id="syy-Ax-Wxj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -301,7 +301,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Already have account?"/>
                                         <connections>
-                                            <segue destination="FEU-WH-BwV" kind="unwind" unwindAction="unwindToLoginController:" id="7KZ-gi-Wyz"/>
+                                            <segue destination="FEU-WH-BwV" kind="unwind" identifier="loggedInSegue" unwindAction="unwindToLoginController:" id="7KZ-gi-Wyz"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign up or register to see the latest highlights " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMi-Ej-n4Z">
@@ -325,6 +325,7 @@
                         <outlet property="emailField" destination="vHh-7t-rpg" id="xLM-4s-Cc2"/>
                         <outlet property="passwordField" destination="p8P-ZD-Ud5" id="aon-pb-ibK"/>
                         <segue destination="1fn-f7-sA2" kind="presentation" identifier="registerMain" modalPresentationStyle="fullScreen" id="f0o-3Q-oSI"/>
+                        <segue destination="FEU-WH-BwV" kind="unwind" unwindAction="unwindToExplorerView:" id="Xms-Lv-iQk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vc-dB-hbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -334,7 +335,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f0o-3Q-oSI"/>
+        <segue reference="xN3-fS-K2l"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple" width="975" height="150"/>

@@ -14,6 +14,7 @@ class SelectFileView: UIViewController
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var selectFileTitleLabel: UILabel!
     
     var fileList:[URL] = []
     
@@ -28,8 +29,10 @@ class SelectFileView: UIViewController
         tableView.dataSource = self
         tableView.register(UINib(nibName: "SelectViewCell", bundle:nil), forCellReuseIdentifier: "selectViewCell")
         
-        fileList = FileManagers.getFileList()
+        fileList = FileManagers.getAvailableAudioFiles()
         filteredList = fileList
+        
+        selectFileTitleLabel.text = NSLocalizedString("Select File", comment: "")
         
     }
     
@@ -89,8 +92,6 @@ extension SelectFileView:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        
-        // move to upload page for edit data
-        
+        performSegue(withIdentifier: "uploadFileSegue", sender:nil)
     }
 }

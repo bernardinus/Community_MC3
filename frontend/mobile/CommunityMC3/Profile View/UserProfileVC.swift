@@ -10,10 +10,56 @@ import UIKit
 
 class UserProfileVC: UIViewController {
 
+    var userData:UserDataStruct?
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    
+    var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupActionSheet()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupActionSheet()
+    {
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .default)
+        actionSheet.addAction(signOutAction)
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default, handler: { action in
+            self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
+        })
+        actionSheet.addAction(editAction)
+        
+        let shareAction = UIAlertAction(title: "Share", style: .default)
+        actionSheet.addAction(shareAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        actionSheet.addAction(cancelAction)
+    }
+    
+    @objc func returnToExplorerView()
+    {
+        performSegue(withIdentifier: "unwindFromUserProfile", sender: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.isTranslucent = false
+        print("transparent \(navigationController?.navigationBar.isTranslucent)")
+        super.viewWillAppear(animated)
+//        let navigationBar = navigationController?.navigationBar
+//        let navigationBarAppearence = UINavigationBarAppearance()
+//        navigationBarAppearence.shadowColor = .clear
+//        navigationBar?.scrollEdgeAppearance = navigationBarAppearence
+//        navigationItem.rightBarButtonItems![0].setBackgroundImage(nil, for: .disabled, barMetrics: .default)
+//
+        
+    }
+    
+    @IBAction func menuButtonTouched(_ sender: Any) {
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
 
@@ -27,4 +73,10 @@ class UserProfileVC: UIViewController {
     }
     */
 
+}
+
+
+extension UserProfileVC : UIActionSheetDelegate
+{
+    
 }

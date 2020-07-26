@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-790" y="0.0"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MainTabController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="j6s-DN-iP1"/>
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

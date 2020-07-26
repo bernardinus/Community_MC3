@@ -21,6 +21,12 @@ class LatestMusicVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backItem?.title = ""
+    }
+    
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trackPlayerSegue" {
@@ -29,13 +35,6 @@ class LatestMusicVC: UIViewController {
             }
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        super .viewWillDisappear(animated)
-    }
-
 
 }
 
