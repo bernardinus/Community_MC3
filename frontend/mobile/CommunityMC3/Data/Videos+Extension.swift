@@ -14,6 +14,8 @@ struct VideosDataStruct
     // normal param
     var genre:String
     var name:String
+    var email:String
+    var fileURL: URL
     
     // asset
     var videoData:AVPlayer?

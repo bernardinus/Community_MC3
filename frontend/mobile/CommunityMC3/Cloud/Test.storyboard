@@ -69,9 +69,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Documents" id="WhV-EA-EVv">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="hmx-ei-gLA"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="hmx-ei-gLA">
+                            <connections>
+                                <action selector="uploadVideo:" destination="iPe-jw-md4" id="zmC-iO-7dm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="uploadButton" destination="hmx-ei-gLA" id="jhx-kw-Bnt"/>
                         <segue destination="TrF-GM-zwg" kind="show" identifier="uploadTest" id="sdF-hV-QcD"/>
                     </connections>
                 </tableViewController>

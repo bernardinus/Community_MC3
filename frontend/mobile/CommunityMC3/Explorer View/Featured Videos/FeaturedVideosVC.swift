@@ -16,6 +16,13 @@ class FeaturedVideosVC: UIViewController {
         super.viewDidLoad()
         featuredVideoTableView.register(UINib(nibName: "FeaturedVideosCell", bundle: nil), forCellReuseIdentifier: "featuredVideosCell")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backItem?.title = ""
+
+    }
 }
 
 extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource

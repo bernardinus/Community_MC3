@@ -6,12 +6,31 @@
   Copyright © 2020 Apple Developer Academy. All rights reserved.
 */
 
+
+
+// Common
+
+// Tab Bar
+"TAB_Explore" = "Jelajahi";
+"TAB_Search" = "Pencarian";
+"TAB_Favourites" = "Favourites";
+
+// Explore View
 "Explore" = "Jelajahi";
+"Trending Now" = "Tren Saat Ini";
+"See more >" = "Lihat lainnya >";
+"Discover New" = "Temukan Yang Baru";
+"Latest Music" = "Musik Terbaru";
+"Featured Artist" = "Artis Unggulan";
+"More artist >" = "Artis lainnya >";
+"Featured Videos" = "Video Unggulan";
+"More videos >" = "Video lainnya >";
+
+
 "Highlights" = "Terkini";
 "Show all" = "Lihat Semua";
 "New Comer" = "Terbaru";
 "Latest Video" = "Video Terbaru";
-"Search" = "Pencarian";
 "Activity" = "Aktivitas";
 "Profile" = "Profil";
 
@@ -21,9 +40,6 @@
 "new audio" = "musik baru";
 "new video" = "video baru";
 
-"Trending Now" = "Tren Saat ini";
-"Latest Music" = "Musik Terbaru";
-"Featured Artist" = "Artis Unggulan";
 "Guitarist" = "Gitaris";
 "Vocalist" = "Vokalis";
 "Violin" = "Pemain Biola";
@@ -61,5 +77,6 @@
 "Cancel" = "Batalkan";
 "Save" = "Simpan";
 
-
+// Select File View
+"Select File" = "Pilih File";
 

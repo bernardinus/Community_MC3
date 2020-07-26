@@ -15,6 +15,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var wrongLabel: UILabel!
+    var callBack: (() -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +47,16 @@ class LoginController: UIViewController {
     }
     
     @IBAction func loginUser(_ sender: UIButton) {
-        switch sender {
-        case loginButton:
-            loginToCloudKit()
-        default:
-            return
-        }
+//        switch sender {
+//        case loginButton:
+//            loginToCloudKit()
+//        default:
+//            return
+//        }
+        
+        
+        callBack!()
+        
     }
     
     func loginToCoreData() {

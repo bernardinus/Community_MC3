@@ -120,7 +120,7 @@
                                                         </state>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-xh-P11">
                                                 <rect key="frame" x="101" y="683" width="195" height="50"/>
@@ -145,6 +145,7 @@
                         <outlet property="genreCollectionView" destination="mWC-r8-qca" id="QME-Ec-bld"/>
                         <outlet property="innerCircleEffectImage" destination="d27-aA-8pO" id="Xl3-iq-d1D"/>
                         <outlet property="musicAndVideoTableView" destination="UG2-sU-rQR" id="nWX-OP-ORm"/>
+                        <outlet property="nextButton" destination="Tls-xh-P11" id="zzx-tv-xhy"/>
                         <outlet property="outerCircleEffectImage" destination="qrt-gu-NSE" id="UaS-52-J0R"/>
                         <outlet property="popUpContentView" destination="XkF-gC-F2C" id="U7E-Vy-UXe"/>
                         <outlet property="popUpView" destination="zoM-h3-Xtb" id="mek-Vu-W4K"/>
@@ -269,9 +270,6 @@
         <image name="Effect Circle" width="250" height="250"/>
         <image name="Mask Group" width="720" height="720"/>
         <image name="Outer Effect" width="250" height="250"/>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
