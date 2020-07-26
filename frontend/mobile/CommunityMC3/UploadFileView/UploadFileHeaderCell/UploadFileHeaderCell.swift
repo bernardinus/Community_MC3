@@ -1,21 +1,15 @@
 //
-//  MusicListCell.swift
+//  UploadFileHeaderCell.swift
 //  CommunityMC3
 //
-//  Created by Rommy Julius Dwidharma on 24/07/20.
+//  Created by Bernardinus on 27/07/20.
 //  Copyright © 2020 Apple Developer Academy. All rights reserved.
 //
 
 import UIKit
 
-class MusicListCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var trackTitle: UILabel!
-    @IBOutlet weak var trackArtist: UILabel!
-    @IBOutlet weak var trackCurrent: UILabel!
-    @IBOutlet weak var playButton: UIButton!
-    
+class UploadFileHeaderCell: UITableViewCell {
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +19,12 @@ class MusicListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    static let identifier = "uploadFileHeaderCell"
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "uploadFileHeaderCell", bundle: nil)
     }
     
 }

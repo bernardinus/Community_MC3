@@ -38,6 +38,17 @@ class EditRandomizerViewController: UIViewController {
         applyButton.layer.cornerRadius = 5
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationSegue = segue.destination as? RandomSpotlightViewController {
+            for i in sortByTemp{
+                destinationSegue.musicFilter.append(sortByArray[i])
+            }
+            for i in genreTemp{
+                destinationSegue.genreFilter.append(genreArray[i])
+            }
+        }
+    }
+    
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

@@ -9,27 +9,27 @@
 import UIKit
 
 class descTitleTableViewCell: UITableViewCell {
-
+    
     static let identifier = "descTitleTableViewCell"
-            
-            static func nib() -> UINib {
-                return UINib(nibName: "descTitleTableViewCell", bundle: nil)
-            }
-            
-            public func configure (with title: String, imageName: String) {
-                descTitleLabel.text = title
-            }
-            
-      @IBOutlet var descTitleLabel: UILabel!
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "descTitleTableViewCell", bundle: nil)
+    }
+    
+    public func configure (with title: String, imageName: String) {
+        descTitleLabel.text = title
+    }
+    
+    @IBOutlet var descTitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

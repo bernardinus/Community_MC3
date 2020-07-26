@@ -8,9 +8,12 @@
 
 import UIKit
 
-class FeaturedArtistCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class FeaturedArtistCell: UITableViewCell
+{
 
-    @IBOutlet weak var featuredArtistsCollectionCell: UICollectionView!
+    @IBOutlet weak var featuredArtistsCollectionCell: UICollectionView!    
+    var callBack: (() -> Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -24,7 +27,10 @@ class FeaturedArtistCell: UITableViewCell, UICollectionViewDelegate, UICollectio
 
         // Configure the view for the selected state
     }
-    
+}
+
+extension FeaturedArtistCell : UICollectionViewDelegate, UICollectionViewDataSource
+{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -35,5 +41,7 @@ class FeaturedArtistCell: UITableViewCell, UICollectionViewDelegate, UICollectio
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        callBack!()
+    }
 }

@@ -19,6 +19,11 @@ struct PhotoDataStruct
     var name: String
 }
 
+struct ProfilePictureDataStruct {
+    var fileURL: URL
+    var email: String
+}
+
 /*
 extension Photos
 {
