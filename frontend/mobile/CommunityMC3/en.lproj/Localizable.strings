@@ -6,11 +6,26 @@
   Copyright © 2020 Apple Developer Academy. All rights reserved.
 */
 
+// Tab Bar
+"TAB_Explore" = "Explore";
+"TAB_Search" = "Search";
+"TAB_Favourites" = "Favourites";
+
+// Explore View
 "Explore" = "Explore";
+"Trending Now" = "Trending Now";
+"See more >" = "See more >";
+"Discover New" = "Discover New";
+"Latest Music" = "Latest Music";
+"Featured Artist" = "Featured Artist";
+"More artist >" = "More Artist >";
+"Featured Videos" = "Featured Video";
+"More videos >" = "More videos >";
+
+
 "Highlights" = "Highlights";
 "Show all" = "Show all";
 "New Comer" = "New Comer";
-"Latest Video" = "Latest Video";
 "Search" = "Search";
 "Activity" = "Activity";
 "Profile" = "Profile";
@@ -21,9 +36,6 @@
 "new audio" = "new audio";
 "new video" = "new video";
 
-"Trending Now" = "Trending Now";
-"Latest Music" = "Latest Music";
-"Featured Artist" = "Featured Artist";
 "Guitarist" = "Guitarist";
 "Vocalist" = "Vocalist";
 "Violin" = "Violin";
@@ -60,3 +72,7 @@
 "Are you sure want to sign out?" = "Are you sure want to sign out?";
 "Cancel" = "Cancel";
 "Save" = "Save";
+
+// Select File View
+"Select File" = "Select File";
+

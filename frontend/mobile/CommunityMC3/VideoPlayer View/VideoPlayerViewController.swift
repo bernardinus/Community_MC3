@@ -13,19 +13,45 @@ class VideoPlayerViewController: UIViewController {
 
     @IBOutlet weak var videoThumbnailImageView: UIImageView!
     
+    static let shared = VideoPlayerViewController()
+    
+    var video: VideosDataStruct!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        video.fileURL = retrieveVideo(video: video)!
         loadThumbnail()
     }
     
+    func retrieveVideo(video: VideosDataStruct?) -> URL? {
+        if video != nil {
+            let videoURL = video!.fileURL
+            let videoData = NSData(contentsOf: videoURL as URL)
+
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let destinationPath = NSURL(fileURLWithPath: documentsPath).appendingPathComponent(video!.name + ".mov", isDirectory: false) //This is where I messed up.
+
+            FileManager.default.createFile(atPath: (destinationPath?.path)!, contents:videoData as Data?, attributes:nil)
+
+            return destinationPath!
+        }
+        return video?.fileURL
+    }
+    
     func loadThumbnail() {
-        let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
-        let urls = URL(fileURLWithPath: videoUrl!)
+        
+        let urls: URL?
+        
+        if video != nil {
+            urls = video.fileURL
+        }else {
+            let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
+            urls = URL(fileURLWithPath: videoUrl!)
+        }
         
         //insert generateThumbnail function to imageView
-        self.videoThumbnailImageView.image = generateThumbnail(path: urls)
+        self.videoThumbnailImageView.image = generateThumbnail(path: urls!)
 
     }
     
@@ -46,15 +72,25 @@ class VideoPlayerViewController: UIViewController {
 
     
     @IBAction func playVideoButtonAction(_ sender: UIButton) {
-        if let urlString = Bundle.main.path(forResource: " ", ofType: "mp4"){
-            let video = AVPlayer(url: URL(fileURLWithPath: urlString))
+        let video:AVPlayer?
+        
+        if self.video != nil {
+            let urls = self.video.fileURL
+            video = AVPlayer(url: urls)
+        }else {
+            if let urlString = Bundle.main.path(forResource: " ", ofType: "mp4"){
+                video = AVPlayer(url: URL(fileURLWithPath: urlString))
+            }else{
+                video = nil
+            }
+        }
+        if video != nil {
             let videoPlayer = AVPlayerViewController()
-            videoPlayer.player = video
+            videoPlayer.player = video!
             
             //enter video player mode
             self.present(videoPlayer, animated: true, completion: {
-                video.play()
-                
+                video!.play()
             })
         }
     }

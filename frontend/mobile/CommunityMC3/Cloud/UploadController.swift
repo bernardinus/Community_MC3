@@ -14,6 +14,8 @@ import MediaPlayer
 class UploadController: UIViewController {
     var document: String!
     
+    static let shared = UploadController()
+    
     @IBOutlet weak var testButton: UIButton!
     
     override func viewDidLoad() {
@@ -27,6 +29,112 @@ class UploadController: UIViewController {
     
     @IBAction func uploadNow(_ sender: UIButton) {
         openMediaPlayer()
+    }
+    
+    func downloadVideo(id: CKRecord.ID) {
+
+        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.fetch(withRecordID: id) { (results, error) -> Void in
+
+//            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            DispatchQueue.main.async {
+                if error != nil {
+
+                        print(" Error Fetching Record  " + error!.localizedDescription)
+                } else {
+                    if results != nil {
+                        print("pulled record")
+
+                        let record = results as CKRecord?
+                        let videoFile = record!.value(forKey: "video") as! CKAsset
+
+                        var videoURL = videoFile.fileURL as NSURL?
+                        let videoData = NSData(contentsOf: videoURL! as URL)
+
+                        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+                        let destinationPath = NSURL(fileURLWithPath: documentsPath).appendingPathComponent("filename.mov", isDirectory: false) //This is where I messed up.
+
+                        FileManager.default.createFile(atPath: (destinationPath?.path)!, contents:videoData as Data?, attributes:nil)
+
+                        videoURL = destinationPath as NSURL?
+
+//                        let videoAsset = AVURLAsset(url: videoURL! as URL)
+//                        self.playVideo()
+
+                    } else {
+                        print("results Empty")
+                    }
+                }
+            }
+        }
+    }
+    
+    func uploadPhoto(email: String, myImage: UIImage) {
+        let photoRecord = CKRecord(recordType: "Photos")
+        photoRecord["email"] = email as CKRecordValue
+
+        
+        let data = myImage.pngData(); // UIImage -> NSData, see also UIImageJPEGRepresentation
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+        do {
+            try data!.write(to: url!, options: [])
+        } catch let e as NSError {
+            print("Error! \(e)");
+            return
+        }
+        photoRecord["fileData"] = CKAsset(fileURL: url!)
+
+        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(photoRecord) { record, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    // Delete the temporary file
+                    do { try FileManager.default.removeItem(at: url!) }
+                    catch let e { print("Error deleting temp file: \(e)") }
+                    print("Done!")
+                }
+            }
+        }
+    }
+    
+    func getPhotosFromCloudKit(completionHandler: @escaping ([ProfilePictureDataStruct]) -> Void) {
+        var photos = [ProfilePictureDataStruct]()
+        // 1. tunjuk databasenya apa
+           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           
+           // 2. kita tentuin recordnya
+           let predicate = NSPredicate(value: true)
+           let query = CKQuery(recordType: "Photos", predicate: predicate)
+           
+           // 3. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
+               
+               if let err = error {
+                   print(err.localizedDescription)
+               }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                for record in fetchedRecords {
+//                    let temp = Upload()
+//                    let temp = TrackDataClass()
+                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
+                    let temp = ProfilePictureDataStruct(
+                        fileURL: asset.fileURL!,
+                        email: (record.value(forKey: "email") as? String)!
+                    )
+//                    temp.audioData = try AVAudioPlayer(contentsOf: asset.fileURL)
+                    
+//                    temp.name = record.value(forKey: "name") as? String
+//                    temp.recordID = record.recordID
+                    photos.append(temp)
+//                    self.uploads.append(temp)
+                }
+                completionHandler(photos)
+               }
+           }
+//            print("panjang ", tracks.count)
     }
     
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import BonsaiController
+import CloudKit
 
 enum ExplorerSection:Int {
     case TrendingNow = 0
@@ -27,17 +28,22 @@ private enum TransitionType {
 
 class ExplorerView: UIViewController {
 
+    @IBOutlet weak var ExploreTitleLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var notificationsIconImage: UIImageView!
     
     let documentController = DocumentTableViewController.shared
-    var tracks = [TrackDataStruct]()
+    let videoController = VideoPlayerViewController.shared
+//    var tracks = [TrackDataStruct]()
+//    var videos = [VideosDataStruct]()
+    var uploads = [UploadedDataStruct]()
     var selectedRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        ExploreTitleLabel.text = NSLocalizedString("Explore", comment: "")
+        
         
         // Do any additional setup after loading the view.
         
@@ -47,12 +53,46 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "LatestMusicCell", bundle:nil), forCellReuseIdentifier: "latestMusicCell")
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
-        
+        mainTableView.canCancelContentTouches = true
+//        mainTableView.delaysContentTouches = true;
+
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
-            self.tracks = tracks
+//            self.tracks = tracks
+            for track in tracks {
+                let temp = UploadedDataStruct (
+                    uploadedDate: track.creationDate!,
+                    track: TrackDataStruct (
+                        genre: (track.value(forKey: "genre") as? String)!,
+                        name: (track.value(forKey: "name") as? String)!,
+                        recordID: track.recordID,
+                        email: (track.value(forKey: "email") as? String)!,
+                        fileURL: (track.value(forKey: "fileData") as? CKAsset)!.fileURL!
+                    )
+                )
+                self.uploads.append(temp)
+            }
 //            print("count ", tracks.count)
         }
-
+        
+        documentController.getFilmsFromCloudKit { (videos) in
+//            self.videos = videos
+            for video in videos {
+                let temp = UploadedDataStruct (
+                    uploadedDate: video.creationDate!,
+                    video: VideosDataStruct (
+                        genre: (video.value(forKey: "genre") as? String)!,
+                        name: (video.value(forKey: "name") as? String)!,
+                        email: (video.value(forKey: "email") as? String)!,
+                        fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
+                    )
+                )
+//                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+//                temp.video?.fileURL = tmp
+                self.uploads.append(temp)
+            }
+        }
+        
+//        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
         
     }
     
@@ -61,6 +101,8 @@ class ExplorerView: UIViewController {
     @IBAction func accountButtonTouched(_ sender: Any)
     {
         self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+//        self.performSegue(withIdentifier: "test", sender: nil)
+//        self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
     }
     
     @IBAction func notificationButtonTouched(_ sender: Any)
@@ -88,18 +130,35 @@ class ExplorerView: UIViewController {
     
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Prepare Segue")
+        print("Prepare Segue \(segue.identifier)")
         if segue.identifier == "latestMusicSegue" {
 //            print("masuk ", tracks.count)
-            let latestMusicPage = segue.destination as! LatestMusicVC
-            latestMusicPage.tracks = tracks
-        }
-        if segue.identifier == "trackPlayerSegue" {
-            if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
-               trackPlayerPage.track = tracks[selectedRow]
+//            let navPage = segue.destination as! UINavigationController
+//            let latestMusicPage = navPage.topViewController as! LatestMusicVC
+            if let latestMusicPage = segue.destination as? LatestMusicVC {
+                latestMusicPage.uploads = uploads
+                latestMusicPage.mainTableView = mainTableView
             }
         }
-        if segue.destination is SmallViewController {
+        else if segue.identifier == "trackPlayerSegue" {
+            if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
+                trackPlayerPage.track = uploads[selectedRow].track
+            }
+        }
+        if segue.identifier == "videoPlayerSegue" {
+            if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
+                videoPlayerPage.video = uploads[selectedRow].video
+            }
+        }
+        else if segue.identifier == "loginScreenSegue"
+        {
+            let loginView = segue.destination as! LoginController
+            loginView.callBack = {
+                self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+                
+            }
+        }
+        else if segue.destination is SmallViewController {
             transitionType = .slide(fromDirection: .bottom)
             segue.destination.transitioningDelegate = self
             segue.destination.modalPresentationStyle = .custom
@@ -107,7 +166,7 @@ class ExplorerView: UIViewController {
         else
         {
             
-            navigationController?.setNavigationBarHidden(false, animated: false)
+//            navigationController?.setNavigationBarHidden(false, animated: false)
         }
     }
     
@@ -180,59 +239,50 @@ extension ExplorerView: BonsaiControllerDelegate {
 extension ExplorerView:UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Trending Now"
+            cell.HeaderName.text = NSLocalizedString("Trending Now", comment: "")
             cell.HeaderName.textColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
             cell.sectionBlock.backgroundColor = #colorLiteral(red: 1, green: 0.8352941176, blue: 0.2509803922, alpha: 1)
-            cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.seeMoreButton.setTitle(NSLocalizedString("See more >", comment: ""), for: .normal)
             cell.seeMoreButton.setTitleColor(UIColor.white, for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "trendingSegue", sender: nil)
             }
             cell.headerBackgroundView.layer.backgroundColor = #colorLiteral(red: 0.2784313725, green: 0, blue: 0.7843137255, alpha: 1)
-            return cell
         }
-        if(section == ExplorerSection.DiscoverNew.rawValue)
+        else if(section == ExplorerSection.DiscoverNew.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Discover New"
+            cell.HeaderName.text = NSLocalizedString("Discover New", comment: "")
             cell.seeMoreButton.isHidden = true
-            return cell
         }
-        if(section == ExplorerSection.LatestMusic.rawValue)
+        else if(section == ExplorerSection.LatestMusic.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Latest Music"
-            cell.seeMoreButton.setTitle("See more >", for: .normal)
+            cell.HeaderName.text = NSLocalizedString("Latest Music", comment: "")
+            cell.seeMoreButton.setTitle(NSLocalizedString("See more >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "latestMusicSegue", sender: nil)
             }
-            return cell
         }
-        if(section == ExplorerSection.FeaturedArtist.rawValue)
+        else if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Featured Artist"
-            cell.seeMoreButton.setTitle("More artist >", for: .normal)
+            cell.HeaderName.text = NSLocalizedString("Featured Artist", comment: "")
+            cell.seeMoreButton.setTitle(NSLocalizedString("More artist >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "featuredArtistSegue", sender: nil)
             }
-            return cell
         }
-        if(section == ExplorerSection.FeaturedVideos.rawValue)
+        else if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            let cell = mainTableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderCell
-            cell.HeaderName.text = "Featured Videos"
-            cell.seeMoreButton.setTitle("More videos >", for: .normal)
+            cell.HeaderName.text = NSLocalizedString("Featured Videos", comment: "")
+            cell.seeMoreButton.setTitle(NSLocalizedString("More videos >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "featuredVideoSegue", sender: nil)
             }
-            return cell
         }
         
-        return mainTableView.dequeueReusableCell(withIdentifier: "headerCell")!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -256,7 +306,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
 //            return 3 // Latest Music
 //            print("hitung ", tracks.count)
-            return tracks.count
+            return uploads.count
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
@@ -286,23 +336,32 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
-            cell.trackTitleLabel.text = tracks[indexPath.row].name
-            cell.artistNameLabel.text = tracks[indexPath.row].email
-            cell.track = tracks[indexPath.row]
             cell.mainTableView = mainTableView
-//            print("masuk ", cell.player)
-            if cell.player {
-//                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
-                cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            }else{
-//                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
-                cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            cell.upload = uploads[indexPath.row]
+            if uploads[indexPath.row].track != nil {
+                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
+                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
+    //            print("masuk ", cell.player)
+                if cell.player {
+    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                    cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                }else{
+    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                    cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                }
+            }
+            if uploads[indexPath.row].video != nil {
+                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
+                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
+//                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
             }
             return cell
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
+            cell.callBack = {self.performSegue(withIdentifier: "artistPageSegue", sender: nil)}
+
             return cell
         }
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
@@ -346,7 +405,12 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             selectedRow = indexPath.row
-            self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+            if uploads[selectedRow].video != nil {
+                self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
+            }
+            if uploads[selectedRow].track != nil {
+                self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+            }
         }
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
@@ -355,6 +419,4 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
         }
     }
-
-    
 }

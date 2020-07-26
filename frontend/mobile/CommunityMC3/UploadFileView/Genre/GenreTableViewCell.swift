@@ -9,29 +9,29 @@
 import UIKit
 
 class GenreTableViewCell: UITableViewCell {
-
+    
     static let identifier = "GenreTableViewCell"
-       
-       static func nib() -> UINib {
-           return UINib(nibName: "GenreTableViewCell", bundle: nil)
-       }
-       
-       public func configure (with label: String, title: String) {
-          genreLabel.text = label
-          //genreTextField.text = title
-       }
-       
-       @IBOutlet var genreLabel: UILabel!
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "GenreTableViewCell", bundle: nil)
+    }
+    
+    public func configure (with label: String, title: String) {
+        genreLabel.text = label
+        //genreTextField.text = title
+    }
+    
+    @IBOutlet var genreLabel: UILabel!
     //@IBOutlet var genreTextField: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
