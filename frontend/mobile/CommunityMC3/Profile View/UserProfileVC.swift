@@ -11,6 +11,9 @@ import SwipeMenuViewController
 
 class UserProfileVC: UIViewController {
 
+    @IBOutlet weak var viewContainer: UIView!
+    @IBOutlet weak var firstTabButton: UIButton!
+    @IBOutlet weak var secondTabButton: UIButton!
     var userData:UserDataStruct?
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -74,18 +77,11 @@ class UserProfileVC: UIViewController {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
- }
- */
+    @IBAction func firstPageTapped(_ sender: Any) {
+    }
     
-    
+    @IBAction func secondPageTapped(_ sender: Any) {
+    }
 }
 
 
