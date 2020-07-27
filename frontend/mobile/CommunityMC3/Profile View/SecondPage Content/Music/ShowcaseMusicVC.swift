@@ -1,5 +1,5 @@
 //
-//  ShowcaseVideosVC.swift
+//  ShowcaseMusicVC.swift
 //  CommunityMC3
 //
 //  Created by Theofani on 27/07/20.

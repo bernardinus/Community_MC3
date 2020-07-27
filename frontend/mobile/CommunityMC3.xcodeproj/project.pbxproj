@@ -106,10 +106,10 @@
 		B786386E24CEECA400952CF3 /* ShowcaseMusicView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B786386D24CEECA400952CF3 /* ShowcaseMusicView.storyboard */; };
 		B786387024CEECC300952CF3 /* ShowcaseVideosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786386F24CEECC300952CF3 /* ShowcaseVideosVC.swift */; };
 		B786387224CEECD500952CF3 /* ShowcasePhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786387124CEECD500952CF3 /* ShowcasePhotosVC.swift */; };
-		B786387424CEECE300952CF3 /* ShowcaseMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786387324CEECE300952CF3 /* ShowcaseMusicVC.swift */; };
 		B7C7302124CE922C00B922B8 /* CarouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C7302024CE922C00B922B8 /* CarouselItem.xib */; };
 		B7C7302524CE937300B922B8 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C7302424CE937300B922B8 /* CarouselItem.swift */; };
 		B7C7302724CE944700B922B8 /* CarouselPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */; };
+		B7D4B86324CEFEDB00FD30B2 /* ShowcaseMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D4B86224CEFEDB00FD30B2 /* ShowcaseMusicVC.swift */; };
 		B7DAF5DB24C6919D00FC6EFB /* DiscoverNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DAF5D924C6919D00FC6EFB /* DiscoverNewCell.swift */; };
 		B7DAF5DC24C6919D00FC6EFB /* DiscoverNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7DAF5DA24C6919D00FC6EFB /* DiscoverNewCell.xib */; };
 		B7DAF5DF24C698B400FC6EFB /* LatestMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DAF5DD24C698B400FC6EFB /* LatestMusicCell.swift */; };
@@ -275,10 +275,10 @@
 		B786386D24CEECA400952CF3 /* ShowcaseMusicView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowcaseMusicView.storyboard; sourceTree = "<group>"; };
 		B786386F24CEECC300952CF3 /* ShowcaseVideosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseVideosVC.swift; sourceTree = "<group>"; };
 		B786387124CEECD500952CF3 /* ShowcasePhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcasePhotosVC.swift; sourceTree = "<group>"; };
-		B786387324CEECE300952CF3 /* ShowcaseMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseMusicVC.swift; sourceTree = "<group>"; };
 		B7C7302024CE922C00B922B8 /* CarouselItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselItem.xib; sourceTree = "<group>"; };
 		B7C7302424CE937300B922B8 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
 		B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselPageViewController.swift; sourceTree = "<group>"; };
+		B7D4B86224CEFEDB00FD30B2 /* ShowcaseMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseMusicVC.swift; sourceTree = "<group>"; };
 		B7DAF5D924C6919D00FC6EFB /* DiscoverNewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNewCell.swift; sourceTree = "<group>"; };
 		B7DAF5DA24C6919D00FC6EFB /* DiscoverNewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverNewCell.xib; sourceTree = "<group>"; };
 		B7DAF5DD24C698B400FC6EFB /* LatestMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMusicCell.swift; sourceTree = "<group>"; };
@@ -690,7 +690,7 @@
 				B786385924CEEB8700952CF3 /* MusicTableViewCell.swift */,
 				B786385A24CEEB8700952CF3 /* MusicTableViewCell.xib */,
 				B786386D24CEECA400952CF3 /* ShowcaseMusicView.storyboard */,
-				B786387324CEECE300952CF3 /* ShowcaseMusicVC.swift */,
+				B7D4B86224CEFEDB00FD30B2 /* ShowcaseMusicVC.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -1157,9 +1157,9 @@
 				A134D29E24C8EA41009A054F /* FileManager.swift in Sources */,
 				B786385124CEC30A00952CF3 /* SecondPageVC.swift in Sources */,
 				A11A9FE724C94A58008D7867 /* albumListTableViewCell.swift in Sources */,
-				B786387424CEECE300952CF3 /* ShowcaseMusicVC.swift in Sources */,
 				A1689D3924C7D67700A49732 /* AlertViewHelper.swift in Sources */,
 				EA4A31C824CAB075003DCDA4 /* HeaderCellRandomSpotlight.swift in Sources */,
+				B7D4B86324CEFEDB00FD30B2 /* ShowcaseMusicVC.swift in Sources */,
 				B786387224CEECD500952CF3 /* ShowcasePhotosVC.swift in Sources */,
 				A1689D3724C7B5F200A49732 /* DataManager.swift in Sources */,
 				A134D2A024C907B4009A054F /* Featured+Extension.swift in Sources */,
