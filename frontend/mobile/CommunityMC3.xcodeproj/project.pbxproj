@@ -77,6 +77,8 @@
 		A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3FFED24C6A84500CA2228 /* Test.storyboard */; };
 		A1E76E3E24CE1ADD00D9415B /* UploadFileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76E3C24CE1ADC00D9415B /* UploadFileHeaderCell.swift */; };
 		A1E76E3F24CE1ADD00D9415B /* UploadFileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E76E3D24CE1ADD00D9415B /* UploadFileHeaderCell.xib */; };
+		B723BEE024CC371700099E4D /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B723BEDF24CC371700099E4D /* CustomViewController.swift */; };
+		B723BEE224CC386900099E4D /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B723BEE124CC386900099E4D /* ContentViewController.swift */; };
 		B733E7F624CA7B3700460E23 /* UserProfileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B733E7F524CA7B3700460E23 /* UserProfileView.storyboard */; };
 		B733E7F824CA7B6100460E23 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733E7F724CA7B6100460E23 /* UserProfileVC.swift */; };
 		B73C835F24C7F89C0047B4EC /* FeaturedArtistView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73C835E24C7F89C0047B4EC /* FeaturedArtistView.storyboard */; };
@@ -227,6 +229,8 @@
 		A1E3FFED24C6A84500CA2228 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		A1E76E3C24CE1ADC00D9415B /* UploadFileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileHeaderCell.swift; sourceTree = "<group>"; };
 		A1E76E3D24CE1ADD00D9415B /* UploadFileHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadFileHeaderCell.xib; sourceTree = "<group>"; };
+		B723BEDF24CC371700099E4D /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		B723BEE124CC386900099E4D /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		B733E7F524CA7B3700460E23 /* UserProfileView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfileView.storyboard; sourceTree = "<group>"; };
 		B733E7F724CA7B6100460E23 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		B73C835E24C7F89C0047B4EC /* FeaturedArtistView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeaturedArtistView.storyboard; sourceTree = "<group>"; };
@@ -605,6 +609,8 @@
 			children = (
 				B733E7F524CA7B3700460E23 /* UserProfileView.storyboard */,
 				B733E7F724CA7B6100460E23 /* UserProfileVC.swift */,
+				B723BEDF24CC371700099E4D /* CustomViewController.swift */,
+				B723BEE124CC386900099E4D /* ContentViewController.swift */,
 			);
 			path = "Profile View";
 			sourceTree = "<group>";
@@ -1021,6 +1027,7 @@
 				A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */,
 				A1689CEB24C7A6D300A49732 /* SelectFileView.swift in Sources */,
 				B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */,
+				B723BEE024CC371700099E4D /* CustomViewController.swift in Sources */,
 				EA69015824C93F2600D8EBD2 /* SortByCollectionViewCell.swift in Sources */,
 				A134D2AF24C91BDB009A054F /* Videos+Extension.swift in Sources */,
 				A15C4D2224C5367400ED0C0E /* TrendingNowCell.swift in Sources */,
@@ -1037,6 +1044,7 @@
 				B73C836524C7F8CC0047B4EC /* FeaturedVideosVC.swift in Sources */,
 				A11A9FEC24C94A58008D7867 /* GenreTableViewCell.swift in Sources */,
 				A16B44A724B2FBF300053D6C /* ExplorerView.swift in Sources */,
+				B723BEE224CC386900099E4D /* ContentViewController.swift in Sources */,
 				A134D2AD24C91BD4009A054F /* UserData+Extension.swift in Sources */,
 				B733E7F824CA7B6100460E23 /* UserProfileVC.swift in Sources */,
 				A17C3C6924CCA3C500153493 /* Constant.swift in Sources */,

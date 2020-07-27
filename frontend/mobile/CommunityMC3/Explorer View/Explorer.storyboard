@@ -61,6 +61,7 @@
                                 </state>
                                 <connections>
                                     <action selector="accountButtonTouched:" destination="9pv-A4-QxB" eventType="touchUpInside" id="e5S-fq-ABo"/>
+                                    <segue destination="kvn-qj-4hD" kind="show" id="sNt-dl-d2x"/>
                                 </connections>
                             </button>
                         </subviews>

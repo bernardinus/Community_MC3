@@ -7,7 +7,7 @@ target 'CommunityMC3' do
 
   # Pods for CommunityMC3
   pod 'BonsaiController'
-
+  pod 'SwipeMenuViewController'
 
   target 'CommunityMC3Tests' do
     inherit! :search_paths

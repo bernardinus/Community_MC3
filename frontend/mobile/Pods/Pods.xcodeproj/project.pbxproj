@@ -3,41 +3,59 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1AE094AF4F6FC13419788F1738F990F9 /* Pods-CommunityMC3-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13ADC8B6C95EB3BFC7398523A6F5FFD1 /* Pods-CommunityMC3-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		29DE6DB6FCCAB675EDB8C9967EEBB8E3 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFF9B2349EC9941910D630B99B96263 /* SlideInTransition.swift */; };
+		23927711895669357A624B6274C7B486 /* SwipeMenuViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9556F62C45E8AB3C4C2B31FA73CB0FE /* SwipeMenuViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29D2D3E7CF0F6DC0CD3AF37B5ACD9C9A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		29DE6DB6FCCAB675EDB8C9967EEBB8E3 /* SlideInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B6F22067357238B7AA3F1991C218DA /* SlideInTransition.swift */; };
 		37E0C66C11901B6F9FB92EB4CBC4F959 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		3AD350A9D878CB536C765C0AF9AB77A7 /* Pods-CommunityMC3-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD812AD1C2C0C56C8CC0747D3FC682C5 /* Pods-CommunityMC3-dummy.m */; };
-		57199002CEF3432D123F27685C12F8E0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		5BCFC429CC37A36A2C27CA04681F847E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		5D9D0DBC11B24B8A7489977321C4FF91 /* Pods-CommunityMC3Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DE3B013BAC511E15130C37BE1729A2E /* Pods-CommunityMC3Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FF4F77DE1C0BF3E5197CA742DDFD6FA /* BonsaiController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4099A55B66AB614897C9D4BE07E2C290 /* BonsaiController-dummy.m */; };
+		6364EEA17806D3814C2B4DD781FAC9B2 /* Pods-CommunityMC3-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 13ADC8B6C95EB3BFC7398523A6F5FFD1 /* Pods-CommunityMC3-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		77B9153709D33EEAC012E34D88C1E142 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88CA96BD8FFEAE1C522E74705A07372 /* TabItemView.swift */; };
+		7FF4F77DE1C0BF3E5197CA742DDFD6FA /* BonsaiController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF7941F8E6E2736FC34597AC1BECE86 /* BonsaiController-dummy.m */; };
+		8D1CE5000597A547F432AE840A388D95 /* UIEdgeInsetsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEE01AE6B183E3306F8E164EECC7C09 /* UIEdgeInsetsExtension.swift */; };
 		978B72FA8AC899CEBD07D8D5B1EE2325 /* Pods-CommunityMC3Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4768A2380BC18DCF07021DA92012FC12 /* Pods-CommunityMC3Tests-dummy.m */; };
-		A45B21883016C9FC652BF7230D15F047 /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20544401EB8E9C3EC240097A0DB5C7BE /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E97897CB645D4A0ED10AF87A1226193 /* SwipeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC048EA5DBFAD9A2A7030A621341B747 /* SwipeMenuViewController.swift */; };
 		B20A89DA00AC4D69E039FAB653CC96D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		CB75C8E096148DC8CC2BDCE4662A0F68 /* BonsaiController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7946005E48C2B1CB0FF03A924689C5FD /* BonsaiController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC0A43BF131B4A6C3A3C53F34CB2444E /* BonsaiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D64D1034C10355A36A347D758AA5AD /* BonsaiController.swift */; };
-		E82A2D544A99317DB9EFB763F523A49B /* Pods-CommunityMC3-CommunityMC3UITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D488C54F6965C28CCCF9FB09441208E3 /* Pods-CommunityMC3-CommunityMC3UITests-dummy.m */; };
-		EA7C4E583BAD402C4D04F87AF5C6F2FB /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8B7233B429CCE01004D12C6A5B7330 /* BubbleTransition.swift */; };
+		B46682AFD3AF846DE969FCFAEB90BEC0 /* SwipeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDA433E6C3E39EB653E5EDB8C9BAEDF /* SwipeMenuView.swift */; };
+		B8054748ED471B1D05DC0EB10D90FB72 /* Pods-CommunityMC3-CommunityMC3UITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D488C54F6965C28CCCF9FB09441208E3 /* Pods-CommunityMC3-CommunityMC3UITests-dummy.m */; };
+		B83EA801DCBF5885334470E3156FCD2B /* Pods-CommunityMC3-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD812AD1C2C0C56C8CC0747D3FC682C5 /* Pods-CommunityMC3-dummy.m */; };
+		B8BCD21052B6E65DD4E1C1CB00969721 /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E492013F90EA81248A3CB01E7582FC2 /* ContentScrollView.swift */; };
+		CB75C8E096148DC8CC2BDCE4662A0F68 /* BonsaiController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 07BE045D7D492CD3E36A5BB8F05D7EBB /* BonsaiController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CBF915A558CE3618D96CAA9D9398982C /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20544401EB8E9C3EC240097A0DB5C7BE /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D258F210F7840137C23EDA5F2D9D4E1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		DACB90AC59EBE6E6C41F87E372866824 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		DC0A43BF131B4A6C3A3C53F34CB2444E /* BonsaiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C2255DA7FEC6B0EE83BB13B373A972 /* BonsaiController.swift */; };
+		DDD8609251AFED79B8F7532E3A206F05 /* SwipeMenuViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EF05B15F04E91D73BBB5F43A321181 /* SwipeMenuViewController-dummy.m */; };
+		E37362A781482A2993DC681CFA753306 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB851848730ED79DAB0DC502341E6D5 /* UIViewExtension.swift */; };
+		EA7C4E583BAD402C4D04F87AF5C6F2FB /* BubbleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F777282A1152316FC564BA6591E72 /* BubbleTransition.swift */; };
+		F6E4DEF530C0DBAE6EDCA9A721976F26 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFD70E9A2F625F0186822A421632CB0 /* TabView.swift */; };
+		FF63FD182889BE28C253A8D1019982BD /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BDC0CF75F542919C2F433CA1CD8FC /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		555C7766FD9CA9EDDB23617FAF08ACDA /* PBXContainerItemProxy */ = {
+		08FB91DA9326EFD162EDB93F6F1E8947 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2DACB9880823AC6A3C72ED7C7B49473A;
+			remoteInfo = SwipeMenuViewController;
+		};
+		774449159A91644B28D739B520485B43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2FC272E5264771C98573AEA8FB92240D;
 			remoteInfo = BonsaiController;
 		};
-		71608446E5A6CD8BF1E4B2D55A055060 /* PBXContainerItemProxy */ = {
+		9F59CB9C5B31393F71E19F7F09D40311 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2FC272E5264771C98573AEA8FB92240D;
-			remoteInfo = BonsaiController;
+			remoteGlobalIDString = 2DACB9880823AC6A3C72ED7C7B49473A;
+			remoteInfo = SwipeMenuViewController;
 		};
 		A32E66518971723EDC48980C9BB212C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -46,54 +64,85 @@
 			remoteGlobalIDString = 6FA343366F287D947DC32A8A72B16927;
 			remoteInfo = "Pods-CommunityMC3";
 		};
+		ABA41E22CA913AC878C7854976032A42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FC272E5264771C98573AEA8FB92240D;
+			remoteInfo = BonsaiController;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		032CAE0A403F5E0BD5A5D742CA038CB0 /* Pods-CommunityMC3-CommunityMC3UITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CommunityMC3-CommunityMC3UITests.modulemap"; sourceTree = "<group>"; };
-		08E09CF621EE03E0B2527845B114D531 /* Pods_CommunityMC3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommunityMC3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07171A20E28037B165C2A045301D91F3 /* SwipeMenuViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwipeMenuViewController.modulemap; sourceTree = "<group>"; };
+		07BE045D7D492CD3E36A5BB8F05D7EBB /* BonsaiController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BonsaiController-umbrella.h"; sourceTree = "<group>"; };
+		08E09CF621EE03E0B2527845B114D531 /* Pods_CommunityMC3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CommunityMC3.framework; path = "Pods-CommunityMC3.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AE6F657803079D7F4B2C01817562D9A /* SwipeMenuViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeMenuViewController.debug.xcconfig; sourceTree = "<group>"; };
 		13ADC8B6C95EB3BFC7398523A6F5FFD1 /* Pods-CommunityMC3-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CommunityMC3-umbrella.h"; sourceTree = "<group>"; };
-		1EAA82BB193F6047A87B95B9CE8B9253 /* BonsaiController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BonsaiController.modulemap; sourceTree = "<group>"; };
+		1A4BDC0CF75F542919C2F433CA1CD8FC /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Sources/Classes/UIColorExtension.swift; sourceTree = "<group>"; };
 		20544401EB8E9C3EC240097A0DB5C7BE /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CommunityMC3-CommunityMC3UITests-umbrella.h"; sourceTree = "<group>"; };
-		224B553C87498EBF99B3F00443FCFDE0 /* BonsaiController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BonsaiController-Info.plist"; sourceTree = "<group>"; };
-		27B91A616D3E3D080255C6C93A591F62 /* BonsaiController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BonsaiController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27B91A616D3E3D080255C6C93A591F62 /* BonsaiController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BonsaiController.framework; path = BonsaiController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE3B013BAC511E15130C37BE1729A2E /* Pods-CommunityMC3Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CommunityMC3Tests-umbrella.h"; sourceTree = "<group>"; };
+		2DF7941F8E6E2736FC34597AC1BECE86 /* BonsaiController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BonsaiController-dummy.m"; sourceTree = "<group>"; };
+		3157B5895B481FF835327FCE5C50F493 /* BonsaiController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BonsaiController-Info.plist"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		37D64D1034C10355A36A347D758AA5AD /* BonsaiController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BonsaiController.swift; path = BonsaiController/Classes/BonsaiController.swift; sourceTree = "<group>"; };
-		4099A55B66AB614897C9D4BE07E2C290 /* BonsaiController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BonsaiController-dummy.m"; sourceTree = "<group>"; };
 		40A902BA7F858067ABE8052CF6D62465 /* Pods-CommunityMC3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3.release.xcconfig"; sourceTree = "<group>"; };
 		40AB971BD9EF804E15C04B4086E21D08 /* Pods-CommunityMC3Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CommunityMC3Tests.modulemap"; sourceTree = "<group>"; };
 		40F384E6C95AE018929A00B7605F0A95 /* Pods-CommunityMC3-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CommunityMC3-frameworks.sh"; sourceTree = "<group>"; };
 		4768A2380BC18DCF07021DA92012FC12 /* Pods-CommunityMC3Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CommunityMC3Tests-dummy.m"; sourceTree = "<group>"; };
-		485762FEA42A27E58992675829181C3A /* BonsaiController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BonsaiController.debug.xcconfig; sourceTree = "<group>"; };
+		490F777282A1152316FC564BA6591E72 /* BubbleTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleTransition.swift; path = BonsaiController/Classes/BubbleTransition.swift; sourceTree = "<group>"; };
 		5653A1CEC6958D9F649D1BB6A936E167 /* Pods-CommunityMC3-CommunityMC3UITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CommunityMC3-CommunityMC3UITests-frameworks.sh"; sourceTree = "<group>"; };
+		5667D56FF69EA8921A31AABB19F7CFA0 /* SwipeMenuViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwipeMenuViewController.framework; path = SwipeMenuViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDF03FBA430A72706777885074B1410 /* SwipeMenuViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeMenuViewController-prefix.pch"; sourceTree = "<group>"; };
+		5FDA433E6C3E39EB653E5EDB8C9BAEDF /* SwipeMenuView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeMenuView.swift; path = Sources/Classes/SwipeMenuView.swift; sourceTree = "<group>"; };
+		61B6F22067357238B7AA3F1991C218DA /* SlideInTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideInTransition.swift; path = BonsaiController/Classes/SlideInTransition.swift; sourceTree = "<group>"; };
 		645485A65080D50CAF17FF28B012304D /* Pods-CommunityMC3-CommunityMC3UITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3-CommunityMC3UITests-Info.plist"; sourceTree = "<group>"; };
 		659923621460D1091FE915D67CB3D57C /* Pods-CommunityMC3-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3-Info.plist"; sourceTree = "<group>"; };
 		661C5F4C4D39086747BA2AF8608B95D5 /* Pods-CommunityMC3-CommunityMC3UITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CommunityMC3-CommunityMC3UITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6C5552CC6A31E3F17A0B568D32F3F984 /* Pods-CommunityMC3-CommunityMC3UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3-CommunityMC3UITests.release.xcconfig"; sourceTree = "<group>"; };
 		71A29E932F7E1A8412554691A511DC29 /* Pods-CommunityMC3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3Tests.release.xcconfig"; sourceTree = "<group>"; };
-		7946005E48C2B1CB0FF03A924689C5FD /* BonsaiController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BonsaiController-umbrella.h"; sourceTree = "<group>"; };
 		7A34948E0C9C19FBF36138FC0EDD6E53 /* Pods-CommunityMC3.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CommunityMC3.modulemap"; sourceTree = "<group>"; };
-		8354F7FC89067D2E68D0DFFEBE663FE9 /* BonsaiController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BonsaiController-prefix.pch"; sourceTree = "<group>"; };
+		7DB851848730ED79DAB0DC502341E6D5 /* UIViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewExtension.swift; path = Sources/Classes/UIViewExtension.swift; sourceTree = "<group>"; };
+		7E492013F90EA81248A3CB01E7582FC2 /* ContentScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentScrollView.swift; path = Sources/Classes/ContentScrollView.swift; sourceTree = "<group>"; };
+		7E8763ABB9F29B2BB467B16EF237C589 /* BonsaiController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BonsaiController.debug.xcconfig; sourceTree = "<group>"; };
 		86A7E98112B90679F3750CA6474BA979 /* Pods-CommunityMC3-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CommunityMC3-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8796CDDDFBFBC74760FCE4CD7803011C /* Pods-CommunityMC3-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3-acknowledgements.plist"; sourceTree = "<group>"; };
+		8E0A7237DA3244C042D134B7ABB8B866 /* BonsaiController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BonsaiController.release.xcconfig; sourceTree = "<group>"; };
+		8EB3482B2FCECD890C08E94F33E04B7B /* BonsaiController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BonsaiController.modulemap; sourceTree = "<group>"; };
 		923029E3C91B440327345AA8C9438B08 /* Pods-CommunityMC3-CommunityMC3UITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3-CommunityMC3UITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		B796F239F050249B817A51C51DE2FA92 /* Pods_CommunityMC3_CommunityMC3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommunityMC3_CommunityMC3UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BE82D28906F353D4A8E149AF5A0C614 /* SwipeMenuViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwipeMenuViewController.release.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AC048EA5DBFAD9A2A7030A621341B747 /* SwipeMenuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwipeMenuViewController.swift; path = Sources/Classes/SwipeMenuViewController.swift; sourceTree = "<group>"; };
+		B796F239F050249B817A51C51DE2FA92 /* Pods_CommunityMC3_CommunityMC3UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CommunityMC3_CommunityMC3UITests.framework; path = "Pods-CommunityMC3-CommunityMC3UITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA077799A8AF35AD952B453048D22F16 /* Pods-CommunityMC3Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CommunityMC3Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C835FC6CB8959C87065910ECA5E02593 /* BonsaiController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BonsaiController.release.xcconfig; sourceTree = "<group>"; };
+		C9556F62C45E8AB3C4C2B31FA73CB0FE /* SwipeMenuViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwipeMenuViewController-umbrella.h"; sourceTree = "<group>"; };
 		CEAC8F7448FF13E95B2D53C381CF5129 /* Pods-CommunityMC3Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D0D98792DAA8B5A8CAB28C5E86023188 /* Pods-CommunityMC3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3.debug.xcconfig"; sourceTree = "<group>"; };
 		D488C54F6965C28CCCF9FB09441208E3 /* Pods-CommunityMC3-CommunityMC3UITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CommunityMC3-CommunityMC3UITests-dummy.m"; sourceTree = "<group>"; };
 		D6D0EA47E210C844BEB457BD2217E9A4 /* Pods-CommunityMC3-CommunityMC3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3-CommunityMC3UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D9EF05B15F04E91D73BBB5F43A321181 /* SwipeMenuViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwipeMenuViewController-dummy.m"; sourceTree = "<group>"; };
+		DCFD70E9A2F625F0186822A421632CB0 /* TabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabView.swift; path = Sources/Classes/TabView.swift; sourceTree = "<group>"; };
 		DD812AD1C2C0C56C8CC0747D3FC682C5 /* Pods-CommunityMC3-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CommunityMC3-dummy.m"; sourceTree = "<group>"; };
-		DEFF9B2349EC9941910D630B99B96263 /* SlideInTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SlideInTransition.swift; path = BonsaiController/Classes/SlideInTransition.swift; sourceTree = "<group>"; };
-		E50862C988E72897C96A139E2C7C9EDD /* Pods_CommunityMC3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommunityMC3Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50862C988E72897C96A139E2C7C9EDD /* Pods_CommunityMC3Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CommunityMC3Tests.framework; path = "Pods-CommunityMC3Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6C2255DA7FEC6B0EE83BB13B373A972 /* BonsaiController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BonsaiController.swift; path = BonsaiController/Classes/BonsaiController.swift; sourceTree = "<group>"; };
 		E9597A5C8C2F2538DB153243DB94D70C /* Pods-CommunityMC3Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CommunityMC3Tests-Info.plist"; sourceTree = "<group>"; };
-		EE8B7233B429CCE01004D12C6A5B7330 /* BubbleTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleTransition.swift; path = BonsaiController/Classes/BubbleTransition.swift; sourceTree = "<group>"; };
+		EB598D992CE8290A480F30C2C701C55D /* BonsaiController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BonsaiController-prefix.pch"; sourceTree = "<group>"; };
+		F4226F954E7FF462609352001C4613E0 /* SwipeMenuViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwipeMenuViewController-Info.plist"; sourceTree = "<group>"; };
 		F61FAF055FDD0DF05901D0B21F4C4568 /* Pods-CommunityMC3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CommunityMC3Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F88CA96BD8FFEAE1C522E74705A07372 /* TabItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TabItemView.swift; path = Sources/Classes/TabItemView.swift; sourceTree = "<group>"; };
+		FBEE01AE6B183E3306F8E164EECC7C09 /* UIEdgeInsetsExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIEdgeInsetsExtension.swift; path = Sources/Classes/UIEdgeInsetsExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		08159080B1D8FDCFC4CFFAC7372EA32F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29D2D3E7CF0F6DC0CD3AF37B5ACD9C9A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A3B0E9CD3B61E9F924CC2CF8658714E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,42 +159,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE3DBE18E0F618E515CAD11D07E01EC0 /* Frameworks */ = {
+		9955DAB08304A79313BEBDDB2457F0F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCFC429CC37A36A2C27CA04681F847E /* Foundation.framework in Frameworks */,
+				D258F210F7840137C23EDA5F2D9D4E1B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EDAEB77DEFA330F853E500943962A127 /* Frameworks */ = {
+		B04076BCD0FD05FDD21F46460F5DA2A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57199002CEF3432D123F27685C12F8E0 /* Foundation.framework in Frameworks */,
+				DACB90AC59EBE6E6C41F87E372866824 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		048B6678C75BB03A70869892618DFFD1 /* Products */ = {
+		1FD0F4608CF275D20B3058DDE650AEFD /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				27B91A616D3E3D080255C6C93A591F62 /* BonsaiController.framework */,
-				08E09CF621EE03E0B2527845B114D531 /* Pods_CommunityMC3.framework */,
-				B796F239F050249B817A51C51DE2FA92 /* Pods_CommunityMC3_CommunityMC3UITests.framework */,
-				E50862C988E72897C96A139E2C7C9EDD /* Pods_CommunityMC3Tests.framework */,
+				07171A20E28037B165C2A045301D91F3 /* SwipeMenuViewController.modulemap */,
+				D9EF05B15F04E91D73BBB5F43A321181 /* SwipeMenuViewController-dummy.m */,
+				F4226F954E7FF462609352001C4613E0 /* SwipeMenuViewController-Info.plist */,
+				5CDF03FBA430A72706777885074B1410 /* SwipeMenuViewController-prefix.pch */,
+				C9556F62C45E8AB3C4C2B31FA73CB0FE /* SwipeMenuViewController-umbrella.h */,
+				0AE6F657803079D7F4B2C01817562D9A /* SwipeMenuViewController.debug.xcconfig */,
+				9BE82D28906F353D4A8E149AF5A0C614 /* SwipeMenuViewController.release.xcconfig */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		16ED7C04C1E3FA3F1327483458F7D26C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9ED08E16D7A5CBEBC379D52A06367D2B /* BonsaiController */,
-			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/SwipeMenuViewController";
 			sourceTree = "<group>";
 		};
 		32D8FD627EE693FC3B4AB5C44D49FC00 /* Pods-CommunityMC3-CommunityMC3UITests */ = {
@@ -165,6 +210,45 @@
 			path = "Target Support Files/Pods-CommunityMC3-CommunityMC3UITests";
 			sourceTree = "<group>";
 		};
+		514AB5801B3C2F15233501CDEFCF1B2F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27B91A616D3E3D080255C6C93A591F62 /* BonsaiController.framework */,
+				08E09CF621EE03E0B2527845B114D531 /* Pods_CommunityMC3.framework */,
+				B796F239F050249B817A51C51DE2FA92 /* Pods_CommunityMC3_CommunityMC3UITests.framework */,
+				E50862C988E72897C96A139E2C7C9EDD /* Pods_CommunityMC3Tests.framework */,
+				5667D56FF69EA8921A31AABB19F7CFA0 /* SwipeMenuViewController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		551D80CA40A57DAD015610DECD1A9A3C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8EB3482B2FCECD890C08E94F33E04B7B /* BonsaiController.modulemap */,
+				2DF7941F8E6E2736FC34597AC1BECE86 /* BonsaiController-dummy.m */,
+				3157B5895B481FF835327FCE5C50F493 /* BonsaiController-Info.plist */,
+				EB598D992CE8290A480F30C2C701C55D /* BonsaiController-prefix.pch */,
+				07BE045D7D492CD3E36A5BB8F05D7EBB /* BonsaiController-umbrella.h */,
+				7E8763ABB9F29B2BB467B16EF237C589 /* BonsaiController.debug.xcconfig */,
+				8E0A7237DA3244C042D134B7ABB8B866 /* BonsaiController.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BonsaiController";
+			sourceTree = "<group>";
+		};
+		5C15227D1BA33831C6EF0D78F4DA3A8F /* BonsaiController */ = {
+			isa = PBXGroup;
+			children = (
+				E6C2255DA7FEC6B0EE83BB13B373A972 /* BonsaiController.swift */,
+				490F777282A1152316FC564BA6591E72 /* BubbleTransition.swift */,
+				61B6F22067357238B7AA3F1991C218DA /* SlideInTransition.swift */,
+				551D80CA40A57DAD015610DECD1A9A3C /* Support Files */,
+			);
+			name = BonsaiController;
+			path = BonsaiController;
+			sourceTree = "<group>";
+		};
 		7081F3206D8B938D8B511FEAADC5938B /* Pods-CommunityMC3Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,23 +265,29 @@
 			path = "Target Support Files/Pods-CommunityMC3Tests";
 			sourceTree = "<group>";
 		};
-		9ED08E16D7A5CBEBC379D52A06367D2B /* BonsaiController */ = {
-			isa = PBXGroup;
-			children = (
-				37D64D1034C10355A36A347D758AA5AD /* BonsaiController.swift */,
-				EE8B7233B429CCE01004D12C6A5B7330 /* BubbleTransition.swift */,
-				DEFF9B2349EC9941910D630B99B96263 /* SlideInTransition.swift */,
-				DCE212D88426C24706C2C62FB4F443FE /* Support Files */,
-			);
-			path = BonsaiController;
-			sourceTree = "<group>";
-		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
 			);
 			name = iOS;
+			sourceTree = "<group>";
+		};
+		C1E168B4373E1D728218C754B65E7BE2 /* SwipeMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E492013F90EA81248A3CB01E7582FC2 /* ContentScrollView.swift */,
+				5FDA433E6C3E39EB653E5EDB8C9BAEDF /* SwipeMenuView.swift */,
+				AC048EA5DBFAD9A2A7030A621341B747 /* SwipeMenuViewController.swift */,
+				F88CA96BD8FFEAE1C522E74705A07372 /* TabItemView.swift */,
+				DCFD70E9A2F625F0186822A421632CB0 /* TabView.swift */,
+				1A4BDC0CF75F542919C2F433CA1CD8FC /* UIColorExtension.swift */,
+				FBEE01AE6B183E3306F8E164EECC7C09 /* UIEdgeInsetsExtension.swift */,
+				7DB851848730ED79DAB0DC502341E6D5 /* UIViewExtension.swift */,
+				1FD0F4608CF275D20B3058DDE650AEFD /* Support Files */,
+			);
+			name = SwipeMenuViewController;
+			path = SwipeMenuViewController;
 			sourceTree = "<group>";
 		};
 		C532728BF07F57E77F07E5A7C1C4C82A /* Targets Support Files */ = {
@@ -215,8 +305,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				16ED7C04C1E3FA3F1327483458F7D26C /* Pods */,
-				048B6678C75BB03A70869892618DFFD1 /* Products */,
+				E9379C7E1DEA9C898663BF32D0836214 /* Pods */,
+				514AB5801B3C2F15233501CDEFCF1B2F /* Products */,
 				C532728BF07F57E77F07E5A7C1C4C82A /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -246,29 +336,31 @@
 			path = "Target Support Files/Pods-CommunityMC3";
 			sourceTree = "<group>";
 		};
-		DCE212D88426C24706C2C62FB4F443FE /* Support Files */ = {
+		E9379C7E1DEA9C898663BF32D0836214 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1EAA82BB193F6047A87B95B9CE8B9253 /* BonsaiController.modulemap */,
-				4099A55B66AB614897C9D4BE07E2C290 /* BonsaiController-dummy.m */,
-				224B553C87498EBF99B3F00443FCFDE0 /* BonsaiController-Info.plist */,
-				8354F7FC89067D2E68D0DFFEBE663FE9 /* BonsaiController-prefix.pch */,
-				7946005E48C2B1CB0FF03A924689C5FD /* BonsaiController-umbrella.h */,
-				485762FEA42A27E58992675829181C3A /* BonsaiController.debug.xcconfig */,
-				C835FC6CB8959C87065910ECA5E02593 /* BonsaiController.release.xcconfig */,
+				5C15227D1BA33831C6EF0D78F4DA3A8F /* BonsaiController */,
+				C1E168B4373E1D728218C754B65E7BE2 /* SwipeMenuViewController */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/BonsaiController";
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		024E29BF3497FDFDEDD5AE58A8B82CAC /* Headers */ = {
+		26D405FD310853E1D9176FB3DB390EAC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AE094AF4F6FC13419788F1738F990F9 /* Pods-CommunityMC3-umbrella.h in Headers */,
+				23927711895669357A624B6274C7B486 /* SwipeMenuViewController-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E01EEB677465F3601FAF44120BEEC2C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6364EEA17806D3814C2B4DD781FAC9B2 /* Pods-CommunityMC3-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +372,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		67A6AFFB5C57E2E85F4C61CE46A45603 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBF915A558CE3618D96CAA9D9398982C /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B45AC7DCD2B3AD633D2A9E79D681D7BB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,34 +388,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1681D87FC510968136AED7BEA683606 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A45B21883016C9FC652BF7230D15F047 /* Pods-CommunityMC3-CommunityMC3UITests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		0F34E5E9568F400F7342D2099002C803 /* Pods-CommunityMC3-CommunityMC3UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5BEFF4B4FD9D9725BFABE14797A4E20E /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3-CommunityMC3UITests" */;
+			buildConfigurationList = 70ADA5ADDF5ABE56889DA5751AC0AA3B /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3-CommunityMC3UITests" */;
 			buildPhases = (
-				D1681D87FC510968136AED7BEA683606 /* Headers */,
-				904A83C4486383B7F500571C33AE7F1E /* Sources */,
-				BE3DBE18E0F618E515CAD11D07E01EC0 /* Frameworks */,
-				14750F72244A97BDC150472445114253 /* Resources */,
+				67A6AFFB5C57E2E85F4C61CE46A45603 /* Headers */,
+				35E3C154213353946EAADD3C7003186D /* Sources */,
+				B04076BCD0FD05FDD21F46460F5DA2A6 /* Frameworks */,
+				A1AA5CB4742491D3C68E950865BEE3C1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5E3A7458FDAB9B758402B240BA825656 /* PBXTargetDependency */,
+				184A554ABD7A6AE7DF13897DA4C82EE3 /* PBXTargetDependency */,
+				27F168F36CC76AD903D1A67813906693 /* PBXTargetDependency */,
 			);
 			name = "Pods-CommunityMC3-CommunityMC3UITests";
 			productName = "Pods-CommunityMC3-CommunityMC3UITests";
 			productReference = B796F239F050249B817A51C51DE2FA92 /* Pods_CommunityMC3_CommunityMC3UITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2DACB9880823AC6A3C72ED7C7B49473A /* SwipeMenuViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C3D8E8FBA3C7321B9090D88DD887914 /* Build configuration list for PBXNativeTarget "SwipeMenuViewController" */;
+			buildPhases = (
+				26D405FD310853E1D9176FB3DB390EAC /* Headers */,
+				F0467B5C0466FC2BF593427338499141 /* Sources */,
+				08159080B1D8FDCFC4CFFAC7372EA32F /* Frameworks */,
+				DC8FC5D9C56CEC714AC05EDD847FE395 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwipeMenuViewController;
+			productName = SwipeMenuViewController;
+			productReference = 5667D56FF69EA8921A31AABB19F7CFA0 /* SwipeMenuViewController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2FC272E5264771C98573AEA8FB92240D /* BonsaiController */ = {
@@ -357,17 +468,18 @@
 		};
 		6FA343366F287D947DC32A8A72B16927 /* Pods-CommunityMC3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 715512D690BA04EFCFB3CE62AECAE8BE /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3" */;
+			buildConfigurationList = 2F63707A52D2D931656BD7567868C0B0 /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3" */;
 			buildPhases = (
-				024E29BF3497FDFDEDD5AE58A8B82CAC /* Headers */,
-				1C4058DC96C39A09148BA467206225C5 /* Sources */,
-				EDAEB77DEFA330F853E500943962A127 /* Frameworks */,
-				9C17DA291B17B571DFBEEA7DE3F7596F /* Resources */,
+				3E01EEB677465F3601FAF44120BEEC2C /* Headers */,
+				92028A023B514D5F9FF3073070FDE155 /* Sources */,
+				9955DAB08304A79313BEBDDB2457F0F3 /* Frameworks */,
+				1EF823C872E980F26FEC905F6312B700 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7CFE60364327D35F5B5E76B2645AA4A1 /* PBXTargetDependency */,
+				B28A77318C8EFDD7F0456F3A9ECE0EB5 /* PBXTargetDependency */,
+				9EA21F454733205D1A9BEE7DB467AD7A /* PBXTargetDependency */,
 			);
 			name = "Pods-CommunityMC3";
 			productName = "Pods-CommunityMC3";
@@ -384,7 +496,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -392,7 +504,7 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 048B6678C75BB03A70869892618DFFD1 /* Products */;
+			productRefGroup = 514AB5801B3C2F15233501CDEFCF1B2F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -400,12 +512,13 @@
 				6FA343366F287D947DC32A8A72B16927 /* Pods-CommunityMC3 */,
 				0F34E5E9568F400F7342D2099002C803 /* Pods-CommunityMC3-CommunityMC3UITests */,
 				4AF7CE5599BA8C5DA85216AA98602E44 /* Pods-CommunityMC3Tests */,
+				2DACB9880823AC6A3C72ED7C7B49473A /* SwipeMenuViewController */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		14750F72244A97BDC150472445114253 /* Resources */ = {
+		1EF823C872E980F26FEC905F6312B700 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -419,7 +532,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C17DA291B17B571DFBEEA7DE3F7596F /* Resources */ = {
+		A1AA5CB4742491D3C68E950865BEE3C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC8FC5D9C56CEC714AC05EDD847FE395 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -436,11 +556,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1C4058DC96C39A09148BA467206225C5 /* Sources */ = {
+		35E3C154213353946EAADD3C7003186D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AD350A9D878CB536C765C0AF9AB77A7 /* Pods-CommunityMC3-dummy.m in Sources */,
+				B8054748ED471B1D05DC0EB10D90FB72 /* Pods-CommunityMC3-CommunityMC3UITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,11 +572,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		904A83C4486383B7F500571C33AE7F1E /* Sources */ = {
+		92028A023B514D5F9FF3073070FDE155 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E82A2D544A99317DB9EFB763F523A49B /* Pods-CommunityMC3-CommunityMC3UITests-dummy.m in Sources */,
+				B83EA801DCBF5885334470E3156FCD2B /* Pods-CommunityMC3-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,20 +591,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0467B5C0466FC2BF593427338499141 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8BCD21052B6E65DD4E1C1CB00969721 /* ContentScrollView.swift in Sources */,
+				B46682AFD3AF846DE969FCFAEB90BEC0 /* SwipeMenuView.swift in Sources */,
+				DDD8609251AFED79B8F7532E3A206F05 /* SwipeMenuViewController-dummy.m in Sources */,
+				9E97897CB645D4A0ED10AF87A1226193 /* SwipeMenuViewController.swift in Sources */,
+				77B9153709D33EEAC012E34D88C1E142 /* TabItemView.swift in Sources */,
+				F6E4DEF530C0DBAE6EDCA9A721976F26 /* TabView.swift in Sources */,
+				FF63FD182889BE28C253A8D1019982BD /* UIColorExtension.swift in Sources */,
+				8D1CE5000597A547F432AE840A388D95 /* UIEdgeInsetsExtension.swift in Sources */,
+				E37362A781482A2993DC681CFA753306 /* UIViewExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5E3A7458FDAB9B758402B240BA825656 /* PBXTargetDependency */ = {
+		184A554ABD7A6AE7DF13897DA4C82EE3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BonsaiController;
 			target = 2FC272E5264771C98573AEA8FB92240D /* BonsaiController */;
-			targetProxy = 71608446E5A6CD8BF1E4B2D55A055060 /* PBXContainerItemProxy */;
+			targetProxy = ABA41E22CA913AC878C7854976032A42 /* PBXContainerItemProxy */;
 		};
-		7CFE60364327D35F5B5E76B2645AA4A1 /* PBXTargetDependency */ = {
+		27F168F36CC76AD903D1A67813906693 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwipeMenuViewController;
+			target = 2DACB9880823AC6A3C72ED7C7B49473A /* SwipeMenuViewController */;
+			targetProxy = 9F59CB9C5B31393F71E19F7F09D40311 /* PBXContainerItemProxy */;
+		};
+		9EA21F454733205D1A9BEE7DB467AD7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwipeMenuViewController;
+			target = 2DACB9880823AC6A3C72ED7C7B49473A /* SwipeMenuViewController */;
+			targetProxy = 08FB91DA9326EFD162EDB93F6F1E8947 /* PBXContainerItemProxy */;
+		};
+		B28A77318C8EFDD7F0456F3A9ECE0EB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BonsaiController;
 			target = 2FC272E5264771C98573AEA8FB92240D /* BonsaiController */;
-			targetProxy = 555C7766FD9CA9EDDB23617FAF08ACDA /* PBXContainerItemProxy */;
+			targetProxy = 774449159A91644B28D739B520485B43 /* PBXContainerItemProxy */;
 		};
 		F03D5C8C6ACD4B43BB89EE850336DF9D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -497,7 +645,7 @@
 /* Begin XCBuildConfiguration section */
 		10199B27233A7CFEB3BD39F9923309A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 485762FEA42A27E58992675829181C3A /* BonsaiController.debug.xcconfig */;
+			baseConfigurationReference = 7E8763ABB9F29B2BB467B16EF237C589 /* BonsaiController.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -522,7 +670,6 @@
 				PRODUCT_NAME = BonsaiController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,7 +678,7 @@
 			};
 			name = Debug;
 		};
-		258E66D8BD638A765B80B451CC1971E0 /* Debug */ = {
+		16E3289A2F671A585CFBDDA45CF852AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6D0EA47E210C844BEB457BD2217E9A4 /* Pods-CommunityMC3-CommunityMC3UITests.debug.xcconfig */;
 			buildSettings = {
@@ -606,6 +753,45 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		3F1F1F68B698034E500399068CF8B487 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C5552CC6A31E3F17A0B568D32F3F984 /* Pods-CommunityMC3-CommunityMC3UITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CommunityMC3-CommunityMC3UITests/Pods-CommunityMC3-CommunityMC3UITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CommunityMC3-CommunityMC3UITests/Pods-CommunityMC3-CommunityMC3UITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		510B057D2E9F059C50D52DA5D90F3ACF /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -731,12 +917,10 @@
 			};
 			name = Debug;
 		};
-		A2A5D835EA4D890B5DD678900DF96754 /* Release */ = {
+		880821F0EBE3077CA6CC933B9D82B238 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 40A902BA7F858067ABE8052CF6D62465 /* Pods-CommunityMC3.release.xcconfig */;
+			baseConfigurationReference = 9BE82D28906F353D4A8E149AF5A0C614 /* SwipeMenuViewController.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -746,29 +930,63 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CommunityMC3/Pods-CommunityMC3-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CommunityMC3/Pods-CommunityMC3.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController.modulemap";
+				PRODUCT_MODULE_NAME = SwipeMenuViewController;
+				PRODUCT_NAME = SwipeMenuViewController;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		929CF96F7ECA7E44069DAAE364ED0FA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE6F657803079D7F4B2C01817562D9A /* SwipeMenuViewController.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwipeMenuViewController/SwipeMenuViewController.modulemap";
+				PRODUCT_MODULE_NAME = SwipeMenuViewController;
+				PRODUCT_NAME = SwipeMenuViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		A868712B1B1941DFB67CBD23E59FA61C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -809,83 +1027,7 @@
 			};
 			name = Release;
 		};
-		BAE32A248216A7B04B1267B424A41D10 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C835FC6CB8959C87065910ECA5E02593 /* BonsaiController.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BonsaiController/BonsaiController-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BonsaiController/BonsaiController-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/BonsaiController/BonsaiController.modulemap";
-				PRODUCT_MODULE_NAME = BonsaiController;
-				PRODUCT_NAME = BonsaiController;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CEBDEFE697C5FFEAA48C9EE4CC0F4FF3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C5552CC6A31E3F17A0B568D32F3F984 /* Pods-CommunityMC3-CommunityMC3UITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-CommunityMC3-CommunityMC3UITests/Pods-CommunityMC3-CommunityMC3UITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CommunityMC3-CommunityMC3UITests/Pods-CommunityMC3-CommunityMC3UITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D9452303124D76508A61AE03F45F982C /* Debug */ = {
+		AC844661AE66FDA13171E1756ADDF6B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D0D98792DAA8B5A8CAB28C5E86023188 /* Pods-CommunityMC3.debug.xcconfig */;
 			buildSettings = {
@@ -923,9 +1065,102 @@
 			};
 			name = Debug;
 		};
+		BAE32A248216A7B04B1267B424A41D10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E0A7237DA3244C042D134B7ABB8B866 /* BonsaiController.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BonsaiController/BonsaiController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BonsaiController/BonsaiController-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/BonsaiController/BonsaiController.modulemap";
+				PRODUCT_MODULE_NAME = BonsaiController;
+				PRODUCT_NAME = BonsaiController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D14744C3584854497E6ECEF15F45D192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40A902BA7F858067ABE8052CF6D62465 /* Pods-CommunityMC3.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CommunityMC3/Pods-CommunityMC3-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CommunityMC3/Pods-CommunityMC3.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C3D8E8FBA3C7321B9090D88DD887914 /* Build configuration list for PBXNativeTarget "SwipeMenuViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				929CF96F7ECA7E44069DAAE364ED0FA0 /* Debug */,
+				880821F0EBE3077CA6CC933B9D82B238 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F63707A52D2D931656BD7567868C0B0 /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC844661AE66FDA13171E1756ADDF6B3 /* Debug */,
+				D14744C3584854497E6ECEF15F45D192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		439B023EB0FA3E4012D3B860EEFD211C /* Build configuration list for PBXNativeTarget "BonsaiController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -944,20 +1179,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5BEFF4B4FD9D9725BFABE14797A4E20E /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3-CommunityMC3UITests" */ = {
+		70ADA5ADDF5ABE56889DA5751AC0AA3B /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3-CommunityMC3UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				258E66D8BD638A765B80B451CC1971E0 /* Debug */,
-				CEBDEFE697C5FFEAA48C9EE4CC0F4FF3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		715512D690BA04EFCFB3CE62AECAE8BE /* Build configuration list for PBXNativeTarget "Pods-CommunityMC3" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D9452303124D76508A61AE03F45F982C /* Debug */,
-				A2A5D835EA4D890B5DD678900DF96754 /* Release */,
+				16E3289A2F671A585CFBDDA45CF852AC /* Debug */,
+				3F1F1F68B698034E500399068CF8B487 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
