@@ -199,8 +199,13 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
 //            cell.trackCurrent.text = "\(audioDurationSeconds)"
             let audiopath = Bundle.main.path(forResource: musicPlaylist[indexPath.row], ofType: "mp3")
             player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: audiopath!))
-            
-            cell.trackCurrent.text = "\(player2!.duration)"
+            let audioDuration = player2!.duration
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.unitsStyle = .positional
+
+            let formattedString = formatter.string(from: TimeInterval(self.seconds))!
+            cell.trackCurrent.text = "\(audioDuration)"
             cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayAudio(_:)), for: .touchUpInside)
             cell.playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
             cell.playButton.setImage(#imageLiteral(resourceName: "Stop"), for: .selected)
