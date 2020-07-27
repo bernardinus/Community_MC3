@@ -16,7 +16,7 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var secondTabButton: UIButton!
     var userData:UserDataStruct?
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    
+    var vc:CarouselPageViewController?
     
     var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
     
@@ -24,6 +24,17 @@ class UserProfileVC: UIViewController {
         super.viewDidLoad()
         setupActionSheet()
         // Do any additional setup after loading the view.
+        
+       
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "container"
+        {
+            print("continerSegue")
+            vc = segue.destination as! CarouselPageViewController
+            
+        }
     }
     
     func setupActionSheet()
@@ -78,9 +89,13 @@ class UserProfileVC: UIViewController {
     }
     
     @IBAction func firstPageTapped(_ sender: Any) {
+       print(vc?.a)
+       vc?.moveToPage(index: 0)
     }
     
     @IBAction func secondPageTapped(_ sender: Any) {
+        print(vc?.a)
+        vc?.moveToPage(index: 1)
     }
 }
 

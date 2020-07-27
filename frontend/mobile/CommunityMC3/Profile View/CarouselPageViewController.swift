@@ -12,6 +12,7 @@ class CarouselPageViewController: UIPageViewController {
 
     fileprivate var items: [UIViewController] = []
 
+    var a:String = "pvc"
    override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -21,18 +22,19 @@ class CarouselPageViewController: UIPageViewController {
         populateItems()
         if let firstViewController = items.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+            
         }
     }
     
     fileprivate func decoratePageControl() {
-        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
-        pc.currentPageIndicatorTintColor = .orange
-        pc.pageIndicatorTintColor = .gray
+        //let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
+        //pc.currentPageIndicatorTintColor = .orange
+        //pc.pageIndicatorTintColor = .gray
     }
     
     fileprivate func populateItems() {
-        let text = ["🎖", "👑", "🥇"]
-        let backgroundColor:[UIColor] = [.blue, .red, .green]
+        let text = ["First", "Second"]
+        let backgroundColor:[UIColor] = [.blue, .green]
         
         for (index, t) in text.enumerated() {
             let c = createCarouselItemControler(with: t, with: backgroundColor[index])
@@ -45,6 +47,17 @@ class CarouselPageViewController: UIPageViewController {
         c.view = CarouselItem(titletext: titleText, background: color)
 
         return c
+    }
+    func moveToPage(index:Int)
+    {
+        if index == 0 {
+            setViewControllers([items[index]], direction: .reverse, animated: true, completion: nil)
+
+        }
+        if index == 1 {
+            setViewControllers([items[index]], direction: .forward, animated: true, completion: nil)
+        }
+
     }
 }
 

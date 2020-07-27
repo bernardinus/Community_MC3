@@ -33,17 +33,18 @@
                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="123 followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWB-Qr-tt6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123 followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWB-Qr-tt6">
                                 <rect key="frame" x="106" y="73" width="150" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uqP-Il-8ai">
-                                <rect key="frame" x="10" y="121" width="394" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uqP-Il-8ai">
+                                <rect key="frame" x="10" y="121" width="150" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCY-hP-2GK">
-                                        <rect key="frame" x="0.0" y="0.0" width="192" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.30980392159999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="About">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,7 +54,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uJ-h5-yT1">
-                                        <rect key="frame" x="202" y="0.0" width="192" height="40"/>
+                                        <rect key="frame" x="80" y="0.0" width="70" height="30"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.30980392159999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Showcase">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,27 +64,19 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="NEt-jS-vfF"/>
-                                </constraints>
                             </stackView>
-                            <containerView opaque="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZdK-26-UDf">
-                                <rect key="frame" x="0.0" y="169" width="414" height="605"/>
+                            <containerView opaque="NO" contentMode="top" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZdK-26-UDf">
+                                <rect key="frame" x="0.0" y="139" width="414" height="635"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="AQY-mr-PXQ" kind="embed" id="I4n-Lt-44q"/>
+                                    <segue destination="AQY-mr-PXQ" kind="embed" identifier="container" id="I4n-Lt-44q"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="AkK-2q-Zvo" firstAttribute="trailing" secondItem="uqP-Il-8ai" secondAttribute="trailing" constant="10" id="P3k-aq-ftZ"/>
-                            <constraint firstItem="uqP-Il-8ai" firstAttribute="top" secondItem="DWB-Qr-tt6" secondAttribute="bottom" constant="27" id="uIM-ff-jWI"/>
-                            <constraint firstItem="uqP-Il-8ai" firstAttribute="leading" secondItem="AkK-2q-Zvo" secondAttribute="leading" constant="10" id="yfA-gk-kuc"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AkK-2q-Zvo"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="My Profile" id="f7O-aJ-w7d">
                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="fie-l6-pPY">
                             <connections>
@@ -115,10 +108,11 @@
         <!--Carousel Page View Controller-->
         <scene sceneID="Lh9-bG-mlB">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="fullScreen" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="AQY-mr-PXQ" customClass="CarouselPageViewController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController modalPresentationStyle="fullScreen" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="AQY-mr-PXQ" customClass="CarouselPageViewController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="700"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBO-1U-UfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
