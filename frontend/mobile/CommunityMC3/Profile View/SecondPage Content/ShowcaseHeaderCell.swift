@@ -12,6 +12,9 @@ class ShowcaseHeaderCell: UITableViewCell {
 
     @IBOutlet weak var showcaseSectionHeader: UILabel!
     @IBOutlet weak var seeAllButton: UIButton!
+    
+    var callBack: (() -> Void)? = nil
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +27,10 @@ class ShowcaseHeaderCell: UITableViewCell {
     }
     
     @IBAction func tapSeeAll(_ sender: Any) {
+        self.callBack!()
+    }
+    
+    func setCallBack(callback: (() -> Void)?){
+        self.callBack = callback
     }
 }

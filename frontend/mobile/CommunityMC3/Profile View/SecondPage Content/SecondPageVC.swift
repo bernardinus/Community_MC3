@@ -35,14 +35,23 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         if(section == ShowcaseSection.Music.rawValue)
         {
             cell.showcaseSectionHeader.text = NSLocalizedString("Music", comment: "")
+            cell.callBack = {
+                self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
+            }
         }
         if(section == ShowcaseSection.Photos.rawValue)
         {
             cell.showcaseSectionHeader.text = NSLocalizedString("Photos", comment: "")
+            cell.callBack = {
+                self.performSegue(withIdentifier: "showcasePhotoSegue", sender: nil)
+            }
         }
         if(section == ShowcaseSection.Videos.rawValue)
         {
             cell.showcaseSectionHeader.text = NSLocalizedString("Videos", comment: "")
+            cell.callBack = {
+                self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
+            }
         }
         return cell
     }
