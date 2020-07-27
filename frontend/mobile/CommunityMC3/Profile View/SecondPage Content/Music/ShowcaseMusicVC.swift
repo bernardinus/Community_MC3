@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowcaseVideosVC: UIViewController {
+class ShowcaseMusicVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

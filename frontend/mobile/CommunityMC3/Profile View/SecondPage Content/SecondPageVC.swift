@@ -17,12 +17,8 @@ enum ShowcaseSection:Int{
 
 class SecondPageVC: UIViewController {
 
-    @IBOutlet weak var showcaseTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        showcaseTableView.register(UINib(nibName: "ShowcaseHeaderCell", bundle: nil), forCellReuseIdentifier:"showcaseHeaderCell")
-        showcaseTableView.register(UINib(nibName: "ShowcaseHeaderCell", bundle: nil), forCellReuseIdentifier:"showcaseHeaderCell")
     }
     
 
