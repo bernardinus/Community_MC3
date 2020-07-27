@@ -17,6 +17,11 @@ class VideoPlayerViewController: UIViewController {
     
     var video: VideosDataStruct!
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
