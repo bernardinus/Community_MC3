@@ -16,6 +16,8 @@ class SelectFileView: UIViewController
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var selectFileTitleLabel: UILabel!
     
+    var isUploadVideo:Bool = false
+    
     var fileList:[URL] = []
     
     var filteredList:[URL] = []
@@ -29,7 +31,19 @@ class SelectFileView: UIViewController
         tableView.dataSource = self
         tableView.register(UINib(nibName: "SelectViewCell", bundle:nil), forCellReuseIdentifier: "selectViewCell")
         
-        fileList = FileManagers.getAvailableAudioFiles()
+        
+        
+        if(isUploadVideo)
+        {
+            fileList = FileManagers.getAvailableVideoFiles()
+        }
+        else
+        {
+            fileList = FileManagers.getAvailableAudioFiles()
+        }
+            
+        
+        
         filteredList = fileList
         
         selectFileTitleLabel.text = NSLocalizedString("Select File", comment: "")

@@ -172,6 +172,8 @@ class ExplorerView: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.navigationBar.shadowImage = nil
+        super.viewWillAppear(true)
     }
     
     
