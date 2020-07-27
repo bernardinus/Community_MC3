@@ -21,8 +21,8 @@ class SecondPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showcaseTableView.register(UINib(nibName: "ShowcaseTableCell", bundle: nil), forCellReuseIdentifier:"showcaseTableCell")
-        
+        showcaseTableView.register(UINib(nibName: "ShowcaseHeaderCell", bundle: nil), forCellReuseIdentifier:"showcaseHeaderCell")
+        showcaseTableView.register(UINib(nibName: "ShowcaseHeaderCell", bundle: nil), forCellReuseIdentifier:"showcaseHeaderCell")
     }
     
 

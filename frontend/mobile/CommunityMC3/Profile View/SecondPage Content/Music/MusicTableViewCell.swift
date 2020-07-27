@@ -1,5 +1,5 @@
 //
-//  ShowcaseTableCell.swift
+//  MusicTableViewCell.swift
 //  CommunityMC3
 //
 //  Created by Theofani on 27/07/20.
@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ShowcaseTableCell: UITableViewCell {
+class MusicTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var trackPlayButton: UIImageView!
+    @IBOutlet weak var trackTitleLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

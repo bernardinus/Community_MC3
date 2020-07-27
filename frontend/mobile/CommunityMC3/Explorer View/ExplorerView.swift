@@ -130,7 +130,7 @@ class ExplorerView: UIViewController {
     
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Prepare Segue \(segue.identifier)")
+        print("Prepare Segue \(String(describing: segue.identifier))")
         if segue.identifier == "latestMusicSegue" {
 //            print("masuk ", tracks.count)
 //            let navPage = segue.destination as! UINavigationController

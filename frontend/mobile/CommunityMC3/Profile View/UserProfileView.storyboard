@@ -168,7 +168,7 @@
         <!--First PageVC-->
         <scene sceneID="rGp-o7-WKR">
             <objects>
-                <viewController storyboardIdentifier="firstPageView" id="nYe-eR-RxZ" customClass="FirstPageVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="firstPageView" modalPresentationStyle="fullScreen" id="nYe-eR-RxZ" customClass="FirstPageVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BeM-zz-n4j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,20 +200,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vJX-lC-Np6">
-                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vJX-lC-Np6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Fvz-46-EY0" id="hUZ-5d-Ovx"/>
+                                    <outlet property="delegate" destination="Fvz-46-EY0" id="H9k-hz-lCM"/>
+                                </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SecondPage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhA-EV-fiy">
-                                <rect key="frame" x="131" y="74" width="153" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vJX-lC-Np6" firstAttribute="leading" secondItem="KOF-dN-5Vk" secondAttribute="leading" id="4Db-43-fCg"/>
+                            <constraint firstItem="vJX-lC-Np6" firstAttribute="bottom" secondItem="KOF-dN-5Vk" secondAttribute="bottom" id="7k1-WO-on2"/>
+                            <constraint firstItem="vJX-lC-Np6" firstAttribute="trailing" secondItem="KOF-dN-5Vk" secondAttribute="trailing" id="bsO-oK-Xxm"/>
+                            <constraint firstItem="vJX-lC-Np6" firstAttribute="top" secondItem="K0k-MQ-QaJ" secondAttribute="top" id="xtp-jK-abp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KOF-dN-5Vk"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -221,11 +223,44 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="showcaseTableView" destination="vJX-lC-Np6" id="VQV-Ze-4Aq"/>
+                        <segue destination="syU-m5-vKe" kind="show" identifier="musicTableSegue" id="c6y-bd-qjt"/>
+                        <segue destination="NDV-ew-GQn" kind="show" identifier="photosCollectionSegue" id="kMP-Fr-OyW"/>
+                        <segue destination="v3x-qK-RUi" kind="show" identifier="videosTableSegue" id="32o-1p-GSR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhJ-dn-lQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769.5652173913045" y="129.91071428571428"/>
+            <point key="canvasLocation" x="2962" y="130"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="aqt-2D-8r9">
+            <objects>
+                <viewControllerPlaceholder id="syU-m5-vKe" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="SFf-Ck-kcO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OI9-1h-bs4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3696" y="-99"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="EAg-dr-Q0v">
+            <objects>
+                <viewControllerPlaceholder id="NDV-ew-GQn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="V65-Ju-WYh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Enc-24-GAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3695" y="27"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="MYS-yX-NmC">
+            <objects>
+                <viewControllerPlaceholder id="v3x-qK-RUi" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="XAe-tZ-gFl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2b5-f9-whs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3701" y="146"/>
         </scene>
         <!--SettingScreen-->
         <scene sceneID="GU8-LK-afV">
