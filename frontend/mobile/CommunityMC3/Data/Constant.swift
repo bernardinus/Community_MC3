@@ -22,4 +22,5 @@ let availableVideoFilesExt:[String] =
     [
         "mp4",
         "m4v",
+        "mov"
     ]

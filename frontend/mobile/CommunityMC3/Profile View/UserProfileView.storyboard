@@ -92,6 +92,7 @@
                         <outlet property="menuButton" destination="dCY-Gi-Ntd" id="IVw-4E-ZT4"/>
                         <segue destination="7f0-xS-jJw" kind="unwind" identifier="unwindFromUserProfile" unwindAction="unwindToExplorerView:" id="4jE-be-I8r"/>
                         <segue destination="PSz-Em-z5E" kind="show" identifier="editProfileSegue" id="J5Q-37-jX7"/>
+                        <segue destination="H0k-HO-cTq" kind="presentation" identifier="selectFileSegue" id="Cw2-Xc-zp9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6uo-bn-CT4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -122,7 +123,15 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ftx-Mg-XeN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="415"/>
+            <point key="canvasLocation" x="-130" y="558"/>
+        </scene>
+        <!--SelectFileView-->
+        <scene sceneID="OD2-UY-dNG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SelectFileView" id="H0k-HO-cTq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cqD-fc-ucr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="586"/>
         </scene>
     </scenes>
     <resources>
