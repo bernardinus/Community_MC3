@@ -24,16 +24,25 @@ class UserProfileVC: UIViewController {
     
     func setupActionSheet()
     {
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .default)
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive)
         actionSheet.addAction(signOutAction)
         
-        let editAction = UIAlertAction(title: "Edit", style: .default, handler: { action in
-            self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
-        })
+        let editAction = UIAlertAction(title: "Edit", style: .default,
+                                       handler: { action in
+                                                    self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
+                                                 }
+                                        )
         actionSheet.addAction(editAction)
         
         let shareAction = UIAlertAction(title: "Share", style: .default)
         actionSheet.addAction(shareAction)
+        
+        let uploadAction = UIAlertAction(title: "Upload", style: .default,
+                                         handler: { action in
+                                                     self.performSegue(withIdentifier: "selectFileSegue", sender: nil)
+                                                  }
+                                         )
+        actionSheet.addAction(uploadAction)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         actionSheet.addAction(cancelAction)
@@ -47,8 +56,9 @@ class UserProfileVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.isTranslucent = false
-        print("transparent \(navigationController?.navigationBar.isTranslucent)")
+        navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
         super.viewWillAppear(animated)
+        
 //        let navigationBar = navigationController?.navigationBar
 //        let navigationBarAppearence = UINavigationBarAppearance()
 //        navigationBarAppearence.shadowColor = .clear
@@ -57,6 +67,7 @@ class UserProfileVC: UIViewController {
 //
         
     }
+    
     
     @IBAction func menuButtonTouched(_ sender: Any) {
         self.present(actionSheet, animated: true, completion: nil)
@@ -79,4 +90,18 @@ class UserProfileVC: UIViewController {
 extension UserProfileVC : UIActionSheetDelegate
 {
     
+}
+
+public extension UIImage {
+  public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+    let rect = CGRect(origin: .zero, size: size)
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+    color.setFill()
+    UIRectFill(rect)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    guard let cgImage = image?.cgImage else { return nil }
+    self.init(cgImage: cgImage)
+  }
 }

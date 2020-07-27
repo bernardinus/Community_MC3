@@ -14,6 +14,10 @@ class UploadFileView: UIViewController
     @IBOutlet weak var cancel: UIButton!
     @IBOutlet weak var uploadFileTitleLabel: UILabel!
     
+    var videoData:VideosDataStruct?
+    var trackData:TrackDataStruct?
+    var isUploadVideo:Bool = false
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -47,6 +51,18 @@ class UploadFileView: UIViewController
             print("Cover song not selected")
         }
         
+    }
+    
+    @IBAction func uploadFileButtonTouched()
+    {
+        if isUploadVideo
+        {
+            
+        }
+        else
+        {
+            
+        }
     }
 }
 
