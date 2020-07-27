@@ -200,12 +200,12 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             let audiopath = Bundle.main.path(forResource: musicPlaylist[indexPath.row], ofType: "mp3")
             player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: audiopath!))
             let audioDuration = player2!.duration
-            let formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.hour, .minute, .second]
-            formatter.unitsStyle = .positional
+            let formatterr = DateComponentsFormatter()
+            formatterr.allowedUnits = [.hour, .minute, .second]
+            formatterr.unitsStyle = .positional
 
-            let formattedString = formatter.string(from: TimeInterval(self.seconds))!
-            cell.trackCurrent.text = "\(audioDuration)"
+            let formattedString2 = formatterr.string(from: TimeInterval(audioDuration))!
+            cell.trackCurrent.text = "\(formattedString2)"
             cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayAudio(_:)), for: .touchUpInside)
             cell.playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
             cell.playButton.setImage(#imageLiteral(resourceName: "Stop"), for: .selected)
@@ -215,10 +215,9 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             }
             
             if indexPath.row == tempInt{
-                
+                print(cell.playButton.isSelected)
             }else{
                 cell.playButton.isSelected = false
-                
             }
             
             return cell
