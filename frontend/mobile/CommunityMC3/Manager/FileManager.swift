@@ -18,7 +18,7 @@ class FileManagers
         return FileManagers.getFileList(availableAudioFilesExt)
     }
     
-    class func getAvailableMusicFiles() -> [URL]
+    class func getAvailableVideoFiles() -> [URL]
     {
         return FileManagers.getFileList(availableVideoFilesExt)
     }
