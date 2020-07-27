@@ -40,6 +40,8 @@ class ExplorerView: UIViewController {
 //    var videos = [VideosDataStruct]()
     var uploads = [UploadedDataStruct]()
     var features = [FeaturedDataStruct]()
+    var artistCount = 0
+    var uploadCount = 0
     var selectedRow = 0
     
     override func viewDidLoad() {
@@ -72,6 +74,7 @@ class ExplorerView: UIViewController {
                     track: track
                 )
                 self.features.append(temp)
+                self.uploadCount += 1
             }
         }
         documentController.getFilmsFromCloudKit { (videos) in
@@ -86,6 +89,7 @@ class ExplorerView: UIViewController {
                     )
                 )
                 self.features.append(temp)
+                self.uploadCount += 1
             }
         }
         documentController.getProfilesFromCloudKit { (photos) in
@@ -101,6 +105,7 @@ class ExplorerView: UIViewController {
                     )
                 )
                 self.features.append(temp)
+                self.artistCount += 1
             }
         }
     }
@@ -149,7 +154,7 @@ class ExplorerView: UIViewController {
     
     @IBAction func accountButtonTouched(_ sender: Any)
     {
-        if let loadEmail = userDefault.string(forKey: "email"){
+        if userDefault.string(forKey: "email") != nil {
             self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
         }else{
             self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
@@ -203,6 +208,7 @@ class ExplorerView: UIViewController {
                     }
                 }
                 featuredPage.features = temp
+                featuredPage.mainTableView = mainTableView
             }
         }
         else if segue.identifier == "latestMusicSegue" {
@@ -386,23 +392,11 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            var temp = 0
-            for feature in features {
-                if feature.user != nil {
-                    temp += 1
-                }
-            }
-            return temp // Featured Artist
+            return artistCount // Featured Artist
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            var temp = 0
-            for feature in features {
-                if feature.user == nil {
-                    temp += 1
-                }
-            }
-            return temp // Featured Videos
+            return uploadCount // Featured Videos
         }
         return 0
     }
@@ -461,6 +455,15 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredVideosCell") as! FeaturedVideosCell
+            if features[indexPath.row].track != nil {
+                cell.mainTableView = mainTableView
+                cell.feature = features[indexPath.row]
+                if cell.player {
+                    cell.videoPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                }else{
+                    cell.videoPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                }
+            }
             return cell
         }
 
