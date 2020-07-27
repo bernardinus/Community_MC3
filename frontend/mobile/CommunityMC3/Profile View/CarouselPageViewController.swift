@@ -10,15 +10,22 @@ import UIKit
 
 class CarouselPageViewController: UIPageViewController {
 
-    fileprivate var items: [UIViewController] = []
+    lazy var items: [UIViewController] = {
+        let sb = UIStoryboard(name: "UserProfileView", bundle: nil)
+        
+        let vc1 = sb.instantiateViewController(withIdentifier: "firstPageView")
+        let vc2 = sb.instantiateViewController(withIdentifier: "secondPageView")
+        
+        return [vc1, vc2]
+    }()
 
     var a:String = "pvc"
    override func viewDidLoad() {
-        super.viewDidLoad()
-        dataSource = self
-        
+        super.viewDidLoad() 
+        self.dataSource = nil
+        self.delegate = nil
     
-        populateItems()
+//        populateItems()
         if let firstViewController = items.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
             
@@ -41,13 +48,14 @@ class CarouselPageViewController: UIPageViewController {
 
         return c
     }
+    
     func moveToPage(index:Int)
     {
         if index == 0 {
-            setViewControllers([items[index]], direction: .reverse, animated: true, completion: nil)
+            setViewControllers([items[index]], direction: .reverse, animated: false, completion: nil)
         }
         if index == 1 {
-            setViewControllers([items[index]], direction: .forward, animated: true, completion: nil)
+            setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
         }
 
     }
