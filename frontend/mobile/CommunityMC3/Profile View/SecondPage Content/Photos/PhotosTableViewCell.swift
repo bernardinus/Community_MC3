@@ -1,5 +1,5 @@
 //
-//  VideosTableViewCell.swift
+//  PhotosTableViewCell.swift
 //  CommunityMC3
 //
 //  Created by Theofani on 27/07/20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class VideosTableViewCell: UITableViewCell {
+class PhotosTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var videoThumbnailView: UIImageView!
+    @IBOutlet weak var photosImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
