@@ -27,9 +27,9 @@ class CarouselPageViewController: UIPageViewController {
     }
     
     fileprivate func decoratePageControl() {
-        //let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
-        //pc.currentPageIndicatorTintColor = .orange
-        //pc.pageIndicatorTintColor = .gray
+        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
+        pc.currentPageIndicatorTintColor = .orange
+        pc.pageIndicatorTintColor = .gray
     }
     
     fileprivate func populateItems() {
@@ -98,9 +98,9 @@ extension CarouselPageViewController: UIPageViewControllerDataSource {
         return items[nextIndex]
     }
     
-    func presentationCount(for _: UIPageViewController) -> Int {
-        return items.count
-    }
+//    func presentationCount(for _: UIPageViewController) -> Int {
+//        return items.count
+//    }
     
     func presentationIndex(for _: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,

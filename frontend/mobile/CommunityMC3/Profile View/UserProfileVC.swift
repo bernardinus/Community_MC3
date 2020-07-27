@@ -33,7 +33,6 @@ class UserProfileVC: UIViewController {
         {
             print("continerSegue")
             vc = segue.destination as! CarouselPageViewController
-            
         }
     }
     
@@ -89,13 +88,16 @@ class UserProfileVC: UIViewController {
     }
     
     @IBAction func firstPageTapped(_ sender: Any) {
+        
        print(vc?.a)
        vc?.moveToPage(index: 0)
     }
     
     @IBAction func secondPageTapped(_ sender: Any) {
+       
         print(vc?.a)
         vc?.moveToPage(index: 1)
+        
     }
 }
 
