@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CloudKit
 
 
 // specific ID
@@ -14,10 +15,14 @@ public var FeaturedID_Artist = "featuredArtist"
 
 struct FeaturedDataStruct
 {
-    var id:String
-    var track:[TrackDataStruct]?
-    var user:[UserDataStruct]?
-    var videos:[VideosDataStruct]?
+//    var id:String
+    var id: CKRecord.ID
+    var track: TrackDataStruct?
+    var user: UserDataStruct?
+    var video: VideosDataStruct?
+//    var tracks:[TrackDataStruct]?
+//    var users:[UserDataStruct]?
+//    var videos:[VideosDataStruct]?
 }
 
 /*

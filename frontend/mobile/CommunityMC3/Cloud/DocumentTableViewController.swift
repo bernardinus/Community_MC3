@@ -40,6 +40,9 @@ class DocumentTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        getUploadsFromCloudKit(tableView: self.tableView) { (records) in
+            self.documents = records
+        }
 //        getFromCloudKit()
 //        getFilmsFromCloudKit { (videos) in
 //            if videos.count > 0 {
@@ -51,6 +54,27 @@ class DocumentTableViewController: UITableViewController {
 //                player.play()
 //            }
 //        }
+    }
+    
+    func uploadTrack(email: String, genre: String, name: String, fileURL: URL) {
+        let musicRecord = CKRecord(recordType: "Track")
+        musicRecord["genre"] = genre as CKRecordValue
+        musicRecord["name"] = name as CKRecordValue
+        musicRecord["email"] = email as CKRecordValue
+
+//        let audioURL = UploadController.getMusicURL(document: document)
+        let musicAsset = CKAsset(fileURL: fileURL)
+        musicRecord["fileData"] = musicAsset
+
+        CKContainer(identifier: iCloudContainerID).publicCloudDatabase.save(musicRecord) { [unowned self] record, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    print("Done!")
+                }
+            }
+        }
     }
     
     func uploadFilm(name: String, email: String, genre: String, myVideo: URL?) {
@@ -71,7 +95,7 @@ class DocumentTableViewController: UITableViewController {
                 }
                 profileRecord["fileData"] = CKAsset(fileURL: url!)
 
-                CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(profileRecord) { record, error in
+                CKContainer(identifier: iCloudContainerID).publicCloudDatabase.save(profileRecord) { record, error in
                     DispatchQueue.main.async {
                         if let error = error {
                             print("Error: \(error.localizedDescription)")
@@ -92,7 +116,7 @@ class DocumentTableViewController: UITableViewController {
     func getFilmsFromCloudKit(completionHandler: @escaping ([CKRecord]) -> Void) {
         var videos = [CKRecord]()
         // 1. tunjuk databasenya apa
-           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
            
            // 2. kita tentuin recordnya
            let predicate = NSPredicate(value: true)
@@ -126,7 +150,8 @@ class DocumentTableViewController: UITableViewController {
     }
     
     func uploadProfile(name: String, email: String, genre: String, myImage: UIImage) {
-        let profileRecord = CKRecord(recordType: "Profiles")
+//        let profileRecord = CKRecord(recordType: "Profiles")
+        let profileRecord = CKRecord(recordType: "UserData")
         profileRecord["genre"] = genre as CKRecordValue
         profileRecord["name"] = name as CKRecordValue
         profileRecord["email"] = email as CKRecordValue
@@ -142,7 +167,7 @@ class DocumentTableViewController: UITableViewController {
         }
         profileRecord["fileData"] = CKAsset(fileURL: url!)
 
-        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(profileRecord) { record, error in
+        CKContainer(identifier: iCloudContainerID).publicCloudDatabase.save(profileRecord) { record, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
@@ -156,10 +181,10 @@ class DocumentTableViewController: UITableViewController {
         }
     }
     
-    func getProfilesFromCloudKit(completionHandler: @escaping ([PhotoDataStruct]) -> Void) {
-        var photos = [PhotoDataStruct]()
+    func getProfilesFromCloudKit(completionHandler: @escaping ([CKRecord]) -> Void) {
+        var photos = [CKRecord]()
         // 1. tunjuk databasenya apa
-           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
            
            // 2. kita tentuin recordnya
            let predicate = NSPredicate(value: true)
@@ -178,18 +203,18 @@ class DocumentTableViewController: UITableViewController {
                 for record in fetchedRecords {
 //                    let temp = Upload()
 //                    let temp = TrackDataClass()
-                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
-                    let temp = PhotoDataStruct(
-                        fileURL: asset.fileURL!,
-                        email: (record.value(forKey: "email") as? String)!,
-                        genre: (record.value(forKey: "genre") as? String)!,
-                        name: (record.value(forKey: "name") as? String)!
-                    )
+//                    let asset = (record.value(forKey: "fileData") as? CKAsset)!
+//                    let temp = PhotoDataStruct(
+//                        fileURL: asset.fileURL!,
+//                        email: (record.value(forKey: "email") as? String)!,
+//                        genre: (record.value(forKey: "genre") as? String)!,
+//                        name: (record.value(forKey: "name") as? String)!
+//                    )
 //                    temp.audioData = try AVAudioPlayer(contentsOf: asset.fileURL)
                     
 //                    temp.name = record.value(forKey: "name") as? String
 //                    temp.recordID = record.recordID
-                    photos.append(temp)
+                    photos.append(record)
 //                    self.uploads.append(temp)
                 }
                 completionHandler(photos)
@@ -227,6 +252,7 @@ class DocumentTableViewController: UITableViewController {
            // 2. kita tentuin recordnya
            let predicate = NSPredicate(value: true)
            let query = CKQuery(recordType: "Uploads", predicate: predicate)
+//        let query = CKQuery(recordType: "Tracks", predicate: predicate)
            
            // 3. execute querynya
            database.perform(query, inZoneWith: nil) { records, error in

@@ -34,7 +34,7 @@ class UploadFileView: UIViewController
         table.delegate = self
         table.dataSource = self
         
-                table.separatorColor = UIColor.clear
+        table.separatorColor = UIColor.clear
     }
     
     @IBAction func cancelButtonTouched(_ sender: Any) {

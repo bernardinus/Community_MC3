@@ -34,9 +34,12 @@ class ExplorerView: UIViewController {
     
     let documentController = DocumentTableViewController.shared
     let videoController = VideoPlayerViewController.shared
+    let uploadController = UploadController.shared
+    let userDefault = UserDefaults.standard
 //    var tracks = [TrackDataStruct]()
 //    var videos = [VideosDataStruct]()
     var uploads = [UploadedDataStruct]()
+    var features = [FeaturedDataStruct]()
     var selectedRow = 0
     
     override func viewDidLoad() {
@@ -56,8 +59,55 @@ class ExplorerView: UIViewController {
         mainTableView.canCancelContentTouches = true
 //        mainTableView.delaysContentTouches = true;
 
+        featuredUpload()
+        latestUpload()
+        
+    }
+    
+    func featuredUpload() {
+        uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
+            for track in tracks {
+                let temp = FeaturedDataStruct (
+                    id: track.recordID,
+                    track: track
+                )
+                self.features.append(temp)
+            }
+        }
+        documentController.getFilmsFromCloudKit { (videos) in
+            for video in videos {
+                let temp = FeaturedDataStruct (
+                    id: video.recordID,
+                    video: VideosDataStruct (
+                        genre: (video.value(forKey: "genre") as? String)!,
+                        name: (video.value(forKey: "name") as? String)!,
+                        email: (video.value(forKey: "email") as? String)!,
+                        fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
+                    )
+                )
+                self.features.append(temp)
+            }
+        }
+        documentController.getProfilesFromCloudKit { (photos) in
+            for photo in photos {
+                let asset = (photo.value(forKey: "fileData") as? CKAsset)!
+                let temp = FeaturedDataStruct (
+                    id: photo.recordID,
+                    user: UserDataStruct(
+                        genre: (photo.value(forKey: "genre") as? String)!,
+                        name: (photo.value(forKey: "name") as? String)!,
+                        fileURL: asset.fileURL!,
+                        email: (photo.value(forKey: "email") as? String)!
+                    )
+                )
+                self.features.append(temp)
+            }
+        }
+    }
+    
+    func latestUpload() {
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
-//            self.tracks = tracks
+        //            self.tracks = tracks
             for track in tracks {
                 let temp = UploadedDataStruct (
                     uploadedDate: track.creationDate!,
@@ -71,11 +121,11 @@ class ExplorerView: UIViewController {
                 )
                 self.uploads.append(temp)
             }
-//            print("count ", tracks.count)
+    //            print("count ", tracks.count)
         }
         
         documentController.getFilmsFromCloudKit { (videos) in
-//            self.videos = videos
+    //            self.videos = videos
             for video in videos {
                 let temp = UploadedDataStruct (
                     uploadedDate: video.creationDate!,
@@ -86,23 +136,25 @@ class ExplorerView: UIViewController {
                         fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
                     )
                 )
-//                let tmp = self.videoController.retrieveVideo(video: temp.video)!
-//                temp.video?.fileURL = tmp
+    //                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+    //                temp.video?.fileURL = tmp
                 self.uploads.append(temp)
             }
         }
         
-//        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
-        
+    //        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
     }
     
     
     
     @IBAction func accountButtonTouched(_ sender: Any)
     {
-        self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+        if let loadEmail = userDefault.string(forKey: "email"){
+            self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+        }else{
+            self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+        }
 //        self.performSegue(withIdentifier: "test", sender: nil)
-//        self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
     }
     
     @IBAction func notificationButtonTouched(_ sender: Any)
@@ -131,7 +183,29 @@ class ExplorerView: UIViewController {
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("Prepare Segue \(segue.identifier)")
-        if segue.identifier == "latestMusicSegue" {
+        if segue.identifier == "featuredArtistSegue" {
+            if let artistPage = segue.destination as? FeaturedArtistVC {
+                var temp = [FeaturedDataStruct]()
+                for feature in features {
+                    if feature.user != nil {
+                        temp.append(feature)
+                    }
+                }
+                artistPage.features = temp
+            }
+        }
+        else if segue.identifier == "featuredVideoSegue" {
+            if let featuredPage = segue.destination as? FeaturedVideosVC {
+                var temp = [FeaturedDataStruct]()
+                for feature in features {
+                    if feature.user == nil {
+                        temp.append(feature)
+                    }
+                }
+                featuredPage.features = temp
+            }
+        }
+        else if segue.identifier == "latestMusicSegue" {
 //            print("masuk ", tracks.count)
 //            let navPage = segue.destination as! UINavigationController
 //            let latestMusicPage = navPage.topViewController as! LatestMusicVC
@@ -145,7 +219,7 @@ class ExplorerView: UIViewController {
                 trackPlayerPage.track = uploads[selectedRow].track
             }
         }
-        if segue.identifier == "videoPlayerSegue" {
+        else if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
                 videoPlayerPage.video = uploads[selectedRow].video
             }
@@ -261,7 +335,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         else if(section == ExplorerSection.LatestMusic.rawValue)
         {
-            cell.HeaderName.text = NSLocalizedString("Latest Music", comment: "")
+            cell.HeaderName.text = NSLocalizedString("Latest Upload", comment: "")
             cell.seeMoreButton.setTitle(NSLocalizedString("See more >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "latestMusicSegue", sender: nil)
@@ -312,11 +386,23 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            return 1 // Featured Artist
+            var temp = 0
+            for feature in features {
+                if feature.user != nil {
+                    temp += 1
+                }
+            }
+            return temp // Featured Artist
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            return 3 // Featured Videos
+            var temp = 0
+            for feature in features {
+                if feature.user == nil {
+                    temp += 1
+                }
+            }
+            return temp // Featured Videos
         }
         return 0
     }
@@ -363,7 +449,13 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
             cell.callBack = {self.performSegue(withIdentifier: "artistPageSegue", sender: nil)}
-
+            var temp = [FeaturedDataStruct]()
+            for feature in features {
+                if feature.user != nil {
+                    temp.append(feature)
+                }
+            }
+            cell.features = temp
             return cell
         }
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)

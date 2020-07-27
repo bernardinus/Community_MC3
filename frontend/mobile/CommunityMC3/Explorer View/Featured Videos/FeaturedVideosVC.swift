@@ -11,6 +11,8 @@ import UIKit
 class FeaturedVideosVC: UIViewController {
  
     
+    var features: [FeaturedDataStruct]!
+    
     @IBOutlet weak var featuredVideoTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,11 @@ class FeaturedVideosVC: UIViewController {
 extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if features != nil {
+            return features.count
+        }
+//        return 10
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

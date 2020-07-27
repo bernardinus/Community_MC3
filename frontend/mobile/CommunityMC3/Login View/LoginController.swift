@@ -47,16 +47,13 @@ class LoginController: UIViewController {
     }
     
     @IBAction func loginUser(_ sender: UIButton) {
-//        switch sender {
-//        case loginButton:
-//            loginToCloudKit()
-//        default:
-//            return
-//        }
-        
-        
-        callBack!()
-        
+        switch sender {
+        case loginButton:
+            loginToCloudKit()
+        default:
+            return
+        }
+//        callBack!()
     }
     
     func loginToCoreData() {
@@ -75,7 +72,8 @@ class LoginController: UIViewController {
         
         // 2. kita tentuin recordnya
         let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: "Register", predicate: predicate)
+//        let query = CKQuery(recordType: "Register", predicate: predicate)
+        let query = CKQuery(recordType: "Account", predicate: predicate)
         
         // 3. execute querynya
         database.perform(query, inZoneWith: nil) { records, error in

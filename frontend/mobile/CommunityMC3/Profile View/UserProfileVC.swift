@@ -13,18 +13,27 @@ class UserProfileVC: UIViewController {
     var userData:UserDataStruct?
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var userNameLabel: UILabel!
     
     var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let loadEmail = userDefault.string(forKey: "email"){
+            userNameLabel.text = loadEmail
+        }
         setupActionSheet()
         // Do any additional setup after loading the view.
     }
     
     func setupActionSheet()
     {
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive)
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: {
+            (action: UIAlertAction) in
+            self.userDefault.removeObject(forKey: "email")
+            self.performSegue(withIdentifier: "logoutUser", sender: self)
+        })
         actionSheet.addAction(signOutAction)
         
         let editAction = UIAlertAction(title: "Edit", style: .default,

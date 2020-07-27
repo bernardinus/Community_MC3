@@ -58,8 +58,7 @@ class RegisterController: UIViewController {
 //    }
     
     @IBAction func registerUser(_ sender: UIButton) {
-//        registerToCloudKit()
-        
+        registerToCloudKit()        
     }
     
     func registerToCoreData() {
@@ -74,7 +73,8 @@ class RegisterController: UIViewController {
     
     func registerToCloudKit() {
          // 1. buat dulu recordnya
-        let newRecord = CKRecord(recordType: "Register")
+//        let newRecord = CKRecord(recordType: "Register")
+        let newRecord = CKRecord(recordType: "Account")
 
         // 2. set propertynya
         newRecord.setValue(emailField.text ?? "", forKey: "email")
