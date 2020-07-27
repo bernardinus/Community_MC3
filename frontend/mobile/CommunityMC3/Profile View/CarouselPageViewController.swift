@@ -17,19 +17,12 @@ class CarouselPageViewController: UIPageViewController {
         super.viewDidLoad()
         dataSource = self
         
-        decoratePageControl()
     
         populateItems()
         if let firstViewController = items.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
             
         }
-    }
-    
-    fileprivate func decoratePageControl() {
-        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
-        pc.currentPageIndicatorTintColor = .orange
-        pc.pageIndicatorTintColor = .gray
     }
     
     fileprivate func populateItems() {
@@ -52,7 +45,6 @@ class CarouselPageViewController: UIPageViewController {
     {
         if index == 0 {
             setViewControllers([items[index]], direction: .reverse, animated: true, completion: nil)
-
         }
         if index == 1 {
             setViewControllers([items[index]], direction: .forward, animated: true, completion: nil)

@@ -24,8 +24,9 @@ class UserProfileVC: UIViewController {
         super.viewDidLoad()
         setupActionSheet()
         // Do any additional setup after loading the view.
-        
-       
+        firstTabButton.alpha = 1
+        secondTabButton.alpha = 0.5
+        vc?.moveToPage(index: 0)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,13 +89,17 @@ class UserProfileVC: UIViewController {
     }
     
     @IBAction func firstPageTapped(_ sender: Any) {
-        
+       firstTabButton.alpha = 1
+       secondTabButton.alpha = 0.5
+
        print(vc?.a)
        vc?.moveToPage(index: 0)
     }
     
     @IBAction func secondPageTapped(_ sender: Any) {
-       
+        firstTabButton.alpha = 0.5
+        secondTabButton.alpha = 1
+        
         print(vc?.a)
         vc?.moveToPage(index: 1)
         
