@@ -11,6 +11,7 @@ import UIKit
 class descTitleTableViewCell: UITableViewCell {
     
     static let identifier = "descTitleTableViewCell"
+    @IBOutlet weak var descTextView: UITextView!
     
     static func nib() -> UINib {
         return UINib(nibName: "descTitleTableViewCell", bundle: nil)

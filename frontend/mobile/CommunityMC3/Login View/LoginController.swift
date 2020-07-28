@@ -46,17 +46,21 @@ class LoginController: UIViewController {
 //       super.viewWillDisappear(animated)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "registerNewUser"
+        {
+            let regVC = segue.destination as! RegisterController
+            regVC.callBack = callBack
+        }
+    }
+    
     @IBAction func loginUser(_ sender: UIButton) {
-//        switch sender {
-//        case loginButton:
-//            loginToCloudKit()
-//        default:
-//            return
-//        }
-        
-        
-        callBack!()
-        
+        switch sender {
+        case loginButton:
+            loginToCloudKit()
+        default:
+            return
+        }
     }
     
     func loginToCoreData() {
@@ -64,7 +68,8 @@ class LoginController: UIViewController {
             emailField.text = ""
             passwordField.text = ""
             print(oldAccount)
-            self.performSegue(withIdentifier: "loginMain", sender: self)
+            callBack!()
+//            self.performSegue(withIdentifier: "loginMain", sender: self)
         }
     }
     
@@ -75,7 +80,8 @@ class LoginController: UIViewController {
         
         // 2. kita tentuin recordnya
         let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: "Register", predicate: predicate)
+//        let query = CKQuery(recordType: "Register", predicate: predicate)
+        let query = CKQuery(recordType: "Account", predicate: predicate)
         
         // 3. execute querynya
         database.perform(query, inZoneWith: nil) { records, error in
@@ -96,7 +102,8 @@ class LoginController: UIViewController {
                                 UserDefaults.standard.set(self.emailField.text, forKey: "email")
                                 self.emailField.text = ""
                                 self.passwordField.text = ""
-                                self.performSegue(withIdentifier: "loginMain", sender: self)
+                                self.callBack!()
+//                                self.performSegue(withIdentifier: "loginMain", sender: self)
                         }else{
                             self.wrongLabel.isHidden = false
                         }

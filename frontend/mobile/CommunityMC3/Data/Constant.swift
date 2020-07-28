@@ -24,4 +24,8 @@ let availableVideoFilesExt:[String] =
         "m4v",
         "mov"
     ]
-    
+
+let musicGenreArray:[String] =
+[
+    "Rock","Jazz","Pop","RnB","Acoustic","Blues"
+]

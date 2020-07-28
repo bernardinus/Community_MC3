@@ -18,6 +18,8 @@ class SelectFileView: UIViewController
     
     var isUploadVideo:Bool = false
     
+    let documentController = DocumentTableViewController.shared
+    
     var fileList:[URL] = []
     
     var filteredList:[URL] = []
@@ -106,6 +108,8 @@ extension SelectFileView:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        performSegue(withIdentifier: "uploadFileSegue", sender:nil)
+//        performSegue(withIdentifier: "uploadFileSegue", sender:nil)
+        documentController.uploadTrack(email: "mnb@mnb", genre: "Rock", name: "track", fileURL: filteredList[indexPath.row])
+        performSegue(withIdentifier: "uploadTest", sender:nil)
     }
 }

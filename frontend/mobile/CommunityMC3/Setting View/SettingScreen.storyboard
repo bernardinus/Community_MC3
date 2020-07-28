@@ -7,6 +7,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--LoginScreen-->
+        <scene sceneID="HKm-pF-GOV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginScreen" id="1y4-oh-SVP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4QV-RL-oL1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="114" y="-376"/>
+        </scene>
         <!--Setting Controller-->
         <scene sceneID="lgf-Vm-A48">
             <objects>
@@ -52,13 +60,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srt-Ve-bHf">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srt-Ve-bHf">
                                 <rect key="frame" x="25" y="44" width="13" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="chevron.left" catalog="system"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ek-ve-Dd6">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ek-ve-Dd6">
                                 <rect key="frame" x="375" y="44" width="19" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,16 +126,17 @@
                         <outlet property="genreField" destination="gKu-91-I7U" id="C4t-jd-sY8"/>
                         <outlet property="nameField" destination="EKY-zG-FTu" id="s62-F8-PO6"/>
                         <outlet property="settingImage" destination="W6i-ln-Bn7" id="XhA-KR-LGg"/>
+                        <segue destination="1y4-oh-SVP" kind="presentation" identifier="logoutUser" modalPresentationStyle="fullScreen" id="2Im-RO-Im1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmH-0q-eA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="66.666666666666671" y="81.696428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting Controller-->
         <scene sceneID="PKc-MC-ixh">
             <objects>
-                <viewController id="Gbi-kr-7K1" sceneMemberID="viewController">
+                <viewController id="Gbi-kr-7K1" customClass="SettingController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mal-ip-HyZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,6 +187,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
+                                        <connections>
+                                            <segue destination="EC7-Iq-ZwS" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Ere-SF-t2A"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRz-Qw-zSu">
                                         <rect key="frame" x="375" y="44" width="19" height="22"/>
@@ -199,6 +211,9 @@
                                         <state key="normal" title="  Sign Out" image="square.and.arrow.up" catalog="system">
                                             <color key="titleColor" red="1" green="0.3921568627" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="logoutUser:" destination="Gbi-kr-7K1" eventType="touchUpInside" id="v1A-DC-MNG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuz-H2-uAQ">
                                         <rect key="frame" x="299" y="730" width="95" height="32"/>
@@ -348,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLm-o1-t8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779.71014492753625" y="90.401785714285708"/>
+            <point key="canvasLocation" x="893" y="63"/>
         </scene>
     </scenes>
     <resources>

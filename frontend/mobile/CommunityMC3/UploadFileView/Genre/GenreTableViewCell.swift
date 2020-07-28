@@ -11,6 +11,7 @@ import UIKit
 class GenreTableViewCell: UITableViewCell {
     
     static let identifier = "GenreTableViewCell"
+    @IBOutlet weak var genreTextField: UITextField!
     
     static func nib() -> UINib {
         return UINib(nibName: "GenreTableViewCell", bundle: nil)

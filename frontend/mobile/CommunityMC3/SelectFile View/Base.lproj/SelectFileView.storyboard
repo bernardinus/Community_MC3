@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QT0-Ay-w7H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QT0-Ay-w7H">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,6 +54,7 @@
                         <outlet property="selectFileTitleLabel" destination="zDH-bD-AfV" id="M8X-PL-dJk"/>
                         <outlet property="tableView" destination="C6w-Yl-iTY" id="bG0-F5-XNW"/>
                         <segue destination="HdT-R6-ubY" kind="show" identifier="uploadFileSegue" id="rai-qM-Jdu"/>
+                        <segue destination="aLE-75-NPI" kind="show" identifier="uploadTest" id="Xz9-eX-xXr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHh-84-RVL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -69,6 +70,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NeO-wI-jsW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="763" y="-97"/>
+        </scene>
+        <!--Test-->
+        <scene sceneID="d6D-mI-cEs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Test" id="aLE-75-NPI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BBc-Kl-5Sc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="enW-uy-l9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805" y="72"/>
         </scene>
     </scenes>
 </document>

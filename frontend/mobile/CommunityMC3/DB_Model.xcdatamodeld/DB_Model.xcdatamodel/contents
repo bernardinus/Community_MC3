@@ -65,6 +65,7 @@
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Videos" inverseName="user" inverseEntity="Videos"/>
     </entity>
     <entity name="Videos" representedClassName="Videos" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
         <attribute name="fileData" optional="YES" attributeType="Binary"/>
         <attribute name="genre" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -83,6 +84,6 @@
         <element name="Track" positionX="124.33203125" positionY="-152.55078125" width="128" height="163"/>
         <element name="UploadedData" positionX="198.18359375" positionY="76.49609375" width="128" height="88"/>
         <element name="UserData" positionX="-90.140625" positionY="-13.3203125" width="128" height="283"/>
-        <element name="Videos" positionX="28.5546875" positionY="351.3515625" width="128" height="163"/>
+        <element name="Videos" positionX="28.5546875" positionY="351.3515625" width="128" height="178"/>
     </elements>
 </model>

@@ -16,7 +16,8 @@ class AddCoverTableViewCell: UITableViewCell {
            return UINib(nibName: "AddCoverTableViewCell", bundle: nil)
        }
        
-       public func configure (with title: String, imageName: String) {
+       public func configure (with title: String, imageName: String)
+       {
            addCoverLabel.text = title
            addCoverImage.image = UIImage(named: imageName)
        }
