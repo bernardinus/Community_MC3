@@ -10,6 +10,7 @@ import UIKit
 
 class SearchView: UIViewController {
 
+    @IBOutlet weak var mainSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
