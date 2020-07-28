@@ -15,6 +15,7 @@ class RegisterController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var callBack: (() -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +68,8 @@ class RegisterController: UIViewController {
         emailField.text = ""
         passwordField.text = ""
         print(newAccount)
-        self.performSegue(withIdentifier: "registerMain", sender: self)
+        callBack!()
+//        self.performSegue(withIdentifier: "registerMain", sender: self)
         }
     }
     
@@ -95,7 +97,8 @@ class RegisterController: UIViewController {
                 UserDefaults.standard.set(self.emailField.text, forKey: "email")
         //                self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
-                self.performSegue(withIdentifier: "registerMain", sender: self)
+                self.callBack!()
+//                self.performSegue(withIdentifier: "registerMain", sender: self)
             }
         }
     }

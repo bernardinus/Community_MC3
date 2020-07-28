@@ -46,6 +46,14 @@ class LoginController: UIViewController {
 //       super.viewWillDisappear(animated)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "registerNewUser"
+        {
+            let regVC = segue.destination as! RegisterController
+            regVC.callBack = callBack
+        }
+    }
+    
     @IBAction func loginUser(_ sender: UIButton) {
         switch sender {
         case loginButton:
@@ -53,7 +61,6 @@ class LoginController: UIViewController {
         default:
             return
         }
-//        callBack!()
     }
     
     func loginToCoreData() {
@@ -61,7 +68,8 @@ class LoginController: UIViewController {
             emailField.text = ""
             passwordField.text = ""
             print(oldAccount)
-            self.performSegue(withIdentifier: "loginMain", sender: self)
+            callBack!()
+//            self.performSegue(withIdentifier: "loginMain", sender: self)
         }
     }
     
@@ -94,7 +102,8 @@ class LoginController: UIViewController {
                                 UserDefaults.standard.set(self.emailField.text, forKey: "email")
                                 self.emailField.text = ""
                                 self.passwordField.text = ""
-                                self.performSegue(withIdentifier: "loginMain", sender: self)
+                                self.callBack!()
+//                                self.performSegue(withIdentifier: "loginMain", sender: self)
                         }else{
                             self.wrongLabel.isHidden = false
                         }
