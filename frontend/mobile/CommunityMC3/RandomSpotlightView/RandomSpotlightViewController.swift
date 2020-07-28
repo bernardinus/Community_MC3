@@ -106,9 +106,10 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.left {
             popUpContentView.slideLeft()
-        }else if gesture.direction == UISwipeGestureRecognizer.Direction.right{
-            popUpContentView.slideRight()
         }
+//        else if gesture.direction == UISwipeGestureRecognizer.Direction.right{
+//            popUpContentView.slideRight()
+//        }
     }
     
     @IBAction func searchButtonAction(_ sender: UIButton) {
@@ -193,10 +194,6 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             cell.playlist = musicPlaylist
             cell.indexForPlaylist = indexPath.row
             
-//            let asset = AVURLAsset(url: NSURL(fileURLWithPath: musicPlaylist[indexPath.row]) as URL, options: nil)
-//            let audioDuration = asset.duration
-//            let audioDurationSeconds = Int(CMTimeGetSeconds(audioDuration))
-//            cell.trackCurrent.text = "\(audioDurationSeconds)"
             let audiopath = Bundle.main.path(forResource: musicPlaylist[indexPath.row], ofType: "mp3")
             player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: audiopath!))
             let audioDuration = player2!.duration
@@ -210,12 +207,8 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             cell.playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
             cell.playButton.setImage(#imageLiteral(resourceName: "Stop"), for: .selected)
             
-            var selection: Bool{
-                return cell.playButton.isSelected
-            }
-            
             if indexPath.row == tempInt{
-                print(cell.playButton.isSelected)
+
             }else{
                 cell.playButton.isSelected = false
             }
@@ -290,6 +283,7 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         tempInt = sender.tag
         
         index = selectedIndex
+        timer?.invalidate()
         
         if sender.isSelected == true {
             if error == nil {
@@ -297,9 +291,6 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
                 trackPlayer?.prepareToPlay()
                 trackPlayer?.play()
             }
-//                let trackCountdown = Int(trackPlayer!.duration - trackPlayer!.currentTime)
-//                let minutes = trackCountdown/60
-//                let seconds = trackCountdown - minutes
             let cell = musicAndVideoTableView.cellForRow(at: selectedIndex) as! MusicListCell
             seconds = Int(trackPlayer!.duration)
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
@@ -316,8 +307,6 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         }else if sender.isSelected == false{
             trackPlayer?.stop()
             timer!.invalidate()
-            timer = nil
-            
         }
         
         musicAndVideoTableView.reloadData()
@@ -368,20 +357,20 @@ extension UIView {
 
             self.layer.add(slideFromRightToLeft, forKey: "slideFromRightToLeft")
     }
-    func slideRight(duration: TimeInterval = 1.0, completionDelegate: AnyObject? = nil){
-        let slideFromLeftToRight = CATransition()
-        
-        if let delegate: AnyObject = completionDelegate {
-            slideFromLeftToRight.delegate = (delegate as! CAAnimationDelegate)
-        }
-        slideFromLeftToRight.type = CATransitionType.push
-        slideFromLeftToRight.subtype = CATransitionSubtype.fromLeft
-        slideFromLeftToRight.duration = duration
-        slideFromLeftToRight.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        slideFromLeftToRight.fillMode = CAMediaTimingFillMode.removed
-        
-        self.layer.add(slideFromLeftToRight, forKey: "slideFromLeftToRight")
-    }
+//    func slideRight(duration: TimeInterval = 1.0, completionDelegate: AnyObject? = nil){
+//        let slideFromLeftToRight = CATransition()
+//
+//        if let delegate: AnyObject = completionDelegate {
+//            slideFromLeftToRight.delegate = (delegate as! CAAnimationDelegate)
+//        }
+//        slideFromLeftToRight.type = CATransitionType.push
+//        slideFromLeftToRight.subtype = CATransitionSubtype.fromLeft
+//        slideFromLeftToRight.duration = duration
+//        slideFromLeftToRight.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        slideFromLeftToRight.fillMode = CAMediaTimingFillMode.removed
+//
+//        self.layer.add(slideFromLeftToRight, forKey: "slideFromLeftToRight")
+//    }
 }
 
 class HalfSizePresentationController : UIPresentationController {
