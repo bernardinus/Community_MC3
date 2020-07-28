@@ -25,39 +25,12 @@ class CarouselPageViewController: UIPageViewController {
         self.dataSource = nil
         self.delegate = nil
         
-        //        populateItems()
-        //        if let firstViewController = items.first {
-        //            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-        //            
-        //        }
     }
-    
-    //    fileprivate func populateItems() {
-    //        let text = ["First", "Second"]
-    //        let backgroundColor:[UIColor] = [.blue, .green]
-    //
-    //        for (index, t) in text.enumerated() {
-    //            let c = createCarouselItemControler(with: t, with: backgroundColor[index])
-    //            items.append(c)
-    //        }
-    //    }
-    //
-    //    fileprivate func createCarouselItemControler(with titleText: String?, with color: UIColor?) -> UIViewController {
-    //        let c = UIViewController()
-    //        c.view = CarouselItem(titletext: titleText, background: color)
-    //
-    //        return c
-    //    }
+
     
     func moveToPage(index:Int)
     {
-        if index == 0 {
-            setViewControllers([items[index]], direction: .reverse, animated: false, completion: nil)
-        }
-        if index == 1 {
             setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
-        }
-        
     }
 }
 

@@ -30,7 +30,7 @@ class SearchContainerPageVC: UIPageViewController {
         
     }
     
-    func moveToPage(index:Int)
+    func moveToPageSearch(index:Int)
     {
             setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
     }

@@ -10,13 +10,12 @@ import UIKit
 
 class AllSearchVC: UIViewController {
 
-    @IBOutlet weak var allSearchTableView: UITableView!
     @IBOutlet weak var allLabelText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        allSearchTableView.register(UINib(nibName: "SearchSectionTableCell", bundle: nil), forCellReuseIdentifier: "searchSectionCell")
-       
+//        allSearchTableView.register(UINib(nibName: "SearchSectionTableCell", bundle: nil), forCellReuseIdentifier: "searchSectionCell")
+//       
     }
 
 

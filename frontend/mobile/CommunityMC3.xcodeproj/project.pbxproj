@@ -119,8 +119,6 @@
 		B786387224CEECD500952CF3 /* ShowcasePhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786387124CEECD500952CF3 /* ShowcasePhotosVC.swift */; };
 		B7B6F3BB24CFD133008BA503 /* PhotosCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */; };
 		B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */; };
-		B7C7302124CE922C00B922B8 /* CarouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C7302024CE922C00B922B8 /* CarouselItem.xib */; };
-		B7C7302524CE937300B922B8 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C7302424CE937300B922B8 /* CarouselItem.swift */; };
 		B7C7302724CE944700B922B8 /* CarouselPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */; };
 		B7D4B86324CEFEDB00FD30B2 /* ShowcaseMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D4B86224CEFEDB00FD30B2 /* ShowcaseMusicVC.swift */; };
 		B7D4B86624CF076900FD30B2 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D4B86424CF076900FD30B2 /* PhotosTableViewCell.swift */; };
@@ -312,8 +310,6 @@
 		B786387124CEECD500952CF3 /* ShowcasePhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcasePhotosVC.swift; sourceTree = "<group>"; };
 		B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionCell.swift; sourceTree = "<group>"; };
 		B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionCell.xib; sourceTree = "<group>"; };
-		B7C7302024CE922C00B922B8 /* CarouselItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselItem.xib; sourceTree = "<group>"; };
-		B7C7302424CE937300B922B8 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
 		B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselPageViewController.swift; sourceTree = "<group>"; };
 		B7D4B86224CEFEDB00FD30B2 /* ShowcaseMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseMusicVC.swift; sourceTree = "<group>"; };
 		B7D4B86424CF076900FD30B2 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
@@ -705,8 +701,6 @@
 				B786384D24CEC2B500952CF3 /* SecondPage Content */,
 				B733E7F524CA7B3700460E23 /* UserProfileView.storyboard */,
 				B733E7F724CA7B6100460E23 /* UserProfileVC.swift */,
-				B7C7302024CE922C00B922B8 /* CarouselItem.xib */,
-				B7C7302424CE937300B922B8 /* CarouselItem.swift */,
 				B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */,
 			);
 			path = "Profile View";
@@ -1087,7 +1081,6 @@
 				B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */,
 				EA71357E24CE9A140073A8EA /* tiara.mp3 in Resources */,
 				A125312224CE9B8C0038B215 /* GenreItem.xib in Resources */,
-				B7C7302124CE922C00B922B8 /* CarouselItem.xib in Resources */,
 				B74C5A0024C7070200C978F3 /* TrendingNowList.storyboard in Resources */,
 				A16B44AC24B2FBF300053D6C /* Main.storyboard in Resources */,
 				EAE65B3424C7E69B008B453D /* RandomSpotlight.storyboard in Resources */,
@@ -1314,7 +1307,6 @@
 				B7ECE0D224D01E9E008C4422 /* SearchContainerPageVC.swift in Sources */,
 				B7DAF5DB24C6919D00FC6EFB /* DiscoverNewCell.swift in Sources */,
 				EADBB5AC24C5BB6E00CD2C92 /* VideoPlayerViewController.swift in Sources */,
-				B7C7302524CE937300B922B8 /* CarouselItem.swift in Sources */,
 				A1824D9A24C7E3E200C68182 /* Account+Extension.swift in Sources */,
 				A1503D3C24C4BA9B00AE317E /* LoginController.swift in Sources */,
 				B786385424CEC41A00952CF3 /* ShowcaseHeaderCell.swift in Sources */,

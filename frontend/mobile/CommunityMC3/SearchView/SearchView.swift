@@ -17,38 +17,38 @@ class SearchView: UIViewController {
     @IBOutlet weak var videoSearchButton: UIButton!
     @IBOutlet weak var playlistSearchButton: UIButton!
     
-    var vc:SearchContainerPageVC?
+    var vcSearch:SearchContainerPageVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchContainer"
         {
-            vc = (segue.destination as! SearchContainerPageVC)
+            vcSearch = (segue.destination as! SearchContainerPageVC)
         }
     }
 
     @IBAction func tapAllSearch(_ sender: Any) {
-        vc?.moveToPage(index: 0)
+        vcSearch?.moveToPageSearch(index: 0)
     }
     
     @IBAction func tapArtistSearch(_ sender: Any) {
-        vc?.moveToPage(index: 1)
+        vcSearch?.moveToPageSearch(index: 1)
     }
     
     @IBAction func tapMusicSearch(_ sender: Any) {
-        vc?.moveToPage(index: 2)
+        vcSearch?.moveToPageSearch(index: 2)
     }
     
     @IBAction func tapVideoSearch(_ sender: Any) {
-        vc?.moveToPage(index: 3)
+        vcSearch?.moveToPageSearch(index: 3)
     }
     
     @IBAction func tapPlaylistSearch(_ sender: Any) {
-        vc?.moveToPage(index: 4)
+        vcSearch?.moveToPageSearch(index: 4)
     }
     
 }
