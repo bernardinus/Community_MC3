@@ -61,7 +61,7 @@
                                             <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="tapAllSearch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pTx-zB-OlA"/>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sEL-SW-vhn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Uq-Hd-0Xz">
@@ -84,7 +84,7 @@
                                             <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="tapArtistSearch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Cxv-Za-kUE"/>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wjc-HM-epY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-79-zGB">
@@ -107,7 +107,7 @@
                                             <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="tapMusicSearch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="9jz-20-FqS"/>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="5XZ-7A-KXL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-gv-hGm">
@@ -130,7 +130,7 @@
                                             <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="tapVideoSearch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="kB2-pr-5nI"/>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="AZ7-NR-nqd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-Ft-hxH">
@@ -153,7 +153,7 @@
                                             <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
-                                            <action selector="tapPlaylistSearch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Sml-dk-e3M"/>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Pzx-4N-eVF"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -178,11 +178,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass.circle.fill" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="allSearchButton" destination="Vw5-Kj-LMC" id="kqC-Cx-SWH"/>
-                        <outlet property="artistSearchButton" destination="6Uq-Hd-0Xz" id="e5Z-cL-G2x"/>
-                        <outlet property="musicSearchButton" destination="nhR-79-zGB" id="eOn-Sd-T7M"/>
-                        <outlet property="playlistSearchButton" destination="R0z-Ft-hxH" id="uWR-bc-Epb"/>
-                        <outlet property="videoSearchButton" destination="J1b-gv-hGm" id="cPb-es-1mq"/>
+                        <outletCollection property="searchCategoryButton" destination="Vw5-Kj-LMC" collectionClass="NSMutableArray" id="iMr-5O-qdy"/>
+                        <outletCollection property="searchCategoryButton" destination="6Uq-Hd-0Xz" collectionClass="NSMutableArray" id="1tm-yz-wmd"/>
+                        <outletCollection property="searchCategoryButton" destination="nhR-79-zGB" collectionClass="NSMutableArray" id="czY-56-o9M"/>
+                        <outletCollection property="searchCategoryButton" destination="J1b-gv-hGm" collectionClass="NSMutableArray" id="YAh-ne-jhQ"/>
+                        <outletCollection property="searchCategoryButton" destination="R0z-Ft-hxH" collectionClass="NSMutableArray" id="RsF-tW-VjU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -343,7 +343,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bra-XF-9wk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bra-XF-9wk">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
