@@ -15,6 +15,7 @@ class RegisterController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var callBack: (() -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +59,7 @@ class RegisterController: UIViewController {
 //    }
     
     @IBAction func registerUser(_ sender: UIButton) {
-//        registerToCloudKit()
-        
+        registerToCloudKit()        
     }
     
     func registerToCoreData() {
@@ -68,13 +68,15 @@ class RegisterController: UIViewController {
         emailField.text = ""
         passwordField.text = ""
         print(newAccount)
-        self.performSegue(withIdentifier: "registerMain", sender: self)
+        callBack!()
+//        self.performSegue(withIdentifier: "registerMain", sender: self)
         }
     }
     
     func registerToCloudKit() {
          // 1. buat dulu recordnya
-        let newRecord = CKRecord(recordType: "Register")
+//        let newRecord = CKRecord(recordType: "Register")
+        let newRecord = CKRecord(recordType: "Account")
 
         // 2. set propertynya
         newRecord.setValue(emailField.text ?? "", forKey: "email")
@@ -95,7 +97,8 @@ class RegisterController: UIViewController {
                 UserDefaults.standard.set(self.emailField.text, forKey: "email")
         //                self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
-                self.performSegue(withIdentifier: "registerMain", sender: self)
+                self.callBack!()
+//                self.performSegue(withIdentifier: "registerMain", sender: self)
             }
         }
     }

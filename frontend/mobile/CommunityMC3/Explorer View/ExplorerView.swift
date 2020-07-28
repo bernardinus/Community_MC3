@@ -27,16 +27,21 @@ private enum TransitionType {
 }
 
 class ExplorerView: UIViewController {
-
+    
     @IBOutlet weak var ExploreTitleLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var notificationsIconImage: UIImageView!
     
     let documentController = DocumentTableViewController.shared
     let videoController = VideoPlayerViewController.shared
+    let uploadController = UploadController.shared
+    let userDefault = UserDefaults.standard
 //    var tracks = [TrackDataStruct]()
 //    var videos = [VideosDataStruct]()
     var uploads = [UploadedDataStruct]()
+    var features = [FeaturedDataStruct]()
+    var artistCount = 0
+    var uploadCount = 0
     var selectedRow = 0
     
     override func viewDidLoad() {
@@ -56,6 +61,56 @@ class ExplorerView: UIViewController {
         mainTableView.canCancelContentTouches = true
 //        mainTableView.delaysContentTouches = true;
 
+        featuredUpload()
+        latestUpload()
+        
+    }
+    
+    func featuredUpload() {
+        uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
+            for track in tracks {
+                let temp = FeaturedDataStruct (
+                    id: track.recordID,
+                    track: track
+                )
+                self.features.append(temp)
+                self.uploadCount += 1
+            }
+        }
+        documentController.getFilmsFromCloudKit { (videos) in
+            for video in videos {
+                let temp = FeaturedDataStruct (
+                    id: video.recordID,
+                    video: VideosDataStruct (
+                        genre: (video.value(forKey: "genre") as? String)!,
+                        name: (video.value(forKey: "name") as? String)!,
+                        email: (video.value(forKey: "email") as? String)!,
+                        fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
+                    )
+                )
+                self.features.append(temp)
+                self.uploadCount += 1
+            }
+        }
+        documentController.getProfilesFromCloudKit { (photos) in
+            for photo in photos {
+                let asset = (photo.value(forKey: "fileData") as? CKAsset)!
+                let temp = FeaturedDataStruct (
+                    id: photo.recordID,
+                    user: UserDataStruct(
+                        genre: (photo.value(forKey: "genre") as? String)!,
+                        name: (photo.value(forKey: "name") as? String)!,
+                        fileURL: asset.fileURL!,
+                        email: (photo.value(forKey: "email") as? String)!
+                    )
+                )
+                self.features.append(temp)
+                self.artistCount += 1
+            }
+        }
+    }
+    
+    func latestUpload() {
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
 //            self.tracks = tracks
             for track in tracks {
@@ -100,9 +155,12 @@ class ExplorerView: UIViewController {
     
     @IBAction func accountButtonTouched(_ sender: Any)
     {
-        self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+        if userDefault.string(forKey: "email") != nil {
+            self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+        }else{
+            self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+        }
 //        self.performSegue(withIdentifier: "test", sender: nil)
-//        self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
     }
     
     @IBAction func notificationButtonTouched(_ sender: Any)
@@ -131,7 +189,30 @@ class ExplorerView: UIViewController {
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("Prepare Segue \(segue.identifier)")
-        if segue.identifier == "latestMusicSegue" {
+        if segue.identifier == "featuredArtistSegue" {
+            if let artistPage = segue.destination as? FeaturedArtistVC {
+                var temp = [FeaturedDataStruct]()
+                for feature in features {
+                    if feature.user != nil {
+                        temp.append(feature)
+                    }
+                }
+                artistPage.features = temp
+            }
+        }
+        else if segue.identifier == "featuredVideoSegue" {
+            if let featuredPage = segue.destination as? FeaturedVideosVC {
+                var temp = [FeaturedDataStruct]()
+                for feature in features {
+                    if feature.user == nil {
+                        temp.append(feature)
+                    }
+                }
+                featuredPage.features = temp
+                featuredPage.mainTableView = mainTableView
+            }
+        }
+        else if segue.identifier == "latestMusicSegue" {
 //            print("masuk ", tracks.count)
 //            let navPage = segue.destination as! UINavigationController
 //            let latestMusicPage = navPage.topViewController as! LatestMusicVC
@@ -145,7 +226,7 @@ class ExplorerView: UIViewController {
                 trackPlayerPage.track = uploads[selectedRow].track
             }
         }
-        if segue.identifier == "videoPlayerSegue" {
+        else if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
                 videoPlayerPage.video = uploads[selectedRow].video
             }
@@ -166,7 +247,7 @@ class ExplorerView: UIViewController {
         else
         {
             
-//            navigationController?.setNavigationBarHidden(false, animated: false)
+            //            navigationController?.setNavigationBarHidden(false, animated: false)
         }
     }
     
@@ -198,11 +279,11 @@ extension ExplorerView: BonsaiControllerDelegate {
             
         case .bubble:
             
-//            // With Blur Style
-//            // return BonsaiController(fromView: popButton, blurEffectStyle: blurEffectStyle,  presentedViewController: presented, delegate: self)
-//
-//            // With Background Color
-//            return BonsaiController(fromView: popButton, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
+            //            // With Blur Style
+            //            // return BonsaiController(fromView: popButton, blurEffectStyle: blurEffectStyle,  presentedViewController: presented, delegate: self)
+            //
+            //            // With Background Color
+            //            return BonsaiController(fromView: popButton, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
             return nil
             
         case .slide(let fromDirection), .menu(let fromDirection):
@@ -261,7 +342,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         else if(section == ExplorerSection.LatestMusic.rawValue)
         {
-            cell.HeaderName.text = NSLocalizedString("Latest Music", comment: "")
+            cell.HeaderName.text = NSLocalizedString("Latest Upload", comment: "")
             cell.seeMoreButton.setTitle(NSLocalizedString("See more >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "latestMusicSegue", sender: nil)
@@ -312,11 +393,11 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            return 1 // Featured Artist
+            return artistCount // Featured Artist // 1
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            return 3 // Featured Videos
+            return uploadCount // Featured Videos // 3
         }
         return 0
     }
@@ -343,19 +424,19 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             if uploads[indexPath.row].track != nil {
                 cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
                 cell.artistNameLabel.text = uploads[indexPath.row].track?.email
-    //            print("masuk ", cell.player)
+                //            print("masuk ", cell.player)
                 if cell.player {
-    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
                     cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
                 }else{
-    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
                     cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
                 }
             }
             if uploads[indexPath.row].video != nil {
                 cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
                 cell.artistNameLabel.text = uploads[indexPath.row].video?.email
-//                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
+                //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
             }
             return cell
         }
@@ -363,15 +444,30 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
             cell.callBack = {self.performSegue(withIdentifier: "artistPageSegue", sender: nil)}
-
+            var temp = [FeaturedDataStruct]()
+            for feature in features {
+                if feature.user != nil {
+                    temp.append(feature)
+                }
+            }
+            cell.features = temp
             return cell
         }
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredVideosCell") as! FeaturedVideosCell
+            if features[indexPath.row].track != nil {
+                cell.mainTableView = mainTableView
+                cell.feature = features[indexPath.row]
+                if cell.player {
+                    cell.videoPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                }else{
+                    cell.videoPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                }
+            }
             return cell
         }
-
+        
         return mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell")!
     }
     
@@ -396,8 +492,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        selectRow = indexPath.row
-    //        self.performSegue(withIdentifier: "uploadTest", sender: self)
+        //        selectRow = indexPath.row
+        //        self.performSegue(withIdentifier: "uploadTest", sender: self)
         if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
         {
         }

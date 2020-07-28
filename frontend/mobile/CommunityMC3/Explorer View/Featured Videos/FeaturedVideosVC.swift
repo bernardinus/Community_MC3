@@ -11,6 +11,10 @@ import UIKit
 class FeaturedVideosVC: UIViewController {
  
     
+    var features: [FeaturedDataStruct]!
+    var selectedRow = 0
+    var mainTableView: UITableView!
+    
     @IBOutlet weak var featuredVideoTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +27,38 @@ class FeaturedVideosVC: UIViewController {
         navigationController?.navigationBar.backItem?.title = ""
 
     }
+    
+    // MARK: Storyboard
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "videoPlayerSegue" {
+            if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
+                videoPlayerPage.video = features[selectedRow].video
+            }
+        }
+    }
 }
 
 extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if features != nil {
+            return features.count
+        }
+//        return 10
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = featuredVideoTableView.dequeueReusableCell(withIdentifier: "featuredVideosCell") as! FeaturedVideosCell
+        if features[indexPath.row].track != nil {
+            cell.mainTableView = mainTableView
+            cell.feature = features[indexPath.row]
+            if cell.player {
+                cell.videoPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }else{
+                cell.videoPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            }
+        }
         return cell
     }
     
@@ -44,5 +70,12 @@ extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.row
+        if features[selectedRow].video != nil {
+            self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
+        }
     }
 }

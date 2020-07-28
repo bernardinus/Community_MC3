@@ -13,6 +13,7 @@ import MediaPlayer
 
 class UploadController: UIViewController {
     var document: String!
+    var audioPlayer: AVAudioPlayer!
     
     static let shared = UploadController()
     
@@ -31,9 +32,193 @@ class UploadController: UIViewController {
         openMediaPlayer()
     }
     
+    func uploadUserData(email: String, name: String, genre: String, fileURL: String) {
+             // 1. buat dulu recordnya
+            let newRecord = CKRecord(recordType: "UserData")
+
+            // 2. set propertynya
+        newRecord.setValue(email , forKey: "email")
+        newRecord.setValue(name , forKey: "name")
+        newRecord.setValue(genre , forKey: "genre")
+
+            // 3. execute save or insert
+            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+            //        print(CKContainer.default())
+            database.save(newRecord) { record, error in
+               DispatchQueue.main.async {
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                    } else {
+                        print("Done!")
+                    }
+                }
+            }
+        }
+    
+    func getUsersDataFromCloudKit(completionHandler: @escaping ([UserDataStruct]) -> Void) {
+        var users = [UserDataStruct]()
+            // 1. tunjuk databasenya apa
+            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+            
+            // 2. kita tentuin recordnya
+            let predicate = NSPredicate(value: true)
+            let query = CKQuery(recordType: "UserData", predicate: predicate)
+            
+            // 3. execute querynya
+            database.perform(query, inZoneWith: nil) { records, error in
+                
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                
+                print(records)
+                
+                if let fetchedRecords = records {
+                    let registers = fetchedRecords
+                    for register in registers {
+                        let asset = (register.value(forKey: "fileData") as? CKAsset)!
+                        let temp = UserDataStruct(
+                            genre: (register.value(forKey: "genre") as? String)!,
+                            name: (register.value(forKey: "name") as? String)!,
+                            fileURL: asset.fileURL!,
+                            email: (register.value(forKey: "email") as? String)!
+                        )
+                        users.append(temp)
+                    }
+                    completionHandler(users)
+                }
+            }
+        }
+    
+    func uploadAccount(email: String, password: String) {
+             // 1. buat dulu recordnya
+            let newRecord = CKRecord(recordType: "Account")
+
+            // 2. set propertynya
+        newRecord.setValue(email , forKey: "email")
+        newRecord.setValue(password , forKey: "password")
+
+            // 3. execute save or insert
+            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+            //        print(CKContainer.default())
+            database.save(newRecord) { record, error in
+               DispatchQueue.main.async {
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                    } else {
+                        print("Done!")
+                    }
+                }
+            }
+        }
+    
+    func getAccountsFromCloudKit(completionHandler: @escaping ([AccountDataStruct]) -> Void) {
+        var accounts = [AccountDataStruct]()
+            // 1. tunjuk databasenya apa
+            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+            
+            // 2. kita tentuin recordnya
+            let predicate = NSPredicate(value: true)
+            let query = CKQuery(recordType: "Account", predicate: predicate)
+            
+            // 3. execute querynya
+            database.perform(query, inZoneWith: nil) { records, error in
+                
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                
+                print(records)
+                
+                if let fetchedRecords = records {
+                    let registers = fetchedRecords
+                    for register in registers {
+                        let temp = AccountDataStruct(
+                            email: (register.value(forKey: "email") as? String)!,
+                            password: (register.value(forKey: "password") as? String)!
+                        )
+                        accounts.append(temp)
+                    }
+                    completionHandler(accounts)
+                }
+            }
+        }
+    
+    func getTracksFromCloudKit(tableView: UITableView, completionHandler: @escaping ([TrackDataStruct]) -> Void){
+            var tracks = [TrackDataStruct]()
+            // 1. tunjuk databasenya apa
+               let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
+               
+               // 2. kita tentuin recordnya
+               let predicate = NSPredicate(value: true)
+               let query = CKQuery(recordType: "Tracks", predicate: predicate)
+               
+               // 3. execute querynya
+               database.perform(query, inZoneWith: nil) { records, error in
+                   
+                   if let err = error {
+                       print(err.localizedDescription)
+                   }
+                   
+                   print(records)
+                   
+                   if let fetchedRecords = records {
+                    for record in fetchedRecords {
+                        let asset = (record.value(forKey: "fileData") as? CKAsset)!
+                        let temp = TrackDataStruct(
+                            genre: (record.value(forKey: "genre") as? String)!,
+                            name: (record.value(forKey: "name") as? String)!,
+                            recordID: record.recordID,
+                            email: (record.value(forKey: "email") as? String)!,
+                            fileURL: asset.fileURL!
+                        )
+                        tracks.append(temp)
+                    }
+                       DispatchQueue.main.async {
+                        tableView.reloadData()
+                       }
+                    completionHandler(tracks)
+                   }
+               }
+        }
+    
+    func getTrackFromCloudKit(recordID: CKRecord.ID, completionHandler: @escaping (TrackDataStruct) -> Void) {
+        CKContainer(identifier: iCloudContainerID).publicCloudDatabase.fetch(withRecordID: recordID) { [unowned self] record, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                }
+            } else {
+                if let record = record {
+                    if let asset = record["fileData"] as? CKAsset {
+                        let upload = TrackDataStruct(
+                            genre: (record.value(forKey: "genre") as? String)!,
+                            name: (record.value(forKey: "name") as? String)!,
+                            recordID: record.recordID,
+                            email: (record.value(forKey: "email") as? String)!,
+                            fileURL: asset.fileURL!
+                        )
+                        DispatchQueue.main.async {
+                            do {
+                                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileURL)
+                                self.audioPlayer.play()
+                            } catch {
+                                print("play failed")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     func downloadVideo(id: CKRecord.ID) {
 
-        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.fetch(withRecordID: id) { (results, error) -> Void in
+        CKContainer(identifier: iCloudContainerID).publicCloudDatabase.fetch(withRecordID: id) { (results, error) -> Void in
 
 //            dispatch_async(dispatch_get_main_queue()) { () -> Void in
             DispatchQueue.main.async {
@@ -83,7 +268,7 @@ class UploadController: UIViewController {
         }
         photoRecord["fileData"] = CKAsset(fileURL: url!)
 
-        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(photoRecord) { record, error in
+        CKContainer(identifier: iCloudContainerID).publicCloudDatabase.save(photoRecord) { record, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
@@ -100,7 +285,7 @@ class UploadController: UIViewController {
     func getPhotosFromCloudKit(completionHandler: @escaping ([ProfilePictureDataStruct]) -> Void) {
         var photos = [ProfilePictureDataStruct]()
         // 1. tunjuk databasenya apa
-           let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
+           let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
            
            // 2. kita tentuin recordnya
            let predicate = NSPredicate(value: true)
@@ -172,7 +357,7 @@ class UploadController: UIViewController {
         let musicAsset = CKAsset(fileURL: audioURL)
         musicRecord["fileData"] = musicAsset
 
-        CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase.save(musicRecord) { [unowned self] record, error in
+        CKContainer(identifier: iCloudContainerID).publicCloudDatabase.save(musicRecord) { [unowned self] record, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print("Error: \(error.localizedDescription)")

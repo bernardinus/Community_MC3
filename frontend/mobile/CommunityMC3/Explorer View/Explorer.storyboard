@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -114,7 +114,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1X-WZ-WJo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="40"/>
+            <point key="canvasLocation" x="-364" y="33"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="mdN-pV-VEV">
@@ -134,7 +134,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovN-AE-tbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="130"/>
+            <point key="canvasLocation" x="-149" y="145"/>
         </scene>
         <!--FeaturedArtistView-->
         <scene sceneID="dps-eT-UN6">
@@ -144,7 +144,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlS-4R-kx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="130"/>
+            <point key="canvasLocation" x="142" y="218"/>
         </scene>
         <!--VideoPlayer-->
         <scene sceneID="Mdf-aL-qPP">
@@ -154,7 +154,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMv-Tb-mut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="-327"/>
+            <point key="canvasLocation" x="1686" y="-316"/>
         </scene>
         <!--TrackPlayer-->
         <scene sceneID="Kbs-bt-qVR">
@@ -164,7 +164,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Qf-Rp-1qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1383" y="-212"/>
+            <point key="canvasLocation" x="1686" y="-265"/>
         </scene>
         <!--VideoPlayer-->
         <scene sceneID="eC7-Ui-KOS">
@@ -174,7 +174,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FV-RF-FOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="-156"/>
+            <point key="canvasLocation" x="1686" y="-210"/>
         </scene>
         <!--FeaturedVideosView-->
         <scene sceneID="Wo8-p2-apo">
@@ -184,7 +184,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVC-e6-4jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="56"/>
+            <point key="canvasLocation" x="449" y="256"/>
         </scene>
         <!--LoginScreen-->
         <scene sceneID="JSK-lH-DO1">
@@ -194,7 +194,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQW-0l-xIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="-483"/>
+            <point key="canvasLocation" x="1362" y="-590"/>
         </scene>
         <!--RandomSpotlight-->
         <scene sceneID="RAs-BK-H7h">
@@ -204,7 +204,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkh-f7-HbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="-109"/>
+            <point key="canvasLocation" x="1462" y="-540"/>
         </scene>
         <!--SelectFileView-->
         <scene sceneID="06E-VJ-SgZ">
@@ -214,7 +214,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRU-7P-6BD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="-60"/>
+            <point key="canvasLocation" x="1527" y="-74"/>
         </scene>
         <!--UserProfileView-->
         <scene sceneID="R4x-7p-Ipx">
@@ -224,7 +224,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GkQ-bQ-lhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-102" y="-281"/>
+            <point key="canvasLocation" x="1402" y="295"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

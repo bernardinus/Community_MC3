@@ -18,12 +18,12 @@ class SettingController: UIViewController {
     
 //    let documentController = DocumentTableViewController.shared
     let uploadController = UploadController.shared
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
         settingImage.addGestureRecognizer(uploadTap)
-        let userDefault = UserDefaults.standard
         if let loadEmail = userDefault.string(forKey: "email"){
             emailField.text = loadEmail
         }
@@ -34,7 +34,7 @@ class SettingController: UIViewController {
 //        }
         uploadController.getPhotosFromCloudKit { (photos) in
             for photo in photos {
-                if photo.email == "mnb@mnb" {
+                if photo.email == self.emailField.text {
                     if let data = NSData(contentsOf: photo.fileURL) {
                         DispatchQueue.main.async {
                             self.settingImage.image = UIImage(data: data as Data)
@@ -67,7 +67,11 @@ class SettingController: UIViewController {
 
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: cancelButtonText, style: UIAlertAction.Style.cancel, handler: nil)
-        let signupAction = UIAlertAction(title: signupButtonText, style: UIAlertAction.Style.default, handler: nil)
+        let signupAction = UIAlertAction(title: signupButtonText, style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction) in
+            self.userDefault.removeObject(forKey: "email")
+            self.performSegue(withIdentifier: "logoutUser", sender: self)
+        })
         alert.addAction(cancelAction)
         alert.addAction(signupAction)
         self.present(alert, animated: true, completion: nil)

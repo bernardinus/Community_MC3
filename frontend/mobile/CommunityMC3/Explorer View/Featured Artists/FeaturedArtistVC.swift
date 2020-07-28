@@ -12,6 +12,7 @@ class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollection
     
 
     @IBOutlet weak var featuredArtistCollectionView: UICollectionView!
+    var features: [FeaturedDataStruct]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,10 @@ class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return 12
+        if features != nil {
+            return features.count
+        }
+           return 0
        }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            let cell = featuredArtistCollectionView.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell

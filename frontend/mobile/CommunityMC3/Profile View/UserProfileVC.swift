@@ -7,24 +7,49 @@
 //
 
 import UIKit
+import SwipeMenuViewController
 
 class UserProfileVC: UIViewController {
 
+    @IBOutlet weak var viewContainer: UIView!
+    @IBOutlet weak var firstTabButton: UIButton!
+    @IBOutlet weak var secondTabButton: UIButton!
     var userData:UserDataStruct?
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var vc:CarouselPageViewController?
     
+    @IBOutlet weak var userNameLabel: UILabel!
     
     var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let loadEmail = userDefault.string(forKey: "email"){
+            userNameLabel.text = loadEmail
+        }
         setupActionSheet()
         // Do any additional setup after loading the view.
+        firstTabButton.alpha = 1
+        secondTabButton.alpha = 0.5
+        vc?.moveToPage(index: 0)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "container"
+        {
+            print("continerSegue")
+            vc = segue.destination as! CarouselPageViewController
+        }
     }
     
     func setupActionSheet()
     {
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive)
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: {
+            (action: UIAlertAction) in
+            self.userDefault.removeObject(forKey: "email")
+            self.performSegue(withIdentifier: "logoutUser", sender: self)
+        })
         actionSheet.addAction(signOutAction)
         
         let editAction = UIAlertAction(title: "Edit", style: .default,
@@ -73,17 +98,22 @@ class UserProfileVC: UIViewController {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    @IBAction func firstPageTapped(_ sender: Any) {
+       firstTabButton.alpha = 1
+       secondTabButton.alpha = 0.5
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+       print(vc?.a)
+       vc?.moveToPage(index: 0)
     }
-    */
-
+    
+    @IBAction func secondPageTapped(_ sender: Any) {
+        firstTabButton.alpha = 0.5
+        secondTabButton.alpha = 1
+        
+        print(vc?.a)
+        vc?.moveToPage(index: 1)
+        
+    }
 }
 
 
@@ -92,16 +122,3 @@ extension UserProfileVC : UIActionSheetDelegate
     
 }
 
-public extension UIImage {
-  public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
-    let rect = CGRect(origin: .zero, size: size)
-    UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-    color.setFill()
-    UIRectFill(rect)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-
-    guard let cgImage = image?.cgImage else { return nil }
-    self.init(cgImage: cgImage)
-  }
-}

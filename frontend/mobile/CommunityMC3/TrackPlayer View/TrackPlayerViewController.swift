@@ -12,7 +12,6 @@ import AVFoundation
 class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     
     @IBOutlet weak var trackCoverImageView: UIImageView!
-    @IBOutlet weak var artisLabel: UILabel!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
@@ -26,6 +25,8 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var repeatOneTrackOnlyButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var shuffleButtonActive: UIButton!
+    @IBOutlet weak var artistButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     var track: TrackDataStruct!
     
@@ -37,25 +38,28 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     var trackPlaylist = [String]()
     var repeatPlaylistBoolean = true
     
+    var favoriteBool: Bool {
+        return favoriteButton.isSelected
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(false, animated: false)
-        retreiveTrack()
-        prepareTrack()
-        prepareAndCustomizeSlider()
+//        retreiveTrack()
+//        prepareTrack()
+//        prepareAndCustomizeSlider()
+        favoriteButtonStateChange()
     }
     
     func retreiveTrack() {
         if track != nil {
             trackTitleLabel.text = track.name
-            artisLabel.text = track.email
+            artistButton.setTitle(track.email, for: .normal)
         }
     }
     
     func prepareTrack() {
-//        let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
-        let audioPath = Bundle.main.path(forResource: "\(trackPlaylist[counter])", ofType: "mp3")!
         var error : NSError? = nil
         if track != nil {
             let audioPath = track.fileURL
@@ -66,7 +70,8 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
                 error = error1
             }
         }else {
-            let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
+            let audioPath = Bundle.main.path(forResource: "\(trackPlaylist[counter])", ofType: "mp3")!
+//            let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
             do {
                 trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
                 
@@ -120,6 +125,11 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
             trackCurrentTimeLabel.text = "\(minute):\(String(format: "%2d", second))"
            }
        }
+    
+    func favoriteButtonStateChange(){
+        favoriteButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
+        favoriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
+    }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool){
 
@@ -226,6 +236,16 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
             trackPlaylist.append(contentsOf: trackListTemp)
         }
     }
+    
+    @IBAction func artistButton(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func favoriteButtonAction(_ sender: UIButton) {
+        favoriteButton.isSelected = !favoriteButton.isSelected
+        print(favoriteBool)
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
