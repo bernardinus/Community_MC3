@@ -32,7 +32,7 @@
                     <navigationItem key="navigationItem" title="Featured Videos" id="YNg-WM-bMI">
                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Dbb-2i-sas">
                             <connections>
-                                <segue destination="91d-di-HDb" kind="unwind" unwindAction="unwindToExplorerView:" id="AVM-jy-rDK"/>
+                                <segue destination="91d-di-HDb" kind="unwind" identifier="unwindToExplorerView" unwindAction="unwindToExplorerView:" id="AVM-jy-rDK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

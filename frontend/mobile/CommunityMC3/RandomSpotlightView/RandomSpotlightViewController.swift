@@ -17,7 +17,7 @@ enum RandomSearch: Int {
 }
 
 class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
-
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -43,7 +43,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupBackground()
     }
     
@@ -120,7 +120,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         editRandomizerVC.transitioningDelegate = self
         editRandomizerVC.modalPresentationStyle = .custom
         editRandomizerVC.view.layer.cornerRadius = 34
-     
+        
         self.present(editRandomizerVC, animated: true, completion: nil)
         
     }
@@ -162,7 +162,7 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             trackIndex = indexPath.row
             cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayAudio(_:)), for: .touchUpInside)
             cell.trackCurrent.text = "\(trackPlayer!.duration)"
-           
+            
             return cell
         }else if indexPath.section == RandomSearch.Video.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "videoList", for: indexPath) as! VideoListCell
@@ -203,14 +203,14 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         cell.layer.cornerRadius = 12
         cell.musicGenreLabel.text = musicGenreArray[indexPath.row]
         switch cell.musicGenreLabel.text {
-            case "RnB":
-                cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
-            case "Jazz":
+        case "RnB":
+            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
+        case "Jazz":
             cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
-            case "Pop":
-                cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
-            default:
-                break
+        case "Pop":
+            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
+        default:
+            break
         }
         return cell
     }
@@ -226,7 +226,7 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             error = error1
         }
         trackPlayer!.delegate = self
-       
+        
         let selectedIndex = IndexPath(row: sender.tag, section: 0)
         
         index = selectedIndex

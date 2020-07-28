@@ -34,7 +34,11 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="VideoPlayer" id="l43-Zj-S9L">
-                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="0UR-Sx-U5e"/>
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="0UR-Sx-U5e">
+                            <connections>
+                                <segue destination="ZCl-FT-OY2" kind="unwind" unwindAction="unwindToExplorerView:" id="QfQ-Rb-pdb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -42,6 +46,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QXZ-os-Cf3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ZCl-FT-OY2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2150.7246376811595" y="87.723214285714278"/>
         </scene>
