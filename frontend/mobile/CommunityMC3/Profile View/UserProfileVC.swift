@@ -38,8 +38,8 @@ class UserProfileVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"
         {
-            print("continerSegue")
-            vc = segue.destination as! CarouselPageViewController
+            print("containerSegue")
+            vc = (segue.destination as! CarouselPageViewController)
         }
     }
     
@@ -102,7 +102,7 @@ class UserProfileVC: UIViewController {
        firstTabButton.alpha = 1
        secondTabButton.alpha = 0.5
 
-       print(vc?.a)
+        print(vc?.a as Any)
        vc?.moveToPage(index: 0)
     }
     
@@ -110,7 +110,7 @@ class UserProfileVC: UIViewController {
         firstTabButton.alpha = 0.5
         secondTabButton.alpha = 1
         
-        print(vc?.a)
+        print(vc?.a as Any)
         vc?.moveToPage(index: 1)
         
     }

@@ -10,21 +10,14 @@ import UIKit
 
 class AllSearchVC: UIViewController {
 
+    @IBOutlet weak var allSearchTableView: UITableView!
+    @IBOutlet weak var allLabelText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        allSearchTableView.register(UINib(nibName: "SearchSectionTableCell", bundle: nil), forCellReuseIdentifier: "searchSectionCell")
+       
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class MusicSearchVC: UIViewController {
 
+    @IBOutlet weak var musicSearchTableView: UITableView!
+    @IBOutlet weak var musicLabelText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 

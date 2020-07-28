@@ -10,6 +10,8 @@ import UIKit
 
 class ArtistSearchVC: UIViewController {
 
+    @IBOutlet weak var artistSearchTableView: UITableView!
+    @IBOutlet weak var artistLabelText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
