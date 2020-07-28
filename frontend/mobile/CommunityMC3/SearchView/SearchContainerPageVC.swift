@@ -1,41 +1,44 @@
 //
-//  CarouselPageViewController.swift
+//  SeachContainerPageVC.swift
 //  CommunityMC3
 //
-//  Created by Theofani on 27/07/20.
+//  Created by Theofani on 28/07/20.
 //  Copyright © 2020 Apple Developer Academy. All rights reserved.
 //
 
 import UIKit
 
-class CarouselPageViewController: UIPageViewController {
+class SearchContainerPageVC: UIPageViewController {
     
     lazy var items: [UIViewController] = {
-        let sb = UIStoryboard(name: "UserProfileView", bundle: nil)
+        let sb = UIStoryboard(name: "Search", bundle: nil)
         
-        let vc1 = sb.instantiateViewController(withIdentifier: "firstPageView")
-        let vc2 = sb.instantiateViewController(withIdentifier: "secondPageView")
+        let vc1 = sb.instantiateViewController(withIdentifier: "allSearch")
+        let vc2 = sb.instantiateViewController(withIdentifier: "artistSearch")
+        let vc3 = sb.instantiateViewController(withIdentifier: "musicSearch")
+        let vc4 = sb.instantiateViewController(withIdentifier: "videoSearch")
+        let vc5 = sb.instantiateViewController(withIdentifier: "playlistSearch")
         
-        return [vc1, vc2]
+        return [vc1, vc2, vc3, vc4, vc5]
     }()
     
-    var a:String = "pvc"
     override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
+        
         self.dataSource = nil
         self.delegate = nil
         
     }
-
     
-    func moveToPage(index:Int)
+    func moveToPageSearch(index:Int)
     {
             setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
     }
+    
 }
 
 // MARK: - DataSource
-extension CarouselPageViewController: UIPageViewControllerDataSource {
+extension SearchContainerPageVC: UIPageViewControllerDataSource {
     func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = items.firstIndex(of: viewController) else {
             return nil
