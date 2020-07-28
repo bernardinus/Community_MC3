@@ -12,6 +12,9 @@ class SearchHeaderSection: UITableViewCell {
 
     @IBOutlet weak var searchHeaderLabel: UILabel!
     @IBOutlet weak var viewAllButton: UIButton!
+    
+    var callBack: (() -> Void)? = nil
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +27,10 @@ class SearchHeaderSection: UITableViewCell {
     }
     
     @IBAction func tapViewAll(_ sender: Any) {
+        self.callBack!()
+    }
+    
+    func setCallBack(callback: (() -> Void)?){
+        self.callBack = callback
     }
 }
