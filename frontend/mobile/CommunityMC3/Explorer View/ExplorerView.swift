@@ -40,9 +40,13 @@ class ExplorerView: UIViewController {
 //    var videos = [VideosDataStruct]()
     var uploads = [UploadedDataStruct]()
     var features = [FeaturedDataStruct]()
+    var trendings = [FeaturedDataStruct]()
     var artistCount = 0
     var uploadCount = 0
     var selectedRow = 0
+    var selectUpload = false
+    var selectFeatured = false
+    var selectTrending = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +65,20 @@ class ExplorerView: UIViewController {
         mainTableView.canCancelContentTouches = true
 //        mainTableView.delaysContentTouches = true;
 
-        featuredUpload()
+        hightlightUpload()
+        featuredCombine()
         latestUpload()
         
     }
     
-    func featuredUpload() {
+    func hightlightUpload() {
         uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
             for track in tracks {
                 let temp = FeaturedDataStruct (
                     id: track.recordID,
                     track: track
                 )
+                self.trendings.append(temp)
                 self.features.append(temp)
                 self.uploadCount += 1
             }
@@ -88,10 +94,14 @@ class ExplorerView: UIViewController {
                         fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
                     )
                 )
+                self.trendings.append(temp)
                 self.features.append(temp)
                 self.uploadCount += 1
             }
         }
+    }
+    
+    func featuredCombine() {
         documentController.getProfilesFromCloudKit { (photos) in
             for photo in photos {
                 let asset = (photo.value(forKey: "fileData") as? CKAsset)!
@@ -189,7 +199,17 @@ class ExplorerView: UIViewController {
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("Prepare Segue \(segue.identifier)")
-        if segue.identifier == "featuredArtistSegue" {
+        if segue.identifier == "trendingSegue" {
+            if let trendingPage = segue.destination as? TrendingNowVC {
+                var temp = [FeaturedDataStruct]()
+                for trending in trendings {
+                    temp.append(trending)
+                }
+                trendingPage.trendings = temp
+                trendingPage.mainTableView = mainTableView
+            }
+        }
+        else if segue.identifier == "featuredArtistSegue" {
             if let artistPage = segue.destination as? FeaturedArtistVC {
                 var temp = [FeaturedDataStruct]()
                 for feature in features {
@@ -223,12 +243,30 @@ class ExplorerView: UIViewController {
         }
         else if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
-                trackPlayerPage.track = uploads[selectedRow].track
+                if selectUpload {
+                    selectUpload = false
+                    trackPlayerPage.track = uploads[selectedRow].track
+                }else if selectTrending {
+                    selectTrending = false
+                    trackPlayerPage.track = trendings[selectedRow].track
+                }else {
+                    selectFeatured = false
+                    trackPlayerPage.track = features[selectedRow].track
+                }
             }
         }
         else if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
-                videoPlayerPage.video = uploads[selectedRow].video
+                if selectUpload {
+                    selectUpload = false
+                    videoPlayerPage.video = uploads[selectedRow].video
+                }else if selectTrending {
+                    selectTrending = false
+                    videoPlayerPage.video = trendings[selectedRow].video
+                }else {
+                    selectFeatured  = false
+                    videoPlayerPage.video = features[selectedRow].video
+                }
             }
         }
         else if segue.identifier == "loginScreenSegue"
@@ -358,7 +396,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         else if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            cell.HeaderName.text = NSLocalizedString("Featured Videos", comment: "")
+            cell.HeaderName.text = NSLocalizedString("Featured Upload", comment: "")
             cell.seeMoreButton.setTitle(NSLocalizedString("More videos >", comment: ""), for: .normal)
             cell.callBack = {
                 self.performSegue(withIdentifier: "featuredVideoSegue", sender: nil)
@@ -379,7 +417,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
-            return 3 // Trending Now
+            return trendings.count // Trending Now
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
         {
@@ -406,6 +444,22 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
+            cell.mainTableView = mainTableView
+            cell.trending = trendings[indexPath.row]
+            if trendings[indexPath.row].track != nil {
+                cell.trackTitleLabel.text = trendings[indexPath.row].track?.name
+                cell.artistNameLabel.text = trendings[indexPath.row].track?.email
+                if cell.player {
+                    cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                }else{
+                    cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                }
+            }
+            if trendings[indexPath.row].video != nil {
+                cell.trackTitleLabel.text = trendings[indexPath.row].video?.name
+                cell.artistNameLabel.text = trendings[indexPath.row].video?.email
+                //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
+            }
             return cell
         }
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
@@ -496,6 +550,14 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         //        self.performSegue(withIdentifier: "uploadTest", sender: self)
         if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
         {
+            selectedRow = indexPath.row
+            selectTrending = true
+            if trendings[selectedRow].video != nil {
+                self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
+            }
+            if trendings[selectedRow].track != nil {
+                self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+            }
         }
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {
@@ -503,6 +565,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             selectedRow = indexPath.row
+            selectUpload = true
             if uploads[selectedRow].video != nil {
                 self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
             }
@@ -515,6 +578,14 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
         {
+            selectedRow = indexPath.row
+            selectFeatured = true
+            if features[selectedRow].video != nil {
+                self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
+            }
+            if features[selectedRow].track != nil {
+                self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+            }
         }
     }
 }

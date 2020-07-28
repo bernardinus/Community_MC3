@@ -7,17 +7,18 @@
 //
 
 import UIKit
-import SwipeMenuViewController
 
 class UserProfileVC: UIViewController {
-
+    
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var firstTabButton: UIButton!
     @IBOutlet weak var secondTabButton: UIButton!
-    var userData:UserDataStruct?
-    @IBOutlet weak var menuButton: UIBarButtonItem!
-    var vc:CarouselPageViewController?
     
+    var userData:UserDataStruct?
+    
+    var vc:CarouselPageViewController?
+
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userNameLabel: UILabel!
     
     var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
@@ -38,8 +39,8 @@ class UserProfileVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"
         {
-            print("continerSegue")
-            vc = segue.destination as! CarouselPageViewController
+            print("containerSegue")
+            vc = (segue.destination as! CarouselPageViewController)
         }
     }
     
@@ -54,9 +55,9 @@ class UserProfileVC: UIViewController {
         
         let editAction = UIAlertAction(title: "Edit", style: .default,
                                        handler: { action in
-                                                    self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
-                                                 }
-                                        )
+                                        self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
+        }
+        )
         actionSheet.addAction(editAction)
         
         let shareAction = UIAlertAction(title: "Share", style: .default)
@@ -64,9 +65,9 @@ class UserProfileVC: UIViewController {
         
         let uploadAction = UIAlertAction(title: "Upload", style: .default,
                                          handler: { action in
-                                                     self.performSegue(withIdentifier: "selectFileSegue", sender: nil)
-                                                  }
-                                         )
+                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil)
+        }
+        )
         actionSheet.addAction(uploadAction)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -84,12 +85,12 @@ class UserProfileVC: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
         super.viewWillAppear(animated)
         
-//        let navigationBar = navigationController?.navigationBar
-//        let navigationBarAppearence = UINavigationBarAppearance()
-//        navigationBarAppearence.shadowColor = .clear
-//        navigationBar?.scrollEdgeAppearance = navigationBarAppearence
-//        navigationItem.rightBarButtonItems![0].setBackgroundImage(nil, for: .disabled, barMetrics: .default)
-//
+        //        let navigationBar = navigationController?.navigationBar
+        //        let navigationBarAppearence = UINavigationBarAppearance()
+        //        navigationBarAppearence.shadowColor = .clear
+        //        navigationBar?.scrollEdgeAppearance = navigationBarAppearence
+        //        navigationItem.rightBarButtonItems![0].setBackgroundImage(nil, for: .disabled, barMetrics: .default)
+        //
         
     }
     
@@ -99,18 +100,18 @@ class UserProfileVC: UIViewController {
     }
     
     @IBAction func firstPageTapped(_ sender: Any) {
-       firstTabButton.alpha = 1
-       secondTabButton.alpha = 0.5
-
-       print(vc?.a)
-       vc?.moveToPage(index: 0)
+        firstTabButton.alpha = 1
+        secondTabButton.alpha = 0.5
+        
+        print(vc?.a as Any)
+        vc?.moveToPage(index: 0)
     }
     
     @IBAction func secondPageTapped(_ sender: Any) {
         firstTabButton.alpha = 0.5
         secondTabButton.alpha = 1
         
-        print(vc?.a)
+        print(vc?.a as Any)
         vc?.moveToPage(index: 1)
         
     }

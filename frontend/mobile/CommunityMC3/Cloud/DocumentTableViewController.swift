@@ -56,6 +56,122 @@ class DocumentTableViewController: UITableViewController {
 //        }
     }
     
+    func getFavoritesFromCloudKit(completionHandler: @escaping ([FavouritesDataStruct]) -> Void){
+        var favourites = [FavouritesDataStruct]()
+        // 1. tunjuk databasenya apa
+           let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
+           
+           // 2. kita tentuin recordnya
+           let predicate = NSPredicate(value: true)
+           let query = CKQuery(recordType: "Favourites", predicate: predicate)
+           
+           // 3. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
+               
+               if let err = error {
+                   print(err.localizedDescription)
+               }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                for record in fetchedRecords {
+                    let trackData = try? JSONDecoder().decode([PrimitiveTrackDataStruct].self, from: record.value(forKey: "tracks") as! Data)
+                    let videoData = try? JSONDecoder().decode([PrimitiveVideosDataStruct].self, from: record.value(forKey: "video") as! Data)
+                    let temp = FavouritesDataStruct(
+                        id: (record.value(forKey: "id") as? String)!,
+                        track: trackData!,
+                        videos: videoData!
+                    )
+                    favourites.append(temp)
+                }
+                completionHandler(favourites)
+               }
+           }
+    }
+    
+    func uploadFavorite(id: String, track: [PrimitiveTrackDataStruct]?) {
+//        guard let arrayTrack = track else { return }
+//        do{
+            let trackData = try? JSONEncoder().encode(track)
+            var musicRecord = CKRecord(recordType: "Favourites")
+//            let musicRecord = CKRecord(recordType: "Favourites", recordID: recordID)
+            //Parent record (Aircraft)
+//            let recordAircraft = CKRecord(recordType: "Aircraft", recordID: ...)
+//
+//            //Add child references (FieldValue). As far as I know, the child records must have already been created and sent to CloudKit
+//            var fieldValueReferences = [CKRecord.Reference]()
+//
+//            for fieldValue in fieldValues{
+//              let ref = CKReference(record: fieldValue, action: .deleteSelf)
+//              fieldValueReferences.append(ref)
+//            }
+//
+        // 1. tunjuk databasenya apa
+           let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
+           
+           // 2. kita tentuin recordnya
+           let predicate = NSPredicate(value: true)
+           let query = CKQuery(recordType: "Favourites", predicate: predicate)
+        
+           
+           // 3. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
+               
+               if let err = error {
+                   print(err.localizedDescription)
+               }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                var flag = false
+                for record in fetchedRecords {
+                    let email = (record.value(forKey: "id") as? String)!
+                    let favouriteData = try? JSONDecoder().decode([PrimitiveTrackDataStruct].self, from: record.value(forKey: "tracks") as! Data)
+                    if email == id && favouriteData!.count != trackData!.count {
+//                        print("bener")
+                        flag = true
+                        musicRecord = record
+                        musicRecord["tracks"] = trackData
+                        database.save(musicRecord) { [unowned self] record, error in
+                            DispatchQueue.main.async {
+                                if let error = error {
+                                    print("Error: \(error.localizedDescription)")
+                                } else {
+                                    print("Done!")
+                                }
+                            }
+                        }
+                    }
+                }
+                if !flag {
+//                    print("salah")
+                    musicRecord["id"] = id as CKRecordValue
+                    musicRecord["tracks"] = trackData
+                    database.save(musicRecord) { [unowned self] record, error in
+                        DispatchQueue.main.async {
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("Done!")
+                            }
+                        }
+                    }
+                }
+               }
+           }
+        
+        
+//            //Assign the array of references to the key that represents your Reference List field
+//            recordAircraft["fieldValues"] = fieldValueReferences as CKRecordValue
+//            musicRecord["track"] = fieldValueReferences as CKRecordValue
+    //        musicRecord["videos"] = (video! as CKRecordValue)
+        
+//        }catch{print("error")}
+
+    }
+    
     func uploadTrack(email: String, genre: String, name: String, fileURL: URL) {
         let musicRecord = CKRecord(recordType: "Track")
         musicRecord["genre"] = genre as CKRecordValue
