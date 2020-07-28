@@ -11,6 +11,7 @@ import UIKit
 class SearchHeaderSection: UITableViewCell {
 
     @IBOutlet weak var searchHeaderLabel: UILabel!
+    @IBOutlet weak var viewAllButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,4 +23,6 @@ class SearchHeaderSection: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func tapViewAll(_ sender: Any) {
+    }
 }

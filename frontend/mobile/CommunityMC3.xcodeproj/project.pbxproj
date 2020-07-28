@@ -80,8 +80,6 @@
 		A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3FFED24C6A84500CA2228 /* Test.storyboard */; };
 		A1E76E3E24CE1ADD00D9415B /* UploadFileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76E3C24CE1ADC00D9415B /* UploadFileHeaderCell.swift */; };
 		A1E76E3F24CE1ADD00D9415B /* UploadFileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E76E3D24CE1ADD00D9415B /* UploadFileHeaderCell.xib */; };
-		B703FE0C24D024E7001AD48E /* SearchSectionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703FE0A24D024E7001AD48E /* SearchSectionTableCell.swift */; };
-		B703FE0D24D024E7001AD48E /* SearchSectionTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B703FE0B24D024E7001AD48E /* SearchSectionTableCell.xib */; };
 		B703FE1024D025C8001AD48E /* ArtistSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703FE0E24D025C8001AD48E /* ArtistSearchCell.swift */; };
 		B703FE1124D025C8001AD48E /* ArtistSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B703FE0F24D025C8001AD48E /* ArtistSearchCell.xib */; };
 		B703FE1424D025D5001AD48E /* MusicSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703FE1224D025D5001AD48E /* MusicSearchCell.swift */; };
@@ -273,8 +271,6 @@
 		A1E3FFED24C6A84500CA2228 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		A1E76E3C24CE1ADC00D9415B /* UploadFileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileHeaderCell.swift; sourceTree = "<group>"; };
 		A1E76E3D24CE1ADD00D9415B /* UploadFileHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadFileHeaderCell.xib; sourceTree = "<group>"; };
-		B703FE0A24D024E7001AD48E /* SearchSectionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSectionTableCell.swift; sourceTree = "<group>"; };
-		B703FE0B24D024E7001AD48E /* SearchSectionTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSectionTableCell.xib; sourceTree = "<group>"; };
 		B703FE0E24D025C8001AD48E /* ArtistSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchCell.swift; sourceTree = "<group>"; };
 		B703FE0F24D025C8001AD48E /* ArtistSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistSearchCell.xib; sourceTree = "<group>"; };
 		B703FE1224D025D5001AD48E /* MusicSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchCell.swift; sourceTree = "<group>"; };
@@ -825,8 +821,6 @@
 			isa = PBXGroup;
 			children = (
 				B7ECE0D324D0211C008C4422 /* AllSearchVC.swift */,
-				B703FE0A24D024E7001AD48E /* SearchSectionTableCell.swift */,
-				B703FE0B24D024E7001AD48E /* SearchSectionTableCell.xib */,
 				B7D0470324D070EA004A4D9C /* SearchHeaderSection.swift */,
 				B7D0470424D070EA004A4D9C /* SearchHeaderSection.xib */,
 			);
@@ -1059,7 +1053,6 @@
 				A11A9FF424C94A58008D7867 /* AddCoverTableViewCell.xib in Resources */,
 				A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */,
 				A15C4D1B24C5300A00ED0C0E /* Explorer.storyboard in Resources */,
-				B703FE0D24D024E7001AD48E /* SearchSectionTableCell.xib in Resources */,
 				A15C4D1D24C5303200ED0C0E /* Favourites.storyboard in Resources */,
 				A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */,
 				A11A9FEE24C94A58008D7867 /* descTitleTableViewCell.xib in Resources */,
@@ -1241,7 +1234,6 @@
 				B786387024CEECC300952CF3 /* ShowcaseVideosVC.swift in Sources */,
 				B7ECE0D424D0211C008C4422 /* AllSearchVC.swift in Sources */,
 				B7D0470524D070EA004A4D9C /* SearchHeaderSection.swift in Sources */,
-				B703FE0C24D024E7001AD48E /* SearchSectionTableCell.swift in Sources */,
 				B7DAF5E724C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.swift in Sources */,
 				B74C5A0624C714AF00C978F3 /* TrendingNowVC.swift in Sources */,
 				B73C836124C7F8AC0047B4EC /* FeaturedArtistVC.swift in Sources */,

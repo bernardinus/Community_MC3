@@ -29,12 +29,16 @@
                         <state key="normal" title="View all">
                             <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <connections>
+                            <action selector="tapViewAll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fJi-ps-uwL"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="searchHeaderLabel" destination="xFC-xM-SOu" id="q9A-16-efn"/>
+                <outlet property="viewAllButton" destination="hRG-n9-IDD" id="ana-1l-4Zy"/>
             </connections>
             <point key="canvasLocation" x="111.59420289855073" y="103.79464285714285"/>
         </tableViewCell>
