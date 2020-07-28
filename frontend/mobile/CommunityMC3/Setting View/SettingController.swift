@@ -32,14 +32,27 @@ class SettingController: UIViewController {
 //                print(profile.name, profile.email, profile.genre)
 //            }
 //        }
-        uploadController.getPhotosFromCloudKit { (photos) in
-            for photo in photos {
-                if photo.email == self.emailField.text {
-                    if let data = NSData(contentsOf: photo.fileURL) {
+//        uploadController.getPhotosFromCloudKit { (photos) in
+//            for photo in photos {
+//                if photo.email == self.emailField.text {
+//                    if let data = NSData(contentsOf: photo.fileURL) {
+//                        DispatchQueue.main.async {
+//                            self.settingImage.image = UIImage(data: data as Data)
+//                        }
+//                   }
+//                }
+//            }
+//        }
+        uploadController.getUsersDataFromCloudKit { (usersData) in
+            for userData in usersData {
+                if userData.email == self.emailField.text {
+                    if let data = NSData(contentsOf: userData.fileURL) {
                         DispatchQueue.main.async {
+                            self.nameField.text = userData.name
+                            self.genreField.text = userData.genre
                             self.settingImage.image = UIImage(data: data as Data)
                         }
-                   }
+                    }
                 }
             }
         }
@@ -55,7 +68,12 @@ class SettingController: UIViewController {
     
     @IBAction func saveSetting(_ sender: UIButton) {
 //        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
-        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
+//        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
+        uploadController.uploadUserData(email: emailField.text!,
+                                        name: nameField.text!,
+                                        genre: genreField.text!,
+                                        myImage: settingImage.image!
+        )
     }
     
     func loadAlert() {

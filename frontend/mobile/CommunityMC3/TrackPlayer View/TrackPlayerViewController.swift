@@ -29,6 +29,9 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var favoriteButton: UIButton!
     
     var track: TrackDataStruct!
+    let documentController = DocumentTableViewController.shared
+    var email: String = ""
+    var tracks = [PrimitiveTrackDataStruct]()
     
     var trackPlayer: AVAudioPlayer?
     var displayLink : CADisplayLink! = nil
@@ -44,12 +47,56 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let loadEmail = UserDefaults.standard.string(forKey: "email"){
+            email = loadEmail
+        }
         
         navigationController?.setNavigationBarHidden(false, animated: false)
-//        retreiveTrack()
-//        prepareTrack()
-//        prepareAndCustomizeSlider()
+        retreiveTrack()
+        retreiveFavorites()
+        prepareTrack()
+        prepareAndCustomizeSlider()
         favoriteButtonStateChange()
+    }
+    
+    func changeFavourites() {
+        let temp = PrimitiveTrackDataStruct(
+            genre: track.genre,
+            name: track.name,
+            email: track.email
+        )
+        var counter = 0
+        var flag = false
+        for track in tracks {
+            if track.name == self.track.name {
+                flag = true
+                tracks.remove(at: counter)
+            }
+            counter += 1
+        }
+        if !flag {
+            tracks.append(temp)
+        }
+        
+        documentController.uploadFavorite(id: email, track: tracks)
+    }
+    
+    func retreiveFavorites() {
+        documentController.getFavoritesFromCloudKit { (favourites) in
+            for favourite in favourites {
+                if self.email != "" && favourite.id == self.email {
+                    self.tracks = favourite.track!
+                }
+            }
+            print("current", self.tracks.count)
+            for track in self.tracks {
+                if track.name == self.track.name {
+                    DispatchQueue.main.async {
+                        self.favoriteButton.isSelected = !self.favoriteButton.isSelected
+                    }
+                }
+            }
+        }
     }
     
     func retreiveTrack() {
@@ -127,6 +174,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
        }
     
     func favoriteButtonStateChange(){
+        
         favoriteButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
         favoriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
     }
@@ -243,6 +291,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {
         favoriteButton.isSelected = !favoriteButton.isSelected
+        changeFavourites()
         print(favoriteBool)
     }
     
