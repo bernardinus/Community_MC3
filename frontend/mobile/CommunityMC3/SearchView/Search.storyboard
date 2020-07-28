@@ -32,19 +32,130 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DFu-Ti-4P4">
-                                <rect key="frame" x="20" y="172" width="374" height="690"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DFu-Ti-4P4">
+                                <rect key="frame" x="20" y="214" width="374" height="648"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-4H-Z2n">
+                                <rect key="frame" x="20" y="178" width="374" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Vw5-Kj-LMC">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="all">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6Uq-Hd-0Xz">
+                                        <rect key="frame" x="78" y="0.0" width="62" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="artist">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-79-zGB">
+                                        <rect key="frame" x="156" y="0.0" width="62" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="music">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-gv-hGm">
+                                        <rect key="frame" x="234" y="0.0" width="62" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="video">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-Ft-hxH">
+                                        <rect key="frame" x="312" y="0.0" width="62" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="playlist">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qWb-8x-hde" firstAttribute="top" secondItem="Q9W-zT-IVQ" secondAttribute="bottom" constant="4" id="2cG-e6-UFS"/>
                             <constraint firstItem="qWb-8x-hde" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="15" id="8KM-jg-cea"/>
                             <constraint firstItem="qWb-8x-hde" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" constant="-15" id="9fc-Tr-iME"/>
+                            <constraint firstItem="DFu-Ti-4P4" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="Awo-hR-GMQ"/>
+                            <constraint firstItem="AIr-4H-Z2n" firstAttribute="top" secondItem="qWb-8x-hde" secondAttribute="bottom" constant="6" id="EhP-Hk-Vwq"/>
+                            <constraint firstItem="DFu-Ti-4P4" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="Gi3-g4-sid"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="AIr-4H-Z2n" secondAttribute="trailing" constant="20" id="JfK-FZ-qQ4"/>
+                            <constraint firstItem="DFu-Ti-4P4" firstAttribute="top" secondItem="AIr-4H-Z2n" secondAttribute="bottom" constant="6" id="JzP-lR-PqA"/>
+                            <constraint firstItem="AIr-4H-Z2n" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="LRu-Jq-VIK"/>
                             <constraint firstItem="Q9W-zT-IVQ" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="Tpu-Nd-56d"/>
                             <constraint firstItem="Q9W-zT-IVQ" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="27" id="Ygy-Mo-9hF"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="DFu-Ti-4P4" secondAttribute="trailing" constant="20" id="ok3-yS-kGZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
