@@ -107,6 +107,8 @@
 		B786386E24CEECA400952CF3 /* ShowcaseMusicView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B786386D24CEECA400952CF3 /* ShowcaseMusicView.storyboard */; };
 		B786387024CEECC300952CF3 /* ShowcaseVideosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786386F24CEECC300952CF3 /* ShowcaseVideosVC.swift */; };
 		B786387224CEECD500952CF3 /* ShowcasePhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786387124CEECD500952CF3 /* ShowcasePhotosVC.swift */; };
+		B7B6F3BB24CFD133008BA503 /* PhotosCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */; };
+		B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */; };
 		B7C7302124CE922C00B922B8 /* CarouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C7302024CE922C00B922B8 /* CarouselItem.xib */; };
 		B7C7302524CE937300B922B8 /* CarouselItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C7302424CE937300B922B8 /* CarouselItem.swift */; };
 		B7C7302724CE944700B922B8 /* CarouselPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */; };
@@ -282,6 +284,8 @@
 		B786386D24CEECA400952CF3 /* ShowcaseMusicView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowcaseMusicView.storyboard; sourceTree = "<group>"; };
 		B786386F24CEECC300952CF3 /* ShowcaseVideosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseVideosVC.swift; sourceTree = "<group>"; };
 		B786387124CEECD500952CF3 /* ShowcasePhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcasePhotosVC.swift; sourceTree = "<group>"; };
+		B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionCell.swift; sourceTree = "<group>"; };
+		B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionCell.xib; sourceTree = "<group>"; };
 		B7C7302024CE922C00B922B8 /* CarouselItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselItem.xib; sourceTree = "<group>"; };
 		B7C7302424CE937300B922B8 /* CarouselItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItem.swift; sourceTree = "<group>"; };
 		B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselPageViewController.swift; sourceTree = "<group>"; };
@@ -720,6 +724,8 @@
 				B786387124CEECD500952CF3 /* ShowcasePhotosVC.swift */,
 				B7D4B86424CF076900FD30B2 /* PhotosTableViewCell.swift */,
 				B7D4B86524CF076900FD30B2 /* PhotosTableViewCell.xib */,
+				B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */,
+				B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -987,6 +993,7 @@
 				B7DAF5E824C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.xib in Resources */,
 				B7DAF5E424C6A6EE00FC6EFB /* FeaturedArtistCell.xib in Resources */,
 				EA69015924C93F2600D8EBD2 /* SortByCollectionViewCell.xib in Resources */,
+				B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */,
 				EA71357E24CE9A140073A8EA /* tiara.mp3 in Resources */,
 				A125312224CE9B8C0038B215 /* GenreItem.xib in Resources */,
 				B7C7302124CE922C00B922B8 /* CarouselItem.xib in Resources */,
@@ -1173,6 +1180,7 @@
 				A17C3C6924CCA3C500153493 /* Constant.swift in Sources */,
 				A134D2A724C91BAB009A054F /* Photos+Extension.swift in Sources */,
 				A16B44D524B2FC7E00053D6C /* FavouritesView.swift in Sources */,
+				B7B6F3BB24CFD133008BA503 /* PhotosCollectionCell.swift in Sources */,
 				A15C4D2624C5370C00ED0C0E /* HeaderCell.swift in Sources */,
 				A1E76E3E24CE1ADD00D9415B /* UploadFileHeaderCell.swift in Sources */,
 				A11A9FE924C94A58008D7867 /* albumTitleTableViewCell.swift in Sources */,

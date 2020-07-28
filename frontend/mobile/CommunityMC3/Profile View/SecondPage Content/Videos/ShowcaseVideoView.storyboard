@@ -10,15 +10,34 @@
         <!--Videos-->
         <scene sceneID="rRt-QX-kvX">
             <objects>
-                <viewController id="Y0U-Ap-usH" sceneMemberID="viewController">
+                <viewController id="Y0U-Ap-usH" customClass="ShowcaseVideosVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BfD-9S-oOv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RDJ-8W-Xip">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y0U-Ap-usH" id="9O1-aY-vU6"/>
+                                    <outlet property="delegate" destination="Y0U-Ap-usH" id="dYV-cy-TmD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RDJ-8W-Xip" firstAttribute="top" secondItem="bug-Gi-Dfp" secondAttribute="top" id="NDG-vV-HN1"/>
+                            <constraint firstItem="RDJ-8W-Xip" firstAttribute="trailing" secondItem="bug-Gi-Dfp" secondAttribute="trailing" id="gqA-uo-rLd"/>
+                            <constraint firstItem="RDJ-8W-Xip" firstAttribute="bottom" secondItem="bug-Gi-Dfp" secondAttribute="bottom" id="qiB-LK-Oq7"/>
+                            <constraint firstItem="RDJ-8W-Xip" firstAttribute="leading" secondItem="bug-Gi-Dfp" secondAttribute="leading" id="vo6-DY-H73"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bug-Gi-Dfp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Videos" id="Q8T-Ij-aPH"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="showcaseVideoTableView" destination="RDJ-8W-Xip" id="Ujt-3b-5Cc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxU-MZ-4gf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
