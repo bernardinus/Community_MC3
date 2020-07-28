@@ -27,7 +27,7 @@ private enum TransitionType {
 }
 
 class ExplorerView: UIViewController {
-
+    
     @IBOutlet weak var ExploreTitleLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var notificationsIconImage: UIImageView!
@@ -112,7 +112,7 @@ class ExplorerView: UIViewController {
     
     func latestUpload() {
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
-        //            self.tracks = tracks
+//            self.tracks = tracks
             for track in tracks {
                 let temp = UploadedDataStruct (
                     uploadedDate: track.creationDate!,
@@ -126,11 +126,11 @@ class ExplorerView: UIViewController {
                 )
                 self.uploads.append(temp)
             }
-    //            print("count ", tracks.count)
+//            print("count ", tracks.count)
         }
         
         documentController.getFilmsFromCloudKit { (videos) in
-    //            self.videos = videos
+//            self.videos = videos
             for video in videos {
                 let temp = UploadedDataStruct (
                     uploadedDate: video.creationDate!,
@@ -141,13 +141,14 @@ class ExplorerView: UIViewController {
                         fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
                     )
                 )
-    //                let tmp = self.videoController.retrieveVideo(video: temp.video)!
-    //                temp.video?.fileURL = tmp
+//                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+//                temp.video?.fileURL = tmp
                 self.uploads.append(temp)
             }
         }
         
-    //        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
+//        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
+        
     }
     
     
@@ -246,7 +247,7 @@ class ExplorerView: UIViewController {
         else
         {
             
-//            navigationController?.setNavigationBarHidden(false, animated: false)
+            //            navigationController?.setNavigationBarHidden(false, animated: false)
         }
     }
     
@@ -278,11 +279,11 @@ extension ExplorerView: BonsaiControllerDelegate {
             
         case .bubble:
             
-//            // With Blur Style
-//            // return BonsaiController(fromView: popButton, blurEffectStyle: blurEffectStyle,  presentedViewController: presented, delegate: self)
-//
-//            // With Background Color
-//            return BonsaiController(fromView: popButton, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
+            //            // With Blur Style
+            //            // return BonsaiController(fromView: popButton, blurEffectStyle: blurEffectStyle,  presentedViewController: presented, delegate: self)
+            //
+            //            // With Background Color
+            //            return BonsaiController(fromView: popButton, backgroundColor: backgroundColor, presentedViewController: presented, delegate: self)
             return nil
             
         case .slide(let fromDirection), .menu(let fromDirection):
@@ -392,11 +393,11 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
         {
-            return artistCount // Featured Artist
+            return artistCount // Featured Artist // 1
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            return uploadCount // Featured Videos
+            return uploadCount // Featured Videos // 3
         }
         return 0
     }
@@ -423,19 +424,19 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             if uploads[indexPath.row].track != nil {
                 cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
                 cell.artistNameLabel.text = uploads[indexPath.row].track?.email
-    //            print("masuk ", cell.player)
+                //            print("masuk ", cell.player)
                 if cell.player {
-    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
                     cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
                 }else{
-    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                    //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
                     cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
                 }
             }
             if uploads[indexPath.row].video != nil {
                 cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
                 cell.artistNameLabel.text = uploads[indexPath.row].video?.email
-//                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
+                //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
             }
             return cell
         }
@@ -466,7 +467,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             }
             return cell
         }
-
+        
         return mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell")!
     }
     
@@ -491,8 +492,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        selectRow = indexPath.row
-    //        self.performSegue(withIdentifier: "uploadTest", sender: self)
+        //        selectRow = indexPath.row
+        //        self.performSegue(withIdentifier: "uploadTest", sender: self)
         if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
         {
         }
