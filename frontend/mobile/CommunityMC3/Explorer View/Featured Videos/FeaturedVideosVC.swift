@@ -30,6 +30,11 @@ class FeaturedVideosVC: UIViewController {
     
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "trackPlayerSegue" {
+            if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
+                trackPlayerPage.track = features[selectedRow].track
+            }
+        }
         if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
                 videoPlayerPage.video = features[selectedRow].video

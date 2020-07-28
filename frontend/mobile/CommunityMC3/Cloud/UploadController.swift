@@ -32,35 +32,136 @@ class UploadController: UIViewController {
         openMediaPlayer()
     }
     
-    func uploadUserData(email: String, name: String, genre: String, fileURL: String) {
+    func uploadFavorite(id: String, video: [PrimitiveVideosDataStruct]?) {
+            let videoData = try? JSONEncoder().encode(video)
+            var videoRecord = CKRecord(recordType: "Favourites")
+        
+        // 1. tunjuk databasenya apa
+           let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
+           
+           // 2. kita tentuin recordnya
+           let predicate = NSPredicate(value: true)
+           let query = CKQuery(recordType: "Favourites", predicate: predicate)
+        
+           
+           // 3. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
+               
+               if let err = error {
+                   print(err.localizedDescription)
+               }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                var flag = false
+                for record in fetchedRecords {
+                    let email = (record.value(forKey: "id") as? String)!
+                    if email == id {
+                        flag = true
+                        videoRecord = record
+                        videoRecord["video"] = videoData
+                        
+                        database.save(videoRecord) { [unowned self] record, error in
+                            DispatchQueue.main.async {
+                                if let error = error {
+                                    print("Error: \(error.localizedDescription)")
+                                } else {
+                                    print("Done!")
+                                }
+                            }
+                        }
+                    }
+                }
+                if !flag {
+                    videoRecord["id"] = id as CKRecordValue
+                    videoRecord["video"] = videoData
+                    database.save(videoRecord) { [unowned self] record, error in
+                        DispatchQueue.main.async {
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("Done!")
+                            }
+                        }
+                    }
+                }
+               }
+           }
+    }
+    
+    func uploadUserData(email: String, name: String, genre: String, myImage: UIImage) {
              // 1. buat dulu recordnya
-            let newRecord = CKRecord(recordType: "UserData")
+        var newRecord = CKRecord(recordType: "UserData")
+        let predicate = NSPredicate(value: true)
+        let query = CKQuery(recordType: "UserData", predicate: predicate)
+        
+        let data = myImage.pngData(); // UIImage -> NSData, see also UIImageJPEGRepresentation
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+        do {
+            try data!.write(to: url!, options: [])
+        } catch let e as NSError {
+            print("Error! \(e)");
+            return
+        }
+        newRecord.setValue(CKAsset(fileURL: url!) , forKey: "fileURL")
 
-            // 2. set propertynya
-        newRecord.setValue(email , forKey: "email")
-        newRecord.setValue(name , forKey: "name")
-        newRecord.setValue(genre , forKey: "genre")
+        let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
+           
+           // 2. execute querynya
+           database.perform(query, inZoneWith: nil) { records, error in
+               
+               if let err = error {
+                   print(err.localizedDescription)
+               }
+               
+               print(records)
+               
+               if let fetchedRecords = records {
+                var flag = false
+                for record in fetchedRecords {
+                    let id = (record.value(forKey: "email") as? String)!
+                    if email == id {
+                        flag = true
+                        newRecord = record
+                        newRecord.setValue(name , forKey: "name")
+                        newRecord.setValue(genre , forKey: "genre")
+                        database.save(newRecord) { [unowned self] record, error in
+                            DispatchQueue.main.async {
+                                if let error = error {
+                                    print("Error: \(error.localizedDescription)")
+                                } else {
+                                    print("Done!")
+                                }
+                            }
+                        }
+                    }
+                }
+                if !flag {
+                        // 3. set propertynya
+                    newRecord.setValue(email , forKey: "email")
+                    newRecord.setValue(name , forKey: "name")
+                    newRecord.setValue(genre , forKey: "genre")
 
-            // 3. execute save or insert
-            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
-    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
-            //        print(CKContainer.default())
-            database.save(newRecord) { record, error in
-               DispatchQueue.main.async {
-                    if let error = error {
-                        print("Error: \(error.localizedDescription)")
-                    } else {
-                        print("Done!")
+                        // 4. execute save or insert
+                    database.save(newRecord) { record, error in
+                       DispatchQueue.main.async {
+                            if let error = error {
+                                print("Error: \(error.localizedDescription)")
+                            } else {
+                                print("Done!")
+                            }
+                        }
                     }
                 }
             }
         }
+    }
     
     func getUsersDataFromCloudKit(completionHandler: @escaping ([UserDataStruct]) -> Void) {
         var users = [UserDataStruct]()
             // 1. tunjuk databasenya apa
-            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
-    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+            let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
             
             // 2. kita tentuin recordnya
             let predicate = NSPredicate(value: true)
@@ -78,7 +179,7 @@ class UploadController: UIViewController {
                 if let fetchedRecords = records {
                     let registers = fetchedRecords
                     for register in registers {
-                        let asset = (register.value(forKey: "fileData") as? CKAsset)!
+                        let asset = (register.value(forKey: "fileURL") as? CKAsset)!
                         let temp = UserDataStruct(
                             genre: (register.value(forKey: "genre") as? String)!,
                             name: (register.value(forKey: "name") as? String)!,
@@ -101,9 +202,8 @@ class UploadController: UIViewController {
         newRecord.setValue(password , forKey: "password")
 
             // 3. execute save or insert
-            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
-    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
-            //        print(CKContainer.default())
+            let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
+
             database.save(newRecord) { record, error in
                DispatchQueue.main.async {
                     if let error = error {
@@ -118,8 +218,7 @@ class UploadController: UIViewController {
     func getAccountsFromCloudKit(completionHandler: @escaping ([AccountDataStruct]) -> Void) {
         var accounts = [AccountDataStruct]()
             // 1. tunjuk databasenya apa
-            let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
-    //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+            let database = CKContainer(identifier: iCloudContainerID).publicCloudDatabase
             
             // 2. kita tentuin recordnya
             let predicate = NSPredicate(value: true)
