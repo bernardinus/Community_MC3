@@ -10,7 +10,6 @@ import UIKit
 
 class AllSearchVC: UIViewController {
 
-    @IBOutlet weak var allLabelText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         

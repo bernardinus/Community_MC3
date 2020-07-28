@@ -10,7 +10,7 @@ import UIKit
 
 class PlaylistSearchVC: UIViewController {
 
-    @IBOutlet weak var playlistLabelText: UILabel!
+    @IBOutlet weak var playlistSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

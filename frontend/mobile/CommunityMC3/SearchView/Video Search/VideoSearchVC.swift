@@ -10,7 +10,7 @@ import UIKit
 
 class VideoSearchVC: UIViewController {
 
-    @IBOutlet weak var videoLabelText: UILabel!
+    @IBOutlet weak var videoSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -10,22 +10,25 @@ import UIKit
 
 class ArtistSearchVC: UIViewController {
 
-    @IBOutlet weak var artistLabelText: UILabel!
+    @IBOutlet weak var artistSeachTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        artistSeachTableView.register(UINib(nibName: "ArtistSearchCell", bundle: nil), forCellReuseIdentifier: "artistSearchCell")
 
-        // Do any additional setup after loading the view.
+    }
+}
+
+extension ArtistSearchVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = artistSeachTableView.dequeueReusableCell(withIdentifier: "artistSearchCell") as! ArtistSearchCell
+        return cell
     }
-    */
-
+    
+    
+    
 }

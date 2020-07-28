@@ -207,19 +207,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tua-Qp-s40">
-                                <rect key="frame" x="157" y="100" width="100" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-Ys-wVN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Osg-In-ne1" id="esZ-uJ-CU7"/>
+                                    <outlet property="delegate" destination="Osg-In-ne1" id="Vv6-7f-Y9g"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vpA-Ys-wVN" firstAttribute="top" secondItem="SX5-aK-1jW" secondAttribute="top" id="7D2-Fa-i7e"/>
+                            <constraint firstItem="vpA-Ys-wVN" firstAttribute="leading" secondItem="SX5-aK-1jW" secondAttribute="leading" id="Gee-c8-XGG"/>
+                            <constraint firstItem="SX5-aK-1jW" firstAttribute="bottom" secondItem="vpA-Ys-wVN" secondAttribute="bottom" id="LWR-tY-Cbo"/>
+                            <constraint firstItem="SX5-aK-1jW" firstAttribute="trailing" secondItem="vpA-Ys-wVN" secondAttribute="trailing" id="peZ-pI-LBH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SX5-aK-1jW"/>
                     </view>
                     <connections>
-                        <outlet property="artistLabelText" destination="tua-Qp-s40" id="tDL-HA-H6y"/>
+                        <outlet property="artistSeachTableView" destination="vpA-Ys-wVN" id="pWN-6V-ac1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ndc-YD-IWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -234,19 +241,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Music Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLi-5V-j1a">
-                                <rect key="frame" x="155" y="102" width="104" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U6u-U9-tb7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U6u-U9-tb7" firstAttribute="leading" secondItem="jTf-gg-1fm" secondAttribute="leading" id="5GP-33-0Ai"/>
+                            <constraint firstItem="U6u-U9-tb7" firstAttribute="top" secondItem="jTf-gg-1fm" secondAttribute="top" id="jin-VE-bCU"/>
+                            <constraint firstItem="jTf-gg-1fm" firstAttribute="trailing" secondItem="U6u-U9-tb7" secondAttribute="trailing" id="wNM-yp-CO5"/>
+                            <constraint firstItem="jTf-gg-1fm" firstAttribute="bottom" secondItem="U6u-U9-tb7" secondAttribute="bottom" id="ySh-HZ-UF0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jTf-gg-1fm"/>
                     </view>
                     <connections>
-                        <outlet property="musicLabelText" destination="wLi-5V-j1a" id="SB1-ju-Vo5"/>
+                        <outlet property="musicSearchTableView" destination="U6u-U9-tb7" id="MWG-Tt-ytO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fih-0F-HI2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -261,19 +271,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-tV-uRX">
-                                <rect key="frame" x="156" y="102" width="102" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gfb-IT-DDj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0Ov-fg-xVW" firstAttribute="trailing" secondItem="gfb-IT-DDj" secondAttribute="trailing" id="3xj-Ph-gl6"/>
+                            <constraint firstItem="0Ov-fg-xVW" firstAttribute="bottom" secondItem="gfb-IT-DDj" secondAttribute="bottom" id="Z2a-HT-xpD"/>
+                            <constraint firstItem="gfb-IT-DDj" firstAttribute="leading" secondItem="0Ov-fg-xVW" secondAttribute="leading" id="qeH-ic-T3v"/>
+                            <constraint firstItem="gfb-IT-DDj" firstAttribute="top" secondItem="0Ov-fg-xVW" secondAttribute="top" id="yit-jx-V6c"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0Ov-fg-xVW"/>
                     </view>
                     <connections>
-                        <outlet property="videoLabelText" destination="xpu-tV-uRX" id="KwX-6v-JyY"/>
+                        <outlet property="videoSearchTableView" destination="gfb-IT-DDj" id="9nq-X4-g3M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Xx-3u-QCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -288,19 +301,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Playlist Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qo-Ym-aDg">
-                                <rect key="frame" x="157" y="100" width="100" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="emT-39-RtH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="emT-39-RtH" firstAttribute="top" secondItem="kne-2Z-JPf" secondAttribute="top" id="9ny-hC-KtM"/>
+                            <constraint firstItem="kne-2Z-JPf" firstAttribute="trailing" secondItem="emT-39-RtH" secondAttribute="trailing" id="AvJ-PV-Bgr"/>
+                            <constraint firstItem="emT-39-RtH" firstAttribute="leading" secondItem="kne-2Z-JPf" secondAttribute="leading" id="GLH-St-GFy"/>
+                            <constraint firstItem="kne-2Z-JPf" firstAttribute="bottom" secondItem="emT-39-RtH" secondAttribute="bottom" id="s7F-ku-YdD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kne-2Z-JPf"/>
                     </view>
                     <connections>
-                        <outlet property="playlistLabelText" destination="2Qo-Ym-aDg" id="FdL-8D-XRv"/>
+                        <outlet property="playlistSearchTableView" destination="emT-39-RtH" id="kMx-76-4z9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jZ-xi-Alv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -315,20 +331,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFQ-4K-wbl">
-                                <rect key="frame" x="169" y="68" width="77" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bra-XF-9wk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="bottom" secondItem="bJc-xT-T4Q" secondAttribute="bottom" id="B1Y-tI-xwS"/>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="top" secondItem="bJc-xT-T4Q" secondAttribute="top" id="XJI-BS-eCw"/>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="leading" secondItem="bJc-xT-T4Q" secondAttribute="leading" id="eUs-cj-KKk"/>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="trailing" secondItem="bJc-xT-T4Q" secondAttribute="trailing" id="nrc-JJ-gU6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bJc-xT-T4Q"/>
                     </view>
-                    <connections>
-                        <outlet property="allLabelText" destination="VFQ-4K-wbl" id="wJT-7K-LAu"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pgm-Pz-cue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
