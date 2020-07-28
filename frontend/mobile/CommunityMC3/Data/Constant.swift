@@ -16,16 +16,16 @@ let availableAudioFilesExt:[String] =
         "m4a",
         "wav",
         "mpeg",
-    ]
+]
 
 let availableVideoFilesExt:[String] =
     [
         "mp4",
         "m4v",
         "mov"
-    ]
+]
 
 let musicGenreArray:[String] =
-[
-    "Rock","Jazz","Pop","RnB","Acoustic","Blues"
+    [
+        "Rock","Jazz","Pop","RnB","Acoustic","Blues"
 ]

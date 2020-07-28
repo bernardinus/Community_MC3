@@ -27,7 +27,7 @@ class AlertViewHelper
                                rightHandler:((UIAlertAction) -> Void)? = nil,
                                leftHandler:((UIAlertAction) -> Void)? = nil,
                                replacementString:[String:String] = [:]
-                            ) -> UIAlertController
+    ) -> UIAlertController
     {
         var alertView:UIAlertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
         loadAlertCopy(type, &(alertView.title)!, &(alertView.message)!)
@@ -51,31 +51,31 @@ class AlertViewHelper
         switch type
         {
             
-            // Approve project
-            case .ConfirmExitEditing:
-                alertTitle = "Exit edit mode"
-                alertMSG = "You will lose all your edited data"
+        // Approve project
+        case .ConfirmExitEditing:
+            alertTitle = "Exit edit mode"
+            alertMSG = "You will lose all your edited data"
         }
         
     }
     
     internal class func loadAlertAction(_ type:AlertViewType,
-                               _ alertView:inout UIAlertController,
-                               rightCompletionHandler:((UIAlertAction) -> Void)?,
-                               leftCompletionHandler:((UIAlertAction) -> Void)?
-                            )
+                                        _ alertView:inout UIAlertController,
+                                        rightCompletionHandler:((UIAlertAction) -> Void)?,
+                                        leftCompletionHandler:((UIAlertAction) -> Void)?
+    )
     {
         switch type
         {
-            case .ConfirmExitEditing:
-                let rightAction:UIAlertAction = UIAlertAction(title: "Yes", style: .default, handler: rightCompletionHandler)
-                alertView.addAction(rightAction)
-                let leftAction:UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: leftCompletionHandler)
-                alertView.addAction(leftAction)
-                
-            default:
-                let okAction:UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: rightCompletionHandler)
-                alertView.addAction(okAction)
+        case .ConfirmExitEditing:
+            let rightAction:UIAlertAction = UIAlertAction(title: "Yes", style: .default, handler: rightCompletionHandler)
+            alertView.addAction(rightAction)
+            let leftAction:UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: leftCompletionHandler)
+            alertView.addAction(leftAction)
+            
+        default:
+            let okAction:UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: rightCompletionHandler)
+            alertView.addAction(okAction)
         }
     }
 }

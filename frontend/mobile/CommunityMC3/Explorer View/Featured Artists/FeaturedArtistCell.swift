@@ -10,7 +10,7 @@ import UIKit
 
 class FeaturedArtistCell: UITableViewCell
 {
-
+    
     @IBOutlet weak var featuredArtistsCollectionCell: UICollectionView!    
     var callBack: (() -> Void)? = nil
     
@@ -23,10 +23,10 @@ class FeaturedArtistCell: UITableViewCell
         self.featuredArtistsCollectionCell.delegate = self
         self.featuredArtistsCollectionCell.register(UINib.init(nibName: "FeaturedArtistCollectionCell", bundle: nil), forCellWithReuseIdentifier: "artistCollectionViewCell")
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
 }
@@ -43,9 +43,9 @@ extension FeaturedArtistCell : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = featuredArtistsCollectionCell.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
         if let data = NSData(contentsOf: features[indexPath.row].user!.fileURL) {
-             DispatchQueue.main.async {
+            DispatchQueue.main.async {
                 cell.artistImageView.image = UIImage(data: data as Data)
-             }
+            }
         }
         return cell
     }

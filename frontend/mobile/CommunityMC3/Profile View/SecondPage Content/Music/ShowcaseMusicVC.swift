@@ -9,13 +9,13 @@
 import UIKit
 
 class ShowcaseMusicVC: UIViewController {
-
+    
     @IBOutlet weak var showcaseMusicTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showcaseMusicTable.register(UINib(nibName: "MusicTableViewCell", bundle:nil), forCellReuseIdentifier: "musicTableCell")
-
+        
     }
 }
 

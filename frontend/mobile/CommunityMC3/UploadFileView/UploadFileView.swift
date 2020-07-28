@@ -125,8 +125,8 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         {
             let customCell = tableView.dequeueReusableCell(withIdentifier: UploadTableViewCell.identifier, for : indexPath) as! UploadTableViewCell
             customCell.configure(with: "Write the title", imageName: "picture")
-
-
+            
+            
             return customCell
             
         }
@@ -136,9 +136,9 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             customCell.configure(with: "Add Cover", imageName: "camera 1")
             
             coverImage = customCell.addCoverImage
-
+            
             setupDelegate()
-
+            
             
             return customCell
         }
@@ -193,7 +193,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         
     }
     @objc func action() {
-          view.endEditing(true)
+        view.endEditing(true)
     }
     
 }

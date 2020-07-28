@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoriteTracksCell: UITableViewCell {
-
+    
     @IBOutlet weak var trackCoverImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var trackTitleLabel: UILabel!
@@ -22,7 +22,7 @@ class FavoriteTracksCell: UITableViewCell {
         // Initialization code
         favoriteButton.isSelected = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

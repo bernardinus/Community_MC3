@@ -17,7 +17,7 @@ enum SearchSection:Int{
 }
 
 class AllSearchVC: UIViewController {
-
+    
     @IBOutlet weak var allSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class AllSearchVC: UIViewController {
         allSearchTableView.register(UINib(nibName: "VideoSearchCell", bundle: nil), forCellReuseIdentifier: "videoSearchCell")
         allSearchTableView.register(UINib(nibName: "PlaylistSearchCell", bundle: nil), forCellReuseIdentifier: "playlistSearchCell")
     }
-
+    
 }
 
 extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
@@ -87,10 +87,10 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "playlistSearchCell") as! PlaylistSearchCell
             return cell
         }
-
+        
         
         return allSearchTableView.dequeueReusableCell(withIdentifier: "artistSearchCell")!
-
+        
     }
     
     

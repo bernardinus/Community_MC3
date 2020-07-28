@@ -9,10 +9,10 @@
 import UIKit
 
 class GenreItem: UICollectionViewCell {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

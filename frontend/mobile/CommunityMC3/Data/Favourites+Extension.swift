@@ -12,21 +12,21 @@ struct FavouritesDataStruct
 {
     var id:String
     var album:[AlbumDataStruct]?
-//    var track:[TrackDataStruct]?
+    //    var track:[TrackDataStruct]?
     var track:[PrimitiveTrackDataStruct]?
     var user:[UserDataStruct]?
-//    var videos:[VideosDataStruct]?
+    //    var videos:[VideosDataStruct]?
     var videos:[PrimitiveVideosDataStruct]?
     
     
     init(id:String,
          album:[AlbumDataStruct] = [],
-//         track:[TrackDataStruct] = [],
+         //         track:[TrackDataStruct] = [],
         track:[PrimitiveTrackDataStruct] = [],
-//         videos:[VideosDataStruct] = [],
+        //         videos:[VideosDataStruct] = [],
         videos:[PrimitiveVideosDataStruct] = [],
-         user:[UserDataStruct]? = []
-        )
+        user:[UserDataStruct]? = []
+    )
     {
         self.id = id
         self.album = album
@@ -38,26 +38,26 @@ struct FavouritesDataStruct
     {
         return [
             "id":id
-            ]
+        ]
     }
 }
 
 /*
-extension Favourites
-{
-        
-    
-    static func createFavourites(favouritesData:FavouritesDataStruct) -> Favourites?
-    {
-        if let favourite:Favourites = CoreDataHelper.save(value: favouritesData.asDict())
-        {
-            favourite.album = Set(favouritesData.album.map({$0})) as NSSet
-            favourite.track = Set(favouritesData.track.map({$0})) as NSSet
-            favourite.videos = Set(favouritesData.videos.map({$0})) as NSSet
-            return favourite
-        }
-        
-        return nil
-    }
-}
+ extension Favourites
+ {
+ 
+ 
+ static func createFavourites(favouritesData:FavouritesDataStruct) -> Favourites?
+ {
+ if let favourite:Favourites = CoreDataHelper.save(value: favouritesData.asDict())
+ {
+ favourite.album = Set(favouritesData.album.map({$0})) as NSSet
+ favourite.track = Set(favouritesData.track.map({$0})) as NSSet
+ favourite.videos = Set(favouritesData.videos.map({$0})) as NSSet
+ return favourite
+ }
+ 
+ return nil
+ }
+ }
  */

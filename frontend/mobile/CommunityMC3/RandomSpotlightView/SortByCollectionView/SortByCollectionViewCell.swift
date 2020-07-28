@@ -9,7 +9,7 @@
 import UIKit
 
 class SortByCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var sortByLabel: UILabel!
     @IBOutlet weak var checkBoxImage: UIImageView!
     
@@ -17,5 +17,5 @@ class SortByCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

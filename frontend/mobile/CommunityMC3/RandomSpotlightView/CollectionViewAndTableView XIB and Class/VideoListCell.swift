@@ -9,7 +9,7 @@
 import UIKit
 
 class VideoListCell: UITableViewCell {
-
+    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var videoThumbnailImage: UIImageView!
     
@@ -20,7 +20,7 @@ class VideoListCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

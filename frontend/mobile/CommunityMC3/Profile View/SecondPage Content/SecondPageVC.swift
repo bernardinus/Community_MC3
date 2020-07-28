@@ -16,7 +16,7 @@ enum ShowcaseSection:Int{
 }
 
 class SecondPageVC: UIViewController {
-
+    
     @IBOutlet weak var showcaseTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class SecondPageVC: UIViewController {
 
 extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-         let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "showcaseHeaderCell") as! ShowcaseHeaderCell
+        let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "showcaseHeaderCell") as! ShowcaseHeaderCell
         if(section == ShowcaseSection.Music.rawValue)
         {
             cell.showcaseSectionHeader.text = NSLocalizedString("Music", comment: "")
@@ -98,7 +98,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         return showcaseTableView.dequeueReusableCell(withIdentifier: "musicTableCell")!
-
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

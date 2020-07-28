@@ -9,7 +9,7 @@
 import UIKit
 
 class DiscoverNewCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var tapSurpriseButton: UIButton!
     
@@ -18,10 +18,10 @@ class DiscoverNewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

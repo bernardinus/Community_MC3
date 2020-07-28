@@ -27,7 +27,7 @@ struct TrackDataStruct
     var recordID: CKRecord.ID
     var email: String
     var fileURL: URL
-
+    
     var audioData:AVAudioPlayer?
     
     var album:AlbumDataStruct?
@@ -47,19 +47,19 @@ struct TrackDataStruct
 //}
 
 /*
-extension Track
-{
-        
-    
-    static func createTrack(trackData:TrackData) -> Track?
-    {
-        if let track:Track = CoreDataHelper.save(value: trackData.asDict())
-        {
-            track.user = trackData.user
-            return track
-        }
-        
-        return nil
-    }
-}
+ extension Track
+ {
+ 
+ 
+ static func createTrack(trackData:TrackData) -> Track?
+ {
+ if let track:Track = CoreDataHelper.save(value: trackData.asDict())
+ {
+ track.user = trackData.user
+ return track
+ }
+ 
+ return nil
+ }
+ }
  */

@@ -26,11 +26,11 @@ class CarouselPageViewController: UIPageViewController {
         self.delegate = nil
         
     }
-
+    
     
     func moveToPage(index:Int)
     {
-            setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
+        setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
     }
 }
 

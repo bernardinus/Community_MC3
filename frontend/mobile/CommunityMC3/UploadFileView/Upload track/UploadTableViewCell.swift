@@ -9,7 +9,7 @@
 import UIKit
 
 class UploadTableViewCell: UITableViewCell {
-
+    
     static let identifier = "UploadTableViewCell"
     
     static func nib() -> UINib {
@@ -30,10 +30,10 @@ class UploadTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

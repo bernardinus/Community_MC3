@@ -17,7 +17,7 @@ class UserProfileVC: UIViewController {
     var userData:UserDataStruct?
     
     var vc:CarouselPageViewController?
-
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userNameLabel: UILabel!
     

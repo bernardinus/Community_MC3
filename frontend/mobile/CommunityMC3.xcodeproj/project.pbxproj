@@ -529,6 +529,16 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		A14B626624D09D5D0015223C /* Test File */ = {
+			isa = PBXGroup;
+			children = (
+				EA71357A24CE9A140073A8EA /* dishes.mp3 */,
+				EA71357B24CE9A140073A8EA /* tiara.mp3 */,
+				EA71357924CE9A140073A8EA /* yorushika.mp3 */,
+			);
+			path = "Test File";
+			sourceTree = "<group>";
+		};
 		A15C4D1424C5032700ED0C0E /* Favourites View */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,9 +637,7 @@
 		A16B44A124B2FBF300053D6C /* CommunityMC3 */ = {
 			isa = PBXGroup;
 			children = (
-				EA71357A24CE9A140073A8EA /* dishes.mp3 */,
-				EA71357B24CE9A140073A8EA /* tiara.mp3 */,
-				EA71357924CE9A140073A8EA /* yorushika.mp3 */,
+				A14B626624D09D5D0015223C /* Test File */,
 				B733E7F424CA7AFC00460E23 /* Profile View */,
 				EAE65B3224C7E214008B453D /* RandomSpotlightView */,
 				A121CE9B24C96C6D00E1D48B /* BonsaiTest */,

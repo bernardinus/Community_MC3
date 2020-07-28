@@ -36,8 +36,8 @@ class ExplorerView: UIViewController {
     let videoController = VideoPlayerViewController.shared
     let uploadController = UploadController.shared
     let userDefault = UserDefaults.standard
-//    var tracks = [TrackDataStruct]()
-//    var videos = [VideosDataStruct]()
+    //    var tracks = [TrackDataStruct]()
+    //    var videos = [VideosDataStruct]()
     var uploads = [UploadedDataStruct]()
     var features = [FeaturedDataStruct]()
     var trendings = [FeaturedDataStruct]()
@@ -63,8 +63,8 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
         mainTableView.canCancelContentTouches = true
-//        mainTableView.delaysContentTouches = true;
-
+        //        mainTableView.delaysContentTouches = true;
+        
         hightlightUpload()
         featuredCombine()
         latestUpload()
@@ -122,7 +122,7 @@ class ExplorerView: UIViewController {
     
     func latestUpload() {
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
-//            self.tracks = tracks
+            //            self.tracks = tracks
             for track in tracks {
                 let temp = UploadedDataStruct (
                     uploadedDate: track.creationDate!,
@@ -136,11 +136,11 @@ class ExplorerView: UIViewController {
                 )
                 self.uploads.append(temp)
             }
-//            print("count ", tracks.count)
+            //            print("count ", tracks.count)
         }
         
         documentController.getFilmsFromCloudKit { (videos) in
-//            self.videos = videos
+            //            self.videos = videos
             for video in videos {
                 let temp = UploadedDataStruct (
                     uploadedDate: video.creationDate!,
@@ -151,13 +151,13 @@ class ExplorerView: UIViewController {
                         fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
                     )
                 )
-//                let tmp = self.videoController.retrieveVideo(video: temp.video)!
-//                temp.video?.fileURL = tmp
+                //                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+                //                temp.video?.fileURL = tmp
                 self.uploads.append(temp)
             }
         }
         
-//        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
+        //        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
         
     }
     
@@ -170,7 +170,7 @@ class ExplorerView: UIViewController {
         }else{
             self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
         }
-//        self.performSegue(withIdentifier: "test", sender: nil)
+        //        self.performSegue(withIdentifier: "test", sender: nil)
     }
     
     @IBAction func notificationButtonTouched(_ sender: Any)
@@ -233,9 +233,9 @@ class ExplorerView: UIViewController {
             }
         }
         else if segue.identifier == "latestMusicSegue" {
-//            print("masuk ", tracks.count)
-//            let navPage = segue.destination as! UINavigationController
-//            let latestMusicPage = navPage.topViewController as! LatestMusicVC
+            //            print("masuk ", tracks.count)
+            //            let navPage = segue.destination as! UINavigationController
+            //            let latestMusicPage = navPage.topViewController as! LatestMusicVC
             if let latestMusicPage = segue.destination as? LatestMusicVC {
                 latestMusicPage.uploads = uploads
                 latestMusicPage.mainTableView = mainTableView
@@ -425,8 +425,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.LatestMusic.rawValue)
         {
-//            return 3 // Latest Music
-//            print("hitung ", tracks.count)
+            //            return 3 // Latest Music
+            //            print("hitung ", tracks.count)
             return uploads.count
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)

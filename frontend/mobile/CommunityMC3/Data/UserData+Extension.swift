@@ -46,24 +46,24 @@ struct UserDataStruct
             "phoneNumber":phoneNumber,
             "role":role,
             "whatsApp":whatsApp
-            ]
+        ]
     }
 }
 
 /*
-extension UserData
-{
-        
-    
-    static func createPhoto(photoData:PhotoData) -> Photos?
-    {
-        if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
-        {
-            photo.userData = photoData.userData
-            return photo
-        }
-        
-        return nil
-    }
-}
+ extension UserData
+ {
+ 
+ 
+ static func createPhoto(photoData:PhotoData) -> Photos?
+ {
+ if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
+ {
+ photo.userData = photoData.userData
+ return photo
+ }
+ 
+ return nil
+ }
+ }
  */

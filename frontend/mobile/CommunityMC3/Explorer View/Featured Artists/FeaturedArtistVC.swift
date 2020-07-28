@@ -10,7 +10,7 @@ import UIKit
 
 class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-
+    
     @IBOutlet weak var featuredArtistCollectionView: UICollectionView!
     var features: [FeaturedDataStruct]!
     
@@ -21,27 +21,27 @@ class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollection
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 180, height: 180)
         featuredArtistCollectionView.collectionViewLayout = layout
-
+        
     }
-       
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backItem?.title = ""
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if features != nil {
             return features.count
         }
-           return 0
-       }
+        return 0
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let cell = featuredArtistCollectionView.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
-           
-           return cell
-       }
+        let cell = featuredArtistCollectionView.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
+        
+        return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 180, height: 180)

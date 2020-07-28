@@ -9,13 +9,13 @@
 import UIKit
 
 class ArtistSearchVC: UIViewController {
-
+    
     @IBOutlet weak var artistSeachTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         artistSeachTableView.register(UINib(nibName: "ArtistSearchCell", bundle: nil), forCellReuseIdentifier: "artistSearchCell")
-
+        
     }
 }
 

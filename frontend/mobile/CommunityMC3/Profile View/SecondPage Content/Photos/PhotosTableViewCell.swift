@@ -9,8 +9,8 @@
 import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
-
-
+    
+    
     @IBOutlet weak var photosCollectionCell: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,10 +18,10 @@ class PhotosTableViewCell: UITableViewCell {
         self.photosCollectionCell.delegate = self
         self.photosCollectionCell.register(UINib.init(nibName: "PhotosCollectionCell", bundle: nil), forCellWithReuseIdentifier: "photosCollectionCell")
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -33,7 +33,7 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell = photosCollectionCell.dequeueReusableCell(withReuseIdentifier: "photosCollectionCell", for: indexPath as IndexPath) as! PhotosCollectionCell
+        let cell = photosCollectionCell.dequeueReusableCell(withReuseIdentifier: "photosCollectionCell", for: indexPath as IndexPath) as! PhotosCollectionCell
         return cell
     }
     

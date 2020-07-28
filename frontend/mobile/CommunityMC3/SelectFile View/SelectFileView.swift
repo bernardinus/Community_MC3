@@ -10,7 +10,7 @@ import UIKit
 
 class SelectFileView: UIViewController
 {
-
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -26,7 +26,7 @@ class SelectFileView: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         searchBar.delegate = self
         
         tableView.delegate = self
@@ -43,7 +43,7 @@ class SelectFileView: UIViewController
         {
             fileList = FileManagers.getAvailableAudioFiles()
         }
-            
+        
         
         
         filteredList = fileList
@@ -57,15 +57,15 @@ class SelectFileView: UIViewController
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     func filter(filterText:String)
     {
         print("asd+\(filterText)+asd")
@@ -108,7 +108,7 @@ extension SelectFileView:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-//        performSegue(withIdentifier: "uploadFileSegue", sender:nil)
+        //        performSegue(withIdentifier: "uploadFileSegue", sender:nil)
         documentController.uploadTrack(email: "mnb@mnb", genre: "Rock", name: "track", fileURL: filteredList[indexPath.row])
         performSegue(withIdentifier: "uploadTest", sender:nil)
     }

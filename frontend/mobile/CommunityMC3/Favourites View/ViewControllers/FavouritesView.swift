@@ -18,7 +18,7 @@ enum Favorite: Int{
 }
 
 class FavouritesView: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -34,8 +34,8 @@ class FavouritesView: UIViewController {
     @IBAction func unwindToFavorite(_ segue: UIStoryboardSegue){
         
     }
-
-
+    
+    
 }
 extension FavouritesView: UITableViewDelegate, UITableViewDataSource {
     

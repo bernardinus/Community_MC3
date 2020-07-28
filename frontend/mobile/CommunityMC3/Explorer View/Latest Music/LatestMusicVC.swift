@@ -9,7 +9,7 @@
 import UIKit
 
 class LatestMusicVC: UIViewController {
-
+    
     @IBOutlet weak var latestMusicTableView: UITableView!
     
     var uploads: [UploadedDataStruct]!
@@ -41,7 +41,7 @@ class LatestMusicVC: UIViewController {
             }
         }
     }
-
+    
 }
 
 extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
@@ -60,12 +60,12 @@ extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
         if uploads[indexPath.row].track != nil {
             cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
             cell.artistNameLabel.text = uploads[indexPath.row].track?.email
-//            print("masuk ", cell.player)
+            //            print("masuk ", cell.player)
             if cell.player {
-//                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
                 cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             }else{
-//                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
                 cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             }
         }

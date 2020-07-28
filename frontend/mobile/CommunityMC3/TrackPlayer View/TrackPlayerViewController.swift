@@ -118,7 +118,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
             }
         }else {
             let audioPath = Bundle.main.path(forResource: "\(trackPlaylist[counter])", ofType: "mp3")!
-//            let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
+            //            let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
             do {
                 trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
                 
@@ -159,19 +159,19 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     @objc func updateAudioProgressView()
-       {
+    {
         if trackPlayer!.isPlaying
-           {
-                trackProgressSlider.minimumValue = 0.0
-                trackProgressSlider.maximumValue = Float(trackPlayer!.duration)
-                trackProgressSlider.setValue(Float(trackPlayer!.currentTime), animated: true)
+        {
+            trackProgressSlider.minimumValue = 0.0
+            trackProgressSlider.maximumValue = Float(trackPlayer!.duration)
+            trackProgressSlider.setValue(Float(trackPlayer!.currentTime), animated: true)
             
-                let minute = Int(trackPlayer!.duration / 60)
-                let second = Int(trackPlayer!.duration) - minute * 60
+            let minute = Int(trackPlayer!.duration / 60)
+            let second = Int(trackPlayer!.duration) - minute * 60
             
             trackCurrentTimeLabel.text = "\(minute):\(String(format: "%2d", second))"
-           }
-       }
+        }
+    }
     
     func favoriteButtonStateChange(){
         
@@ -180,18 +180,18 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool){
-
-            if flag {
-                counter+=1
-            }
-
-            if (counter == trackPlaylist.count) {
-                counter = 0
-            }
-            prepareTrack()
+        
+        if flag {
+            counter+=1
+        }
+        
+        if (counter == trackPlaylist.count) {
+            counter = 0
+        }
+        prepareTrack()
     }
     
-
+    
     
     @IBAction func pauseAndPlayButtonAction(_ sender: UIButton) {
         if sender == pauseButton{

@@ -9,15 +9,15 @@
 import UIKit
 
 class VideoSearchVC: UIViewController {
-
+    
     @IBOutlet weak var videoSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         videoSearchTableView.register(UINib(nibName: "VideoSearchCell", bundle: nil), forCellReuseIdentifier: "videoSearchCell")
-
+        
     }
-
+    
 }
 
 extension VideoSearchVC: UITableViewDelegate, UITableViewDataSource {

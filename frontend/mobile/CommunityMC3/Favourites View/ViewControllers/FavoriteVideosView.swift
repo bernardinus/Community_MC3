@@ -10,14 +10,14 @@ import UIKit
 import AVKit
 
 class FavoriteVideosView: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var videoPlayer: AVPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.register(UINib(nibName: "FavoriteVideosCell", bundle: nil), forCellReuseIdentifier: "favoriteVideosCell")
     }
     
@@ -69,8 +69,8 @@ class FavoriteVideosView: UIViewController {
     }
     
 }
-    
-    
+
+
 extension FavoriteVideosView: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
@@ -86,7 +86,7 @@ extension FavoriteVideosView: UITableViewDelegate, UITableViewDataSource{
         
         //            let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
         //            let urls = URL(fileURLWithPath: videoUrl!)
-                    
+        
         cell.videoThumbnailImage.layer.borderWidth = 2
         //            cell.videoThumbnailImage.image = generateThumbnail(path: urls)
         
