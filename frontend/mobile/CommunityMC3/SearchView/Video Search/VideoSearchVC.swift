@@ -13,19 +13,23 @@ class VideoSearchVC: UIViewController {
     @IBOutlet weak var videoSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        videoSearchTableView.register(UINib(nibName: "VideoSearchCell", bundle: nil), forCellReuseIdentifier: "videoSearchCell")
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
+
+extension VideoSearchVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = videoSearchTableView.dequeueReusableCell(withIdentifier: "videoSearchCell") as! VideoSearchCell
+        return cell
+    }
+    
+}
+
+

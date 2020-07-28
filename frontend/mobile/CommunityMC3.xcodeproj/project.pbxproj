@@ -120,6 +120,8 @@
 		B7B6F3BB24CFD133008BA503 /* PhotosCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */; };
 		B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */; };
 		B7C7302724CE944700B922B8 /* CarouselPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */; };
+		B7D0470524D070EA004A4D9C /* SearchHeaderSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D0470324D070EA004A4D9C /* SearchHeaderSection.swift */; };
+		B7D0470624D070EA004A4D9C /* SearchHeaderSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D0470424D070EA004A4D9C /* SearchHeaderSection.xib */; };
 		B7D4B86324CEFEDB00FD30B2 /* ShowcaseMusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D4B86224CEFEDB00FD30B2 /* ShowcaseMusicVC.swift */; };
 		B7D4B86624CF076900FD30B2 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D4B86424CF076900FD30B2 /* PhotosTableViewCell.swift */; };
 		B7D4B86724CF076900FD30B2 /* PhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D4B86524CF076900FD30B2 /* PhotosTableViewCell.xib */; };
@@ -311,6 +313,8 @@
 		B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionCell.swift; sourceTree = "<group>"; };
 		B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionCell.xib; sourceTree = "<group>"; };
 		B7C7302624CE944700B922B8 /* CarouselPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselPageViewController.swift; sourceTree = "<group>"; };
+		B7D0470324D070EA004A4D9C /* SearchHeaderSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderSection.swift; sourceTree = "<group>"; };
+		B7D0470424D070EA004A4D9C /* SearchHeaderSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeaderSection.xib; sourceTree = "<group>"; };
 		B7D4B86224CEFEDB00FD30B2 /* ShowcaseMusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseMusicVC.swift; sourceTree = "<group>"; };
 		B7D4B86424CF076900FD30B2 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		B7D4B86524CF076900FD30B2 /* PhotosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosTableViewCell.xib; sourceTree = "<group>"; };
@@ -823,6 +827,8 @@
 				B7ECE0D324D0211C008C4422 /* AllSearchVC.swift */,
 				B703FE0A24D024E7001AD48E /* SearchSectionTableCell.swift */,
 				B703FE0B24D024E7001AD48E /* SearchSectionTableCell.xib */,
+				B7D0470324D070EA004A4D9C /* SearchHeaderSection.swift */,
+				B7D0470424D070EA004A4D9C /* SearchHeaderSection.xib */,
 			);
 			path = "All Search";
 			sourceTree = "<group>";
@@ -1080,6 +1086,7 @@
 				EA69015924C93F2600D8EBD2 /* SortByCollectionViewCell.xib in Resources */,
 				B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */,
 				EA71357E24CE9A140073A8EA /* tiara.mp3 in Resources */,
+				B7D0470624D070EA004A4D9C /* SearchHeaderSection.xib in Resources */,
 				A125312224CE9B8C0038B215 /* GenreItem.xib in Resources */,
 				B74C5A0024C7070200C978F3 /* TrendingNowList.storyboard in Resources */,
 				A16B44AC24B2FBF300053D6C /* Main.storyboard in Resources */,
@@ -1233,6 +1240,7 @@
 				EA1BF07A24CA9A9C00CE1B8F /* MusicGenreCell.swift in Sources */,
 				B786387024CEECC300952CF3 /* ShowcaseVideosVC.swift in Sources */,
 				B7ECE0D424D0211C008C4422 /* AllSearchVC.swift in Sources */,
+				B7D0470524D070EA004A4D9C /* SearchHeaderSection.swift in Sources */,
 				B703FE0C24D024E7001AD48E /* SearchSectionTableCell.swift in Sources */,
 				B7DAF5E724C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.swift in Sources */,
 				B74C5A0624C714AF00C978F3 /* TrendingNowVC.swift in Sources */,

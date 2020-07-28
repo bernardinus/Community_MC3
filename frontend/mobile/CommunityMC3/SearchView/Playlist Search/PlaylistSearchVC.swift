@@ -13,19 +13,20 @@ class PlaylistSearchVC: UIViewController {
     @IBOutlet weak var playlistSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        playlistSearchTableView.register(UINib(nibName: "PlaylistSearchCell", bundle: nil), forCellReuseIdentifier: "playlistSearchCell")
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+extension PlaylistSearchVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = playlistSearchTableView.dequeueReusableCell(withIdentifier: "playlistSearchCell") as! PlaylistSearchCell
+        return cell
     }
-    */
-
+    
 }
