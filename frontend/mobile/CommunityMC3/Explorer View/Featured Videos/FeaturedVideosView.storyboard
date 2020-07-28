@@ -40,6 +40,7 @@
                     <connections>
                         <outlet property="featuredVideoTableView" destination="9MX-5G-CAd" id="F2i-ho-0sD"/>
                         <segue destination="XDs-if-8BI" kind="show" identifier="videoPlayerSegue" id="qeO-VO-ZNx"/>
+                        <segue destination="GfV-3Z-xlh" kind="show" identifier="trackPlayerSegue" id="SeH-6t-4Oj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3c-NC-as1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -56,6 +57,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVX-af-EPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1660" y="35"/>
+        </scene>
+        <!--TrackPlayer-->
+        <scene sceneID="nBp-CV-mQE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="GfV-3Z-xlh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7dO-11-3Fa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vK8-cx-Nav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1786" y="144"/>
         </scene>
     </scenes>
     <resources>

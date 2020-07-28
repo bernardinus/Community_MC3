@@ -25,6 +25,14 @@ struct VideosDataStruct
     var album:Album?
 }
 
+struct PrimitiveVideosDataStruct: Codable
+{
+    // normal param
+    var genre:String
+    var name:String
+    var email:String
+}
+
 /*
 extension Photos
 {

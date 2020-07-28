@@ -10,18 +10,22 @@ import Foundation
 
 struct FavouritesDataStruct
 {
-    var id:Int = 0
+    var id:String
     var album:[AlbumDataStruct]?
-    var track:[TrackDataStruct]?
+//    var track:[TrackDataStruct]?
+    var track:[PrimitiveTrackDataStruct]?
     var user:[UserDataStruct]?
-    var videos:[VideosDataStruct]?
+//    var videos:[VideosDataStruct]?
+    var videos:[PrimitiveVideosDataStruct]?
     
     
-    init(id:Int,
+    init(id:String,
          album:[AlbumDataStruct] = [],
-         track:[TrackDataStruct] = [],
-         videos:[VideosDataStruct] = [],
-         user:[UserDataStruct]?
+//         track:[TrackDataStruct] = [],
+        track:[PrimitiveTrackDataStruct] = [],
+//         videos:[VideosDataStruct] = [],
+        videos:[PrimitiveVideosDataStruct] = [],
+         user:[UserDataStruct]? = []
         )
     {
         self.id = id
