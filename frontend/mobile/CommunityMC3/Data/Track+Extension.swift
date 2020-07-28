@@ -10,8 +10,17 @@ import Foundation
 import AVFoundation
 import CloudKit
 
+struct PrimitiveTrackDataStruct: Codable
+{
+    var genre:String
+    var name:String
+    
+    var email: String
+}
+
 struct TrackDataStruct
 {
+    
     var genre:String
     var name:String
     
@@ -21,7 +30,7 @@ struct TrackDataStruct
 
     var audioData:AVAudioPlayer?
     
-    var album:Album?
+    var album:AlbumDataStruct?
 }
 
 //class TrackDataClass: NSObject

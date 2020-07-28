@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ebx-ss-Lma">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favorites-->
+        <scene sceneID="HSo-2A-yxD">
+            <objects>
+                <viewController id="ebx-ss-Lma" customClass="FavouritesView" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pq5-Ls-CHA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IYZ-7V-9tU">
+                                <rect key="frame" x="0.0" y="118" width="414" height="780"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ebx-ss-Lma" id="QcZ-3N-1Mg"/>
+                                    <outlet property="delegate" destination="ebx-ss-Lma" id="D60-6o-q3h"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ti5-N1-KTM">
+                                <rect key="frame" x="20" y="69" width="146" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gee-7t-Puf"/>
+                        <color key="backgroundColor" red="0.28235294117647058" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" selectedImage="heart.fill" id="p41-jr-mGj"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="IYZ-7V-9tU" id="ojZ-5W-eAU"/>
+                        <segue destination="Ayh-Sz-G3b" kind="show" identifier="favoriteTracks" id="c7h-eD-Ci2"/>
+                        <segue destination="hBd-sJ-BVC" kind="show" identifier="favoriteVideos" id="9IG-t0-RA7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D4n-Zr-AuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-178" y="789"/>
+        </scene>
+        <!--FavoriteTracksView-->
+        <scene sceneID="TMP-Bf-3Ze">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoriteTracksView" id="Ayh-Sz-G3b" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mtA-wa-Haa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yV0-iK-SP9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="666"/>
+        </scene>
+        <!--FavoritesVideo-->
+        <scene sceneID="DsT-6Q-F5p">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoritesVideo" id="hBd-sJ-BVC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Nem-5E-8ZS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cOQ-t7-0gV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="586" y="1094"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
