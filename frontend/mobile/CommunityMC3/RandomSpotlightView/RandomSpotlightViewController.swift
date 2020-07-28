@@ -36,12 +36,10 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     var trackPlayer: AVAudioPlayer?
     var trackIndex = 0
     var musicPlaylist = ["dishes", "tiara", "yorushika"]
-    var index: IndexPath?
     var videoList = [""]
     var musicFilter = [String]()
     var genreFilter = [String]()
     var tempInt: Int?
-    var displayLink : CADisplayLink! = nil
     var player2: AVAudioPlayer?
     var timer: Timer?
     var seconds = 0
@@ -76,7 +74,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         
         nextButton.layer.cornerRadius = 20
     }
-    
+   
     func generateThumbnail(path: URL) -> UIImage? {
         do {
             let asset = AVURLAsset(url: path, options: nil)
@@ -191,8 +189,6 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             let cell = tableView.dequeueReusableCell(withIdentifier: "musicList", for: indexPath) as! MusicListCell
             
             cell.playButton.tag = indexPath.row
-            cell.playlist = musicPlaylist
-            cell.indexForPlaylist = indexPath.row
             
             let audiopath = Bundle.main.path(forResource: musicPlaylist[indexPath.row], ofType: "mp3")
             player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: audiopath!))
@@ -282,7 +278,6 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         let selectedIndex = IndexPath(row: sender.tag, section: 0)
         tempInt = sender.tag
         
-        index = selectedIndex
         timer?.invalidate()
         
         if sender.isSelected == true {
@@ -310,16 +305,6 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         }
         
         musicAndVideoTableView.reloadData()
-    }
-    
-    @objc func trackTimer(){
-            seconds = Int(trackPlayer!.duration)
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [self]_ in
-            self.seconds -= 1
-            print(self.seconds)
-        }
-        
-        
     }
     
     @objc func clickPlayVideo(_ sender: UIButton){
