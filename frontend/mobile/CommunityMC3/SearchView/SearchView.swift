@@ -17,16 +17,8 @@ enum ButtonType:Int{
 }
 
 class SearchView: UIViewController {
-    
-    @IBOutlet weak var mainSearchTableView: UITableView!
-    //    @IBOutlet weak var allSearchButton: UIButton!
-    //    @IBOutlet weak var artistSearchButton: UIButton!
-    //    @IBOutlet weak var musicSearchButton: UIButton!
-    //    @IBOutlet weak var videoSearchButton: UIButton!
-    //    @IBOutlet weak var playlistSearchButton: UIButton!
-    
+        
     @IBOutlet var searchCategoryButton: [UIButton]!
-    
     
     var vcSearch:SearchContainerPageVC?
     
@@ -43,6 +35,7 @@ class SearchView: UIViewController {
     }
     
     func getSelectedActionType() -> ButtonType{
+        //Set each button action by index
         for (index, button) in searchCategoryButton.enumerated() {
             if button.backgroundColor == #colorLiteral(red: 0.3450980392, green: 0.2, blue: 0.8392156863, alpha: 1) {
                 vcSearch?.moveToPageSearch(index: index)
@@ -59,32 +52,9 @@ class SearchView: UIViewController {
         })
         sender.backgroundColor = #colorLiteral(red: 0.3450980392, green: 0.2, blue: 0.8392156863, alpha: 1)
         sender.setTitleColor(.white, for: .normal)
-        
-        let activityType: ButtonType = getSelectedActionType()
+        sender.layer.cornerRadius = 15
+        //Assign each action button
+        let _: ButtonType = getSelectedActionType()
     }
-    
-    //        switch sender {
-    //        case allSearchButton:
-    //            vcSearch?.moveToPageSearch(index: 0)
-    //            sender.backgroundColor = .blue
-    //        case artistSearchButton:
-    //            vcSearch?.moveToPageSearch(index: 1)
-    //            sender.backgroundColor = .blue
-    //
-    //        case musicSearchButton:
-    //            vcSearch?.moveToPageSearch(index: 2)
-    //            sender.backgroundColor = .blue
-    //
-    //        case videoSearchButton:        vcSearch?.moveToPageSearch(index: 3)
-    //            sender.backgroundColor = .blue
-    //
-    //        case playlistSearchButton:
-    //            vcSearch?.moveToPageSearch(index: 4)
-    //            sender.backgroundColor = .blue
-    //
-    //        default:
-    //            sender.backgroundColor = .none
-    //            print("unknown button")
-    //            return
-    //        }
+  
 }

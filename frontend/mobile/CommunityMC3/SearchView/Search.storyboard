@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,23 +34,20 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hmx-ZY-K8U">
-                                <rect key="frame" x="20" y="216" width="374" height="646"/>
+                                <rect key="frame" x="20" y="220" width="374" height="642"/>
                                 <connections>
                                     <segue destination="Ooc-0g-liL" kind="embed" identifier="searchContainer" id="ckp-KL-LVT"/>
                                 </connections>
                             </containerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-4H-Z2n">
-                                <rect key="frame" x="20" y="178" width="374" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-4H-Z2n">
+                                <rect key="frame" x="20" y="178" width="374" height="34"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vw5-Kj-LMC">
-                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vw5-Kj-LMC">
+                                        <rect key="frame" x="0.0" y="0.0" width="50.5" height="34"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="all">
                                             <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            </preferredSymbolConfiguration>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                         </state>
                                         <state key="selected">
                                             <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,15 +62,12 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sEL-SW-vhn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Uq-Hd-0Xz">
-                                        <rect key="frame" x="78" y="0.0" width="62" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Uq-Hd-0Xz">
+                                        <rect key="frame" x="58.5" y="0.0" width="71" height="34"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="artist">
                                             <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            </preferredSymbolConfiguration>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                         </state>
                                         <state key="selected">
                                             <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -87,15 +82,12 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wjc-HM-epY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-79-zGB">
-                                        <rect key="frame" x="156" y="0.0" width="62" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-79-zGB">
+                                        <rect key="frame" x="137.5" y="0.0" width="80.5" height="34"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="music">
                                             <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            </preferredSymbolConfiguration>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                         </state>
                                         <state key="selected">
                                             <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,15 +102,12 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="5XZ-7A-KXL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-gv-hGm">
-                                        <rect key="frame" x="234" y="0.0" width="62" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-gv-hGm">
+                                        <rect key="frame" x="226" y="0.0" width="76" height="34"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="video">
                                             <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            </preferredSymbolConfiguration>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                         </state>
                                         <state key="selected">
                                             <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -133,15 +122,12 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="AZ7-NR-nqd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-Ft-hxH">
-                                        <rect key="frame" x="312" y="0.0" width="62" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-Ft-hxH">
+                                        <rect key="frame" x="310" y="0.0" width="64" height="34"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="playlist">
                                             <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="regular">
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            </preferredSymbolConfiguration>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
                                         </state>
                                         <state key="selected">
                                             <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
