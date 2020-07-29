@@ -31,6 +31,9 @@ class UserProfileVC: UIViewController {
         if let loadEmail = userDefault.string(forKey: "email"){
             userNameLabel.text = loadEmail
         }
+        
+        followButton.layer.cornerRadius = 10
+        contactButton.layer.cornerRadius = 10
         setupActionSheet()
         // Do any additional setup after loading the view.
         firstTabButton.alpha = 1

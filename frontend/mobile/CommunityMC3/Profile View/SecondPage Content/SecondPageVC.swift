@@ -34,21 +34,21 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
          let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "showcaseHeaderCell") as! ShowcaseHeaderCell
         if(section == ShowcaseSection.Music.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Music", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Music".uppercased(), comment: "")
             cell.callBack = {
                 self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
             }
         }
         if(section == ShowcaseSection.Photos.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Photos", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Photos".uppercased(), comment: "")
             cell.callBack = {
                 self.performSegue(withIdentifier: "showcasePhotoSegue", sender: nil)
             }
         }
         if(section == ShowcaseSection.Videos.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Videos", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Videos".uppercased(), comment: "")
             cell.callBack = {
                 self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
             }

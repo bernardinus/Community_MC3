@@ -34,15 +34,15 @@ extension FirstPageVC: UITableViewDelegate, UITableViewDataSource {
         let cell = aboutTableView.dequeueReusableCell(withIdentifier: "aboutHeaderCell") as! AboutHeaderCell
         if(section == AboutSection.MusicGenre.rawValue)
         {
-            cell.aboutHeaderLabel.text = NSLocalizedString("Genre Preferences", comment: "")
+            cell.aboutHeaderLabel.text = NSLocalizedString("Genre Preferences".uppercased(), comment: "")
         }
         if(section == AboutSection.ContactInfo.rawValue)
         {
-            cell.aboutHeaderLabel.text = NSLocalizedString("Contact Info", comment: "")
+            cell.aboutHeaderLabel.text = NSLocalizedString("Contact Info".uppercased(), comment: "")
         }
         if(section == AboutSection.SocialMedia.rawValue)
         {
-            cell.aboutHeaderLabel.text = NSLocalizedString("Social Media", comment: "")
+            cell.aboutHeaderLabel.text = NSLocalizedString("Social Media".uppercased(), comment: "")
         }
         return cell
     }

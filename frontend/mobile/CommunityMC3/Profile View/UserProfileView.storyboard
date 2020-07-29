@@ -99,24 +99,22 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbn-s7-yIe">
-                                <rect key="frame" x="306" y="20" width="90" height="36"/>
+                                <rect key="frame" x="286" y="20" width="110" height="36"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.29803921570000003" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="72p-HC-kee"/>
-                                    <constraint firstAttribute="width" constant="90" id="bJF-jd-uJU"/>
+                                    <constraint firstAttribute="width" constant="110" id="bJF-jd-uJU"/>
                                 </constraints>
                                 <state key="normal" title="Follow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xI-xV-qT4">
-                                <rect key="frame" x="306" y="60" width="90" height="36"/>
+                                <rect key="frame" x="286" y="60" width="110" height="36"/>
                                 <color key="backgroundColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="6jU-ay-NCF"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="7gX-tH-cda"/>
+                                    <constraint firstAttribute="width" constant="110" id="6jU-ay-NCF"/>
                                     <constraint firstAttribute="height" constant="36" id="ONY-ki-G8C"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="gfb-jm-yQB"/>
                                 </constraints>
                                 <state key="normal" title="Contact">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -139,6 +137,7 @@
                             <constraint firstItem="uqP-Il-8ai" firstAttribute="leading" secondItem="AkK-2q-Zvo" secondAttribute="leading" constant="20" id="USf-vK-yPy"/>
                             <constraint firstItem="23g-vz-68p" firstAttribute="leading" secondItem="G9h-Cv-v3x" secondAttribute="trailing" constant="14" id="cCM-Px-pab"/>
                             <constraint firstItem="ZdK-26-UDf" firstAttribute="top" secondItem="uqP-Il-8ai" secondAttribute="bottom" constant="8" id="cI5-ry-nKE"/>
+                            <constraint firstItem="1xI-xV-qT4" firstAttribute="height" secondItem="dbn-s7-yIe" secondAttribute="height" id="dAx-ha-moN"/>
                             <constraint firstItem="DWB-Qr-tt6" firstAttribute="leading" secondItem="G9h-Cv-v3x" secondAttribute="trailing" constant="14" id="ds6-XJ-kH9"/>
                             <constraint firstItem="Ja7-BB-0mE" firstAttribute="leading" secondItem="G9h-Cv-v3x" secondAttribute="trailing" constant="14" id="fJc-L5-mey"/>
                             <constraint firstItem="DWB-Qr-tt6" firstAttribute="top" secondItem="23g-vz-68p" secondAttribute="bottom" constant="7" id="fRC-99-07p"/>
