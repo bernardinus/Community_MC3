@@ -36,6 +36,8 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="5f5-HQ-Bry"/>
                             <constraint firstAttribute="width" constant="264" id="Fkx-0e-bcE"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="YH7-FC-hjT"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="lwL-Bb-I7Z"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,10 +45,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ei8-ed-EtX">
                         <rect key="frame" x="16" y="107" width="264" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="D7h-1Q-RyI"/>
-                            <constraint firstAttribute="width" constant="264" id="PWk-vG-u1Q"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -56,27 +54,28 @@
                     <constraint firstItem="wkb-b4-de5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1oK-sI-jpy"/>
                     <constraint firstItem="UHr-cU-bae" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2ij-5K-a5T"/>
                     <constraint firstItem="wkb-b4-de5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="8sn-D2-pMZ"/>
-                    <constraint firstItem="ei8-ed-EtX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="A0q-N9-QUt"/>
+                    <constraint firstItem="9Nu-1H-tC9" firstAttribute="top" secondItem="ei8-ed-EtX" secondAttribute="bottom" constant="4" id="Cpo-qH-HF3"/>
                     <constraint firstItem="JLL-kU-PRa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="D0s-rG-51m"/>
+                    <constraint firstItem="ei8-ed-EtX" firstAttribute="leading" secondItem="9Nu-1H-tC9" secondAttribute="leading" id="DTp-Pq-kJy"/>
                     <constraint firstItem="9Nu-1H-tC9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="H51-he-jri"/>
                     <constraint firstAttribute="bottom" secondItem="wkb-b4-de5" secondAttribute="bottom" constant="8" id="Hlz-JX-ne0"/>
-                    <constraint firstItem="9Nu-1H-tC9" firstAttribute="top" secondItem="ei8-ed-EtX" secondAttribute="bottom" constant="4" id="IdS-OK-UES"/>
                     <constraint firstItem="wkb-b4-de5" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ItJ-ex-DEY"/>
                     <constraint firstAttribute="bottomMargin" secondItem="9Nu-1H-tC9" secondAttribute="bottom" constant="4" id="NZ7-MP-jNb"/>
                     <constraint firstItem="JLL-kU-PRa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="QsY-xx-aVI"/>
-                    <constraint firstItem="JLL-kU-PRa" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="SkG-II-tah"/>
                     <constraint firstItem="wkb-b4-de5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="TN1-9Y-kpr"/>
                     <constraint firstAttribute="bottom" secondItem="JLL-kU-PRa" secondAttribute="bottom" constant="8" id="ZU3-0E-EBb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="9Nu-1H-tC9" secondAttribute="bottom" constant="4" id="agh-UP-9aE"/>
+                    <constraint firstItem="ei8-ed-EtX" firstAttribute="trailing" secondItem="9Nu-1H-tC9" secondAttribute="trailing" id="d6W-Sl-SIw"/>
                     <constraint firstAttribute="trailing" secondItem="wkb-b4-de5" secondAttribute="trailing" constant="8" id="gZE-6n-bFk"/>
                     <constraint firstAttribute="trailing" secondItem="JLL-kU-PRa" secondAttribute="trailing" constant="8" id="hvg-7u-CdM"/>
-                    <constraint firstItem="9Nu-1H-tC9" firstAttribute="top" secondItem="ei8-ed-EtX" secondAttribute="bottom" constant="4" id="kjb-FJ-M7J"/>
-                    <constraint firstItem="JLL-kU-PRa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="p6b-ji-tAc"/>
+                    <constraint firstItem="9Nu-1H-tC9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tGX-tC-PNV"/>
                     <constraint firstItem="UHr-cU-bae" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zSP-Vv-A5A"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="videoThumbnailImage" destination="JLL-kU-PRa" id="4XW-4m-15h"/>
+                <outlet property="darkGradientOverlay" destination="wkb-b4-de5" id="4b7-ZL-jec"/>
+                <outlet property="videoThumbnailImage" destination="JLL-kU-PRa" id="CQU-DA-2Wn"/>
             </connections>
             <point key="canvasLocation" x="111.59420289855073" y="103.79464285714285"/>
         </tableViewCell>

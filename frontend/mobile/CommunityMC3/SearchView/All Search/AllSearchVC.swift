@@ -99,7 +99,4 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         return 80
     }
     
-    
-    
-    
 }

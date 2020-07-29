@@ -10,10 +10,13 @@ import UIKit
 
 class VideoSearchCell: UITableViewCell {
 
+    
     @IBOutlet weak var videoThumbnailImage: UIImageView!
+    @IBOutlet weak var darkGradientOverlay: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         videoThumbnailImage.layer.cornerRadius = 10
+        darkGradientOverlay.layer.cornerRadius = 10
        
     }
 
