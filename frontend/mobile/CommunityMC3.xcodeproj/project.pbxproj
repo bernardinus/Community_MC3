@@ -742,6 +742,9 @@
 		B786384C24CEC28200952CF3 /* FirstPage Content */ = {
 			isa = PBXGroup;
 			children = (
+				B7BEA4F824D1460200AAB5C7 /* Social Media */,
+				B7BEA4F724D1460000AAB5C7 /* Contact Information */,
+				B7BEA4F624D145FC00AAB5C7 /* Music Genre */,
 				B786384E24CEC2F600952CF3 /* FirstPageVC.swift */,
 			);
 			path = "FirstPage Content";
@@ -837,6 +840,27 @@
 				B73C836024C7F8AC0047B4EC /* FeaturedArtistVC.swift */,
 			);
 			path = "Featured Artists";
+			sourceTree = "<group>";
+		};
+		B7BEA4F624D145FC00AAB5C7 /* Music Genre */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Music Genre";
+			sourceTree = "<group>";
+		};
+		B7BEA4F724D1460000AAB5C7 /* Contact Information */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Contact Information";
+			sourceTree = "<group>";
+		};
+		B7BEA4F824D1460200AAB5C7 /* Social Media */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Social Media";
 			sourceTree = "<group>";
 		};
 		B7ECE0DD24D02160008C4422 /* All Search */ = {
