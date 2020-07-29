@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MusicGenreCell: UITableViewCell {
+class MusicGenreInfoCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

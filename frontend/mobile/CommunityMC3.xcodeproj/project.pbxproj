@@ -119,8 +119,8 @@
 		B7BD5E3724D12465005918B7 /* MusicSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BD5E3524D12465005918B7 /* MusicSearchCell.xib */; };
 		B7BEA4FB24D1466500AAB5C7 /* AboutHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4F924D1466400AAB5C7 /* AboutHeaderCell.swift */; };
 		B7BEA4FC24D1466500AAB5C7 /* AboutHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BEA4FA24D1466500AAB5C7 /* AboutHeaderCell.xib */; };
-		B7BEA4FF24D146C300AAB5C7 /* MusicGenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4FD24D146C300AAB5C7 /* MusicGenreCell.swift */; };
-		B7BEA50024D146C300AAB5C7 /* MusicGenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BEA4FE24D146C300AAB5C7 /* MusicGenreCell.xib */; };
+		B7BEA4FF24D146C300AAB5C7 /* MusicGenreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA4FD24D146C300AAB5C7 /* MusicGenreInfoCell.swift */; };
+		B7BEA50024D146C300AAB5C7 /* MusicGenreInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BEA4FE24D146C300AAB5C7 /* MusicGenreInfoCell.xib */; };
 		B7BEA50324D146E900AAB5C7 /* ContactInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA50124D146E900AAB5C7 /* ContactInfoCell.swift */; };
 		B7BEA50424D146E900AAB5C7 /* ContactInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BEA50224D146E900AAB5C7 /* ContactInfoCell.xib */; };
 		B7BEA50724D146F500AAB5C7 /* SocialMediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BEA50524D146F500AAB5C7 /* SocialMediaCell.swift */; };
@@ -328,8 +328,8 @@
 		B7BD5E3524D12465005918B7 /* MusicSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicSearchCell.xib; sourceTree = "<group>"; };
 		B7BEA4F924D1466400AAB5C7 /* AboutHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutHeaderCell.swift; sourceTree = "<group>"; };
 		B7BEA4FA24D1466500AAB5C7 /* AboutHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutHeaderCell.xib; sourceTree = "<group>"; };
-		B7BEA4FD24D146C300AAB5C7 /* MusicGenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicGenreCell.swift; sourceTree = "<group>"; };
-		B7BEA4FE24D146C300AAB5C7 /* MusicGenreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicGenreCell.xib; sourceTree = "<group>"; };
+		B7BEA4FD24D146C300AAB5C7 /* MusicGenreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicGenreInfoCell.swift; sourceTree = "<group>"; };
+		B7BEA4FE24D146C300AAB5C7 /* MusicGenreInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicGenreInfoCell.xib; sourceTree = "<group>"; };
 		B7BEA50124D146E900AAB5C7 /* ContactInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoCell.swift; sourceTree = "<group>"; };
 		B7BEA50224D146E900AAB5C7 /* ContactInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInfoCell.xib; sourceTree = "<group>"; };
 		B7BEA50524D146F500AAB5C7 /* SocialMediaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaCell.swift; sourceTree = "<group>"; };
@@ -863,8 +863,8 @@
 		B7BEA4F624D145FC00AAB5C7 /* Music Genre */ = {
 			isa = PBXGroup;
 			children = (
-				B7BEA4FD24D146C300AAB5C7 /* MusicGenreCell.swift */,
-				B7BEA4FE24D146C300AAB5C7 /* MusicGenreCell.xib */,
+				B7BEA4FD24D146C300AAB5C7 /* MusicGenreInfoCell.swift */,
+				B7BEA4FE24D146C300AAB5C7 /* MusicGenreInfoCell.xib */,
 			);
 			path = "Music Genre";
 			sourceTree = "<group>";
@@ -1158,7 +1158,7 @@
 				A1E76E3F24CE1ADD00D9415B /* UploadFileHeaderCell.xib in Resources */,
 				EA2D794524CFFCB0005998B4 /* FavoritesVideo.storyboard in Resources */,
 				B758B53C24C7EFA200826CC5 /* LatestMusicView.storyboard in Resources */,
-				B7BEA50024D146C300AAB5C7 /* MusicGenreCell.xib in Resources */,
+				B7BEA50024D146C300AAB5C7 /* MusicGenreInfoCell.xib in Resources */,
 				B74C59FC24C6E38D00C978F3 /* FeaturedVideosCell.xib in Resources */,
 				EA1BF08024CA9EAD00CE1B8F /* MusicListCell.xib in Resources */,
 				A16B44B124B2FBF600053D6C /* LaunchScreen.storyboard in Resources */,
@@ -1428,7 +1428,7 @@
 				A134D2A324C908F3009A054F /* Album+Extension.swift in Sources */,
 				A15C4D1924C5038C00ED0C0E /* DB_Model.xcdatamodeld in Sources */,
 				B7BEA4FB24D1466500AAB5C7 /* AboutHeaderCell.swift in Sources */,
-				B7BEA4FF24D146C300AAB5C7 /* MusicGenreCell.swift in Sources */,
+				B7BEA4FF24D146C300AAB5C7 /* MusicGenreInfoCell.swift in Sources */,
 				EA1BF07F24CA9EAD00CE1B8F /* MusicListCell.swift in Sources */,
 				B7ECE0D224D01E9E008C4422 /* SearchContainerPageVC.swift in Sources */,
 				B7DAF5DB24C6919D00FC6EFB /* DiscoverNewCell.swift in Sources */,
