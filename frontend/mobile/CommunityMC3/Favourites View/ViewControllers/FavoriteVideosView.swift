@@ -73,11 +73,14 @@ class FavoriteVideosView: UIViewController {
     
 extension FavoriteVideosView: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteVideosCell", for: indexPath) as! FavoriteVideosCell
+        
+        cell.videoThumbnailImage.image = #imageLiteral(resourceName: "music-image-dummy")
+        cell.videoThumbnailImage.layer.borderWidth = 0
         
         cell.favoriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
         cell.favoriteButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
@@ -87,7 +90,6 @@ extension FavoriteVideosView: UITableViewDelegate, UITableViewDataSource{
         //            let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
         //            let urls = URL(fileURLWithPath: videoUrl!)
                     
-        cell.videoThumbnailImage.layer.borderWidth = 2
         //            cell.videoThumbnailImage.image = generateThumbnail(path: urls)
         
         cell.playButton.tag = indexPath.row
@@ -95,6 +97,8 @@ extension FavoriteVideosView: UITableViewDelegate, UITableViewDataSource{
         
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
     
 }

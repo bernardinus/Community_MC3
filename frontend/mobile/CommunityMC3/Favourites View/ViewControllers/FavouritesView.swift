@@ -74,11 +74,14 @@ extension FavouritesView: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
+        if indexPath.section == Favorite.FavoriteTrack.rawValue {
             performSegue(withIdentifier: "favoriteTracks", sender: self)
-            
-        }else if indexPath.row == 1{
+        }else if indexPath.section == Favorite.FavoriteVideo.rawValue {
             performSegue(withIdentifier: "favoriteVideos", sender: self)
+        }else if indexPath.section == Favorite.Artist.rawValue{
+            performSegue(withIdentifier: "favoriteArtists", sender: self)
+        }else if indexPath.section == Favorite.Albums.rawValue{
+            performSegue(withIdentifier: "favoriteAlbums", sender: self)
         }
     }
 }
