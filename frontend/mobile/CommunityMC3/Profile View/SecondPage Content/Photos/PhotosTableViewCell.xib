@@ -16,18 +16,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="495" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-NM-jQt">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-NM-jQt">
                         <rect key="frame" x="0.0" y="0.0" width="495" height="200"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JdD-Ad-uJC">
-                            <size key="itemSize" width="128" height="128"/>
+                            <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="tjh-NM-jQt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5FZ-PY-fcK"/>
+                    <constraint firstAttribute="bottom" secondItem="tjh-NM-jQt" secondAttribute="bottom" id="8lF-OC-Cg8"/>
+                    <constraint firstItem="tjh-NM-jQt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VHb-dp-dYb"/>
+                    <constraint firstAttribute="trailing" secondItem="tjh-NM-jQt" secondAttribute="trailing" id="Xu2-Ph-GKg"/>
+                    <constraint firstItem="tjh-NM-jQt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mML-oi-YXV"/>
+                    <constraint firstItem="tjh-NM-jQt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xvF-sn-QJI"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

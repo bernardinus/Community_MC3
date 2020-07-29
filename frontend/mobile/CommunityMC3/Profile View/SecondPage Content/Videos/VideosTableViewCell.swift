@@ -13,7 +13,7 @@ class VideosTableViewCell: UITableViewCell {
     @IBOutlet weak var videoThumbnailView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        videoThumbnailView.layer.cornerRadius = 15
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

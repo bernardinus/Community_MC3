@@ -34,20 +34,31 @@
                         </constraints>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgf-gX-oIf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                        <connections>
+                            <action selector="tapSeeAll:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UFL-iZ-aXG"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="2E4-hO-beW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="7Z9-fC-zUS"/>
+                    <constraint firstItem="Vgf-gX-oIf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JZ7-H4-jin"/>
+                    <constraint firstAttribute="trailing" secondItem="Vgf-gX-oIf" secondAttribute="trailing" id="QPr-EQ-16w"/>
                     <constraint firstAttribute="bottom" secondItem="2E4-hO-beW" secondAttribute="bottom" constant="5" id="Rsg-Yp-ZFN"/>
+                    <constraint firstAttribute="bottom" secondItem="Vgf-gX-oIf" secondAttribute="bottom" id="V8y-hj-yd6"/>
                     <constraint firstItem="B93-sk-zbT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dQ3-1M-g0o"/>
                     <constraint firstItem="2E4-hO-beW" firstAttribute="leading" secondItem="B93-sk-zbT" secondAttribute="trailing" constant="8" id="j9d-hF-nvv"/>
                     <constraint firstAttribute="bottom" secondItem="B93-sk-zbT" secondAttribute="bottom" constant="6" id="rgF-mR-OVo"/>
+                    <constraint firstItem="Vgf-gX-oIf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sQg-py-fvJ"/>
                     <constraint firstItem="B93-sk-zbT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="t7p-e7-mHc"/>
                     <constraint firstItem="B93-sk-zbT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zxU-yl-v7P"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="seeAllButton" destination="Vgf-gX-oIf" id="fMu-VV-fBL"/>
                 <outlet property="showcaseSectionHeader" destination="B93-sk-zbT" id="sqO-Vk-zEJ"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="126.5625"/>
