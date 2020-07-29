@@ -50,7 +50,7 @@ class ExplorerView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         ExploreTitleLabel.text = NSLocalizedString("Explore", comment: "")
         
         
@@ -407,7 +407,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        55
+        48
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -588,4 +588,18 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 25
+    }
+
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        let footerChildView = UIView(frame: CGRect(x: 60, y: 0, width: tableView.frame.width - 60, height: 0.5))
+//        footerChildView.backgroundColor = UIColor.darkGray
+        footerView.addSubview(footerChildView)
+        return footerView
+    }
+    
 }
