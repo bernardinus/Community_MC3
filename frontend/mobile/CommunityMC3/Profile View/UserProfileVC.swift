@@ -13,6 +13,8 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var firstTabButton: UIButton!
     @IBOutlet weak var secondTabButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
     
     var userData:UserDataStruct?
     

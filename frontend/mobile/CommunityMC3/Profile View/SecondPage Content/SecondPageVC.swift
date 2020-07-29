@@ -57,7 +57,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        48
+        40
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -116,6 +116,18 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         }
         return 36
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+            let footerView = UIView()
+            let footerChildView = UIView(frame: CGRect(x: 60, y: 0, width: tableView.frame.width - 60, height: 0.5))
+    //        footerChildView.backgroundColor = UIColor.darkGray
+            footerView.addSubview(footerChildView)
+            return footerView
+        }
     
     
 }
