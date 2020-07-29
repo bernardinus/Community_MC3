@@ -122,7 +122,7 @@ extension FavoriteTracksView: UITableViewDelegate, UITableViewDataSource{
         return 90
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toTrackPlayer", sender: self)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "toTrackPlayer", sender: self)
+//    }
 }
