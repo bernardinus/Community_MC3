@@ -71,6 +71,11 @@ class ExplorerView: UIViewController {
         
     }
     
+    func passTabData() {
+        let favoriteTab = self.tabBarController?.viewControllers![2] as! FavouritesView
+        favoriteTab.uploads = DataManager.shared().latestUpload
+    }
+    
     func hightlightUpload() {
         uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
             for track in tracks {

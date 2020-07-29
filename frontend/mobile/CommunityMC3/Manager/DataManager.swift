@@ -35,6 +35,7 @@ class DataManager
     var currentUser:CKRecord? = nil
     var userTrackRecord:[CKRecord] = []
     var latestUpload:[CKRecord] = []
+    var latestFavourite:[CKRecord] = []
     
     private init()
     {
@@ -43,6 +44,7 @@ class DataManager
         ckUtil.setup(cloudKitContainerID: iCloudContainerID)
         loginToCloudKit()
         GetLatestUpload()
+        GetLatestFavourite()
     }
     
     func loginToCloudKit()
@@ -148,6 +150,41 @@ class DataManager
                 print("GetLatestUpload Success")
                 self.latestUpload = record
                 print(self.latestUpload)
+            }
+        }
+    }
+    
+    func UploadNewFavourite(favouriteData:FavouritesDataStruct, completionHandler:(Bool, String)->Void)
+        {
+            
+            ckUtil.saveRecordToPublicDB(
+               record: favouriteData.getCKRecord(),
+               completionHandler:{ (isSuccess, errorString, record) in
+               if !isSuccess
+               {
+                   print("UploadNewFavourite Error : \(errorString)")
+               }
+               else
+               {
+                 print("UploadNewFavourite Success")
+                }
+            })
+            
+        }
+    
+    func GetLatestFavourite()
+    {
+        let query = CKQuery(recordType: "Favourites", predicate: NSPredicate(value: true))
+        ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, record) in
+            if(!isSuccess)
+            {
+                print("GetLatestFavourite Error")
+            }
+            else
+            {
+                print("GetLatestFavourite Success")
+                self.latestFavourite = record
+                print(self.latestFavourite)
             }
         }
     }
