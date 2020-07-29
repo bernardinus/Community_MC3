@@ -21,7 +21,7 @@ class AllSearchVC: UIViewController {
     @IBOutlet weak var allSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        allSearchTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         allSearchTableView.register(UINib(nibName: "SearchHeaderSection", bundle: nil), forCellReuseIdentifier: "searchHeaderSection")
         allSearchTableView.register(UINib(nibName: "MusicSearchCell", bundle: nil), forCellReuseIdentifier: "musicSearchCell")
         allSearchTableView.register(UINib(nibName: "ArtistSearchCell", bundle: nil), forCellReuseIdentifier: "artistSearchCell")
