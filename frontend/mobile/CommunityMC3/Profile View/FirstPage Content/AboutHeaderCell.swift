@@ -13,7 +13,8 @@ class AboutHeaderCell: UITableViewCell {
     @IBOutlet weak var aboutHeaderLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        aboutHeaderLabel.adjustsFontSizeToFitWidth = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
