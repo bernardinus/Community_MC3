@@ -42,7 +42,12 @@ class DataManager
         print()
         ckUtil.setup(cloudKitContainerID: iCloudContainerID)
         loginToCloudKit()
-        GetLatestUpload()
+        getLatestUpload()
+    }
+    
+    func registerToCloudKit()
+    {
+        
     }
     
     func loginToCloudKit()
@@ -57,7 +62,8 @@ class DataManager
             {
                 print("Login to CloudKit Success")
                 self.currentUser = record[0]
-                print(self.currentUser)
+//                let refUserData = self.currentUser!["userData"] as! CKRecord.Reference
+//                print(refUserData.action)
             }
         }
     }
@@ -94,27 +100,32 @@ class DataManager
                 
                 self.UpdateNewUploadData(record: uploadedData.getCKRecord())
                 
-//                if(self.currentUser != nil)
-//                {
-//                    var allTracks = self.currentUser?.value(forKey: "tracks")
-//                    if(allTracks != nil)
-//                    {
-////                        allTracks = self.currentUser!["tracks"] as! [CKRecord.Reference]
-//                        print("allTracks not nil")
-//                    }
-//                    else
-//                    {
-//                        print("allTracks nil")
-//                        var ref = CKRecord.Reference(record: record!, action: .deleteSelf)
-//                        self.currentUser?.setValue(ref, forKey: "tracks")
-//                    }
-//
-//
-//
-//
-//                }
-                
-//                self.saveCurrentUser()
+                if(self.currentUser != nil)
+                {
+                    var allTracks = self.currentUser?.value(forKey: "tracks")
+                    let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
+                    var arr:NSMutableArray? = nil
+
+                    if(allTracks != nil)
+                    {
+                        print("allTracks not nil")
+                        arr = NSMutableArray(array:self.currentUser!["tracks"] as! [CKRecord.Reference])
+                        arr!.add(ref)
+                        print(arr)
+                    }
+                    else
+                    {
+                        print("allTracks nil")
+                        arr = NSMutableArray(array: [ref])
+                    }
+                    self.currentUser?.setValue(arr, forKey: "tracks")
+
+    
+    
+    
+                }
+                    
+                self.saveCurrentUser()
             }
                 
         })
@@ -135,7 +146,7 @@ class DataManager
         }
     }
     
-    func GetLatestUpload()
+    func getLatestUpload()
     {
         let query = CKQuery(recordType: "UploadedData", predicate: NSPredicate(value: true))
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, record) in

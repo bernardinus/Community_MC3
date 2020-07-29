@@ -104,6 +104,7 @@ class UploadFileView: UIViewController
                 name: nameTextField!.text!,
                 email: "test@test",
                 fileURL: fileURL!,
+//                coverImage: coverImage.data
                 audioData: nil,
                 album: nil)
             DataManager.shared().UploadNewTrack(trackData:trackData!) { (isSuccess, errorString) in

@@ -27,8 +27,10 @@ struct TrackDataStruct
 //    var recordID: CKRecord.ID
     var email: String
     var fileURL: URL
+//    var coverImage:URL
     
     var audioData:AVAudioPlayer?
+    
     
     var album:AlbumDataStruct?
     
