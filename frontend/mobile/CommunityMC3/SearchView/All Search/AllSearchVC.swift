@@ -87,10 +87,16 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "playlistSearchCell") as! PlaylistSearchCell
             return cell
         }
-
-        
         return allSearchTableView.dequeueReusableCell(withIdentifier: "artistSearchCell")!
-
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(indexPath.section == SearchSection.Video.rawValue)
+        {
+            return 200
+        }
+        
+        return 80
     }
     
     
