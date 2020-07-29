@@ -13,7 +13,7 @@ class VideoSearchVC: UIViewController {
     @IBOutlet weak var videoSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        videoSearchTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         videoSearchTableView.register(UINib(nibName: "VideoSearchCell", bundle: nil), forCellReuseIdentifier: "videoSearchCell")
         
     }
@@ -28,6 +28,11 @@ extension VideoSearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = videoSearchTableView.dequeueReusableCell(withIdentifier: "videoSearchCell") as! VideoSearchCell
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+        
     }
     
 }

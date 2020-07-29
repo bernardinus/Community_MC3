@@ -1,5 +1,5 @@
 //
-//  MusicSearchCell.swift
+//  AboutHeaderCell.swift
 //  CommunityMC3
 //
 //  Created by Theofani on 29/07/20.
@@ -8,11 +8,9 @@
 
 import UIKit
 
-class MusicSearchCell: UITableViewCell {
+class AboutHeaderCell: UITableViewCell {
 
-    @IBOutlet weak var trackImageView: UIImageView!
-    @IBOutlet weak var trackTitleLabel: UILabel!
-    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var aboutHeaderLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
