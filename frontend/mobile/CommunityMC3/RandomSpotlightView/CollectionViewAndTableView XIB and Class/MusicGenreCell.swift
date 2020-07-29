@@ -9,12 +9,12 @@
 import UIKit
 
 class MusicGenreCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var musicGenreLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

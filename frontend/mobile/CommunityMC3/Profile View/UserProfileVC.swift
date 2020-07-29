@@ -9,40 +9,111 @@
 import UIKit
 
 class UserProfileVC: UIViewController {
-
-    var userData:UserDataStruct?
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var viewContainer: UIView!
+    @IBOutlet weak var firstTabButton: UIButton!
+    @IBOutlet weak var secondTabButton: UIButton!
+    
+    var userData:UserDataStruct?
+    
+    var cVC:CarouselPageViewController?
+    
+    var showcaseVC:SecondPageVC?
+    var isUploadVideo = false
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupActionSheet()
+        updateLayout()
         // Do any additional setup after loading the view.
+        firstTabButton.alpha = 1
+        secondTabButton.alpha = 0.5
+        cVC?.moveToPage(index: 0)
+        
+        
+        
+    }
+    
+    func updateLayout()
+    {
+        if let loadEmail = userDefault.string(forKey: "email"){
+            userNameLabel.text = loadEmail
+        }
+    }
+    
+    @IBAction func unwindToUserProfile(_ segue:UIStoryboardSegue)
+    {
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "container"
+        {
+            print("containerSegue")
+            cVC = (segue.destination as! CarouselPageViewController)
+        }
+        else if segue.identifier == "selectFileSegue"
+        {
+            let selectVC = segue.destination as! SelectFileView
+            selectVC.isUploadVideo = isUploadVideo
+        }
     }
     
     func setupActionSheet()
     {
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive)
+        
+        
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: {
+            (action: UIAlertAction) in
+            self.userDefault.removeObject(forKey: "email")
+            self.performSegue(withIdentifier: "logoutUser", sender: self)
+        })
         actionSheet.addAction(signOutAction)
         
         let editAction = UIAlertAction(title: "Edit", style: .default,
-                                       handler: { action in
-                                                    self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
-                                                 }
-                                        )
+                                       handler: {
+                                        action in
+                                        self.performSegue(withIdentifier: "editProfileSegue", sender: nil) }
+        )
         actionSheet.addAction(editAction)
         
         let shareAction = UIAlertAction(title: "Share", style: .default)
         actionSheet.addAction(shareAction)
         
-        let uploadAction = UIAlertAction(title: "Upload", style: .default,
-                                         handler: { action in
-                                                     self.performSegue(withIdentifier: "selectFileSegue", sender: nil)
-                                                  }
-                                         )
-        actionSheet.addAction(uploadAction)
+        let uploadMusic = UIAlertAction(title: "Upload Music", style: .default,
+                                         handler: {
+                                            action in
+                                            self.isUploadVideo = false
+                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
+        )
+        actionSheet.addAction(uploadMusic)
+        
+        let uploadVideo = UIAlertAction(title: "Upload Video", style: .default,
+                                         handler: {
+                                            action in
+                                            self.isUploadVideo = true
+                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
+        )
+        actionSheet.addAction(uploadVideo)
+        
+        let uploadPhotos = UIAlertAction(title: "Upload Photos", style: .default,
+                                         handler: {
+                                            action in
+                                            print("uploadPhotos") }
+        )
+        actionSheet.addAction(uploadPhotos)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         actionSheet.addAction(cancelAction)
@@ -59,12 +130,16 @@ class UserProfileVC: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
         super.viewWillAppear(animated)
         
-//        let navigationBar = navigationController?.navigationBar
-//        let navigationBarAppearence = UINavigationBarAppearance()
-//        navigationBarAppearence.shadowColor = .clear
-//        navigationBar?.scrollEdgeAppearance = navigationBarAppearence
-//        navigationItem.rightBarButtonItems![0].setBackgroundImage(nil, for: .disabled, barMetrics: .default)
-//
+        showcaseVC = cVC!.items[1] as? SecondPageVC
+        showcaseVC?.showcaseVideoSegue = {
+            self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
+        }
+        showcaseVC?.showcasePhotoSegue = {
+            self.performSegue(withIdentifier: "showcasePhotoSegue", sender: nil)
+        }
+        showcaseVC?.showcaseMusicSegue = {
+            self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
+        }
         
     }
     
@@ -73,17 +148,21 @@ class UserProfileVC: UIViewController {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func firstPageTapped(_ sender: Any) {
+        firstTabButton.alpha = 1
+        secondTabButton.alpha = 0.5
+        
+        print(cVC?.a as Any)
+        cVC?.moveToPage(index: 0)
     }
-    */
-
+    
+    @IBAction func secondPageTapped(_ sender: Any) {
+        firstTabButton.alpha = 0.5
+        secondTabButton.alpha = 1
+        
+        print(cVC?.a as Any)
+        cVC?.moveToPage(index: 1)
+    }
 }
 
 
@@ -92,16 +171,3 @@ extension UserProfileVC : UIActionSheetDelegate
     
 }
 
-public extension UIImage {
-  public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
-    let rect = CGRect(origin: .zero, size: size)
-    UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-    color.setFill()
-    UIRectFill(rect)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-
-    guard let cgImage = image?.cgImage else { return nil }
-    self.init(cgImage: cgImage)
-  }
-}

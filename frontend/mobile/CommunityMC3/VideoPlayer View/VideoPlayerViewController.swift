@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 
 class VideoPlayerViewController: UIViewController {
-
+    
     @IBOutlet weak var videoThumbnailImageView: UIImageView!
     
     static let shared = VideoPlayerViewController()
@@ -33,12 +33,12 @@ class VideoPlayerViewController: UIViewController {
         if video != nil {
             let videoURL = video!.fileURL
             let videoData = NSData(contentsOf: videoURL as URL)
-
+            
             let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
             let destinationPath = NSURL(fileURLWithPath: documentsPath).appendingPathComponent(video!.name + ".mov", isDirectory: false) //This is where I messed up.
-
+            
             FileManager.default.createFile(atPath: (destinationPath?.path)!, contents:videoData as Data?, attributes:nil)
-
+            
             return destinationPath!
         }
         return video?.fileURL
@@ -57,7 +57,7 @@ class VideoPlayerViewController: UIViewController {
         
         //insert generateThumbnail function to imageView
         self.videoThumbnailImageView.image = generateThumbnail(path: urls!)
-
+        
     }
     
     //function to generate video thumbnail
@@ -74,7 +74,7 @@ class VideoPlayerViewController: UIViewController {
             return nil
         }
     }
-
+    
     
     @IBAction func playVideoButtonAction(_ sender: UIButton) {
         let video:AVPlayer?
@@ -99,5 +99,5 @@ class VideoPlayerViewController: UIViewController {
             })
         }
     }
-
+    
 }

@@ -17,7 +17,7 @@ enum RandomSearch: Int {
 }
 
 class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
-
+    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -35,16 +35,21 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     var musicGenreArray = ["Rock","Jazz","Pop","RnB","Acoustic","Blues"]
     var trackPlayer: AVAudioPlayer?
     var trackIndex = 0
-    var musicPlaylist = [""]
-    var index: IndexPath?
+    var musicPlaylist = ["dishes", "tiara", "yorushika"]
     var videoList = [""]
     var musicFilter = [String]()
     var genreFilter = [String]()
+    var tempInt: Int?
+    var player2: AVAudioPlayer?
+    var timer: Timer?
+    var seconds = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupBackground()
+        addSwipeGesture()
     }
     
     func setupBackground(){
@@ -84,6 +89,27 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         }
     }
     
+    func addSwipeGesture() {
+        if popUpContentView.isHidden == false{
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+            swipeLeft.direction = .left
+            self.view.addGestureRecognizer(swipeLeft)
+            
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+            swipeRight.direction = .right
+            self.view.addGestureRecognizer(swipeRight)
+        }
+    }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            popUpContentView.slideLeft()
+        }
+        //        else if gesture.direction == UISwipeGestureRecognizer.Direction.right{
+        //            popUpContentView.slideRight()
+        //        }
+    }
+    
     @IBAction func searchButtonAction(_ sender: UIButton) {
         
         UIView.animate(withDuration: 2.0, animations: {
@@ -109,20 +135,24 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
             UIView.animate(withDuration: 2.0, delay: 2, options: .transitionCrossDissolve, animations: {
                 self.popUpView.isHidden = false
+                self.searchButton.isHidden = true
+                self.innerCircleEffectImage.isHidden = true
+                self.outerCircleEffectImage.isHidden = true
             })
         })
-        
-        
-        
     }
+    
     @IBAction func editButtonAction(_ sender: UIButton) {
         let editRandomizerVC = storyboard?.instantiateViewController(identifier: "EditRandomizerVC") as! EditRandomizerViewController
         editRandomizerVC.transitioningDelegate = self
         editRandomizerVC.modalPresentationStyle = .custom
         editRandomizerVC.view.layer.cornerRadius = 34
-     
-        self.present(editRandomizerVC, animated: true, completion: nil)
         
+        self.present(editRandomizerVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func nextButtonAction(_ sender: UIButton) {
+        popUpContentView.slideLeft()
     }
     
 }
@@ -149,7 +179,7 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         if section == RandomSearch.Music.rawValue {
             return musicPlaylist.count
         }else if section == RandomSearch.Video.rawValue{
-            return 7
+            return videoList.count
         }
         return 0
     }
@@ -159,19 +189,35 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             let cell = tableView.dequeueReusableCell(withIdentifier: "musicList", for: indexPath) as! MusicListCell
             
             cell.playButton.tag = indexPath.row
-            trackIndex = indexPath.row
+            
+            let audiopath = Bundle.main.path(forResource: musicPlaylist[indexPath.row], ofType: "mp3")
+            player2 = try? AVAudioPlayer(contentsOf: URL(fileURLWithPath: audiopath!))
+            let audioDuration = player2!.duration
+            let formatterr = DateComponentsFormatter()
+            formatterr.allowedUnits = [.hour, .minute, .second]
+            formatterr.unitsStyle = .positional
+            
+            let formattedString2 = formatterr.string(from: TimeInterval(audioDuration))!
+            cell.trackCurrent.text = "\(formattedString2)"
             cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayAudio(_:)), for: .touchUpInside)
-            cell.trackCurrent.text = "\(trackPlayer!.duration)"
-           
+            cell.playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+            cell.playButton.setImage(#imageLiteral(resourceName: "Stop"), for: .selected)
+            
+            if indexPath.row == tempInt{
+                
+            }else{
+                cell.playButton.isSelected = false
+            }
+            
             return cell
         }else if indexPath.section == RandomSearch.Video.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "videoList", for: indexPath) as! VideoListCell
             
-            let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
-            let urls = URL(fileURLWithPath: videoUrl!)
+            //            let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
+            //            let urls = URL(fileURLWithPath: videoUrl!)
             
             cell.videoThumbnailImage.layer.borderWidth = 2
-            cell.videoThumbnailImage.image = generateThumbnail(path: urls)
+            //            cell.videoThumbnailImage.image = generateThumbnail(path: urls)
             cell.playButton.tag = indexPath.row
             cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayVideo(_:)), for: .touchUpInside)
             
@@ -203,19 +249,21 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         cell.layer.cornerRadius = 12
         cell.musicGenreLabel.text = musicGenreArray[indexPath.row]
         switch cell.musicGenreLabel.text {
-            case "RnB":
-                cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
-            case "Jazz":
+        case "RnB":
+            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
+        case "Jazz":
             cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
-            case "Pop":
-                cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
-            default:
-                break
+        case "Pop":
+            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
+        default:
+            break
         }
         return cell
     }
     
+    
     @objc func clickPlayAudio(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
         
         let audioPath = Bundle.main.path(forResource: "\(musicPlaylist[sender.tag])", ofType: "mp3")!
         var error : NSError? = nil
@@ -226,28 +274,36 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             error = error1
         }
         trackPlayer!.delegate = self
-       
+        
         let selectedIndex = IndexPath(row: sender.tag, section: 0)
+        tempInt = sender.tag
         
-        index = selectedIndex
-        let minute = Int(trackPlayer!.duration / 60)
-        let second = Int(trackPlayer!.duration) - minute * 60
+        timer?.invalidate()
         
-        let cell = musicAndVideoTableView.cellForRow(at: selectedIndex) as! MusicListCell
-        cell.trackCurrent.text = "\(minute):\(String(format: "%2d", second))"
-        
-        if (trackPlayer?.isPlaying)! {
-            trackPlayer?.pause()
-            
-            sender.setImage(#imageLiteral(resourceName: "Stop"), for: .normal)
-        }else {
+        if sender.isSelected == true {
             if error == nil {
                 trackPlayer?.delegate = self
                 trackPlayer?.prepareToPlay()
                 trackPlayer?.play()
-                sender.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
             }
+            let cell = musicAndVideoTableView.cellForRow(at: selectedIndex) as! MusicListCell
+            seconds = Int(trackPlayer!.duration)
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+                let formatter = DateComponentsFormatter()
+                formatter.allowedUnits = [.hour, .minute, .second]
+                formatter.unitsStyle = .positional
+                
+                let formattedString = formatter.string(from: TimeInterval(self.seconds))!
+                self.seconds -= 1
+                cell.trackCurrent.text = "\(formattedString)"
+                print(self.seconds)
+            }
+            
+        }else if sender.isSelected == false{
+            trackPlayer?.stop()
+            timer!.invalidate()
         }
+        
         musicAndVideoTableView.reloadData()
     }
     
@@ -269,6 +325,37 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
     }
+}
+
+extension UIView {
+    func slideLeft(duration: TimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
+        let slideFromRightToLeft = CATransition()
+        
+        if let delegate: AnyObject = completionDelegate {
+            slideFromRightToLeft.delegate = (delegate as! CAAnimationDelegate)
+        }
+        slideFromRightToLeft.type = CATransitionType.push
+        slideFromRightToLeft.subtype = CATransitionSubtype.fromRight
+        slideFromRightToLeft.duration = duration
+        slideFromRightToLeft.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        slideFromRightToLeft.fillMode = CAMediaTimingFillMode.removed
+        
+        self.layer.add(slideFromRightToLeft, forKey: "slideFromRightToLeft")
+    }
+    //    func slideRight(duration: TimeInterval = 1.0, completionDelegate: AnyObject? = nil){
+    //        let slideFromLeftToRight = CATransition()
+    //
+    //        if let delegate: AnyObject = completionDelegate {
+    //            slideFromLeftToRight.delegate = (delegate as! CAAnimationDelegate)
+    //        }
+    //        slideFromLeftToRight.type = CATransitionType.push
+    //        slideFromLeftToRight.subtype = CATransitionSubtype.fromLeft
+    //        slideFromLeftToRight.duration = duration
+    //        slideFromLeftToRight.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    //        slideFromLeftToRight.fillMode = CAMediaTimingFillMode.removed
+    //
+    //        self.layer.add(slideFromLeftToRight, forKey: "slideFromLeftToRight")
+    //    }
 }
 
 class HalfSizePresentationController : UIPresentationController {

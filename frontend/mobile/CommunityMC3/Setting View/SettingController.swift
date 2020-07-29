@@ -16,30 +16,43 @@ class SettingController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var genreField: UITextField!
     
-//    let documentController = DocumentTableViewController.shared
+    //    let documentController = DocumentTableViewController.shared
     let uploadController = UploadController.shared
+    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
         settingImage.addGestureRecognizer(uploadTap)
-        let userDefault = UserDefaults.standard
         if let loadEmail = userDefault.string(forKey: "email"){
             emailField.text = loadEmail
         }
-//        documentController.getProfilesFromCloudKit { (profiles) in
-//            for profile in profiles {
-//                print(profile.name, profile.email, profile.genre)
-//            }
-//        }
-        uploadController.getPhotosFromCloudKit { (photos) in
-            for photo in photos {
-                if photo.email == "mnb@mnb" {
-                    if let data = NSData(contentsOf: photo.fileURL) {
+        //        documentController.getProfilesFromCloudKit { (profiles) in
+        //            for profile in profiles {
+        //                print(profile.name, profile.email, profile.genre)
+        //            }
+        //        }
+        //        uploadController.getPhotosFromCloudKit { (photos) in
+        //            for photo in photos {
+        //                if photo.email == self.emailField.text {
+        //                    if let data = NSData(contentsOf: photo.fileURL) {
+        //                        DispatchQueue.main.async {
+        //                            self.settingImage.image = UIImage(data: data as Data)
+        //                        }
+        //                   }
+        //                }
+        //            }
+        //        }
+        uploadController.getUsersDataFromCloudKit { (usersData) in
+            for userData in usersData {
+                if userData.email == self.emailField.text {
+                    if let data = NSData(contentsOf: userData.fileURL) {
                         DispatchQueue.main.async {
+                            self.nameField.text = userData.name
+                            self.genreField.text = userData.genre
                             self.settingImage.image = UIImage(data: data as Data)
                         }
-                   }
+                    }
                 }
             }
         }
@@ -54,20 +67,29 @@ class SettingController: UIViewController {
     }
     
     @IBAction func saveSetting(_ sender: UIButton) {
-//        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
-        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
+        //        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
+        //        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
+        uploadController.uploadUserData(email: emailField.text!,
+                                        name: nameField.text!,
+                                        genre: genreField.text!,
+                                        myImage: settingImage.image!
+        )
     }
     
     func loadAlert() {
-    //    let alertTitle = NSLocalizedString("Welcome", comment: "")
+        //    let alertTitle = NSLocalizedString("Welcome", comment: "")
         let alertTitle = "Tiana Rosser"
         let alertMessage = NSLocalizedString("Are you sure want to sign out?", comment: "")
         let cancelButtonText = NSLocalizedString("Cancel", comment: "")
         let signupButtonText = NSLocalizedString("Sign Out", comment: "")
-
+        
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: cancelButtonText, style: UIAlertAction.Style.cancel, handler: nil)
-        let signupAction = UIAlertAction(title: signupButtonText, style: UIAlertAction.Style.default, handler: nil)
+        let signupAction = UIAlertAction(title: signupButtonText, style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction) in
+            self.userDefault.removeObject(forKey: "email")
+            self.performSegue(withIdentifier: "logoutUser", sender: self)
+        })
         alert.addAction(cancelAction)
         alert.addAction(signupAction)
         self.present(alert, animated: true, completion: nil)
@@ -104,8 +126,8 @@ extension SettingController: UIImagePickerControllerDelegate, UINavigationContro
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        let videoURL = info[UIImagePickerController.InfoKey.phAsset] as? URL
-//        print(videoURL)
+        //        let videoURL = info[UIImagePickerController.InfoKey.phAsset] as? URL
+        //        print(videoURL)
         if let imageTaken = info[.originalImage] as? UIImage {
             picker.dismiss(animated: true) {
                 self.settingImage?.image = imageTaken

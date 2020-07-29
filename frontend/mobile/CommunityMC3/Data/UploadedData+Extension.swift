@@ -7,32 +7,45 @@
 //
 
 import Foundation
+import CloudKit
 
 struct UploadedDataStruct
 {
     // param
-    var uploadedDate:Date
-        
-    // ref
-    var track:TrackDataStruct?
-    var video:VideosDataStruct?
-}
-
-
-/*
-extension Photos
-{
-        
+    var uploadedDate:Date?
     
-    static func createPhoto(photoData:PhotoData) -> Photos?
+    // ref
+//    var track:TrackDataStruct?
+//    var video:VideosDataStruct?
+    var track:CKRecord?
+    var video:CKRecord?
+    
+    func getCKRecord() -> CKRecord
     {
-        if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
+        let record = CKRecord(recordType: "UploadedData")
+        
+        record.setValue(uploadedDate, forKey: "uploadedDate")
+        
+        if track != nil
         {
-            photo.userData = photoData.userData
-            return photo
+            let trackRef = CKRecord.Reference(record: track!, action: .deleteSelf)
+            record.setValue(trackRef, forKey: "track")
+        }
+        else
+        {
+            record.setNilValueForKey("track")
         }
         
-        return nil
+        if video != nil
+        {
+            let trackRef = CKRecord.Reference(record: video!, action: .deleteSelf)
+            record.setValue(trackRef, forKey: "video")
+        }
+        else
+        {
+            record.setNilValueForKey("video")
+        }
+            
+        return record
     }
 }
- */

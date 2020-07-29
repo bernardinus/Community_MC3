@@ -9,7 +9,7 @@
 import UIKit
 
 class EditRandomizerViewController: UIViewController {
-
+    
     @IBOutlet weak var sortByCollectionView: UICollectionView!
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
@@ -99,7 +99,7 @@ extension EditRandomizerViewController: UICollectionViewDataSource, UICollection
             cell.checkBoxImage.layer.borderColor = UIColor.lightGray.cgColor
             cell.checkBoxImage.layer.borderWidth = 1
             cell.checkBoxImage.layer.cornerRadius = 6
-        
+            
             return cell
         }else {
             let cell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! GenreCollectionViewCell
@@ -126,7 +126,7 @@ extension EditRandomizerViewController: UICollectionViewDataSource, UICollection
                 cell.checkBoxImage.layer.borderWidth = 0
             }
             print(sortByTemp)
-          
+            
         }else{
             if genreTemp.contains(indexPath.row){
                 let cell = genreCollectionView.cellForItem(at: indexPath) as! GenreCollectionViewCell

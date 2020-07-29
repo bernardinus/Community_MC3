@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,22 +33,333 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hmx-ZY-K8U">
+                                <rect key="frame" x="20" y="216" width="374" height="646"/>
+                                <connections>
+                                    <segue destination="Ooc-0g-liL" kind="embed" identifier="searchContainer" id="ckp-KL-LVT"/>
+                                </connections>
+                            </containerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-4H-Z2n">
+                                <rect key="frame" x="20" y="178" width="374" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vw5-Kj-LMC">
+                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Top">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sEL-SW-vhn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Uq-Hd-0Xz">
+                                        <rect key="frame" x="64.5" y="0.0" width="72" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Artist">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wjc-HM-epY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-79-zGB">
+                                        <rect key="frame" x="144.5" y="0.0" width="77.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Music">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="5XZ-7A-KXL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-gv-hGm">
+                                        <rect key="frame" x="230" y="0.0" width="75.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Video">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="AZ7-NR-nqd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-Ft-hxH">
+                                        <rect key="frame" x="313.5" y="0.0" width="60.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Playlist">
+                                            <color key="titleColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" red="0.34509803919999998" green="0.20000000000000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="bold">
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            </preferredSymbolConfiguration>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.4923317432" green="0.55656695369999998" blue="0.98043555019999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Pzx-4N-eVF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="qWb-8x-hde" firstAttribute="top" secondItem="Q9W-zT-IVQ" secondAttribute="bottom" constant="4" id="2cG-e6-UFS"/>
                             <constraint firstItem="qWb-8x-hde" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="15" id="8KM-jg-cea"/>
                             <constraint firstItem="qWb-8x-hde" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" constant="-15" id="9fc-Tr-iME"/>
+                            <constraint firstItem="AIr-4H-Z2n" firstAttribute="top" secondItem="qWb-8x-hde" secondAttribute="bottom" constant="6" id="EhP-Hk-Vwq"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Hmx-ZY-K8U" secondAttribute="trailing" constant="20" id="GH1-Ze-BSw"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="AIr-4H-Z2n" secondAttribute="trailing" constant="20" id="JfK-FZ-qQ4"/>
+                            <constraint firstItem="Hmx-ZY-K8U" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="LPg-pL-OMF"/>
+                            <constraint firstItem="AIr-4H-Z2n" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="LRu-Jq-VIK"/>
+                            <constraint firstItem="Hmx-ZY-K8U" firstAttribute="top" secondItem="AIr-4H-Z2n" secondAttribute="bottom" constant="8" id="Tes-0e-0eo"/>
                             <constraint firstItem="Q9W-zT-IVQ" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="Tpu-Nd-56d"/>
+                            <constraint firstItem="Hmx-ZY-K8U" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="20" id="Uls-vN-FZZ"/>
                             <constraint firstItem="Q9W-zT-IVQ" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="27" id="Ygy-Mo-9hF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass.circle.fill" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outletCollection property="searchCategoryButton" destination="Vw5-Kj-LMC" collectionClass="NSMutableArray" id="iMr-5O-qdy"/>
+                        <outletCollection property="searchCategoryButton" destination="6Uq-Hd-0Xz" collectionClass="NSMutableArray" id="1tm-yz-wmd"/>
+                        <outletCollection property="searchCategoryButton" destination="nhR-79-zGB" collectionClass="NSMutableArray" id="czY-56-o9M"/>
+                        <outletCollection property="searchCategoryButton" destination="J1b-gv-hGm" collectionClass="NSMutableArray" id="YAh-ne-jhQ"/>
+                        <outletCollection property="searchCategoryButton" destination="R0z-Ft-hxH" collectionClass="NSMutableArray" id="RsF-tW-VjU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
+        </scene>
+        <!--Search Container PageVC-->
+        <scene sceneID="Kzs-bj-kLF">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ooc-0g-liL" customClass="SearchContainerPageVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEp-rQ-BhZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="775" y="-354"/>
+        </scene>
+        <!--Artist SearchVC-->
+        <scene sceneID="uOi-WV-VEy">
+            <objects>
+                <viewController storyboardIdentifier="artistSearch" id="Osg-In-ne1" customClass="ArtistSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LiY-W6-Jzm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vpA-Ys-wVN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Osg-In-ne1" id="esZ-uJ-CU7"/>
+                                    <outlet property="delegate" destination="Osg-In-ne1" id="Vv6-7f-Y9g"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vpA-Ys-wVN" firstAttribute="top" secondItem="SX5-aK-1jW" secondAttribute="top" id="7D2-Fa-i7e"/>
+                            <constraint firstItem="vpA-Ys-wVN" firstAttribute="leading" secondItem="SX5-aK-1jW" secondAttribute="leading" id="Gee-c8-XGG"/>
+                            <constraint firstItem="SX5-aK-1jW" firstAttribute="bottom" secondItem="vpA-Ys-wVN" secondAttribute="bottom" id="LWR-tY-Cbo"/>
+                            <constraint firstItem="SX5-aK-1jW" firstAttribute="trailing" secondItem="vpA-Ys-wVN" secondAttribute="trailing" id="peZ-pI-LBH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SX5-aK-1jW"/>
+                    </view>
+                    <connections>
+                        <outlet property="artistSeachTableView" destination="vpA-Ys-wVN" id="pWN-6V-ac1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ndc-YD-IWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1531.8840579710145" y="831.69642857142856"/>
+        </scene>
+        <!--Music SearchVC-->
+        <scene sceneID="FfS-k8-vVK">
+            <objects>
+                <viewController storyboardIdentifier="musicSearch" id="942-Hn-JoM" customClass="MusicSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6s5-wG-ZVX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U6u-U9-tb7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="942-Hn-JoM" id="v2a-FU-lG4"/>
+                                    <outlet property="delegate" destination="942-Hn-JoM" id="pmb-Cv-brB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="U6u-U9-tb7" firstAttribute="leading" secondItem="jTf-gg-1fm" secondAttribute="leading" id="5GP-33-0Ai"/>
+                            <constraint firstItem="U6u-U9-tb7" firstAttribute="top" secondItem="jTf-gg-1fm" secondAttribute="top" id="jin-VE-bCU"/>
+                            <constraint firstItem="jTf-gg-1fm" firstAttribute="trailing" secondItem="U6u-U9-tb7" secondAttribute="trailing" id="wNM-yp-CO5"/>
+                            <constraint firstItem="jTf-gg-1fm" firstAttribute="bottom" secondItem="U6u-U9-tb7" secondAttribute="bottom" id="ySh-HZ-UF0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jTf-gg-1fm"/>
+                    </view>
+                    <connections>
+                        <outlet property="musicSearchTableView" destination="U6u-U9-tb7" id="MWG-Tt-ytO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fih-0F-HI2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2289.8550724637685" y="831.69642857142856"/>
+        </scene>
+        <!--Video SearchVC-->
+        <scene sceneID="CZM-oT-a5h">
+            <objects>
+                <viewController storyboardIdentifier="videoSearch" id="nPN-EA-qgP" customClass="VideoSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Q3-Px-5nu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gfb-IT-DDj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nPN-EA-qgP" id="Skr-A6-LTh"/>
+                                    <outlet property="delegate" destination="nPN-EA-qgP" id="QKP-Hg-1VI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0Ov-fg-xVW" firstAttribute="trailing" secondItem="gfb-IT-DDj" secondAttribute="trailing" id="3xj-Ph-gl6"/>
+                            <constraint firstItem="0Ov-fg-xVW" firstAttribute="bottom" secondItem="gfb-IT-DDj" secondAttribute="bottom" id="Z2a-HT-xpD"/>
+                            <constraint firstItem="gfb-IT-DDj" firstAttribute="leading" secondItem="0Ov-fg-xVW" secondAttribute="leading" id="qeH-ic-T3v"/>
+                            <constraint firstItem="gfb-IT-DDj" firstAttribute="top" secondItem="0Ov-fg-xVW" secondAttribute="top" id="yit-jx-V6c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Ov-fg-xVW"/>
+                    </view>
+                    <connections>
+                        <outlet property="videoSearchTableView" destination="gfb-IT-DDj" id="9nq-X4-g3M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Xx-3u-QCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3053.6231884057975" y="831.69642857142856"/>
+        </scene>
+        <!--Playlist SearchVC-->
+        <scene sceneID="qrg-Zf-pLy">
+            <objects>
+                <viewController storyboardIdentifier="playlistSearch" id="SVP-Hb-qA7" customClass="PlaylistSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D9b-cv-LSb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="emT-39-RtH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SVP-Hb-qA7" id="C6x-UQ-KUE"/>
+                                    <outlet property="delegate" destination="SVP-Hb-qA7" id="kNI-Tb-SSd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="emT-39-RtH" firstAttribute="top" secondItem="kne-2Z-JPf" secondAttribute="top" id="9ny-hC-KtM"/>
+                            <constraint firstItem="kne-2Z-JPf" firstAttribute="trailing" secondItem="emT-39-RtH" secondAttribute="trailing" id="AvJ-PV-Bgr"/>
+                            <constraint firstItem="emT-39-RtH" firstAttribute="leading" secondItem="kne-2Z-JPf" secondAttribute="leading" id="GLH-St-GFy"/>
+                            <constraint firstItem="kne-2Z-JPf" firstAttribute="bottom" secondItem="emT-39-RtH" secondAttribute="bottom" id="s7F-ku-YdD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kne-2Z-JPf"/>
+                    </view>
+                    <connections>
+                        <outlet property="playlistSearchTableView" destination="emT-39-RtH" id="kMx-76-4z9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6jZ-xi-Alv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3811.594202898551" y="831.69642857142856"/>
+        </scene>
+        <!--All SearchVC-->
+        <scene sceneID="qzI-SU-cLq">
+            <objects>
+                <viewController storyboardIdentifier="allSearch" id="yki-R3-J3W" customClass="AllSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="maM-YP-ofF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bra-XF-9wk">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="yki-R3-J3W" id="zkz-3K-JwY"/>
+                                    <outlet property="delegate" destination="yki-R3-J3W" id="eRX-ZP-A7q"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="bottom" secondItem="bJc-xT-T4Q" secondAttribute="bottom" id="B1Y-tI-xwS"/>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="top" secondItem="bJc-xT-T4Q" secondAttribute="top" id="XJI-BS-eCw"/>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="leading" secondItem="bJc-xT-T4Q" secondAttribute="leading" id="eUs-cj-KKk"/>
+                            <constraint firstItem="bra-XF-9wk" firstAttribute="trailing" secondItem="bJc-xT-T4Q" secondAttribute="trailing" id="nrc-JJ-gU6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bJc-xT-T4Q"/>
+                    </view>
+                    <connections>
+                        <outlet property="allSearchTableView" destination="bra-XF-9wk" id="Vgt-x9-AsM"/>
+                        <segue destination="Osg-In-ne1" kind="custom" identifier="artistSearchSegue" id="yUm-BU-saE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgm-Pz-cue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1531.8840579710145" y="18.75"/>
         </scene>
     </scenes>
     <resources>

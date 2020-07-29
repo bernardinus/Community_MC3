@@ -11,6 +11,7 @@ import UIKit
 class GenreTableViewCell: UITableViewCell {
     
     static let identifier = "GenreTableViewCell"
+    @IBOutlet weak var genreTextField: UITextField!
     
     static func nib() -> UINib {
         return UINib(nibName: "GenreTableViewCell", bundle: nil)
@@ -22,11 +23,13 @@ class GenreTableViewCell: UITableViewCell {
     }
     
     @IBOutlet var genreLabel: UILabel!
-    //@IBOutlet var genreTextField: UILabel!
+//    @IBOutlet var genreTextField: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
+        genreLabel.text = "Genre"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

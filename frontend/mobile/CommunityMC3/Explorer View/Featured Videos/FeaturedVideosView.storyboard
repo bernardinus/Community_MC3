@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GQw-6g-GMf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GQw-6g-GMf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,13 +32,15 @@
                     <navigationItem key="navigationItem" title="Featured Videos" id="YNg-WM-bMI">
                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Dbb-2i-sas">
                             <connections>
-                                <segue destination="91d-di-HDb" kind="unwind" unwindAction="unwindToExplorerView:" id="AVM-jy-rDK"/>
+                                <segue destination="91d-di-HDb" kind="unwind" identifier="unwindToExplorerView" unwindAction="unwindToExplorerView:" id="AVM-jy-rDK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="featuredVideoTableView" destination="9MX-5G-CAd" id="F2i-ho-0sD"/>
+                        <segue destination="XDs-if-8BI" kind="show" identifier="videoPlayerSegue" id="qeO-VO-ZNx"/>
+                        <segue destination="GfV-3Z-xlh" kind="show" identifier="trackPlayerSegue" id="SeH-6t-4Oj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3c-NC-as1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -46,8 +48,28 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="116.51785714285714"/>
         </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="tdg-bu-tdq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="XDs-if-8BI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="n3K-Iw-pyc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zVX-af-EPA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1660" y="35"/>
+        </scene>
+        <!--TrackPlayer-->
+        <scene sceneID="nBp-CV-mQE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="GfV-3Z-xlh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7dO-11-3Fa"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vK8-cx-Nav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1786" y="144"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
     </resources>
 </document>

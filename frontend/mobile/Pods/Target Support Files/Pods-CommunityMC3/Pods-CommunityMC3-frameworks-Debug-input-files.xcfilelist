@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-CommunityMC3/Pods-CommunityMC3-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BonsaiController/BonsaiController.framework
+${BUILT_PRODUCTS_DIR}/SwipeMenuViewController/SwipeMenuViewController.framework
