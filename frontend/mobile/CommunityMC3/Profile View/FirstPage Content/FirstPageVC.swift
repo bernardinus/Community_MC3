@@ -14,6 +14,7 @@ class FirstPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        aboutTableView.register(UINib(nibName: "AboutHeaderCell", bundle: nil), forCellReuseIdentifier: "aboutHeaderCell")
         
     }
     
