@@ -24,21 +24,3 @@ struct FeaturedDataStruct
     //    var users:[UserDataStruct]?
     //    var videos:[VideosDataStruct]?
 }
-
-/*
- extension Featured
- {
- private static var entityName:String = "Featured"
- 
- 
- static func fetchFeaturedWith(id:String)->[Featured]
- {
- let predicate:NSPredicate = NSPredicate(format: "id == '\(id)'")
- print(predicate)
- let featuredArtist:[Featured] = CoreDataHelper.fetchQuery(entityName,predicate: predicate)
- 
- return featuredArtist
- }
- }
- */
-

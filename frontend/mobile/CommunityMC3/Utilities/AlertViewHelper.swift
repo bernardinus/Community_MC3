@@ -12,7 +12,7 @@ import UIKit
 enum AlertViewType
 {
     case ConfirmExitEditing
-    
+//    case SignOut
 }
 
 // custom key

@@ -36,7 +36,7 @@ class LatestMusicCell: UITableViewCell {
             //        playerGroup.enter()
             DispatchQueue.main.async {
                 do {
-                    self.audioPlayer = try AVAudioPlayer(contentsOf: self.upload.track!.fileURL)
+//                    self.audioPlayer = try AVAudioPlayer(contentsOf: self.upload.track!.fileURL)
                     self.audioPlayer.delegate = self
                     self.audioPlayer.play()
                     //                playerGroup.leave()

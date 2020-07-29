@@ -41,23 +41,3 @@ struct FavouritesDataStruct
         ]
     }
 }
-
-/*
- extension Favourites
- {
- 
- 
- static func createFavourites(favouritesData:FavouritesDataStruct) -> Favourites?
- {
- if let favourite:Favourites = CoreDataHelper.save(value: favouritesData.asDict())
- {
- favourite.album = Set(favouritesData.album.map({$0})) as NSSet
- favourite.track = Set(favouritesData.track.map({$0})) as NSSet
- favourite.videos = Set(favouritesData.videos.map({$0})) as NSSet
- return favourite
- }
- 
- return nil
- }
- }
- */

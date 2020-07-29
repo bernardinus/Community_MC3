@@ -93,6 +93,7 @@ class UploadController: UIViewController {
     func uploadUserData(email: String, name: String, genre: String, myImage: UIImage) {
         // 1. buat dulu recordnya
         var newRecord = CKRecord(recordType: "UserData")
+        
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "UserData", predicate: predicate)
         
@@ -271,7 +272,7 @@ class UploadController: UIViewController {
                     let temp = TrackDataStruct(
                         genre: (record.value(forKey: "genre") as? String)!,
                         name: (record.value(forKey: "name") as? String)!,
-                        recordID: record.recordID,
+//                        recordID: record.recordID,
                         email: (record.value(forKey: "email") as? String)!,
                         fileURL: asset.fileURL!
                     )
@@ -297,7 +298,7 @@ class UploadController: UIViewController {
                         let upload = TrackDataStruct(
                             genre: (record.value(forKey: "genre") as? String)!,
                             name: (record.value(forKey: "name") as? String)!,
-                            recordID: record.recordID,
+//                            recordID: record.recordID,
                             email: (record.value(forKey: "email") as? String)!,
                             fileURL: asset.fileURL!
                         )

@@ -29,6 +29,10 @@ class UploadTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        trackCoverTextField.text = ""
+        trackCoverTextField.placeholder = "Write the title"
+        trackCoverImage.image = UIImage(named: "playButton")
+        selectionStyle = .none
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SIw-ZF-GK3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zdD-2G-j4z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -45,7 +45,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="imE-4i-m2C"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Photos" id="R7f-Sw-N2i"/>
+                    <navigationItem key="navigationItem" title="Photos" id="R7f-Sw-N2i">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="MUN-HZ-alO"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="showcasePhotosCollectionView" destination="nh1-E4-5vs" id="7kU-4w-XG1"/>
@@ -55,23 +57,8 @@
             </objects>
             <point key="canvasLocation" x="1086.9565217391305" y="173.4375"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="QPS-8Q-o1U">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SIw-ZF-GK3" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1VU-XX-ogq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="zdD-2G-j4z" kind="relationship" relationship="rootViewController" id="Iao-QN-2XG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mjE-Lv-5WE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="176.81159420289856" y="173.4375"/>
-        </scene>
     </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+    </resources>
 </document>

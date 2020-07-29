@@ -24,13 +24,27 @@ struct TrackDataStruct
     var genre:String
     var name:String
     
-    var recordID: CKRecord.ID
+//    var recordID: CKRecord.ID
     var email: String
     var fileURL: URL
     
     var audioData:AVAudioPlayer?
     
     var album:AlbumDataStruct?
+    
+    func getCKRecord()->CKRecord
+    {
+        var record = CKRecord(recordType: "Track")
+        record.setValue(nil, forKey: "album")
+        record.setValue(genre, forKey: "genre")
+        record.setValue(email, forKey: "email")
+        record.setValue(name, forKey: "name")
+        
+        let fileData = CKAsset(fileURL: fileURL)
+        record.setValue(fileData, forKey: "fileData")
+        
+        return record
+    }
 }
 
 //class TrackDataClass: NSObject
@@ -45,21 +59,3 @@ struct TrackDataStruct
 //
 //    var album:Album?
 //}
-
-/*
- extension Track
- {
- 
- 
- static func createTrack(trackData:TrackData) -> Track?
- {
- if let track:Track = CoreDataHelper.save(value: trackData.asDict())
- {
- track.user = trackData.user
- return track
- }
- 
- return nil
- }
- }
- */

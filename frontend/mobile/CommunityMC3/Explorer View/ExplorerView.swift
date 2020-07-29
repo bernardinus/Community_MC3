@@ -67,20 +67,20 @@ class ExplorerView: UIViewController {
         
         hightlightUpload()
         featuredCombine()
-        latestUpload()
+//        latestUpload()
         
     }
     
     func hightlightUpload() {
         uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
             for track in tracks {
-                let temp = FeaturedDataStruct (
-                    id: track.recordID,
-                    track: track
-                )
-                self.trendings.append(temp)
-                self.features.append(temp)
-                self.uploadCount += 1
+//                let temp = FeaturedDataStruct (
+//                    id: track.recordID,
+//                    track: track
+//                )
+//                self.trendings.append(temp)
+//                self.features.append(temp)
+//                self.uploadCount += 1
             }
         }
         documentController.getFilmsFromCloudKit { (videos) in
@@ -120,6 +120,7 @@ class ExplorerView: UIViewController {
         }
     }
     
+    /*
     func latestUpload() {
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
             //            self.tracks = tracks
@@ -160,6 +161,7 @@ class ExplorerView: UIViewController {
         //        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
         
     }
+    */
     
     
     
@@ -245,7 +247,7 @@ class ExplorerView: UIViewController {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
                 if selectUpload {
                     selectUpload = false
-                    trackPlayerPage.track = uploads[selectedRow].track
+//                    trackPlayerPage.track = uploads[selectedRow].track
                 }else if selectTrending {
                     selectTrending = false
                     trackPlayerPage.track = trendings[selectedRow].track
@@ -259,7 +261,7 @@ class ExplorerView: UIViewController {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
                 if selectUpload {
                     selectUpload = false
-                    videoPlayerPage.video = uploads[selectedRow].video
+//                    videoPlayerPage.video = uploads[selectedRow].video
                 }else if selectTrending {
                     selectTrending = false
                     videoPlayerPage.video = trendings[selectedRow].video
@@ -476,8 +478,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             cell.mainTableView = mainTableView
             cell.upload = uploads[indexPath.row]
             if uploads[indexPath.row].track != nil {
-                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
-                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
+//                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
+//                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
                 //            print("masuk ", cell.player)
                 if cell.player {
                     //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
@@ -488,8 +490,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
                 }
             }
             if uploads[indexPath.row].video != nil {
-                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
-                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
+//                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
+//                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
                 //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
             }
             return cell

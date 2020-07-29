@@ -23,6 +23,7 @@ class SelectFileView: UIViewController
     var fileList:[URL] = []
     
     var filteredList:[URL] = []
+    var selectedIndex:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,15 +57,14 @@ class SelectFileView: UIViewController
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "uploadFileSegue"
+        {
+            let uploadFileVC = segue.destination as! UploadFileView
+            uploadFileVC.isUploadVideo = isUploadVideo
+            uploadFileVC.fileURL = filteredList[selectedIndex]
+        }
      }
-     */
     
     func filter(filterText:String)
     {
@@ -108,8 +108,9 @@ extension SelectFileView:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        //        performSegue(withIdentifier: "uploadFileSegue", sender:nil)
-        documentController.uploadTrack(email: "mnb@mnb", genre: "Rock", name: "track", fileURL: filteredList[indexPath.row])
-        performSegue(withIdentifier: "uploadTest", sender:nil)
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "uploadFileSegue", sender:nil)
+        //        documentController.uploadTrack(email: "mnb@mnb", genre: "Rock", name: "track", fileURL: filteredList[indexPath.row])
+        //        performSegue(withIdentifier: "uploadTest", sender:nil)
     }
 }

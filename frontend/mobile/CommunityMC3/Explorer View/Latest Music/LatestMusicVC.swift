@@ -32,12 +32,12 @@ class LatestMusicVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
-                trackPlayerPage.track = uploads[selectedRow].track
+//                trackPlayerPage.track = uploads[selectedRow].track
             }
         }
         if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
-                videoPlayerPage.video = uploads[selectedRow].video
+//                videoPlayerPage.video = uploads[selectedRow].video
             }
         }
     }
@@ -58,8 +58,8 @@ extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
         cell.mainTableView = mainTableView
         cell.upload = uploads[indexPath.row]
         if uploads[indexPath.row].track != nil {
-            cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
-            cell.artistNameLabel.text = uploads[indexPath.row].track?.email
+//            cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
+//            cell.artistNameLabel.text = uploads[indexPath.row].track?.email
             //            print("masuk ", cell.player)
             if cell.player {
                 //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
@@ -70,8 +70,8 @@ extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
             }
         }
         if uploads[indexPath.row].video != nil {
-            cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
-            cell.artistNameLabel.text = uploads[indexPath.row].video?.email
+//            cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
+//            cell.artistNameLabel.text = uploads[indexPath.row].video?.email
         }
         return cell
     }

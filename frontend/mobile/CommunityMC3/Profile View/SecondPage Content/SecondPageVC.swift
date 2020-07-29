@@ -18,6 +18,11 @@ enum ShowcaseSection:Int{
 class SecondPageVC: UIViewController {
     
     @IBOutlet weak var showcaseTableView: UITableView!
+    
+    var showcaseMusicSegue: (() -> Void)? = nil
+    var showcasePhotoSegue: (() -> Void)? = nil
+    var showcaseVideoSegue: (() -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,21 +41,21 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         {
             cell.showcaseSectionHeader.text = NSLocalizedString("Music", comment: "")
             cell.callBack = {
-                self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
+                self.showcaseMusicSegue!()
             }
         }
         if(section == ShowcaseSection.Photos.rawValue)
         {
             cell.showcaseSectionHeader.text = NSLocalizedString("Photos", comment: "")
             cell.callBack = {
-                self.performSegue(withIdentifier: "showcasePhotoSegue", sender: nil)
+                self.showcasePhotoSegue!()
             }
         }
         if(section == ShowcaseSection.Videos.rawValue)
         {
             cell.showcaseSectionHeader.text = NSLocalizedString("Videos", comment: "")
             cell.callBack = {
-                self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
+                self.showcaseVideoSegue!()
             }
         }
         return cell

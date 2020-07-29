@@ -148,6 +148,9 @@
                         <segue destination="PSz-Em-z5E" kind="show" identifier="editProfileSegue" id="J5Q-37-jX7"/>
                         <segue destination="H0k-HO-cTq" kind="presentation" identifier="selectFileSegue" id="Cw2-Xc-zp9"/>
                         <segue destination="p00-8a-ptt" kind="show" identifier="logoutUser" id="OgK-dH-OHt"/>
+                        <segue destination="LrF-ej-lwD" kind="show" identifier="showcaseMusicSegue" id="9fA-Er-lvs"/>
+                        <segue destination="UAB-I9-UTP" kind="show" identifier="showcasePhotoSegue" id="3fh-8K-jZz"/>
+                        <segue destination="Rmf-fR-tHw" kind="show" identifier="showcaseVideoSegue" id="2QL-h3-VPy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6uo-bn-CT4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -226,9 +229,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="showcaseTableView" destination="2uw-mX-Hrc" id="Zfq-rE-S0N"/>
-                        <segue destination="LrF-ej-lwD" kind="show" identifier="showcaseMusicSegue" id="Awr-fm-pJm"/>
-                        <segue destination="UAB-I9-UTP" kind="show" identifier="showcasePhotoSegue" id="Mt4-iq-AqW"/>
-                        <segue destination="Rmf-fR-tHw" kind="show" identifier="showcaseVideoSegue" id="B4m-qV-mvF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhJ-dn-lQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -261,7 +261,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zj4-rt-6vD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1223" y="558"/>
+            <point key="canvasLocation" x="1213" y="586"/>
         </scene>
         <!--ShowcaseMusicView-->
         <scene sceneID="NRT-uy-PAS">
@@ -271,7 +271,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0t-l0-bai" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3615" y="-128"/>
+            <point key="canvasLocation" x="319" y="-99"/>
         </scene>
         <!--ShowcasePhotosView-->
         <scene sceneID="RcJ-hh-SEI">
@@ -281,7 +281,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lxs-Y5-ICs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3614" y="40"/>
+            <point key="canvasLocation" x="321" y="19"/>
         </scene>
         <!--ShowcaseVideoView-->
         <scene sceneID="iw0-8P-qTj">
@@ -291,7 +291,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXS-iU-xEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3614" y="210"/>
+            <point key="canvasLocation" x="319" y="139"/>
         </scene>
     </scenes>
     <resources>

@@ -23,20 +23,3 @@ struct ProfilePictureDataStruct {
     var fileURL: URL
     var email: String
 }
-
-/*
- extension Photos
- {
- 
- 
- static func createPhoto(photoData:PhotoData) -> Photos?
- {
- if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
- {
- return photo
- }
- 
- return nil
- }
- }
- */
