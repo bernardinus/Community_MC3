@@ -10,6 +10,7 @@ import UIKit
 
 class FirstPageVC: UIViewController {
 
+    @IBOutlet weak var aboutTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
