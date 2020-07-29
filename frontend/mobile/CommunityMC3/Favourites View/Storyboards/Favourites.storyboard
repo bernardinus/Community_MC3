@@ -44,11 +44,23 @@
                         <outlet property="tableView" destination="IYZ-7V-9tU" id="ojZ-5W-eAU"/>
                         <segue destination="Ayh-Sz-G3b" kind="show" identifier="favoriteTracks" id="c7h-eD-Ci2"/>
                         <segue destination="hBd-sJ-BVC" kind="show" identifier="favoriteVideos" id="9IG-t0-RA7"/>
+                        <segue destination="R45-41-gDz" kind="show" identifier="favoriteArtists" id="YMu-0V-ZME"/>
+                        <segue destination="VzT-nC-qX4" kind="show" identifier="favoriteAlbums" id="aca-GT-118"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4n-Zr-AuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-178" y="789"/>
+        </scene>
+        <!--FavoriteAlbums-->
+        <scene sceneID="MRu-ee-nWr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoriteAlbums" id="VzT-nC-qX4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jwR-eQ-CBr"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fco-zq-68B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="673" y="591"/>
         </scene>
         <!--FavoriteTracksView-->
         <scene sceneID="TMP-Bf-3Ze">
@@ -59,6 +71,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yV0-iK-SP9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="714" y="666"/>
+        </scene>
+        <!--FavoriteArtist-->
+        <scene sceneID="KyQ-J3-hZh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FavoriteArtist" id="R45-41-gDz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0Fx-fT-b1m"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ch-BX-Kuh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="696" y="837"/>
         </scene>
         <!--FavoritesVideo-->
         <scene sceneID="DsT-6Q-F5p">
