@@ -30,6 +30,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var musicAndVideoTableView: UITableView!
     @IBOutlet weak var popUpContentView: UIView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var viewProfileButton: UIButton!
     
     var test = false
     var musicGenreArray = ["Rock","Jazz","Pop","RnB","Acoustic","Blues"]
@@ -50,6 +51,12 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         
         setupBackground()
         addSwipeGesture()
+    }
+    
+    func setupLocalisation() {
+        editButton.titleLabel?.text = NSLocalizedString("Edit".uppercased(), comment: "")
+        nextButton.titleLabel?.text = NSLocalizedString("Next".uppercased(), comment: "")
+        viewProfileButton.titleLabel?.text = NSLocalizedString("View Profile".uppercased(), comment: "")
     }
     
     func setupBackground(){
@@ -161,11 +168,11 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == RandomSearch.Music.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
-            cell.headerTitle.text = "MUSIC"
+            cell.headerTitle.text = NSLocalizedString("Music".uppercased(), comment: "")
             return cell
         }else if section == RandomSearch.Video.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
-            cell.headerTitle.text = "VIDEO"
+            cell.headerTitle.text = NSLocalizedString("Video".uppercased(), comment: "")
             return cell
         }
         return musicAndVideoTableView.dequeueReusableCell(withIdentifier: "headerCellRandom")

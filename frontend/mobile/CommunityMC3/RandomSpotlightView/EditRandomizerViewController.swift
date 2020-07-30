@@ -13,6 +13,11 @@ class EditRandomizerViewController: UIViewController {
     @IBOutlet weak var sortByCollectionView: UICollectionView!
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var editRandomizerLabel: UILabel!
+    @IBOutlet weak var sortByLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var clearAllButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var sortByArray = ["Music", "Artist"]
     var genreArray = ["Rock", "Jazz", "Pop", "RnB", "Acoutic", "Blues"]
@@ -26,7 +31,17 @@ class EditRandomizerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadLocalisation()
         setup()
+    }
+    
+    func loadLocalisation() {
+        editRandomizerLabel.text = NSLocalizedString("Edit randomizer".uppercased(), comment: "")
+        sortByLabel.text = NSLocalizedString("Sort by".uppercased(), comment: "")
+        genreLabel.text = NSLocalizedString("Genre", comment: "")
+        clearAllButton.titleLabel?.text = NSLocalizedString("Clear All".uppercased(), comment: "")
+        applyButton.titleLabel?.text = NSLocalizedString("Apply".uppercased(), comment: "")
+        cancelButton.titleLabel?.text = NSLocalizedString("Cancel", comment: "")
     }
     
     func setup(){

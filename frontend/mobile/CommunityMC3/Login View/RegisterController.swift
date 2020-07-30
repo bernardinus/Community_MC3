@@ -13,18 +13,34 @@ import Foundation
 
 class RegisterController: UIViewController {
     
+    @IBOutlet weak var signUpTitleLabel: UILabel!
+    @IBOutlet weak var signUpDescriptionLabel: UILabel!
+    @IBOutlet weak var emailTitleLabel: UILabel!
+    @IBOutlet weak var passwordTitleLabel: UILabel!
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var haveAccountButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     var callBack: (() -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLocalisation()
         passwordField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
         //        self.navigationController?.navigationBar.shadowImage = UIImage()
         //        self.navigationController?.navigationBar.isTranslucent = true
         //        self.navigationController?.view.backgroundColor = .clear
         // Do any additional setup after loading the view.
+    }
+    
+    func setLocalisation() {
+        signUpTitleLabel.text = NSLocalizedString("Sign Up", comment: "")
+        signUpDescriptionLabel.text = NSLocalizedString("Sign Up Description".uppercased(), comment: "")
+        emailTitleLabel.text = NSLocalizedString("Email Address", comment: "")
+        passwordTitleLabel.text = NSLocalizedString("Password", comment: "")
+        registerButton.titleLabel?.text = NSLocalizedString("Register Now".uppercased(), comment: "")
+        haveAccountButton.titleLabel?.text = NSLocalizedString("Have Account".uppercased(), comment: "")
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

@@ -35,6 +35,7 @@ class UserProfileVC: UIViewController {
             userNameLabel.text = loadEmail
         }
         
+        loadLocalisation()
         followButton.layer.cornerRadius = 10
         contactButton.layer.cornerRadius = 10
         setupActionSheet()
@@ -46,6 +47,13 @@ class UserProfileVC: UIViewController {
         
         
         
+    }
+    
+    func loadLocalisation() {
+        followButton.titleLabel?.text = NSLocalizedString("Follow".uppercased(), comment: "")
+        contactButton.titleLabel?.text = NSLocalizedString("Contact".uppercased(), comment: "")
+        firstTabButton.titleLabel?.text = NSLocalizedString("About", comment: "")
+        secondTabButton.titleLabel?.text = NSLocalizedString("Showcase".uppercased(), comment: "")
     }
     
     func updateLayout()
@@ -83,24 +91,24 @@ class UserProfileVC: UIViewController {
     {
         
         
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: {
+        let signOutAction = UIAlertAction(title: NSLocalizedString("Sign Out", comment: ""), style: .destructive, handler: {
             (action: UIAlertAction) in
             self.userDefault.removeObject(forKey: "email")
             self.performSegue(withIdentifier: "logoutUser", sender: self)
         })
         actionSheet.addAction(signOutAction)
         
-        let editAction = UIAlertAction(title: "Edit", style: .default,
+        let editAction = UIAlertAction(title: NSLocalizedString("Edit".uppercased(), comment: ""), style: .default,
                                        handler: {
                                         action in
                                         self.performSegue(withIdentifier: "editProfileSegue", sender: nil) }
         )
         actionSheet.addAction(editAction)
         
-        let shareAction = UIAlertAction(title: "Share", style: .default)
+        let shareAction = UIAlertAction(title: NSLocalizedString("Share".uppercased(), comment: ""), style: .default)
         actionSheet.addAction(shareAction)
         
-        let uploadMusic = UIAlertAction(title: "Upload Music", style: .default,
+        let uploadMusic = UIAlertAction(title: NSLocalizedString("Upload Music".uppercased(), comment: ""), style: .default,
                                          handler: {
                                             action in
                                             self.isUploadVideo = false
@@ -108,7 +116,7 @@ class UserProfileVC: UIViewController {
         )
         actionSheet.addAction(uploadMusic)
         
-        let uploadVideo = UIAlertAction(title: "Upload Video", style: .default,
+        let uploadVideo = UIAlertAction(title: NSLocalizedString("Upload Video".uppercased(), comment: ""), style: .default,
                                          handler: {
                                             action in
                                             self.isUploadVideo = true
@@ -116,14 +124,14 @@ class UserProfileVC: UIViewController {
         )
         actionSheet.addAction(uploadVideo)
         
-        let uploadPhotos = UIAlertAction(title: "Upload Photos", style: .default,
+        let uploadPhotos = UIAlertAction(title: NSLocalizedString("Upload Photos".uppercased(), comment: ""), style: .default,
                                          handler: {
                                             action in
                                             print("uploadPhotos") }
         )
         actionSheet.addAction(uploadPhotos)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         actionSheet.addAction(cancelAction)
     }
     

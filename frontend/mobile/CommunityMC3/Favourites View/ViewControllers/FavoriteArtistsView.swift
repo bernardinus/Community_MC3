@@ -23,10 +23,6 @@ class FavoriteArtistsView: UIViewController {
         navigationController?.navigationBar.backItem?.title = ""
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
 }
 
 extension FavoriteArtistsView: UICollectionViewDelegate, UICollectionViewDataSource {
