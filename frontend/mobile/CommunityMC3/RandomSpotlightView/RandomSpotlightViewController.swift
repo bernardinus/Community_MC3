@@ -146,6 +146,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         let editRandomizerVC = storyboard?.instantiateViewController(identifier: "EditRandomizerVC") as! EditRandomizerViewController
         editRandomizerVC.transitioningDelegate = self
         editRandomizerVC.modalPresentationStyle = .custom
+        editRandomizerVC.modalTransitionStyle = .coverVertical
         editRandomizerVC.view.layer.cornerRadius = 34
         
         self.present(editRandomizerVC, animated: true, completion: nil)
