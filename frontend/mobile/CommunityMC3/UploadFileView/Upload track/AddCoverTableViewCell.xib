@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,18 +16,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="470" height="87"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no_album" translatesAutoresizingMaskIntoConstraints="NO" id="Fss-u6-0aO">
-                        <rect key="frame" x="27" y="12.5" width="60" height="62"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_album" translatesAutoresizingMaskIntoConstraints="NO" id="Fss-u6-0aO">
+                        <rect key="frame" x="10" y="13.5" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="3x1-OB-fYC"/>
+                            <constraint firstAttribute="height" constant="60" id="sDL-H2-UIW"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYh-Yk-jCe">
-                        <rect key="frame" x="95" y="32" width="193" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYh-Yk-jCe">
+                        <rect key="frame" x="88" y="33" width="200" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="6I7-on-8wK"/>
+                            <constraint firstAttribute="width" constant="200" id="smZ-fb-0ee"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Fss-u6-0aO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="K9t-6G-rju"/>
+                    <constraint firstItem="Fss-u6-0aO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="UXs-d9-avk"/>
+                    <constraint firstItem="eYh-Yk-jCe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="h7t-b0-etI"/>
+                    <constraint firstItem="eYh-Yk-jCe" firstAttribute="leading" secondItem="Fss-u6-0aO" secondAttribute="trailing" constant="18" id="i5u-P9-ENU"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

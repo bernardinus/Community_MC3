@@ -58,8 +58,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HE2-xJ-8oh">
-                                <rect key="frame" x="20" y="337" width="45" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HE2-xJ-8oh">
+                                <rect key="frame" x="20" y="337" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Qzb-Ez-w03"/>
+                                    <constraint firstAttribute="height" constant="21" id="eaX-2m-nrQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -105,10 +109,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxf-A9-Uze">
-                                <rect key="frame" x="194" y="806" width="200" height="36"/>
+                                <rect key="frame" x="234" y="806" width="160" height="36"/>
                                 <color key="backgroundColor" red="0.41176470588235292" green="0.47450980392156861" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="BWh-LP-8dk"/>
+                                    <constraint firstAttribute="width" constant="160" id="BWh-LP-8dk"/>
                                     <constraint firstAttribute="height" constant="36" id="Ur4-hg-zfO"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="0.3921568627" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,6 +163,7 @@
                             <constraint firstItem="ve3-U1-shI" firstAttribute="leading" secondItem="gTI-gq-cz6" secondAttribute="leading" constant="20" id="aw3-76-hxa"/>
                             <constraint firstItem="zZb-Sx-iTZ" firstAttribute="top" secondItem="5HG-rP-zMv" secondAttribute="bottom" constant="16" id="bAf-9h-1kC"/>
                             <constraint firstItem="ve3-U1-shI" firstAttribute="top" secondItem="gTI-gq-cz6" secondAttribute="top" constant="20" id="dKr-mS-aXq"/>
+                            <constraint firstItem="HE2-xJ-8oh" firstAttribute="leading" secondItem="gTI-gq-cz6" secondAttribute="leading" constant="20" id="i4K-ha-00W"/>
                             <constraint firstItem="3Ek-ve-Dd6" firstAttribute="top" secondItem="gTI-gq-cz6" secondAttribute="top" constant="30" id="nel-IW-BQc"/>
                             <constraint firstItem="gTI-gq-cz6" firstAttribute="trailing" secondItem="lxf-A9-Uze" secondAttribute="trailing" constant="20" id="oBi-sX-GVX"/>
                             <constraint firstItem="gTI-gq-cz6" firstAttribute="trailing" secondItem="gKu-91-I7U" secondAttribute="trailing" constant="20" id="oGN-lb-tJw"/>
