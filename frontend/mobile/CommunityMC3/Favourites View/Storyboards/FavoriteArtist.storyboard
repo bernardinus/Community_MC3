@@ -37,10 +37,10 @@
                         <viewLayoutGuide key="safeArea" id="Iqq-gy-aaq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorite Artists" largeTitleDisplayMode="never" id="DaG-aY-Bmq">
-                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Vf2-f7-MFw">
+                    <navigationItem key="navigationItem" title="Favorite Artists" id="NOD-hb-Tzl">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="XJE-me-CAj">
                             <connections>
-                                <segue destination="y0r-qV-wJS" kind="unwind" unwindAction="unwindToFavorite:" id="2l5-JB-ZVB"/>
+                                <segue destination="y0r-qV-wJS" kind="unwind" unwindAction="unwindToFavorite:" id="0GI-jc-bCQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -52,7 +52,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFr-t3-UlK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="y0r-qV-wJS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="47.826086956521742" y="85.714285714285708"/>
+            <point key="canvasLocation" x="957.97101449275374" y="85.714285714285708"/>
         </scene>
     </scenes>
     <resources>
