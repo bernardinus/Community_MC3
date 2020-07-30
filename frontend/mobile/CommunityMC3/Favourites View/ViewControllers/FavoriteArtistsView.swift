@@ -23,6 +23,7 @@ class FavoriteArtistsView: UIViewController {
         navigationController?.navigationBar.backItem?.title = ""
     }
     
+
 }
 
 extension FavoriteArtistsView: UICollectionViewDelegate, UICollectionViewDataSource {
