@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,21 +16,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-Pe-2Z0">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BD5-Pe-2Z0">
                         <rect key="frame" x="0.0" y="0.0" width="340" height="150"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u48-hR-2Z5">
+                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u48-hR-2Z5">
                         <rect key="frame" x="0.0" y="0.0" width="340" height="150"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" image="playButton2"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3h-qM-39C">
-                        <rect key="frame" x="356" y="58" width="38" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="HeartFill"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3h-qM-39C">
+                        <rect key="frame" x="364" y="60" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="3uH-IH-FMm"/>
+                            <constraint firstAttribute="height" constant="30" id="g4n-SV-h7X"/>
+                        </constraints>
+                        <color key="tintColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="heart.fill" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                        </state>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="BD5-Pe-2Z0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5Ob-r5-6qW"/>
+                    <constraint firstAttribute="bottom" secondItem="BD5-Pe-2Z0" secondAttribute="bottom" id="80K-x5-BLT"/>
+                    <constraint firstItem="u48-hR-2Z5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RdR-Xq-UYJ"/>
+                    <constraint firstAttribute="bottom" secondItem="u48-hR-2Z5" secondAttribute="bottom" id="TOy-Vj-VWV"/>
+                    <constraint firstItem="L3h-qM-39C" firstAttribute="leading" secondItem="BD5-Pe-2Z0" secondAttribute="trailing" constant="24" id="UAR-pN-nzg"/>
+                    <constraint firstAttribute="bottom" secondItem="L3h-qM-39C" secondAttribute="bottom" constant="60" id="UUq-bM-0cr"/>
+                    <constraint firstItem="L3h-qM-39C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="60" id="XyM-vw-GnT"/>
+                    <constraint firstItem="L3h-qM-39C" firstAttribute="leading" secondItem="u48-hR-2Z5" secondAttribute="trailing" constant="24" id="bBo-Y3-ZfW"/>
+                    <constraint firstAttribute="trailing" secondItem="L3h-qM-39C" secondAttribute="trailing" constant="20" id="gve-wJ-7zN"/>
+                    <constraint firstItem="u48-hR-2Z5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ju2-fh-DYl"/>
+                    <constraint firstItem="BD5-Pe-2Z0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lf1-T2-9Yl"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
@@ -43,7 +59,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="HeartFill" width="38" height="34"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="playButton2" width="28" height="36"/>
     </resources>
 </document>
