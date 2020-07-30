@@ -294,7 +294,7 @@ class UploadController: UIViewController {
                 }
             } else {
                 if let record = record {
-                    if let asset = record["fileData"] as? CKAsset {
+                    if let asset = record["fileURL"] as? CKAsset {
                         let upload = TrackDataStruct(
                             genre: (record.value(forKey: "genre") as? String)!,
                             name: (record.value(forKey: "name") as? String)!,

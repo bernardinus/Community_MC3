@@ -17,6 +17,15 @@ class FavoriteArtistsView: UIViewController {
 
         collectionView.register(UINib(nibName: "FavoriteArtistsCell", bundle: nil), forCellWithReuseIdentifier: "favoriteArtistsCell")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backItem?.title = ""
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
     
 }
 
