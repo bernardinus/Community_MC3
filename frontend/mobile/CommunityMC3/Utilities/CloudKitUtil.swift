@@ -65,4 +65,34 @@ class CloudKitUtil
         })
     }
     
+    func loadRecordFromPublicDB(recordID:CKRecord.ID, completionHandler:@escaping(Bool, String, CKRecord?)->Void)
+    {
+        publicDB?.fetch(withRecordID: recordID, completionHandler: { (record, error) in
+            if error != nil
+            {
+                completionHandler(false, error!.localizedDescription,nil)
+            }
+            else
+            {
+                completionHandler(true, "", record)
+            }
+        })
+    }
+    
+    func loadRecordFromPublicDB(recordType:String,recordName:[CKRecord.Reference], completionHandler:@escaping(Bool, String, [CKRecord])->Void)
+    {
+        let predicate = NSPredicate(format: "recordID IN %@", recordName)
+        let query = CKQuery(recordType: "Track", predicate: predicate)
+        publicDB?.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
+            if error != nil
+            {
+                completionHandler(false, error!.localizedDescription, [])
+            }
+            else
+            {
+                completionHandler(true, "Success", records!)
+            }
+        })
+    }
+    
 }

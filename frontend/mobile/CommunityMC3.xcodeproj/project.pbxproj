@@ -29,6 +29,7 @@
 		A124876A24CD0BEE00030723 /* SelectFileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A124876C24CD0BEE00030723 /* SelectFileView.storyboard */; };
 		A124877324CD2AC500030723 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124877224CD2AC500030723 /* MainTabController.swift */; };
 		A125311E24CE89C30038B215 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125311D24CE89C30038B215 /* UIImage+Extension.swift */; };
+		A12F370424D23C02002F31E0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12F370324D23C02002F31E0 /* Utilities.swift */; };
 		A134D29E24C8EA41009A054F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D29D24C8EA41009A054F /* FileManager.swift */; };
 		A134D2A024C907B4009A054F /* Featured+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D29F24C907B4009A054F /* Featured+Extension.swift */; };
 		A134D2A324C908F3009A054F /* Album+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D2A224C908F3009A054F /* Album+Extension.swift */; };
@@ -236,6 +237,7 @@
 		A124876B24CD0BEE00030723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SelectFileView.storyboard; sourceTree = "<group>"; };
 		A124877224CD2AC500030723 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		A125311D24CE89C30038B215 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		A12F370324D23C02002F31E0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A134D29D24C8EA41009A054F /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A134D29F24C907B4009A054F /* Featured+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Featured+Extension.swift"; path = "CommunityMC3/Data/Featured+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		A134D2A224C908F3009A054F /* Album+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Album+Extension.swift"; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				A19C320124C89FF100A4506F /* FileSystemManager.swift */,
 				A125311D24CE89C30038B215 /* UIImage+Extension.swift */,
 				A14B626724D0D3830015223C /* CloudKitUtil.swift */,
+				A12F370324D23C02002F31E0 /* Utilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1458,6 +1461,7 @@
 				B7D4B86324CEFEDB00FD30B2 /* ShowcaseMusicVC.swift in Sources */,
 				B786387224CEECD500952CF3 /* ShowcasePhotosVC.swift in Sources */,
 				A1689D3724C7B5F200A49732 /* DataManager.swift in Sources */,
+				A12F370424D23C02002F31E0 /* Utilities.swift in Sources */,
 				A134D2A024C907B4009A054F /* Featured+Extension.swift in Sources */,
 				A11A9FF324C94A58008D7867 /* AddCoverTableViewCell.swift in Sources */,
 				A16B44A324B2FBF300053D6C /* AppDelegate.swift in Sources */,

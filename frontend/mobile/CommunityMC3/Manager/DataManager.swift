@@ -36,23 +36,67 @@ class DataManager
     var userTrackRecord:[CKRecord] = []
     var latestUpload:[CKRecord] = []
     
+    var registerData:AccountDataStruct?
+    
+    func IsUserLogin()->Bool
+    {
+        return currentUser != nil
+    }
+    
     private init()
     {
         print("dataManager.init")
-        print()
+        
         ckUtil.setup(cloudKitContainerID: iCloudContainerID)
-        loginToCloudKit()
+        
+        loginToCloudKit(email: "test4@test4.com", password: "test4")
+        
         getLatestUpload()
     }
     
-    func registerToCloudKit()
+    func registerToCloudKit(email:String,
+                            password:String,
+                            userData:UserDataStruct,
+                            completionHandler:@escaping(Bool, String, CKRecord?)->Void)
     {
+        let accRecord:CKRecord = CKRecord(recordType: "Account")
+        accRecord.setValue(email, forKey: "email")
+        accRecord.setValue(password, forKey: "password")
         
+        ckUtil.saveRecordToPublicDB(record: userData.getCKRecord()) {
+            (isSuccess, errorString, record) in
+            
+            if isSuccess
+            {
+                let userDataRef = CKRecord.Reference(record: record!, action: .deleteSelf)
+                accRecord.setValue(userDataRef, forKey: "userData")
+                self.ckUtil.saveRecordToPublicDB(record: accRecord) {
+                    (isSuccess, errorString, record) in
+                    
+                    if isSuccess
+                    {
+                        print("Register User Data Success")
+                    }
+                    else
+                    {
+                        print("Register User Data - Account Failed error:\(errorString)")
+                    }
+                    completionHandler(isSuccess, errorString, record)
+                }
+            }
+            else
+            {
+                completionHandler(isSuccess,
+                                  "Register User Data Failed error:\(errorString)",
+                                  nil)
+            }
+        }
     }
     
-    func loginToCloudKit()
+    func loginToCloudKit(email:String, password:String)
     {
-        let query = CKQuery(recordType: "Account", predicate: NSPredicate(value: true))
+        let predicate = NSPredicate(format: "email == '\(email)' AND password == '\(password)'")
+        let query = CKQuery(recordType: "Account", predicate: predicate)
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, record) in
             if(!isSuccess)
             {
@@ -60,10 +104,42 @@ class DataManager
             }
             else
             {
-                print("Login to CloudKit Success")
+                print("Login to CloudKit Success \(record.count)")
                 self.currentUser = record[0]
 //                let refUserData = self.currentUser!["userData"] as! CKRecord.Reference
-//                print(refUserData.action)
+                print("Account: \(self.currentUser!)")
+                let userDataRef = self.currentUser!.value(forKey: "userData")! as! CKRecord.Reference
+                self.ckUtil.loadRecordFromPublicDB(recordID: userDataRef.recordID) { (isSuccess, errorString, userRecord)  in
+                    if(isSuccess)
+                    {
+                        print("UserData: \(userRecord!)")
+                        self.currentUser = userRecord
+                        
+                        let tracks = userRecord?.value(forKey: "tracks") as! [CKRecord.Reference]
+                        let recordNames = tracks.map { $0.recordID.recordName }
+                            
+                        print("track key :\(tracks))")
+                        print("recordID key :\(recordNames))")
+                        
+                        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: tracks) { (isSucess, errorString, trackRecords:[CKRecord]) in
+                            
+                            if(isSuccess)
+                            {
+                                print("trackRecordsStart:\n \(trackRecords.count) \n trackRecordfinish")
+//                                let file = trackRecords[0].value(forKey: "fileURL") as! CKAsset
+                            }
+                            else
+                            {
+                                print("failedGet Track: \(errorString)")
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        print("Record ID Not Found \(errorString)")
+                    }
+                }
             }
         }
     }

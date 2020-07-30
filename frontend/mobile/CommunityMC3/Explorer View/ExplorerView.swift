@@ -167,17 +167,18 @@ class ExplorerView: UIViewController {
     
     @IBAction func accountButtonTouched(_ sender: Any)
     {
-        if userDefault.string(forKey: "email") != nil {
+        if DataManager.shared().IsUserLogin() {
             self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
         }else{
             self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
         }
-        //        self.performSegue(withIdentifier: "test", sender: nil)
     }
     
     @IBAction func notificationButtonTouched(_ sender: Any)
     {
-        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
+//        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
+        print("openInstagram")
+        openInstagram(username: "ubmuniversity")
     }
     
     @IBAction func unwindToExplorerView(_ segue:UIStoryboardSegue)

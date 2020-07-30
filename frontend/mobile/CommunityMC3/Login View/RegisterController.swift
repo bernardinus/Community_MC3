@@ -73,7 +73,20 @@ class RegisterController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "registerAccountSegue"
+        {
+            let vc = segue.destination as! SettingController
+            vc.isEditProfile = false
+            vc.emailAddr = emailField.text!
+            vc.password = passwordField.text!
+        }
+    }
+    
     func registerToCloudKit() {
+        
+        performSegue(withIdentifier: "registerAccountSegue", sender: nil)
+        /*
         // 1. buat dulu recordnya
         //        let newRecord = CKRecord(recordType: "Register")
         let newRecord = CKRecord(recordType: "Account")
@@ -101,6 +114,7 @@ class RegisterController: UIViewController {
                 //                self.performSegue(withIdentifier: "registerMain", sender: self)
             }
         }
+        */
     }
 }
 

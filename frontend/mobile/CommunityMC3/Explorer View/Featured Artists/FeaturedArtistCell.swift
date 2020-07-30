@@ -42,7 +42,7 @@ extension FeaturedArtistCell : UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = featuredArtistsCollectionCell.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
-        if let data = NSData(contentsOf: features[indexPath.row].user!.fileURL) {
+        if let data = NSData(contentsOf: features[indexPath.row].user!.fileURL!) {
             DispatchQueue.main.async {
                 cell.artistImageView.image = UIImage(data: data as Data)
             }

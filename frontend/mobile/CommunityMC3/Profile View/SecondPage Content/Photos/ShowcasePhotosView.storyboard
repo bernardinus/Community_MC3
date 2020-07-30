@@ -46,7 +46,11 @@
                         <viewLayoutGuide key="safeArea" id="imE-4i-m2C"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="R7f-Sw-N2i">
-                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="MUN-HZ-alO"/>
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="MUN-HZ-alO">
+                            <connections>
+                                <segue destination="Vcy-2u-Gsv" kind="unwind" unwindAction="unwindToUserProfile:" id="utx-kr-udC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -54,6 +58,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpX-8k-gYi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Vcy-2u-Gsv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1086.9565217391305" y="173.4375"/>
         </scene>
