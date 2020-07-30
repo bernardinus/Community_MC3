@@ -11,18 +11,18 @@ import CoreData
 import UIKit
 
 /*
-struct CoreDataHelper {
-    var context: NSManagedObjectContext
-    
-    func fetchAll<T: NSManagedObject>() -> [T] {
-        let request = T.fetchRequest()
-        do {
-            return try context.fetch(request) as? [T] ?? []
-        } catch {
-            return []
-        }
-    }
-}
+ struct CoreDataHelper {
+ var context: NSManagedObjectContext
+ 
+ func fetchAll<T: NSManagedObject>() -> [T] {
+ let request = T.fetchRequest()
+ do {
+ return try context.fetch(request) as? [T] ?? []
+ } catch {
+ return []
+ }
+ }
+ }
  */
 
 
@@ -77,7 +77,7 @@ class CoreDataHelper
         let request = NSFetchRequest<T>(entityName: entity)
         request.predicate = predicate
         request.returnsObjectsAsFaults = false
-
+        
         var result:[T]
         do {
             
@@ -89,7 +89,7 @@ class CoreDataHelper
         }
         
         return result as? [T] ?? []
-
+        
     }
     
     static func save<T: NSManagedObject>(value:[String:Any]) -> T?
@@ -130,15 +130,15 @@ class CoreDataHelper
         let _ = try? shared().objContext.execute(deleteRequest)
     }
     
-//    static func deleteAllRecords()
-//    {
-//        let model:NSManagedObjectModel = NSManagedObjectModel.mergedModel(from: nil)!
-//        for entity in model.entities
-//        {
-//
-//            deleteAllRecords(in: "\(entity.name)")
-//        }
-//
-//    }
+    //    static func deleteAllRecords()
+    //    {
+    //        let model:NSManagedObjectModel = NSManagedObjectModel.mergedModel(from: nil)!
+    //        for entity in model.entities
+    //        {
+    //
+    //            deleteAllRecords(in: "\(entity.name)")
+    //        }
+    //
+    //    }
     
 }

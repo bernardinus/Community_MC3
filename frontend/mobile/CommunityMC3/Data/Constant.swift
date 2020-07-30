@@ -10,22 +10,24 @@ import Foundation
 
 let iCloudContainerID:String = "iCloud.ada.mc3.music"
 
-let availableAudioFilesExt:[String] =
-    [
-        "mp3",
-        "m4a",
-        "wav",
-        "mpeg",
-    ]
+let availableAudioFilesExt:[String] = [
+    "mp3",
+    "m4a",
+    "wav",
+    "mpeg",
+]
 
-let availableVideoFilesExt:[String] =
-    [
-        "mp4",
-        "m4v",
-        "mov"
-    ]
+let availableVideoFilesExt:[String] = [
+    "mp4",
+    "m4v",
+    "mov"
+]
 
-let musicGenreArray:[String] =
-[
-    "Rock","Jazz","Pop","RnB","Acoustic","Blues"
+let musicGenreArray:[String] = [
+    "Rock",
+    "Jazz",
+    "Pop",
+    "RnB",
+    "Acoustic",
+    "Blues"
 ]

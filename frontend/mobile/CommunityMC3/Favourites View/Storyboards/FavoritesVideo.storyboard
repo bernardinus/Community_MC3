@@ -21,6 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="425" height="808"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sbo-rX-5Jh" id="zKp-yP-5gb"/>
+                                    <outlet property="delegate" destination="Sbo-rX-5Jh" id="4E8-EM-o8z"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wFm-nK-UwT"/>

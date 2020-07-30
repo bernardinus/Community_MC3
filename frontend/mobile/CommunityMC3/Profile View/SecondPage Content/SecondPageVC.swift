@@ -16,8 +16,13 @@ enum ShowcaseSection:Int{
 }
 
 class SecondPageVC: UIViewController {
-
+    
     @IBOutlet weak var showcaseTableView: UITableView!
+    
+    var showcaseMusicSegue: (() -> Void)? = nil
+    var showcasePhotoSegue: (() -> Void)? = nil
+    var showcaseVideoSegue: (() -> Void)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,33 +36,33 @@ class SecondPageVC: UIViewController {
 
 extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-         let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "showcaseHeaderCell") as! ShowcaseHeaderCell
+        let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "showcaseHeaderCell") as! ShowcaseHeaderCell
         if(section == ShowcaseSection.Music.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Music", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Music".uppercased(), comment: "")
             cell.callBack = {
-                self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
+                self.showcaseMusicSegue!()
             }
         }
         if(section == ShowcaseSection.Photos.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Photos", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Photos".uppercased(), comment: "")
             cell.callBack = {
-                self.performSegue(withIdentifier: "showcasePhotoSegue", sender: nil)
+                self.showcasePhotoSegue!()
             }
         }
         if(section == ShowcaseSection.Videos.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Videos", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Videos".uppercased(), comment: "")
             cell.callBack = {
-                self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
+                self.showcaseVideoSegue!()
             }
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        48
+        40
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -98,7 +103,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         return showcaseTableView.dequeueReusableCell(withIdentifier: "musicTableCell")!
-
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -116,6 +121,18 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         }
         return 36
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+            let footerView = UIView()
+            let footerChildView = UIView(frame: CGRect(x: 60, y: 0, width: tableView.frame.width - 60, height: 0.5))
+    //        footerChildView.backgroundColor = UIColor.darkGray
+            footerView.addSubview(footerChildView)
+            return footerView
+        }
     
     
 }

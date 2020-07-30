@@ -26,6 +26,13 @@ class descTitleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        descTitleLabel.text = "Description"
+        
+        descTextView.text = ""
+        descTextView.layer.borderWidth = 1
+        descTextView.layer.cornerRadius = 5
+        descTextView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,5 +40,7 @@ class descTitleTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
+    
     
 }

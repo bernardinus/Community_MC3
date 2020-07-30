@@ -9,11 +9,11 @@
 import UIKit
 
 class PhotosCollectionCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var photosCollectionImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

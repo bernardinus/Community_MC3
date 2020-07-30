@@ -9,7 +9,7 @@
 import UIKit
 
 class MusicTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var trackPlayButton: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
@@ -17,10 +17,10 @@ class MusicTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

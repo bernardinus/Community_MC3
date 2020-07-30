@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class LatestMusicCell: UITableViewCell {
-
+    
     @IBOutlet weak var playMusicButton: UIButton!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
@@ -20,7 +20,7 @@ class LatestMusicCell: UITableViewCell {
     var player: Bool = false
     var audioPlayer: AVAudioPlayer!
     var mainTableView: UITableView!
-//    let documentController = DocumentTableViewController.shared
+    //    let documentController = DocumentTableViewController.shared
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,32 +31,32 @@ class LatestMusicCell: UITableViewCell {
         if upload.track != nil {
             player = true
             mainTableView.reloadData()
-    //        playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
-    //        let playerGroup = DispatchGroup()
-    //        playerGroup.enter()
+            //        playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+            //        let playerGroup = DispatchGroup()
+            //        playerGroup.enter()
             DispatchQueue.main.async {
                 do {
-                    self.audioPlayer = try AVAudioPlayer(contentsOf: self.upload.track!.fileURL)
+//                    self.audioPlayer = try AVAudioPlayer(contentsOf: self.upload.track!.fileURL)
                     self.audioPlayer.delegate = self
                     self.audioPlayer.play()
-    //                playerGroup.leave()
+                    //                playerGroup.leave()
                 } catch {
                     print("play failed")
                 }
             }
-    //        playerGroup.notify(queue: .main) {
-    //        }
-    //        if player {
-    //            player = false
-    //        }else{
-    //            player = true
-    //        }
+            //        playerGroup.notify(queue: .main) {
+            //        }
+            //        if player {
+            //            player = false
+            //        }else{
+            //            player = true
+            //        }
         }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -64,7 +64,7 @@ class LatestMusicCell: UITableViewCell {
 
 extension LatestMusicCell: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-//        playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+        //        playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
         self.player = false
         mainTableView.reloadData()
     }

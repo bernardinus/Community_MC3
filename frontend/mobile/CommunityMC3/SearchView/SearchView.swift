@@ -17,7 +17,7 @@ enum ButtonType:Int{
 }
 
 class SearchView: UIViewController {
-        
+    
     @IBOutlet var searchCategoryButton: [UIButton]!
     
     var vcSearch:SearchContainerPageVC?
@@ -58,5 +58,5 @@ class SearchView: UIViewController {
         //Assign each action button
         let _: ButtonType = getSelectedActionType()
     }
-  
+    
 }

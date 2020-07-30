@@ -18,7 +18,7 @@ enum Favorite: Int{
 }
 
 class FavouritesView: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,16 +26,18 @@ class FavouritesView: UIViewController {
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "FavoritesMenuCell", bundle: nil), forCellReuseIdentifier: "favoriteMenuCell")
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.navigationBar.shadowImage = nil
         super.viewWillAppear(true)
     }
+    
     @IBAction func unwindToFavorite(_ segue: UIStoryboardSegue){
         
     }
-
-
+    
+    
 }
 extension FavouritesView: UITableViewDelegate, UITableViewDataSource {
     
@@ -68,17 +70,21 @@ extension FavouritesView: UITableViewDelegate, UITableViewDataSource {
         return tableView.dequeueReusableCell(withIdentifier: "favoriteMenuCell")!
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
         return 60
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
+        if indexPath.section == Favorite.FavoriteTrack.rawValue {
             performSegue(withIdentifier: "favoriteTracks", sender: self)
-            
-        }else if indexPath.row == 1{
+        }else if indexPath.section == Favorite.FavoriteVideo.rawValue {
             performSegue(withIdentifier: "favoriteVideos", sender: self)
+        }else if indexPath.section == Favorite.Artist.rawValue{
+            performSegue(withIdentifier: "favoriteArtists", sender: self)
+        }else if indexPath.section == Favorite.Albums.rawValue{
+            performSegue(withIdentifier: "favoriteAlbums", sender: self)
         }
     }
 }

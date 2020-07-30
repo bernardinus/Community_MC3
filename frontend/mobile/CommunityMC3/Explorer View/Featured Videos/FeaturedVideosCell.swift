@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class FeaturedVideosCell: UITableViewCell {
-
+    
     @IBOutlet weak var videoThumbnailImage: UIImageView!
     @IBOutlet weak var videoPlayButton: UIButton!
     
@@ -21,18 +21,18 @@ class FeaturedVideosCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        videoThumbnailImage.layer.cornerRadius = 10
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     @IBAction func playUpload(_ sender: UIButton) {
         if feature != nil {
             player = true
-                mainTableView.reloadData()
+            mainTableView.reloadData()
             DispatchQueue.main.async {
                 do {
                     self.audioPlayer = try AVAudioPlayer(contentsOf: self.feature.track!.fileURL)

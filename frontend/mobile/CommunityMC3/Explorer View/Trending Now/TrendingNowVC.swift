@@ -9,7 +9,7 @@
 import UIKit
 
 class TrendingNowVC: UIViewController {
-
+    
     @IBOutlet weak var trendingTableView: UITableView!
     
     var trendings: [FeaturedDataStruct]!
@@ -20,7 +20,7 @@ class TrendingNowVC: UIViewController {
         super.viewDidLoad()
         trendingTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(animated)
@@ -73,7 +73,7 @@ extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource
         }
         return cell
     }
-   
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88
     }

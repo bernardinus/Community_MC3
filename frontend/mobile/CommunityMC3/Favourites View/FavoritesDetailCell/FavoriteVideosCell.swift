@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoriteVideosCell: UITableViewCell {
-
+    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var videoThumbnailImage: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
@@ -19,10 +19,10 @@ class FavoriteVideosCell: UITableViewCell {
         // Initialization code
         favoriteButton.isSelected = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

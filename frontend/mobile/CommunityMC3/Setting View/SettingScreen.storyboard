@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EC7-Iq-ZwS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EC7-Iq-ZwS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +60,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srt-Ve-bHf">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srt-Ve-bHf">
                                 <rect key="frame" x="25" y="44" width="13" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,7 +85,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vN-b8-Tuj">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vN-b8-Tuj">
                                 <rect key="frame" x="16" y="730" width="99" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="0.3921568627" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -113,9 +113,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="chevron.down" catalog="system"/>
-                                <connections>
-                                    <segue destination="Gbi-kr-7K1" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="gz6-Iy-wp2"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -124,14 +121,26 @@
                     <connections>
                         <outlet property="emailField" destination="5HG-rP-zMv" id="xYB-RK-qTd"/>
                         <outlet property="genreField" destination="gKu-91-I7U" id="C4t-jd-sY8"/>
+                        <outlet property="menuButton" destination="3Ek-ve-Dd6" id="Eda-zY-M9j"/>
                         <outlet property="nameField" destination="EKY-zG-FTu" id="s62-F8-PO6"/>
                         <outlet property="settingImage" destination="W6i-ln-Bn7" id="XhA-KR-LGg"/>
                         <segue destination="1y4-oh-SVP" kind="presentation" identifier="logoutUser" modalPresentationStyle="fullScreen" id="2Im-RO-Im1"/>
+                        <segue destination="ZPb-ws-Oeo" kind="show" identifier="userProfileSegue" id="us3-e4-eln"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmH-0q-eA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="66.666666666666671" y="81.696428571428569"/>
+        </scene>
+        <!--UserProfileView-->
+        <scene sceneID="hom-Ja-8jq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserProfileView" id="ZPb-ws-Oeo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Jvz-Xv-3qq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zch-TZ-anG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="417" y="544"/>
         </scene>
         <!--Setting Controller-->
         <scene sceneID="PKc-MC-ixh">
@@ -187,9 +196,6 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="chevron.left" catalog="system"/>
-                                        <connections>
-                                            <segue destination="EC7-Iq-ZwS" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Ere-SF-t2A"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRz-Qw-zSu">
                                         <rect key="frame" x="375" y="44" width="19" height="22"/>
@@ -204,7 +210,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0x-Yr-Hdp">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0x-Yr-Hdp">
                                         <rect key="frame" x="16" y="730" width="99" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="1" green="0.3921568627" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -225,7 +231,7 @@
                                         </state>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98W-Pr-G3A">
-                                        <rect key="frame" x="25" y="417" width="369" height="128"/>
+                                        <rect key="frame" x="22" y="417" width="369" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rock" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idY-ax-yo0">
@@ -363,16 +369,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLm-o1-t8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="63"/>
+            <point key="canvasLocation" x="904" y="82"/>
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark.square.fill" catalog="system" width="64" height="56"/>
-        <image name="chevron.down" catalog="system" width="64" height="36"/>
-        <image name="chevron.left" catalog="system" width="48" height="64"/>
-        <image name="ellipsis" catalog="system" width="64" height="18"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="setting" width="288" height="288"/>
-        <image name="square" catalog="system" width="64" height="56"/>
-        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
