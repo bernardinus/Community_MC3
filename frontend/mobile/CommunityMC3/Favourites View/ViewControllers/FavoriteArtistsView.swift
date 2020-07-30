@@ -22,7 +22,7 @@ class FavoriteArtistsView: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backItem?.title = ""
     }
-    
+
 }
 
 extension FavoriteArtistsView: UICollectionViewDelegate, UICollectionViewDataSource {
