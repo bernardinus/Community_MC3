@@ -15,6 +15,11 @@ class SettingController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var genreField: UITextField!
+    @IBOutlet weak var menuButton: UIButton!
+    
+    var isEditProfile:Bool = true
+    var emailAddr:String = ""
+    var password:String = ""
     
     //    let documentController = DocumentTableViewController.shared
     let uploadController = UploadController.shared
@@ -22,31 +27,35 @@ class SettingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
-        settingImage.addGestureRecognizer(uploadTap)
+//        let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
+//        settingImage.addGestureRecognizer(uploadTap)
+        menuButton.isHidden = !isEditProfile
         if let loadEmail = userDefault.string(forKey: "email"){
             emailField.text = loadEmail
         }
-        //        documentController.getProfilesFromCloudKit { (profiles) in
-        //            for profile in profiles {
-        //                print(profile.name, profile.email, profile.genre)
-        //            }
-        //        }
-        //        uploadController.getPhotosFromCloudKit { (photos) in
-        //            for photo in photos {
-        //                if photo.email == self.emailField.text {
-        //                    if let data = NSData(contentsOf: photo.fileURL) {
-        //                        DispatchQueue.main.async {
-        //                            self.settingImage.image = UIImage(data: data as Data)
-        //                        }
-        //                   }
-        //                }
-        //            }
-        //        }
+        /*
+                documentController.getProfilesFromCloudKit { (profiles) in
+                    for profile in profiles {
+                        print(profile.name, profile.email, profile.genre)
+                    }
+                }
+                uploadController.getPhotosFromCloudKit { (photos) in
+                    for photo in photos {
+                        if photo.email == self.emailField.text {
+                            if let data = NSData(contentsOf: photo.fileURL) {
+                                DispatchQueue.main.async {
+                                    self.settingImage.image = UIImage(data: data as Data)
+                                }
+                           }
+                        }
+                    }
+                }
+ */
+        /*
         uploadController.getUsersDataFromCloudKit { (usersData) in
             for userData in usersData {
                 if userData.email == self.emailField.text {
-                    if let data = NSData(contentsOf: userData.fileURL) {
+                    if let data = NSData(contentsOf: userData.fileURL!) {
                         DispatchQueue.main.async {
                             self.nameField.text = userData.name
                             self.genreField.text = userData.genre
@@ -56,6 +65,7 @@ class SettingController: UIViewController {
                 }
             }
         }
+ */
     }
     
     @objc func handleUploadTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -67,13 +77,36 @@ class SettingController: UIViewController {
     }
     
     @IBAction func saveSetting(_ sender: UIButton) {
-        //        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
-        //        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
-        uploadController.uploadUserData(email: emailField.text!,
-                                        name: nameField.text!,
-                                        genre: genreField.text!,
-                                        myImage: settingImage.image!
-        )
+        if(isEditProfile)
+        {
+            //        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
+            //        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
+            uploadController.uploadUserData(email: emailField.text!,
+                                            name: nameField.text!,
+                                            genre: genreField.text!,
+                                            myImage: settingImage.image!
+            )
+        }
+        else
+        {
+            
+            var data:UserDataStruct = UserDataStruct()
+            data.name = nameField.text
+            data.genre = genreField.text
+            data.profilePicture = settingImage.image
+            
+            // first time registering
+            DataManager.shared().registerToCloudKit(email: emailAddr,
+                                                    password: password,
+                                                    userData: data)
+            { (isSuccess, errorString, record) in
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+                }
+                
+            }
+            
+        }
     }
     
     func loadAlert() {

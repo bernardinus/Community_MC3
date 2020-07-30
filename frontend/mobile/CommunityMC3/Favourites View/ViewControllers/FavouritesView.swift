@@ -50,24 +50,24 @@ extension FavouritesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteMenuCell", for: indexPath) as! FavoritesMenuCell
-        if indexPath.section == Favorite.FavoriteTrack.rawValue
-        {
+        if indexPath.section == Favorite.FavoriteTrack.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteMenuCell", for: indexPath) as! FavoritesMenuCell
             cell.cellTitleLabel.text = "Favorite Tracks"
-        }
-        else if indexPath.section == Favorite.FavoriteVideo.rawValue
-        {
+            return cell
+        }else if indexPath.section == Favorite.FavoriteVideo.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteMenuCell", for: indexPath) as! FavoritesMenuCell
             cell.cellTitleLabel.text = "Favorite Videos"
-        }
-        else if indexPath.section == Favorite.Albums.rawValue
-        {
+            return cell
+        }else if indexPath.section == Favorite.Albums.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteMenuCell", for: indexPath) as! FavoritesMenuCell
             cell.cellTitleLabel.text = "Albums"
-        }
-        else if indexPath.section == Favorite.Artist.rawValue
-        {
+            return cell
+        }else if indexPath.section == Favorite.Artist.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteMenuCell", for: indexPath) as! FavoritesMenuCell
             cell.cellTitleLabel.text = "Artists"
+            return cell
         }
-        return cell
+        return tableView.dequeueReusableCell(withIdentifier: "favoriteMenuCell")!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
@@ -76,15 +76,15 @@ extension FavouritesView: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        if indexPath.row == 0
-        {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == Favorite.FavoriteTrack.rawValue {
             performSegue(withIdentifier: "favoriteTracks", sender: self)
-            
-        }
-        else if indexPath.row == 1{
+        }else if indexPath.section == Favorite.FavoriteVideo.rawValue {
             performSegue(withIdentifier: "favoriteVideos", sender: self)
+        }else if indexPath.section == Favorite.Artist.rawValue{
+            performSegue(withIdentifier: "favoriteArtists", sender: self)
+        }else if indexPath.section == Favorite.Albums.rawValue{
+            performSegue(withIdentifier: "favoriteAlbums", sender: self)
         }
     }
 }

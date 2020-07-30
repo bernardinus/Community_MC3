@@ -13,6 +13,8 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var firstTabButton: UIButton!
     @IBOutlet weak var secondTabButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
     
     var userData:UserDataStruct?
     
@@ -29,6 +31,12 @@ class UserProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let loadEmail = userDefault.string(forKey: "email"){
+            userNameLabel.text = loadEmail
+        }
+        
+        followButton.layer.cornerRadius = 10
+        contactButton.layer.cornerRadius = 10
         setupActionSheet()
         updateLayout()
         // Do any additional setup after loading the view.

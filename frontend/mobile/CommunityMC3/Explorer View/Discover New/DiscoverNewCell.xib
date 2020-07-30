@@ -17,23 +17,40 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me0-wf-CZt">
-                        <rect key="frame" x="25" y="15" width="270" height="70"/>
+                        <rect key="frame" x="30" y="10" width="260" height="80"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="70" id="jYn-Xc-gh1"/>
+                            <constraint firstAttribute="height" constant="80" id="jYn-Xc-gh1"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                        <state key="normal" title="Tap to Surprise!" backgroundImage="surprise-red-button">
+                        <state key="normal" backgroundImage="surprise-red-button">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
                             <action selector="randomSpotlightButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NXh-we-khe"/>
                         </connections>
                     </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5SN-qK-SJZ">
+                        <rect key="frame" x="52.5" y="24" width="215.5" height="52"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="QUV-Aq-Jm2">
+                                <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to surprise!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qv-qI-1Pr">
+                                <rect key="frame" x="68" y="0.0" width="147.5" height="52"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Me0-wf-CZt" secondAttribute="trailing" constant="25" id="0e9-Rr-ULi"/>
+                    <constraint firstAttribute="trailing" secondItem="Me0-wf-CZt" secondAttribute="trailing" constant="30" id="0e9-Rr-ULi"/>
+                    <constraint firstItem="5SN-qK-SJZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9mD-BT-2rq"/>
                     <constraint firstItem="Me0-wf-CZt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="DpZ-8z-qyh"/>
-                    <constraint firstItem="Me0-wf-CZt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="H1S-tt-HR9"/>
+                    <constraint firstItem="Me0-wf-CZt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="H1S-tt-HR9"/>
+                    <constraint firstItem="5SN-qK-SJZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kvc-9L-Xyi"/>
                     <constraint firstItem="Me0-wf-CZt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VIM-Dw-8Pn"/>
                     <constraint firstItem="Me0-wf-CZt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ub1-1K-tU7"/>
                 </constraints>
@@ -47,5 +64,6 @@
     </objects>
     <resources>
         <image name="surprise-red-button" width="717" height="216"/>
+        <image name="target" width="52" height="52"/>
     </resources>
 </document>

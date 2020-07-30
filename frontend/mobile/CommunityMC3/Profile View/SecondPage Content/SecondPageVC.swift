@@ -39,21 +39,21 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "showcaseHeaderCell") as! ShowcaseHeaderCell
         if(section == ShowcaseSection.Music.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Music", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Music".uppercased(), comment: "")
             cell.callBack = {
                 self.showcaseMusicSegue!()
             }
         }
         if(section == ShowcaseSection.Photos.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Photos", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Photos".uppercased(), comment: "")
             cell.callBack = {
                 self.showcasePhotoSegue!()
             }
         }
         if(section == ShowcaseSection.Videos.rawValue)
         {
-            cell.showcaseSectionHeader.text = NSLocalizedString("Videos", comment: "")
+            cell.showcaseSectionHeader.text = NSLocalizedString("Videos".uppercased(), comment: "")
             cell.callBack = {
                 self.showcaseVideoSegue!()
             }
@@ -62,7 +62,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        48
+        40
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -121,6 +121,18 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         }
         return 36
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+            let footerView = UIView()
+            let footerChildView = UIView(frame: CGRect(x: 60, y: 0, width: tableView.frame.width - 60, height: 0.5))
+    //        footerChildView.backgroundColor = UIColor.darkGray
+            footerView.addSubview(footerChildView)
+            return footerView
+        }
     
     
 }

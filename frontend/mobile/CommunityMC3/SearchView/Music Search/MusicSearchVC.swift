@@ -9,14 +9,14 @@
 import UIKit
 
 class MusicSearchVC: UIViewController {
-    
+
     @IBOutlet weak var musicSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        musicSearchTableView.register(UINib(nibName: "MusicSearchCell", bundle: nil), forCellReuseIdentifier: "musicSearchCell")
+        musicSearchTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+         musicSearchTableView.register(UINib(nibName: "MusicSearchCell", bundle: nil), forCellReuseIdentifier: "musicSearchCell")
     }
-    
+
 }
 
 extension MusicSearchVC: UITableViewDelegate, UITableViewDataSource {
