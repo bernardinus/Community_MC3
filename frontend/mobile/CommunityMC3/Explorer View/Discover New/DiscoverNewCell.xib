@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me0-wf-CZt">
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Me0-wf-CZt">
                         <rect key="frame" x="30" y="10" width="260" height="80"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="jYn-Xc-gh1"/>
@@ -29,7 +29,7 @@
                             <action selector="randomSpotlightButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NXh-we-khe"/>
                         </connections>
                     </button>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5SN-qK-SJZ">
+                    <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5SN-qK-SJZ">
                         <rect key="frame" x="52.5" y="24" width="215.5" height="52"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="QUV-Aq-Jm2">

@@ -67,7 +67,7 @@ class ExplorerView: UIViewController {
         
         hightlightUpload()
         featuredCombine()
-//        latestUpload()
+        //        latestUpload()
         
     }
     
@@ -79,13 +79,13 @@ class ExplorerView: UIViewController {
     func hightlightUpload() {
         uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
             for track in tracks {
-//                let temp = FeaturedDataStruct (
-//                    id: track.recordID,
-//                    track: track
-//                )
-//                self.trendings.append(temp)
-//                self.features.append(temp)
-//                self.uploadCount += 1
+                //                let temp = FeaturedDataStruct (
+                //                    id: track.recordID,
+                //                    track: track
+                //                )
+                //                self.trendings.append(temp)
+                //                self.features.append(temp)
+                //                self.uploadCount += 1
             }
         }
         documentController.getFilmsFromCloudKit { (videos) in
@@ -126,47 +126,47 @@ class ExplorerView: UIViewController {
     }
     
     /*
-    func latestUpload() {
-        documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
-            //            self.tracks = tracks
-            for track in tracks {
-                let temp = UploadedDataStruct (
-                    uploadedDate: track.creationDate!,
-                    track: TrackDataStruct (
-                        genre: (track.value(forKey: "genre") as? String)!,
-                        name: (track.value(forKey: "name") as? String)!,
-                        recordID: track.recordID,
-                        email: (track.value(forKey: "email") as? String)!,
-                        fileURL: (track.value(forKey: "fileData") as? CKAsset)!.fileURL!
-                    )
-                )
-                self.uploads.append(temp)
-            }
-            //            print("count ", tracks.count)
-        }
-        
-        documentController.getFilmsFromCloudKit { (videos) in
-            //            self.videos = videos
-            for video in videos {
-                let temp = UploadedDataStruct (
-                    uploadedDate: video.creationDate!,
-                    video: VideosDataStruct (
-                        genre: (video.value(forKey: "genre") as? String)!,
-                        name: (video.value(forKey: "name") as? String)!,
-                        email: (video.value(forKey: "email") as? String)!,
-                        fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
-                    )
-                )
-                //                let tmp = self.videoController.retrieveVideo(video: temp.video)!
-                //                temp.video?.fileURL = tmp
-                self.uploads.append(temp)
-            }
-        }
-        
-        //        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
-        
-    }
-    */
+     func latestUpload() {
+     documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
+     //            self.tracks = tracks
+     for track in tracks {
+     let temp = UploadedDataStruct (
+     uploadedDate: track.creationDate!,
+     track: TrackDataStruct (
+     genre: (track.value(forKey: "genre") as? String)!,
+     name: (track.value(forKey: "name") as? String)!,
+     recordID: track.recordID,
+     email: (track.value(forKey: "email") as? String)!,
+     fileURL: (track.value(forKey: "fileData") as? CKAsset)!.fileURL!
+     )
+     )
+     self.uploads.append(temp)
+     }
+     //            print("count ", tracks.count)
+     }
+     
+     documentController.getFilmsFromCloudKit { (videos) in
+     //            self.videos = videos
+     for video in videos {
+     let temp = UploadedDataStruct (
+     uploadedDate: video.creationDate!,
+     video: VideosDataStruct (
+     genre: (video.value(forKey: "genre") as? String)!,
+     name: (video.value(forKey: "name") as? String)!,
+     email: (video.value(forKey: "email") as? String)!,
+     fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
+     )
+     )
+     //                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+     //                temp.video?.fileURL = tmp
+     self.uploads.append(temp)
+     }
+     }
+     
+     //        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
+     
+     }
+     */
     
     
     
@@ -181,7 +181,7 @@ class ExplorerView: UIViewController {
     
     @IBAction func notificationButtonTouched(_ sender: Any)
     {
-//        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
+        //        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
         print("openInstagram")
         openInstagram(username: "ubmuniversity")
     }
@@ -253,7 +253,7 @@ class ExplorerView: UIViewController {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
                 if selectUpload {
                     selectUpload = false
-//                    trackPlayerPage.track = uploads[selectedRow].track
+                    //                    trackPlayerPage.track = uploads[selectedRow].track
                 }else if selectTrending {
                     selectTrending = false
                     trackPlayerPage.track = trendings[selectedRow].track
@@ -267,7 +267,7 @@ class ExplorerView: UIViewController {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
                 if selectUpload {
                     selectUpload = false
-//                    videoPlayerPage.video = uploads[selectedRow].video
+                    //                    videoPlayerPage.video = uploads[selectedRow].video
                 }else if selectTrending {
                     selectTrending = false
                     videoPlayerPage.video = trendings[selectedRow].video
@@ -484,8 +484,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             cell.mainTableView = mainTableView
             cell.upload = uploads[indexPath.row]
             if uploads[indexPath.row].track != nil {
-//                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
-//                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
+                //                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
+                //                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
                 //            print("masuk ", cell.player)
                 if cell.player {
                     //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
@@ -496,8 +496,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
                 }
             }
             if uploads[indexPath.row].video != nil {
-//                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
-//                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
+                //                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
+                //                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
                 //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
             }
             return cell
@@ -600,12 +600,12 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 25
     }
-
-
+    
+    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
         let footerChildView = UIView(frame: CGRect(x: 60, y: 0, width: tableView.frame.width - 60, height: 0.5))
-//        footerChildView.backgroundColor = UIColor.darkGray
+        //        footerChildView.backgroundColor = UIColor.darkGray
         footerView.addSubview(footerChildView)
         return footerView
     }
