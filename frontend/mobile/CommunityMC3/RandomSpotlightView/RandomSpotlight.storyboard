@@ -162,59 +162,61 @@
                                     <constraint firstItem="zoM-h3-Xtb" firstAttribute="top" secondItem="bvu-Q6-tCP" secondAttribute="top" constant="120" id="xAE-1g-cqA"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="qAF-XO-RA9">
-                                <rect key="frame" x="16" y="64" width="343" height="36"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUo-zC-8s1">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="8AF-Fu-Dxa"/>
-                                            <constraint firstAttribute="height" constant="36" id="DJj-hm-sVC"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="chevron.left" catalog="system"/>
-                                        <connections>
-                                            <segue destination="a7v-7m-jet" kind="unwind" unwindAction="unwindToExplorerView:" id="3kI-hz-gbj"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Spotlight" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-kK-sHr">
-                                        <rect key="frame" x="100" y="0.0" width="143" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9j-zV-ERA">
-                                        <rect key="frame" x="313" y="0.0" width="30" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="xc6-km-PSi"/>
-                                            <constraint firstAttribute="width" constant="30" id="xmM-HM-zga"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Edit"/>
-                                        <connections>
-                                            <action selector="editButtonAction:" destination="VDC-7D-ZKL" eventType="touchUpInside" id="Xny-CV-Tqt"/>
-                                            <segue destination="8gV-yL-ITh" kind="presentation" identifier="editRandomizerSegue" id="aqp-zx-2Rw"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PUo-zC-8s1">
+                                <rect key="frame" x="20" y="64" width="48" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="7py-9I-9Xe"/>
+                                    <constraint firstAttribute="width" constant="48" id="jjc-0u-8Fp"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <segue destination="a7v-7m-jet" kind="unwind" unwindAction="unwindToExplorerView:" id="3kI-hz-gbj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Spotlight" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-kK-sHr">
+                                <rect key="frame" x="107.66666666666669" y="64" width="160" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="9ay-eY-Tjz"/>
+                                    <constraint firstAttribute="height" constant="36" id="fAB-6e-3jI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r9j-zV-ERA">
+                                <rect key="frame" x="307" y="64" width="48" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="3z7-xa-Y8t"/>
+                                    <constraint firstAttribute="height" constant="36" id="M2l-J6-xUm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editButtonAction:" destination="VDC-7D-ZKL" eventType="touchUpInside" id="Xny-CV-Tqt"/>
+                                    <segue destination="8gV-yL-ITh" kind="presentation" identifier="editRandomizerSegue" id="aqp-zx-2Rw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="iFO-uo-E0W" firstAttribute="trailing" secondItem="qAF-XO-RA9" secondAttribute="trailing" constant="16" id="I2H-WD-1dS"/>
+                            <constraint firstItem="iFO-uo-E0W" firstAttribute="trailing" secondItem="r9j-zV-ERA" secondAttribute="trailing" constant="20" id="8pc-EI-7tg"/>
+                            <constraint firstItem="Yba-kK-sHr" firstAttribute="centerX" secondItem="wQb-ku-VAu" secondAttribute="centerX" id="9ei-n1-jLn"/>
                             <constraint firstItem="iFO-uo-E0W" firstAttribute="trailing" secondItem="bvu-Q6-tCP" secondAttribute="trailing" id="KTq-5p-iCD"/>
                             <constraint firstItem="bvu-Q6-tCP" firstAttribute="centerX" secondItem="iFO-uo-E0W" secondAttribute="centerX" id="QnE-Zn-W0i"/>
+                            <constraint firstItem="r9j-zV-ERA" firstAttribute="top" secondItem="iFO-uo-E0W" secondAttribute="top" constant="20" id="RPb-r8-3dn"/>
+                            <constraint firstItem="Yba-kK-sHr" firstAttribute="top" secondItem="iFO-uo-E0W" secondAttribute="top" constant="20" id="Sh1-sK-4IW"/>
                             <constraint firstItem="iFO-uo-E0W" firstAttribute="top" secondItem="bvu-Q6-tCP" secondAttribute="top" constant="44" id="adj-BO-BYD"/>
-                            <constraint firstItem="qAF-XO-RA9" firstAttribute="top" secondItem="iFO-uo-E0W" secondAttribute="top" constant="20" id="dqe-hO-0G5"/>
                             <constraint firstItem="bvu-Q6-tCP" firstAttribute="leading" secondItem="iFO-uo-E0W" secondAttribute="leading" id="gjT-0u-VGl"/>
+                            <constraint firstItem="PUo-zC-8s1" firstAttribute="top" secondItem="iFO-uo-E0W" secondAttribute="top" constant="20" id="iRd-UH-iyc"/>
                             <constraint firstItem="bvu-Q6-tCP" firstAttribute="bottom" secondItem="iFO-uo-E0W" secondAttribute="bottom" id="jF1-P8-poo"/>
-                            <constraint firstItem="qAF-XO-RA9" firstAttribute="leading" secondItem="iFO-uo-E0W" secondAttribute="leading" constant="16" id="qKz-lT-JWu"/>
+                            <constraint firstItem="PUo-zC-8s1" firstAttribute="leading" secondItem="iFO-uo-E0W" secondAttribute="leading" constant="20" id="vts-Qx-CEQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iFO-uo-E0W"/>
                     </view>
                     <connections>
                         <outlet property="contentView" destination="bvu-Q6-tCP" id="Wqt-dG-bA7"/>
-                        <outlet property="editButton" destination="r9j-zV-ERA" id="VJw-mR-pZ0"/>
+                        <outlet property="editButton" destination="r9j-zV-ERA" id="RNO-xg-JGF"/>
                         <outlet property="genreCollectionView" destination="mWC-r8-qca" id="QME-Ec-bld"/>
                         <outlet property="innerCircleEffectImage" destination="d27-aA-8pO" id="Xl3-iq-d1D"/>
                         <outlet property="musicAndVideoTableView" destination="UG2-sU-rQR" id="nWX-OP-ORm"/>
