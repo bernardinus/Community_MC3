@@ -35,10 +35,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Iqq-gy-aaq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorite Artists" largeTitleDisplayMode="never" id="DaG-aY-Bmq">
-                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Vf2-f7-MFw">
+                    <navigationItem key="navigationItem" title="Favorite Artists" id="NOD-hb-Tzl">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="XJE-me-CAj">
                             <connections>
-                                <segue destination="y0r-qV-wJS" kind="unwind" unwindAction="unwindToFavorite:" id="2l5-JB-ZVB"/>
+                                <segue destination="y0r-qV-wJS" kind="unwind" unwindAction="unwindToFavorite:" id="0GI-jc-bCQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
