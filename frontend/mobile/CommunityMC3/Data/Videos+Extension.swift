@@ -25,20 +25,10 @@ struct VideosDataStruct
     var album:Album?
 }
 
-/*
-extension Photos
+struct PrimitiveVideosDataStruct: Codable
 {
-        
-    
-    static func createPhoto(photoData:PhotoData) -> Photos?
-    {
-        if let photo:Photos = CoreDataHelper.save(value: photoData.asDict())
-        {
-            photo.userData = photoData.userData
-            return photo
-        }
-        
-        return nil
-    }
+    // normal param
+    var genre:String
+    var name:String
+    var email:String
 }
-*/

@@ -10,7 +10,6 @@ import UIKit
 
 class MusicListCell: UITableViewCell {
     
-    
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var trackArtist: UILabel!
     @IBOutlet weak var trackCurrent: UILabel!
@@ -19,12 +18,13 @@ class MusicListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //        playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
+        //        playButton.setImage(#imageLiteral(resourceName: "Stop"), for: .selected)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
 }

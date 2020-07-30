@@ -10,7 +10,7 @@ import UIKit
 
 class SelectFileView: UIViewController
 {
-
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -18,13 +18,16 @@ class SelectFileView: UIViewController
     
     var isUploadVideo:Bool = false
     
+    let documentController = DocumentTableViewController.shared
+    
     var fileList:[URL] = []
     
     var filteredList:[URL] = []
+    var selectedIndex:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         searchBar.delegate = self
         
         tableView.delegate = self
@@ -41,7 +44,7 @@ class SelectFileView: UIViewController
         {
             fileList = FileManagers.getAvailableAudioFiles()
         }
-            
+        
         
         
         filteredList = fileList
@@ -54,16 +57,15 @@ class SelectFileView: UIViewController
         dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "uploadFileSegue"
+        {
+            let uploadFileVC = segue.destination as! UploadFileView
+            uploadFileVC.isUploadVideo = isUploadVideo
+            uploadFileVC.fileURL = filteredList[selectedIndex]
+        }
+     }
+    
     func filter(filterText:String)
     {
         print("asd+\(filterText)+asd")
@@ -106,6 +108,9 @@ extension SelectFileView:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+        selectedIndex = indexPath.row
         performSegue(withIdentifier: "uploadFileSegue", sender:nil)
+        //        documentController.uploadTrack(email: "mnb@mnb", genre: "Rock", name: "track", fileURL: filteredList[indexPath.row])
+        //        performSegue(withIdentifier: "uploadTest", sender:nil)
     }
 }

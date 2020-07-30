@@ -15,74 +15,89 @@ class RegisterController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var callBack: (() -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.view.backgroundColor = .clear
+        //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        //        self.navigationController?.navigationBar.shadowImage = UIImage()
+        //        self.navigationController?.navigationBar.isTranslucent = true
+        //        self.navigationController?.view.backgroundColor = .clear
         // Do any additional setup after loading the view.
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-//        passwordField.placeholder = ""
+        //        passwordField.placeholder = ""
         passwordField.isSecureTextEntry = true
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//       self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//       super.viewWillAppear(animated)
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//       self.navigationController?.setNavigationBarHidden(false, animated: animated)
-//       super.viewWillDisappear(animated)
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //       self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    //       super.viewWillAppear(animated)
+    //    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //       self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    //       super.viewWillDisappear(animated)
+    //    }
     
-//    func SetBackBarButtonCustom()
-//    {
-//        //Back buttion
-//        let btnLeftMenu: UIButton = UIButton()
-//        btnLeftMenu.setImage(UIImage(named: "back_arrow"), for: UIControlState())
-//        btnLeftMenu.addTarget(self, action: #selector(UIViewController.onClcikBack), for: UIControlEvents.touchUpInside)
-//        btnLeftMenu.frame = CGRect(x: 0, y: 0, width: 33/2, height: 27/2)
-//        let barButton = UIBarButtonItem(customView: btnLeftMenu)
-//        self.navigationItem.leftBarButtonItem = barButton
-//    }
-//
-//    func onClcikBack()
-//    {
-//        _ = self.navigationController?.popViewController(animated: true)
-//    }
+    //    func SetBackBarButtonCustom()
+    //    {
+    //        //Back buttion
+    //        let btnLeftMenu: UIButton = UIButton()
+    //        btnLeftMenu.setImage(UIImage(named: "back_arrow"), for: UIControlState())
+    //        btnLeftMenu.addTarget(self, action: #selector(UIViewController.onClcikBack), for: UIControlEvents.touchUpInside)
+    //        btnLeftMenu.frame = CGRect(x: 0, y: 0, width: 33/2, height: 27/2)
+    //        let barButton = UIBarButtonItem(customView: btnLeftMenu)
+    //        self.navigationItem.leftBarButtonItem = barButton
+    //    }
+    //
+    //    func onClcikBack()
+    //    {
+    //        _ = self.navigationController?.popViewController(animated: true)
+    //    }
     
     @IBAction func registerUser(_ sender: UIButton) {
-//        registerToCloudKit()
-        
+        registerToCloudKit()        
     }
     
     func registerToCoreData() {
-            //        let newTask = Task(context: getViewContext())
+        //        let newTask = Task(context: getViewContext())
         if let newAccount = Account.registerAccount(context: getViewContext(), accountEmail: emailField.text ?? "", accountPassword: passwordField.text ?? "") {
-        emailField.text = ""
-        passwordField.text = ""
-        print(newAccount)
-        self.performSegue(withIdentifier: "registerMain", sender: self)
+            emailField.text = ""
+            passwordField.text = ""
+            print(newAccount)
+            callBack!()
+            //        self.performSegue(withIdentifier: "registerMain", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "registerAccountSegue"
+        {
+            let vc = segue.destination as! SettingController
+            vc.isEditProfile = false
+            vc.emailAddr = emailField.text!
+            vc.password = passwordField.text!
         }
     }
     
     func registerToCloudKit() {
-         // 1. buat dulu recordnya
-        let newRecord = CKRecord(recordType: "Register")
-
+        
+        performSegue(withIdentifier: "registerAccountSegue", sender: nil)
+        /*
+        // 1. buat dulu recordnya
+        //        let newRecord = CKRecord(recordType: "Register")
+        let newRecord = CKRecord(recordType: "Account")
+        
         // 2. set propertynya
         newRecord.setValue(emailField.text ?? "", forKey: "email")
         newRecord.setValue(passwordField.text ?? "", forKey: "password")
-
+        
         // 3. execute save or insert
         let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
-//        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+        //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
         //        print(CKContainer.default())
         database.save(newRecord) { record, error in
             if let err = error {
@@ -93,11 +108,13 @@ class RegisterController: UIViewController {
             
             DispatchQueue.main.async {
                 UserDefaults.standard.set(self.emailField.text, forKey: "email")
-        //                self.dismiss(animated: true, completion: nil)
+                //                self.dismiss(animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
-                self.performSegue(withIdentifier: "registerMain", sender: self)
+                self.callBack!()
+                //                self.performSegue(withIdentifier: "registerMain", sender: self)
             }
         }
+        */
     }
 }
 

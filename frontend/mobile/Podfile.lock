@@ -1,16 +1,20 @@
 PODS:
   - BonsaiController (6.0.0)
+  - SwipeMenuViewController (4.1.0)
 
 DEPENDENCIES:
   - BonsaiController
+  - SwipeMenuViewController
 
 SPEC REPOS:
   trunk:
     - BonsaiController
+    - SwipeMenuViewController
 
 SPEC CHECKSUMS:
   BonsaiController: 63410fc39bc5b3a9df5b329dbc848b6b27edf663
+  SwipeMenuViewController: 94fac81cc192d9f08f218fe4c0c853569b735e1f
 
-PODFILE CHECKSUM: 6976fa9b048f9479664a2dffb3b35afcbd0bde71
+PODFILE CHECKSUM: 0ddfb5a4645e59b6a195a117a9d88dd7419fe64c
 
 COCOAPODS: 1.9.1

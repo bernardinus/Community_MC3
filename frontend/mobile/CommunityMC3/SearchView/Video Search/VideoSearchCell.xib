@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="videoSearchCell" id="KGk-i7-Jjw" customClass="VideoSearchCell" customModule="CommunityMC3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music-image-dummy" translatesAutoresizingMaskIntoConstraints="NO" id="JLL-kU-PRa">
+                        <rect key="frame" x="8" y="8" width="304" height="144"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darkGradient-overlay" translatesAutoresizingMaskIntoConstraints="NO" id="wkb-b4-de5">
+                        <rect key="frame" x="8" y="8" width="304" height="144"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playButton2" translatesAutoresizingMaskIntoConstraints="NO" id="UHr-cU-bae">
+                        <rect key="frame" x="145" y="65" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="8BM-06-XTW"/>
+                            <constraint firstAttribute="height" constant="30" id="YKb-G9-5W9"/>
+                            <constraint firstAttribute="width" secondItem="UHr-cU-bae" secondAttribute="height" multiplier="1:1" id="se8-CK-jax"/>
+                        </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="regular"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User / artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Nu-1H-tC9">
+                        <rect key="frame" x="16" y="129" width="264" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="5f5-HQ-Bry"/>
+                            <constraint firstAttribute="width" constant="264" id="Fkx-0e-bcE"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="YH7-FC-hjT"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="lwL-Bb-I7Z"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ei8-ed-EtX">
+                        <rect key="frame" x="16" y="107" width="264" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wkb-b4-de5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1oK-sI-jpy"/>
+                    <constraint firstItem="UHr-cU-bae" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2ij-5K-a5T"/>
+                    <constraint firstItem="wkb-b4-de5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="8sn-D2-pMZ"/>
+                    <constraint firstItem="9Nu-1H-tC9" firstAttribute="top" secondItem="ei8-ed-EtX" secondAttribute="bottom" constant="4" id="Cpo-qH-HF3"/>
+                    <constraint firstItem="JLL-kU-PRa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="D0s-rG-51m"/>
+                    <constraint firstItem="ei8-ed-EtX" firstAttribute="leading" secondItem="9Nu-1H-tC9" secondAttribute="leading" id="DTp-Pq-kJy"/>
+                    <constraint firstItem="9Nu-1H-tC9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="H51-he-jri"/>
+                    <constraint firstAttribute="bottom" secondItem="wkb-b4-de5" secondAttribute="bottom" constant="8" id="Hlz-JX-ne0"/>
+                    <constraint firstItem="wkb-b4-de5" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ItJ-ex-DEY"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="9Nu-1H-tC9" secondAttribute="bottom" constant="4" id="NZ7-MP-jNb"/>
+                    <constraint firstItem="JLL-kU-PRa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="QsY-xx-aVI"/>
+                    <constraint firstItem="wkb-b4-de5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="TN1-9Y-kpr"/>
+                    <constraint firstAttribute="bottom" secondItem="JLL-kU-PRa" secondAttribute="bottom" constant="8" id="ZU3-0E-EBb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="9Nu-1H-tC9" secondAttribute="bottom" constant="4" id="agh-UP-9aE"/>
+                    <constraint firstItem="ei8-ed-EtX" firstAttribute="trailing" secondItem="9Nu-1H-tC9" secondAttribute="trailing" id="d6W-Sl-SIw"/>
+                    <constraint firstAttribute="trailing" secondItem="wkb-b4-de5" secondAttribute="trailing" constant="8" id="gZE-6n-bFk"/>
+                    <constraint firstAttribute="trailing" secondItem="JLL-kU-PRa" secondAttribute="trailing" constant="8" id="hvg-7u-CdM"/>
+                    <constraint firstItem="9Nu-1H-tC9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tGX-tC-PNV"/>
+                    <constraint firstItem="UHr-cU-bae" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zSP-Vv-A5A"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="darkGradientOverlay" destination="wkb-b4-de5" id="4b7-ZL-jec"/>
+                <outlet property="videoThumbnailImage" destination="JLL-kU-PRa" id="CQU-DA-2Wn"/>
+            </connections>
+            <point key="canvasLocation" x="111.59420289855073" y="103.79464285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="darkGradient-overlay" width="340" height="147"/>
+        <image name="music-image-dummy" width="1170" height="664"/>
+        <image name="playButton2" width="28" height="36"/>
+    </resources>
+</document>

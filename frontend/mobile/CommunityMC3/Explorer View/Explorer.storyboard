@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-zq-DCP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-zq-DCP">
                                 <rect key="frame" x="0.0" y="116" width="414" height="780"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
@@ -95,7 +95,6 @@
                         <segue destination="xfM-7w-Dmk" kind="show" identifier="videoPlayerSegue" id="U5X-An-pc9"/>
                         <segue destination="5z4-ln-AiY" kind="show" identifier="loginScreenSegue" id="6Az-ua-7Fs"/>
                         <segue destination="uXS-s2-pdM" kind="show" identifier="notificationScreenSegue" id="Maa-z9-1mq"/>
-                        <segue destination="6Em-jn-1tB" kind="show" identifier="" id="CKV-xZ-fOK"/>
                         <segue destination="abV-a7-8U0" kind="show" identifier="randomSpotlightSegue" destinationCreationSelector="randomSpotlightSegue" id="Umn-HO-Qe5"/>
                         <segue destination="oJm-qv-Beb" kind="presentation" identifier="test" id="Qg6-qH-Hmq"/>
                         <segue destination="o7o-lH-9Hc" kind="show" identifier="userProfileSegue" id="lM6-iR-DLY"/>
@@ -114,7 +113,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1X-WZ-WJo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="40"/>
+            <point key="canvasLocation" x="-364" y="33"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="mdN-pV-VEV">
@@ -134,7 +133,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovN-AE-tbn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="130"/>
+            <point key="canvasLocation" x="-149" y="145"/>
         </scene>
         <!--FeaturedArtistView-->
         <scene sceneID="dps-eT-UN6">
@@ -144,7 +143,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlS-4R-kx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="130"/>
+            <point key="canvasLocation" x="142" y="218"/>
         </scene>
         <!--VideoPlayer-->
         <scene sceneID="Mdf-aL-qPP">
@@ -154,7 +153,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMv-Tb-mut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="-327"/>
+            <point key="canvasLocation" x="1686" y="-316"/>
         </scene>
         <!--TrackPlayer-->
         <scene sceneID="Kbs-bt-qVR">
@@ -164,7 +163,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Qf-Rp-1qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1383" y="-212"/>
+            <point key="canvasLocation" x="1686" y="-265"/>
         </scene>
         <!--VideoPlayer-->
         <scene sceneID="eC7-Ui-KOS">
@@ -174,7 +173,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0FV-RF-FOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="-156"/>
+            <point key="canvasLocation" x="1686" y="-210"/>
         </scene>
         <!--FeaturedVideosView-->
         <scene sceneID="Wo8-p2-apo">
@@ -184,7 +183,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVC-e6-4jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1262" y="56"/>
+            <point key="canvasLocation" x="449" y="256"/>
         </scene>
         <!--LoginScreen-->
         <scene sceneID="JSK-lH-DO1">
@@ -194,7 +193,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQW-0l-xIQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="-483"/>
+            <point key="canvasLocation" x="1362" y="-590"/>
         </scene>
         <!--RandomSpotlight-->
         <scene sceneID="RAs-BK-H7h">
@@ -204,7 +203,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkh-f7-HbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="-109"/>
+            <point key="canvasLocation" x="1462" y="-540"/>
         </scene>
         <!--SelectFileView-->
         <scene sceneID="06E-VJ-SgZ">
@@ -214,7 +213,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRU-7P-6BD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="-60"/>
+            <point key="canvasLocation" x="1527" y="-74"/>
         </scene>
         <!--UserProfileView-->
         <scene sceneID="R4x-7p-Ipx">
@@ -224,11 +223,11 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GkQ-bQ-lhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-102" y="-281"/>
+            <point key="canvasLocation" x="1489" y="135"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A2x-fN-Bam"/>
+        <segue reference="lM6-iR-DLY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
