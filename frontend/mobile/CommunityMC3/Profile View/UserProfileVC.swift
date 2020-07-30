@@ -13,11 +13,16 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var firstTabButton: UIButton!
     @IBOutlet weak var secondTabButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var contactButton: UIButton!
     
     var userData:UserDataStruct?
     
-    var vc:CarouselPageViewController?
-
+    var cVC:CarouselPageViewController?
+    
+    var showcaseVC:SecondPageVC?
+    var isUploadVideo = false
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -29,23 +34,55 @@ class UserProfileVC: UIViewController {
         if let loadEmail = userDefault.string(forKey: "email"){
             userNameLabel.text = loadEmail
         }
+        
+        followButton.layer.cornerRadius = 10
+        contactButton.layer.cornerRadius = 10
         setupActionSheet()
+        updateLayout()
         // Do any additional setup after loading the view.
         firstTabButton.alpha = 1
         secondTabButton.alpha = 0.5
-        vc?.moveToPage(index: 0)
+        cVC?.moveToPage(index: 0)
+        
+        
+        
+    }
+    
+    func updateLayout()
+    {
+        if let loadEmail = userDefault.string(forKey: "email"){
+            userNameLabel.text = loadEmail
+        }
+    }
+    
+    @IBAction func unwindToUserProfile(_ segue:UIStoryboardSegue)
+    {
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"
         {
             print("containerSegue")
-            vc = (segue.destination as! CarouselPageViewController)
+            cVC = (segue.destination as! CarouselPageViewController)
+        }
+        else if segue.identifier == "selectFileSegue"
+        {
+            let selectVC = segue.destination as! SelectFileView
+            selectVC.isUploadVideo = isUploadVideo
         }
     }
     
     func setupActionSheet()
     {
+        
+        
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: {
             (action: UIAlertAction) in
             self.userDefault.removeObject(forKey: "email")
@@ -54,21 +91,37 @@ class UserProfileVC: UIViewController {
         actionSheet.addAction(signOutAction)
         
         let editAction = UIAlertAction(title: "Edit", style: .default,
-                                       handler: { action in
-                                        self.performSegue(withIdentifier: "editProfileSegue", sender: nil)
-        }
+                                       handler: {
+                                        action in
+                                        self.performSegue(withIdentifier: "editProfileSegue", sender: nil) }
         )
         actionSheet.addAction(editAction)
         
         let shareAction = UIAlertAction(title: "Share", style: .default)
         actionSheet.addAction(shareAction)
         
-        let uploadAction = UIAlertAction(title: "Upload", style: .default,
-                                         handler: { action in
-                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil)
-        }
+        let uploadMusic = UIAlertAction(title: "Upload Music", style: .default,
+                                         handler: {
+                                            action in
+                                            self.isUploadVideo = false
+                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
         )
-        actionSheet.addAction(uploadAction)
+        actionSheet.addAction(uploadMusic)
+        
+        let uploadVideo = UIAlertAction(title: "Upload Video", style: .default,
+                                         handler: {
+                                            action in
+                                            self.isUploadVideo = true
+                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
+        )
+        actionSheet.addAction(uploadVideo)
+        
+        let uploadPhotos = UIAlertAction(title: "Upload Photos", style: .default,
+                                         handler: {
+                                            action in
+                                            print("uploadPhotos") }
+        )
+        actionSheet.addAction(uploadPhotos)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         actionSheet.addAction(cancelAction)
@@ -85,12 +138,16 @@ class UserProfileVC: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
         super.viewWillAppear(animated)
         
-        //        let navigationBar = navigationController?.navigationBar
-        //        let navigationBarAppearence = UINavigationBarAppearance()
-        //        navigationBarAppearence.shadowColor = .clear
-        //        navigationBar?.scrollEdgeAppearance = navigationBarAppearence
-        //        navigationItem.rightBarButtonItems![0].setBackgroundImage(nil, for: .disabled, barMetrics: .default)
-        //
+        showcaseVC = cVC!.items[1] as? SecondPageVC
+        showcaseVC?.showcaseVideoSegue = {
+            self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
+        }
+        showcaseVC?.showcasePhotoSegue = {
+            self.performSegue(withIdentifier: "showcasePhotoSegue", sender: nil)
+        }
+        showcaseVC?.showcaseMusicSegue = {
+            self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
+        }
         
     }
     
@@ -103,17 +160,16 @@ class UserProfileVC: UIViewController {
         firstTabButton.alpha = 1
         secondTabButton.alpha = 0.5
         
-        print(vc?.a as Any)
-        vc?.moveToPage(index: 0)
+        print(cVC?.a as Any)
+        cVC?.moveToPage(index: 0)
     }
     
     @IBAction func secondPageTapped(_ sender: Any) {
         firstTabButton.alpha = 0.5
         secondTabButton.alpha = 1
         
-        print(vc?.a as Any)
-        vc?.moveToPage(index: 1)
-        
+        print(cVC?.a as Any)
+        cVC?.moveToPage(index: 1)
     }
 }
 

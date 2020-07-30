@@ -23,11 +23,11 @@ extension Account {
         let account = Account(context: context)
         account.email = accountEmail
         account.password = accountPassword
-//        task.subtask = []
-//        guard ((try? context.save()) != nil) else {
-//            return nil
-//        }
-//        return task
+        //        task.subtask = []
+        //        guard ((try? context.save()) != nil) else {
+        //            return nil
+        //        }
+        //        return task
         do {
             try context.save()
             return account
@@ -52,29 +52,29 @@ extension Account {
     }
     
     static func editAccount(context: NSManagedObjectContext, accountEmail: String, accountPassword: String) -> Bool {
-//        let request: NSFetchRequest<NSFetchRequestResult> = Account.fetchRequest()
-//        let predicate = NSPredicate(format: "taskName BEGINSWITH 'v'")
-//        request.predicate = predicate
-//        if accountEmail == "" || accountPassword == "" {
-//            let deletedRequest = NSBatchDeleteRequest(fetchRequest: request)
-//            let result = try? context.execute(deletedRequest)
-//            if (result != nil) {
-//                let account = Account(context: context)
-//                if accountEmail != "" {
-//                    account.email = accountEmail
-//                }
-//                if accountPassword != "" {
-//                    account.password = accountPassword
-//                }
-//                do {
-//                   try context.save()
-//                   return true
-//                } catch {
-//                   return false
-//                }
-//            }
-//            return false
-//        }else {
+        //        let request: NSFetchRequest<NSFetchRequestResult> = Account.fetchRequest()
+        //        let predicate = NSPredicate(format: "taskName BEGINSWITH 'v'")
+        //        request.predicate = predicate
+        //        if accountEmail == "" || accountPassword == "" {
+        //            let deletedRequest = NSBatchDeleteRequest(fetchRequest: request)
+        //            let result = try? context.execute(deletedRequest)
+        //            if (result != nil) {
+        //                let account = Account(context: context)
+        //                if accountEmail != "" {
+        //                    account.email = accountEmail
+        //                }
+        //                if accountPassword != "" {
+        //                    account.password = accountPassword
+        //                }
+        //                do {
+        //                   try context.save()
+        //                   return true
+        //                } catch {
+        //                   return false
+        //                }
+        //            }
+        //            return false
+        //        }else {
         let request: NSFetchRequest<Account> = Account.fetchRequest()
         var response = false
         do {
@@ -93,7 +93,7 @@ extension Account {
         } catch {
             return false
         }
-//        }
+        //        }
     }
     
     

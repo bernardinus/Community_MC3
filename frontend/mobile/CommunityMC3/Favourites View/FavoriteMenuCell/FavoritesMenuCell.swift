@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoritesMenuCell: UITableViewCell {
-
+    
     @IBOutlet weak var cellTitleLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
     
@@ -17,10 +17,10 @@ class FavoritesMenuCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

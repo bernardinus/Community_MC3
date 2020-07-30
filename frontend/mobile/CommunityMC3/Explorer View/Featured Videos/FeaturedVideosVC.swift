@@ -9,7 +9,7 @@
 import UIKit
 
 class FeaturedVideosVC: UIViewController {
- 
+    
     
     var features: [FeaturedDataStruct]!
     var selectedRow = 0
@@ -25,7 +25,7 @@ class FeaturedVideosVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backItem?.title = ""
-
+        
     }
     
     // MARK: Storyboard
@@ -49,7 +49,7 @@ extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
         if features != nil {
             return features.count
         }
-//        return 10
+        //        return 10
         return 0
     }
     
@@ -71,7 +71,7 @@ extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
         navigationController?.setNavigationBarHidden(true, animated: false)
         super .viewWillDisappear(animated)
     }
-
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200

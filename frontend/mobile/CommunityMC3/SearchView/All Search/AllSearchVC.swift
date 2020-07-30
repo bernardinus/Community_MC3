@@ -17,18 +17,18 @@ enum SearchSection:Int{
 }
 
 class AllSearchVC: UIViewController {
-
+    
     @IBOutlet weak var allSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        allSearchTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         allSearchTableView.register(UINib(nibName: "SearchHeaderSection", bundle: nil), forCellReuseIdentifier: "searchHeaderSection")
         allSearchTableView.register(UINib(nibName: "MusicSearchCell", bundle: nil), forCellReuseIdentifier: "musicSearchCell")
         allSearchTableView.register(UINib(nibName: "ArtistSearchCell", bundle: nil), forCellReuseIdentifier: "artistSearchCell")
         allSearchTableView.register(UINib(nibName: "VideoSearchCell", bundle: nil), forCellReuseIdentifier: "videoSearchCell")
         allSearchTableView.register(UINib(nibName: "PlaylistSearchCell", bundle: nil), forCellReuseIdentifier: "playlistSearchCell")
     }
-
+    
 }
 
 extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
@@ -87,13 +87,16 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "playlistSearchCell") as! PlaylistSearchCell
             return cell
         }
-
-        
         return allSearchTableView.dequeueReusableCell(withIdentifier: "artistSearchCell")!
-
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(indexPath.section == SearchSection.Video.rawValue)
+        {
+            return 200
+        }
+        
+        return 80
+    }
     
 }

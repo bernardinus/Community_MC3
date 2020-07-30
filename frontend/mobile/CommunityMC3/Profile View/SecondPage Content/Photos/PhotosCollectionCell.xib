@@ -17,18 +17,17 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photos-dummy" translatesAutoresizingMaskIntoConstraints="NO" id="uIZ-jN-c18">
-                        <rect key="frame" x="8" y="8" width="184" height="184"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="uIZ-jN-c18" secondAttribute="height" multiplier="1:1" id="Kat-lY-dom"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="uIZ-jN-c18" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="9y5-dK-BaJ"/>
-                <constraint firstItem="uIZ-jN-c18" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Amb-fh-GGZ"/>
-                <constraint firstAttribute="trailing" secondItem="uIZ-jN-c18" secondAttribute="trailing" constant="8" id="CDF-DS-D9H"/>
-                <constraint firstAttribute="bottom" secondItem="uIZ-jN-c18" secondAttribute="bottom" constant="8" id="xvk-hk-JfG"/>
+                <constraint firstAttribute="bottom" secondItem="uIZ-jN-c18" secondAttribute="bottom" id="bPU-E2-ma7"/>
+                <constraint firstItem="uIZ-jN-c18" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kBs-jV-bea"/>
+                <constraint firstAttribute="trailing" secondItem="uIZ-jN-c18" secondAttribute="trailing" id="kOM-Ig-L2a"/>
+                <constraint firstItem="uIZ-jN-c18" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="l43-yB-MzX"/>
+                <constraint firstItem="uIZ-jN-c18" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tNi-5l-eJU"/>
+                <constraint firstItem="uIZ-jN-c18" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="xs7-9d-oob"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>

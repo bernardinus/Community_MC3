@@ -36,8 +36,8 @@ class ExplorerView: UIViewController {
     let videoController = VideoPlayerViewController.shared
     let uploadController = UploadController.shared
     let userDefault = UserDefaults.standard
-//    var tracks = [TrackDataStruct]()
-//    var videos = [VideosDataStruct]()
+    //    var tracks = [TrackDataStruct]()
+    //    var videos = [VideosDataStruct]()
     var uploads = [UploadedDataStruct]()
     var features = [FeaturedDataStruct]()
     var trendings = [FeaturedDataStruct]()
@@ -50,7 +50,7 @@ class ExplorerView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         ExploreTitleLabel.text = NSLocalizedString("Explore", comment: "")
         
         
@@ -63,24 +63,24 @@ class ExplorerView: UIViewController {
         mainTableView.register(UINib(nibName: "FeaturedArtistCell", bundle:nil), forCellReuseIdentifier: "featuredArtistCell")
         mainTableView.register(UINib(nibName: "FeaturedVideosCell", bundle:nil), forCellReuseIdentifier: "featuredVideosCell")
         mainTableView.canCancelContentTouches = true
-//        mainTableView.delaysContentTouches = true;
-
+        //        mainTableView.delaysContentTouches = true;
+        
         hightlightUpload()
         featuredCombine()
-        latestUpload()
+//        latestUpload()
         
     }
     
     func hightlightUpload() {
         uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
             for track in tracks {
-                let temp = FeaturedDataStruct (
-                    id: track.recordID,
-                    track: track
-                )
-                self.trendings.append(temp)
-                self.features.append(temp)
-                self.uploadCount += 1
+//                let temp = FeaturedDataStruct (
+//                    id: track.recordID,
+//                    track: track
+//                )
+//                self.trendings.append(temp)
+//                self.features.append(temp)
+//                self.uploadCount += 1
             }
         }
         documentController.getFilmsFromCloudKit { (videos) in
@@ -120,9 +120,10 @@ class ExplorerView: UIViewController {
         }
     }
     
+    /*
     func latestUpload() {
         documentController.getUploadsFromCloudKit(tableView: mainTableView) { (tracks) in
-//            self.tracks = tracks
+            //            self.tracks = tracks
             for track in tracks {
                 let temp = UploadedDataStruct (
                     uploadedDate: track.creationDate!,
@@ -136,11 +137,11 @@ class ExplorerView: UIViewController {
                 )
                 self.uploads.append(temp)
             }
-//            print("count ", tracks.count)
+            //            print("count ", tracks.count)
         }
         
         documentController.getFilmsFromCloudKit { (videos) in
-//            self.videos = videos
+            //            self.videos = videos
             for video in videos {
                 let temp = UploadedDataStruct (
                     uploadedDate: video.creationDate!,
@@ -151,31 +152,33 @@ class ExplorerView: UIViewController {
                         fileURL: (video.value(forKey: "fileData") as? CKAsset)!.fileURL!
                     )
                 )
-//                let tmp = self.videoController.retrieveVideo(video: temp.video)!
-//                temp.video?.fileURL = tmp
+                //                let tmp = self.videoController.retrieveVideo(video: temp.video)!
+                //                temp.video?.fileURL = tmp
                 self.uploads.append(temp)
             }
         }
         
-//        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
+        //        self.uploads = self.uploads.sorted(by: { $0.uploadedDate.compare($1.uploadedDate) == .orderedDescending })
         
     }
+    */
     
     
     
     @IBAction func accountButtonTouched(_ sender: Any)
     {
-        if userDefault.string(forKey: "email") != nil {
+        if DataManager.shared().IsUserLogin() {
             self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
         }else{
             self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
         }
-//        self.performSegue(withIdentifier: "test", sender: nil)
     }
     
     @IBAction func notificationButtonTouched(_ sender: Any)
     {
-        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
+//        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
+        print("openInstagram")
+        openInstagram(username: "ubmuniversity")
     }
     
     @IBAction func unwindToExplorerView(_ segue:UIStoryboardSegue)
@@ -233,9 +236,9 @@ class ExplorerView: UIViewController {
             }
         }
         else if segue.identifier == "latestMusicSegue" {
-//            print("masuk ", tracks.count)
-//            let navPage = segue.destination as! UINavigationController
-//            let latestMusicPage = navPage.topViewController as! LatestMusicVC
+            //            print("masuk ", tracks.count)
+            //            let navPage = segue.destination as! UINavigationController
+            //            let latestMusicPage = navPage.topViewController as! LatestMusicVC
             if let latestMusicPage = segue.destination as? LatestMusicVC {
                 latestMusicPage.uploads = uploads
                 latestMusicPage.mainTableView = mainTableView
@@ -245,7 +248,7 @@ class ExplorerView: UIViewController {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
                 if selectUpload {
                     selectUpload = false
-                    trackPlayerPage.track = uploads[selectedRow].track
+//                    trackPlayerPage.track = uploads[selectedRow].track
                 }else if selectTrending {
                     selectTrending = false
                     trackPlayerPage.track = trendings[selectedRow].track
@@ -259,7 +262,7 @@ class ExplorerView: UIViewController {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
                 if selectUpload {
                     selectUpload = false
-                    videoPlayerPage.video = uploads[selectedRow].video
+//                    videoPlayerPage.video = uploads[selectedRow].video
                 }else if selectTrending {
                     selectTrending = false
                     videoPlayerPage.video = trendings[selectedRow].video
@@ -407,7 +410,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        55
+        48
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -425,8 +428,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.LatestMusic.rawValue)
         {
-//            return 3 // Latest Music
-//            print("hitung ", tracks.count)
+            //            return 3 // Latest Music
+            //            print("hitung ", tracks.count)
             return uploads.count
         }
         if(section == ExplorerSection.FeaturedArtist.rawValue)
@@ -476,8 +479,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             cell.mainTableView = mainTableView
             cell.upload = uploads[indexPath.row]
             if uploads[indexPath.row].track != nil {
-                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
-                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
+//                cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
+//                cell.artistNameLabel.text = uploads[indexPath.row].track?.email
                 //            print("masuk ", cell.player)
                 if cell.player {
                     //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
@@ -488,8 +491,8 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
                 }
             }
             if uploads[indexPath.row].video != nil {
-                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
-                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
+//                cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
+//                cell.artistNameLabel.text = uploads[indexPath.row].video?.email
                 //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
             }
             return cell
@@ -588,4 +591,18 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 25
+    }
+
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        let footerChildView = UIView(frame: CGRect(x: 60, y: 0, width: tableView.frame.width - 60, height: 0.5))
+//        footerChildView.backgroundColor = UIColor.darkGray
+        footerView.addSubview(footerChildView)
+        return footerView
+    }
+    
 }

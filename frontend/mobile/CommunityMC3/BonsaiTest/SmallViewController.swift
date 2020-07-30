@@ -9,11 +9,11 @@
 import UIKit
 
 class SmallViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     @IBAction func dismissButtonAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

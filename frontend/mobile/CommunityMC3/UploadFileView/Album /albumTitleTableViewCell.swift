@@ -19,6 +19,7 @@ class albumTitleTableViewCell: UITableViewCell {
     
     public func configure (with title: String, imageName: String) {
         albumTitleLabel.text = title
+        
     }
     
     @IBOutlet var albumTitleLabel: UILabel!
@@ -26,6 +27,8 @@ class albumTitleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
+        albumTitleLabel.text = "Album"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

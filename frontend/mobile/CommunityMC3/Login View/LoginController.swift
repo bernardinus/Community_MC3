@@ -10,7 +10,7 @@ import UIKit
 import CloudKit
 
 class LoginController: UIViewController {
-
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -29,21 +29,21 @@ class LoginController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-//        passwordField.placeholder = ""
+        //        passwordField.placeholder = ""
         passwordField.isSecureTextEntry = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//       super.viewWillAppear(animated)
-//    //           if(flag==0){
-//    //               tutor1View.alpha = 1
-//    //           }
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//       self.navigationController?.setNavigationBarHidden(false, animated: animated)
-//       super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        //       super.viewWillAppear(animated)
+        //    //           if(flag==0){
+        //    //               tutor1View.alpha = 1
+        //    //           }
+        //    }
+        //
+        //    override func viewWillDisappear(_ animated: Bool) {
+        //       self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        //       super.viewWillDisappear(animated)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,18 +69,18 @@ class LoginController: UIViewController {
             passwordField.text = ""
             print(oldAccount)
             callBack!()
-//            self.performSegue(withIdentifier: "loginMain", sender: self)
+            //            self.performSegue(withIdentifier: "loginMain", sender: self)
         }
     }
     
     func loginToCloudKit() {
         // 1. tunjuk databasenya apa
         let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
-//        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
+        //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
         
         // 2. kita tentuin recordnya
         let predicate = NSPredicate(value: true)
-//        let query = CKQuery(recordType: "Register", predicate: predicate)
+        //        let query = CKQuery(recordType: "Register", predicate: predicate)
         let query = CKQuery(recordType: "Account", predicate: predicate)
         
         // 3. execute querynya
@@ -97,13 +97,13 @@ class LoginController: UIViewController {
                 for register in registers {
                     DispatchQueue.main.async {
                         if register.value(forKey: "email") as? String == self.emailField.text ?? "" && register.value(forKey: "password") as? String == self.passwordField.text ?? "" {
-                                print(register)
-    //                            self.tableView.reloadData()
-                                UserDefaults.standard.set(self.emailField.text, forKey: "email")
-                                self.emailField.text = ""
-                                self.passwordField.text = ""
-                                self.callBack!()
-//                                self.performSegue(withIdentifier: "loginMain", sender: self)
+                            print(register)
+                            //                            self.tableView.reloadData()
+                            UserDefaults.standard.set(self.emailField.text, forKey: "email")
+                            self.emailField.text = ""
+                            self.passwordField.text = ""
+                            self.callBack!()
+                            //                                self.performSegue(withIdentifier: "loginMain", sender: self)
                         }else{
                             self.wrongLabel.isHidden = false
                         }
@@ -113,6 +113,6 @@ class LoginController: UIViewController {
         }
     }
     
-
-
+    
+    
 }

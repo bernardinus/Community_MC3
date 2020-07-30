@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class TrendingNowCell: UITableViewCell {
-
+    
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var musicImageView: UIImageView!
@@ -43,10 +43,10 @@ class TrendingNowCell: UITableViewCell {
         favoriteIconButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
         favoriteIconButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     @IBAction func playTrending(_ sender: UIButton) {
@@ -68,7 +68,7 @@ class TrendingNowCell: UITableViewCell {
     @IBAction func favoriteUpload(_ sender: UIButton) {
         favoriteIconButton.isSelected = !favoriteIconButton.isSelected
         changeFavourites()
-//        print(favoriteBool)
+        //        print(favoriteBool)
     }
     
     func changeFavourites() {
@@ -124,7 +124,7 @@ class TrendingNowCell: UITableViewCell {
                     self.videos = favourite.videos!
                 }
             }
-//            print("current", self.trendings.count)
+            //            print("current", self.trendings.count)
             if self.trending.track != nil {
                 for trending in self.trendings {
                     if trending.name == self.trending.track!.name {

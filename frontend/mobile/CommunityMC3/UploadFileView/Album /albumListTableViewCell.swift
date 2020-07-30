@@ -23,13 +23,19 @@ class albumListTableViewCell: UITableViewCell {
         albumCoverImage.image = UIImage(named: imageName)
     }
     
-    @IBOutlet var albumCoverImage: UIImageView!
-    @IBOutlet var albumTitleLabel: UILabel!
-    @IBOutlet var albumTrackLabel: UILabel!
+    @IBOutlet weak var albumCoverImage: UIImageView!
+    @IBOutlet weak var albumTitleLabel: UILabel!
+    @IBOutlet weak var albumTrackLabel: UILabel!
+    @IBOutlet weak var noAlbumTextField: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        albumCoverImage.image = UIImage(named: "no_album")
+        albumTitleLabel.isHidden = true
+        albumTrackLabel.isHidden = true
+        noAlbumTextField.isHidden = false
+        selectionStyle = .none
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

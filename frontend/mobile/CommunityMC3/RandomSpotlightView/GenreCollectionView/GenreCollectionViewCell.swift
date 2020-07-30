@@ -9,7 +9,7 @@
 import UIKit
 
 class GenreCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var genreCheckBoxImage: UIImageView!
     
@@ -17,5 +17,5 @@ class GenreCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

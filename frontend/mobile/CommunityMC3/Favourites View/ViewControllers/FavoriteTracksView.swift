@@ -11,7 +11,7 @@ import AVFoundation
 import AVKit
 
 class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var trackPlayer: AVAudioPlayer?
@@ -31,7 +31,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backItem?.title = ""
     }
-
+    
     
     @objc func directPlay(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
@@ -63,7 +63,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
                 let formatter = DateComponentsFormatter()
                 formatter.allowedUnits = [.hour, .minute, .second]
                 formatter.unitsStyle = .positional
-
+                
                 let formattedString = formatter.string(from: TimeInterval(self.seconds))!
                 self.seconds -= 1
                 cell.trackDurationLabel.text = "\(formattedString)"
@@ -111,7 +111,7 @@ extension FavoriteTracksView: UITableViewDelegate, UITableViewDataSource{
         cell.trackCoverImage.image = #imageLiteral(resourceName: "music-image-dummy1")
         
         if indexPath.row == tempIndex{
-
+            
         }else{
             cell.playButton.isSelected = false
         }
@@ -121,4 +121,8 @@ extension FavoriteTracksView: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "toTrackPlayer", sender: self)
+//    }
 }

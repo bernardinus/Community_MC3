@@ -52,7 +52,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcE-WL-1FA">
                                 <rect key="frame" x="20" y="459" width="374" height="50"/>
@@ -94,7 +94,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create new account!"/>
                                 <connections>
-                                    <segue destination="ub4-4C-5TT" kind="presentation" identifier="registerNewUser" modalPresentationStyle="fullScreen" id="Apg-5u-taB"/>
+                                    <segue destination="ub4-4C-5TT" kind="show" identifier="registerNewUser" id="Apg-5u-taB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign in or login to see the latest highlights " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94z-vq-zwl">
@@ -282,7 +282,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7JL-Ty-NRX">
                                         <rect key="frame" x="20" y="459" width="374" height="50"/>
@@ -326,6 +326,7 @@
                         <outlet property="passwordField" destination="p8P-ZD-Ud5" id="aon-pb-ibK"/>
                         <segue destination="1fn-f7-sA2" kind="presentation" identifier="registerMain" modalPresentationStyle="fullScreen" id="f0o-3Q-oSI"/>
                         <segue destination="FEU-WH-BwV" kind="unwind" unwindAction="unwindToExplorerView:" id="Xms-Lv-iQk"/>
+                        <segue destination="ItZ-Lz-Rln" kind="show" identifier="registerAccountSegue" id="Fpr-Iw-5eT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vc-dB-hbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -333,9 +334,19 @@
             </objects>
             <point key="canvasLocation" x="1959" y="96"/>
         </scene>
+        <!--SettingScreen-->
+        <scene sceneID="TX1-a7-8yt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SettingScreen" id="ItZ-Lz-Rln" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="5pt-Y6-kuA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="15Q-if-pEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2140" y="-362"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xN3-fS-K2l"/>
+        <segue reference="f0o-3Q-oSI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple" width="975" height="150"/>
