@@ -88,6 +88,9 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             return nil
         }
     }
+    @IBAction func unwindButton(_ sender: Any) {
+        print("unwindButtonClicked")
+    }
     
     func addSwipeGesture() {
         if popUpContentView.isHidden == false{
