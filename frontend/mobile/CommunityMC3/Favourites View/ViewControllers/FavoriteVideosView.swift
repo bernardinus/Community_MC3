@@ -70,7 +70,7 @@ class FavoriteVideosView: UIViewController {
     @objc func clickPlayVideo(_ sender: UIButton){
         let video: AVPlayer
         if countVideos != nil {
-            let videoURL = countVideos[sender.tag].fileURL
+            let videoURL = countVideos[sender.tag].fileData!.fileURL!
             let videoData = NSData(contentsOf: videoURL as URL)
 
             let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]

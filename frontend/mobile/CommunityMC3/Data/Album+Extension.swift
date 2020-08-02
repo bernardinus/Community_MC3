@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
-struct AlbumDataStruct
+class AlbumDataStruct
 {
     var cover:UIImage?
     var name:String
+    init()
+    {
+        cover = UIImage(color: .red)
+        name = ""
+    }
 }

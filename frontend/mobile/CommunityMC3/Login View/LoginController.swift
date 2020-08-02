@@ -73,7 +73,25 @@ class LoginController: UIViewController {
         }
     }
     
-    func loginToCloudKit() {
+    func loginToCloudKit()
+    {
+        print("login2cloudkit")
+        DataManager.shared().loginToCloudKit(email: emailField.text!, password: passwordField.text!) { (isSuccess, errorString) in
+            if(isSuccess)
+            {
+                print("loginSuccess")
+                DispatchQueue.main.async {
+                    self.callBack!()
+                }
+                
+            }
+            else
+            {
+                print("loginFail :errorString")
+            }
+        }
+        
+        /*
         // 1. tunjuk databasenya apa
         let database = CKContainer(identifier: "iCloud.ada.mc3.music").publicCloudDatabase
         //        let database = CKContainer(identifier: "iCloud.com.herokuapp.communitymc3").publicCloudDatabase
@@ -111,6 +129,7 @@ class LoginController: UIViewController {
                 }
             }
         }
+ */
     }
     
     

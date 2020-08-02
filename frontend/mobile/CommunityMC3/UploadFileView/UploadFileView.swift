@@ -19,7 +19,7 @@ class UploadFileView: UIViewController
     var trackData:TrackDataStruct?
     var isUploadVideo:Bool = false
     
-    var coverImage:UIImageView?
+    var coverImage:UIImage?
     var tapRecognizer:UIGestureRecognizer?
     
     var imgPicker:ImagePicker?
@@ -103,10 +103,7 @@ class UploadFileView: UIViewController
                 genre: genreTextField!.text!,
                 name: nameTextField!.text!,
                 email: "test@test",
-                fileURL: fileURL!,
-//                coverImage: coverImage.data
-                audioData: nil,
-                album: nil)
+                fileURL: fileURL!)
             DataManager.shared().UploadNewTrack(trackData:trackData!) { (isSuccess, errorString) in
                 if isSuccess
                 {
@@ -126,7 +123,7 @@ extension UploadFileView:ImagePickerDelegate
 {
     func didSelect(image: UIImage?)
     {
-        coverImage?.image = image
+//        coverImage?.image = image
     }
 }
 
@@ -144,7 +141,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1
         {
-            imgPicker?.present(from: coverImage!)
+//            imgPicker?.present(from: coverImage!)
         }
         else if indexPath.row == 3
         {
@@ -202,7 +199,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             let customCell = tableView.dequeueReusableCell(withIdentifier: AddCoverTableViewCell.identifier, for : indexPath) as! AddCoverTableViewCell
             //            customCell.configure(with: "Add Cover", imageName: "camera 1")
             
-            coverImage = customCell.addCoverImage
+//            coverImage = customCell.addCoverImage
             
             return customCell
         }

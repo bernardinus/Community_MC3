@@ -15,12 +15,17 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var secondTabButton: UIButton!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
+    var isPersonalProfile:Bool = true
     
     var userData:UserDataStruct?
     
     var cVC:CarouselPageViewController?
     
     var showcaseVC:SecondPageVC?
+    
+    var aboutVC:FirstPageVC?
+    
+    
     var isUploadVideo = false
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -31,21 +36,16 @@ class UserProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let loadEmail = userDefault.string(forKey: "email"){
-            userNameLabel.text = loadEmail
-        }
-        
         followButton.layer.cornerRadius = 10
         contactButton.layer.cornerRadius = 10
         setupActionSheet()
-        updateLayout()
         // Do any additional setup after loading the view.
         firstTabButton.alpha = 1
         secondTabButton.alpha = 0.5
         cVC?.moveToPage(index: 0)
         
-        
-        
+        followButton.isHidden = isPersonalProfile
+        contactButton.isHidden = isPersonalProfile
     }
     
     func updateLayout()
@@ -53,6 +53,23 @@ class UserProfileVC: UIViewController {
         if let loadEmail = userDefault.string(forKey: "email"){
             userNameLabel.text = loadEmail
         }
+
+        userData = UserDataStruct(DataManager.shared().currentUser!)
+        print("Name :\(userData!.name!)")
+        
+        // name
+        userNameLabel.text = userData?.name
+        
+        
+        // about VC
+        aboutVC?.updateData(
+            genre: userData!.genre!,
+            phoneNumber: userData!.phoneNumber!,
+            socialMedia: userData!.instagram!
+        )
+        
+        // showcase VC
+        
     }
     
     @IBAction func unwindToUserProfile(_ segue:UIStoryboardSegue)
@@ -62,6 +79,8 @@ class UserProfileVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+
+        super.viewDidAppear(animated)
         
         
     }
@@ -79,15 +98,18 @@ class UserProfileVC: UIViewController {
         }
     }
     
+    func signOut(action:UIAlertAction)
+    {
+        DataManager.shared().logout()
+        self.performSegue(withIdentifier: "logoutUser", sender: nil)
+
+    }
+    
     func setupActionSheet()
     {
         
         
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: {
-            (action: UIAlertAction) in
-            self.userDefault.removeObject(forKey: "email")
-            self.performSegue(withIdentifier: "logoutUser", sender: self)
-        })
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: signOut)
         actionSheet.addAction(signOutAction)
         
         let editAction = UIAlertAction(title: "Edit", style: .default,
@@ -133,10 +155,12 @@ class UserProfileVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
-        super.viewWillAppear(animated)
+        
+        aboutVC = cVC!.items[0] as? FirstPageVC
         
         showcaseVC = cVC!.items[1] as? SecondPageVC
         showcaseVC?.showcaseVideoSegue = {
@@ -148,6 +172,12 @@ class UserProfileVC: UIViewController {
         showcaseVC?.showcaseMusicSegue = {
             self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
         }
+        
+        super.viewWillAppear(animated)
+        
+        
+        
+        updateLayout()
         
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 class SocialMediaCell: UITableViewCell {
 
+    @IBOutlet weak var socialAccountLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
