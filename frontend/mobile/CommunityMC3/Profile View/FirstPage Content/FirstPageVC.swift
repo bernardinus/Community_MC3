@@ -18,6 +18,11 @@ enum AboutSection:Int{
 class FirstPageVC: UIViewController {
     
     @IBOutlet weak var aboutTableView: UITableView!
+
+    var genreLabel:String!
+    var phoneNumberLabel:String!
+    var socialMediaLabel:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +30,17 @@ class FirstPageVC: UIViewController {
         aboutTableView.register(UINib(nibName: "MusicGenreInfoCell", bundle: nil), forCellReuseIdentifier: "musicGenreInfoCell")
         aboutTableView.register(UINib(nibName: "ContactInfoCell", bundle: nil), forCellReuseIdentifier: "contactInfoCell")
         aboutTableView.register(UINib(nibName: "SocialMediaCell", bundle: nil), forCellReuseIdentifier: "socialMediaCell")
+        aboutTableView.isUserInteractionEnabled = false
         
+    }
+    
+    func updateData(genre:String,
+                    phoneNumber:String,
+                    socialMedia:String)
+    {
+        self.genreLabel = genre
+        self.phoneNumberLabel = phoneNumber
+        self.socialMediaLabel = socialMedia
     }
 }
 
@@ -63,16 +78,19 @@ extension FirstPageVC: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == AboutSection.MusicGenre.rawValue)
         {
             let cell = aboutTableView.dequeueReusableCell(withIdentifier: "musicGenreInfoCell") as! MusicGenreInfoCell
+            cell.genreLabel.text = genreLabel
             return cell
         }
         if(indexPath.section == AboutSection.ContactInfo.rawValue)
         {
             let cell = aboutTableView.dequeueReusableCell(withIdentifier: "contactInfoCell") as! ContactInfoCell
+            cell.phoneNumberLabel.text = phoneNumberLabel
             return cell
         }
         if(indexPath.section == AboutSection.SocialMedia.rawValue)
         {
             let cell = aboutTableView.dequeueReusableCell(withIdentifier: "socialMediaCell") as! SocialMediaCell
+            cell.socialAccountLabel.text = socialMediaLabel
             return cell
         }
         

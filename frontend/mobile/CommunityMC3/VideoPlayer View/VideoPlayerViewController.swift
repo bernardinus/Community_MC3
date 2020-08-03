@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import CloudKit
 
 class VideoPlayerViewController: UIViewController {
     
@@ -25,14 +26,14 @@ class VideoPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        video.fileURL = retrieveVideo(video: video)!
+        video.fileData = CKAsset(fileURL:retrieveVideo(video: video)!)
         loadThumbnail()
     }
     
     func retrieveVideo(video: VideosDataStruct?) -> URL? {
         if video != nil {
-            let videoURL = video!.fileURL
-            let videoData = NSData(contentsOf: videoURL as URL)
+            let videoURL = video!.fileData?.fileURL!
+            let videoData = NSData(contentsOf: videoURL! as URL)
             
             let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
             let destinationPath = NSURL(fileURLWithPath: documentsPath).appendingPathComponent(video!.name + ".mov", isDirectory: false) //This is where I messed up.
@@ -41,7 +42,7 @@ class VideoPlayerViewController: UIViewController {
             
             return destinationPath!
         }
-        return video?.fileURL
+        return video?.fileData?.fileURL
     }
     
     func loadThumbnail() {
@@ -49,7 +50,7 @@ class VideoPlayerViewController: UIViewController {
         let urls: URL?
         
         if video != nil {
-            urls = video.fileURL
+            urls = video.fileData?.fileURL
         }else {
             let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
             urls = URL(fileURLWithPath: videoUrl!)
@@ -80,8 +81,8 @@ class VideoPlayerViewController: UIViewController {
         let video:AVPlayer?
         
         if self.video != nil {
-            let urls = self.video.fileURL
-            video = AVPlayer(url: urls)
+            let urls = self.video.fileData?.fileURL
+            video = AVPlayer(url: urls!)
         }else {
             if let urlString = Bundle.main.path(forResource: " ", ofType: "mp4"){
                 video = AVPlayer(url: URL(fileURLWithPath: urlString))

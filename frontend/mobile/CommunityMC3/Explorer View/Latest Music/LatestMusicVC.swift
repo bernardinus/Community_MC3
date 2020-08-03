@@ -32,12 +32,12 @@ class LatestMusicVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
-//                trackPlayerPage.track = uploads[selectedRow].track
+                trackPlayerPage.track = uploads[selectedRow].trackData
             }
         }
         if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
-//                videoPlayerPage.video = uploads[selectedRow].video
+                videoPlayerPage.video = uploads[selectedRow].videoData
             }
         }
     }
@@ -56,23 +56,7 @@ extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = latestMusicTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
         cell.mainTableView = mainTableView
-        cell.upload = uploads[indexPath.row]
-        if uploads[indexPath.row].track != nil {
-//            cell.trackTitleLabel.text = uploads[indexPath.row].track?.name
-//            cell.artistNameLabel.text = uploads[indexPath.row].track?.email
-            //            print("masuk ", cell.player)
-            if cell.player {
-                //                cell.playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
-                cell.playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            }else{
-                //                cell.playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
-                cell.playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            }
-        }
-        if uploads[indexPath.row].video != nil {
-//            cell.trackTitleLabel.text = uploads[indexPath.row].video?.name
-//            cell.artistNameLabel.text = uploads[indexPath.row].video?.email
-        }
+        cell.updateCellData(data: uploads[indexPath.row])
         return cell
     }
     
@@ -82,11 +66,13 @@ extension LatestMusicVC: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
-        if uploads[selectedRow].track != nil {
-            self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
-        }
-        if uploads[selectedRow].video != nil {
+        if(uploads[selectedRow].isVideo)
+        {
             self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
+        }
+        else
+        {
+            self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
         }
     }
 }

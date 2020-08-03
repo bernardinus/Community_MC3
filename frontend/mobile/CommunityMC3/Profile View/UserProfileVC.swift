@@ -15,12 +15,18 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var secondTabButton: UIButton!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var otherMenu: UIBarButtonItem!
+    var isPersonalProfile:Bool = true
     
     var userData:UserDataStruct?
     
     var cVC:CarouselPageViewController?
     
     var showcaseVC:SecondPageVC?
+    
+    var aboutVC:FirstPageVC?
+    
+    
     var isUploadVideo = false
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -34,25 +40,65 @@ class UserProfileVC: UIViewController {
         if let loadEmail = userDefault.string(forKey: "email"){
             userNameLabel.text = loadEmail
         }
-        
+        loadLocalisation()
         followButton.layer.cornerRadius = 10
         contactButton.layer.cornerRadius = 10
         setupActionSheet()
-        updateLayout()
+
         // Do any additional setup after loading the view.
         firstTabButton.alpha = 1
         secondTabButton.alpha = 0.5
         cVC?.moveToPage(index: 0)
         
+        followButton.isHidden = isPersonalProfile
+        contactButton.isHidden = isPersonalProfile
+        
+        if(!isPersonalProfile)
+        {
+            otherMenu.image = UIImage(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
+            otherMenu.isEnabled = false
+        }
+        else
+        {
+            otherMenu.image = UIImage(systemName: "ellipsis")
+            otherMenu.isEnabled = true
+        }
+    }
+    
+    func loadLocalisation() {
+        followButton.titleLabel?.text = NSLocalizedString("Follow".uppercased(), comment: "")
+        contactButton.titleLabel?.text = NSLocalizedString("Contact".uppercased(), comment: "")
+        firstTabButton.titleLabel?.text = NSLocalizedString("About", comment: "")
+        secondTabButton.titleLabel?.text = NSLocalizedString("Showcase".uppercased(), comment: "")
+    }
+    
+    @IBAction func contactButtonTouched(_ sender: Any) {
         
         
     }
-    
     func updateLayout()
     {
         if let loadEmail = userDefault.string(forKey: "email"){
             userNameLabel.text = loadEmail
         }
+        
+
+        userData = UserDataStruct(DataManager.shared().currentUser!)
+        print("Name :\(userData!.name!)")
+        
+        // name
+        userNameLabel.text = userData?.name
+        
+        
+        // about VC
+        aboutVC?.updateData(
+            genre: userData!.genre!,
+            phoneNumber: userData!.phoneNumber!,
+            socialMedia: userData!.instagram!
+        )
+        
+        // showcase VC
+        
     }
     
     @IBAction func unwindToUserProfile(_ segue:UIStoryboardSegue)
@@ -62,6 +108,8 @@ class UserProfileVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+
+        super.viewDidAppear(animated)
         
         
     }
@@ -79,28 +127,31 @@ class UserProfileVC: UIViewController {
         }
     }
     
+    func signOut(action:UIAlertAction)
+    {
+        DataManager.shared().logout()
+        self.performSegue(withIdentifier: "logoutUser", sender: nil)
+
+    }
+    
     func setupActionSheet()
     {
         
         
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive, handler: {
-            (action: UIAlertAction) in
-            self.userDefault.removeObject(forKey: "email")
-            self.performSegue(withIdentifier: "logoutUser", sender: self)
-        })
+        let signOutAction = UIAlertAction(title: NSLocalizedString("Sign Out", comment: ""), style: .destructive, handler: signOut)
         actionSheet.addAction(signOutAction)
         
-        let editAction = UIAlertAction(title: "Edit", style: .default,
+        let editAction = UIAlertAction(title: NSLocalizedString("Edit".uppercased(), comment: ""), style: .default,
                                        handler: {
                                         action in
                                         self.performSegue(withIdentifier: "editProfileSegue", sender: nil) }
         )
         actionSheet.addAction(editAction)
         
-        let shareAction = UIAlertAction(title: "Share", style: .default)
+        let shareAction = UIAlertAction(title: NSLocalizedString("Share".uppercased(), comment: ""), style: .default)
         actionSheet.addAction(shareAction)
         
-        let uploadMusic = UIAlertAction(title: "Upload Music", style: .default,
+        let uploadMusic = UIAlertAction(title: NSLocalizedString("Upload Music".uppercased(), comment: ""), style: .default,
                                          handler: {
                                             action in
                                             self.isUploadVideo = false
@@ -108,7 +159,7 @@ class UserProfileVC: UIViewController {
         )
         actionSheet.addAction(uploadMusic)
         
-        let uploadVideo = UIAlertAction(title: "Upload Video", style: .default,
+        let uploadVideo = UIAlertAction(title: NSLocalizedString("Upload Video".uppercased(), comment: ""), style: .default,
                                          handler: {
                                             action in
                                             self.isUploadVideo = true
@@ -116,14 +167,14 @@ class UserProfileVC: UIViewController {
         )
         actionSheet.addAction(uploadVideo)
         
-        let uploadPhotos = UIAlertAction(title: "Upload Photos", style: .default,
+        let uploadPhotos = UIAlertAction(title: NSLocalizedString("Upload Photos".uppercased(), comment: ""), style: .default,
                                          handler: {
                                             action in
                                             print("uploadPhotos") }
         )
         actionSheet.addAction(uploadPhotos)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         actionSheet.addAction(cancelAction)
     }
     
@@ -133,10 +184,12 @@ class UserProfileVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
-        super.viewWillAppear(animated)
+        
+        aboutVC = cVC!.items[0] as? FirstPageVC
         
         showcaseVC = cVC!.items[1] as? SecondPageVC
         showcaseVC?.showcaseVideoSegue = {
@@ -148,6 +201,12 @@ class UserProfileVC: UIViewController {
         showcaseVC?.showcaseMusicSegue = {
             self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
         }
+        
+        super.viewWillAppear(animated)
+        
+        
+        
+        updateLayout()
         
     }
     

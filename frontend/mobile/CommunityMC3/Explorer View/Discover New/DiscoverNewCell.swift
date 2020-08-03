@@ -12,11 +12,13 @@ class DiscoverNewCell: UITableViewCell {
     
     
     @IBOutlet weak var tapSurpriseButton: UIButton!
+    @IBOutlet weak var tapSupriseLabel: UILabel!
     
     var callBack: (() -> Void)? = nil
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        tapSupriseLabel.text = NSLocalizedString("Suprise".uppercased(), comment: "")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -24,6 +24,7 @@ class SearchView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dismissKeyboard()
         
     }
     

@@ -82,7 +82,7 @@ class CloudKitUtil
     func loadRecordFromPublicDB(recordType:String,recordName:[CKRecord.Reference], completionHandler:@escaping(Bool, String, [CKRecord])->Void)
     {
         let predicate = NSPredicate(format: "recordID IN %@", recordName)
-        let query = CKQuery(recordType: "Track", predicate: predicate)
+        let query = CKQuery(recordType: recordType, predicate: predicate)
         publicDB?.perform(query, inZoneWith: nil, completionHandler: { (records, error) in
             if error != nil
             {

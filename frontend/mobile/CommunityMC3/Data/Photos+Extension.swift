@@ -9,14 +9,23 @@
 import Foundation
 import UIKit
 
-struct PhotoDataStruct
+class PhotoDataStruct
 {
     //    var fileData:UIImage?
     
-    var fileURL: URL
+    var fileURL: URL?
     var email: String
     var genre:String
     var name: String
+    
+    
+    init()
+    {
+        fileURL = URL(string: "")
+        email = ""
+        genre = ""
+        name = ""
+    }
 }
 
 struct ProfilePictureDataStruct {

@@ -29,7 +29,7 @@ class GenreTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        genreLabel.text = "Genre"
+        genreLabel.text = NSLocalizedString("Genre", comment: "")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

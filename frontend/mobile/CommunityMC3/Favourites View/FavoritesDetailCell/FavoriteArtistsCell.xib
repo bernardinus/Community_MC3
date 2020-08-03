@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,17 +16,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="170"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLv-AE-JtZ">
-                        <rect key="frame" x="20" y="11" width="120" height="120"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BLv-AE-JtZ">
+                        <rect key="frame" x="15" y="15" width="130" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="EHf-Us-OdO"/>
+                            <constraint firstAttribute="height" constant="130" id="JdR-Tm-34w"/>
+                        </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SF-Vq-WYF">
-                        <rect key="frame" x="20" y="11" width="120" height="120"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SF-Vq-WYF">
+                        <rect key="frame" x="15" y="15" width="130" height="130"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p27-Iv-v2E">
-                        <rect key="frame" x="20" y="134" width="120" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p27-Iv-v2E">
+                        <rect key="frame" x="20" y="142" width="120" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="czx-jt-zig"/>
+                            <constraint firstAttribute="height" constant="28" id="g0J-TR-DyZ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <state key="normal" title="Button">
                             <color key="titleColor" red="0.45882352939999999" green="0.4886339307" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -35,6 +39,19 @@
                     </button>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="p27-Iv-v2E" secondAttribute="bottom" id="0zM-U3-Llb"/>
+                <constraint firstAttribute="trailing" secondItem="p27-Iv-v2E" secondAttribute="trailing" constant="20" id="GIH-6D-Jur"/>
+                <constraint firstAttribute="trailing" secondItem="BLv-AE-JtZ" secondAttribute="trailing" constant="15" id="HNN-Az-n93"/>
+                <constraint firstItem="BLv-AE-JtZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="SO7-ah-4lS"/>
+                <constraint firstAttribute="trailing" secondItem="3SF-Vq-WYF" secondAttribute="trailing" constant="15" id="XFX-ve-8E8"/>
+                <constraint firstItem="3SF-Vq-WYF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="eZy-3B-e3s"/>
+                <constraint firstItem="BLv-AE-JtZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="r2Q-aa-1eo"/>
+                <constraint firstItem="3SF-Vq-WYF" firstAttribute="height" secondItem="BLv-AE-JtZ" secondAttribute="height" id="rMt-dX-EU9"/>
+                <constraint firstItem="p27-Iv-v2E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="uWZ-44-vrl"/>
+                <constraint firstItem="3SF-Vq-WYF" firstAttribute="width" secondItem="BLv-AE-JtZ" secondAttribute="width" id="vxo-1b-YbE"/>
+                <constraint firstItem="3SF-Vq-WYF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="xMA-Wl-hAt"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="artistImage" destination="BLv-AE-JtZ" id="EyI-eV-XRu"/>
