@@ -28,11 +28,15 @@ class UserProfileVC: UIViewController {
     
     
     var isUploadVideo = false
+    var phoneNumber = "087875732888"
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userNameLabel: UILabel!
     
     var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
+    
+    var actionSheetToCall: UIAlertController = UIAlertController(title: "Contact", message: "Dial phone number", preferredStyle: .actionSheet)
+    
     let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -44,6 +48,7 @@ class UserProfileVC: UIViewController {
         followButton.layer.cornerRadius = 10
         contactButton.layer.cornerRadius = 10
         setupActionSheet()
+        setupActionSheetToCall()
 
         // Do any additional setup after loading the view.
         firstTabButton.alpha = 1
@@ -52,7 +57,7 @@ class UserProfileVC: UIViewController {
         
         followButton.isHidden = isPersonalProfile
         contactButton.isHidden = isPersonalProfile
-        
+
         if(!isPersonalProfile)
         {
             otherMenu.image = UIImage(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
@@ -73,7 +78,7 @@ class UserProfileVC: UIViewController {
     }
     
     @IBAction func contactButtonTouched(_ sender: Any) {
-        
+        self.present(actionSheetToCall, animated: true, completion: nil)
         
     }
     func updateLayout()
@@ -176,6 +181,21 @@ class UserProfileVC: UIViewController {
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         actionSheet.addAction(cancelAction)
+    }
+    
+    func setupActionSheetToCall(){
+        let callAction = UIAlertAction(title: "Make a Phone Call", style: .default, handler: { action in callPhoneNumber(phoneNumber: self.userData!.phoneNumber!)
+            
+        })
+        actionSheetToCall.addAction(callAction)
+        
+        let openInstagramAction = UIAlertAction(title: "Open Instagram", style: .default, handler: {
+            action in openInstagram(username: self.userData!.instagram!)
+        })
+        actionSheetToCall.addAction(openInstagramAction)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
+        actionSheetToCall.addAction(cancelAction)
     }
     
     @objc func returnToExplorerView()

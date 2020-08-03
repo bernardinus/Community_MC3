@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EC7-Iq-ZwS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EC7-Iq-ZwS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +20,7 @@
         <!--Setting Controller-->
         <scene sceneID="lgf-Vm-A48">
             <objects>
-                <viewController id="EC7-Iq-ZwS" customClass="SettingController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EC7-Iq-ZwS" customClass="SettingController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IYN-dI-XBj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,8 +143,37 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="chevron.down" catalog="system"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiD-GE-kAn">
+                                <rect key="frame" x="20" y="500" width="122" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08XXXXXXXXXX" borderStyle="roundedRect" placeholder="08XXXXXXXXXX" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IHH-39-VvO">
+                                <rect key="frame" x="20" y="529" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="tiana.rosser" borderStyle="roundedRect" placeholder="tiana.rosser" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eSg-Tj-NaN">
+                                <rect key="frame" x="20" y="608" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGq-QB-pHo">
+                                <rect key="frame" x="20" y="579" width="83" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="gTI-gq-cz6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="EKY-zG-FTu" firstAttribute="top" secondItem="tzd-Rh-4Nb" secondAttribute="bottom" constant="8" id="3yJ-KU-7g7"/>
                             <constraint firstItem="HE2-xJ-8oh" firstAttribute="top" secondItem="EKY-zG-FTu" secondAttribute="bottom" constant="16" id="4v4-ho-sAN"/>
@@ -173,16 +204,19 @@
                             <constraint firstItem="tzd-Rh-4Nb" firstAttribute="top" secondItem="W6i-ln-Bn7" secondAttribute="bottom" constant="40" id="vH2-gz-14G"/>
                             <constraint firstItem="gKu-91-I7U" firstAttribute="leading" secondItem="gTI-gq-cz6" secondAttribute="leading" constant="20" id="xrU-bD-jge"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gTI-gq-cz6"/>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="5HG-rP-zMv" id="xYB-RK-qTd"/>
                         <outlet property="emailTitleLabel" destination="HE2-xJ-8oh" id="H6E-BL-xkV"/>
                         <outlet property="genreField" destination="gKu-91-I7U" id="C4t-jd-sY8"/>
                         <outlet property="genreTitleLabel" destination="zZb-Sx-iTZ" id="khJ-ht-XW2"/>
+                        <outlet property="instagramField" destination="eSg-Tj-NaN" id="6Ov-hA-aIq"/>
+                        <outlet property="instagramLabel" destination="IGq-QB-pHo" id="Eos-wF-aty"/>
                         <outlet property="menuButton" destination="3Ek-ve-Dd6" id="Eda-zY-M9j"/>
                         <outlet property="nameField" destination="EKY-zG-FTu" id="s62-F8-PO6"/>
                         <outlet property="nameTitleLabel" destination="tzd-Rh-4Nb" id="f3X-Tx-h0Q"/>
+                        <outlet property="phoneNumberField" destination="IHH-39-VvO" id="GJd-Yk-cvn"/>
+                        <outlet property="phoneNumberLabel" destination="EiD-GE-kAn" id="Y5C-8D-Nag"/>
                         <outlet property="saveButton" destination="lxf-A9-Uze" id="lIY-Rx-6Px"/>
                         <outlet property="settingImage" destination="W6i-ln-Bn7" id="XhA-KR-LGg"/>
                         <outlet property="settingTitleLabel" destination="ve3-U1-shI" id="Fvv-ov-Ka3"/>
@@ -208,7 +242,7 @@
         <!--Setting Controller-->
         <scene sceneID="PKc-MC-ixh">
             <objects>
-                <viewController id="Gbi-kr-7K1" customClass="SettingController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gbi-kr-7K1" customClass="SettingController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mal-ip-HyZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -406,7 +440,7 @@
                                                 <state key="normal" image="checkmark.square.fill" catalog="system"/>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -421,12 +455,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <viewLayoutGuide key="safeArea" id="e67-8i-nUm"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ohv-Mh-k2Z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="WvX-5f-V9w"/>
                 </viewController>
@@ -443,5 +477,8 @@
         <image name="setting" width="288" height="288"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

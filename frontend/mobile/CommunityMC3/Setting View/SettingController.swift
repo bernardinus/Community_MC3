@@ -22,6 +22,10 @@ class SettingController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var genreField: UITextField!
     @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneNumberField: UITextField!
+    @IBOutlet weak var instagramLabel: UILabel!
+    @IBOutlet weak var instagramField: UITextField!
     
     var isEditProfile:Bool = true
     var emailAddr:String = ""
