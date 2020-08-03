@@ -104,7 +104,7 @@ class LoginController: UIViewController {
             }
             else
             {
-                print("loginFail :errorString")
+                print("loginFail :\(errorString)")
             }
         }
         

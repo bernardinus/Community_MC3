@@ -11,7 +11,7 @@ import UIKit
 
 func openInstagram(username:String)
 {
-    let instagramURL = URL(string: "instagram://user?username=\(username)")
+    let instagramURL = URL(string:"instagram://user?username=\(username)")
     if UIApplication.shared.canOpenURL(instagramURL!)
     {
         UIApplication.shared.open(instagramURL!, options: [:], completionHandler: { (success) in
@@ -23,6 +23,37 @@ func openInstagram(username:String)
         print("can't open url \(instagramURL!)")
     }
 }
+
+func sendMessageInWhatsApp(message:String)
+{
+    let whatsappURL = URL(string:"whatsapp://send?text=\(message)")
+    if UIApplication.shared.canOpenURL(whatsappURL!)
+    {
+        UIApplication.shared.open(whatsappURL!, options: [:], completionHandler: { (success) in
+            print("open url \(whatsappURL!) status \(success)")
+        })
+    }
+    else
+    {
+        print("can't open url \(whatsappURL!)")
+    }
+}
+
+func callPhoneNumber(phoneNumber:String)
+{
+    let phoneNumberURL = URL(string:"tel://\(phoneNumber)")
+    if UIApplication.shared.canOpenURL(phoneNumberURL!)
+    {
+        UIApplication.shared.open(phoneNumberURL!, options: [:], completionHandler: { (success) in
+            print("open url \(phoneNumberURL!) status \(success)")
+        })
+    }
+    else
+    {
+        print("can't open url \(phoneNumberURL!)")
+    }
+}
+
 
 func setupUIViewForGenre(view:UIView, genre:String)
 {

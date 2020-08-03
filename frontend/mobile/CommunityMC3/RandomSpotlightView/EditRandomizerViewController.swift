@@ -18,6 +18,7 @@ class EditRandomizerViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var clearAllButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    var callback:(()->Void)? = nil
     
     var sortByArray = ["Music", "Artist"]
     var genreArray = ["Rock", "Jazz", "Pop", "RnB", "Acoutic", "Blues"]
@@ -70,7 +71,7 @@ class EditRandomizerViewController: UIViewController {
     
     @IBAction func applyButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-        
+        callback!()
     }
     
     @IBAction func clearAllButtonAction(_ sender: UIButton) {

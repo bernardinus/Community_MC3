@@ -267,7 +267,7 @@
 		A1689D3824C7D67700A49732 /* AlertViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewHelper.swift; sourceTree = "<group>"; };
 		A1689D3A24C7D76500A49732 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		A169E8A524CA9226000D815F /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
-		A16B449F24B2FBF200053D6C /* CommunityMC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityMC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A16B449F24B2FBF200053D6C /* Allegro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allegro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16B44A224B2FBF300053D6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16B44A424B2FBF300053D6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A16B44A624B2FBF300053D6C /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
@@ -667,7 +667,7 @@
 		A16B44A024B2FBF200053D6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A16B449F24B2FBF200053D6C /* CommunityMC3.app */,
+				A16B449F24B2FBF200053D6C /* Allegro.app */,
 				A16B44B724B2FBF700053D6C /* CommunityMC3Tests.xctest */,
 				A16B44C224B2FBF700053D6C /* CommunityMC3UITests.xctest */,
 			);
@@ -1084,9 +1084,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A16B449E24B2FBF200053D6C /* CommunityMC3 */ = {
+		A16B449E24B2FBF200053D6C /* Allegro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "CommunityMC3" */;
+			buildConfigurationList = A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "Allegro" */;
 			buildPhases = (
 				3542EBCB9805E4C1C03E5E05 /* [CP] Check Pods Manifest.lock */,
 				A16B449B24B2FBF200053D6C /* Sources */,
@@ -1098,9 +1098,9 @@
 			);
 			dependencies = (
 			);
-			name = CommunityMC3;
+			name = Allegro;
 			productName = CommunityMC3;
-			productReference = A16B449F24B2FBF200053D6C /* CommunityMC3.app */;
+			productReference = A16B449F24B2FBF200053D6C /* Allegro.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A16B44B624B2FBF700053D6C /* CommunityMC3Tests */ = {
@@ -1179,7 +1179,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A16B449E24B2FBF200053D6C /* CommunityMC3 */,
+				A16B449E24B2FBF200053D6C /* Allegro */,
 				A16B44B624B2FBF700053D6C /* CommunityMC3Tests */,
 				A16B44C124B2FBF700053D6C /* CommunityMC3UITests */,
 			);
@@ -1516,12 +1516,12 @@
 /* Begin PBXTargetDependency section */
 		A16B44B924B2FBF700053D6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A16B449E24B2FBF200053D6C /* CommunityMC3 */;
+			target = A16B449E24B2FBF200053D6C /* Allegro */;
 			targetProxy = A16B44B824B2FBF700053D6C /* PBXContainerItemProxy */;
 		};
 		A16B44C424B2FBF700053D6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A16B449E24B2FBF200053D6C /* CommunityMC3 */;
+			target = A16B449E24B2FBF200053D6C /* Allegro */;
 			targetProxy = A16B44C324B2FBF700053D6C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1699,6 +1699,7 @@
 				CODE_SIGN_ENTITLEMENTS = CommunityMC3/CommunityMC3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7D734D7EN3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1710,6 +1711,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ada.mc3.music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MusicCommunity;
@@ -1726,6 +1728,7 @@
 				CODE_SIGN_ENTITLEMENTS = CommunityMC3/CommunityMC3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7D734D7EN3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1737,6 +1740,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ada.mc3.music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MusicCommunity;
@@ -1859,7 +1863,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "CommunityMC3" */ = {
+		A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "Allegro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A16B44CC24B2FBF700053D6C /* Debug */,

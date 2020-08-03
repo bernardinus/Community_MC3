@@ -15,6 +15,7 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var secondTabButton: UIButton!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
+    @IBOutlet weak var otherMenu: UIBarButtonItem!
     var isPersonalProfile:Bool = true
     
     var userData:UserDataStruct?
@@ -51,6 +52,17 @@ class UserProfileVC: UIViewController {
         
         followButton.isHidden = isPersonalProfile
         contactButton.isHidden = isPersonalProfile
+        
+        if(!isPersonalProfile)
+        {
+            otherMenu.image = UIImage(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
+            otherMenu.isEnabled = false
+        }
+        else
+        {
+            otherMenu.image = UIImage(systemName: "ellipsis")
+            otherMenu.isEnabled = true
+        }
     }
     
     func loadLocalisation() {
@@ -60,11 +72,16 @@ class UserProfileVC: UIViewController {
         secondTabButton.titleLabel?.text = NSLocalizedString("Showcase".uppercased(), comment: "")
     }
     
+    @IBAction func contactButtonTouched(_ sender: Any) {
+        
+        
+    }
     func updateLayout()
     {
         if let loadEmail = userDefault.string(forKey: "email"){
             userNameLabel.text = loadEmail
         }
+        
 
         userData = UserDataStruct(DataManager.shared().currentUser!)
         print("Name :\(userData!.name!)")

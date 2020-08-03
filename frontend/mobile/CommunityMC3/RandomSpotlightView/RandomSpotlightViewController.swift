@@ -120,8 +120,20 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         //        }
     }
     
-    @IBAction func searchButtonAction(_ sender: UIButton) {
-        
+    override func viewWillAppear(_ animated: Bool) {
+        startSearch()
+        super.viewWillAppear(animated)
+    }
+    
+    func startSearch()
+    {
+        self.editButton.isHidden = true
+        self.popUpView.isHidden = true
+        self.searchButton.isHidden = false
+        self.innerCircleEffectImage.isHidden = false
+        self.outerCircleEffectImage.isHidden = false
+        nextButton.isHidden = true
+
         UIView.animate(withDuration: 2.0, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
@@ -148,12 +160,20 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
                 self.searchButton.isHidden = true
                 self.innerCircleEffectImage.isHidden = true
                 self.outerCircleEffectImage.isHidden = true
+                self.nextButton.isHidden = false
+                self.editButton.isHidden = false
             })
         })
     }
     
+    @IBAction func searchButtonAction(_ sender: UIButton) {
+        
+        startSearch()
+    }
+    
     @IBAction func editButtonAction(_ sender: UIButton) {
         let editRandomizerVC = storyboard?.instantiateViewController(identifier: "EditRandomizerVC") as! EditRandomizerViewController
+        editRandomizerVC.callback = startSearch
         editRandomizerVC.transitioningDelegate = self
         editRandomizerVC.modalPresentationStyle = .custom
         editRandomizerVC.modalTransitionStyle = .coverVertical

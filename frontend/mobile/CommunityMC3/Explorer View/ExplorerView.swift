@@ -190,6 +190,8 @@ class ExplorerView: UIViewController {
         //        self.performSegue(withIdentifier: "notificationScreenSegue", sender: nil)
         print("openInstagram")
         openInstagram(username: "ubmuniversity")
+        
+        
     }
     
     @IBAction func unwindToExplorerView(_ segue:UIStoryboardSegue)

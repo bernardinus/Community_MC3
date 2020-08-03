@@ -171,11 +171,8 @@ class DataManager
             {
 //                print("Login to CloudKit Success \(record.count)")
                 self.currentUser = record[0]
-                //                let refUserData = self.currentUser!["userData"] as! CKRecord.Reference
-                self.registerCurrentLoginInUserDefault(email: email, password: password)
-                self.loginSuccess(isSuccess: isSuccess, errorString: errorString)
-//                print("Account: \(self.currentUser!)")
                 let userDataRef = self.currentUser!.value(forKey: "userData")! as! CKRecord.Reference
+
                 
                 self.ckUtil.loadRecordFromPublicDB(recordID: userDataRef.recordID)
                 {
@@ -184,6 +181,11 @@ class DataManager
                     {
 //                        print("UserData: \(userRecord!)")
                         self.currentUser = userRecord
+                        
+                        self.registerCurrentLoginInUserDefault(email: email, password: password)
+                        self.loginSuccess(isSuccess: isSuccess, errorString: errorString)
+        //                print("Account: \(self.currentUser!)")
+    
                         
                         let tracks = userRecord?.value(forKey: "tracks") as! [CKRecord.Reference]
                         let recordNames = tracks.map { $0.recordID.recordName }
@@ -209,9 +211,10 @@ class DataManager
                     {
                         print("Record ID Not Found \(errorString)")
                     }
+                    completionHandler(isSuccess, errorString)
+
                 }
                 
-                completionHandler(isSuccess, errorString)
                 
             }
         }
@@ -303,7 +306,7 @@ class DataManager
     {
 //        getTrendingNow()
         getLatestUpload()
-//        getFeaturedArtist()
+        getFeaturedArtist()
 //        getFeaturedVideo()
     }
     
@@ -444,8 +447,9 @@ class DataManager
                 let count:Int = records.count
                 if count > 0
                 {
-                    print("GetFeaturedArtist Success")
+                    print("GetFeaturedArtist Success \(records.count)")
                     let featuredArtistRecord = records[0]
+                    print(featuredArtistRecord)
                     self.newFeaturedArtist  = FeaturedDataStruct()
                     self.newFeaturedArtist?.id = featuredArtistRecord.recordID
                     
@@ -468,13 +472,16 @@ class DataManager
     {
         if(isSuccess)
         {
-            print("Featured Artist Get User Success")
-            self.newTrendingNow?.tracks.removeAll()
+            print("Featured Artist Get User Success \(records.count)")
+            self.newFeaturedArtist?.users.removeAll()
             for record in records
             {
                 var userData = UserDataStruct(record)
+                self.newFeaturedArtist?.users.append(userData)
                 
             }
+            self.featuredArtist = newFeaturedArtist
+            updateExplorerView()
         }
         else
         {

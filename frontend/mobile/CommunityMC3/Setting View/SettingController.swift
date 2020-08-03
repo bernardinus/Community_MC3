@@ -33,6 +33,8 @@ class SettingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dismissKeyboard()
+        
 //        let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
 //        settingImage.addGestureRecognizer(uploadTap)
         menuButton.isHidden = !isEditProfile

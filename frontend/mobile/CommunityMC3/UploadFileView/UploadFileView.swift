@@ -37,6 +37,7 @@ class UploadFileView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.dismissKeyboard()
         imgPicker = ImagePicker(presentationController: self, delegate: self)
         
         pickerView.delegate = self
@@ -111,6 +112,7 @@ class UploadFileView: UIViewController
                 name: nameTextField!.text!,
                 email: "test@test",
                 fileURL: fileURL!)
+            
             DataManager.shared().UploadNewTrack(trackData:trackData!) { (isSuccess, errorString) in
                 if isSuccess
                 {
@@ -173,11 +175,11 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         }
         if indexPath.row == 2 // Album Header
         {
-            return 46
+            return 0//46
         }
         if indexPath.row == 3
         {
-            return 87
+            return 0//87
         }
         if indexPath.row == 4 // Genre Selector
         {
