@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDC-7D-ZKL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDC-7D-ZKL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,7 +66,7 @@
                                                             <outlet property="delegate" destination="VDC-7D-ZKL" id="pcB-uf-SUu"/>
                                                         </connections>
                                                     </collectionView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E3-1E-TpA">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1E3-1E-TpA">
                                                         <rect key="frame" x="91" y="185" width="200" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="BBS-fA-riS"/>
@@ -83,7 +83,7 @@
                                                             <constraint firstAttribute="width" constant="140" id="SSF-fl-QKR"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpE-WU-9tr">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpE-WU-9tr">
                                                         <rect key="frame" x="91" y="166" width="200" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="bx8-Qa-elx"/>
@@ -228,6 +228,7 @@
                         <outlet property="searchButton" destination="GNB-Z5-1DJ" id="fa6-WH-haw"/>
                         <outlet property="statusLabel" destination="BTB-fU-38Y" id="ufA-fL-qKi"/>
                         <outlet property="titleLabel" destination="Yba-kK-sHr" id="qXJ-3l-CbG"/>
+                        <outlet property="viewProfileButton" destination="IUE-S8-fhB" id="8aO-9l-oOl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fr5-k2-DfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -243,7 +244,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit randomizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJK-WD-8bf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit randomizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJK-WD-8bf">
                                 <rect key="frame" x="20" y="40" width="135" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="Ha6-gn-DNV"/>
@@ -253,7 +254,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SORT BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0E-R5-ydJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SORT BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0E-R5-ydJ">
                                 <rect key="frame" x="30" y="98" width="57" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="FLZ-Tg-vvv"/>
@@ -294,7 +295,7 @@
                                     <outlet property="delegate" destination="8gV-yL-ITh" id="seN-qj-GGn"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENRE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-aZ-VA0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GENRE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-aZ-VA0">
                                 <rect key="frame" x="30" y="194" width="60" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="C7W-Kq-GSk"/>
@@ -378,8 +379,13 @@
                     </view>
                     <connections>
                         <outlet property="applyButton" destination="Y8U-ul-z2g" id="h3O-Xu-vPO"/>
+                        <outlet property="cancelButton" destination="tS5-tb-Apn" id="FeV-HZ-At7"/>
+                        <outlet property="clearAllButton" destination="kYh-Hr-bva" id="L9U-EA-R9A"/>
+                        <outlet property="editRandomizerLabel" destination="tJK-WD-8bf" id="ueS-le-vXU"/>
                         <outlet property="genreCollectionView" destination="Wmy-Jx-sZ3" id="yCc-oy-QKu"/>
+                        <outlet property="genreLabel" destination="z6V-aZ-VA0" id="dVb-iW-yjc"/>
                         <outlet property="sortByCollectionView" destination="kzp-Ap-B2q" id="1J9-zx-k9X"/>
+                        <outlet property="sortByLabel" destination="W0E-R5-ydJ" id="LDA-Wp-3Cp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9DA-Eh-MSg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

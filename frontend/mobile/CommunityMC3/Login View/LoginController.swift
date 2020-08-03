@@ -11,6 +11,12 @@ import CloudKit
 
 class LoginController: UIViewController {
     
+    @IBOutlet weak var signInTitleLabel: UILabel!
+    @IBOutlet weak var signInDescriptionLabel: UILabel!
+    @IBOutlet weak var emailTitleLabel: UILabel!
+    @IBOutlet weak var passwordTitleLabel: UILabel!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -20,7 +26,18 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setLocalisation()
         passwordField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    func setLocalisation() {
+        signInTitleLabel.text = NSLocalizedString("Sign In", comment: "")
+        signInDescriptionLabel.text = NSLocalizedString("Sign In Description".uppercased(), comment: "")
+        emailTitleLabel.text = NSLocalizedString("Email Address", comment: "")
+        passwordTitleLabel.text = NSLocalizedString("Password", comment: "")
+        forgotPasswordButton.titleLabel?.text = NSLocalizedString("Forgot Password".uppercased(), comment: "")
+        createAccountButton.titleLabel?.text = NSLocalizedString("Create Account".uppercased(), comment: "")
+        loginButton.titleLabel?.text = NSLocalizedString("Get Started", comment: "")
     }
     
     @IBAction func unwindToLoginController(_ segue:UIStoryboardSegue)

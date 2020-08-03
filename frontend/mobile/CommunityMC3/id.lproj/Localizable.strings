@@ -50,6 +50,7 @@
 "Randomize" = "Acak";
 
 "Artist" = "Musisi";
+"Playlist" = "Kumpulan Musik";
 "Drummer" = "Pemain Drum";
 "followers" = "pengikut";
 "following" = "mengikuti";
@@ -80,3 +81,52 @@
 // Select File View
 "Select File" = "Pilih File";
 
+// Profile View
+"GENRE PREFERENCES" = "Preferensi Genre";
+"CONTACT INFO" = "Info Kontak";
+"SOCIAL MEDIA" = "Media Sosial";
+"MUSIC" = "Musik";
+"PHOTOS" = "Foto";
+"VIDEOS" = "Video";
+"EDIT" = "Ubah";
+"SHARE" = "Bagikan";
+"UPLOAD MUSIC" = "Unggah Musik";
+"UPLOAD VIDEO" = "Unggah Video";
+"UPLOAD PHOTOS" = "Unggah Foto";
+
+"FOLLOW" = "Ikuti";
+"CONTACT" = "Kontak";
+"SHOWCASE" = "Etalase";
+"VIDEO" = "Video";
+"NEXT" = "Selanjutnya";
+"VIEW PROFILE" = "Lihat Profile";
+
+"EDIT RANDOMIZER" = "Ubah acakan";
+"SORT BY" = "Urut berdasarkan";
+"CLEAR ALL" = "Hapus Semua";
+"APPLY" = "Simpan";
+
+"WRITE THE TITLE" = "Tulis judul disini";
+"ALBUM" = "Album";
+"DESCRIPTION" = "Deskripsi";
+"POST" = "Tempel";
+"UPLOAD" = "Unggah";
+"DONE" = "Selesai";
+"COVER SONG" = "Lagu Cover";
+
+"TAKE PHOTO" = "Ambil foto";
+"CAMERA ROLL" = "Galeri foto";
+"PHOTO LIBRARY" = "Perpustakaan Foto";
+"CAMERA" = "Kamera";
+"BROWSE ATTACHMENT" = "Pilih unggahan";
+
+"NAME" = "Nama";
+"EMAIL" = "Surel";
+"SIGN IN DESCRIPTION" = "Daftar atau masuk untuk melihat musik terkini";
+"FORGOT PASSWORD" = "Lupa kata sandi?";
+"CREATE ACCOUNT" = "Buat akun baru!";
+"SIGN UP DESCRIPTION" = "Masuk atau daftar untuk melihat musik terkini";
+"REGISTER NOW" = "Daftar Sekarang";
+"HAVE ACCOUNT" = "Sudah punya akun?";
+
+"SUPRISE" = "Tekan untuk kejutan!";

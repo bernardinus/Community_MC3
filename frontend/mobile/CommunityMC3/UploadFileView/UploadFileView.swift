@@ -14,6 +14,7 @@ class UploadFileView: UIViewController
     @IBOutlet var table: UITableView!
     @IBOutlet weak var cancel: UIButton!
     @IBOutlet weak var uploadFileTitleLabel: UILabel!
+    @IBOutlet weak var postButton: UIButton!
     
     var videoData:VideosDataStruct?
     var trackData:TrackDataStruct?
@@ -39,7 +40,8 @@ class UploadFileView: UIViewController
         imgPicker = ImagePicker(presentationController: self, delegate: self)
         
         pickerView.delegate = self
-        uploadFileTitleLabel.text = "Upload"
+        prepareLocalisation()
+        uploadFileTitleLabel.text = NSLocalizedString("Upload".uppercased(), comment: "")
         
         table.register(UploadTableViewCell.nib(), forCellReuseIdentifier: UploadTableViewCell.identifier)
         table.register(AddCoverTableViewCell.nib(), forCellReuseIdentifier: AddCoverTableViewCell.identifier)
@@ -54,6 +56,11 @@ class UploadFileView: UIViewController
         //        table.allowsSelection = false
         
         table.separatorColor = UIColor.clear
+    }
+    
+    func prepareLocalisation() {
+        cancel.titleLabel?.text = NSLocalizedString("Cancel", comment: "")
+        postButton.titleLabel?.text = NSLocalizedString("Post".uppercased(), comment: "")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -228,7 +235,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             let toolBar = UIToolbar()
             toolBar.sizeToFit()
             let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+            let button = UIBarButtonItem(title: NSLocalizedString("Done".uppercased(), comment: ""), style: .plain, target: self, action: #selector(self.action))
             toolBar.setItems([flexibleSpace,button], animated: true)
             toolBar.isUserInteractionEnabled = true
             genreTextField!.inputAccessoryView = toolBar
@@ -246,7 +253,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "Cover Song"
+            cell.textLabel?.text = NSLocalizedString("Cover Song".uppercased(), comment: "")
             
             let switchView = UISwitch(frame: .zero)
             switchView.setOn(false, animated: true)
