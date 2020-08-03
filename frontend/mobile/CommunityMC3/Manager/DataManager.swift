@@ -453,11 +453,15 @@ class DataManager
                     self.newFeaturedArtist  = FeaturedDataStruct()
                     self.newFeaturedArtist?.id = featuredArtistRecord.recordID
                     
-                    let artistRefArr = featuredArtistRecord.value(forKey: "users") as! [CKRecord.Reference]
-                    self.ckUtil.loadRecordFromPublicDB(recordType: "UserData", recordName: artistRefArr, completionHandler: self.featuredArtistTrackResult)
-                    
-                    self.latestUploadRecord = records
-                    print(self.latestUploadRecord)
+                    let artistRefArrData = featuredArtistRecord.value(forKey: "users")
+                    if(artistRefArrData != nil)
+                    {
+                        let artistRefArr = artistRefArrData as! [CKRecord.Reference]
+                        self.ckUtil.loadRecordFromPublicDB(recordType: "UserData", recordName: artistRefArr, completionHandler: self.featuredArtistTrackResult)
+                        
+                        self.latestUploadRecord = records
+                        print(self.latestUploadRecord)
+                    }
                 }
                 else
                 {
@@ -523,6 +527,11 @@ class DataManager
                 }
             }
         }
+    }
+    
+    func updateFeaturedArtist()
+    {
+        
     }
     
     
