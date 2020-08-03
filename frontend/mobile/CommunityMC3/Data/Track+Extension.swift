@@ -18,7 +18,7 @@ struct PrimitiveTrackDataStruct: Codable
     var email: String
 }
 
-struct TrackDataStruct
+class TrackDataStruct
 {
     
     var genre:String
@@ -26,13 +26,37 @@ struct TrackDataStruct
     
 //    var recordID: CKRecord.ID
     var email: String
-    var fileURL: URL
+    var fileData: CKAsset?
 //    var coverImage:URL
     
     var audioData:AVAudioPlayer?
     
     
     var album:AlbumDataStruct?
+    
+    init(record:CKRecord)
+    {
+        self.genre = record.value(forKey: "genre") as! String
+        self.name = record.value(forKey: "name") as! String
+        self.email = record.value(forKey: "email") as! String
+        self.fileData = record.value(forKey: "fileData") as? CKAsset
+        
+    }
+    
+    init()
+    {
+        self.genre = ""
+        self.name = ""
+        self.email = ""
+        self.fileData = CKAsset(fileURL: URL(string: "")!)
+    }
+    init(genre:String, name:String, email:String, fileURL:URL)
+    {
+        self.genre = genre
+        self.name = name
+        self.email = email
+        self.fileData = CKAsset(fileURL:fileURL)
+    }
     
     func getCKRecord()->CKRecord
     {
@@ -41,8 +65,6 @@ struct TrackDataStruct
         record.setValue(genre, forKey: "genre")
         record.setValue(email, forKey: "email")
         record.setValue(name, forKey: "name")
-        
-        let fileData = CKAsset(fileURL: fileURL)
         record.setValue(fileData, forKey: "fileData")
         
         return record

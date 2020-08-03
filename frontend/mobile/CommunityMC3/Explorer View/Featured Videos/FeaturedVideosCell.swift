@@ -35,7 +35,7 @@ class FeaturedVideosCell: UITableViewCell {
             mainTableView.reloadData()
             DispatchQueue.main.async {
                 do {
-                    self.audioPlayer = try AVAudioPlayer(contentsOf: self.feature.track!.fileURL)
+                    self.audioPlayer = try AVAudioPlayer(contentsOf: (self.feature.track!.fileData?.fileURL!)!)
                     self.audioPlayer.delegate = self
                     self.audioPlayer.play()
                 } catch {

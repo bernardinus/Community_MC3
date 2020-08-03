@@ -80,7 +80,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         
         var error : NSError? = nil
         if countTracks != nil {
-            let audioPath = countTracks![tempIndex].fileURL
+            let audioPath = countTracks![tempIndex].fileData!.fileURL!
             do {
                 trackPlayer = try AVAudioPlayer(contentsOf: audioPath)
                 

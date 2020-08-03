@@ -432,7 +432,7 @@ class DocumentTableViewController: UITableViewController {
         DispatchQueue.main.async {
             //                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .plain, target: self, action: #selector(self.listenTapped))
             do {
-                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileURL)
+                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileData!.fileURL!)
                 self.audioPlayer.play()
             } catch {
                 print("play failed")

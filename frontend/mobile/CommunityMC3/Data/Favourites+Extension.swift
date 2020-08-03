@@ -9,7 +9,7 @@
 import Foundation
 import CloudKit
 
-struct FavouritesDataStruct
+class FavouritesDataStruct
 {
     var id:String
     var album:[AlbumDataStruct]?

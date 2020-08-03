@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CloudKit
 
-struct UserDataStruct
+class UserDataStruct
 {
     // normal data
     var followerCount:Int? = 0
@@ -23,7 +23,9 @@ struct UserDataStruct
     var whatsApp:String? = ""
     
     var fileURL:URL? = nil
-    var email: String = ""
+    var email: String? = ""
+    
+    var isArtist = false
     
     // asset
     var profilePicture:UIImage? = nil
@@ -36,12 +38,41 @@ struct UserDataStruct
     var videos:VideosDataStruct? = nil
     var recordID:CKRecord.ID? = nil
     
-    func UserDataStruct()
-    {
-        
+    init(){}
+    init(genre:String, name:String, fileURL:URL, email:String){
+        self.genre = genre
+        self.name = name
+        self.fileURL = fileURL
+        self.email = email
     }
     
-    mutating func UserDataStruct(record:CKRecord)
+    init(_ record:CKRecord)
+    {
+        self.name = record.value(forKey: "name") as? String
+        self.genre = record.value(forKey: "genre") as? String
+        self.followerCount = record.value(forKey: "followerCount") as? Int
+        let isVerifiedIntValue:Int = record.value(forKey: "isVerified") as! Int
+        if(isVerifiedIntValue == 1)
+        {
+            self.isVerified = true
+        }
+        
+        let isArtistIntValue:Int = record.value(forKey: "isArtist") as! Int
+        if(isArtistIntValue == 1)
+        {
+            self.isArtist = true
+        }
+        self.phoneNumber = record.value(forKey: "phoneNumber") as? String
+        self.role = record.value(forKey: "role") as? String
+        self.instagram = record.value(forKey: "instagram") as? String
+        self.whatsApp = record.value(forKey: "whatsapp") as? String
+        self.profilePicture = UIImage(data: record.value(forKey: "profilePicture") as! Data)
+        self.email = record.value(forKey: "email") as? String
+    }
+    
+  
+    /*
+    func UserDataStruct(record:CKRecord)
     {
         followerCount = record.value(forKey: "followerCount") as? Int
         genre = record.value(forKey: "followerCount") as? String
@@ -54,17 +85,18 @@ struct UserDataStruct
         whatsApp = record.value(forKey: "whatsApp") as? String
         profilePicture = UIImage(data: (record.value(forKey: "profilePicture") as? Data)!)
     }
+ */
     
     func asDict()->[String:Any]
     {
         return [
-            "followerCount":followerCount!,
-            "genre":genre!,
-            "instagram":instagram!,
-            "isVerified":Int(truncating: NSNumber(value: isVerified)),
             "name": name!,
+            "genre":genre!,
+            "followerCount":followerCount!,
+            "isVerified":Int(truncating: NSNumber(value: isVerified)),
             "phoneNumber":phoneNumber!,
             "role":role!,
+            "instagram":instagram!,
             "whatsApp":whatsApp!,
             "profilePicture":profilePicture!.pngData()!
         ]

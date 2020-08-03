@@ -30,6 +30,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var musicAndVideoTableView: UITableView!
     @IBOutlet weak var popUpContentView: UIView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var viewProfileButton: UIButton!
     
     var test = false
     var musicGenreArray = ["Rock","Jazz","Pop","RnB","Acoustic","Blues"]
@@ -50,6 +51,12 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         
         setupBackground()
         addSwipeGesture()
+    }
+    
+    func setupLocalisation() {
+        editButton.titleLabel?.text = NSLocalizedString("Edit".uppercased(), comment: "")
+        nextButton.titleLabel?.text = NSLocalizedString("Next".uppercased(), comment: "")
+        viewProfileButton.titleLabel?.text = NSLocalizedString("View Profile".uppercased(), comment: "")
     }
     
     func setupBackground(){
@@ -88,6 +95,9 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             return nil
         }
     }
+    @IBAction func unwindButton(_ sender: Any) {
+        print("unwindButtonClicked")
+    }
     
     func addSwipeGesture() {
         if popUpContentView.isHidden == false{
@@ -110,8 +120,20 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         //        }
     }
     
-    @IBAction func searchButtonAction(_ sender: UIButton) {
-        
+    override func viewWillAppear(_ animated: Bool) {
+        startSearch()
+        super.viewWillAppear(animated)
+    }
+    
+    func startSearch()
+    {
+        self.editButton.isHidden = true
+        self.popUpView.isHidden = true
+        self.searchButton.isHidden = false
+        self.innerCircleEffectImage.isHidden = false
+        self.outerCircleEffectImage.isHidden = false
+        nextButton.isHidden = true
+
         UIView.animate(withDuration: 2.0, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
@@ -138,12 +160,20 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
                 self.searchButton.isHidden = true
                 self.innerCircleEffectImage.isHidden = true
                 self.outerCircleEffectImage.isHidden = true
+                self.nextButton.isHidden = false
+                self.editButton.isHidden = false
             })
         })
     }
     
+    @IBAction func searchButtonAction(_ sender: UIButton) {
+        
+        startSearch()
+    }
+    
     @IBAction func editButtonAction(_ sender: UIButton) {
         let editRandomizerVC = storyboard?.instantiateViewController(identifier: "EditRandomizerVC") as! EditRandomizerViewController
+        editRandomizerVC.callback = startSearch
         editRandomizerVC.transitioningDelegate = self
         editRandomizerVC.modalPresentationStyle = .custom
         editRandomizerVC.modalTransitionStyle = .coverVertical
@@ -162,11 +192,11 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == RandomSearch.Music.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
-            cell.headerTitle.text = "MUSIC"
+            cell.headerTitle.text = NSLocalizedString("Music".uppercased(), comment: "")
             return cell
         }else if section == RandomSearch.Video.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
-            cell.headerTitle.text = "VIDEO"
+            cell.headerTitle.text = NSLocalizedString("Video".uppercased(), comment: "")
             return cell
         }
         return musicAndVideoTableView.dequeueReusableCell(withIdentifier: "headerCellRandom")

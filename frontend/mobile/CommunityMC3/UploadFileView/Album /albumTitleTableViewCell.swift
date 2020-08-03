@@ -28,7 +28,7 @@ class albumTitleTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        albumTitleLabel.text = "Album"
+        albumTitleLabel.text = NSLocalizedString("Album".uppercased(), comment: "")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

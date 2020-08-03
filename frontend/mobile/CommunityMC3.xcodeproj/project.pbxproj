@@ -24,7 +24,6 @@
 		A11A9FF424C94A58008D7867 /* AddCoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A9FE624C94A58008D7867 /* AddCoverTableViewCell.xib */; };
 		A121CE9E24C96C6D00E1D48B /* SmallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121CE9C24C96C6D00E1D48B /* SmallViewController.swift */; };
 		A121CE9F24C96C6D00E1D48B /* SmallViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A121CE9D24C96C6D00E1D48B /* SmallViewController.storyboard */; };
-		A124876624CCAAD700030723 /* SocialHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124876524CCAAD700030723 /* SocialHelper.swift */; };
 		A124876724CD0BE400030723 /* SelectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A124876924CD0BE400030723 /* SelectViewCell.xib */; };
 		A124876A24CD0BEE00030723 /* SelectFileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A124876C24CD0BEE00030723 /* SelectFileView.storyboard */; };
 		A124877324CD2AC500030723 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124877224CD2AC500030723 /* MainTabController.swift */; };
@@ -232,7 +231,6 @@
 		A11A9FE624C94A58008D7867 /* AddCoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCoverTableViewCell.xib; sourceTree = "<group>"; };
 		A121CE9C24C96C6D00E1D48B /* SmallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallViewController.swift; sourceTree = "<group>"; };
 		A121CE9D24C96C6D00E1D48B /* SmallViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SmallViewController.storyboard; sourceTree = "<group>"; };
-		A124876524CCAAD700030723 /* SocialHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialHelper.swift; sourceTree = "<group>"; };
 		A124876824CD0BE400030723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SelectViewCell.xib; sourceTree = "<group>"; };
 		A124876B24CD0BEE00030723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SelectFileView.storyboard; sourceTree = "<group>"; };
 		A124877224CD2AC500030723 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
@@ -269,7 +267,7 @@
 		A1689D3824C7D67700A49732 /* AlertViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewHelper.swift; sourceTree = "<group>"; };
 		A1689D3A24C7D76500A49732 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		A169E8A524CA9226000D815F /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
-		A16B449F24B2FBF200053D6C /* CommunityMC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityMC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A16B449F24B2FBF200053D6C /* Allegro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allegro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A16B44A224B2FBF300053D6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A16B44A424B2FBF300053D6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A16B44A624B2FBF300053D6C /* ExplorerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerView.swift; sourceTree = "<group>"; };
@@ -551,7 +549,6 @@
 				A134D2AC24C91BD4009A054F /* UserData+Extension.swift */,
 				A134D2AE24C91BDB009A054F /* Videos+Extension.swift */,
 				A17C3C6824CCA3C500153493 /* Constant.swift */,
-				A124876524CCAAD700030723 /* SocialHelper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -670,7 +667,7 @@
 		A16B44A024B2FBF200053D6C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A16B449F24B2FBF200053D6C /* CommunityMC3.app */,
+				A16B449F24B2FBF200053D6C /* Allegro.app */,
 				A16B44B724B2FBF700053D6C /* CommunityMC3Tests.xctest */,
 				A16B44C224B2FBF700053D6C /* CommunityMC3UITests.xctest */,
 			);
@@ -1087,9 +1084,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A16B449E24B2FBF200053D6C /* CommunityMC3 */ = {
+		A16B449E24B2FBF200053D6C /* Allegro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "CommunityMC3" */;
+			buildConfigurationList = A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "Allegro" */;
 			buildPhases = (
 				3542EBCB9805E4C1C03E5E05 /* [CP] Check Pods Manifest.lock */,
 				A16B449B24B2FBF200053D6C /* Sources */,
@@ -1101,9 +1098,9 @@
 			);
 			dependencies = (
 			);
-			name = CommunityMC3;
+			name = Allegro;
 			productName = CommunityMC3;
-			productReference = A16B449F24B2FBF200053D6C /* CommunityMC3.app */;
+			productReference = A16B449F24B2FBF200053D6C /* Allegro.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A16B44B624B2FBF700053D6C /* CommunityMC3Tests */ = {
@@ -1182,7 +1179,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A16B449E24B2FBF200053D6C /* CommunityMC3 */,
+				A16B449E24B2FBF200053D6C /* Allegro */,
 				A16B44B624B2FBF700053D6C /* CommunityMC3Tests */,
 				A16B44C124B2FBF700053D6C /* CommunityMC3UITests */,
 			);
@@ -1424,7 +1421,6 @@
 				A11A9FEF24C94A58008D7867 /* descTitleTableViewCell.swift in Sources */,
 				A134D2A924C91BBC009A054F /* Track+Extension.swift in Sources */,
 				A134D2A524C91B99009A054F /* Favourites+Extension.swift in Sources */,
-				A124876624CCAAD700030723 /* SocialHelper.swift in Sources */,
 				EA88AAA224D11482007488F9 /* FavoriteArtistsView.swift in Sources */,
 				A11A9FF124C94A58008D7867 /* UploadTableViewCell.swift in Sources */,
 				EA4A31CC24CAB2B6003DCDA4 /* VideoListCell.swift in Sources */,
@@ -1520,12 +1516,12 @@
 /* Begin PBXTargetDependency section */
 		A16B44B924B2FBF700053D6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A16B449E24B2FBF200053D6C /* CommunityMC3 */;
+			target = A16B449E24B2FBF200053D6C /* Allegro */;
 			targetProxy = A16B44B824B2FBF700053D6C /* PBXContainerItemProxy */;
 		};
 		A16B44C424B2FBF700053D6C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A16B449E24B2FBF200053D6C /* CommunityMC3 */;
+			target = A16B449E24B2FBF200053D6C /* Allegro */;
 			targetProxy = A16B44C324B2FBF700053D6C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1703,6 +1699,7 @@
 				CODE_SIGN_ENTITLEMENTS = CommunityMC3/CommunityMC3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7D734D7EN3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1714,11 +1711,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ada.mc3.music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MusicCommunity;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1730,6 +1728,7 @@
 				CODE_SIGN_ENTITLEMENTS = CommunityMC3/CommunityMC3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7D734D7EN3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1741,11 +1740,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ada.mc3.music;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = MusicCommunity;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1863,7 +1863,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "CommunityMC3" */ = {
+		A16B44CB24B2FBF700053D6C /* Build configuration list for PBXNativeTarget "Allegro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A16B44CC24B2FBF700053D6C /* Debug */,

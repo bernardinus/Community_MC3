@@ -10,6 +10,7 @@ import UIKit
 
 class MusicGenreInfoCell: UITableViewCell {
 
+    @IBOutlet weak var genreLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -43,7 +43,7 @@ class FavouritesView: UIViewController {
                 for countTrack in countTracks {
                     if track.value(forKey: "name") as! String == countTrack.name {
                         let asset = (track.value(forKey: "fileURL") as? CKAsset)!
-                        countTracks[counter].fileURL = asset.fileURL!
+                        countTracks[counter].fileData = asset
                     }
                     counter += 1
                 }
@@ -52,7 +52,7 @@ class FavouritesView: UIViewController {
                 for countVideo in countVideos {
                     if video.value(forKey: "name") as! String == countVideo.name {
                         let asset = (video.value(forKey: "fileURL") as? CKAsset)!
-                        countVideos[counter].fileURL = asset.fileURL!
+                        countVideos[counter].fileData = CKAsset(fileURL:asset.fileURL!)
                     }
                     counter += 1
                 }

@@ -304,7 +304,7 @@ class UploadController: UIViewController {
                         )
                         DispatchQueue.main.async {
                             do {
-                                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileURL)
+                                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileData!.fileURL!)
                                 self.audioPlayer.play()
                             } catch {
                                 print("play failed")

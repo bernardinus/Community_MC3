@@ -11,6 +11,12 @@ import UIKit
 
 class SettingController: UIViewController {
     
+    @IBOutlet weak var settingTitleLabel: UILabel!
+    @IBOutlet weak var nameTitleLabel: UILabel!
+    @IBOutlet weak var emailTitleLabel: UILabel!
+    @IBOutlet weak var genreTitleLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var settingImage: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -27,12 +33,15 @@ class SettingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dismissKeyboard()
+        
 //        let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
 //        settingImage.addGestureRecognizer(uploadTap)
         menuButton.isHidden = !isEditProfile
         if let loadEmail = userDefault.string(forKey: "email"){
             emailField.text = loadEmail
         }
+        handleLocalisation()
         /*
                 documentController.getProfilesFromCloudKit { (profiles) in
                     for profile in profiles {
@@ -66,6 +75,15 @@ class SettingController: UIViewController {
             }
         }
  */
+    }
+    
+    func handleLocalisation()  {
+        settingTitleLabel.text = NSLocalizedString("Settings", comment: "")
+        nameTitleLabel.text = NSLocalizedString("Name".uppercased(), comment: "")
+        emailTitleLabel.text = NSLocalizedString("Email".uppercased(), comment: "")
+        genreTitleLabel.text = NSLocalizedString("Genre", comment: "")
+        saveButton.titleLabel?.text = NSLocalizedString("Save", comment: "")
+        signOutButton.titleLabel?.text = NSLocalizedString("Sign Out", comment: "")
     }
     
     @objc func handleUploadTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -136,8 +154,8 @@ extension SettingController: UIImagePickerControllerDelegate, UINavigationContro
     func openCameraAndLibrary() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        let actionAlert = UIAlertController(title: "Browse attachment", message: "Choose source", preferredStyle: .alert)
-        actionAlert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
+        let actionAlert = UIAlertController(title: NSLocalizedString("Browse attachment".uppercased(), comment: ""), message: "Choose source", preferredStyle: .alert)
+        actionAlert.addAction(UIAlertAction(title: NSLocalizedString("Camera".uppercased(), comment: ""), style: .default, handler: {
             (action:UIAlertAction) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePicker.sourceType = .camera
@@ -147,13 +165,13 @@ extension SettingController: UIImagePickerControllerDelegate, UINavigationContro
             }
         })) // give an option in alert controller to open camera
         
-        actionAlert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
+        actionAlert.addAction(UIAlertAction(title: NSLocalizedString("Photo library".uppercased(), comment: ""), style: .default, handler: { (action: UIAlertAction) in
             imagePicker.sourceType = .photoLibrary
             imagePicker.mediaTypes = ["public.image"]
             self.present(imagePicker, animated:true, completion: nil)
         })) // give the second option in alert controller to open Photo library
         
-        actionAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil)) // give the third option in alert controller to cancel the form
+        actionAlert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)) // give the third option in alert controller to cancel the form
         
         self.present(actionAlert, animated: true, completion: nil)
     }

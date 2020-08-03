@@ -26,7 +26,7 @@ class descTitleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        descTitleLabel.text = "Description"
+        descTitleLabel.text = NSLocalizedString("Description".uppercased(), comment: "")
         
         descTextView.text = ""
         descTextView.layer.borderWidth = 1
