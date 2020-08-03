@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,12 +15,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="bfV-fj-3cx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="bfV-fj-3cx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bfV-fj-3cx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="R2c-nZ-1GS"/>
+                            <constraint firstItem="bfV-fj-3cx" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="T2u-2j-3w8"/>
+                            <constraint firstItem="bfV-fj-3cx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="TFF-2m-qj2"/>
+                            <constraint firstAttribute="bottom" secondItem="bfV-fj-3cx" secondAttribute="bottom" id="Vfd-mh-S0A"/>
+                            <constraint firstItem="bfV-fj-3cx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="m4l-7K-eG0"/>
+                            <constraint firstItem="bfV-fj-3cx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xer-0U-lrs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
