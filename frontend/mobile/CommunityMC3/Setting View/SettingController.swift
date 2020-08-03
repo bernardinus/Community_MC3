@@ -87,7 +87,6 @@ class SettingController: UIViewController {
         emailTitleLabel.text = NSLocalizedString("Email".uppercased(), comment: "")
         genreTitleLabel.text = NSLocalizedString("Genre", comment: "")
         saveButton.titleLabel?.text = NSLocalizedString("Save", comment: "")
-        signOutButton.titleLabel?.text = NSLocalizedString("Sign Out", comment: "")
     }
     
     @objc func handleUploadTap(_ sender: UITapGestureRecognizer? = nil) {
