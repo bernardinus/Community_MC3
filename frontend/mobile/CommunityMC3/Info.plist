@@ -82,9 +82,9 @@
 	</array>
 	<key>UISupportsDocumentBrowser</key>
 	<false/>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>instagram</string>
-    </array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+	</array>
 </dict>
 </plist>
