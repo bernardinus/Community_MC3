@@ -76,8 +76,9 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         musicAndVideoTableView.register(UINib(nibName: "MusicListCell", bundle: nil), forCellReuseIdentifier: "musicList")
         musicAndVideoTableView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellReuseIdentifier: "videoList")
         
-        popUpContentView.layer.cornerRadius = 12
+        popUpContentView.layer.cornerRadius = 15
         popUpView.isHidden = false
+        viewProfileButton.layer.cornerRadius = 15
         
         nextButton.layer.cornerRadius = 20
     }
@@ -395,7 +396,7 @@ class HalfSizePresentationController : UIPresentationController {
             guard let theView = containerView else {
                 return CGRect.zero
             }
-            return CGRect(x: 0, y: theView.bounds.height/2, width: theView.bounds.width, height: theView.bounds.height/2)
+            return CGRect(x: 0, y: theView.bounds.height/3, width: theView.bounds.width, height: theView.bounds.height/1.5)
         }
     }
 }
