@@ -46,6 +46,7 @@
 "Randomize" = "Randomize";
 
 "Artist" = "Artist";
+"Playlist" = "Playlist";
 "Drummer" = "Drummer";
 "followers" = "followers";
 "following" = "following";
@@ -75,4 +76,64 @@
 
 // Select File View
 "Select File" = "Select File";
+
+// Profile View
+"GENRE PREFERENCES" = "Genre Preferences";
+"CONTACT INFO" = "Contact Info";
+"SOCIAL MEDIA" = "Social Media";
+"MUSIC" = "Music";
+"PHOTOS" = "Photos";
+"VIDEOS" = "Videos";
+"EDIT" = "Edit";
+"SHARE" = "Share";
+"UPLOAD MUSIC" = "Upload Music";
+"UPLOAD VIDEO" = "Upload Video";
+"UPLOAD PHOTOS" = "Upload Photos";
+
+"FOLLOW" = "Follow";
+"CONTACT" = "Contact";
+"SHOWCASE" = "Showcase";
+"VIDEO" = "Video";
+"NEXT" = "Next";
+"VIEW PROFILE" = "View Profile";
+
+"EDIT RANDOMIZER" = "Edit randomizer";
+"SORT BY" = "Sort by";
+"CLEAR ALL" = "Clear All";
+"APPLY" = "Apply";
+
+"WRITE THE TITLE" = "Write the title";
+"ALBUM" = "Album";
+"DESCRIPTION" = "Description";
+"POST" = "Post";
+"UPLOAD" = "Upload";
+"DONE" = "Done";
+"COVER SONG" = "Cover Song";
+
+"TAKE PHOTO" = "Take photo";
+"CAMERA ROLL" = "Camera roll";
+"PHOTO LIBRARY" = "Photo library";
+"CAMERA" = "Camera";
+"BROWSE ATTACHMENT" = "Browse attachment";
+
+"NAME" = "Name";
+"EMAIL" = "Email";
+"SIGN IN DESCRIPTION" = "Sign in or login to see the latest highlights";
+"FORGOT PASSWORD" = "Forgot password?";
+"CREATE ACCOUNT" = "Create new account!";
+"SIGN UP DESCRIPTION" = "Sign up or register to see the latest highlights";
+"REGISTER NOW" = "Register Now";
+"HAVE ACCOUNT" = "Already have account?";
+
+"SUPRISE" = "Tap to surprise!";
+
+
+
+
+
+
+
+
+
+
 

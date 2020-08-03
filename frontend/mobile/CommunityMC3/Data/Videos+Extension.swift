@@ -8,21 +8,51 @@
 
 import Foundation
 import AVKit
+import CloudKit
 
-struct VideosDataStruct
+class VideosDataStruct
 {
     // normal param
     var genre:String
     var name:String
     var email:String
-    var fileURL: URL
+    var fileData:CKAsset? = nil
+    
+    
     
     // asset
     var videoData:AVPlayer?
     
     
+    
     // ref
-    var album:Album?
+    var album:AlbumDataStruct?
+    
+    init(record:CKRecord)
+    {
+        self.genre = record.value(forKey: "genre") as! String
+        self.name = record.value(forKey: "name") as! String
+        self.email = record.value(forKey: "email") as! String
+        self.fileData = record.value(forKey: "fileData") as? CKAsset
+        
+    }
+    
+    init()
+    {
+        self.genre = ""
+        self.name = ""
+        self.email = ""
+        self.fileData = CKAsset(fileURL: URL(string: "")!)
+
+    }
+    init(genre: String, name:String, email:String, fileURL:URL)
+    {
+        self.genre = genre
+        self.name = name
+        self.email = email
+        self.fileData = CKAsset(fileURL:fileURL)
+        
+    }
 }
 
 struct PrimitiveVideosDataStruct: Codable

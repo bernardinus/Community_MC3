@@ -294,7 +294,7 @@ class UploadController: UIViewController {
                 }
             } else {
                 if let record = record {
-                    if let asset = record["fileData"] as? CKAsset {
+                    if let asset = record["fileURL"] as? CKAsset {
                         let upload = TrackDataStruct(
                             genre: (record.value(forKey: "genre") as? String)!,
                             name: (record.value(forKey: "name") as? String)!,
@@ -304,7 +304,7 @@ class UploadController: UIViewController {
                         )
                         DispatchQueue.main.async {
                             do {
-                                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileURL)
+                                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileData!.fileURL!)
                                 self.audioPlayer.play()
                             } catch {
                                 print("play failed")

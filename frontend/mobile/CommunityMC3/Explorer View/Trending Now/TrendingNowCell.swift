@@ -55,7 +55,7 @@ class TrendingNowCell: UITableViewCell {
             mainTableView.reloadData()
             DispatchQueue.main.async {
                 do {
-                    self.audioPlayer = try AVAudioPlayer(contentsOf: self.trending.track!.fileURL)
+                    self.audioPlayer = try AVAudioPlayer(contentsOf: (self.trending.track!.fileData?.fileURL!)!)
                     self.audioPlayer.delegate = self
                     self.audioPlayer.play()
                 } catch {
@@ -117,6 +117,7 @@ class TrendingNowCell: UITableViewCell {
     }
     
     func retreiveFavorites() {
+        /*
         documentController.getFavoritesFromCloudKit { (favourites) in
             for favourite in favourites {
                 if self.email != "" && favourite.id == self.email {
@@ -135,6 +136,7 @@ class TrendingNowCell: UITableViewCell {
                 }
             }
             if self.trending.video != nil {
+                /*
                 for video in self.videos {
                     if video.name == self.trending.video!.name {
                         DispatchQueue.main.async {
@@ -142,8 +144,10 @@ class TrendingNowCell: UITableViewCell {
                         }
                     }
                 }
+ */
             }
         }
+        */
     }
     
     

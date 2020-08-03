@@ -15,11 +15,17 @@ class LatestMusicCell: UITableViewCell {
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var musicImageView: UIButton!
+//    @IBOutlet weak var genreLabel: UILabel!
+//    @IBOutlet weak var indicatorImage: UIImageView!
+    
+    let musicImg:UIImage = UIImage(systemName: "music.note")!
+    let videoImg:UIImage = UIImage(systemName: "play.rectangle.fill")!
     
     var upload: UploadedDataStruct!
     var player: Bool = false
     var audioPlayer: AVAudioPlayer!
     var mainTableView: UITableView!
+    var dt:UploadedDataStruct?
     //    let documentController = DocumentTableViewController.shared
     
     override func awakeFromNib() {
@@ -27,8 +33,45 @@ class LatestMusicCell: UITableViewCell {
         // Initialization code
     }
     
+    func updateCellData(data:UploadedDataStruct)
+    {
+        upload = dt
+        self.dt = data
+        if(dt!.isVideo)
+        {
+            print("uploadedVideo \(dt?.videoRecord)")
+            trackTitleLabel.text = dt?.videoData?.name
+//            artistNameLabel.text = dt?.videoData.artistName
+//            musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
+
+        }
+        else
+        {
+            print("uploadedTrack \(dt?.trackRecord)")
+            trackTitleLabel.text = dt?.trackData?.name
+//            artistNameLabel.text = dt?.trackData?.artistName
+            print("masuk ", player)
+            if player
+            {
+                playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
+                playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            }
+            else
+            {
+                playMusicButton.imageView?.image = UIImage(systemName: "play.fill")
+                playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            }
+                  
+        }
+        
+    }
+    
     @IBAction func directPlay(_ sender: UIButton) {
-        if upload.track != nil {
+        if upload.trackRecord != nil {
+            
+//            setupUIViewForGenre(view: genreLabel, genre: "RnB")
+//            indicatorImage.image = musicImg
+            
             player = true
             mainTableView.reloadData()
             //        playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")
@@ -40,7 +83,9 @@ class LatestMusicCell: UITableViewCell {
                     self.audioPlayer.delegate = self
                     self.audioPlayer.play()
                     //                playerGroup.leave()
-                } catch {
+                }
+                catch
+                {
                     print("play failed")
                 }
             }

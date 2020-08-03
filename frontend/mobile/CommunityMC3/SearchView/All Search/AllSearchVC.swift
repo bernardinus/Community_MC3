@@ -41,11 +41,11 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         }
         if(section == SearchSection.Music.rawValue)
         {
-            cell.searchHeaderLabel.text = NSLocalizedString("Music", comment: "")
+            cell.searchHeaderLabel.text = NSLocalizedString("Music".uppercased(), comment: "")
         }
         if(section == SearchSection.Video.rawValue)
         {
-            cell.searchHeaderLabel.text = NSLocalizedString("Video", comment: "")
+            cell.searchHeaderLabel.text = NSLocalizedString("Video".uppercased(), comment: "")
         }
         if(section == SearchSection.Playlist.rawValue)
         {

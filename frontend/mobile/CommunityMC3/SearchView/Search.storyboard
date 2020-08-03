@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rJ-Kc-sve">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rJ-Kc-sve">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -11,12 +11,12 @@
         <!--Search-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SearchView" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="SearchView" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9W-zT-IVQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9W-zT-IVQ">
                                 <rect key="frame" x="20" y="71" width="150" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="L01-Xp-jAh"/>
@@ -42,8 +42,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-4H-Z2n">
                                 <rect key="frame" x="20" y="178" width="374" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vw5-Kj-LMC">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Vw5-Kj-LMC">
+                                        <rect key="frame" x="0.0" y="0.0" width="75.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Top">
@@ -63,8 +63,8 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sEL-SW-vhn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Uq-Hd-0Xz">
-                                        <rect key="frame" x="64.5" y="0.0" width="72" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="6Uq-Hd-0Xz">
+                                        <rect key="frame" x="83.5" y="0.0" width="95" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Artist">
@@ -84,8 +84,8 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="wjc-HM-epY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-79-zGB">
-                                        <rect key="frame" x="144.5" y="0.0" width="77.5" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nhR-79-zGB">
+                                        <rect key="frame" x="186.5" y="0.0" width="103" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Music">
@@ -105,8 +105,8 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="5XZ-7A-KXL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-gv-hGm">
-                                        <rect key="frame" x="230" y="0.0" width="75.5" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="J1b-gv-hGm">
+                                        <rect key="frame" x="297.5" y="0.0" width="76.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Video">
@@ -126,8 +126,8 @@
                                             <action selector="searchTabSelected:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="AZ7-NR-nqd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-Ft-hxH">
-                                        <rect key="frame" x="313.5" y="0.0" width="60.5" height="30"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="R0z-Ft-hxH">
+                                        <rect key="frame" x="378" y="0.0" width="0.0" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Playlist">
@@ -183,7 +183,7 @@
         <!--Search Container PageVC-->
         <scene sceneID="Kzs-bj-kLF">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ooc-0g-liL" customClass="SearchContainerPageVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ooc-0g-liL" customClass="SearchContainerPageVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEp-rQ-BhZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -193,7 +193,7 @@
         <!--Artist SearchVC-->
         <scene sceneID="uOi-WV-VEy">
             <objects>
-                <viewController storyboardIdentifier="artistSearch" id="Osg-In-ne1" customClass="ArtistSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="artistSearch" id="Osg-In-ne1" customClass="ArtistSearchVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LiY-W6-Jzm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -227,7 +227,7 @@
         <!--Music SearchVC-->
         <scene sceneID="FfS-k8-vVK">
             <objects>
-                <viewController storyboardIdentifier="musicSearch" id="942-Hn-JoM" customClass="MusicSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="musicSearch" id="942-Hn-JoM" customClass="MusicSearchVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6s5-wG-ZVX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,7 +261,7 @@
         <!--Video SearchVC-->
         <scene sceneID="CZM-oT-a5h">
             <objects>
-                <viewController storyboardIdentifier="videoSearch" id="nPN-EA-qgP" customClass="VideoSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="videoSearch" id="nPN-EA-qgP" customClass="VideoSearchVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Q3-Px-5nu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,7 +295,7 @@
         <!--Playlist SearchVC-->
         <scene sceneID="qrg-Zf-pLy">
             <objects>
-                <viewController storyboardIdentifier="playlistSearch" id="SVP-Hb-qA7" customClass="PlaylistSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="playlistSearch" id="SVP-Hb-qA7" customClass="PlaylistSearchVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D9b-cv-LSb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,7 +329,7 @@
         <!--All SearchVC-->
         <scene sceneID="qzI-SU-cLq">
             <objects>
-                <viewController storyboardIdentifier="allSearch" id="yki-R3-J3W" customClass="AllSearchVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="allSearch" id="yki-R3-J3W" customClass="AllSearchVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="maM-YP-ofF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

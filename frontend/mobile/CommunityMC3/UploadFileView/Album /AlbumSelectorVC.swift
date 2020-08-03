@@ -24,7 +24,7 @@ class AlbumSelectorVC: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        titleLabel.text = "Album"
+        titleLabel.text = NSLocalizedString("Album".uppercased(), comment: "")
         availableAlbumTable.register(albumListTableViewCell.nib(), forCellReuseIdentifier: albumListTableViewCell.identifier)
     }
     
