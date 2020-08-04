@@ -28,22 +28,30 @@ class UserProfileVC: UIViewController {
     
     
     var isUploadVideo = false
+    var phoneNumber = "087875732888"
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userNameLabel: UILabel!
     
-    var actionSheet:UIAlertController = UIAlertController(title: "title", message: "message", preferredStyle: .actionSheet)
+    var actionSheet:UIAlertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+    
+    var actionSheetToCall: UIAlertController = UIAlertController(title: "Contact Me", message: "", preferredStyle: .actionSheet)
+    
     let userDefault = UserDefaults.standard
+    
+    var imgPicker:ImagePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let loadEmail = userDefault.string(forKey: "email"){
             userNameLabel.text = loadEmail
         }
+        imgPicker = ImagePicker(presentationController: self, delegate: self)
         loadLocalisation()
         followButton.layer.cornerRadius = 10
         contactButton.layer.cornerRadius = 10
         setupActionSheet()
+        setupActionSheetToCall()
 
         // Do any additional setup after loading the view.
         firstTabButton.alpha = 1
@@ -52,7 +60,7 @@ class UserProfileVC: UIViewController {
         
         followButton.isHidden = isPersonalProfile
         contactButton.isHidden = isPersonalProfile
-        
+
         if(!isPersonalProfile)
         {
             otherMenu.image = UIImage(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
@@ -73,7 +81,7 @@ class UserProfileVC: UIViewController {
     }
     
     @IBAction func contactButtonTouched(_ sender: Any) {
-        
+        self.present(actionSheetToCall, animated: true, completion: nil)
         
     }
     func updateLayout()
@@ -83,11 +91,13 @@ class UserProfileVC: UIViewController {
         }
         
 
-        userData = UserDataStruct(DataManager.shared().currentUser!)
+//        userData = UserDataStruct(DataManager.shared().currentUserRec!)
+        userData = DataManager.shared().currentUser
         print("Name :\(userData!.name!)")
         
         // name
         userNameLabel.text = userData?.name
+        
         
         
         // about VC
@@ -96,14 +106,19 @@ class UserProfileVC: UIViewController {
             phoneNumber: userData!.phoneNumber!,
             socialMedia: userData!.instagram!
         )
+        aboutVC?.aboutTableView.reloadData()
         
         // showcase VC
+        showcaseVC?.updateData(tracks: userData?.musics,
+                               videos: userData?.videos,
+                               photos: userData?.photos)
         
     }
     
     @IBAction func unwindToUserProfile(_ segue:UIStoryboardSegue)
     {
-        
+        print("UNWIND to Profile \(segue.identifier) \(segue.destination)")
+        updateLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -124,6 +139,22 @@ class UserProfileVC: UIViewController {
         {
             let selectVC = segue.destination as! SelectFileView
             selectVC.isUploadVideo = isUploadVideo
+        }
+        else if segue.identifier == "editProfileSegue"
+        {
+            let vc = segue.destination as! SettingController
+            vc.isEditProfile = true
+        }
+        else if segue.identifier == "trackPlayerSegue" {
+            if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
+                trackPlayerPage.track = sender as? TrackDataStruct
+            }
+        }
+        else if segue.identifier == "videoPlayerSegue" {
+            if let videoPlayerPage = segue.destination as? VideoPlayerViewController
+            {
+                videoPlayerPage.video = sender as? VideosDataStruct
+            }
         }
     }
     
@@ -170,12 +201,27 @@ class UserProfileVC: UIViewController {
         let uploadPhotos = UIAlertAction(title: NSLocalizedString("Upload Photos".uppercased(), comment: ""), style: .default,
                                          handler: {
                                             action in
-                                            print("uploadPhotos") }
+                                            self.imgPicker?.present(from: self.view) }
         )
         actionSheet.addAction(uploadPhotos)
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         actionSheet.addAction(cancelAction)
+    }
+    
+    func setupActionSheetToCall(){
+        let callAction = UIAlertAction(title: "Make a Phone Call", style: .default, handler: { action in callPhoneNumber(phoneNumber: self.userData!.phoneNumber!)
+            
+        })
+        actionSheetToCall.addAction(callAction)
+        
+        let openInstagramAction = UIAlertAction(title: "Open Instagram", style: .default, handler: {
+            action in openInstagram(username: self.userData!.instagram!)
+        })
+        actionSheetToCall.addAction(openInstagramAction)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
+        actionSheetToCall.addAction(cancelAction)
     }
     
     @objc func returnToExplorerView()
@@ -200,6 +246,12 @@ class UserProfileVC: UIViewController {
         }
         showcaseVC?.showcaseMusicSegue = {
             self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
+        }
+        showcaseVC?.playMusicSegue = { sender in
+            self.performSegue(withIdentifier: "trackPlayerSegue", sender: sender)
+        }
+        showcaseVC?.playVideoSegue = { sender in
+            self.performSegue(withIdentifier: "videoPlayerSegue", sender: sender)
         }
         
         super.viewWillAppear(animated)
@@ -229,6 +281,25 @@ class UserProfileVC: UIViewController {
         
         print(cVC?.a as Any)
         cVC?.moveToPage(index: 1)
+        showcaseVC = cVC!.items[1] as? SecondPageVC
+        showcaseVC?.showcaseVideoSegue = {
+            self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
+        }
+        showcaseVC?.showcasePhotoSegue = {
+            self.performSegue(withIdentifier: "showcasePhotoSegue", sender: nil)
+        }
+        showcaseVC?.showcaseMusicSegue = {
+            self.performSegue(withIdentifier: "showcaseMusicSegue", sender: nil)
+        }
+        showcaseVC?.playMusicSegue = { sender in
+            self.performSegue(withIdentifier: "trackPlayerSegue", sender: sender)
+        }
+        showcaseVC?.playVideoSegue = { sender in
+            self.performSegue(withIdentifier: "videoPlayerSegue", sender: sender)
+        }
+        
+        updateLayout()
+        
     }
 }
 
@@ -238,3 +309,34 @@ extension UserProfileVC : UIActionSheetDelegate
     
 }
 
+extension UserProfileVC:ImagePickerDelegate
+{
+    func didSelect(image: UIImage?)
+    {
+//        coverImage?.image = image
+        var photoData = PhotoDataStruct()
+        photoData.email = DataManager.shared().currentUser?.email
+        photoData.photosData = image
+        
+        DataManager.shared().UploadNewPhoto(photoData:photoData) { (isSuccess, errorString) in
+            if isSuccess
+            {
+                print("Upload Photo File Success")
+                
+                
+//                    self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+                }
+                AlertViewHelper.createAlertView(type: .OK, rightHandler:nil, leftHandler: nil, replacementString: [strKeyOK_MSG:"Upload Photo File Success"])
+                
+
+            }
+            else
+            {
+                print("Upload Photo File Failed")
+                AlertViewHelper.creteErrorAlert(errorString: "Upload Photo File Failed \(errorString)", view: self)
+            }
+        }
+    }
+}

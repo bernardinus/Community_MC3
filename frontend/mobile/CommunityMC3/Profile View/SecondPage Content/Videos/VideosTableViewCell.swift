@@ -16,10 +16,17 @@ class VideosTableViewCell: UITableViewCell {
         videoThumbnailView.layer.cornerRadius = 15
     }
     
+    func update(videoData:VideosDataStruct)
+    {
+        videoThumbnailView.image = videoData.coverImage
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
+    
+    
     
 }

@@ -294,6 +294,12 @@ class ExplorerView: UIViewController {
                 
             }
         }
+        else if segue.identifier == "artistPageSegue"
+        {
+            let artistVC = segue.destination as! UserProfileVC
+            artistVC.isPersonalProfile = false
+            
+        }
         
         /*
         else if segue.destination is SmallViewController {
@@ -506,9 +512,6 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.LatestMusic.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "latestMusicCell") as! LatestMusicCell
-            
-//            let record = dm.latestUploadRecord[indexPath.row]
-//            print("latestUpload \(indexPath.row) \(record)")
             var dt = dm.latestUpload![indexPath.row]
             
             cell.updateCellData(data:dt)
@@ -519,6 +522,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
             cell.callBack = {self.performSegue(withIdentifier: "artistPageSegue", sender: nil)}
+            print("FeaturedArtist explorer:\(dm.featuredArtist?.users)")
+            cell.featuredArtistList = dm.featuredArtist?.users
+            cell.featuredArtistsCollectionCell.reloadData()
             /*
             var temp = [FeaturedDataStruct]()
             for feature in features {

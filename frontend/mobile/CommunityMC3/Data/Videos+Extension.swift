@@ -18,7 +18,7 @@ class VideosDataStruct
     var email:String
     var fileData:CKAsset? = nil
     
-    
+    var coverImage:UIImage? = nil
     
     // asset
     var videoData:AVPlayer?
@@ -52,6 +52,19 @@ class VideosDataStruct
         self.email = email
         self.fileData = CKAsset(fileURL:fileURL)
         
+    }
+    
+    func getCKRecord()->CKRecord
+    {
+        var record = CKRecord(recordType: "Videos")
+        record.setValue(nil, forKey: "album")
+        record.setValue(genre, forKey: "genre")
+        record.setValue(email, forKey: "email")
+        record.setValue(name, forKey: "name")
+        record.setValue(fileData, forKey: "fileData")
+        record.setValue(DataManager.shared().currentUser?.name, forKey: "artistName")
+        record.setValue(coverImage?.pngData(), forKey: "coverImage")
+        return record
     }
 }
 
