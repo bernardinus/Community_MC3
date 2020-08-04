@@ -84,6 +84,7 @@ class UserProfileVC: UIViewController {
         self.present(actionSheetToCall, animated: true, completion: nil)
         
     }
+    
     func updateLayout()
     {
         if let loadEmail = userDefault.string(forKey: "email"){

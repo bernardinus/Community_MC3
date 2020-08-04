@@ -325,7 +325,7 @@ class DataManager
     
     
     // MARK: Upload Music
-    func UploadNewTrack(trackData:TrackDataStruct, completionHandler:(Bool, String)->Void)
+    func UploadNewTrack(trackData:TrackDataStruct, completionHandler:@escaping(Bool, String)->Void)
     {
         ckUtil.saveRecordToPublicDB(
             record: trackData.getCKRecord(),
@@ -333,6 +333,7 @@ class DataManager
                 if !isSuccess
                 {
                     print("UploadNewMusic Error : \(errorString)")
+                    completionHandler(isSuccess, errorString)
                 }
                 else
                 {
@@ -365,6 +366,7 @@ class DataManager
                     }
                     
                     self.savecurrentUserRec()
+                    completionHandler(isSuccess, errorString)
                 }
                 
         })
