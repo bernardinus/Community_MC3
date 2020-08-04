@@ -146,7 +146,6 @@ class UploadFileView: UIViewController
                     DispatchQueue.main.async {
                         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
                     }
-                    dismiss(animated: true, completion: nil)
                 }
                 else
                 {

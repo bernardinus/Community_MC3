@@ -28,12 +28,14 @@ class EditRandomizerViewController: UIViewController {
     var genreTemp = [Int]()
     var selectedIndexSortByBool: [IndexPath: Bool] = [:]
     var selectedIndexGenreBool: [IndexPath: Bool] = [:]
+    let randomSpotlight = RandomSpotlightViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadLocalisation()
         setup()
+        
     }
     
     func loadLocalisation() {
@@ -55,22 +57,25 @@ class EditRandomizerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationSegue = segue.destination as? RandomSpotlightViewController {
+        let destinationSegue = segue.destination as? RandomSpotlightViewController
             for i in sortByTemp{
-                destinationSegue.musicFilter.append(sortByArray[i])
+                destinationSegue!.musicFilter.append(sortByArray[i])
             }
             for i in genreTemp{
-                destinationSegue.genreFilter.append(genreArray[i])
+                destinationSegue!.genreFilter.append(genreArray[i])
             }
-        }
+        destinationSegue!.view.alpha = 1
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+       
+        
     }
     
     @IBAction func applyButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+        
         callback!()
     }
     
@@ -95,6 +100,7 @@ class EditRandomizerViewController: UIViewController {
             genreTemp.removeAll()
         }
     }
+    
     
     
 }

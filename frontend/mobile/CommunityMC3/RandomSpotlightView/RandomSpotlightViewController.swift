@@ -45,12 +45,15 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     var timer: Timer?
     var seconds = 0
     
+    let overlayView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBackground()
         addSwipeGesture()
+        
+        
     }
     
     func setupLocalisation() {
@@ -173,6 +176,11 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     @IBAction func editButtonAction(_ sender: UIButton) {
+//        overlayView.backgroundColor = UIColor.gray
+//        overlayView.alpha = 0.5
+//        overlayView.tag = 101
+//        self.view.addSubview(overlayView)
+        
         let editRandomizerVC = storyboard?.instantiateViewController(identifier: "EditRandomizerVC") as! EditRandomizerViewController
         editRandomizerVC.callback = startSearch
         editRandomizerVC.transitioningDelegate = self
@@ -181,11 +189,22 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         editRandomizerVC.view.layer.cornerRadius = 34
         
         self.present(editRandomizerVC, animated: true, completion: nil)
+        
+       
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         popUpContentView.slideLeft()
+        
+
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destinationSegue = segue.destination as? EditRandomizerViewController {
+//
+//        }
+//    }
+    
+   
     
 }
 extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -277,19 +296,20 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! MusicGenreCell
-        cell.layer.borderWidth = 1.5
-        cell.layer.cornerRadius = 12
+//        cell.layer.borderWidth = 1.5
+//        cell.layer.cornerRadius = 12
         cell.musicGenreLabel.text = musicGenreArray[indexPath.row]
-        switch cell.musicGenreLabel.text {
-        case "RnB":
-            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
-        case "Jazz":
-            cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
-        case "Pop":
-            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
-        default:
-            break
-        }
+//        switch cell.musicGenreLabel.text {
+//        case "RnB":
+//            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
+//        case "Jazz":
+//            cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
+//        case "Pop":
+//            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
+//        default:
+//            break
+//        }
+        setupUIViewForGenre(view: cell, genre: musicGenreArray[indexPath.row])
         return cell
     }
     
@@ -353,9 +373,8 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         }
     }
     
-    
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+           return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
     }
 }
 
@@ -390,13 +409,3 @@ extension UIView {
     //    }
 }
 
-class HalfSizePresentationController : UIPresentationController {
-    override var frameOfPresentedViewInContainerView: CGRect {
-        get {
-            guard let theView = containerView else {
-                return CGRect.zero
-            }
-            return CGRect(x: 0, y: theView.bounds.height/3, width: theView.bounds.width, height: theView.bounds.height/1.5)
-        }
-    }
-}

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import CloudKit
-import MediaPlayer
+//import MediaPlayer
 
 class UploadController: UIViewController {
     var document: String!
@@ -29,7 +29,7 @@ class UploadController: UIViewController {
     }
     
     @IBAction func uploadNow(_ sender: UIButton) {
-        openMediaPlayer()
+//        openMediaPlayer()
     }
     
     func uploadFavorite(id: String, video: [PrimitiveVideosDataStruct]?) {
@@ -476,7 +476,7 @@ class UploadController: UIViewController {
         }
     }
 }
-
+/*
 extension UploadController: MPMediaPickerControllerDelegate, UINavigationControllerDelegate {
     // MARK: Func to open media library function
     func openMediaPlayer() {
@@ -513,6 +513,7 @@ extension UploadController: MPMediaPickerControllerDelegate, UINavigationControl
         self.present(actionAlert, animated: true, completion: nil)
     }
     
+    
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         //        if let imageTaken = info[.originalImage] as? UIImage {
         //        if let mediaItems = mediaItemCollection.items {
@@ -527,6 +528,7 @@ extension UploadController: MPMediaPickerControllerDelegate, UINavigationControl
         }
     }
 }
+*/
 
 //MARK: - Ext. Delegate DocumentPicker
 extension UploadController: UIDocumentPickerDelegate {
