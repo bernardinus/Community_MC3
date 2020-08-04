@@ -344,12 +344,6 @@ extension UserProfileVC : UIActionSheetDelegate, UIViewControllerTransitioningDe
     }
 }
 
-extension UserProfileVC: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
-    }
-}
-
 extension UserProfileVC:ImagePickerDelegate
 {
     func didSelect(image: UIImage?)

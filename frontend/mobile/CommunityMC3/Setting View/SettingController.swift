@@ -323,6 +323,6 @@ extension SettingController:UIPickerViewDelegate, UIPickerViewDataSource
 
 extension SettingController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+           return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
     }
 }
