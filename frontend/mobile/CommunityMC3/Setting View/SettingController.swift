@@ -127,6 +127,16 @@ class SettingController: UIViewController {
         instagramField.text = data.instagram
     }
     
+    @IBAction func chooseGenre(_ sender: UIButton) {
+        let genreProfileVC = storyboard?.instantiateViewController(identifier: "GenreProfileVC") as! GenreProfileController
+        genreProfileVC.transitioningDelegate = self
+        genreProfileVC.modalPresentationStyle = .custom
+        genreProfileVC.modalTransitionStyle = .coverVertical
+        genreProfileVC.view.layer.cornerRadius = 34
+        
+        self.present(genreProfileVC, animated: true, completion: nil)
+    }
+    
     func handleLocalisation()  {
         settingTitleLabel.text = NSLocalizedString("Settings", comment: "")
         nameTitleLabel.text = NSLocalizedString("Name".uppercased(), comment: "")
@@ -309,4 +319,10 @@ extension SettingController:UIPickerViewDelegate, UIPickerViewDataSource
         genreField?.text = selectedGenre
     }
     
+}
+
+extension SettingController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+    }
 }

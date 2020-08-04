@@ -180,6 +180,20 @@ class UserProfileVC: UIViewController {
         )
         actionSheet.addAction(editAction)
         
+        let switchAccountAction = UIAlertAction(title: NSLocalizedString("Switch Account".uppercased(), comment: ""), style: .default) { (action) in
+            let switchAccountVC = self.storyboard?.instantiateViewController(identifier: "SwitchAccountVC") as! AccountController
+            var temp = [UserDataStruct]()
+            temp.append(self.userData!)
+            switchAccountVC.accounts = temp
+            switchAccountVC.transitioningDelegate = self
+            switchAccountVC.modalPresentationStyle = .custom
+            switchAccountVC.modalTransitionStyle = .coverVertical
+            switchAccountVC.view.layer.cornerRadius = 34
+            
+            self.present(switchAccountVC, animated: true, completion: nil)
+        }
+        actionSheet.addAction(switchAccountAction)
+        
         let shareAction = UIAlertAction(title: NSLocalizedString("Share".uppercased(), comment: ""), style: .default)
         actionSheet.addAction(shareAction)
         
@@ -308,6 +322,12 @@ class UserProfileVC: UIViewController {
 extension UserProfileVC : UIActionSheetDelegate
 {
     
+}
+
+extension UserProfileVC: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+    }
 }
 
 extension UserProfileVC:ImagePickerDelegate
