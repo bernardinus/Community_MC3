@@ -16,6 +16,7 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var otherMenu: UIBarButtonItem!
+    @IBOutlet weak var uploadMediaButton: UIButton!
     var isPersonalProfile:Bool = true
     
     var userData:UserDataStruct?
@@ -41,6 +42,8 @@ class UserProfileVC: UIViewController {
     
     var imgPicker:ImagePicker?
     
+    let overlayView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let loadEmail = userDefault.string(forKey: "email"){
@@ -60,6 +63,7 @@ class UserProfileVC: UIViewController {
         
         followButton.isHidden = isPersonalProfile
         contactButton.isHidden = isPersonalProfile
+        uploadMediaButton.isHidden = !isPersonalProfile
 
         if(!isPersonalProfile)
         {
@@ -84,6 +88,20 @@ class UserProfileVC: UIViewController {
         self.present(actionSheetToCall, animated: true, completion: nil)
         
     }
+    
+    @IBAction func uploadMediaButtonTouched(_ sender: UIButton) {
+        
+        let uploadPanelVC = storyboard?.instantiateViewController(identifier: "UploadPanelView") as! UploadPanelViewController
+        uploadPanelVC.transitioningDelegate = self
+        uploadPanelVC.modalPresentationStyle = .custom
+        uploadPanelVC.modalTransitionStyle = .coverVertical
+        uploadPanelVC.view.layer.cornerRadius = 34
+        
+        performSegue(withIdentifier: "uploadPanel", sender: self)
+        self.present(uploadPanelVC, animated: true, completion: nil)
+    }
+    
+    
     func updateLayout()
     {
         if let loadEmail = userDefault.string(forKey: "email"){
@@ -304,9 +322,11 @@ class UserProfileVC: UIViewController {
 }
 
 
-extension UserProfileVC : UIActionSheetDelegate
+extension UserProfileVC : UIActionSheetDelegate, UIViewControllerTransitioningDelegate
 {
-    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CustomPresentationController(presentedViewController: presented, presenting: presenting)
+    }
 }
 
 extension UserProfileVC:ImagePickerDelegate
@@ -337,6 +357,17 @@ extension UserProfileVC:ImagePickerDelegate
                 print("Upload Photo File Failed")
                 AlertViewHelper.creteErrorAlert(errorString: "Upload Photo File Failed \(errorString)", view: self)
             }
+        }
+    }
+}
+
+class CustomPresentationController : UIPresentationController {
+    override var frameOfPresentedViewInContainerView: CGRect {
+        get {
+            guard let theView = containerView else {
+                return CGRect.zero
+            }
+            return CGRect(x: 0, y: theView.bounds.height/3, width: theView.bounds.width, height: theView.bounds.height/2)
         }
     }
 }

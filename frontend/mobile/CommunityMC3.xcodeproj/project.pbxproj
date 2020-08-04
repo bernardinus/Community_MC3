@@ -164,6 +164,9 @@
 		EA4A31C924CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */; };
 		EA4A31CC24CAB2B6003DCDA4 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A31CA24CAB2B6003DCDA4 /* VideoListCell.swift */; };
 		EA4A31CD24CAB2B6003DCDA4 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4A31CB24CAB2B6003DCDA4 /* VideoListCell.xib */; };
+		EA63453524D925510045328C /* UploadPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63453424D925510045328C /* UploadPanelViewController.swift */; };
+		EA63453824D92A5B0045328C /* UploadPanelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63453624D92A5B0045328C /* UploadPanelCell.swift */; };
+		EA63453924D92A5B0045328C /* UploadPanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA63453724D92A5B0045328C /* UploadPanelCell.xib */; };
 		EA650D5524C557680093EEE6 /* TrackPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */; };
 		EA69015824C93F2600D8EBD2 /* SortByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA69015624C93F2600D8EBD2 /* SortByCollectionViewCell.swift */; };
 		EA69015924C93F2600D8EBD2 /* SortByCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA69015724C93F2600D8EBD2 /* SortByCollectionViewCell.xib */; };
@@ -381,6 +384,9 @@
 		EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCellRandomSpotlight.xib; sourceTree = "<group>"; };
 		EA4A31CA24CAB2B6003DCDA4 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
 		EA4A31CB24CAB2B6003DCDA4 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
+		EA63453424D925510045328C /* UploadPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPanelViewController.swift; sourceTree = "<group>"; };
+		EA63453624D92A5B0045328C /* UploadPanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPanelCell.swift; sourceTree = "<group>"; };
+		EA63453724D92A5B0045328C /* UploadPanelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadPanelCell.xib; sourceTree = "<group>"; };
 		EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackPlayer.storyboard; sourceTree = "<group>"; };
 		EA69015624C93F2600D8EBD2 /* SortByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortByCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA69015724C93F2600D8EBD2 /* SortByCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortByCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -767,6 +773,7 @@
 		B733E7F424CA7AFC00460E23 /* Profile View */ = {
 			isa = PBXGroup;
 			children = (
+				EA63453324D925060045328C /* UploadPanel */,
 				B786384C24CEC28200952CF3 /* FirstPage Content */,
 				B786384D24CEC2B500952CF3 /* SecondPage Content */,
 				B733E7F524CA7B3700460E23 /* UserProfileView.storyboard */,
@@ -1059,6 +1066,16 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		EA63453324D925060045328C /* UploadPanel */ = {
+			isa = PBXGroup;
+			children = (
+				EA63453424D925510045328C /* UploadPanelViewController.swift */,
+				EA63453624D92A5B0045328C /* UploadPanelCell.swift */,
+				EA63453724D92A5B0045328C /* UploadPanelCell.xib */,
+			);
+			path = UploadPanel;
+			sourceTree = "<group>";
+		};
 		EADBB5A824C5BB2F00CD2C92 /* VideoPlayer View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1208,6 +1225,7 @@
 				A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */,
 				A11A9FEE24C94A58008D7867 /* descTitleTableViewCell.xib in Resources */,
 				B733E7F624CA7B3700460E23 /* UserProfileView.storyboard in Resources */,
+				EA63453924D92A5B0045328C /* UploadPanelCell.xib in Resources */,
 				B786385C24CEEB8700952CF3 /* MusicTableViewCell.xib in Resources */,
 				EA88AAA624D114FC007488F9 /* FavoriteArtistsCell.xib in Resources */,
 				A121CE9F24C96C6D00E1D48B /* SmallViewController.storyboard in Resources */,
@@ -1411,6 +1429,7 @@
 				A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */,
 				EA2D793C24CFD651005998B4 /* FavoriteTracksCell.swift in Sources */,
 				A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */,
+				EA63453824D92A5B0045328C /* UploadPanelCell.swift in Sources */,
 				A1689CEB24C7A6D300A49732 /* SelectFileView.swift in Sources */,
 				B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */,
 				EA69015824C93F2600D8EBD2 /* SortByCollectionViewCell.swift in Sources */,
@@ -1462,6 +1481,7 @@
 				A11A9FF324C94A58008D7867 /* AddCoverTableViewCell.swift in Sources */,
 				A16B44A324B2FBF300053D6C /* AppDelegate.swift in Sources */,
 				B758B53E24C7F33900826CC5 /* LatestMusicVC.swift in Sources */,
+				EA63453524D925510045328C /* UploadPanelViewController.swift in Sources */,
 				B786386324CEEBA100952CF3 /* VideosTableViewCell.swift in Sources */,
 				A134D2AB24C91BC9009A054F /* UploadedData+Extension.swift in Sources */,
 				A1689D3424C7B14000A49732 /* SelectViewCell.swift in Sources */,
