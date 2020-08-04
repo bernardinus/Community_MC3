@@ -16,6 +16,7 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var otherMenu: UIBarButtonItem!
+    @IBOutlet weak var uploadMediaButton: UIButton!
     var isPersonalProfile:Bool = true
     
     var userData:UserDataStruct?
@@ -41,6 +42,8 @@ class UserProfileVC: UIViewController {
     
     var imgPicker:ImagePicker?
     
+    let overlayView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let loadEmail = userDefault.string(forKey: "email"){
@@ -60,6 +63,7 @@ class UserProfileVC: UIViewController {
         
         followButton.isHidden = isPersonalProfile
         contactButton.isHidden = isPersonalProfile
+        uploadMediaButton.isHidden = !isPersonalProfile
 
         if(!isPersonalProfile)
         {
@@ -84,6 +88,19 @@ class UserProfileVC: UIViewController {
         self.present(actionSheetToCall, animated: true, completion: nil)
         
     }
+    
+    @IBAction func uploadMediaButtonTouched(_ sender: UIButton) {
+        
+        let uploadPanelVC = storyboard?.instantiateViewController(identifier: "UploadPanelView") as! UploadPanelViewController
+        uploadPanelVC.transitioningDelegate = self
+        uploadPanelVC.modalPresentationStyle = .custom
+        uploadPanelVC.modalTransitionStyle = .coverVertical
+        uploadPanelVC.view.layer.cornerRadius = 34
+        
+//        performSegue(withIdentifier: "uploadPanel", sender: self)
+        self.present(uploadPanelVC, animated: true, completion: nil)
+    }
+    
     
     func updateLayout()
     {
@@ -319,9 +336,12 @@ class UserProfileVC: UIViewController {
 }
 
 
-extension UserProfileVC : UIActionSheetDelegate
+extension UserProfileVC : UIActionSheetDelegate, UIViewControllerTransitioningDelegate
 {
-    
+
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+           return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
+    }
 }
 
 extension UserProfileVC: UIViewControllerTransitioningDelegate {
@@ -360,4 +380,49 @@ extension UserProfileVC:ImagePickerDelegate
             }
         }
     }
+}
+
+class OverlayPresentationController: UIPresentationController {
+
+    private let dimmedBackgroundView = UIView()
+    private let height: CGFloat = 450
+
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
+        self.dimmedBackgroundView.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    override var frameOfPresentedViewInContainerView: CGRect {
+        var frame =  CGRect.zero
+        if let containerBounds = containerView?.bounds {
+            frame = CGRect(x: 0,
+                           y: containerBounds.height/2.3,
+                           width: containerBounds.width,
+                           height: containerBounds.height/1.5)
+        }
+        return frame
+    }
+
+    override func presentationTransitionWillBegin() {
+        if let containerView = self.containerView, let coordinator = presentingViewController.transitionCoordinator {
+            containerView.addSubview(self.dimmedBackgroundView)
+            self.dimmedBackgroundView.backgroundColor = .black
+            self.dimmedBackgroundView.frame = containerView.bounds
+            self.dimmedBackgroundView.alpha = 0
+            coordinator.animate(alongsideTransition: { _ in
+                self.dimmedBackgroundView.alpha = 0.5
+            }, completion: nil)
+        }
+    }
+
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
+        self.dimmedBackgroundView.removeFromSuperview()
+    }
+
+    @objc private func backgroundTapped() {
+       self.presentedViewController.dismiss(animated: true, completion: nil)
+    }
+
+
 }
