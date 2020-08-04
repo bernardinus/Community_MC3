@@ -61,6 +61,7 @@ class FavouritesView: UIViewController {
     }
     
     func retrieveFavorite() {
+        
         documentController.getFavoritesFromCloudKit { (favourites) in
             var tracks = [PrimitiveTrackDataStruct]()
             var videos = [PrimitiveVideosDataStruct]()

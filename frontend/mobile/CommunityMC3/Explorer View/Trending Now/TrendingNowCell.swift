@@ -50,6 +50,7 @@ class TrendingNowCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func playTrending(_ sender: UIButton) {
+        /*
         if trending.track != nil {
             player = true
             mainTableView.reloadData()
@@ -63,6 +64,7 @@ class TrendingNowCell: UITableViewCell {
                 }
             }
         }
+         */
     }
     
     @IBAction func favoriteUpload(_ sender: UIButton) {

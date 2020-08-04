@@ -45,14 +45,22 @@ class DataManager
     var featuredVideos:FeaturedDataStruct?
     var newFeaturedVideos:FeaturedDataStruct?
     
+    var allTracks:[TrackDataStruct] = []
+    var allVideos:[VideosDataStruct] = []
+    var allArtist:[UserDataStruct] = []
     
+    var currentUser:UserDataStruct? = nil
     
     // CloudKit Data
-    var currentUser:CKRecord? = nil
+    var currentUserRec:CKRecord? = nil
     
     var userTrackRecord:[CKRecord] = []
     var latestUploadRecord:[CKRecord] = []
     var latestFavourite:[CKRecord] = []
+    
+    var allTracksRec:[CKRecord] = []
+    var allVideosRec:[CKRecord] = []
+    var allArtistRec:[CKRecord] = []
     
     var registerData:AccountDataStruct?
     
@@ -60,7 +68,7 @@ class DataManager
     
     func IsUserLogin()->Bool
     {
-        return currentUser != nil
+        return currentUserRec != nil
     }
     
     private init()
@@ -72,6 +80,9 @@ class DataManager
         getFeaturedData()
         autoLoginLastAccount()
         
+        getAllMusic()
+        getAllVideos()
+        getAllArtist()
         
     }
     
@@ -85,6 +96,7 @@ class DataManager
             if(loginEmail != "" && loginPassword != "")
             {
                 isSuccessLogin = true
+                print("auto login acc email:\(loginEmail) pass:\(loginPassword)")
                 loginToCloudKit(email: loginEmail!,password: loginPassword!, completionHandler: loginSuccess)
             }
         }
@@ -99,24 +111,26 @@ class DataManager
     {
 //        print("Auto loginSuccess")
         GetLatestFavourite()
+//        updateFeaturedArtist() // to test add user only
     }
     
-    func registerCurrentLoginInUserDefault(email:String, password:String)
-    {
-        userDefault.set(email, forKey: "email")
-        userDefault.set(password, forKey: "password")
-        userDefault.synchronize()
-    }
     
     func logout()
     {
-        currentUser = nil
+        currentUserRec = nil
         userDefault.set("", forKey: "email")
         userDefault.set("", forKey: "password")
         userDefault.synchronize()
     }
     
     // #MARK: REGISTER
+    func registerCurrentLoginInUserDefault(email:String, password:String)
+    {
+        userDefault.set(email, forKey: "email")
+        userDefault.set(password, forKey: "password")
+        userDefault.synchronize()
+    }
+
     func registerToCloudKit(email:String,
                             password:String,
                             userData:UserDataStruct,
@@ -139,6 +153,8 @@ class DataManager
                     if isSuccess
                     {
                         print("Register User Data Success")
+                        self.currentUserRec = userData.getCKRecord()
+                        self.currentUser = UserDataStruct(self.currentUserRec!)
                         self.registerCurrentLoginInUserDefault(email: email, password: password)
                     }
                     else
@@ -170,8 +186,9 @@ class DataManager
             else
             {
 //                print("Login to CloudKit Success \(record.count)")
-                self.currentUser = record[0]
-                let userDataRef = self.currentUser!.value(forKey: "userData")! as! CKRecord.Reference
+                self.currentUserRec = record[0]
+                self.currentUser = UserDataStruct(self.currentUserRec!)
+                let userDataRef = self.currentUserRec!.value(forKey: "userData")! as! CKRecord.Reference
 
                 
                 self.ckUtil.loadRecordFromPublicDB(recordID: userDataRef.recordID)
@@ -180,31 +197,30 @@ class DataManager
                     if(isSuccess)
                     {
 //                        print("UserData: \(userRecord!)")
-                        self.currentUser = userRecord
+                        self.currentUserRec = userRecord
+                        self.currentUser = UserDataStruct(self.currentUserRec!)
                         
                         self.registerCurrentLoginInUserDefault(email: email, password: password)
                         self.loginSuccess(isSuccess: isSuccess, errorString: errorString)
-        //                print("Account: \(self.currentUser!)")
-    
+//                        print("Account: \(self.currentUserRec!)")
+//
                         
-                        let tracks = userRecord?.value(forKey: "tracks") as! [CKRecord.Reference]
-                        let recordNames = tracks.map { $0.recordID.recordName }
+                        let tracksData = userRecord?.value(forKey: "tracks")
+                        if(tracksData != nil )
+                        {
+                            self.loadTracks(tracksData: tracksData)
+                        }
                         
-//                        print("track key :\(tracks))")
-//                        print("recordID key :\(recordNames))")
+                        let videosData = userRecord?.value(forKey: "videos")
+                        if(videosData != nil )
+                        {
+                            self.loadVideos(videosData: videosData)
+                        }
                         
-                        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: tracks) { (isSucess, errorString, trackRecords:[CKRecord]) in
-                            
-                            if(isSuccess)
-                            {
-//                                print("trackRecordsStart:\n \(trackRecords.count) \n trackRecordfinish")
-                                //                                let file = trackRecords[0].value(forKey: "fileURL") as! CKAsset
-                            }
-                            else
-                            {
-                                print("failedGet Track: \(errorString)")
-                            }
-                            
+                        let photosData = userRecord?.value(forKey: "tracks")
+                        if(photosData != nil )
+                        {
+                            self.loadPhotos(photosData: photosData)
                         }
                     }
                     else
@@ -220,10 +236,81 @@ class DataManager
         }
     }
     
-    // MARK: Update Current User
-    func saveCurrentUser()
+    func loadTracks(tracksData:Any?)
     {
-        ckUtil.saveRecordToPublicDB(record: currentUser!) { (isSuccess, errorString, record) in
+        let tracks = tracksData as! [CKRecord.Reference]
+        if tracks.count == 0 {return}
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: tracks)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                self.currentUser?.musics?.removeAll()
+                for tr in trackRecords
+                {
+                    self.currentUser?.musics?.append(TrackDataStruct(record: tr))
+                }
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadVideos(videosData:Any?)
+    {
+        let videos = videosData as! [CKRecord.Reference]
+        if videos.count == 0 {return}
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: videos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                self.currentUser?.videos?.removeAll()
+                for tr in trackRecords
+                {
+                    self.currentUser?.videos?.append(VideosDataStruct(record: tr))
+                }
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadPhotos(photosData:Any?)
+    {
+        let photos = photosData as! [CKRecord.Reference]
+        if photos.count == 0 {return}
+        print("photosCount :\(photos.count)")
+        
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: photos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                self.currentUser?.photos?.removeAll()
+                for tr in trackRecords
+                {
+                    self.currentUser?.photos?.append(PhotoDataStruct(record: tr))
+                }
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    // MARK: Update Current User
+    func savecurrentUserRec()
+    {
+        ckUtil.saveRecordToPublicDB(record: currentUserRec!) { (isSuccess, errorString, record) in
             if !isSuccess
             {
                 print("Save current user record failed : \(errorString)")
@@ -255,16 +342,16 @@ class DataManager
                     
                     self.UpdateNewUploadData(record: uploadedData.getCKRecord())
                     
-                    if(self.currentUser != nil)
+                    if(self.currentUserRec != nil)
                     {
-                        var allTracks = self.currentUser?.value(forKey: "tracks")
+                        var allTracks = self.currentUserRec?.value(forKey: "tracks")
                         let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
                         var arr:NSMutableArray? = nil
                         
                         if(allTracks != nil)
                         {
 //                            print("allTracks not nil")
-                            arr = NSMutableArray(array:self.currentUser!["tracks"] as! [CKRecord.Reference])
+                            arr = NSMutableArray(array:self.currentUserRec!["tracks"] as! [CKRecord.Reference])
                             arr!.add(ref)
                             print(arr)
                         }
@@ -273,19 +360,110 @@ class DataManager
 //                            print("allTracks nil")
                             arr = NSMutableArray(array: [ref])
                         }
-                        self.currentUser?.setValue(arr, forKey: "tracks")
-                        
-                        
-                        
-                        
+                        self.currentUserRec?.setValue(arr, forKey: "tracks")
+                        self.currentUserRec?.setValue(1, forKey: "isArtist")
                     }
                     
-                    self.saveCurrentUser()
+                    self.savecurrentUserRec()
                 }
                 
         })
     }
     
+    func UploadNewVideo(videoData:VideosDataStruct, completionHandler:@escaping(Bool, String)->Void)
+        {
+            ckUtil.saveRecordToPublicDB(
+                record: videoData.getCKRecord(),
+                completionHandler:{ (isSuccess, errorString, record) in
+                    if !isSuccess
+                    {
+                        print("UploadNewVideo Error : \(errorString)")
+                        completionHandler(isSuccess, errorString)
+                    }
+                    else
+                    {
+                        let uploadedData = UploadedDataStruct(uploadedDate: Date.init(timeIntervalSinceNow: 7*3600),
+                                                              track: nil,
+                                                              video: record!)
+                        
+                        self.UpdateNewUploadData(record: uploadedData.getCKRecord())
+                        
+                        if(self.currentUserRec != nil)
+                        {
+                            var allTracks = self.currentUserRec?.value(forKey: "videos")
+                            let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
+                            var arr:NSMutableArray? = nil
+                            
+                            if(allTracks != nil)
+                            {
+    //                            print("allTracks not nil")
+                                arr = NSMutableArray(array:self.currentUserRec!["videos"] as! [CKRecord.Reference])
+                                arr!.add(ref)
+                                print(arr)
+                            }
+                            else
+                            {
+    //                            print("allTracks nil")
+                                arr = NSMutableArray(array: [ref])
+                            }
+                            self.currentUserRec?.setValue(arr, forKey: "videos")
+                            self.currentUserRec?.setValue(1, forKey: "isArtist")
+                        }
+                        
+                        self.savecurrentUserRec()
+                        completionHandler(isSuccess, errorString)
+                    }
+                    
+            })
+        }
+    
+    func UploadNewPhoto(photoData:PhotoDataStruct, completionHandler:@escaping(Bool, String)->Void)
+        {
+            ckUtil.saveRecordToPublicDB(
+                record: photoData.getCKRecord(),
+                completionHandler:{ (isSuccess, errorString, record) in
+                    if !isSuccess
+                    {
+                        print("UploadNewPhotos Error : \(errorString)")
+                        completionHandler(isSuccess, errorString)
+                    }
+                    else
+                    {
+//                        let uploadedData = UploadedDataStruct(uploadedDate: Date.init(timeIntervalSinceNow: 7*3600),
+//                                                              track: record!,
+//                                                              video: nil)
+//
+//                        self.UpdateNewUploadData(record: uploadedData.getCKRecord())
+                        
+                        if(self.currentUserRec != nil)
+                        {
+                            var allTracks = self.currentUserRec?.value(forKey: "photos")
+                            let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
+                            var arr:NSMutableArray? = nil
+                            
+                            if(allTracks != nil)
+                            {
+    //                            print("allTracks not nil")
+                                arr = NSMutableArray(array:self.currentUserRec!["photos"] as! [CKRecord.Reference])
+                                arr!.add(ref)
+                                print(arr)
+                            }
+                            else
+                            {
+    //                            print("allTracks nil")
+                                arr = NSMutableArray(array: [ref])
+                            }
+                            self.currentUserRec?.setValue(arr, forKey: "photos")
+                            self.currentUserRec?.setValue(1, forKey: "isArtist")
+                        }
+                        
+                        self.savecurrentUserRec()
+                        completionHandler(isSuccess, errorString)
+                    }
+                    
+            })
+        }
+
     
     func UpdateNewUploadData(record:CKRecord)
     {
@@ -447,7 +625,7 @@ class DataManager
                 let count:Int = records.count
                 if count > 0
                 {
-                    print("GetFeaturedArtist Success \(records.count)")
+//                    print("GetFeaturedArtist Success \(records.count)")
                     let featuredArtistRecord = records[0]
                     print(featuredArtistRecord)
                     self.newFeaturedArtist  = FeaturedDataStruct()
@@ -486,12 +664,62 @@ class DataManager
             }
             self.featuredArtist = newFeaturedArtist
             updateExplorerView()
+            print("FeaturedArtist :\(self.featuredArtist?.users.count)")
         }
         else
         {
             print("Featured Artist Get User Failed")
         }
     }
+    
+    func updateFeaturedArtist()
+    {
+        let query = CKQuery(recordType: "Featured", predicate: NSPredicate(format: "id = %@", "featuredArtist"))
+        ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
+            if(!isSuccess)
+            {
+                print("GetFeaturedArtist Error")
+            }
+            else
+            {
+                let count:Int = records.count
+                if count > 0
+                {
+                    print("GetFeaturedArtist Success \(records.count)")
+                    let featuredArtistRecord = records[0]
+                    print(featuredArtistRecord)
+                    self.newFeaturedArtist  = FeaturedDataStruct()
+                    self.newFeaturedArtist?.id = featuredArtistRecord.recordID
+                    
+                    let artistRefArrData = featuredArtistRecord.value(forKey: "users")
+                    var arr:NSMutableArray? = nil
+                    let ref = CKRecord.Reference(record: self.currentUserRec!, action: .deleteSelf)
+                    if(artistRefArrData != nil)
+                    {
+                        arr = NSMutableArray(array:(artistRefArrData as! [CKRecord.Reference]))
+                        arr!.add(ref)
+                    }
+                    else
+                    {
+                        arr = NSMutableArray(array: [ref])
+
+                    }
+                        
+                    featuredArtistRecord.setValue(arr, forKey: "users")
+                    self.ckUtil.saveRecordToPublicDB(record: featuredArtistRecord) { (isSuccess, errorString, record) in
+                        print("update Record FeaturedArtist: \(isSuccess) \(errorString)")
+                    }
+                }
+                else
+                {
+                    print("GetFeaturedArtist Error 0 Count")
+                }
+                
+            }
+        }
+    }
+    
+    
     
     // MARK: FEATURED VIDEO
     func getFeaturedVideo()
@@ -529,11 +757,6 @@ class DataManager
         }
     }
     
-    func updateFeaturedArtist()
-    {
-        
-    }
-    
     
     // MARK: FAVOURITE
     
@@ -568,6 +791,70 @@ class DataManager
                 print("GetLatestFavourite Success")
                 self.latestFavourite = record
                 print(self.latestFavourite)
+            }
+        }
+    }
+    
+    // MARK: GET ALL
+    func getAllMusic()
+    {
+        let query = CKQuery(recordType: "Track", predicate: NSPredicate(value: true))
+        ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
+            if(!isSuccess)
+            {
+                print("getAllMusic Error")
+            }
+            else
+            {
+                print("getAllMusic Success")
+                self.allTracksRec = records
+                self.allTracks.removeAll()
+                for record in records
+                {
+                    self.allTracks.append(TrackDataStruct(record:record))
+                }
+            }
+        }
+    }
+    
+    func getAllVideos()
+    {
+        let query = CKQuery(recordType: "Videos", predicate: NSPredicate(value: true))
+        ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
+            if(!isSuccess)
+            {
+                print("getAllVideos Error")
+            }
+            else
+            {
+                print("getAllVideos Success")
+                self.allVideosRec = records
+                self.allVideos.removeAll()
+                for record in records
+                {
+                    self.allVideos.append(VideosDataStruct(record: record))
+                }
+            }
+        }
+    }
+    
+    func getAllArtist()
+    {
+        let query = CKQuery(recordType: "UserData", predicate: NSPredicate(format: "isArtist = 1"))
+        ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
+            if(!isSuccess)
+            {
+                print("getAllArtist Error")
+            }
+            else
+            {
+                print("getAllArtist Success")
+                self.allArtistRec = records
+                self.allArtist.removeAll()
+                for record in records
+                {
+                    self.allArtist.append(UserDataStruct(record))
+                }
             }
         }
     }

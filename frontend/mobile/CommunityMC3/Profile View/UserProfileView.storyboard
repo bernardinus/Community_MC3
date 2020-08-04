@@ -182,6 +182,8 @@
                         <segue destination="LrF-ej-lwD" kind="show" identifier="showcaseMusicSegue" id="9fA-Er-lvs"/>
                         <segue destination="UAB-I9-UTP" kind="show" identifier="showcasePhotoSegue" id="3fh-8K-jZz"/>
                         <segue destination="Rmf-fR-tHw" kind="show" identifier="showcaseVideoSegue" id="2QL-h3-VPy"/>
+                        <segue destination="TK2-hW-ZF4" kind="show" identifier="trackPlayerSegue" id="vmr-j9-nti"/>
+                        <segue destination="Lvy-Lc-1KN" kind="show" identifier="videoPlayerSegue" id="Jx0-9h-dib"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6uo-bn-CT4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -333,6 +335,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXS-iU-xEA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="319" y="139"/>
+        </scene>
+        <!--TrackPlayer-->
+        <scene sceneID="fgV-Gm-EVZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="TK2-hW-ZF4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9cg-90-FfA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtv-Ee-bdr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89" y="262"/>
+        </scene>
+        <!--VideoPlayer-->
+        <scene sceneID="QnV-5D-fEf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoPlayer" id="Lvy-Lc-1KN" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="x7w-rg-96d"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kKR-6o-zgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198" y="395"/>
         </scene>
     </scenes>
     <resources>

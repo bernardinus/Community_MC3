@@ -8,6 +8,7 @@
 
 //import Foundation
 import UIKit
+import CloudKit
 
 class SettingController: UIViewController {
     
@@ -30,6 +31,7 @@ class SettingController: UIViewController {
     var isEditProfile:Bool = true
     var emailAddr:String = ""
     var password:String = ""
+    var selectedGenre:String = ""
     
     //    let documentController = DocumentTableViewController.shared
     let uploadController = UploadController.shared
@@ -41,11 +43,25 @@ class SettingController: UIViewController {
         
 //        let uploadTap = UITapGestureRecognizer(target: self, action: #selector(self.handleUploadTap(_:)))
 //        settingImage.addGestureRecognizer(uploadTap)
-        menuButton.isHidden = !isEditProfile
+//        menuButton.isHidden = !isEditProfile
         if let loadEmail = userDefault.string(forKey: "email"){
             emailField.text = loadEmail
         }
         handleLocalisation()
+        
+        let pickerView:UIPickerView = UIPickerView()
+        pickerView.delegate = self
+        genreField?.delegate = self
+        genreField?.inputView = pickerView
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let button = UIBarButtonItem(title: NSLocalizedString("Done".uppercased(), comment: ""), style: .plain, target: self, action: #selector(self.action))
+        toolBar.setItems([flexibleSpace,button], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        genreField!.inputAccessoryView = toolBar
+        
         /*
                 documentController.getProfilesFromCloudKit { (profiles) in
                     for profile in profiles {
@@ -79,6 +95,36 @@ class SettingController: UIViewController {
             }
         }
  */
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(isEditProfile)
+        {
+            updateField()
+        }
+        else
+        {
+            nameField.text = ""
+            genreField.text = ""
+            emailField.text = emailAddr
+            
+            settingImage.image = UIImage(systemName: "person.circle")
+            phoneNumberField.text = ""
+            instagramField.text = ""
+        }
+        super.viewWillAppear(animated)
+    }
+    
+    func updateField()
+    {
+        let data:UserDataStruct = DataManager.shared().currentUser!
+        nameField.text = data.name
+        genreField.text = data.genre
+        settingImage.image = data.profilePicture
+        phoneNumberField.text = data.phoneNumber
+        instagramField.text = data.instagram
     }
     
     func handleLocalisation()  {
@@ -87,6 +133,24 @@ class SettingController: UIViewController {
         emailTitleLabel.text = NSLocalizedString("Email".uppercased(), comment: "")
         genreTitleLabel.text = NSLocalizedString("Genre", comment: "")
         saveButton.titleLabel?.text = NSLocalizedString("Save", comment: "")
+        phoneNumberLabel.text = NSLocalizedString("Phone Number", comment: "")
+        instagramLabel.text = NSLocalizedString("Instagram", comment: "")
+        
+    }
+    @IBAction func backButtonTouched(_ sender: Any) {
+        handleUnwind()
+    }
+    
+    func handleUnwind()
+    {
+        if(isEditProfile)
+        {
+            performSegue(withIdentifier: "unwindToUserProfile", sender: nil)
+        }
+        else
+        {
+            performSegue(withIdentifier: "unwindToRegister", sender: nil)
+        }
     }
     
     @objc func handleUploadTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -102,32 +166,61 @@ class SettingController: UIViewController {
         {
             //        documentController.uploadProfile(name: nameField.text!, email: emailField.text!, genre: genreField.text!, myImage: settingImage.image!)
             //        uploadController.uploadPhoto(email: emailField.text!, myImage: settingImage.image!)
-            uploadController.uploadUserData(email: emailField.text!,
-                                            name: nameField.text!,
-                                            genre: genreField.text!,
-                                            myImage: settingImage.image!
-            )
+            let data:UserDataStruct = DataManager.shared().currentUser!
+            data.name = nameField.text
+            data.genre = selectedGenre
+            data.profilePicture = settingImage.image
+            data.phoneNumber = phoneNumberField.text
+            data.instagram = instagramField.text
+            
+            let dataRec:CKRecord = DataManager.shared().currentUserRec!
+            dataRec.setValuesForKeys(data.asDict())
+            
+            DataManager.shared().savecurrentUserRec()
+            handleUnwind()
+            
         }
         else
         {
             
-            var data:UserDataStruct = UserDataStruct()
+            let data:UserDataStruct = UserDataStruct()
             data.name = nameField.text
-            data.genre = genreField.text
+            data.genre = selectedGenre
             data.profilePicture = settingImage.image
+            data.phoneNumber = phoneNumberField.text
+            data.instagram = instagramField.text
             
             // first time registering
             DataManager.shared().registerToCloudKit(email: emailAddr,
                                                     password: password,
                                                     userData: data)
             { (isSuccess, errorString, record) in
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+                if(isSuccess)
+                {
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+                    }
+                }
+                else
+                {
+                    DispatchQueue.main.async {
+                        print("ErrorString :\(errorString)")
+                        let alert:UIAlertController = AlertViewHelper.createAlertView(type: .Error,
+                                                        rightHandler: nil,
+                                                        leftHandler: nil,
+                                                        replacementString: [strKeyErrorMSG : errorString]
+                        )
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
                 
             }
             
         }
+    }
+    
+    @objc func action() {
+        view.endEditing(true)
     }
     
     func loadAlert() {
@@ -188,4 +281,32 @@ extension SettingController: UIImagePickerControllerDelegate, UINavigationContro
             }
         }
     }
+}
+
+extension SettingController:UITextFieldDelegate
+{
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+}
+
+extension SettingController:UIPickerViewDelegate, UIPickerViewDataSource
+{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        musicGenreArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        musicGenreArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedGenre = musicGenreArray[row]
+        genreField?.text = selectedGenre
+    }
+    
 }
