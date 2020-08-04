@@ -374,7 +374,7 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+           return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
     }
 }
 
@@ -409,13 +409,3 @@ extension UIView {
     //    }
 }
 
-class HalfSizePresentationController : UIPresentationController {
-    override var frameOfPresentedViewInContainerView: CGRect {
-        get {
-            guard let theView = containerView else {
-                return CGRect.zero
-            }
-            return CGRect(x: 0, y: theView.bounds.height/3, width: theView.bounds.width, height: theView.bounds.height/1.5)
-        }
-    }
-}
