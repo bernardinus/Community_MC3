@@ -382,17 +382,17 @@
                     <navigationItem key="navigationItem" id="IXu-dG-aiK"/>
                     <connections>
                         <outlet property="tableView" destination="D2o-84-MEH" id="hn5-cX-gEB"/>
-                        <segue destination="KlH-xT-DH8" kind="show" identifier="uploadFile" id="y6N-1T-lBs"/>
+                        <segue destination="KlH-xT-DH8" kind="show" identifier="selectFileSegue" id="y6N-1T-lBs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRX-dm-szV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2021.7391304347827" y="876.5625"/>
         </scene>
-        <!--UploadFileView-->
+        <!--SelectFileView-->
         <scene sceneID="2bI-lF-8fV">
             <objects>
-                <viewControllerPlaceholder storyboardName="UploadFileView" id="KlH-xT-DH8" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="SelectFileView" id="KlH-xT-DH8" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="vki-jl-NzR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zth-b7-VaG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
