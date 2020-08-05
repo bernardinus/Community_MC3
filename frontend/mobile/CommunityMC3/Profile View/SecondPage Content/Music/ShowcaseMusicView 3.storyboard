@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wP6-qZ-YeW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Music-->
+        <scene sceneID="11J-oP-j5s">
+            <objects>
+                <viewController id="wP6-qZ-YeW" customClass="ShowcaseMusicVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="29m-bC-H1e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1MJ-qK-bcT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="wP6-qZ-YeW" id="PvE-FS-w1P"/>
+                                    <outlet property="delegate" destination="wP6-qZ-YeW" id="O5G-Vy-VQJ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1MJ-qK-bcT" firstAttribute="top" secondItem="pUW-N2-b4D" secondAttribute="top" id="Wsv-zM-X26"/>
+                            <constraint firstItem="1MJ-qK-bcT" firstAttribute="trailing" secondItem="pUW-N2-b4D" secondAttribute="trailing" id="eQI-N7-Qrf"/>
+                            <constraint firstItem="1MJ-qK-bcT" firstAttribute="bottom" secondItem="pUW-N2-b4D" secondAttribute="bottom" id="iQ9-BM-IP6"/>
+                            <constraint firstItem="1MJ-qK-bcT" firstAttribute="leading" secondItem="pUW-N2-b4D" secondAttribute="leading" id="ynU-TT-OVI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pUW-N2-b4D"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Music" id="2cv-EM-Z1y">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="X7n-Oe-q4F">
+                            <connections>
+                                <segue destination="UTb-lr-nNO" kind="unwind" unwindAction="unwindToUserProfile:" id="HoR-SB-DXJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="showcaseMusicTable" destination="1MJ-qK-bcT" id="IzE-ai-ZlA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0d-9r-CGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="UTb-lr-nNO" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1163.768115942029" y="183.48214285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+    </resources>
+</document>
