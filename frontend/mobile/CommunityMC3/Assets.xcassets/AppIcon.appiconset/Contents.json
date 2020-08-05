@@ -13,21 +13,13 @@
       "size" : "20x20"
     },
     {
-<<<<<<< Updated upstream
       "filename" : "icon_29pt@2x-1.png",
-=======
-      "filename" : "App icon 58px.png",
->>>>>>> Stashed changes
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-<<<<<<< Updated upstream
       "filename" : "icon_29pt@3x.png",
-=======
-      "filename" : "App icon 87px.png",
->>>>>>> Stashed changes
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
@@ -39,31 +31,19 @@
       "size" : "40x40"
     },
     {
-<<<<<<< Updated upstream
       "filename" : "icon_40pt@3x.png",
-=======
-      "filename" : "App icon 120px.png",
->>>>>>> Stashed changes
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-<<<<<<< Updated upstream
       "filename" : "icon_60pt@2x.png",
-=======
-      "filename" : "App icon 120px-1.png",
->>>>>>> Stashed changes
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-<<<<<<< Updated upstream
       "filename" : "icon_60pt@3x.png",
-=======
-      "filename" : "App icon 180px.png",
->>>>>>> Stashed changes
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -123,11 +103,7 @@
       "size" : "83.5x83.5"
     },
     {
-<<<<<<< Updated upstream
       "filename" : "Icon.png",
-=======
-      "filename" : "App icon 1024px.png",
->>>>>>> Stashed changes
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
