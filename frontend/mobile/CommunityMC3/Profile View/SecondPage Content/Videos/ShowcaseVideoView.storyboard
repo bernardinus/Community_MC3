@@ -34,7 +34,11 @@
                         <viewLayoutGuide key="safeArea" id="bug-Gi-Dfp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Videos" id="Q8T-Ij-aPH">
-                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="nj5-bL-5Mj"/>
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="nj5-bL-5Mj">
+                            <connections>
+                                <segue destination="sSi-it-Dao" kind="unwind" unwindAction="unwindToUserProfile:" id="YkS-Fz-LTH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -42,6 +46,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxU-MZ-4gf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="sSi-it-Dao" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1160.8695652173915" y="183.48214285714286"/>
         </scene>

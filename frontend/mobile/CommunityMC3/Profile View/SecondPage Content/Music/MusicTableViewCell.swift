@@ -12,7 +12,9 @@ class MusicTableViewCell: UITableViewCell {
     
     @IBOutlet weak var trackPlayButton: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
-    @IBOutlet weak var artistNameLabel: UILabel!
+//    @IBOutlet weak var artistNameLabel: UILabel!
+    var callback:(()->Void)! = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +24,12 @@ class MusicTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    func updateData(track:TrackDataStruct)
+    {
+        trackTitleLabel.text = track.name
+//        artistNameLabel.text = DataManager.shared().currentUser?.name
     }
     
 }

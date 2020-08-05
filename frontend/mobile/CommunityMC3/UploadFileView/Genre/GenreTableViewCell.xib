@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,20 +16,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="353" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your genre" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbd-rb-pfr">
-                        <rect key="frame" x="27" y="55" width="320" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose your genre" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbd-rb-pfr">
+                        <rect key="frame" x="10" y="52" width="300" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="1kA-tP-FFl"/>
+                            <constraint firstAttribute="width" constant="300" id="qrS-P3-fDs"/>
+                        </constraints>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heO-Ad-jr8">
-                        <rect key="frame" x="27" y="6" width="309" height="41"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heO-Ad-jr8">
+                        <rect key="frame" x="10" y="8" width="200" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="5a0-sT-Pz2"/>
+                            <constraint firstAttribute="width" constant="200" id="PJZ-si-sYr"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="vbd-rb-pfr" firstAttribute="top" secondItem="heO-Ad-jr8" secondAttribute="bottom" constant="8" id="09e-qf-k7V"/>
+                    <constraint firstItem="heO-Ad-jr8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="6rV-U3-VT9"/>
+                    <constraint firstItem="vbd-rb-pfr" firstAttribute="top" secondItem="heO-Ad-jr8" secondAttribute="bottom" constant="8" id="lcx-0X-EVK"/>
+                    <constraint firstItem="vbd-rb-pfr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="rDR-0J-6zQ"/>
+                    <constraint firstItem="heO-Ad-jr8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="sfX-MF-Qt4"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

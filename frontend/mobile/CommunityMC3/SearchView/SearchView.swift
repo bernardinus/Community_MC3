@@ -24,6 +24,8 @@ class SearchView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dismissKeyboard()
+        
         
     }
     
@@ -59,4 +61,25 @@ class SearchView: UIViewController {
         let _: ButtonType = getSelectedActionType()
     }
     
+//    func filter(filterText:String)
+//    {
+//        print("asd+\(filterText)+asd")
+//        if(filterText.isEmpty || filterText == "")
+//        {
+//            filteredList = fileList
+//        }
+//        else
+//        {
+//            filteredList = fileList.filter{$0.lastPathComponent.lowercased().contains(filterText.lowercased())}
+//        }
+//        tableView.reloadData()
+//    }
+}
+
+extension SearchView:UISearchBarDelegate
+{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+//        filter(filterText: searchText)
+    }
 }

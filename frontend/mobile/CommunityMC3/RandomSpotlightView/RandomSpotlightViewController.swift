@@ -30,6 +30,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var musicAndVideoTableView: UITableView!
     @IBOutlet weak var popUpContentView: UIView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var viewProfileButton: UIButton!
     
     var test = false
     var musicGenreArray = ["Rock","Jazz","Pop","RnB","Acoustic","Blues"]
@@ -44,12 +45,21 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     var timer: Timer?
     var seconds = 0
     
+    let overlayView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupBackground()
         addSwipeGesture()
+        
+        
+    }
+    
+    func setupLocalisation() {
+        editButton.titleLabel?.text = NSLocalizedString("Edit".uppercased(), comment: "")
+        nextButton.titleLabel?.text = NSLocalizedString("Next".uppercased(), comment: "")
+        viewProfileButton.titleLabel?.text = NSLocalizedString("View Profile".uppercased(), comment: "")
     }
     
     func setupBackground(){
@@ -69,8 +79,9 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         musicAndVideoTableView.register(UINib(nibName: "MusicListCell", bundle: nil), forCellReuseIdentifier: "musicList")
         musicAndVideoTableView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellReuseIdentifier: "videoList")
         
-        popUpContentView.layer.cornerRadius = 12
+        popUpContentView.layer.cornerRadius = 15
         popUpView.isHidden = false
+        viewProfileButton.layer.cornerRadius = 15
         
         nextButton.layer.cornerRadius = 20
     }
@@ -87,6 +98,9 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             print("*** Error generating thumbnail: \(error.localizedDescription)")
             return nil
         }
+    }
+    @IBAction func unwindButton(_ sender: Any) {
+        print("unwindButtonClicked")
     }
     
     func addSwipeGesture() {
@@ -110,9 +124,21 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         //        }
     }
     
-    @IBAction func searchButtonAction(_ sender: UIButton) {
-        
-        UIView.animate(withDuration: 2.0, animations: {
+    override func viewWillAppear(_ animated: Bool) {
+        startSearch()
+        super.viewWillAppear(animated)
+    }
+    
+    func startSearch()
+    {
+        self.editButton.isHidden = true
+        self.popUpView.isHidden = true
+        self.searchButton.isHidden = false
+        self.innerCircleEffectImage.isHidden = false
+        self.outerCircleEffectImage.isHidden = false
+        nextButton.isHidden = true
+
+        UIView.animate(withDuration: 1.2, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
             })
@@ -120,40 +146,65 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             self.outerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
         
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.2, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.innerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.2 , y: 1.2)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.innerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.2, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.searchButton?.transform = CGAffineTransform (scaleX:0.9 , y: 0.9)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
-            UIView.animate(withDuration: 2.0, delay: 2, options: .transitionCrossDissolve, animations: {
+            UIView.animate(withDuration: 1.2, delay: 2, options: .transitionCrossDissolve, animations: {
                 self.popUpView.isHidden = false
                 self.searchButton.isHidden = true
                 self.innerCircleEffectImage.isHidden = true
                 self.outerCircleEffectImage.isHidden = true
+                self.nextButton.isHidden = false
+                self.editButton.isHidden = false
             })
         })
     }
     
+    @IBAction func searchButtonAction(_ sender: UIButton) {
+        
+        startSearch()
+    }
+    
     @IBAction func editButtonAction(_ sender: UIButton) {
+//        overlayView.backgroundColor = UIColor.gray
+//        overlayView.alpha = 0.5
+//        overlayView.tag = 101
+//        self.view.addSubview(overlayView)
+        
         let editRandomizerVC = storyboard?.instantiateViewController(identifier: "EditRandomizerVC") as! EditRandomizerViewController
+        editRandomizerVC.callback = startSearch
         editRandomizerVC.transitioningDelegate = self
         editRandomizerVC.modalPresentationStyle = .custom
+        editRandomizerVC.modalTransitionStyle = .coverVertical
         editRandomizerVC.view.layer.cornerRadius = 34
         
         self.present(editRandomizerVC, animated: true, completion: nil)
+        
+       
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         popUpContentView.slideLeft()
+        
+
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destinationSegue = segue.destination as? EditRandomizerViewController {
+//
+//        }
+//    }
+    
+   
     
 }
 extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -161,11 +212,11 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == RandomSearch.Music.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
-            cell.headerTitle.text = "MUSIC"
+            cell.headerTitle.text = NSLocalizedString("Music".uppercased(), comment: "")
             return cell
         }else if section == RandomSearch.Video.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
-            cell.headerTitle.text = "VIDEO"
+            cell.headerTitle.text = NSLocalizedString("Video".uppercased(), comment: "")
             return cell
         }
         return musicAndVideoTableView.dequeueReusableCell(withIdentifier: "headerCellRandom")
@@ -245,19 +296,20 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! MusicGenreCell
-        cell.layer.borderWidth = 1.5
-        cell.layer.cornerRadius = 12
+//        cell.layer.borderWidth = 1.5
+//        cell.layer.cornerRadius = 12
         cell.musicGenreLabel.text = musicGenreArray[indexPath.row]
-        switch cell.musicGenreLabel.text {
-        case "RnB":
-            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
-        case "Jazz":
-            cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
-        case "Pop":
-            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
-        default:
-            break
-        }
+//        switch cell.musicGenreLabel.text {
+//        case "RnB":
+//            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
+//        case "Jazz":
+//            cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
+//        case "Pop":
+//            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
+//        default:
+//            break
+//        }
+        setupUIViewForGenre(view: cell, genre: musicGenreArray[indexPath.row])
         return cell
     }
     
@@ -321,9 +373,8 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         }
     }
     
-    
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+           return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
     }
 }
 
@@ -358,13 +409,3 @@ extension UIView {
     //    }
 }
 
-class HalfSizePresentationController : UIPresentationController {
-    override var frameOfPresentedViewInContainerView: CGRect {
-        get {
-            guard let theView = containerView else {
-                return CGRect.zero
-            }
-            return CGRect(x: 0, y: theView.bounds.height/2, width: theView.bounds.width, height: theView.bounds.height/2)
-        }
-    }
-}

@@ -21,7 +21,7 @@ class AllSearchVC: UIViewController {
     @IBOutlet weak var allSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        allSearchTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         allSearchTableView.register(UINib(nibName: "SearchHeaderSection", bundle: nil), forCellReuseIdentifier: "searchHeaderSection")
         allSearchTableView.register(UINib(nibName: "MusicSearchCell", bundle: nil), forCellReuseIdentifier: "musicSearchCell")
         allSearchTableView.register(UINib(nibName: "ArtistSearchCell", bundle: nil), forCellReuseIdentifier: "artistSearchCell")
@@ -41,11 +41,11 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         }
         if(section == SearchSection.Music.rawValue)
         {
-            cell.searchHeaderLabel.text = NSLocalizedString("Music", comment: "")
+            cell.searchHeaderLabel.text = NSLocalizedString("Music".uppercased(), comment: "")
         }
         if(section == SearchSection.Video.rawValue)
         {
-            cell.searchHeaderLabel.text = NSLocalizedString("Video", comment: "")
+            cell.searchHeaderLabel.text = NSLocalizedString("Video".uppercased(), comment: "")
         }
         if(section == SearchSection.Playlist.rawValue)
         {
@@ -87,13 +87,16 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "playlistSearchCell") as! PlaylistSearchCell
             return cell
         }
-        
-        
         return allSearchTableView.dequeueReusableCell(withIdentifier: "artistSearchCell")!
-        
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(indexPath.section == SearchSection.Video.rawValue)
+        {
+            return 200
+        }
+        
+        return 80
+    }
     
 }

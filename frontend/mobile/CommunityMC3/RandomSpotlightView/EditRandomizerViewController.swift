@@ -13,6 +13,12 @@ class EditRandomizerViewController: UIViewController {
     @IBOutlet weak var sortByCollectionView: UICollectionView!
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var editRandomizerLabel: UILabel!
+    @IBOutlet weak var sortByLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var clearAllButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    var callback:(()->Void)? = nil
     
     var sortByArray = ["Music", "Artist"]
     var genreArray = ["Rock", "Jazz", "Pop", "RnB", "Acoutic", "Blues"]
@@ -22,11 +28,23 @@ class EditRandomizerViewController: UIViewController {
     var genreTemp = [Int]()
     var selectedIndexSortByBool: [IndexPath: Bool] = [:]
     var selectedIndexGenreBool: [IndexPath: Bool] = [:]
+    let randomSpotlight = RandomSpotlightViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadLocalisation()
         setup()
+        
+    }
+    
+    func loadLocalisation() {
+        editRandomizerLabel.text = NSLocalizedString("Edit randomizer".uppercased(), comment: "")
+        sortByLabel.text = NSLocalizedString("Sort by".uppercased(), comment: "")
+        genreLabel.text = NSLocalizedString("Genre", comment: "")
+        clearAllButton.titleLabel?.text = NSLocalizedString("Clear All".uppercased(), comment: "")
+        applyButton.titleLabel?.text = NSLocalizedString("Apply".uppercased(), comment: "")
+        cancelButton.titleLabel?.text = NSLocalizedString("Cancel", comment: "")
     }
     
     func setup(){
@@ -39,23 +57,26 @@ class EditRandomizerViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationSegue = segue.destination as? RandomSpotlightViewController {
+        let destinationSegue = segue.destination as? RandomSpotlightViewController
             for i in sortByTemp{
-                destinationSegue.musicFilter.append(sortByArray[i])
+                destinationSegue!.musicFilter.append(sortByArray[i])
             }
             for i in genreTemp{
-                destinationSegue.genreFilter.append(genreArray[i])
+                destinationSegue!.genreFilter.append(genreArray[i])
             }
-        }
+        destinationSegue!.view.alpha = 1
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+       
+        
     }
     
     @IBAction func applyButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         
+        callback!()
     }
     
     @IBAction func clearAllButtonAction(_ sender: UIButton) {
@@ -68,7 +89,7 @@ class EditRandomizerViewController: UIViewController {
             cell.checkBoxImage.image = nil
             cell.checkBoxImage.layer.borderWidth = 1
             sortByTemp.removeAll()
-            print(sortByTemp)
+//            print(sortByTemp)
         }
         
         for indexPath in selectedGenre! {
@@ -79,6 +100,7 @@ class EditRandomizerViewController: UIViewController {
             genreTemp.removeAll()
         }
     }
+    
     
     
 }
@@ -125,7 +147,7 @@ extension EditRandomizerViewController: UICollectionViewDataSource, UICollection
                 cell.checkBoxImage.image = #imageLiteral(resourceName: "checkBox")
                 cell.checkBoxImage.layer.borderWidth = 0
             }
-            print(sortByTemp)
+//            print(sortByTemp)
             
         }else{
             if genreTemp.contains(indexPath.row){

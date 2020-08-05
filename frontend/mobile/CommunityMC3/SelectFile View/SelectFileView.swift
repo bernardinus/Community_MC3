@@ -49,6 +49,7 @@ class SelectFileView: UIViewController
         
         filteredList = fileList
         
+        cancelButton.titleLabel?.text = NSLocalizedString("Cancel", comment: "")
         selectFileTitleLabel.text = NSLocalizedString("Select File", comment: "")
         
     }
