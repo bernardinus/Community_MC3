@@ -175,7 +175,7 @@ Simply tap the button and let us surprise you.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-v0-4xE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mask Group" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-v0-4xE">
                                 <rect key="frame" x="107" y="306" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="FvT-ES-p2e"/>
@@ -212,6 +212,9 @@ Simply tap the button and let us surprise you.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 3" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-64-Ae4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Music" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O28-sK-det">
                                 <rect key="frame" x="36" y="646" width="160" height="90"/>
                                 <constraints>
@@ -231,9 +234,6 @@ Simply tap the button and let us surprise you.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 3" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-64-Ae4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -256,6 +256,7 @@ Simply tap the button and let us surprise you.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Mask Group" width="720" height="720"/>
         <image name="Onboarding BG 1" width="1125" height="1992"/>
         <image name="Onboarding BG 2" width="1125" height="1992"/>
         <image name="Onboarding BG 3" width="375" height="664"/>
