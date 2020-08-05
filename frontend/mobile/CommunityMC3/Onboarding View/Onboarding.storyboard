@@ -15,17 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account? Sign In." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMm-oC-G9n">
-                                <rect key="frame" x="105" y="816" width="204" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="aC1-jk-Una"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVi-GH-Xe7">
-                                <rect key="frame" x="25" y="755" width="364" height="48"/>
+                                <rect key="frame" x="25" y="758" width="364" height="48"/>
                                 <color key="backgroundColor" red="0.41176470590000003" green="0.47450980390000003" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="HuH-7Z-N8V"/>
@@ -34,35 +25,59 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fqE-BV-p32" kind="presentation" modalPresentationStyle="fullScreen" id="HQ6-db-2oC"/>
+                                    <segue destination="fqE-BV-p32" kind="show" id="HQ6-db-2oC"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahO-R0-CLm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                                 <connections>
                                     <segue destination="zRs-WI-28H" kind="embed" identifier="onboardingViewSegue" id="od9-Zf-mfo"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Allegro" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-uh-ORU">
-                                <rect key="frame" x="127.5" y="94" width="159" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <rect key="frame" x="111.5" y="94" width="191.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UYb-MB-Yn0">
+                                <rect key="frame" x="105" y="816" width="204.5" height="28"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMm-oC-G9n">
+                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSs-fy-Xxz">
+                                        <rect key="frame" x="159.5" y="0.0" width="45" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <state key="normal" title="Sign In.">
+                                            <color key="titleColor" red="0.2784313725" green="0.0" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="rJx-Nc-kER" kind="presentation" modalPresentationStyle="fullScreen" id="0iq-Lh-4rY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="dKw-AO-4mp"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="UYb-MB-Yn0" firstAttribute="centerX" secondItem="JHE-bh-RIp" secondAttribute="centerX" id="0U6-SE-1jT"/>
                             <constraint firstItem="ahO-R0-CLm" firstAttribute="trailing" secondItem="245-Rk-Tqc" secondAttribute="trailing" id="2Zg-Ke-xUK"/>
-                            <constraint firstItem="uVi-GH-Xe7" firstAttribute="top" secondItem="ahO-R0-CLm" secondAttribute="bottom" constant="21" id="5aT-Fb-1FU"/>
+                            <constraint firstItem="uVi-GH-Xe7" firstAttribute="top" secondItem="ahO-R0-CLm" secondAttribute="bottom" constant="34" id="5aT-Fb-1FU"/>
                             <constraint firstItem="ahO-R0-CLm" firstAttribute="top" secondItem="JHE-bh-RIp" secondAttribute="top" id="7wk-0n-aYJ"/>
                             <constraint firstItem="245-Rk-Tqc" firstAttribute="trailing" secondItem="uVi-GH-Xe7" secondAttribute="trailing" constant="25" id="C54-gN-003"/>
                             <constraint firstItem="khQ-uh-ORU" firstAttribute="centerX" secondItem="JHE-bh-RIp" secondAttribute="centerX" id="F3Q-Bu-0vA"/>
                             <constraint firstItem="khQ-uh-ORU" firstAttribute="top" secondItem="245-Rk-Tqc" secondAttribute="top" constant="50" id="JOZ-e9-nLC"/>
-                            <constraint firstItem="AMm-oC-G9n" firstAttribute="centerX" secondItem="JHE-bh-RIp" secondAttribute="centerX" id="Rke-F0-dFR"/>
                             <constraint firstItem="uVi-GH-Xe7" firstAttribute="centerX" secondItem="JHE-bh-RIp" secondAttribute="centerX" id="SWF-gG-9rj"/>
-                            <constraint firstItem="245-Rk-Tqc" firstAttribute="bottom" secondItem="AMm-oC-G9n" secondAttribute="bottom" constant="30" id="WhQ-PI-1e5"/>
                             <constraint firstItem="uVi-GH-Xe7" firstAttribute="leading" secondItem="245-Rk-Tqc" secondAttribute="leading" constant="25" id="btq-NB-5u1"/>
-                            <constraint firstItem="AMm-oC-G9n" firstAttribute="top" secondItem="uVi-GH-Xe7" secondAttribute="bottom" constant="13" id="ejB-o5-DR9"/>
+                            <constraint firstItem="245-Rk-Tqc" firstAttribute="bottom" secondItem="UYb-MB-Yn0" secondAttribute="bottom" constant="18" id="fI6-cS-uHm"/>
+                            <constraint firstItem="UYb-MB-Yn0" firstAttribute="top" secondItem="uVi-GH-Xe7" secondAttribute="bottom" constant="10" id="m1d-ck-RV4"/>
                             <constraint firstItem="ahO-R0-CLm" firstAttribute="leading" secondItem="245-Rk-Tqc" secondAttribute="leading" id="uTj-wP-9Cd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="245-Rk-Tqc"/>
@@ -82,6 +97,16 @@
             </objects>
             <point key="canvasLocation" x="-381" y="319"/>
         </scene>
+        <!--LoginScreen-->
+        <scene sceneID="Vvv-4v-6lM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginScreen" id="rJx-Nc-kER" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="D0P-Du-BpD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dcv-Zk-83T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-135" y="358"/>
+        </scene>
         <!--Onboarding View1-->
         <scene sceneID="u2k-Od-nKb">
             <objects>
@@ -90,7 +115,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 1" translatesAutoresizingMaskIntoConstraints="NO" id="rtE-cz-RjV">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 1" translatesAutoresizingMaskIntoConstraints="NO" id="rtE-cz-RjV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore &amp; Enjoy" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-Vw-WRL">
@@ -151,7 +176,7 @@ selected favorite artists.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 2" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-p0-Yw0">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 2" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-p0-Yw0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Spotlight" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbW-r9-Yia">
@@ -212,7 +237,7 @@ Simply tap the button and let us surprise you.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 3" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-64-Ae4">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 3" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-64-Ae4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Music" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O28-sK-det">
