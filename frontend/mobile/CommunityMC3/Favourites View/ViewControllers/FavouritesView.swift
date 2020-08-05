@@ -61,7 +61,7 @@ class FavouritesView: UIViewController {
     }
     
     func retrieveFavorite() {
-        
+        /*
         documentController.getFavoritesFromCloudKit { (favourites) in
             var tracks = [PrimitiveTrackDataStruct]()
             var videos = [PrimitiveVideosDataStruct]()
@@ -99,6 +99,7 @@ class FavouritesView: UIViewController {
                 self.tableView.reloadData()
             }
         }
+ */
     }
     
     override func viewWillAppear(_ animated: Bool) {

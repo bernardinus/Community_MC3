@@ -34,10 +34,11 @@ class TrackDataStruct
     
     
     var album:AlbumDataStruct?
+    var artistName:String? = "artistName"
     
     init(record:CKRecord)
     {
-        print("inputedData \(record)")
+//        print("inputedData \(record)")
         let genreData = record.value(forKey: "genre")
         if genreData != nil
         {

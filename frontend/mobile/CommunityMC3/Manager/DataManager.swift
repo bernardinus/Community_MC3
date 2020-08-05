@@ -25,29 +25,12 @@ class DataManager
     var selectedTrackData:TrackDataStruct? = nil
     var selectedVideoData:VideosDataStruct? = nil
     
-    var trendingNowList:[TrackDataStruct]? = nil
-    var latestList:[UploadedDataStruct]? = nil
-    var featuredArtistList:[UserDataStruct]? = nil
-    var featuredVideoLis:[VideosDataStruct]? = nil
     
     var ckUtil:CloudKitUtil = CloudKitUtil.shared()
     
     // FEATURED DATA
-    var trendingNow:FeaturedDataStruct?
-    var newTrendingNow:FeaturedDataStruct?
     
-    var latestUpload:[UploadedDataStruct]? = []
-    var newLatestUpload:[UploadedDataStruct]? = []
     
-    var featuredArtist:FeaturedDataStruct?
-    var newFeaturedArtist:FeaturedDataStruct?
-    
-    var featuredVideos:FeaturedDataStruct?
-    var newFeaturedVideos:FeaturedDataStruct?
-    
-    var allTracks:[TrackDataStruct] = []
-    var allVideos:[VideosDataStruct] = []
-    var allArtist:[UserDataStruct] = []
     
     var currentUser:UserDataStruct? = nil
     
@@ -55,16 +38,42 @@ class DataManager
     var currentUserRec:CKRecord? = nil
     
     var userTrackRecord:[CKRecord] = []
+    
     var latestUploadRecord:[CKRecord] = []
+    var latestUpload:[UploadedDataStruct]? = []
+    var newLatestUpload:[UploadedDataStruct]? = []
+    
+    var trendingNowRecord:CKRecord?
+    var trendingNow:FeaturedDataStruct?
+    var newTrendingNow:FeaturedDataStruct?
+    
+    var featuredArtistRecord:CKRecord?
+    var featuredArtist:FeaturedDataStruct?
+    var newFeaturedArtist:FeaturedDataStruct?
+    
+    var featuredVideosRecord:CKRecord?
+    var featuredVideos:FeaturedDataStruct?
+    var newFeaturedVideos:FeaturedDataStruct?
+
+    
     var latestFavourite:[CKRecord] = []
     
     var allTracksRec:[CKRecord] = []
+    var allTracks:[TrackDataStruct] = []
+    
     var allVideosRec:[CKRecord] = []
+    var allVideos:[VideosDataStruct] = []
+    
     var allArtistRec:[CKRecord] = []
+    var allArtist:[UserDataStruct] = []
+    
     
     var registerData:AccountDataStruct?
     
     var userDefault:UserDefaults = UserDefaults.standard
+    
+    var willUpdateFeaturedData:Bool = false
+    var maxFeaturedData:Int = 50
     
     func IsUserLogin()->Bool
     {
@@ -76,6 +85,7 @@ class DataManager
         print("dataManager.init")
         
         ckUtil.setup(cloudKitContainerID: iCloudContainerID)
+        willUpdateFeaturedData = true
         
         getFeaturedData()
         autoLoginLastAccount()
@@ -85,6 +95,21 @@ class DataManager
         getAllArtist()
         
     }
+    
+    func updateExplorerView()
+    {
+        DispatchQueue.main.async {
+            
+            let rootView = UIApplication.shared.keyWindow?.rootViewController! as! UINavigationController
+            let tabBarView = rootView.viewControllers[0] as! UITabBarController
+            let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+            explorerView.mainTableView.reloadData()
+//            print("check arr \(tabBarView.viewControllers![0])")
+
+        }
+        
+    }
+
     
     func autoLoginLastAccount()
     {
@@ -172,6 +197,8 @@ class DataManager
             }
         }
     }
+    
+    
     
     // MARK: LOGIN
     func loginToCloudKit(email:String, password:String, completionHandler:@escaping(Bool, String)->Void)
@@ -354,7 +381,7 @@ class DataManager
 //                            print("allTracks not nil")
                             arr = NSMutableArray(array:self.currentUserRec!["tracks"] as! [CKRecord.Reference])
                             arr!.add(ref)
-                            print(arr)
+//                            print(arr)
                         }
                         else
                         {
@@ -401,7 +428,7 @@ class DataManager
     //                            print("allTracks not nil")
                                 arr = NSMutableArray(array:self.currentUserRec!["videos"] as! [CKRecord.Reference])
                                 arr!.add(ref)
-                                print(arr)
+//                                print(arr)
                             }
                             else
                             {
@@ -431,11 +458,6 @@ class DataManager
                     }
                     else
                     {
-//                        let uploadedData = UploadedDataStruct(uploadedDate: Date.init(timeIntervalSinceNow: 7*3600),
-//                                                              track: record!,
-//                                                              video: nil)
-//
-//                        self.UpdateNewUploadData(record: uploadedData.getCKRecord())
                         
                         if(self.currentUserRec != nil)
                         {
@@ -448,7 +470,7 @@ class DataManager
     //                            print("allTracks not nil")
                                 arr = NSMutableArray(array:self.currentUserRec!["photos"] as! [CKRecord.Reference])
                                 arr!.add(ref)
-                                print(arr)
+//                                print(arr)
                             }
                             else
                             {
@@ -484,10 +506,10 @@ class DataManager
     // MARK: FEATURED
     func getFeaturedData()
     {
-//        getTrendingNow()
+        getTrendingNow()
         getLatestUpload()
         getFeaturedArtist()
-//        getFeaturedVideo()
+        getFeaturedVideo()
     }
     
     //MARK: TRENDING NOW
@@ -497,11 +519,11 @@ class DataManager
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
             if(!isSuccess)
             {
-                print("GetFeaturedID Error")
+                print("GetFeaturedID Error \(errorString)")
             }
             else
             {
-//                print("GetFeaturedID Success")
+                print("GetFeaturedID Success")
                 let count:Int = records.count
                 if count > 0
                 {
@@ -510,12 +532,16 @@ class DataManager
                     self.newTrendingNow  = FeaturedDataStruct()
                     self.newTrendingNow!.id = trendingNowRecord.recordID
                     
-                    let trackRefArr = trendingNowRecord.value(forKey: "tracks") as! [CKRecord.Reference]
-                    self.ckUtil.loadRecordFromPublicDB(recordType: "Tracks", recordName: trackRefArr, completionHandler: self.trendingNowTracksResult)
-                    
-                    
-                    self.latestUploadRecord = records
-                    print(self.latestUploadRecord)
+                    let trackRefArrData = trendingNowRecord.value(forKey: "tracks")
+                    if( trackRefArrData != nil)
+                    {
+                        let trackRefArr = trackRefArrData as! [CKRecord.Reference]
+                        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: trackRefArr, completionHandler: self.trendingNowTracksResult)
+                        
+                        
+                        self.trendingNowRecord = trendingNowRecord
+                    }
+
                 }
                 else
                 {
@@ -531,14 +557,80 @@ class DataManager
         {
             print("Trending now getTracks Success")
             self.newTrendingNow?.tracks.removeAll()
+            
             for record in records
             {
+                let trackData = TrackDataStruct(record: record)
+                self.newTrendingNow?.tracks.append(trackData)
                 
             }
+            self.trendingNow = newTrendingNow
+            updateExplorerView()
+            print("Trending Now :\(self.trendingNow!.tracks.count)")
         }
         else
         {
-            print("Trending now getTracks Failed")
+            print("Trending now getTracks Failed \(errorString)")
+        }
+    }
+    
+    func updateTrendingNow()
+    {
+        let query = CKQuery(recordType: "Featured", predicate: NSPredicate(format: "id = %@", "trendingNow"))
+        ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
+            if(!isSuccess)
+            {
+                print("Update TrendingNow Error")
+            }
+            else
+            {
+                let count:Int = records.count
+                if count > 0
+                {
+                    print("Update TrendingNow Success \(records.count)")
+                    
+                    let featuredTracksRecord = records[0]
+                    
+                    let allTracksRecCount = self.allTracksRec.count
+                    let totalFeaturedRecords:Int = min(allTracksRecCount, self.maxFeaturedData)
+                    
+                    let arr:NSMutableArray = NSMutableArray()
+                    if allTracksRecCount < self.maxFeaturedData
+                    {
+                        let usedArr = self.allTracksRec.shuffled()
+                                                
+                        for i in 0..<allTracksRecCount
+                        {
+                            let ref = CKRecord.Reference(record: usedArr[i], action: .deleteSelf)
+                            arr.add(ref)
+                        }
+                        
+                    }
+                    else if totalFeaturedRecords > 0
+                    {
+                                                
+                        for _ in 1...totalFeaturedRecords
+                        {
+                            let ref = CKRecord.Reference(record: self.allArtistRec.randomElement()!, action: .deleteSelf)
+                            arr.add(ref)
+                        }
+                        
+                    }
+                    featuredTracksRecord.setValue(arr, forKey: "tracks")
+                    self.ckUtil.saveRecordToPublicDB(record: featuredTracksRecord) { (isSuccess, errorString, record) in
+                        print("update Record TrendingNow: \(isSuccess) \(errorString)")
+                        if(isSuccess)
+                        {
+                            self.getTrendingNow()
+                        }
+                    }
+                }
+                else
+                {
+                    print("Update TrendingNow Error 0 Count")
+                }
+                
+            }
         }
     }
     
@@ -555,11 +647,11 @@ class DataManager
             {
                 self.latestUploadRecord = records
                 let maxRecords = records.count
-//                print("GetLatestUpload Success \(records.count)")
+                print("GetLatestUpload Success \(records.count)")
                 var idx = 0
                 for record in records
                 {
-                    var upData = UploadedDataStruct()
+                    let upData = UploadedDataStruct()
                     var usedRef = record.value(forKey: "video") as? CKRecord.Reference
                     if usedRef == nil
                     {
@@ -572,27 +664,10 @@ class DataManager
                     }
                     idx += 1
                 }
-                
-                
-                print(self.latestUploadRecord)
             }
         }
     }
-    
-    func updateExplorerView()
-    {
-        DispatchQueue.main.async {
-            
-            let rootView = UIApplication.shared.keyWindow?.rootViewController! as! UINavigationController
-            let tabBarView = rootView.viewControllers[0] as! UITabBarController
-            let explorerView = tabBarView.viewControllers![0] as! ExplorerView
-            explorerView.mainTableView.reloadData()
-//            print("check arr \(tabBarView.viewControllers![0])")
-
-        }
         
-    }
-    
     func updateUploadedDataStuct(uploadedData:UploadedDataStruct, idx:Int, isSuccess:Bool, errorString:String, record:CKRecord, maxRecords:Int)
     {
         if(isSuccess)
@@ -629,7 +704,7 @@ class DataManager
                 {
 //                    print("GetFeaturedArtist Success \(records.count)")
                     let featuredArtistRecord = records[0]
-                    print(featuredArtistRecord)
+//                    print(featuredArtistRecorxd)
                     self.newFeaturedArtist  = FeaturedDataStruct()
                     self.newFeaturedArtist?.id = featuredArtistRecord.recordID
                     
@@ -639,8 +714,7 @@ class DataManager
                         let artistRefArr = artistRefArrData as! [CKRecord.Reference]
                         self.ckUtil.loadRecordFromPublicDB(recordType: "UserData", recordName: artistRefArr, completionHandler: self.featuredArtistTrackResult)
                         
-                        self.latestUploadRecord = records
-                        print(self.latestUploadRecord)
+                        self.featuredArtistRecord = featuredArtistRecord
                     }
                 }
                 else
@@ -660,13 +734,13 @@ class DataManager
             self.newFeaturedArtist?.users.removeAll()
             for record in records
             {
-                var userData = UserDataStruct(record)
+                let userData = UserDataStruct(record)
                 self.newFeaturedArtist?.users.append(userData)
                 
             }
             self.featuredArtist = newFeaturedArtist
             updateExplorerView()
-            print("FeaturedArtist :\(self.featuredArtist?.users.count)")
+            print("FeaturedArtist :\(self.featuredArtist!.users.count)")
         }
         else
         {
@@ -680,41 +754,54 @@ class DataManager
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
             if(!isSuccess)
             {
-                print("GetFeaturedArtist Error")
+                print("Update Featured Artist Error \(errorString)")
             }
             else
             {
                 let count:Int = records.count
                 if count > 0
                 {
-                    print("GetFeaturedArtist Success \(records.count)")
-                    let featuredArtistRecord = records[0]
-                    print(featuredArtistRecord)
-                    self.newFeaturedArtist  = FeaturedDataStruct()
-                    self.newFeaturedArtist?.id = featuredArtistRecord.recordID
+                    print("Update Featured Artist Success \(records.count)")
                     
-                    let artistRefArrData = featuredArtistRecord.value(forKey: "users")
-                    var arr:NSMutableArray? = nil
-                    let ref = CKRecord.Reference(record: self.currentUserRec!, action: .deleteSelf)
-                    if(artistRefArrData != nil)
+                    let featuredArtistRecord = records[0]
+                    
+                    let allArtistRecCount = self.allArtistRec.count
+                    let totalFeaturedRecords:Int = min(allArtistRecCount, self.maxFeaturedData)
+                    
+                    let arr:NSMutableArray = NSMutableArray()
+                    if allArtistRecCount < self.maxFeaturedData
                     {
-                        arr = NSMutableArray(array:(artistRefArrData as! [CKRecord.Reference]))
-                        arr!.add(ref)
-                    }
-                    else
-                    {
-                        arr = NSMutableArray(array: [ref])
-
-                    }
+                        let usedArr = self.allArtistRec.shuffled()
+                                                
+                        for i in 1...allArtistRecCount
+                        {
+                            let ref = CKRecord.Reference(record: usedArr[i], action: .deleteSelf)
+                            arr.add(ref)
+                        }
                         
+                    }
+                    else if totalFeaturedRecords > 0
+                    {
+                                                
+                        for _ in 0..<totalFeaturedRecords
+                        {
+                            let ref = CKRecord.Reference(record: self.allArtistRec.randomElement()!, action: .deleteSelf)
+                            arr.add(ref)
+                        }
+                        
+                    }
                     featuredArtistRecord.setValue(arr, forKey: "users")
                     self.ckUtil.saveRecordToPublicDB(record: featuredArtistRecord) { (isSuccess, errorString, record) in
                         print("update Record FeaturedArtist: \(isSuccess) \(errorString)")
+                        if(isSuccess)
+                        {
+                            self.getFeaturedArtist()
+                        }
                     }
                 }
                 else
                 {
-                    print("GetFeaturedArtist Error 0 Count")
+                    print("Update Featured Artist Error 0 Count")
                 }
                 
             }
@@ -730,7 +817,7 @@ class DataManager
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
             if(!isSuccess)
             {
-                print("GetFeaturedVideos Error")
+                print("GetFeaturedVideos Error \(errorString)")
             }
             else
             {
@@ -740,16 +827,20 @@ class DataManager
                 if(count > 0)
                 {
                     print("GetFeaturedVideos Success")
-                    let trendingNowRecord = records[0]
-                    self.newTrendingNow  = FeaturedDataStruct()
-                    self.newTrendingNow!.id = trendingNowRecord.recordID
+                    let featuredVideosRecord = records[0]
+                    self.newFeaturedVideos  = FeaturedDataStruct()
+                    self.newFeaturedVideos!.id = featuredVideosRecord.recordID
     
-                    let trackRefArr = trendingNowRecord.value(forKey: "tracks") as! [CKRecord.Reference]
-                    self.ckUtil.loadRecordFromPublicDB(recordType: "Tracks", recordName: trackRefArr, completionHandler: self.trendingNowTracksResult)
-    
-    
-                    self.latestUploadRecord = records
-                    print(self.latestUploadRecord)
+                    let videoRefArrData = featuredVideosRecord.value(forKey: "videos")
+                    if(videoRefArrData != nil)
+                    {
+                    let videoRefArr = featuredVideosRecord.value(forKey: "videos") as! [CKRecord.Reference]
+                                        self.ckUtil.loadRecordFromPublicDB(recordType: "Videos", recordName: videoRefArr, completionHandler: self.featuredVideoTracksResult)
+                        
+                        
+                                        self.featuredVideosRecord = featuredVideosRecord
+                                        
+                    }
                 }
                 else
                 {
@@ -759,6 +850,88 @@ class DataManager
         }
     }
     
+    func featuredVideoTracksResult(isSuccess:Bool, errorString:String, records:[CKRecord])
+    {
+        if(isSuccess)
+        {
+            print("FeaturedVideo getVideo Success")
+            self.newFeaturedVideos?.videos.removeAll()
+            
+            for record in records
+            {
+                let videoData = VideosDataStruct(record: record)
+                self.newFeaturedVideos?.videos.append(videoData)
+                
+            }
+            self.featuredVideos = newFeaturedVideos
+            updateExplorerView()
+            print("FeaturedVideos :\(self.featuredVideos?.videos.count)")
+        }
+        else
+        {
+            print("FeaturedVideo getVideo Failed \(errorString)")
+        }
+    }
+    
+    func updateFeaturedVideo()
+    {
+        let query = CKQuery(recordType: "Featured", predicate: NSPredicate(format: "id = %@", "featuredVideo"))
+        ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
+            if(!isSuccess)
+            {
+                print("Update Featured Video Error \(errorString)")
+            }
+            else
+            {
+                let count:Int = records.count
+                if count > 0
+                {
+                    print("Update Featured Video Success \(records.count)")
+                    
+                    let featuredVideoRecord = records[0]
+                    
+                    let allVideoRecCount = self.allVideosRec.count
+                    let totalFeaturedRecords:Int = min(allVideoRecCount, self.maxFeaturedData)
+                    
+                    let arr:NSMutableArray = NSMutableArray()
+                    if allVideoRecCount < self.maxFeaturedData
+                    {
+                        let usedArr = self.allVideosRec.shuffled()
+                                                
+                        for i in 0..<allVideoRecCount
+                        {
+                            let ref = CKRecord.Reference(record: usedArr[i], action: .deleteSelf)
+                            arr.add(ref)
+                        }
+                        
+                    }
+                    else if totalFeaturedRecords > 0
+                    {
+                                                
+                        for _ in 1...totalFeaturedRecords
+                        {
+                            let ref = CKRecord.Reference(record: self.allArtistRec.randomElement()!, action: .deleteSelf)
+                            arr.add(ref)
+                        }
+                        
+                    }
+                    featuredVideoRecord.setValue(arr, forKey: "videos")
+                    self.ckUtil.saveRecordToPublicDB(record: featuredVideoRecord) { (isSuccess, errorString, record) in
+                        print("update Record FeaturedVideos: \(isSuccess) \(errorString)")
+                        if(isSuccess)
+                        {
+                            self.getFeaturedVideo()
+                        }
+                    }
+                }
+                else
+                {
+                    print("Update Featured Video Error 0 Count")
+                }
+                
+            }
+        }
+    }
     
     // MARK: FAVOURITE
     
@@ -815,6 +988,11 @@ class DataManager
                 {
                     self.allTracks.append(TrackDataStruct(record:record))
                 }
+                
+                if self.willUpdateFeaturedData
+                {
+                    self.updateTrendingNow()
+                }
             }
         }
     }
@@ -836,6 +1014,11 @@ class DataManager
                 {
                     self.allVideos.append(VideosDataStruct(record: record))
                 }
+                
+                if(self.willUpdateFeaturedData)
+                {
+                    self.updateFeaturedVideo()
+                }
             }
         }
     }
@@ -856,6 +1039,11 @@ class DataManager
                 for record in records
                 {
                     self.allArtist.append(UserDataStruct(record))
+                }
+                
+                if(self.willUpdateFeaturedData)
+                {
+                    self.updateFeaturedArtist()
                 }
             }
         }

@@ -446,7 +446,20 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         var rowCount:Int = 0
         if(section == ExplorerSection.TrendingNow.rawValue)
         {
-            return explorerViewTableCount["trendingNow"]!
+            if dm.trendingNow != nil
+            {
+                rowCount = explorerViewTableCount["trendingNow"]!
+                let availableData = dm.trendingNow!.tracks.count
+                if availableData < rowCount
+                {
+                    rowCount = availableData
+                }
+                return rowCount
+            }
+            else
+            {
+                return 0
+            }
         }
         if(section == ExplorerSection.DiscoverNew.rawValue)
         {
@@ -471,7 +484,17 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         }
         if(section == ExplorerSection.FeaturedVideos.rawValue)
         {
-            return explorerViewTableCount["featuredVideo"]!
+            if(dm.featuredVideos != nil)
+            {
+                rowCount = explorerViewTableCount["featuredVideo"]!
+                let availableData = dm.featuredVideos!.videos.count
+                if availableData < rowCount
+                {
+                    rowCount = availableData
+                }
+                return rowCount
+            }
+            return 0
         }
         return rowCount
     }
@@ -480,9 +503,9 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.TrendingNow.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
-            
-            /*
             cell.mainTableView = mainTableView
+            cell.updateData(trackData:dm.trendingNow!.tracks[indexPath.row])
+            /*
             cell.trending = trendings[indexPath.row]
             if trendings[indexPath.row].track != nil {
                 cell.trackTitleLabel.text = trendings[indexPath.row].track?.name
@@ -522,7 +545,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
             cell.callBack = {self.performSegue(withIdentifier: "artistPageSegue", sender: nil)}
-            print("FeaturedArtist explorer:\(dm.featuredArtist?.users)")
+//            print("FeaturedArtist explorer:\(dm.featuredArtist!.users)")
             cell.featuredArtistList = dm.featuredArtist?.users
             cell.featuredArtistsCollectionCell.reloadData()
             /*
@@ -539,9 +562,10 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.FeaturedVideos.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredVideosCell") as! FeaturedVideosCell
+            cell.mainTableView = mainTableView
+            cell.updateData(videoData:dm.featuredVideos!.videos[indexPath.row])
             /*
             if features[indexPath.row].track != nil {
-                cell.mainTableView = mainTableView
                 cell.feature = features[indexPath.row]
                 if cell.player {
                     cell.videoPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)

@@ -56,6 +56,8 @@ extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = trendingTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
         cell.mainTableView = mainTableView
+        cell.updateData(trackData: DataManager.shared().trendingNow!.tracks[indexPath.row])
+        /*
         cell.trending = trendings[indexPath.row]
         if trendings[indexPath.row].track != nil {
             cell.trackTitleLabel.text = trendings[indexPath.row].track?.name
@@ -71,6 +73,7 @@ extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource
             cell.artistNameLabel.text = trendings[indexPath.row].video?.email
             //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
         }
+        */
         return cell
     }
     

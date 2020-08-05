@@ -289,7 +289,7 @@ class UserProfileVC: UIViewController {
         firstTabButton.alpha = 1
         secondTabButton.alpha = 0.5
         
-        print(cVC?.a as Any)
+//        print(cVC?.a as Any)
         cVC?.moveToPage(index: 0)
     }
     
@@ -297,7 +297,7 @@ class UserProfileVC: UIViewController {
         firstTabButton.alpha = 0.5
         secondTabButton.alpha = 1
         
-        print(cVC?.a as Any)
+//        print(cVC?.a as Any)
         cVC?.moveToPage(index: 1)
         showcaseVC = cVC!.items[1] as? SecondPageVC
         showcaseVC?.showcaseVideoSegue = {
