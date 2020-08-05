@@ -69,16 +69,32 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyQ-vU-opz">
+                                <rect key="frame" x="343" y="92" width="41" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="JKG-v2-YcQ"/>
+                                    <constraint firstAttribute="width" constant="41" id="zeI-tS-c4u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="cf9-jw-jQ1" kind="unwind" unwindAction="unwindToExplorerView:" id="yJl-7x-9Mn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EVs-gG-awe" firstAttribute="top" secondItem="Qlf-zv-be8" secondAttribute="bottom" constant="10" id="00O-ep-Vg3"/>
                             <constraint firstItem="Rvn-pl-DJD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0eF-kZ-glE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TyQ-vU-opz" secondAttribute="trailing" constant="30" id="687-Ju-EUt"/>
                             <constraint firstItem="EVs-gG-awe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Ee5-rN-Sdq"/>
                             <constraint firstAttribute="trailing" secondItem="Qlf-zv-be8" secondAttribute="trailing" id="J9Y-9A-7GN"/>
                             <constraint firstItem="EVs-gG-awe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W7x-2D-qKw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EVs-gG-awe" secondAttribute="bottom" constant="60" id="YgB-1U-FjJ"/>
                             <constraint firstItem="Rvn-pl-DJD" firstAttribute="top" secondItem="EVs-gG-awe" secondAttribute="bottom" constant="8" id="fgG-dg-Wn5"/>
+                            <constraint firstItem="TyQ-vU-opz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="gBV-Z4-02f"/>
                             <constraint firstItem="Qlf-zv-be8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="k8o-gH-hMa"/>
                             <constraint firstItem="Qlf-zv-be8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mJt-tR-t4M"/>
                             <constraint firstItem="iLs-pA-e2y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pGf-vz-sat"/>
@@ -93,8 +109,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="cf9-jw-jQ1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="128.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="127.53623188405798" y="133.25892857142856"/>
         </scene>
         <!--Main-->
         <scene sceneID="Xsu-1K-wAr">
