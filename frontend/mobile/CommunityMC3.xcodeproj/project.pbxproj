@@ -172,15 +172,13 @@
 		EA4A31C924CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */; };
 		EA4A31CC24CAB2B6003DCDA4 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A31CA24CAB2B6003DCDA4 /* VideoListCell.swift */; };
 		EA4A31CD24CAB2B6003DCDA4 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4A31CB24CAB2B6003DCDA4 /* VideoListCell.xib */; };
+		EA62938824DA827D00FDABB5 /* EditRandomizerContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62938624DA827D00FDABB5 /* EditRandomizerContextCell.swift */; };
+		EA62938924DA827D00FDABB5 /* EditRandomizerContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA62938724DA827D00FDABB5 /* EditRandomizerContextCell.xib */; };
+		EA62938B24DA834E00FDABB5 /* EditRandomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62938A24DA834E00FDABB5 /* EditRandomizerViewController.swift */; };
 		EA63453524D925510045328C /* UploadPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63453424D925510045328C /* UploadPanelViewController.swift */; };
 		EA63453824D92A5B0045328C /* UploadPanelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63453624D92A5B0045328C /* UploadPanelCell.swift */; };
 		EA63453924D92A5B0045328C /* UploadPanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA63453724D92A5B0045328C /* UploadPanelCell.xib */; };
 		EA650D5524C557680093EEE6 /* TrackPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */; };
-		EA69015824C93F2600D8EBD2 /* SortByCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA69015624C93F2600D8EBD2 /* SortByCollectionViewCell.swift */; };
-		EA69015924C93F2600D8EBD2 /* SortByCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA69015724C93F2600D8EBD2 /* SortByCollectionViewCell.xib */; };
-		EA69015B24C9431000D8EBD2 /* EditRandomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA69015A24C9431000D8EBD2 /* EditRandomizerViewController.swift */; };
-		EA69015E24C95B9E00D8EBD2 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA69015C24C95B9E00D8EBD2 /* GenreCollectionViewCell.swift */; };
-		EA69015F24C95B9E00D8EBD2 /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA69015D24C95B9E00D8EBD2 /* GenreCollectionViewCell.xib */; };
 		EA71357C24CE9A140073A8EA /* yorushika.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA71357924CE9A140073A8EA /* yorushika.mp3 */; };
 		EA71357D24CE9A140073A8EA /* dishes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA71357A24CE9A140073A8EA /* dishes.mp3 */; };
 		EA71357E24CE9A140073A8EA /* tiara.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA71357B24CE9A140073A8EA /* tiara.mp3 */; };
@@ -400,15 +398,13 @@
 		EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCellRandomSpotlight.xib; sourceTree = "<group>"; };
 		EA4A31CA24CAB2B6003DCDA4 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
 		EA4A31CB24CAB2B6003DCDA4 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
+		EA62938624DA827D00FDABB5 /* EditRandomizerContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRandomizerContextCell.swift; sourceTree = "<group>"; };
+		EA62938724DA827D00FDABB5 /* EditRandomizerContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRandomizerContextCell.xib; sourceTree = "<group>"; };
+		EA62938A24DA834E00FDABB5 /* EditRandomizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRandomizerViewController.swift; sourceTree = "<group>"; };
 		EA63453424D925510045328C /* UploadPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPanelViewController.swift; sourceTree = "<group>"; };
 		EA63453624D92A5B0045328C /* UploadPanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPanelCell.swift; sourceTree = "<group>"; };
 		EA63453724D92A5B0045328C /* UploadPanelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadPanelCell.xib; sourceTree = "<group>"; };
 		EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackPlayer.storyboard; sourceTree = "<group>"; };
-		EA69015624C93F2600D8EBD2 /* SortByCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortByCollectionViewCell.swift; sourceTree = "<group>"; };
-		EA69015724C93F2600D8EBD2 /* SortByCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortByCollectionViewCell.xib; sourceTree = "<group>"; };
-		EA69015A24C9431000D8EBD2 /* EditRandomizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRandomizerViewController.swift; sourceTree = "<group>"; };
-		EA69015C24C95B9E00D8EBD2 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
-		EA69015D24C95B9E00D8EBD2 /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
 		EA71357924CE9A140073A8EA /* yorushika.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yorushika.mp3; sourceTree = "<group>"; };
 		EA71357A24CE9A140073A8EA /* dishes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dishes.mp3; sourceTree = "<group>"; };
 		EA71357B24CE9A140073A8EA /* tiara.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tiara.mp3; sourceTree = "<group>"; };
@@ -1025,37 +1021,17 @@
 			path = "TrackPlayer View";
 			sourceTree = "<group>";
 		};
-		EA1BF07624CA83DD00CE1B8F /* SortByCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				EA69015624C93F2600D8EBD2 /* SortByCollectionViewCell.swift */,
-				EA69015724C93F2600D8EBD2 /* SortByCollectionViewCell.xib */,
-			);
-			path = SortByCollectionView;
-			sourceTree = "<group>";
-		};
-		EA1BF07724CA83EC00CE1B8F /* GenreCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				EA69015C24C95B9E00D8EBD2 /* GenreCollectionViewCell.swift */,
-				EA69015D24C95B9E00D8EBD2 /* GenreCollectionViewCell.xib */,
-			);
-			path = GenreCollectionView;
-			sourceTree = "<group>";
-		};
-		EA1BF07C24CA9DEF00CE1B8F /* CollectionViewAndTableView XIB and Class */ = {
+		EA1BF07C24CA9DEF00CE1B8F /* RandomSpotlightCell */ = {
 			isa = PBXGroup;
 			children = (
 				EA1BF07824CA9A9C00CE1B8F /* MusicGenreCell.swift */,
 				EA1BF07924CA9A9C00CE1B8F /* MusicGenreCell.xib */,
 				EA1BF07D24CA9EAD00CE1B8F /* MusicListCell.swift */,
 				EA1BF07E24CA9EAD00CE1B8F /* MusicListCell.xib */,
-				EA4A31C624CAB075003DCDA4 /* HeaderCellRandomSpotlight.swift */,
-				EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */,
 				EA4A31CA24CAB2B6003DCDA4 /* VideoListCell.swift */,
 				EA4A31CB24CAB2B6003DCDA4 /* VideoListCell.xib */,
 			);
-			path = "CollectionViewAndTableView XIB and Class";
+			path = RandomSpotlightCell;
 			sourceTree = "<group>";
 		};
 		EA2D793424CFC6DE005998B4 /* FavoriteMenuCell */ = {
@@ -1106,6 +1082,24 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		EA62937824DA632700FDABB5 /* EditRandomizerTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				EA62938624DA827D00FDABB5 /* EditRandomizerContextCell.swift */,
+				EA62938724DA827D00FDABB5 /* EditRandomizerContextCell.xib */,
+			);
+			path = EditRandomizerTableCell;
+			sourceTree = "<group>";
+		};
+		EA62937D24DA650600FDABB5 /* HeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				EA4A31C624CAB075003DCDA4 /* HeaderCellRandomSpotlight.swift */,
+				EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */,
+			);
+			path = HeaderCell;
+			sourceTree = "<group>";
+		};
 		EA63453324D925060045328C /* UploadPanel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,12 +1122,12 @@
 		EAE65B3224C7E214008B453D /* RandomSpotlightView */ = {
 			isa = PBXGroup;
 			children = (
+				EA62937D24DA650600FDABB5 /* HeaderCell */,
+				EA62937824DA632700FDABB5 /* EditRandomizerTableCell */,
 				EAE65B3324C7E69B008B453D /* RandomSpotlight.storyboard */,
 				EAE65B3524C7E964008B453D /* RandomSpotlightViewController.swift */,
-				EA69015A24C9431000D8EBD2 /* EditRandomizerViewController.swift */,
-				EA1BF07624CA83DD00CE1B8F /* SortByCollectionView */,
-				EA1BF07724CA83EC00CE1B8F /* GenreCollectionView */,
-				EA1BF07C24CA9DEF00CE1B8F /* CollectionViewAndTableView XIB and Class */,
+				EA62938A24DA834E00FDABB5 /* EditRandomizerViewController.swift */,
+				EA1BF07C24CA9DEF00CE1B8F /* RandomSpotlightCell */,
 			);
 			path = RandomSpotlightView;
 			sourceTree = "<group>";
@@ -1249,7 +1243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7BEA50424D146E900AAB5C7 /* ContactInfoCell.xib in Resources */,
-				EA69015F24C95B9E00D8EBD2 /* GenreCollectionViewCell.xib in Resources */,
 				A124876724CD0BE400030723 /* SelectViewCell.xib in Resources */,
 				A15C4D2724C5370C00ED0C0E /* HeaderCell.xib in Resources */,
 				A1E76E3F24CE1ADD00D9415B /* UploadFileHeaderCell.xib in Resources */,
@@ -1296,7 +1289,6 @@
 				A11A9FEA24C94A58008D7867 /* albumListTableViewCell.xib in Resources */,
 				B7DAF5E824C6AA4A00FC6EFB /* FeaturedArtistCollectionCell.xib in Resources */,
 				B7DAF5E424C6A6EE00FC6EFB /* FeaturedArtistCell.xib in Resources */,
-				EA69015924C93F2600D8EBD2 /* SortByCollectionViewCell.xib in Resources */,
 				B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */,
 				EA71357E24CE9A140073A8EA /* tiara.mp3 in Resources */,
 				B7D0470624D070EA004A4D9C /* SearchHeaderSection.xib in Resources */,
@@ -1320,6 +1312,7 @@
 				A15C4D1024C502EF00ED0C0E /* Search.storyboard in Resources */,
 				B786386C24CEEC9900952CF3 /* ShowcasePhotosView.storyboard in Resources */,
 				EA650D5524C557680093EEE6 /* TrackPlayer.storyboard in Resources */,
+				EA62938924DA827D00FDABB5 /* EditRandomizerContextCell.xib in Resources */,
 				B703FE1124D025C8001AD48E /* ArtistSearchCell.xib in Resources */,
 				EA2D794124CFF4B1005998B4 /* FavoriteTracksView.storyboard in Resources */,
 				EA2D793824CFC725005998B4 /* FavoritesMenuCell.xib in Resources */,
@@ -1463,8 +1456,6 @@
 				B74C5A0624C714AF00C978F3 /* TrendingNowVC.swift in Sources */,
 				EA2D794724CFFD4F005998B4 /* FavoriteVideosView.swift in Sources */,
 				B73C836124C7F8AC0047B4EC /* FeaturedArtistVC.swift in Sources */,
-				EA69015B24C9431000D8EBD2 /* EditRandomizerViewController.swift in Sources */,
-				EA69015E24C95B9E00D8EBD2 /* GenreCollectionViewCell.swift in Sources */,
 				B7ECE0DC24D0214F008C4422 /* PlaylistSearchVC.swift in Sources */,
 				A136C2A324D9CADA0078F37E /* GenreProfileCollectionViewCell.swift in Sources */,
 				B74C5A0224C711FA00C978F3 /* NotificationsVC.swift in Sources */,
@@ -1477,7 +1468,7 @@
 				EA63453824D92A5B0045328C /* UploadPanelCell.swift in Sources */,
 				A1689CEB24C7A6D300A49732 /* SelectFileView.swift in Sources */,
 				B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */,
-				EA69015824C93F2600D8EBD2 /* SortByCollectionViewCell.swift in Sources */,
+				EA62938824DA827D00FDABB5 /* EditRandomizerContextCell.swift in Sources */,
 				A134D2AF24C91BDB009A054F /* Videos+Extension.swift in Sources */,
 				B7BD5E3624D12465005918B7 /* MusicSearchCell.swift in Sources */,
 				A15C4D2224C5367400ED0C0E /* TrendingNowCell.swift in Sources */,
@@ -1558,6 +1549,7 @@
 				B7DAF5DF24C698B400FC6EFB /* LatestMusicCell.swift in Sources */,
 				B786384F24CEC2F600952CF3 /* FirstPageVC.swift in Sources */,
 				EADBB5A524C560F300CD2C92 /* TrackPlayerViewController.swift in Sources */,
+				EA62938B24DA834E00FDABB5 /* EditRandomizerViewController.swift in Sources */,
 				A14B626524D09B910015223C /* FavouritesView.swift in Sources */,
 				A165069024C7DCE4005822E7 /* RegisterController.swift in Sources */,
 			);

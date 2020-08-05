@@ -1,10 +1,11 @@
 //
 //  EditRandomizerViewController.swift
-//  Allegro
+//  CommunityMC3
 //
-//  Created by Rommy Julius Dwidharma on 05/08/20.
+//  Created by Rommy Julius Dwidharma on 23/07/20.
 //  Copyright © 2020 Apple Developer Academy. All rights reserved.
 //
+
 import UIKit
 
 enum EditRandomizer: Int {
@@ -21,7 +22,6 @@ class EditRandomizerViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var sortByTableView: UITableView!
     @IBOutlet weak var genreTableView: UITableView!
-    @IBOutlet weak var tableView: UITableView!
     
     var callback:(()->Void)? = nil
     
@@ -50,9 +50,9 @@ class EditRandomizerViewController: UIViewController {
     }
     
     func setup(){
-        tableView.register(UINib(nibName: "HeaderCellRandomSpotlight", bundle: nil), forCellReuseIdentifier: "headerCellRandom")
-        tableView.register(UINib(nibName: "EditRandomizerContextCell", bundle: nil), forCellReuseIdentifier: "editRandomizerContextCell")
-        tableView.allowsMultipleSelection = true
+        genreTableView.register(UINib(nibName: "HeaderCellRandomSpotlight", bundle: nil), forCellReuseIdentifier: "headerCellRandom")
+        genreTableView.register(UINib(nibName: "EditRandomizerContextCell", bundle: nil), forCellReuseIdentifier: "editRandomizerContextCell")
+        genreTableView.allowsMultipleSelection = true
         applyButton.layer.cornerRadius = 5
     }
     
@@ -79,14 +79,11 @@ class EditRandomizerViewController: UIViewController {
     }
     
     @IBAction func clearAllButtonAction(_ sender: UIButton) {
-        let selectedIndex = tableView.indexPathsForSelectedRows
+        let selectedIndex = genreTableView.indexPathsForSelectedRows
         
         for i in selectedIndex! {
-            tableView.deselectRow(at: i, animated: true)
-            tableView.cellForRow(at: i)?.accessoryType = UITableViewCell.AccessoryType.none
-            
-            genreTemp.removeAll()
-            sortByTemp.removeAll()
+            genreTableView.deselectRow(at: i, animated: true)
+            genreTableView.cellForRow(at: i)?.accessoryType = UITableViewCell.AccessoryType.none
         }
     }
     
@@ -110,6 +107,10 @@ extension EditRandomizerViewController: UITableViewDelegate, UITableViewDataSour
         }
         return tableView.dequeueReusableCell(withIdentifier: "headerCellRandom")
     }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return
+//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return EditRandomizer.Count.rawValue
@@ -148,56 +149,23 @@ extension EditRandomizerViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == EditRandomizer.SortBy.rawValue{
-
             if sortByTemp.contains(indexPath.row){
-                print("music remove")
                 self.sortByTemp.remove(at: self.sortByTemp.firstIndex(of: indexPath.row)!)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
             }else{
-                print("music add")
                 self.sortByTemp.append(indexPath.row)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             }
-            print("music \(sortByTemp)")
+            print(sortByTemp)
         }else if indexPath.section == EditRandomizer.Genre.rawValue{
             if genreTemp.contains(indexPath.row){
-                print("genre remove")
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
                 self.genreTemp.remove(at: self.genreTemp.firstIndex(of: indexPath.row)!)
             }else{
-                print("genre aadd")
                 self.genreTemp.append(indexPath.row)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             }
-            print("genre \(genreTemp)")
+            print(genreTemp)
         }
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if indexPath.section == EditRandomizer.SortBy.rawValue{
-            
-            if sortByTemp.contains(indexPath.row){
-                print("music remove")
-                self.sortByTemp.remove(at: self.sortByTemp.firstIndex(of: indexPath.row)!)
-                tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
-            }else{
-                print("music add")
-                self.sortByTemp.append(indexPath.row)
-                tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
-            }
-            print("music \(sortByTemp)")
-        }else if indexPath.section == EditRandomizer.Genre.rawValue{
-            if genreTemp.contains(indexPath.row){
-                print("genre remove")
-                tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
-                self.genreTemp.remove(at: self.genreTemp.firstIndex(of: indexPath.row)!)
-            }else{
-                print("genre add")
-                self.genreTemp.append(indexPath.row)
-                tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
-            }
-            print("genre \(genreTemp)")
-        }
-    }
-    
 }
-
