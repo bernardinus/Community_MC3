@@ -499,7 +499,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "discoverNewCell") as! DiscoverNewCell
             cell.callBack = {
-                self.performSegue(withIdentifier: "onboardingSegue", sender: nil)
+                self.performSegue(withIdentifier: "randomSpotlightSegue", sender: nil)
             }
             return cell
         }
