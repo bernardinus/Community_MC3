@@ -1,17 +1,9 @@
-//
-//  OnboardingCarouselView.swift
-//  Allegro
-//
-//  Created by Theofani on 05/08/20.
-//  Copyright © 2020 Apple Developer Academy. All rights reserved.
-//
-
+import Foundation
 import UIKit
 
-class OnboardingCarouselView: UIPageViewController {
-    
-    lazy var items: [UIViewController] = {
-        let sb = UIStoryboard(name: "Onboarding", bundle: nil)
+class CarouselPageViewController_: UIPageViewController {
+    fileprivate var items: [UIViewController] = {
+        let sb = UIStoryboard(name: "OnboardingScreen", bundle: nil)
         
         let vc1 = sb.instantiateViewController(withIdentifier: "onboardingView1")
         let vc2 = sb.instantiateViewController(withIdentifier: "onboardingView2")
@@ -23,28 +15,45 @@ class OnboardingCarouselView: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = nil
-        self.delegate = nil
+        dataSource = self
         
         decoratePageControl()
+        
+//        populateItems()
         if let firstViewController = items.first {
-            self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-               }
+            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
     }
     
     fileprivate func decoratePageControl() {
-        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [OnboardingCarouselView.self])
+        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController_.self])
         pc.currentPageIndicatorTintColor = .magenta
         pc.pageIndicatorTintColor = .gray
     }
     
+    fileprivate func populateItems() {
+        let text = ["🎖", "👑", "🥇"]
+        let backgroundColor:[UIColor] = [.blue, .red, .green]
+        
+        for (index, t) in text.enumerated() {
+            let c = createCarouselItemControler(with: t, with: backgroundColor[index])
+            items.append(c)
+        }
+    }
     
+    fileprivate func createCarouselItemControler(with titleText: String?, with color: UIColor?) -> UIViewController {
+        let c = UIViewController()
+        c.view = CarouselItem(titleText: titleText, background: color)
+
+        return c
+    }
 }
 
-extension OnboardingCarouselView: UIPageViewControllerDataSource {
-    
-   func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    guard let viewControllerIndex = items.firstIndex(of: viewController) else {
+// MARK: - DataSource
+
+extension CarouselPageViewController_: UIPageViewControllerDataSource {
+    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
             return nil
         }
         

@@ -228,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="1489" y="135"/>
         </scene>
-        <!--Onboarding-->
+        <!--OnboardingScreen-->
         <scene sceneID="Zqd-hn-ufZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Onboarding" id="wFa-Th-96Q" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="OnboardingScreen" id="wFa-Th-96Q" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="dsG-m7-tvn"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnQ-JW-Eji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

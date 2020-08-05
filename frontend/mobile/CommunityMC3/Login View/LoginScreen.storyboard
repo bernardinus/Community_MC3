@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-b2-CLJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-b2-CLJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Login Controller-->
         <scene sceneID="fGO-I1-xIj">
             <objects>
-                <viewController id="Mxq-b2-CLJ" customClass="LoginController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Mxq-b2-CLJ" customClass="LoginController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6f4-zZ-woa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -299,7 +299,7 @@
         <!--Register Controller-->
         <scene sceneID="cmq-HW-gpr">
             <objects>
-                <viewController id="ub4-4C-5TT" customClass="RegisterController" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ub4-4C-5TT" customClass="RegisterController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZ6-Uc-QY5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,11 +428,8 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple" width="975" height="150"/>
-        <image name="chevron.left" catalog="system" width="48" height="64"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="fb" width="975" height="150"/>
         <image name="login" width="1125" height="2436"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="f0o-3Q-oSI"/>
-    </inferredMetricsTieBreakers>
 </document>
