@@ -89,7 +89,7 @@ class EditRandomizerViewController: UIViewController {
             cell.checkBoxImage.image = nil
             cell.checkBoxImage.layer.borderWidth = 1
             sortByTemp.removeAll()
-            print(sortByTemp)
+//            print(sortByTemp)
         }
         
         for indexPath in selectedGenre! {
@@ -147,7 +147,7 @@ extension EditRandomizerViewController: UICollectionViewDataSource, UICollection
                 cell.checkBoxImage.image = #imageLiteral(resourceName: "checkBox")
                 cell.checkBoxImage.layer.borderWidth = 0
             }
-            print(sortByTemp)
+//            print(sortByTemp)
             
         }else{
             if genreTemp.contains(indexPath.row){

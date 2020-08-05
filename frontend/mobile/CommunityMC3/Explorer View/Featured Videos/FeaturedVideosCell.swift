@@ -14,10 +14,11 @@ class FeaturedVideosCell: UITableViewCell {
     @IBOutlet weak var videoThumbnailImage: UIImageView!
     @IBOutlet weak var videoPlayButton: UIButton!
     
-    var feature: FeaturedDataStruct!
+//    var feature: FeaturedDataStruct!
     var player: Bool = false
     var audioPlayer: AVAudioPlayer!
     var mainTableView: UITableView!
+    var videoData:VideosDataStruct?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +30,20 @@ class FeaturedVideosCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
+    func updateData(videoData:VideosDataStruct)
+    {
+        self.videoData = videoData
+        videoThumbnailImage.image = videoData.coverImage
+        if player {
+            videoPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }else{
+            videoPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }
+    }
+    
     @IBAction func playUpload(_ sender: UIButton) {
+        /*
         if feature != nil {
             player = true
             mainTableView.reloadData()
@@ -43,6 +57,7 @@ class FeaturedVideosCell: UITableViewCell {
                 }
             }
         }
+         */
     }
     
 }

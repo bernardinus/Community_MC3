@@ -123,7 +123,8 @@ class UserDataStruct
             "role":role!,
             "instagram":instagram!,
             "whatsApp":"",
-            "profilePicture":profilePicture!.pngData()!
+            "profilePicture":profilePicture!.pngData()!,
+            "email":email
         ]
     }
     

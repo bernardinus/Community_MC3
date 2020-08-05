@@ -83,7 +83,7 @@ class RegisterController: UIViewController {
         if let newAccount = Account.registerAccount(context: getViewContext(), accountEmail: emailField.text ?? "", accountPassword: passwordField.text ?? "") {
             emailField.text = ""
             passwordField.text = ""
-            print(newAccount)
+//            print(newAccount)
             callBack!()
             //        self.performSegue(withIdentifier: "registerMain", sender: self)
         }
