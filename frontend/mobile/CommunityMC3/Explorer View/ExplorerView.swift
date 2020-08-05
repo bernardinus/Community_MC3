@@ -302,7 +302,7 @@ class ExplorerView: UIViewController {
         {
             let artistVC = segue.destination as! UserProfileVC
             artistVC.isPersonalProfile = false
-            
+            artistVC.userData = sender as? UserDataStruct
         }
         
         /*
@@ -548,7 +548,7 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         if(indexPath.section == ExplorerSection.FeaturedArtist.rawValue)
         {
             let cell = mainTableView.dequeueReusableCell(withIdentifier: "featuredArtistCell") as! FeaturedArtistCell
-            cell.callBack = {self.performSegue(withIdentifier: "artistPageSegue", sender: nil)}
+            cell.callBack = {userData in self.performSegue(withIdentifier: "artistPageSegue", sender: userData)}
 //            print("FeaturedArtist explorer:\(dm.featuredArtist!.users)")
             cell.featuredArtistList = dm.featuredArtist?.users
             cell.featuredArtistsCollectionCell.reloadData()

@@ -12,7 +12,7 @@ class FeaturedArtistCell: UITableViewCell
 {
     
     @IBOutlet weak var featuredArtistsCollectionCell: UICollectionView!    
-    var callBack: (() -> Void)? = nil
+    var callBack: ((UserDataStruct) -> Void)? = nil
     
     var featuredArtistList: [UserDataStruct]? = []
     
@@ -61,6 +61,6 @@ extension FeaturedArtistCell : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        callBack!()
+        callBack!(featuredArtistList![indexPath.row])
     }
 }

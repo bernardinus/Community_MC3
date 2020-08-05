@@ -110,7 +110,10 @@ class UserProfileVC: UIViewController {
         
 
 //        userData = UserDataStruct(DataManager.shared().currentUserRec!)
-        userData = DataManager.shared().currentUser
+        if isPersonalProfile == true
+        {
+            userData = DataManager.shared().currentUser
+        }
         print("Name :\(userData!.name!)")
         
         // name
