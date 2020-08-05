@@ -18,24 +18,34 @@ class TrendingNowCell: UITableViewCell {
     @IBOutlet weak var trackTimerLabel: UILabel!
     @IBOutlet weak var playMusicButton: UIButton!
     
-    var trending: FeaturedDataStruct!
-    var trendings: [PrimitiveTrackDataStruct]!
-    var videos: [PrimitiveVideosDataStruct]!
+    var trackData:TrackDataStruct?
+//    var trending: FeaturedDataStruct!
+//    var trendings: [PrimitiveTrackDataStruct]!
+//    var videos: [PrimitiveVideosDataStruct]!
     var player: Bool = false
     var audioPlayer: AVAudioPlayer!
     var mainTableView: UITableView!
-    let documentController = DocumentTableViewController.shared
-    let uploadController = UploadController.shared
-    var email: String = ""
+//    let documentController = DocumentTableViewController.shared
+//    let uploadController = UploadController.shared
+//    var email: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        if let loadEmail = UserDefaults.standard.string(forKey: "email"){
-            email = loadEmail
-        }
         favoriteButtonStateChange()
         retreiveFavorites()
+    }
+    
+    func updateData(trackData:TrackDataStruct)
+    {
+        self.trackData = trackData
+        trackTitleLabel.text = trackData.name
+        artistNameLabel.text = trackData.artistName
+        if player {
+            playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }else{
+            playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        }
     }
     
     func favoriteButtonStateChange(){
@@ -50,13 +60,12 @@ class TrendingNowCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func playTrending(_ sender: UIButton) {
-        /*
-        if trending.track != nil {
+        if trackData != nil {
             player = true
             mainTableView.reloadData()
             DispatchQueue.main.async {
                 do {
-                    self.audioPlayer = try AVAudioPlayer(contentsOf: (self.trending.track!.fileData?.fileURL!)!)
+                    self.audioPlayer = try AVAudioPlayer(contentsOf: (self.trackData!.fileData?.fileURL!)!)
                     self.audioPlayer.delegate = self
                     self.audioPlayer.play()
                 } catch {
@@ -64,7 +73,6 @@ class TrendingNowCell: UITableViewCell {
                 }
             }
         }
-         */
     }
     
     @IBAction func favoriteUpload(_ sender: UIButton) {
@@ -74,6 +82,7 @@ class TrendingNowCell: UITableViewCell {
     }
     
     func changeFavourites() {
+        /*
         if trending.track != nil {
             let temp = PrimitiveTrackDataStruct(
                 genre: trending.track!.genre,
@@ -116,6 +125,7 @@ class TrendingNowCell: UITableViewCell {
             
             uploadController.uploadFavorite(id: email, video: videos)
         }
+        */
     }
     
     func retreiveFavorites() {
