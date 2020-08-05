@@ -80,6 +80,8 @@
 		A17C3C6924CCA3C500153493 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C3C6824CCA3C500153493 /* Constant.swift */; };
 		A1824D9A24C7E3E200C68182 /* Account+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9924C7E3E200C68182 /* Account+Extension.swift */; };
 		A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */; };
+		A183FBDD24DB31DF00FD248C /* GenreProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183FBDB24DB31DF00FD248C /* GenreProfileTableViewCell.swift */; };
+		A183FBDE24DB31DF00FD248C /* GenreProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A183FBDC24DB31DF00FD248C /* GenreProfileTableViewCell.xib */; };
 		A19ACB6E24D0FB45009027B1 /* AlbumSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19ACB6D24D0FB45009027B1 /* AlbumSelectorVC.swift */; };
 		A19C320224C89FF100A4506F /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C320124C89FF100A4506F /* FileSystemManager.swift */; };
 		A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */; };
@@ -302,6 +304,8 @@
 		A17C3C6824CCA3C500153493 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A1824D9924C7E3E200C68182 /* Account+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Account+Extension.swift"; path = "CommunityMC3/Data/Account+Extension.swift"; sourceTree = SOURCE_ROOT; };
 		A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A183FBDB24DB31DF00FD248C /* GenreProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreProfileTableViewCell.swift; sourceTree = "<group>"; };
+		A183FBDC24DB31DF00FD248C /* GenreProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreProfileTableViewCell.xib; sourceTree = "<group>"; };
 		A19ACB6D24D0FB45009027B1 /* AlbumSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSelectorVC.swift; sourceTree = "<group>"; };
 		A19C320124C89FF100A4506F /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewController.swift; sourceTree = "<group>"; };
@@ -764,6 +768,15 @@
 			path = CommunityMC3UITests;
 			sourceTree = "<group>";
 		};
+		A183FBDA24DB31B800FD248C /* GenreTableView */ = {
+			isa = PBXGroup;
+			children = (
+				A183FBDB24DB31DF00FD248C /* GenreProfileTableViewCell.swift */,
+				A183FBDC24DB31DF00FD248C /* GenreProfileTableViewCell.xib */,
+			);
+			path = GenreTableView;
+			sourceTree = "<group>";
+		};
 		A1C0EBB324C54ED9008D8D8F /* Login View */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +790,7 @@
 		A1C0EBB424C54EED008D8D8F /* Setting View */ = {
 			isa = PBXGroup;
 			children = (
+				A183FBDA24DB31B800FD248C /* GenreTableView */,
 				A136C29E24D9C9FA0078F37E /* GenreCollectionView */,
 				A165069124C7DD46005822E7 /* SettingScreen.storyboard */,
 				A1A96B3724C050F100EF12AB /* SettingController.swift */,
@@ -1249,6 +1263,7 @@
 				EA2D794524CFFCB0005998B4 /* FavoritesVideo.storyboard in Resources */,
 				B758B53C24C7EFA200826CC5 /* LatestMusicView.storyboard in Resources */,
 				B7BEA50024D146C300AAB5C7 /* MusicGenreInfoCell.xib in Resources */,
+				A183FBDE24DB31DF00FD248C /* GenreProfileTableViewCell.xib in Resources */,
 				B74C59FC24C6E38D00C978F3 /* FeaturedVideosCell.xib in Resources */,
 				EA1BF08024CA9EAD00CE1B8F /* MusicListCell.xib in Resources */,
 				A136C2A424D9CADA0078F37E /* GenreProfileCollectionViewCell.xib in Resources */,
@@ -1526,6 +1541,7 @@
 				A1689D3424C7B14000A49732 /* SelectViewCell.swift in Sources */,
 				A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */,
 				EA88AAA524D114FC007488F9 /* FavoriteArtistsCell.swift in Sources */,
+				A183FBDD24DB31DF00FD248C /* GenreProfileTableViewCell.swift in Sources */,
 				A11A9FEB24C94A58008D7867 /* UploadFileView.swift in Sources */,
 				A1689D3B24C7D76500A49732 /* CoreDataHelper.swift in Sources */,
 				B7ECE0D824D02133008C4422 /* MusicSearchVC.swift in Sources */,
