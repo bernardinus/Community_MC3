@@ -25,6 +25,7 @@ class UploadPanelViewController: UIViewController {
     
     func setupView(){
         tableView.register(UINib(nibName: "UploadPanelCell", bundle: nil), forCellReuseIdentifier: "uploadPanelCell")
+        imgPicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     
@@ -65,13 +66,43 @@ extension UploadPanelViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
             self.isUploadVideo = false
-            performSegue(withIdentifier: "uploadFile", sender: self)
+            self.performSegue(withIdentifier: "selectFileSegue", sender: nil)
         }else if indexPath.row == 1{
-            self.isUploadVideo = true
-            performSegue(withIdentifier: "uploadFile", sender: self)
-        }else if indexPath.row == 2{
             self.imgPicker?.present(from: self.view)
+        }else if indexPath.row == 2{
+            self.isUploadVideo = true
+            performSegue(withIdentifier: "selectFileSegue", sender: nil)
         }
     }
 
+}
+extension UploadPanelViewController: ImagePickerDelegate{
+    func didSelect(image: UIImage?)
+    {
+//        coverImage?.image = image
+        var photoData = PhotoDataStruct()
+        photoData.email = DataManager.shared().currentUser?.email
+        photoData.photosData = image
+        
+        DataManager.shared().UploadNewPhoto(photoData:photoData) { (isSuccess, errorString) in
+            if isSuccess
+            {
+                print("Upload Photo File Success")
+                
+                
+//                    self.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+                }
+                AlertViewHelper.createAlertView(type: .OK, rightHandler:nil, leftHandler: nil, replacementString: [strKeyOK_MSG:"Upload Photo File Success"])
+                
+
+            }
+            else
+            {
+                print("Upload Photo File Failed")
+                AlertViewHelper.creteErrorAlert(errorString: "Upload Photo File Failed \(errorString)", view: self)
+            }
+        }
+    }
 }
