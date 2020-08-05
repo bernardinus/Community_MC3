@@ -15,18 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahO-R0-CLm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
-                                <connections>
-                                    <segue destination="zRs-WI-28H" kind="embed" identifier="onboardingViewSegue" id="od9-Zf-mfo"/>
-                                </connections>
-                            </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Allegro" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-uh-ORU">
-                                <rect key="frame" x="127.5" y="94" width="159" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account? Sign In." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMm-oC-G9n">
                                 <rect key="frame" x="105" y="816" width="204" height="16"/>
                                 <constraints>
@@ -46,9 +34,21 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fqE-BV-p32" kind="show" id="HQ6-db-2oC"/>
+                                    <segue destination="fqE-BV-p32" kind="presentation" modalPresentationStyle="fullScreen" id="HQ6-db-2oC"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahO-R0-CLm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
+                                <connections>
+                                    <segue destination="zRs-WI-28H" kind="embed" identifier="onboardingViewSegue" id="od9-Zf-mfo"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Allegro" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-uh-ORU">
+                                <rect key="frame" x="127.5" y="94" width="159" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -91,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 1" translatesAutoresizingMaskIntoConstraints="NO" id="rtE-cz-RjV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore &amp; Enjoy" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8e-Vw-WRL">
                                 <rect key="frame" x="36" y="646" width="160" height="90"/>
@@ -123,9 +123,9 @@ selected favorite artists.</string>
                             <constraint firstItem="InN-lz-oLR" firstAttribute="top" secondItem="y8e-Vw-WRL" secondAttribute="bottom" constant="21" id="WGg-xX-N85"/>
                             <constraint firstItem="y8e-Vw-WRL" firstAttribute="leading" secondItem="doY-F9-3rQ" secondAttribute="leading" constant="36" id="WYV-ec-F2z"/>
                             <constraint firstItem="rtE-cz-RjV" firstAttribute="leading" secondItem="doY-F9-3rQ" secondAttribute="leading" id="YaZ-5P-jiI"/>
+                            <constraint firstItem="rtE-cz-RjV" firstAttribute="top" secondItem="rwu-hE-hwU" secondAttribute="top" id="a3K-LO-Qnj"/>
                             <constraint firstItem="doY-F9-3rQ" firstAttribute="bottom" secondItem="InN-lz-oLR" secondAttribute="bottom" constant="44" id="oow-bs-j3H"/>
                             <constraint firstItem="InN-lz-oLR" firstAttribute="leading" secondItem="doY-F9-3rQ" secondAttribute="leading" constant="36" id="qFu-uv-dSI"/>
-                            <constraint firstItem="rtE-cz-RjV" firstAttribute="top" secondItem="doY-F9-3rQ" secondAttribute="top" id="qmN-5y-tAf"/>
                             <constraint firstItem="doY-F9-3rQ" firstAttribute="trailing" secondItem="InN-lz-oLR" secondAttribute="trailing" constant="30" id="yPf-2D-3LM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="doY-F9-3rQ"/>
@@ -138,7 +138,7 @@ selected favorite artists.</string>
         <!--Onboarding Carousel View-->
         <scene sceneID="XBW-2x-hMc">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="zRs-WI-28H" customClass="OnboardingCarouselView" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="onboardingSb" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="fullScreen" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="zRs-WI-28H" customClass="OnboardingCarouselView" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kid-fF-nxJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="432" y="-399"/>
@@ -152,7 +152,7 @@ selected favorite artists.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 2" translatesAutoresizingMaskIntoConstraints="NO" id="1JC-p0-Yw0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Spotlight" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbW-r9-Yia">
                                 <rect key="frame" x="36" y="646" width="160" height="90"/>
@@ -187,7 +187,6 @@ Simply tap the button and let us surprise you.</string>
                         <constraints>
                             <constraint firstItem="EPK-Hj-xzf" firstAttribute="trailing" secondItem="1JC-p0-Yw0" secondAttribute="trailing" id="1xP-dt-8fJ"/>
                             <constraint firstItem="EPK-Hj-xzf" firstAttribute="bottom" secondItem="1JC-p0-Yw0" secondAttribute="bottom" id="6NE-2K-0Pg"/>
-                            <constraint firstItem="1JC-p0-Yw0" firstAttribute="top" secondItem="EPK-Hj-xzf" secondAttribute="top" id="FnG-zV-nXf"/>
                             <constraint firstItem="EPK-Hj-xzf" firstAttribute="trailing" secondItem="wDr-ix-h91" secondAttribute="trailing" constant="30" id="Npz-8k-wb1"/>
                             <constraint firstItem="EbW-r9-Yia" firstAttribute="leading" secondItem="EPK-Hj-xzf" secondAttribute="leading" constant="36" id="Omw-jW-ekU"/>
                             <constraint firstItem="EbW-r9-Yia" firstAttribute="top" secondItem="LX4-v0-4xE" secondAttribute="bottom" constant="140" id="QZh-UN-yDs"/>
@@ -195,6 +194,7 @@ Simply tap the button and let us surprise you.</string>
                             <constraint firstItem="1JC-p0-Yw0" firstAttribute="leading" secondItem="EPK-Hj-xzf" secondAttribute="leading" id="gag-A7-Phb"/>
                             <constraint firstItem="LX4-v0-4xE" firstAttribute="centerX" secondItem="Wrj-9e-iQA" secondAttribute="centerX" id="jQs-PL-wtT"/>
                             <constraint firstItem="wDr-ix-h91" firstAttribute="leading" secondItem="EPK-Hj-xzf" secondAttribute="leading" constant="36" id="txA-z0-vXJ"/>
+                            <constraint firstItem="1JC-p0-Yw0" firstAttribute="top" secondItem="Wrj-9e-iQA" secondAttribute="top" id="xss-dn-QUQ"/>
                             <constraint firstItem="wDr-ix-h91" firstAttribute="top" secondItem="EbW-r9-Yia" secondAttribute="bottom" constant="21" id="z8h-Mb-vLE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EPK-Hj-xzf"/>
@@ -213,7 +213,7 @@ Simply tap the button and let us surprise you.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding BG 3" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-64-Ae4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Music" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O28-sK-det">
                                 <rect key="frame" x="36" y="646" width="160" height="90"/>
@@ -240,12 +240,12 @@ Simply tap the button and let us surprise you.</string>
                             <constraint firstItem="lxh-fd-wXd" firstAttribute="leading" secondItem="RrR-7a-cCr" secondAttribute="leading" constant="36" id="1AC-cU-OTV"/>
                             <constraint firstItem="RrR-7a-cCr" firstAttribute="bottom" secondItem="lxh-fd-wXd" secondAttribute="bottom" constant="44" id="2un-JW-cd1"/>
                             <constraint firstItem="O28-sK-det" firstAttribute="leading" secondItem="RrR-7a-cCr" secondAttribute="leading" constant="36" id="A58-oo-Tqr"/>
-                            <constraint firstItem="Q7E-64-Ae4" firstAttribute="top" secondItem="RrR-7a-cCr" secondAttribute="top" id="BJR-gI-IJo"/>
                             <constraint firstItem="RrR-7a-cCr" firstAttribute="bottom" secondItem="Q7E-64-Ae4" secondAttribute="bottom" id="X6z-rI-Jf5"/>
                             <constraint firstItem="Q7E-64-Ae4" firstAttribute="leading" secondItem="RrR-7a-cCr" secondAttribute="leading" id="ZAN-0p-0MF"/>
                             <constraint firstItem="lxh-fd-wXd" firstAttribute="top" secondItem="O28-sK-det" secondAttribute="bottom" constant="21" id="cPp-3a-CXY"/>
                             <constraint firstItem="RrR-7a-cCr" firstAttribute="trailing" secondItem="Q7E-64-Ae4" secondAttribute="trailing" id="gow-Cz-n5m"/>
                             <constraint firstAttribute="trailing" secondItem="lxh-fd-wXd" secondAttribute="trailing" constant="30" id="tRF-74-eSP"/>
+                            <constraint firstItem="Q7E-64-Ae4" firstAttribute="top" secondItem="sCV-P8-BUE" secondAttribute="top" id="thG-eJ-GhS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RrR-7a-cCr"/>
                     </view>

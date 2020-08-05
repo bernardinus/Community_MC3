@@ -25,19 +25,26 @@ class OnboardingCarouselView: UIPageViewController {
         super.viewDidLoad()
         self.dataSource = nil
         self.delegate = nil
+        
+        decoratePageControl()
+        if let firstViewController = items.first {
+            self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+               }
     }
     
-    func moveToPage(index:Int)
-    {
-        setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
+    fileprivate func decoratePageControl() {
+        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [OnboardingCarouselView.self])
+        pc.currentPageIndicatorTintColor = .magenta
+        pc.pageIndicatorTintColor = .gray
     }
+    
     
 }
 
 extension OnboardingCarouselView: UIPageViewControllerDataSource {
     
-    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
+   func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    guard let viewControllerIndex = items.firstIndex(of: viewController) else {
             return nil
         }
         
@@ -69,6 +76,10 @@ extension OnboardingCarouselView: UIPageViewControllerDataSource {
         }
         
         return items[nextIndex]
+    }
+    
+    func presentationCount(for _: UIPageViewController) -> Int {
+        return items.count
     }
     
     func presentationIndex(for _: UIPageViewController) -> Int {
