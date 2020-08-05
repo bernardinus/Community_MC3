@@ -100,6 +100,7 @@
                         <segue destination="oJm-qv-Beb" kind="presentation" identifier="test" id="Qg6-qH-Hmq"/>
                         <segue destination="o7o-lH-9Hc" kind="presentation" identifier="userProfileSegue" modalPresentationStyle="fullScreen" id="lM6-iR-DLY"/>
                         <segue destination="o7o-lH-9Hc" kind="presentation" identifier="artistPageSegue" modalPresentationStyle="fullScreen" id="A2x-fN-Bam"/>
+                        <segue destination="wFa-Th-96Q" kind="show" identifier="onboardingSegue" id="Isy-ok-aHN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -226,6 +227,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GkQ-bQ-lhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1489" y="135"/>
+        </scene>
+        <!--Onboarding-->
+        <scene sceneID="Zqd-hn-ufZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" id="wFa-Th-96Q" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dsG-m7-tvn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bnQ-JW-Eji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="-731"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
