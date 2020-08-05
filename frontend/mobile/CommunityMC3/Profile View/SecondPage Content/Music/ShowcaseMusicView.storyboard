@@ -10,7 +10,7 @@
         <!--Music-->
         <scene sceneID="11J-oP-j5s">
             <objects>
-                <viewController id="wP6-qZ-YeW" customClass="ShowcaseMusicVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wP6-qZ-YeW" customClass="ShowcaseMusicVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="29m-bC-H1e">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,12 +43,23 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="showcaseMusicTable" destination="1MJ-qK-bcT" id="IzE-ai-ZlA"/>
+                        <segue destination="bjb-9a-JbT" kind="show" identifier="trackPlayerSegue" id="A1g-uI-noi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0d-9r-CGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="UTb-lr-nNO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1163.768115942029" y="183.48214285714286"/>
+        </scene>
+        <!--TrackPlayer-->
+        <scene sceneID="vl5-Mm-dJ7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackPlayer" id="bjb-9a-JbT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="PIg-lQ-Id3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Wb-eq-gR7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888" y="151"/>
         </scene>
     </scenes>
     <resources>

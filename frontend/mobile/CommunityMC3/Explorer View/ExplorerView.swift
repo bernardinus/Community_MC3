@@ -68,7 +68,7 @@ class ExplorerView: UIViewController {
         mainTableView.canCancelContentTouches = true
         //        mainTableView.delaysContentTouches = true;
         
-        hightlightUpload()
+//        hightlightUpload()
         featuredCombine()
         //        latestUpload()
         
@@ -79,6 +79,7 @@ class ExplorerView: UIViewController {
         favoriteTab.uploads = DataManager.shared().latestUploadRecord
     }
     
+    /*
     func hightlightUpload() {
         uploadController.getTracksFromCloudKit(tableView: mainTableView) { (tracks) in
             for track in tracks {
@@ -91,6 +92,7 @@ class ExplorerView: UIViewController {
                 //                self.uploadCount += 1
             }
         }
+        
         documentController.getFilmsFromCloudKit { (videos) in
             for video in videos {
                 let temp = FeaturedDataStruct (
@@ -108,6 +110,7 @@ class ExplorerView: UIViewController {
             }
         }
     }
+ */
     
     func featuredCombine() {
         documentController.getProfilesFromCloudKit { (photos) in
@@ -218,11 +221,12 @@ class ExplorerView: UIViewController {
         print("Prepare Segue \(segue.identifier)")
         if segue.identifier == "trendingSegue" {
             if let trendingPage = segue.destination as? TrendingNowVC {
-                var temp = [FeaturedDataStruct]()
-                for trending in trendings {
-                    temp.append(trending)
-                }
-                trendingPage.trendings = temp
+                trendingPage.trendings = dm.trendingNow
+//                var temp = [FeaturedDataStruct]()
+//                for trending in trendings {
+//                    temp.append(trending)
+//                }
+//                trendingPage.trendings = temp
                 trendingPage.mainTableView = mainTableView
             }
         }
@@ -265,7 +269,7 @@ class ExplorerView: UIViewController {
                     trackPlayerPage.track = dm.latestUpload![selectedRow].trackData
                 }else if selectTrending {
                     selectTrending = false
-                    trackPlayerPage.track = trendings[selectedRow].track
+                    trackPlayerPage.track = sender as! TrackDataStruct
                 }else {
                     selectFeatured = false
                     trackPlayerPage.track = features[selectedRow].track
@@ -607,12 +611,19 @@ extension ExplorerView:UITableViewDelegate, UITableViewDataSource
         {
             selectedRow = indexPath.row
             selectTrending = true
+            let cell = tableView.cellForRow(at: indexPath) as! TrendingNowCell
+            if(cell.trackData != nil)
+            {
+                self.performSegue(withIdentifier: "trackPlayerSegue", sender: cell.trackData)
+            }
+            /*
             if trendings[selectedRow].video != nil {
                 self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
             }
             if trendings[selectedRow].track != nil {
-                self.performSegue(withIdentifier: "trackPlayerSegue", sender: nil)
+                
             }
+ */
         }
         if(indexPath.section == ExplorerSection.DiscoverNew.rawValue)
         {

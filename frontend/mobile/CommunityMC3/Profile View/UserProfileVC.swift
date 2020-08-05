@@ -174,6 +174,13 @@ class UserProfileVC: UIViewController {
                 videoPlayerPage.video = sender as? VideosDataStruct
             }
         }
+        else if segue.identifier == "showcaseMusicSegue"
+        {
+            if let smVC = segue.destination as? ShowcaseMusicVC
+            {
+                smVC.tracksData = userData?.musics
+            }
+        }
     }
     
     func signOut(action:UIAlertAction)
