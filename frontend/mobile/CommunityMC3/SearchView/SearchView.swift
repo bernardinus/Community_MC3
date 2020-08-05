@@ -45,6 +45,18 @@ class SearchView: UIViewController {
         return .All
     }
     
+    @IBAction func accountButtonTouched(_ sender: Any)
+    {
+        if DataManager.shared().IsUserLogin()
+        {
+            self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+        }
+        else
+        {
+            self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+        }
+    }
+    
     @IBAction func searchTabSelected(_ sender: UIButton) {
         //Setup the active-inactive button color
         searchCategoryButton.forEach({
