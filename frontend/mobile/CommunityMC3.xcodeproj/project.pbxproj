@@ -116,6 +116,9 @@
 		B789CFC624DA965200D3593E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B789CFC524DA965200D3593E /* Onboarding.storyboard */; };
 		B789CFC824DA966600D3593E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B789CFC724DA966600D3593E /* OnboardingView.swift */; };
 		B789CFCA24DA9E9A00D3593E /* OnboardingCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B789CFC924DA9E9A00D3593E /* OnboardingCarouselView.swift */; };
+		B7A2B5EA24DACDC1001BDA19 /* OnboardingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A2B5E924DACDC1001BDA19 /* OnboardingView1.swift */; };
+		B7A2B5EC24DACDD0001BDA19 /* OnboardingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A2B5EB24DACDD0001BDA19 /* OnboardingView2.swift */; };
+		B7A2B5EE24DACDDC001BDA19 /* OnboardingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A2B5ED24DACDDC001BDA19 /* OnboardingView3.swift */; };
 		B7B6F3BB24CFD133008BA503 /* PhotosCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */; };
 		B7B6F3BC24CFD133008BA503 /* PhotosCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */; };
 		B7BD5E3624D12465005918B7 /* MusicSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BD5E3424D12465005918B7 /* MusicSearchCell.swift */; };
@@ -336,6 +339,9 @@
 		B789CFC524DA965200D3593E /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		B789CFC724DA966600D3593E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B789CFC924DA9E9A00D3593E /* OnboardingCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCarouselView.swift; sourceTree = "<group>"; };
+		B7A2B5E924DACDC1001BDA19 /* OnboardingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView1.swift; sourceTree = "<group>"; };
+		B7A2B5EB24DACDD0001BDA19 /* OnboardingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView2.swift; sourceTree = "<group>"; };
+		B7A2B5ED24DACDDC001BDA19 /* OnboardingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView3.swift; sourceTree = "<group>"; };
 		B7B6F3B924CFD133008BA503 /* PhotosCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionCell.swift; sourceTree = "<group>"; };
 		B7B6F3BA24CFD133008BA503 /* PhotosCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCollectionCell.xib; sourceTree = "<group>"; };
 		B7BD5E3424D12465005918B7 /* MusicSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchCell.swift; sourceTree = "<group>"; };
@@ -861,6 +867,9 @@
 				B789CFC524DA965200D3593E /* Onboarding.storyboard */,
 				B789CFC724DA966600D3593E /* OnboardingView.swift */,
 				B789CFC924DA9E9A00D3593E /* OnboardingCarouselView.swift */,
+				B7A2B5E924DACDC1001BDA19 /* OnboardingView1.swift */,
+				B7A2B5EB24DACDD0001BDA19 /* OnboardingView2.swift */,
+				B7A2B5ED24DACDDC001BDA19 /* OnboardingView3.swift */,
 			);
 			path = "Onboarding View";
 			sourceTree = "<group>";
@@ -1410,6 +1419,7 @@
 			files = (
 				A14B626824D0D3830015223C /* CloudKitUtil.swift in Sources */,
 				EAE65B3624C7E964008B453D /* RandomSpotlightViewController.swift in Sources */,
+				B7A2B5EC24DACDD0001BDA19 /* OnboardingView2.swift in Sources */,
 				A121CE9E24C96C6D00E1D48B /* SmallViewController.swift in Sources */,
 				EA1BF07A24CA9A9C00CE1B8F /* MusicGenreCell.swift in Sources */,
 				B789CFC824DA966600D3593E /* OnboardingView.swift in Sources */,
@@ -1444,6 +1454,7 @@
 				A11A9FF124C94A58008D7867 /* UploadTableViewCell.swift in Sources */,
 				EA4A31CC24CAB2B6003DCDA4 /* VideoListCell.swift in Sources */,
 				EA2D794A24CFFD92005998B4 /* FavoriteVideosCell.swift in Sources */,
+				B7A2B5EE24DACDDC001BDA19 /* OnboardingView3.swift in Sources */,
 				B7ECE0DA24D02143008C4422 /* VideoSearchVC.swift in Sources */,
 				A124877324CD2AC500030723 /* MainTabController.swift in Sources */,
 				B7DAF5E324C6A6EE00FC6EFB /* FeaturedArtistCell.swift in Sources */,
@@ -1457,6 +1468,7 @@
 				B7C7302724CE944700B922B8 /* CarouselPageViewController.swift in Sources */,
 				A16B44A724B2FBF300053D6C /* ExplorerView.swift in Sources */,
 				A134D2AD24C91BD4009A054F /* UserData+Extension.swift in Sources */,
+				B7A2B5EA24DACDC1001BDA19 /* OnboardingView1.swift in Sources */,
 				B733E7F824CA7B6100460E23 /* UserProfileVC.swift in Sources */,
 				EA88AAAD24D12412007488F9 /* FavoriteAlbumsCell.swift in Sources */,
 				A17C3C6924CCA3C500153493 /* Constant.swift in Sources */,

@@ -27,7 +27,6 @@ class CarouselPageViewController: UIPageViewController {
         
     }
     
-    
     func moveToPage(index:Int)
     {
         setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)

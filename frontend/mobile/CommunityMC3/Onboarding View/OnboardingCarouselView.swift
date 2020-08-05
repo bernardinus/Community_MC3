@@ -9,14 +9,14 @@
 import UIKit
 
 class OnboardingCarouselView: UIPageViewController {
-
+    
     lazy var items: [UIViewController] = {
         let sb = UIStoryboard(name: "Onboarding", bundle: nil)
         
         let vc1 = sb.instantiateViewController(withIdentifier: "onboardingView1")
         let vc2 = sb.instantiateViewController(withIdentifier: "onboardingView2")
         let vc3 = sb.instantiateViewController(withIdentifier: "onboardingView3")
-
+        
         
         return [vc1, vc2, vc3]
     }()
@@ -26,7 +26,12 @@ class OnboardingCarouselView: UIPageViewController {
         self.dataSource = nil
         self.delegate = nil
     }
-
+    
+    func moveToPage(index:Int)
+    {
+        setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
+    }
+    
 }
 
 extension OnboardingCarouselView: UIPageViewControllerDataSource {
