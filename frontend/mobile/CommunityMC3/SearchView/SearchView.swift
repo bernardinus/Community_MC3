@@ -25,7 +25,7 @@ class SearchView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dismissKeyboard()
-        
+        print("test")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
