@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountController: UITableViewController {
+class AccountController: UIViewController {
     
     @IBOutlet var switchAccountTable: UITableView!
     var accounts: [UserDataStruct]!
@@ -36,11 +36,22 @@ class AccountController: UITableViewController {
         view.endEditing(true)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    @IBAction func cancelSwitchAccount(_ sender: UIButton) {
+        let userProfileVC = UserProfileVC()
+        userProfileVC.overlayView.removeFromSuperview()
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension AccountController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accounts.count + 1
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row == accounts.count)
         {
             let cell = switchAccountTable.dequeueReusableCell(withIdentifier: "addCell") as! AddAccountTableViewCell
