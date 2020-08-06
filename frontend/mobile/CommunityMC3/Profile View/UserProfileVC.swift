@@ -219,9 +219,11 @@ class UserProfileVC: UIViewController {
         
         let switchAccountAction = UIAlertAction(title: NSLocalizedString("Switch Account".uppercased(), comment: ""), style: .default) { (action) in
             let switchAccountVC = self.storyboard?.instantiateViewController(identifier: "SwitchAccountVC") as! AccountController
-            var temp = [UserDataStruct]()
-            temp.append(self.userData!)
-            switchAccountVC.accounts = temp
+            if DataManager.shared().currentUsersPrimitive == nil {
+                DataManager.shared().currentUsersPrimitive = [PrimitiveUserDataStruct]()
+                DataManager.shared().registerPrimitiveUserData(userData: DataManager.shared().currentUser!)
+            }
+            switchAccountVC.accounts = DataManager.shared().currentUsersPrimitive
             switchAccountVC.transitioningDelegate = self
             switchAccountVC.modalPresentationStyle = .custom
             switchAccountVC.modalTransitionStyle = .coverVertical

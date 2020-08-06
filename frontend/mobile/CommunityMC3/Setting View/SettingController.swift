@@ -49,10 +49,12 @@ class SettingController: UIViewController {
         }
         handleLocalisation()
         
-        let pickerView:UIPickerView = UIPickerView()
-        pickerView.delegate = self
-        genreField?.delegate = self
-        genreField?.inputView = pickerView
+//        let pickerView:UIPickerView = UIPickerView()
+//        pickerView.delegate = self
+//        genreField?.delegate = self
+//        genreField?.inputView = pickerView
+        let genreTap = UITapGestureRecognizer(target: self, action: #selector(self.handleGenreTap(_:)))
+        genreField.addGestureRecognizer(genreTap)
         
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -165,6 +167,16 @@ class SettingController: UIViewController {
     
     @objc func handleUploadTap(_ sender: UITapGestureRecognizer? = nil) {
         self.openCameraAndLibrary()
+    }
+    
+    @objc func handleGenreTap(_ sender: UITapGestureRecognizer? = nil) {
+        let genreProfileVC = storyboard?.instantiateViewController(identifier: "GenreProfileVC") as! GenreProfileController
+        genreProfileVC.transitioningDelegate = self
+        genreProfileVC.modalPresentationStyle = .custom
+        genreProfileVC.modalTransitionStyle = .coverVertical
+        genreProfileVC.view.layer.cornerRadius = 34
+        
+        self.present(genreProfileVC, animated: true, completion: nil)
     }
     
     @IBAction func logoutUser(_ sender: UIButton) {

@@ -334,6 +334,9 @@
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Apply"/>
+                                                <connections>
+                                                    <action selector="saveGenreProfile:" destination="xHT-5N-DBh" eventType="touchUpInside" id="WxF-ET-lum"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NB-jJ-Pjn">
                                                 <rect key="frame" x="21" y="364" width="65" height="30"/>
