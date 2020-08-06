@@ -10,6 +10,7 @@ import UIKit
 
 class UserProfileVC: UIViewController {
     
+    @IBOutlet weak var profileNavigationItem: UINavigationItem!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var firstTabButton: UIButton!
     @IBOutlet weak var secondTabButton: UIButton!
@@ -75,6 +76,15 @@ class UserProfileVC: UIViewController {
             otherMenu.image = UIImage(systemName: "ellipsis")
             otherMenu.isEnabled = true
         }
+        loadNavigationBar()
+    }
+    
+    func loadNavigationBar() {
+        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 20,
+                                                   width: UIScreen.main.bounds.size.width, height: 50))
+        navbar.tintColor = .lightGray
+        self.view.addSubview(navbar)
+        navbar.items = [profileNavigationItem]
     }
     
     func loadLocalisation() {

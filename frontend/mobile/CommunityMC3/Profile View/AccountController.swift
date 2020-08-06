@@ -51,6 +51,10 @@ extension AccountController: UITableViewDelegate, UITableViewDataSource {
         return accounts.count + 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row == accounts.count)
         {
