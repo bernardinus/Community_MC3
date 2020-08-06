@@ -98,15 +98,15 @@ class DataManager
     
     func updateExplorerView()
     {
-        DispatchQueue.main.async {
-            
-            let rootView = UIApplication.shared.keyWindow?.rootViewController! as! UINavigationController
-            let tabBarView = rootView.viewControllers[0] as! UITabBarController
-            let explorerView = tabBarView.viewControllers![0] as! ExplorerView
-            explorerView.mainTableView.reloadData()
-//            print("check arr \(tabBarView.viewControllers![0])")
-
-        }
+//        DispatchQueue.main.async {
+//            
+//            let rootView = UIApplication.shared.keyWindow?.rootViewController! as! UINavigationController
+//            let tabBarView = rootView.viewControllers[0] as! UITabBarController
+//            let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+//            explorerView.mainTableView.reloadData()
+////            print("check arr \(tabBarView.viewControllers![0])")
+//
+//        }
         
     }
 
