@@ -138,7 +138,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         self.outerCircleEffectImage.isHidden = false
         nextButton.isHidden = true
 
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.2, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
             })
@@ -146,20 +146,20 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             self.outerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
         
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.2, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.innerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.2 , y: 1.2)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.innerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.2, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.searchButton?.transform = CGAffineTransform (scaleX:0.9 , y: 0.9)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
-            UIView.animate(withDuration: 2.0, delay: 2, options: .transitionCrossDissolve, animations: {
+            UIView.animate(withDuration: 1.2, delay: 2, options: .transitionCrossDissolve, animations: {
                 self.popUpView.isHidden = false
                 self.searchButton.isHidden = true
                 self.innerCircleEffectImage.isHidden = true
