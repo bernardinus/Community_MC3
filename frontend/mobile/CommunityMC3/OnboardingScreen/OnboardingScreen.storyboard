@@ -10,7 +10,7 @@
         <!--Carousel View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CarouselViewController_" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onboardingStoryboard" id="BYZ-38-t0r" customClass="CarouselViewController_" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,9 +32,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
-                                <connections>
-                                    <segue destination="aA0-HK-nJ8" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Gye-YW-MvO"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Rvn-pl-DJD">
                                 <rect key="frame" x="104.5" y="810" width="205" height="28"/>
@@ -112,16 +109,6 @@
                 <exit id="cf9-jw-jQ1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="127.53623188405798" y="133.25892857142856"/>
-        </scene>
-        <!--Main-->
-        <scene sceneID="Xsu-1K-wAr">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="aA0-HK-nJ8" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="7zL-fa-lbe"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7bq-hm-l3L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="688" y="344"/>
         </scene>
         <!--LoginScreen-->
         <scene sceneID="og5-Xq-HuR">
