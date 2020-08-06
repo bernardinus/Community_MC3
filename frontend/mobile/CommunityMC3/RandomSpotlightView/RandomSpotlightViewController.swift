@@ -125,23 +125,52 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        startSearch()
+        startSearch(isFirstStartAnimation: true)
         super.viewWillAppear(animated)
     }
     
-    func startSearch()
+    func startSearch(isFirstStartAnimation:Bool)
     {
-        self.editButton.isHidden = true
-        self.popUpView.isHidden = true
-        self.searchButton.isHidden = false
-        self.innerCircleEffectImage.isHidden = false
-        self.outerCircleEffectImage.isHidden = false
-        nextButton.isHidden = true
+        var delay:Double = 0.0
+        var duration:Double = 0.8
+        var transitionDuration:Double = 1.0
+        if(isFirstStartAnimation)
+        {
+            self.editButton.isHidden = true
+            self.popUpView.isHidden = true
+            self.searchButton.isHidden = false
+            self.innerCircleEffectImage.isHidden = false
+            self.outerCircleEffectImage.isHidden = false
+            nextButton.isHidden = true
+            delay = 0.0
+            duration = 1.2
+            transitionDuration = 1.2
+        }
+        else
+        {
+            UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
+                self.popUpView.alpha = 0
+                self.nextButton.alpha = 0
+                self.statusLabel.alpha = 1
+                self.searchButton.alpha = 1
+                self.innerCircleEffectImage.alpha = 1
+                self.outerCircleEffectImage.alpha = 1
+            }, completion: {_ in
+                self.popUpView.isHidden = true
+                self.nextButton.isHidden = true
+                self.statusLabel.isHidden = false
+                self.searchButton.isHidden = false
+                self.innerCircleEffectImage.isHidden = false
+                self.outerCircleEffectImage.isHidden = false
+            })
+            delay = 0.8
+        }
+        
 //        popUpView.isHidden = false
 //        editButton.isHidden = false
 //        nextButton.isHidden = false
 
-        UIView.animate(withDuration: 1.2/*0.8*/, animations: {
+        UIView.animate(withDuration: duration,delay: delay, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
             })
@@ -149,20 +178,20 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             self.outerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
         
-        UIView.animate(withDuration: 1.2/*0.8*/, animations: {
+        UIView.animate(withDuration: duration,delay: delay, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.innerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.2 , y: 1.2)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.innerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
-        UIView.animate(withDuration: 1.2/*0.8*/, animations: {
+        UIView.animate(withDuration: duration,delay: delay, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.searchButton?.transform = CGAffineTransform (scaleX:0.9 , y: 0.9)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
-            UIView.animate(withDuration: 1.2/*1.0*/, delay: 2/*0*/, options: .transitionCrossDissolve, animations: {
+            UIView.animate(withDuration: transitionDuration, delay: 0, options: .transitionCrossDissolve, animations: {
                 self.popUpView.alpha = 1
                 self.nextButton.alpha = 1
                 self.statusLabel.alpha = 0
@@ -183,7 +212,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     
     @IBAction func searchButtonAction(_ sender: UIButton) {
         
-        startSearch()
+        startSearch(isFirstStartAnimation: false)
     }
     
     @IBAction func editButtonAction(_ sender: UIButton) {
@@ -201,7 +230,8 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
-    
+        startSearch(isFirstStartAnimation: false)
+/*
         UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
             self.popUpView.alpha = 0
             self.nextButton.alpha = 0
@@ -257,6 +287,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
                 self.editButton.isHidden = false
             })
         })
+ */
 
         
 //        popUpContentView.slideLeft()

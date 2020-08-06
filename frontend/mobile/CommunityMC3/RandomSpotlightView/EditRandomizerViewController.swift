@@ -23,7 +23,7 @@ class EditRandomizerViewController: UIViewController {
     @IBOutlet weak var genreTableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
     
-    var callback:(()->Void)? = nil
+    var callback:((Bool)->Void)? = nil
     
     var sortByArray = ["Music", "Artist"]
     
@@ -75,7 +75,7 @@ class EditRandomizerViewController: UIViewController {
     @IBAction func applyButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         
-        callback!()
+        callback!(false)
     }
     
     @IBAction func clearAllButtonAction(_ sender: UIButton) {
