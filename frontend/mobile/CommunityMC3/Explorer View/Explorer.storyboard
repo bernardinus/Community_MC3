@@ -110,8 +110,8 @@
                         <segue destination="uXS-s2-pdM" kind="show" identifier="notificationScreenSegue" id="Maa-z9-1mq"/>
                         <segue destination="abV-a7-8U0" kind="show" identifier="randomSpotlightSegue" destinationCreationSelector="randomSpotlightSegue" id="Umn-HO-Qe5"/>
                         <segue destination="oJm-qv-Beb" kind="presentation" identifier="test" id="Qg6-qH-Hmq"/>
-                        <segue destination="o7o-lH-9Hc" kind="push" identifier="userProfileSegue" id="lM6-iR-DLY"/>
-                        <segue destination="o7o-lH-9Hc" kind="push" identifier="artistPageSegue" id="A2x-fN-Bam"/>
+                        <segue destination="o7o-lH-9Hc" kind="modal" identifier="userProfileSegue" modalPresentationStyle="fullScreen" id="lM6-iR-DLY"/>
+                        <segue destination="o7o-lH-9Hc" kind="modal" identifier="artistPageSegue" modalPresentationStyle="fullScreen" id="A2x-fN-Bam"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
