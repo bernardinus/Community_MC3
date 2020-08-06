@@ -64,6 +64,18 @@
                                     <segue destination="9GA-qd-6N8" kind="unwind" unwindAction="unwindToExplorerView:" id="Qbi-3y-eKU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-fc-BW4">
+                                <rect key="frame" x="200" y="74" width="121" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.80392156859999997" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Onboarding Test">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="wFa-Th-96Q" kind="presentation" modalPresentationStyle="fullScreen" id="QA4-qC-ctl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.27843137254901962" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -105,7 +117,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <exit id="9GA-qd-6N8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="732" y="-298"/>
+            <point key="canvasLocation" x="730.43478260869574" y="-298.66071428571428"/>
         </scene>
         <!--TrendingNowList-->
         <scene sceneID="xXd-od-IIP">
@@ -226,6 +238,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GkQ-bQ-lhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1489" y="135"/>
+        </scene>
+        <!--OnboardingScreen-->
+        <scene sceneID="Zqd-hn-ufZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OnboardingScreen" id="wFa-Th-96Q" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dsG-m7-tvn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bnQ-JW-Eji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="-731"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
