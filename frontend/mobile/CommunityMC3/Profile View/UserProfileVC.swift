@@ -110,7 +110,10 @@ class UserProfileVC: UIViewController {
         
 
 //        userData = UserDataStruct(DataManager.shared().currentUserRec!)
-        userData = DataManager.shared().currentUser
+        if isPersonalProfile == true
+        {
+            userData = DataManager.shared().currentUser
+        }
         print("Name :\(userData!.name!)")
         
         // name
@@ -172,6 +175,13 @@ class UserProfileVC: UIViewController {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController
             {
                 videoPlayerPage.video = sender as? VideosDataStruct
+            }
+        }
+        else if segue.identifier == "showcaseMusicSegue"
+        {
+            if let smVC = segue.destination as? ShowcaseMusicVC
+            {
+                smVC.tracksData = userData?.musics
             }
         }
     }

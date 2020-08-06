@@ -112,6 +112,18 @@ class FavouritesView: UIViewController {
         
     }
     
+    @IBAction func accountButtonTouched(_ sender: Any)
+       {
+           if DataManager.shared().IsUserLogin()
+           {
+               self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+           }
+           else
+           {
+               self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+           }
+       }
+    
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "favoriteTracks" {
