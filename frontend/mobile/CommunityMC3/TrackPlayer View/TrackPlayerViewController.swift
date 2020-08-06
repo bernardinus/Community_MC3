@@ -82,6 +82,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     func retreiveFavorites() {
+        /*
         documentController.getFavoritesFromCloudKit { (favourites) in
             for favourite in favourites {
                 if self.email != "" && favourite.id == self.email {
@@ -97,6 +98,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
                 }
             }
         }
+ */
     }
     
     func retreiveTrack() {

@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import CloudKit
+import UIKit
 
 struct PrimitiveTrackDataStruct: Codable
 {
@@ -27,17 +28,35 @@ class TrackDataStruct
 //    var recordID: CKRecord.ID
     var email: String
     var fileData: CKAsset?
-//    var coverImage:URL
+    var coverImage:UIImage?
     
     var audioData:AVAudioPlayer?
     
     
     var album:AlbumDataStruct?
+    var artistName:String? = "artistName"
     
     init(record:CKRecord)
     {
-        self.genre = record.value(forKey: "genre") as! String
-        self.name = record.value(forKey: "name") as! String
+//        print("inputedData \(record)")
+        let genreData = record.value(forKey: "genre")
+        if genreData != nil
+        {
+            self.genre = genreData as! String
+        }
+        else
+        {
+            self.genre = ""
+        }
+        
+        let nameData = record.value(forKey: "name")
+        self.name = ""
+        if(nameData != nil)
+        {
+            self.name = nameData as! String
+        }
+        
+        
         self.email = record.value(forKey: "email") as! String
         self.fileData = record.value(forKey: "fileData") as? CKAsset
         
@@ -66,7 +85,8 @@ class TrackDataStruct
         record.setValue(email, forKey: "email")
         record.setValue(name, forKey: "name")
         record.setValue(fileData, forKey: "fileData")
-        
+        record.setValue(DataManager.shared().currentUser?.name, forKey: "artistName")
+        record.setValue(coverImage?.pngData(), forKey: "coverImage")
         return record
     }
 }

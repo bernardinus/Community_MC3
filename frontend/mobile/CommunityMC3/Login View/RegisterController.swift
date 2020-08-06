@@ -83,7 +83,7 @@ class RegisterController: UIViewController {
         if let newAccount = Account.registerAccount(context: getViewContext(), accountEmail: emailField.text ?? "", accountPassword: passwordField.text ?? "") {
             emailField.text = ""
             passwordField.text = ""
-            print(newAccount)
+//            print(newAccount)
             callBack!()
             //        self.performSegue(withIdentifier: "registerMain", sender: self)
         }
@@ -97,6 +97,11 @@ class RegisterController: UIViewController {
             vc.emailAddr = emailField.text!
             vc.password = passwordField.text!
         }
+    }
+    
+    @IBAction func unwindToRegisterController(_ segue:UIStoryboardSegue)
+    {
+        
     }
     
     func registerToCloudKit() {

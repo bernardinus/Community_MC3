@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,7 +10,7 @@
         <!--Title-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="ExplorerView" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="ExplorerView" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,7 @@
                                 <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vx-K0-Zue">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vx-K0-Zue">
                                 <rect key="frame" x="329.5" y="80" width="24.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24.5" id="5Mw-Ki-but"/>
@@ -61,18 +61,31 @@
                                 </state>
                                 <connections>
                                     <action selector="accountButtonTouched:" destination="9pv-A4-QxB" eventType="touchUpInside" id="e5S-fq-ABo"/>
+                                    <segue destination="9GA-qd-6N8" kind="unwind" unwindAction="unwindToExplorerView:" id="Qbi-3y-eKU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEn-fc-BW4">
+                                <rect key="frame" x="200" y="74" width="121" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.80392156859999997" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Onboarding Test">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="wFa-Th-96Q" kind="presentation" modalPresentationStyle="fullScreen" id="QA4-qC-ctl"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.27843137254901962" green="0.0" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="1wn-NP-AiM"/>
+                            <constraint firstItem="xwv-DC-VAe" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="36" id="1ys-mD-sSL"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="top" secondItem="aBB-zB-Hcd" secondAttribute="bottom" constant="4" id="4hh-ez-kLC"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="7we-69-Slh"/>
                             <constraint firstItem="xwv-DC-VAe" firstAttribute="leading" secondItem="9vx-K0-Zue" secondAttribute="trailing" constant="10" id="B0M-2B-K6m"/>
                             <constraint firstAttribute="bottom" secondItem="B4j-zq-DCP" secondAttribute="bottom" id="ITn-0i-u79"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="27" id="LjB-en-XoN"/>
-                            <constraint firstItem="xwv-DC-VAe" firstAttribute="leading" secondItem="9vx-K0-Zue" secondAttribute="trailing" constant="10" id="bJn-CW-iyI"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="xwv-DC-VAe" secondAttribute="trailing" constant="20" id="hCL-9S-hK3"/>
                             <constraint firstItem="B4j-zq-DCP" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="n1i-BJ-Xb4"/>
                             <constraint firstItem="aBB-zB-Hcd" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="20" id="q0l-SW-Hrv"/>
@@ -93,17 +106,18 @@
                         <segue destination="GLy-4k-NtZ" kind="show" identifier="featuredVideoSegue" id="Qls-Xd-44Q"/>
                         <segue destination="JxN-T9-nVB" kind="show" identifier="trackPlayerSegue" id="bJ0-fh-f0R"/>
                         <segue destination="xfM-7w-Dmk" kind="show" identifier="videoPlayerSegue" id="U5X-An-pc9"/>
-                        <segue destination="5z4-ln-AiY" kind="show" identifier="loginScreenSegue" id="6Az-ua-7Fs"/>
+                        <segue destination="5z4-ln-AiY" kind="presentation" identifier="loginScreenSegue" modalPresentationStyle="fullScreen" id="6Az-ua-7Fs"/>
                         <segue destination="uXS-s2-pdM" kind="show" identifier="notificationScreenSegue" id="Maa-z9-1mq"/>
                         <segue destination="abV-a7-8U0" kind="show" identifier="randomSpotlightSegue" destinationCreationSelector="randomSpotlightSegue" id="Umn-HO-Qe5"/>
                         <segue destination="oJm-qv-Beb" kind="presentation" identifier="test" id="Qg6-qH-Hmq"/>
-                        <segue destination="o7o-lH-9Hc" kind="show" identifier="userProfileSegue" id="lM6-iR-DLY"/>
-                        <segue destination="o7o-lH-9Hc" kind="show" identifier="artistPageSegue" id="A2x-fN-Bam"/>
+                        <segue destination="o7o-lH-9Hc" kind="modal" identifier="userProfileSegue" modalPresentationStyle="fullScreen" id="lM6-iR-DLY"/>
+                        <segue destination="o7o-lH-9Hc" kind="modal" identifier="artistPageSegue" modalPresentationStyle="fullScreen" id="A2x-fN-Bam"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <exit id="9GA-qd-6N8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="732" y="-298"/>
+            <point key="canvasLocation" x="730.43478260869574" y="-298.66071428571428"/>
         </scene>
         <!--TrendingNowList-->
         <scene sceneID="xXd-od-IIP">
@@ -225,14 +239,24 @@
             </objects>
             <point key="canvasLocation" x="1489" y="135"/>
         </scene>
+        <!--OnboardingScreen-->
+        <scene sceneID="Zqd-hn-ufZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OnboardingScreen" id="wFa-Th-96Q" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dsG-m7-tvn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bnQ-JW-Eji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="-731"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="bell.fill" catalog="system" width="64" height="62"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
-        <image name="safari" catalog="system" width="64" height="60"/>
-        <image name="safari.fill" catalog="system" width="64" height="60"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lM6-iR-DLY"/>
+        <segue reference="A2x-fN-Bam"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="safari" catalog="system" width="128" height="121"/>
+        <image name="safari.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

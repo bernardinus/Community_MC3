@@ -19,6 +19,7 @@ class MainTabController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         let maxTabCount:Int = tabBar.items!.count
         print(maxTabCount)
         for index in 0..<maxTabCount

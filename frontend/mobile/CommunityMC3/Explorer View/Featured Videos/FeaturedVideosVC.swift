@@ -55,15 +55,8 @@ extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = featuredVideoTableView.dequeueReusableCell(withIdentifier: "featuredVideosCell") as! FeaturedVideosCell
-        if features[indexPath.row].track != nil {
-            cell.mainTableView = mainTableView
-            cell.feature = features[indexPath.row]
-            if cell.player {
-                cell.videoPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            }else{
-                cell.videoPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            }
-        }
+        cell.updateData(videoData: DataManager.shared().featuredVideos!.videos[indexPath.row])
+        
         return cell
     }
     

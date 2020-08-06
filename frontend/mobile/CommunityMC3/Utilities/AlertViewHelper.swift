@@ -11,17 +11,32 @@ import UIKit
 
 enum AlertViewType
 {
+    case OK
+    case Error
     case ConfirmExitEditing
 //    case SignOut
 }
 
 // custom key
 //var strKeyMilestone = "#milestone"
+var strKeyErrorMSG = "#errorMSG"
+var strKeyOK_MSG = "#ok_MSG"
 
 
 class AlertViewHelper
 {
     var a:(()->Void)? = nil
+    
+    class func creteErrorAlert(errorString:String, view:UIViewController) -> UIAlertController
+    {
+        let alert:UIAlertController = AlertViewHelper.createAlertView(type: .Error,
+                                        rightHandler: nil,
+                                        leftHandler: nil,
+                                        replacementString: [strKeyErrorMSG : errorString]
+        )
+        view.present(alert,animated: true, completion: nil)
+        return alert
+    }
     
     class func createAlertView(type:AlertViewType,
                                rightHandler:((UIAlertAction) -> Void)? = nil,
@@ -55,6 +70,12 @@ class AlertViewHelper
         case .ConfirmExitEditing:
             alertTitle = "Exit edit mode"
             alertMSG = "You will lose all your edited data"
+        case .Error:
+            alertTitle = "Error"
+            alertMSG = strKeyErrorMSG
+        case .OK:
+            alertTitle = "Info"
+            alertMSG = strKeyOK_MSG
         }
         
     }
@@ -72,7 +93,6 @@ class AlertViewHelper
             alertView.addAction(rightAction)
             let leftAction:UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: leftCompletionHandler)
             alertView.addAction(leftAction)
-            
         default:
             let okAction:UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: rightCompletionHandler)
             alertView.addAction(okAction)
