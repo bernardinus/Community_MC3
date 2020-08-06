@@ -20,7 +20,7 @@ class UploadFileView: UIViewController
     var trackData:TrackDataStruct?
     var isUploadVideo:Bool = false
     
-    var coverImage:UIImage?
+    var coverImage:UIImageView?
     var tapRecognizer:UIGestureRecognizer?
     
     var imgPicker:ImagePicker?
@@ -103,24 +103,54 @@ class UploadFileView: UIViewController
         //        documentController.uploadTrack(email: "mnb@mnb", genre: "Rock", name: "track", fileURL: filteredList[indexPath.row])
         if isUploadVideo
         {
+            var videoData = VideosDataStruct(
+                genre: genreTextField!.text!,
+                name: nameTextField!.text!,
+                email: (DataManager.shared().currentUser?.email!)!,
+                fileURL: fileURL!)
+            videoData.coverImage = coverImage?.image
             
+            DataManager.shared().UploadNewVideo(videoData:videoData) { (isSuccess, errorString) in
+                if isSuccess
+                {
+                    print("Upload Video File Success")
+                    
+                    
+//                    self.dismiss(animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+                    }
+                    
+
+                }
+                else
+                {
+                    print("Upload Video File Failed")
+                    AlertViewHelper.creteErrorAlert(errorString: "UploadVideoFile Failed \(errorString)", view: self)
+                }
+            }
         }
         else
         {
             trackData = TrackDataStruct(
                 genre: genreTextField!.text!,
                 name: nameTextField!.text!,
-                email: "test@test",
+                email: (DataManager.shared().currentUser?.email!)!,
                 fileURL: fileURL!)
+            trackData?.coverImage = coverImage?.image
             
             DataManager.shared().UploadNewTrack(trackData:trackData!) { (isSuccess, errorString) in
                 if isSuccess
                 {
                     print("Upload File Success")
+                    DispatchQueue.main.async {
+                        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+                    }
                 }
                 else
                 {
-                    print("Upload File Failed")
+                    AlertViewHelper.creteErrorAlert(errorString: "UploadTrackFile Failed \(errorString)", view: self)
+                    
                 }
             }
         }
@@ -132,7 +162,7 @@ extension UploadFileView:ImagePickerDelegate
 {
     func didSelect(image: UIImage?)
     {
-//        coverImage?.image = image
+        coverImage?.image = image
     }
 }
 
@@ -150,7 +180,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1
         {
-//            imgPicker?.present(from: coverImage!)
+            imgPicker?.present(from: self.view)
         }
         else if indexPath.row == 3
         {
@@ -190,6 +220,11 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             
             return 225
         }
+        if indexPath.row == 6
+        {
+            
+            return 0//44
+        }
         return 44
     }
     
@@ -208,7 +243,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             let customCell = tableView.dequeueReusableCell(withIdentifier: AddCoverTableViewCell.identifier, for : indexPath) as! AddCoverTableViewCell
             //            customCell.configure(with: "Add Cover", imageName: "camera 1")
             
-//            coverImage = customCell.addCoverImage
+            coverImage = customCell.addCoverImage
             
             return customCell
         }

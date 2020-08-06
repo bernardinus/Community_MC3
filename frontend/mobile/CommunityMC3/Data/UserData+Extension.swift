@@ -33,9 +33,9 @@ class UserDataStruct
     // ref
     var albums:AlbumDataStruct? = nil
     var favourites:FavouritesDataStruct? = nil
-    var musics:TrackDataStruct? = nil
-    var photos:PhotoDataStruct? = nil
-    var videos:VideosDataStruct? = nil
+    var musics:[TrackDataStruct]? = []
+    var photos:[PhotoDataStruct]? = []
+    var videos:[VideosDataStruct]? = []
     var recordID:CKRecord.ID? = nil
     
     init(){}
@@ -51,22 +51,47 @@ class UserDataStruct
         self.name = record.value(forKey: "name") as? String
         self.genre = record.value(forKey: "genre") as? String
         self.followerCount = record.value(forKey: "followerCount") as? Int
-        let isVerifiedIntValue:Int = record.value(forKey: "isVerified") as! Int
+        
+        let isVerifiedData = record.value(forKey: "isVerified")
+        var isVerifiedIntValue:Int = 0
+        if(isVerifiedData != nil )
+        {
+            isVerifiedIntValue = isVerifiedData as! Int
+        }
+        
         if(isVerifiedIntValue == 1)
         {
             self.isVerified = true
         }
         
-        let isArtistIntValue:Int = record.value(forKey: "isArtist") as! Int
+        
+        let isArtistData = record.value(forKey: "isArtist")
+        var isArtistIntValue:Int = 0
+        if(isArtistData != nil )
+        {
+            isArtistIntValue = isArtistData as! Int
+        }
         if(isArtistIntValue == 1)
         {
             self.isArtist = true
         }
+        
         self.phoneNumber = record.value(forKey: "phoneNumber") as? String
         self.role = record.value(forKey: "role") as? String
         self.instagram = record.value(forKey: "instagram") as? String
         self.whatsApp = record.value(forKey: "whatsapp") as? String
-        self.profilePicture = UIImage(data: record.value(forKey: "profilePicture") as! Data)
+//        self.profilePicture = UIImage(data: record.value(forKey: "profilePicture") as! Data)
+        
+        let profPicData = record.value(forKey: "profilePicture")
+        if(isArtistData != nil )
+        {
+            self.profilePicture = UIImage(data: record.value(forKey: "profilePicture") as! Data)
+        }
+        else
+        {
+            self.profilePicture = UIImage(color: .magenta)
+        }
+        
         self.email = record.value(forKey: "email") as? String
     }
     
@@ -97,8 +122,9 @@ class UserDataStruct
             "phoneNumber":phoneNumber!,
             "role":role!,
             "instagram":instagram!,
-            "whatsApp":whatsApp!,
-            "profilePicture":profilePicture!.pngData()!
+            "whatsApp":"",
+            "profilePicture":profilePicture!.pngData()!,
+            "email":email
         ]
     }
     

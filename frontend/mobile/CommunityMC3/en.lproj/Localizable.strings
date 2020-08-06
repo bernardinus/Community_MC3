@@ -60,13 +60,13 @@
 "Full Name" = "Full Name";
 "Get Started" = "Get Started";
 
-"About" = "Tentang";
-"Audio" = "Musik";
-"Gallery" = "Galeri";
+"About" = "About";
+"Audio" = "Audio";
+"Gallery" = "Gallery";
 "History" = "History";
-"Settings" = "Setelan";
-"Genre" = "Aliran";
-"Classic" = "Klasik";
+"Settings" = "Settings";
+"Genre" = "Genre";
+"Classic" = "Classic";
 "Photo" = "Photo";
 
 "Sign Out" = "Sign Out";
@@ -126,6 +126,9 @@
 "HAVE ACCOUNT" = "Already have account?";
 
 "SUPRISE" = "Tap to surprise!";
+"EDIT GENRE" = "Edit genre";
+"SWITCH ACCOUNT" = "Switch Account";
+"ADD ACCOUNT" = "Add Account";
 
 
 

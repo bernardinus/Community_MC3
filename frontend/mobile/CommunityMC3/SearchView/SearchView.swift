@@ -26,6 +26,7 @@ class SearchView: UIViewController {
         super.viewDidLoad()
         self.dismissKeyboard()
         
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,6 +46,18 @@ class SearchView: UIViewController {
         return .All
     }
     
+    @IBAction func accountButtonTouched(_ sender: Any)
+    {
+        if DataManager.shared().IsUserLogin()
+        {
+            self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+        }
+        else
+        {
+            self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+        }
+    }
+    
     @IBAction func searchTabSelected(_ sender: UIButton) {
         //Setup the active-inactive button color
         searchCategoryButton.forEach({
@@ -60,4 +73,25 @@ class SearchView: UIViewController {
         let _: ButtonType = getSelectedActionType()
     }
     
+//    func filter(filterText:String)
+//    {
+//        print("asd+\(filterText)+asd")
+//        if(filterText.isEmpty || filterText == "")
+//        {
+//            filteredList = fileList
+//        }
+//        else
+//        {
+//            filteredList = fileList.filter{$0.lastPathComponent.lowercased().contains(filterText.lowercased())}
+//        }
+//        tableView.reloadData()
+//    }
+}
+
+extension SearchView:UISearchBarDelegate
+{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+//        filter(filterText: searchText)
+    }
 }

@@ -61,6 +61,7 @@ class FavouritesView: UIViewController {
     }
     
     func retrieveFavorite() {
+        /*
         documentController.getFavoritesFromCloudKit { (favourites) in
             var tracks = [PrimitiveTrackDataStruct]()
             var videos = [PrimitiveVideosDataStruct]()
@@ -98,6 +99,7 @@ class FavouritesView: UIViewController {
                 self.tableView.reloadData()
             }
         }
+ */
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,6 +111,18 @@ class FavouritesView: UIViewController {
     @IBAction func unwindToFavorite(_ segue: UIStoryboardSegue){
         
     }
+    
+    @IBAction func accountButtonTouched(_ sender: Any)
+       {
+           if DataManager.shared().IsUserLogin()
+           {
+               self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+           }
+           else
+           {
+               self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+           }
+       }
     
     // MARK: Storyboard
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

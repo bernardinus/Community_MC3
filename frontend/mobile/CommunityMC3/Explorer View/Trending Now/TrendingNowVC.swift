@@ -12,13 +12,15 @@ class TrendingNowVC: UIViewController {
     
     @IBOutlet weak var trendingTableView: UITableView!
     
-    var trendings: [FeaturedDataStruct]!
+    var trendings: FeaturedDataStruct!
     var selectedRow = 0
     var mainTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         trendingTableView.register(UINib(nibName: "TrendingNowCell", bundle:nil), forCellReuseIdentifier: "trendingNowCell")
+        
+        trendings = DataManager.shared().trendingNow!
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,12 +33,12 @@ class TrendingNowVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
-                trackPlayerPage.track = trendings[selectedRow].track
+                trackPlayerPage.track = sender as? TrackDataStruct
             }
         }
         if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
-                videoPlayerPage.video = trendings[selectedRow].video
+                videoPlayerPage.video = sender as? VideosDataStruct
             }
         }
     }
@@ -48,7 +50,7 @@ extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if trendings != nil {
-            return trendings.count
+            return trendings.tracks.count
         }
         return 0
     }
@@ -56,6 +58,8 @@ extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = trendingTableView.dequeueReusableCell(withIdentifier: "trendingNowCell") as! TrendingNowCell
         cell.mainTableView = mainTableView
+        cell.updateData(trackData: trendings.tracks[indexPath.row])
+        /*
         cell.trending = trendings[indexPath.row]
         if trendings[indexPath.row].track != nil {
             cell.trackTitleLabel.text = trendings[indexPath.row].track?.name
@@ -71,7 +75,12 @@ extension TrendingNowVC: UITableViewDelegate, UITableViewDataSource
             cell.artistNameLabel.text = trendings[indexPath.row].video?.email
             //                cell.musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
         }
+        */
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "trackPlayerSegue", sender: trendings.tracks[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

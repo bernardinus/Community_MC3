@@ -10,6 +10,8 @@ import UIKit
 
 class SearchContainerPageVC: UIPageViewController {
     
+    var allSearch:AllSearchVC? = nil
+    
     lazy var items: [UIViewController] = {
         let sb = UIStoryboard(name: "Search", bundle: nil)
         
@@ -27,6 +29,7 @@ class SearchContainerPageVC: UIPageViewController {
         
         self.dataSource = nil
         self.delegate = nil
+        allSearch = items[0] as!  AllSearchVC
         
     }
     

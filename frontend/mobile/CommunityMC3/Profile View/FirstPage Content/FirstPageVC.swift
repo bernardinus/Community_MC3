@@ -78,7 +78,7 @@ extension FirstPageVC: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == AboutSection.MusicGenre.rawValue)
         {
             let cell = aboutTableView.dequeueReusableCell(withIdentifier: "musicGenreInfoCell") as! MusicGenreInfoCell
-            cell.genreLabel.text = genreLabel
+            
             return cell
         }
         if(indexPath.section == AboutSection.ContactInfo.rawValue)
