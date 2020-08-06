@@ -137,8 +137,11 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         self.innerCircleEffectImage.isHidden = false
         self.outerCircleEffectImage.isHidden = false
         nextButton.isHidden = true
+//        popUpView.isHidden = false
+//        editButton.isHidden = false
+//        nextButton.isHidden = false
 
-        UIView.animate(withDuration: 1.2, animations: {
+        UIView.animate(withDuration: 1.2/*0.8*/, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
             })
@@ -146,21 +149,29 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             self.outerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
         
-        UIView.animate(withDuration: 1.2, animations: {
+        UIView.animate(withDuration: 1.2/*0.8*/, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.innerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.2 , y: 1.2)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.innerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
-        UIView.animate(withDuration: 1.2, animations: {
+        UIView.animate(withDuration: 1.2/*0.8*/, animations: {
             UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
                 self.searchButton?.transform = CGAffineTransform (scaleX:0.9 , y: 0.9)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
-            UIView.animate(withDuration: 1.2, delay: 2, options: .transitionCrossDissolve, animations: {
+            UIView.animate(withDuration: 1.2/*1.0*/, delay: 2/*0*/, options: .transitionCrossDissolve, animations: {
+                self.popUpView.alpha = 1
+                self.nextButton.alpha = 1
+                self.statusLabel.alpha = 0
+                self.searchButton.alpha = 0
+                self.innerCircleEffectImage.alpha = 0
+                self.outerCircleEffectImage.alpha = 0
+            }, completion: {_ in
                 self.popUpView.isHidden = false
+                self.statusLabel.isHidden = true
                 self.searchButton.isHidden = true
                 self.innerCircleEffectImage.isHidden = true
                 self.outerCircleEffectImage.isHidden = true
@@ -176,10 +187,6 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     @IBAction func editButtonAction(_ sender: UIButton) {
-//        overlayView.backgroundColor = UIColor.gray
-//        overlayView.alpha = 0.5
-//        overlayView.tag = 101
-//        self.view.addSubview(overlayView)
         
         let editRandomizerVC = storyboard?.instantiateViewController(identifier: "EditRandomizerVC") as! EditRandomizerViewController
         editRandomizerVC.callback = startSearch
@@ -194,17 +201,68 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
-        popUpContentView.slideLeft()
+    
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
+            self.popUpView.alpha = 0
+            self.nextButton.alpha = 0
+            self.statusLabel.alpha = 1
+            self.searchButton.alpha = 1
+            self.innerCircleEffectImage.alpha = 1
+            self.outerCircleEffectImage.alpha = 1
+        }, completion: {_ in
+            self.popUpView.isHidden = true
+            self.nextButton.isHidden = true
+            self.statusLabel.isHidden = false
+            self.searchButton.isHidden = false
+            self.innerCircleEffectImage.isHidden = false
+            self.outerCircleEffectImage.isHidden = false
+        })
+        
+        
+        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
+            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+                self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
+            })
+        }, completion: {(_ finished: Bool) -> Void in
+            self.outerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })
+
+        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
+            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+                self.innerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.2 , y: 1.2)
+            })
+        }, completion: {(_ finished: Bool) -> Void in
+            self.innerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })
+        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
+            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+                self.searchButton?.transform = CGAffineTransform (scaleX:0.9 , y: 0.9)
+            })
+        }, completion: {(_ finished: Bool) -> Void in
+            self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
+            UIView.animate(withDuration: 1.0, delay: 0, options: .transitionCrossDissolve, animations: {
+                self.popUpView.alpha = 1
+                self.nextButton.alpha = 1
+                self.statusLabel.alpha = 0
+                self.searchButton.alpha = 0
+                self.innerCircleEffectImage.alpha = 0
+                self.outerCircleEffectImage.alpha = 0
+            }, completion: {_ in
+                self.popUpView.isHidden = false
+                self.statusLabel.isHidden = true
+                self.searchButton.isHidden = true
+                self.innerCircleEffectImage.isHidden = true
+                self.outerCircleEffectImage.isHidden = true
+                self.nextButton.isHidden = false
+                self.editButton.isHidden = false
+            })
+        })
+
+        
+//        popUpContentView.slideLeft()
         
 
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destinationSegue = segue.destination as? EditRandomizerViewController {
-//
-//        }
-//    }
-    
-   
     
 }
 extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -296,19 +354,9 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! MusicGenreCell
-//        cell.layer.borderWidth = 1.5
-//        cell.layer.cornerRadius = 12
+
         cell.musicGenreLabel.text = musicGenreArray[indexPath.row]
-//        switch cell.musicGenreLabel.text {
-//        case "RnB":
-//            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1)
-//        case "Jazz":
-//            cell.layer.borderColor = #colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1)
-//        case "Pop":
-//            cell.layer.borderColor = #colorLiteral(red: 0, green: 0.5176470588, blue: 0.9568627451, alpha: 1)
-//        default:
-//            break
-//        }
+
         setupUIViewForGenre(view: cell, genre: musicGenreArray[indexPath.row])
         return cell
     }
