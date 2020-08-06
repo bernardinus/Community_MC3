@@ -336,40 +336,30 @@
                                     <action selector="saveGenreProfile:" destination="ITZ-bR-m4S" eventType="touchUpInside" id="8aV-49-uh6"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SdG-6F-Zm8">
-                                <rect key="frame" x="30" y="118" width="354" height="140"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="emI-yc-n3o">
+                                <rect key="frame" x="32" y="118" width="350" height="330"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="VNy-C6-XIK"/>
+                                    <constraint firstAttribute="width" secondItem="emI-yc-n3o" secondAttribute="height" multiplier="35:33" id="qOm-HX-aax"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="CYa-CK-B9F">
-                                    <size key="itemSize" width="120" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="ITZ-bR-m4S" id="NVD-4x-G2M"/>
-                                    <outlet property="delegate" destination="ITZ-bR-m4S" id="kOd-nR-zIv"/>
+                                    <outlet property="dataSource" destination="ITZ-bR-m4S" id="tC0-us-wgf"/>
+                                    <outlet property="delegate" destination="ITZ-bR-m4S" id="y02-vh-FtY"/>
                                 </connections>
-                            </collectionView>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gbb-Ub-vwW" firstAttribute="leading" secondItem="n5v-6L-r8K" secondAttribute="leading" constant="20" id="8L2-qo-RFB"/>
-                            <constraint firstItem="SdG-6F-Zm8" firstAttribute="top" secondItem="gbb-Ub-vwW" secondAttribute="bottom" constant="12" id="9lE-d5-ElB"/>
-                            <constraint firstItem="SdG-6F-Zm8" firstAttribute="leading" secondItem="n5v-6L-r8K" secondAttribute="leading" constant="30" id="COk-8t-2Ri"/>
                             <constraint firstItem="n5v-6L-r8K" firstAttribute="trailing" secondItem="V59-fk-4En" secondAttribute="trailing" constant="20" id="Eab-wK-MNC"/>
                             <constraint firstItem="n5v-6L-r8K" firstAttribute="bottom" secondItem="tXk-yc-byU" secondAttribute="bottom" constant="20" id="FTp-ZQ-dy8"/>
                             <constraint firstItem="gbb-Ub-vwW" firstAttribute="top" secondItem="n5v-6L-r8K" secondAttribute="top" constant="40" id="GvK-C5-gIz"/>
+                            <constraint firstItem="emI-yc-n3o" firstAttribute="top" secondItem="gbb-Ub-vwW" secondAttribute="bottom" constant="12" id="RJB-H4-h8C"/>
                             <constraint firstItem="Bjr-hN-4hh" firstAttribute="leading" secondItem="n5v-6L-r8K" secondAttribute="leading" constant="20" id="Vn9-w1-wb2"/>
-                            <constraint firstItem="n5v-6L-r8K" firstAttribute="trailing" secondItem="SdG-6F-Zm8" secondAttribute="trailing" constant="30" id="aI4-dD-bDk"/>
+                            <constraint firstItem="emI-yc-n3o" firstAttribute="width" secondItem="emI-yc-n3o" secondAttribute="height" multiplier="35:33" id="XsJ-bp-Kos"/>
                             <constraint firstItem="n5v-6L-r8K" firstAttribute="bottom" secondItem="Bjr-hN-4hh" secondAttribute="bottom" constant="20" id="cru-Yh-cUZ"/>
                             <constraint firstItem="n5v-6L-r8K" firstAttribute="trailing" secondItem="tXk-yc-byU" secondAttribute="trailing" constant="20" id="elF-ha-d33"/>
                             <constraint firstItem="V59-fk-4En" firstAttribute="top" secondItem="n5v-6L-r8K" secondAttribute="top" constant="36" id="jqu-ad-WBh"/>
-                            <constraint firstItem="SdG-6F-Zm8" firstAttribute="leading" secondItem="n5v-6L-r8K" secondAttribute="leading" constant="30" id="llm-ck-F4n"/>
-                            <constraint firstItem="n5v-6L-r8K" firstAttribute="trailing" secondItem="SdG-6F-Zm8" secondAttribute="trailing" constant="30" id="xLS-kD-mi7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n5v-6L-r8K"/>
                     </view>
@@ -378,7 +368,7 @@
                         <outlet property="cancelButton" destination="V59-fk-4En" id="GXI-ka-j53"/>
                         <outlet property="clearAllButton" destination="Bjr-hN-4hh" id="EWQ-Ac-hOp"/>
                         <outlet property="editGenreLabel" destination="gbb-Ub-vwW" id="KMc-RN-Pg8"/>
-                        <outlet property="genreProfile" destination="SdG-6F-Zm8" id="vOG-4l-Kpr"/>
+                        <outlet property="genreProfile" destination="emI-yc-n3o" id="XSt-wi-7zD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9z-LA-20P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
