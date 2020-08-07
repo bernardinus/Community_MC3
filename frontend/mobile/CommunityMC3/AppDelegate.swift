@@ -15,14 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    let launchStoryboard = UIStoryboard(name: "OnboardingScreen", bundle: nil)
+    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let launchedBefore = UserDefaults.standard.bool(forKey: "hasLaunched")
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let launchStoryboard = UIStoryboard(name: "OnboardingScreen", bundle: nil)
-        
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         var vc: UIViewController
         
