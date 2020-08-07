@@ -22,8 +22,8 @@ class DataManager
         return instance
     }
     
-    var selectedTrackData:TrackDataStruct? = nil
-    var selectedVideoData:VideosDataStruct? = nil
+//    var selectedTrackData:TrackDataStruct? = nil
+//    var selectedVideoData:VideosDataStruct? = nil
     
     
     var ckUtil:CloudKitUtil = CloudKitUtil.shared()
@@ -35,6 +35,7 @@ class DataManager
     var currentUser:UserDataStruct? = nil
 //    var currentUsers:[UserDataStruct]? = nil
     var currentUsersPrimitive:[PrimitiveUserDataStruct]? = nil
+
     
     // CloudKit Data
     var currentUserRec:CKRecord? = nil
@@ -100,7 +101,7 @@ class DataManager
         getAllMusic()
         getAllVideos()
         getAllArtist()
-        
+
     }
     
     func updateExplorerView()
