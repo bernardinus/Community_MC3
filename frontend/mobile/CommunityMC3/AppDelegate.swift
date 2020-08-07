@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else
         {
-            vc = launchStoryboard.instantiateViewController(identifier: "onboardingStoryboard")
+            vc = launchStoryboard.instantiateViewController(identifier: "OnboardingVC")
         }
         
         UserDefaults.standard.set(true, forKey: "hasLaunched")
