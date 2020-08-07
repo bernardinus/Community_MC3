@@ -171,7 +171,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
 //        nextButton.isHidden = false
 
         UIView.animate(withDuration: duration,delay: delay, animations: {
-            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+            UIView.modifyAnimations(withRepeatCount: 0.6, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
             })
         }, completion: {(_ finished: Bool) -> Void in
@@ -179,14 +179,14 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         })
         
         UIView.animate(withDuration: duration,delay: delay, animations: {
-            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+            UIView.modifyAnimations(withRepeatCount: 0.6, autoreverses: true, animations: {
                 self.innerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.2 , y: 1.2)
             })
         }, completion: {(_ finished: Bool) -> Void in
             self.innerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
         UIView.animate(withDuration: duration,delay: delay, animations: {
-            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
+            UIView.modifyAnimations(withRepeatCount: 0.6, autoreverses: true, animations: {
                 self.searchButton?.transform = CGAffineTransform (scaleX:0.9 , y: 0.9)
             })
         }, completion: {(_ finished: Bool) -> Void in

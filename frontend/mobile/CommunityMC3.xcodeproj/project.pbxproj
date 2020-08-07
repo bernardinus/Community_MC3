@@ -186,6 +186,8 @@
 		EA63453824D92A5B0045328C /* UploadPanelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA63453624D92A5B0045328C /* UploadPanelCell.swift */; };
 		EA63453924D92A5B0045328C /* UploadPanelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA63453724D92A5B0045328C /* UploadPanelCell.xib */; };
 		EA650D5524C557680093EEE6 /* TrackPlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */; };
+		EA65FF4E24DBC93200B3FAE1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65FF4D24DBC93200B3FAE1 /* StartViewController.swift */; };
+		EA65FF5024DBC94500B3FAE1 /* MiniTrackPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65FF4F24DBC94500B3FAE1 /* MiniTrackPlayerController.swift */; };
 		EA71357C24CE9A140073A8EA /* yorushika.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA71357924CE9A140073A8EA /* yorushika.mp3 */; };
 		EA71357D24CE9A140073A8EA /* dishes.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA71357A24CE9A140073A8EA /* dishes.mp3 */; };
 		EA71357E24CE9A140073A8EA /* tiara.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EA71357B24CE9A140073A8EA /* tiara.mp3 */; };
@@ -419,6 +421,8 @@
 		EA63453624D92A5B0045328C /* UploadPanelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPanelCell.swift; sourceTree = "<group>"; };
 		EA63453724D92A5B0045328C /* UploadPanelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadPanelCell.xib; sourceTree = "<group>"; };
 		EA650D5424C557680093EEE6 /* TrackPlayer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackPlayer.storyboard; sourceTree = "<group>"; };
+		EA65FF4D24DBC93200B3FAE1 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		EA65FF4F24DBC94500B3FAE1 /* MiniTrackPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniTrackPlayerController.swift; sourceTree = "<group>"; };
 		EA71357924CE9A140073A8EA /* yorushika.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = yorushika.mp3; sourceTree = "<group>"; };
 		EA71357A24CE9A140073A8EA /* dishes.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dishes.mp3; sourceTree = "<group>"; };
 		EA71357B24CE9A140073A8EA /* tiara.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tiara.mp3; sourceTree = "<group>"; };
@@ -548,6 +552,8 @@
 			children = (
 				A16B44AA24B2FBF300053D6C /* Main.storyboard */,
 				A124877224CD2AC500030723 /* MainTabController.swift */,
+				EA65FF4D24DBC93200B3FAE1 /* StartViewController.swift */,
+				EA65FF4F24DBC94500B3FAE1 /* MiniTrackPlayerController.swift */,
 			);
 			path = "Main Storyboard";
 			sourceTree = "<group>";
@@ -1577,6 +1583,7 @@
 				A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */,
 				EA88AAA524D114FC007488F9 /* FavoriteArtistsCell.swift in Sources */,
 				A183FBDD24DB31DF00FD248C /* GenreProfileTableViewCell.swift in Sources */,
+				EA65FF4E24DBC93200B3FAE1 /* StartViewController.swift in Sources */,
 				A11A9FEB24C94A58008D7867 /* UploadFileView.swift in Sources */,
 				A1689D3B24C7D76500A49732 /* CoreDataHelper.swift in Sources */,
 				B7ECE0D824D02133008C4422 /* MusicSearchVC.swift in Sources */,
@@ -1584,6 +1591,7 @@
 				A125311E24CE89C30038B215 /* UIImage+Extension.swift in Sources */,
 				A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */,
 				A134D2A324C908F3009A054F /* Album+Extension.swift in Sources */,
+				EA65FF5024DBC94500B3FAE1 /* MiniTrackPlayerController.swift in Sources */,
 				A15C4D1924C5038C00ED0C0E /* DB_Model.xcdatamodeld in Sources */,
 				A19ACB6E24D0FB45009027B1 /* AlbumSelectorVC.swift in Sources */,
 				B7BEA4FB24D1466500AAB5C7 /* AboutHeaderCell.swift in Sources */,

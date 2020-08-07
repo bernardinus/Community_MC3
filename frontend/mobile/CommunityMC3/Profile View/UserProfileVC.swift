@@ -10,6 +10,7 @@ import UIKit
 
 class UserProfileVC: UIViewController {
     
+    @IBOutlet weak var profileNavigationItem: UINavigationItem!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var firstTabButton: UIButton!
     @IBOutlet weak var secondTabButton: UIButton!
@@ -75,6 +76,15 @@ class UserProfileVC: UIViewController {
             otherMenu.image = UIImage(systemName: "ellipsis")
             otherMenu.isEnabled = true
         }
+        loadNavigationBar()
+    }
+    
+    func loadNavigationBar() {
+        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 20,
+                                                   width: UIScreen.main.bounds.size.width, height: 50))
+        navbar.tintColor = .lightGray
+        self.view.addSubview(navbar)
+        navbar.items = [profileNavigationItem]
     }
     
     func loadLocalisation() {
@@ -209,9 +219,11 @@ class UserProfileVC: UIViewController {
         
         let switchAccountAction = UIAlertAction(title: NSLocalizedString("Switch Account".uppercased(), comment: ""), style: .default) { (action) in
             let switchAccountVC = self.storyboard?.instantiateViewController(identifier: "SwitchAccountVC") as! AccountController
-            var temp = [UserDataStruct]()
-            temp.append(self.userData!)
-            switchAccountVC.accounts = temp
+            if DataManager.shared().currentUsersPrimitive == nil {
+                DataManager.shared().currentUsersPrimitive = [PrimitiveUserDataStruct]()
+                DataManager.shared().registerPrimitiveUserData(userData: DataManager.shared().currentUser!)
+            }
+            switchAccountVC.accounts = DataManager.shared().currentUsersPrimitive
             switchAccountVC.transitioningDelegate = self
             switchAccountVC.modalPresentationStyle = .custom
             switchAccountVC.modalTransitionStyle = .coverVertical
