@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 import CloudKit
 
+struct PrimitiveUserDataStruct: Codable {
+    var email: String
+    var name: String
+    var role: String
+    var profilePicture: String
+}
+
 class UserDataStruct
 {
     // normal data

@@ -34,6 +34,16 @@ class ExplorerView: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var notificationsIconImage: UIImageView!
     
+//    private static var instance:ExplorerView!
+//    static func shared() -> ExplorerView
+//    {
+//        if instance == nil
+//        {
+//            instance = ExplorerView()
+//        }
+//        return instance
+//    }
+    
     let documentController = DocumentTableViewController.shared
     let videoController = VideoPlayerViewController.shared
     let uploadController = UploadController.shared
@@ -53,6 +63,7 @@ class ExplorerView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        dm.initData()
         mainTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         ExploreTitleLabel.text = NSLocalizedString("Explore", comment: "")
         
