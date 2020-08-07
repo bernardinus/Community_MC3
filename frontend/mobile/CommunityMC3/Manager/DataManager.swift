@@ -60,12 +60,15 @@ class DataManager
     
     var allTracksRec:[CKRecord] = []
     var allTracks:[TrackDataStruct] = []
+    var filteredTracks:[TrackDataStruct] = []
     
     var allVideosRec:[CKRecord] = []
     var allVideos:[VideosDataStruct] = []
+    var filteredVideos:[VideosDataStruct] = []
     
     var allArtistRec:[CKRecord] = []
     var allArtist:[UserDataStruct] = []
+    var filteredArtist:[UserDataStruct] = []
     
     
     var registerData:AccountDataStruct?
@@ -79,6 +82,8 @@ class DataManager
     {
         return currentUserRec != nil
     }
+    
+    
     
     private init()
     {
@@ -98,15 +103,20 @@ class DataManager
     
     func updateExplorerView()
     {
-//        DispatchQueue.main.async {
-//            
-//            let rootView = UIApplication.shared.keyWindow?.rootViewController! as! UINavigationController
-//            let tabBarView = rootView.viewControllers[0] as! UITabBarController
-//            let explorerView = tabBarView.viewControllers![0] as! ExplorerView
-//            explorerView.mainTableView.reloadData()
-////            print("check arr \(tabBarView.viewControllers![0])")
-//
-//        }
+        DispatchQueue.main.async {
+            
+            let rootVC = UIApplication.shared.keyWindow?.rootViewController!
+            if rootVC is StartViewController
+            {
+                let rootView = rootVC as! StartViewController
+                
+                let navVC = rootView.baseVC!
+                let tabBarView = navVC.viewControllers[0] as! UITabBarController
+                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+                explorerView.mainTableView.reloadData()
+            }
+
+        }
         
     }
 
@@ -400,93 +410,93 @@ class DataManager
     }
     
     func UploadNewVideo(videoData:VideosDataStruct, completionHandler:@escaping(Bool, String)->Void)
-        {
-            ckUtil.saveRecordToPublicDB(
-                record: videoData.getCKRecord(),
-                completionHandler:{ (isSuccess, errorString, record) in
-                    if !isSuccess
+    {
+        ckUtil.saveRecordToPublicDB(
+            record: videoData.getCKRecord(),
+            completionHandler:{ (isSuccess, errorString, record) in
+                if !isSuccess
+                {
+                    print("UploadNewVideo Error : \(errorString)")
+                    completionHandler(isSuccess, errorString)
+                }
+                else
+                {
+                    let uploadedData = UploadedDataStruct(uploadedDate: Date.init(timeIntervalSinceNow: 7*3600),
+                                                          track: nil,
+                                                          video: record!)
+                    
+                    self.UpdateNewUploadData(record: uploadedData.getCKRecord())
+                    
+                    if(self.currentUserRec != nil)
                     {
-                        print("UploadNewVideo Error : \(errorString)")
-                        completionHandler(isSuccess, errorString)
-                    }
-                    else
-                    {
-                        let uploadedData = UploadedDataStruct(uploadedDate: Date.init(timeIntervalSinceNow: 7*3600),
-                                                              track: nil,
-                                                              video: record!)
+                        var allTracks = self.currentUserRec?.value(forKey: "videos")
+                        let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
+                        var arr:NSMutableArray? = nil
                         
-                        self.UpdateNewUploadData(record: uploadedData.getCKRecord())
-                        
-                        if(self.currentUserRec != nil)
+                        if(allTracks != nil)
                         {
-                            var allTracks = self.currentUserRec?.value(forKey: "videos")
-                            let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
-                            var arr:NSMutableArray? = nil
-                            
-                            if(allTracks != nil)
-                            {
-    //                            print("allTracks not nil")
-                                arr = NSMutableArray(array:self.currentUserRec!["videos"] as! [CKRecord.Reference])
-                                arr!.add(ref)
+//                            print("allTracks not nil")
+                            arr = NSMutableArray(array:self.currentUserRec!["videos"] as! [CKRecord.Reference])
+                            arr!.add(ref)
 //                                print(arr)
-                            }
-                            else
-                            {
-    //                            print("allTracks nil")
-                                arr = NSMutableArray(array: [ref])
-                            }
-                            self.currentUserRec?.setValue(arr, forKey: "videos")
-                            self.currentUserRec?.setValue(1, forKey: "isArtist")
                         }
-                        
-                        self.savecurrentUserRec()
-                        completionHandler(isSuccess, errorString)
+                        else
+                        {
+//                            print("allTracks nil")
+                            arr = NSMutableArray(array: [ref])
+                        }
+                        self.currentUserRec?.setValue(arr, forKey: "videos")
+                        self.currentUserRec?.setValue(1, forKey: "isArtist")
                     }
                     
-            })
-        }
+                    self.savecurrentUserRec()
+                    completionHandler(isSuccess, errorString)
+                }
+                
+        })
+    }
     
     func UploadNewPhoto(photoData:PhotoDataStruct, completionHandler:@escaping(Bool, String)->Void)
-        {
-            ckUtil.saveRecordToPublicDB(
-                record: photoData.getCKRecord(),
-                completionHandler:{ (isSuccess, errorString, record) in
-                    if !isSuccess
+    {
+        ckUtil.saveRecordToPublicDB(
+            record: photoData.getCKRecord(),
+            completionHandler:{ (isSuccess, errorString, record) in
+                if !isSuccess
+                {
+                    print("UploadNewPhotos Error : \(errorString)")
+                    completionHandler(isSuccess, errorString)
+                }
+                else
+                {
+                    
+                    if(self.currentUserRec != nil)
                     {
-                        print("UploadNewPhotos Error : \(errorString)")
-                        completionHandler(isSuccess, errorString)
-                    }
-                    else
-                    {
+                        var allTracks = self.currentUserRec?.value(forKey: "photos")
+                        let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
+                        var arr:NSMutableArray? = nil
                         
-                        if(self.currentUserRec != nil)
+                        if(allTracks != nil)
                         {
-                            var allTracks = self.currentUserRec?.value(forKey: "photos")
-                            let ref = CKRecord.Reference(record: record!, action: .deleteSelf)
-                            var arr:NSMutableArray? = nil
-                            
-                            if(allTracks != nil)
-                            {
-    //                            print("allTracks not nil")
-                                arr = NSMutableArray(array:self.currentUserRec!["photos"] as! [CKRecord.Reference])
-                                arr!.add(ref)
+//                            print("allTracks not nil")
+                            arr = NSMutableArray(array:self.currentUserRec!["photos"] as! [CKRecord.Reference])
+                            arr!.add(ref)
 //                                print(arr)
-                            }
-                            else
-                            {
-    //                            print("allTracks nil")
-                                arr = NSMutableArray(array: [ref])
-                            }
-                            self.currentUserRec?.setValue(arr, forKey: "photos")
-                            self.currentUserRec?.setValue(1, forKey: "isArtist")
                         }
-                        
-                        self.savecurrentUserRec()
-                        completionHandler(isSuccess, errorString)
+                        else
+                        {
+//                            print("allTracks nil")
+                            arr = NSMutableArray(array: [ref])
+                        }
+                        self.currentUserRec?.setValue(arr, forKey: "photos")
+                        self.currentUserRec?.setValue(1, forKey: "isArtist")
                     }
                     
-            })
-        }
+                    self.savecurrentUserRec()
+                    completionHandler(isSuccess, errorString)
+                }
+                
+        })
+    }
 
     
     func UpdateNewUploadData(record:CKRecord)
@@ -988,6 +998,8 @@ class DataManager
                 {
                     self.allTracks.append(TrackDataStruct(record:record))
                 }
+                self.filteredTracks = self.allTracks
+                print("FilterTrack \(self.filteredTracks.count)")
                 
                 if self.willUpdateFeaturedData
                 {
@@ -1014,6 +1026,8 @@ class DataManager
                 {
                     self.allVideos.append(VideosDataStruct(record: record))
                 }
+                self.filteredVideos = self.allVideos
+                print("FilterVideos \(self.filteredTracks.count)")
                 
                 if(self.willUpdateFeaturedData)
                 {
@@ -1029,7 +1043,7 @@ class DataManager
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, records) in
             if(!isSuccess)
             {
-                print("getAllArtist Error")
+                print("getAllArtist Error \(errorString)")
             }
             else
             {
@@ -1040,11 +1054,74 @@ class DataManager
                 {
                     self.allArtist.append(UserDataStruct(record))
                 }
+                self.filteredArtist = self.allArtist
+                print("FilterArtist \(self.filteredTracks.count)")
                 
                 if(self.willUpdateFeaturedData)
                 {
                     self.updateFeaturedArtist()
                 }
+            }
+        }
+    }
+    
+    // MARK: SEARCH
+    
+    func filterArtist(_ filterText:String?)
+    {
+        filteredArtist = allArtist
+        if(filterText != nil)
+        {
+            if !(filterText!.isEmpty)
+            {
+                filteredArtist = allArtist.filter({ (data) -> Bool in
+                    if(data.name!.contains(filterText!)) {return true}
+                    if(data.genre!.contains(filterText!)) {return true}
+                    if(data.role!.contains(filterText!)) {return true}
+                    return false
+                })
+            }
+        }
+    }
+    
+    func filterTracks(_ filterText:String?)
+    {
+        filteredTracks = allTracks
+        if(filterText != nil)
+        {
+            if !(filterText!.isEmpty)
+            {
+                filteredTracks = allTracks.filter({ (data) -> Bool in
+                    if(data.name.contains(filterText!)) {return true}
+                    if(data.artistName!.contains(filterText!)) {return true}
+                    if(data.genre.contains(filterText!)) {return true}
+                    if(data.album != nil)
+                    {
+                        if(data.album!.name.contains(filterText!)) {return true}
+                    }
+                    return false
+                })
+            }
+        }
+    }
+    
+    func filterVideo(_ filterText:String?)
+    {
+        filteredVideos = allVideos
+        if(filterText != nil)
+        {
+            if !(filterText!.isEmpty)
+            {
+                filteredVideos = allVideos.filter({ (data) -> Bool in
+                    if(data.name.contains(filterText!)) {return true}
+                    if(data.genre.contains(filterText!)) {return true}
+//                    if(data.artistName!.contains(filterText!)) {return true}
+                    if(data.album != nil)
+                    {
+                        if(data.album!.name.contains(filterText!)) {return true}
+                    }
+                    return false
+                })
             }
         }
     }
