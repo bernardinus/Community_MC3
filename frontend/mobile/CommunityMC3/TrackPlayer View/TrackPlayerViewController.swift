@@ -13,8 +13,6 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     
     @IBOutlet weak var trackCoverImageView: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
-    @IBOutlet weak var pauseButton: UIButton!
-    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var trackProgressSlider: UISlider!
@@ -24,9 +22,9 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var repeatButtonActive: UIButton!
     @IBOutlet weak var repeatOneTrackOnlyButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
-    @IBOutlet weak var shuffleButtonActive: UIButton!
     @IBOutlet weak var artistButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var playAndPauseButton: UIButton!
     
     var track: TrackDataStruct!
     let documentController = DocumentTableViewController.shared
@@ -40,6 +38,8 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     var trackShuffleTemp = [String]()
     var trackPlaylist = [String]()
     var repeatPlaylistBoolean = true
+    var playAndPauseBoolean = false
+    var miniTrackDelegate: MiniTrackPlayerDelegate?
     
     var favoriteBool: Bool {
         return favoriteButton.isSelected
@@ -54,9 +54,24 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         navigationController?.setNavigationBarHidden(false, animated: false)
         retreiveTrack()
         retreiveFavorites()
-        prepareTrack()
+//        prepareTrack()
         prepareAndCustomizeSlider()
-        favoriteButtonStateChange()
+        buttonStateChange()
+        receiveButtonState(state: playAndPauseBoolean)
+        trackDismiss()
+    }
+    
+    func receiveButtonState(state: Bool?){
+        playAndPauseButton.isSelected = state!
+    }
+    
+    func trackDismiss(){
+        if playAndPauseButton.isSelected == true{
+            miniTrackDelegate?.miniTrackPlayerButtonState(state: true)
+        }else{
+            miniTrackDelegate?.miniTrackPlayerButtonState(state: false)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func changeFavourites() {
@@ -164,7 +179,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     
     @objc func updateAudioProgressView()
     {
-        if trackPlayer!.isPlaying
+        if trackPlayer?.isPlaying == true
         {
             trackProgressSlider.minimumValue = 0.0
             trackProgressSlider.maximumValue = Float(trackPlayer!.duration)
@@ -177,10 +192,16 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         }
     }
     
-    func favoriteButtonStateChange(){
+    func buttonStateChange(){
         
         favoriteButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
         favoriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
+        
+        playAndPauseButton.setImage(#imageLiteral(resourceName: "Play"), for: .normal)
+        playAndPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .selected)
+        
+        shuffleButton.setImage(#imageLiteral(resourceName: "shuffle"), for: .normal)
+        shuffleButton.setImage(#imageLiteral(resourceName: "shuffleActive"), for: .selected)
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool){
@@ -198,14 +219,14 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     
     
     @IBAction func pauseAndPlayButtonAction(_ sender: UIButton) {
-        if sender == pauseButton{
-            trackPlayer!.pause()
-            pauseButton.isHidden = true
-            playButton.isHidden = false
-        }else if sender == playButton{
+        sender.isSelected = !sender.isSelected
+        
+        if sender.isSelected == true{
             trackPlayer!.play()
-            playButton.isHidden = true
-            pauseButton.isHidden = false
+            playAndPauseButton.isSelected = true
+        }else{
+            trackPlayer!.pause()
+            playAndPauseButton.isSelected = false
         }
     }
     
@@ -228,8 +249,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
                     prepareTrack()
                     trackPlayer!.currentTime = 0
                     trackPlayer!.stop()
-                    pauseButton.isHidden = true
-                    playButton.isHidden = false
+                    playAndPauseButton.isSelected = false
                 }
             }else{
                 counter += 1
@@ -271,21 +291,30 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     }
     
     @IBAction func shuffleButtonAction(_ sender: UIButton) {
-        if sender == shuffleButton{
-            shuffleButton.isHidden = true
-            shuffleButtonActive.isHidden = false
+        sender.isSelected = !sender.isSelected
+        
+        if sender.isSelected == true{
+            shuffleButton.isSelected = true
+            
+            trackPlaylist.removeAll()
+            trackPlaylist.append(contentsOf: trackListTemp)
             
             trackShuffleTemp.removeAll()
             trackShuffleTemp.append(contentsOf: trackListTemp)
             trackShuffleTemp.shuffle()
             trackPlaylist.removeAll()
             trackPlaylist.append(contentsOf: (trackShuffleTemp))
-        }else if sender == shuffleButtonActive{
-            shuffleButtonActive.isHidden = true
-            shuffleButton.isHidden = false
+        }else{
+            shuffleButton.isSelected = false
             
             trackPlaylist.removeAll()
             trackPlaylist.append(contentsOf: trackListTemp)
+            
+            trackShuffleTemp.removeAll()
+            trackShuffleTemp.append(contentsOf: trackListTemp)
+            trackShuffleTemp.shuffle()
+            trackPlaylist.removeAll()
+            trackPlaylist.append(contentsOf: (trackShuffleTemp))
         }
     }
     
@@ -299,10 +328,19 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         print(favoriteBool)
     }
     
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        trackPlayer?.stop()
-        super .viewWillDisappear(animated)
+    @IBAction func dismissButton(_ sender: UIButton) {
+        if playAndPauseButton.isSelected == true{
+            miniTrackDelegate?.miniTrackPlayerButtonState(state: true)
+        }else{
+            miniTrackDelegate?.miniTrackPlayerButtonState(state: false)
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+//        trackPlayer?.stop()
+//        super .viewWillDisappear(animated)
+//    }
 }

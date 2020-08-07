@@ -26,18 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var vc: UIViewController
         
-        if launchedBefore
-        {
-            vc = mainStoryboard.instantiateInitialViewController()!
-        }
-        else
-        {
-            vc = launchStoryboard.instantiateViewController(identifier: "onboardingStoryboard")
-        }
+//        if launchedBefore
+//        {
+//            vc = mainStoryboard.instantiateInitialViewController()!
+//        }
+//        else
+//        {
+//            vc = launchStoryboard.instantiateViewController(identifier: "onboardingStoryboard")
+//        }
         
         UserDefaults.standard.set(true, forKey: "hasLaunched")
         
-        self.window?.rootViewController = vc
+//        self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
         
         DataManager.shared()
