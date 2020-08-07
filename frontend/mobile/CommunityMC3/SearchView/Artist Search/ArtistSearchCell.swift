@@ -13,10 +13,22 @@ class ArtistSearchCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artistRoleLabel: UILabel!
     @IBOutlet weak var artistImageView: UIImageView!
+    
+    var artistData:UserDataStruct? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         artistImageView.makeRounded()
     }
+    
+    func updateData(_ artistData:UserDataStruct)
+    {
+        self.artistData = artistData
+        artistImageView.image = artistData.profilePicture!
+        artistRoleLabel.text = artistData.role
+        artistNameLabel.text = artistData.name!
+    }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -31,3 +31,13 @@ let musicGenreArray:[String] = [
     "Acoustic",
     "Blues"
 ]
+
+var explorerViewTableCount:[String:Int] = [
+    "trendingNow":3,
+    "discoverNew":1,
+    "latestMusic":3,
+    "featuredArtist":1,
+    "featuredVideo":3
+]
+
+

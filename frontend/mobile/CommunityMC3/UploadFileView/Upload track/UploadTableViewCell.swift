@@ -30,7 +30,7 @@ class UploadTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         trackCoverTextField.text = ""
-        trackCoverTextField.placeholder = "Write the title"
+        trackCoverTextField.placeholder = NSLocalizedString("Write the title".uppercased(), comment: "")
         trackCoverImage.image = UIImage(named: "playButton")
         selectionStyle = .none
     }

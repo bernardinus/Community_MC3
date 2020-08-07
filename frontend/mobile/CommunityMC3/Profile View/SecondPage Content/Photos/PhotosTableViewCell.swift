@@ -12,6 +12,9 @@ class PhotosTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var photosCollectionCell: UICollectionView!
+    
+    var photosData:[PhotoDataStruct]? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.photosCollectionCell.dataSource = self
@@ -25,6 +28,10 @@ class PhotosTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func updateData(photosData:[PhotoDataStruct])
+    {
+        self.photosData = photosData
+    }
 }
 
 extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -34,6 +41,7 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = photosCollectionCell.dequeueReusableCell(withReuseIdentifier: "photosCollectionCell", for: indexPath as IndexPath) as! PhotosCollectionCell
+//        cell.photosCollectionImage.image = photosData![indexPath.row].photosData!
         return cell
     }
     

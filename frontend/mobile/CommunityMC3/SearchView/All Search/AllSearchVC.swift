@@ -19,7 +19,11 @@ enum SearchSection:Int{
 class AllSearchVC: UIViewController {
     
     @IBOutlet weak var allSearchTableView: UITableView!
-    override func viewDidLoad() {
+    
+    var dm:DataManager = DataManager.shared()
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         allSearchTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         allSearchTableView.register(UINib(nibName: "SearchHeaderSection", bundle: nil), forCellReuseIdentifier: "searchHeaderSection")
@@ -27,6 +31,14 @@ class AllSearchVC: UIViewController {
         allSearchTableView.register(UINib(nibName: "ArtistSearchCell", bundle: nil), forCellReuseIdentifier: "artistSearchCell")
         allSearchTableView.register(UINib(nibName: "VideoSearchCell", bundle: nil), forCellReuseIdentifier: "videoSearchCell")
         allSearchTableView.register(UINib(nibName: "PlaylistSearchCell", bundle: nil), forCellReuseIdentifier: "playlistSearchCell")
+        
+        dm = DataManager.shared()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        allSearchTableView.reloadData()
+        super.viewWillAppear(animated)
     }
     
 }
@@ -41,11 +53,11 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         }
         if(section == SearchSection.Music.rawValue)
         {
-            cell.searchHeaderLabel.text = NSLocalizedString("Music", comment: "")
+            cell.searchHeaderLabel.text = NSLocalizedString("Music".uppercased(), comment: "")
         }
         if(section == SearchSection.Video.rawValue)
         {
-            cell.searchHeaderLabel.text = NSLocalizedString("Video", comment: "")
+            cell.searchHeaderLabel.text = NSLocalizedString("Video".uppercased(), comment: "")
         }
         if(section == SearchSection.Playlist.rawValue)
         {
@@ -59,27 +71,41 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return SearchSection.Count.rawValue
+        return 3 // (artist, music, video) SearchSection.Count.rawValue
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+//        max 5
+        switch section {
+        case SearchSection.Artist.rawValue:
+            return min(5, dm.filteredArtist.count)
+        case SearchSection.Video.rawValue:
+            return min(5, dm.filteredVideos.count)
+        case SearchSection.Music.rawValue:
+            return min(5, dm.filteredTracks.count)
+        default:
+            return 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.section == SearchSection.Artist.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "artistSearchCell") as! ArtistSearchCell
+            cell.artistData = dm.filteredArtist[indexPath.row]
             return cell
         }
         if(indexPath.section == SearchSection.Music.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "musicSearchCell") as! MusicSearchCell
+            cell.trackData = dm.filteredTracks[indexPath.row]
             return cell
         }
         if(indexPath.section == SearchSection.Video.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "videoSearchCell") as! VideoSearchCell
+            cell.videoData = dm.filteredVideos[indexPath.row]
             return cell
         }
         if(indexPath.section == SearchSection.Playlist.rawValue)

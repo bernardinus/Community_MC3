@@ -24,6 +24,8 @@ class SearchView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dismissKeyboard()
+        
         
     }
     
@@ -36,12 +38,25 @@ class SearchView: UIViewController {
     
     func getSelectedActionType() -> ButtonType{
         //Set each button action by index
-        for (index, button) in searchCategoryButton.enumerated() {
+        for (index, button) in searchCategoryButton.enumerated()
+        {
             if button.backgroundColor == #colorLiteral(red: 0.3450980392, green: 0.2, blue: 0.8392156863, alpha: 1) {
                 vcSearch?.moveToPageSearch(index: index)
             }
         }
         return .All
+    }
+    
+    @IBAction func accountButtonTouched(_ sender: Any)
+    {
+        if DataManager.shared().IsUserLogin()
+        {
+            self.performSegue(withIdentifier: "userProfileSegue", sender: nil)
+        }
+        else
+        {
+            self.performSegue(withIdentifier: "loginScreenSegue", sender: nil)
+        }
     }
     
     @IBAction func searchTabSelected(_ sender: UIButton) {
@@ -59,4 +74,20 @@ class SearchView: UIViewController {
         let _: ButtonType = getSelectedActionType()
     }
     
+    func updateResultTable()
+    {
+        vcSearch?.updateResultTable()
+    }
+}
+
+extension SearchView:UISearchBarDelegate
+{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        DataManager.shared().filterArtist(searchText)
+        DataManager.shared().filterTracks(searchText)
+        DataManager.shared().filterVideo(searchText)
+        updateResultTable()
+        
+    }
 }

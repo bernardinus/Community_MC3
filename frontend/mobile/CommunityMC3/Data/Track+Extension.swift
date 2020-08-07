@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import CloudKit
+import UIKit
 
 struct PrimitiveTrackDataStruct: Codable
 {
@@ -18,7 +19,7 @@ struct PrimitiveTrackDataStruct: Codable
     var email: String
 }
 
-struct TrackDataStruct
+class TrackDataStruct
 {
     
     var genre:String
@@ -26,13 +27,55 @@ struct TrackDataStruct
     
 //    var recordID: CKRecord.ID
     var email: String
-    var fileURL: URL
-//    var coverImage:URL
+    var fileData: CKAsset?
+    var coverImage:UIImage?
     
     var audioData:AVAudioPlayer?
     
     
     var album:AlbumDataStruct?
+    var artistName:String? = "artistName"
+    
+    init(record:CKRecord)
+    {
+//        print("inputedData \(record)")
+        let genreData = record.value(forKey: "genre")
+        if genreData != nil
+        {
+            self.genre = genreData as! String
+        }
+        else
+        {
+            self.genre = ""
+        }
+        
+        let nameData = record.value(forKey: "name")
+        self.name = ""
+        if(nameData != nil)
+        {
+            self.name = nameData as! String
+        }
+        
+        
+        self.email = record.value(forKey: "email") as! String
+        self.fileData = record.value(forKey: "fileData") as? CKAsset
+        
+    }
+    
+    init()
+    {
+        self.genre = ""
+        self.name = ""
+        self.email = ""
+        self.fileData = CKAsset(fileURL: URL(string: "")!)
+    }
+    init(genre:String, name:String, email:String, fileURL:URL)
+    {
+        self.genre = genre
+        self.name = name
+        self.email = email
+        self.fileData = CKAsset(fileURL:fileURL)
+    }
     
     func getCKRecord()->CKRecord
     {
@@ -41,10 +84,9 @@ struct TrackDataStruct
         record.setValue(genre, forKey: "genre")
         record.setValue(email, forKey: "email")
         record.setValue(name, forKey: "name")
-        
-        let fileData = CKAsset(fileURL: fileURL)
         record.setValue(fileData, forKey: "fileData")
-        
+        record.setValue(DataManager.shared().currentUser?.name, forKey: "artistName")
+        record.setValue(coverImage?.pngData(), forKey: "coverImage")
         return record
     }
 }

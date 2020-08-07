@@ -72,7 +72,7 @@ class DocumentTableViewController: UITableViewController {
                 print(err.localizedDescription)
             }
             
-            print(records)
+//            print(records)
             
             if let fetchedRecords = records {
                 for record in fetchedRecords {
@@ -122,7 +122,7 @@ class DocumentTableViewController: UITableViewController {
                 print(err.localizedDescription)
             }
             
-            print(records)
+//            print(records)
             
             if let fetchedRecords = records {
                 var flag = false
@@ -313,7 +313,7 @@ class DocumentTableViewController: UITableViewController {
                 print(err.localizedDescription)
             }
             
-            print(records)
+//            print(records)
             
             if let fetchedRecords = records {
                 for record in fetchedRecords {
@@ -343,7 +343,7 @@ class DocumentTableViewController: UITableViewController {
         let file = AppFile()
         //        _ = file.writeFile(containing: "This file was written for my tutorial on the iOS 11 Files app.\n\nThe text file was written to this app\'s Documents folder.", to: .Documents, withName: "textFile1.txt")
         let fetchedDocuments = file.list()
-        print(fetchedDocuments)
+//        print(fetchedDocuments)
         
         if fetchedDocuments.count > 0 {
             //            print(fetchedDocuments[0])
@@ -377,7 +377,7 @@ class DocumentTableViewController: UITableViewController {
                 print(err.localizedDescription)
             }
             
-            print(records)
+//            print(records)
             
             if let fetchedRecords = records {
                 for record in fetchedRecords {
@@ -432,7 +432,7 @@ class DocumentTableViewController: UITableViewController {
         DispatchQueue.main.async {
             //                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .plain, target: self, action: #selector(self.listenTapped))
             do {
-                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileURL)
+                self.audioPlayer = try AVAudioPlayer(contentsOf: upload.fileData!.fileURL!)
                 self.audioPlayer.play()
             } catch {
                 print("play failed")

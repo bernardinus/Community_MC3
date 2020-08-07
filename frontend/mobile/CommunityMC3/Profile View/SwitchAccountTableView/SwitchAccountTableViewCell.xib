@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchCell" id="qwW-P9-Geb" customClass="SwitchAccountTableViewCell" customModule="Allegro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qwW-P9-Geb" id="9rm-Bo-8hX">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artist-3" translatesAutoresizingMaskIntoConstraints="NO" id="QKt-mR-4PX">
+                        <rect key="frame" x="20" y="21" width="69" height="59"/>
+                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="69" id="ZPq-0q-oUF"/>
+                            <constraint firstAttribute="height" constant="59" id="aWO-MS-rWX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1v-vw-DOo">
+                        <rect key="frame" x="131" y="21" width="115" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0cN-kO-l24"/>
+                            <constraint firstAttribute="width" constant="115" id="g2s-7t-Ex3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ph2-c3-XhW">
+                        <rect key="frame" x="131" y="50" width="44" height="14.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="M1v-vw-DOo" secondAttribute="trailing" constant="164" id="0VO-Bo-tJH"/>
+                    <constraint firstItem="Ph2-c3-XhW" firstAttribute="leading" secondItem="QKt-mR-4PX" secondAttribute="trailing" constant="42" id="7zF-86-eLa"/>
+                    <constraint firstItem="QKt-mR-4PX" firstAttribute="top" secondItem="9rm-Bo-8hX" secondAttribute="top" constant="21" id="Cce-ke-DIG"/>
+                    <constraint firstItem="M1v-vw-DOo" firstAttribute="leading" secondItem="QKt-mR-4PX" secondAttribute="trailing" constant="42" id="Kcc-il-iW2"/>
+                    <constraint firstItem="M1v-vw-DOo" firstAttribute="top" secondItem="9rm-Bo-8hX" secondAttribute="top" constant="21" id="O2Z-M5-pNb"/>
+                    <constraint firstAttribute="bottom" secondItem="QKt-mR-4PX" secondAttribute="bottom" constant="20" symbolic="YES" id="Or1-Rn-VNd"/>
+                    <constraint firstItem="QKt-mR-4PX" firstAttribute="leading" secondItem="9rm-Bo-8hX" secondAttribute="leading" constant="20" symbolic="YES" id="Ub5-NC-vcg"/>
+                    <constraint firstItem="Ph2-c3-XhW" firstAttribute="top" secondItem="M1v-vw-DOo" secondAttribute="bottom" constant="8" id="vZM-wT-MSs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="uOV-Ug-VU6"/>
+            <connections>
+                <outlet property="switchAccountImage" destination="QKt-mR-4PX" id="1uV-UQ-pfs"/>
+                <outlet property="switchAccountName" destination="M1v-vw-DOo" id="apF-G2-J5J"/>
+                <outlet property="switchAccountRole" destination="Ph2-c3-XhW" id="qGu-g9-mqA"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="98"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="artist-3" width="260" height="260"/>
+    </resources>
+</document>

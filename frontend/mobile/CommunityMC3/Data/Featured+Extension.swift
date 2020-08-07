@@ -13,14 +13,37 @@ import CloudKit
 // specific ID
 public var FeaturedID_Artist = "featuredArtist"
 
-struct FeaturedDataStruct
+class FeaturedDataStruct
 {
     //    var id:String
-    var id: CKRecord.ID
+    var id: CKRecord.ID?
+    
     var track: TrackDataStruct?
     var user: UserDataStruct?
     var video: VideosDataStruct?
-    //    var tracks:[TrackDataStruct]?
-    //    var users:[UserDataStruct]?
-    //    var videos:[VideosDataStruct]?
+    
+    var tracks:[TrackDataStruct] = []
+    var users:[UserDataStruct] = []
+    var videos:[VideosDataStruct] = []
+    
+    init()
+    {
+    }
+    init(id:CKRecord.ID, user:UserDataStruct)
+    {
+        self.id = id
+        self.user = user
+    }
+    
+    init(id:CKRecord.ID, track:TrackDataStruct)
+    {
+        self.id = id
+        self.track = track
+    }
+    
+    init(id:CKRecord.ID, video:VideosDataStruct)
+    {
+        self.id = id
+        self.video = video
+    }
 }

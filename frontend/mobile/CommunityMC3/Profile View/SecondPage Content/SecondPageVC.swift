@@ -22,6 +22,13 @@ class SecondPageVC: UIViewController {
     var showcaseMusicSegue: (() -> Void)? = nil
     var showcasePhotoSegue: (() -> Void)? = nil
     var showcaseVideoSegue: (() -> Void)? = nil
+    var playMusicSegue: ((Any?) -> Void)? = nil
+    var playVideoSegue: ((Any?) -> Void)? = nil
+    
+    
+    var tracks:[TrackDataStruct]? = []
+    var videos:[VideosDataStruct]? = []
+    var photos:[PhotoDataStruct]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +37,20 @@ class SecondPageVC: UIViewController {
         showcaseTableView.register(UINib(nibName: "MusicTableViewCell", bundle: nil), forCellReuseIdentifier: "musicTableCell")
         showcaseTableView.register(UINib(nibName: "PhotosTableViewCell", bundle: nil), forCellReuseIdentifier: "photosTableCell")
         showcaseTableView.register(UINib(nibName: "VideosTableViewCell", bundle: nil), forCellReuseIdentifier: "videosTableCell")
+    }
+    
+    func updateData(tracks:[TrackDataStruct]?, videos:[VideosDataStruct]?, photos:[PhotoDataStruct]?)
+    {
+        self.tracks = tracks
+        self.videos = videos
+        self.photos = photos
+        
+        print("\(tracks?.count) \(videos?.count) \(photos?.count)")
+        if(showcaseTableView != nil)
+        {
+            showcaseTableView.reloadData()
+        }
+        
     }
     
 }
@@ -61,6 +82,18 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == ShowcaseSection.Music.rawValue)
+        {
+            playMusicSegue!(tracks![indexPath.row])
+        }
+        if(indexPath.section == ShowcaseSection.Videos.rawValue)
+        {
+            playVideoSegue!(videos![indexPath.row])
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         40
     }
@@ -72,7 +105,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == ShowcaseSection.Music.rawValue)
         {
-            return 3
+            return min(tracks!.count,3)
         }
         if(section == ShowcaseSection.Photos.rawValue)
         {
@@ -80,7 +113,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         }
         if(section == ShowcaseSection.Videos.rawValue)
         {
-            return 3
+            return min(videos!.count,3)
         }
         return 0
     }
@@ -89,16 +122,19 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == ShowcaseSection.Music.rawValue)
         {
             let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "musicTableCell") as! MusicTableViewCell
+            cell.updateData(track: tracks![indexPath.row])
             return cell
         }
         if(indexPath.section == ShowcaseSection.Photos.rawValue)
         {
             let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "photosTableCell") as! PhotosTableViewCell
+//            cell.updateData(photosData: photos!)
             return cell
         }
         if(indexPath.section == ShowcaseSection.Videos.rawValue)
         {
             let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "videosTableCell") as! VideosTableViewCell
+            cell.update(videoData: videos![indexPath.row])
             return cell
         }
         

@@ -14,6 +14,10 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var countTracks: [TrackDataStruct]!
+    var countFavorites = [PrimitiveTrackDataStruct]()
+    let documentController = DocumentTableViewController.shared
+    
     var trackPlayer: AVAudioPlayer?
     var playerTemp: AVAudioPlayer?
     var timer: Timer? = nil
@@ -24,6 +28,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "FavoriteTracksCell", bundle: nil), forCellReuseIdentifier: "favoriteTracksCell")
+        convertFavourites()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +37,40 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         navigationController?.navigationBar.backItem?.title = ""
     }
     
+    func convertFavourites() {
+        for track in countTracks {
+            countFavorites.append(
+                PrimitiveTrackDataStruct(
+                    genre: track.genre,
+                    name: track.name,
+                    email: track.email
+                )
+            )
+        }
+    }
+    
+    func changeFavourites(track: TrackDataStruct) {
+        let temp = PrimitiveTrackDataStruct(
+            genre: track.genre,
+            name: track.name,
+            email: track.email
+        )
+        var counter = 0
+        var flag = false
+        for track in countFavorites {
+            if track.name == temp.name {
+                flag = true
+                countFavorites.remove(at: counter)
+            }
+            counter += 1
+        }
+        if !flag {
+            countFavorites.append(temp)
+        }
+        let email = UserDefaults.standard.string(forKey: "email")
+        
+        documentController.uploadFavorite(id: email!, track: countFavorites)
+    }
     
     @objc func directPlay(_ sender: UIButton){
         sender.isSelected = !sender.isSelected
@@ -39,13 +78,23 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         
         tempIndex = sender.tag
         
-        let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
         var error : NSError? = nil
-        do {
-            trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
-            
-        } catch let error1 as NSError {
-            error = error1
+        if countTracks != nil {
+            let audioPath = countTracks![tempIndex].fileData!.fileURL!
+            do {
+                trackPlayer = try AVAudioPlayer(contentsOf: audioPath)
+                
+            } catch let error1 as NSError {
+                error = error1
+            }
+        }else {
+            let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
+            do {
+                trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
+                
+            } catch let error1 as NSError {
+                error = error1
+            }
         }
         
         trackPlayer!.delegate = self
@@ -79,6 +128,8 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         sender.isSelected = !sender.isSelected
         let selectedIndex = IndexPath(row: sender.tag, section: 0)
         
+        changeFavourites(track: countTracks[sender.tag])
+        
         if sender.isSelected == false{
             let cell = tableView.cellForRow(at: selectedIndex) as! FavoriteTracksCell
             
@@ -92,7 +143,10 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
 
 extension FavoriteTracksView: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if countTracks != nil {
+            return countTracks.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,6 +169,9 @@ extension FavoriteTracksView: UITableViewDelegate, UITableViewDataSource{
         }else{
             cell.playButton.isSelected = false
         }
+        
+        cell.trackTitleLabel.text = countTracks[indexPath.row].name
+        cell.artistLabel.text = countTracks[indexPath.row].email
         
         return cell
     }

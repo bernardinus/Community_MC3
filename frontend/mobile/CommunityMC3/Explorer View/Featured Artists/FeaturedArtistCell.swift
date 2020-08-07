@@ -12,9 +12,9 @@ class FeaturedArtistCell: UITableViewCell
 {
     
     @IBOutlet weak var featuredArtistsCollectionCell: UICollectionView!    
-    var callBack: (() -> Void)? = nil
+    var callBack: ((UserDataStruct) -> Void)? = nil
     
-    var features: [FeaturedDataStruct]!
+    var featuredArtistList: [UserDataStruct]? = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,23 +34,33 @@ class FeaturedArtistCell: UITableViewCell
 extension FeaturedArtistCell : UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if features != nil {
-            return features.count
+        print("FeaturedArtist Total: \(featuredArtistList?.count)")
+        if featuredArtistList != nil {
+            return featuredArtistList!.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = featuredArtistsCollectionCell.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
-        if let data = NSData(contentsOf: features[indexPath.row].user!.fileURL!) {
+        let cell = featuredArtistsCollectionCell.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell",
+                                                                     for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
+            
+        cell.artistImageView.image = featuredArtistList![indexPath.row].profilePicture
+        cell.name.text = featuredArtistList![indexPath.row].name
+        
+        /*
+        if let data = NSData(contentsOf: featuredArtistList![indexPath.row].fileURL!)
+        {
             DispatchQueue.main.async {
                 cell.artistImageView.image = UIImage(data: data as Data)
             }
         }
+ */
+ 
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        callBack!()
+        callBack!(featuredArtistList![indexPath.row])
     }
 }

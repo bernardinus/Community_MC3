@@ -14,6 +14,7 @@ class UploadFileView: UIViewController
     @IBOutlet var table: UITableView!
     @IBOutlet weak var cancel: UIButton!
     @IBOutlet weak var uploadFileTitleLabel: UILabel!
+    @IBOutlet weak var postButton: UIButton!
     
     var videoData:VideosDataStruct?
     var trackData:TrackDataStruct?
@@ -36,10 +37,12 @@ class UploadFileView: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.dismissKeyboard()
         imgPicker = ImagePicker(presentationController: self, delegate: self)
         
         pickerView.delegate = self
-        uploadFileTitleLabel.text = "Upload"
+        prepareLocalisation()
+        uploadFileTitleLabel.text = NSLocalizedString("Upload".uppercased(), comment: "")
         
         table.register(UploadTableViewCell.nib(), forCellReuseIdentifier: UploadTableViewCell.identifier)
         table.register(AddCoverTableViewCell.nib(), forCellReuseIdentifier: AddCoverTableViewCell.identifier)
@@ -54,6 +57,11 @@ class UploadFileView: UIViewController
         //        table.allowsSelection = false
         
         table.separatorColor = UIColor.clear
+    }
+    
+    func prepareLocalisation() {
+        cancel.titleLabel?.text = NSLocalizedString("Cancel", comment: "")
+        postButton.titleLabel?.text = NSLocalizedString("Post".uppercased(), comment: "")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,26 +103,54 @@ class UploadFileView: UIViewController
         //        documentController.uploadTrack(email: "mnb@mnb", genre: "Rock", name: "track", fileURL: filteredList[indexPath.row])
         if isUploadVideo
         {
+            var videoData = VideosDataStruct(
+                genre: genreTextField!.text!,
+                name: nameTextField!.text!,
+                email: (DataManager.shared().currentUser?.email!)!,
+                fileURL: fileURL!)
+            videoData.coverImage = coverImage?.image
             
+            DataManager.shared().UploadNewVideo(videoData:videoData) { (isSuccess, errorString) in
+                if isSuccess
+                {
+                    print("Upload Video File Success")
+                    
+                    
+//                    self.dismiss(animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+                    }
+                    
+
+                }
+                else
+                {
+                    print("Upload Video File Failed")
+                    AlertViewHelper.creteErrorAlert(errorString: "UploadVideoFile Failed \(errorString)", view: self)
+                }
+            }
         }
         else
         {
             trackData = TrackDataStruct(
                 genre: genreTextField!.text!,
                 name: nameTextField!.text!,
-                email: "test@test",
-                fileURL: fileURL!,
-//                coverImage: coverImage.data
-                audioData: nil,
-                album: nil)
+                email: (DataManager.shared().currentUser?.email!)!,
+                fileURL: fileURL!)
+            trackData?.coverImage = coverImage?.image
+            
             DataManager.shared().UploadNewTrack(trackData:trackData!) { (isSuccess, errorString) in
                 if isSuccess
                 {
                     print("Upload File Success")
+                    DispatchQueue.main.async {
+                        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+                    }
                 }
                 else
                 {
-                    print("Upload File Failed")
+                    AlertViewHelper.creteErrorAlert(errorString: "UploadTrackFile Failed \(errorString)", view: self)
+                    
                 }
             }
         }
@@ -144,7 +180,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1
         {
-            imgPicker?.present(from: coverImage!)
+            imgPicker?.present(from: self.view)
         }
         else if indexPath.row == 3
         {
@@ -169,11 +205,11 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         }
         if indexPath.row == 2 // Album Header
         {
-            return 46
+            return 0//46
         }
         if indexPath.row == 3
         {
-            return 87
+            return 0//87
         }
         if indexPath.row == 4 // Genre Selector
         {
@@ -183,6 +219,11 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         {
             
             return 225
+        }
+        if indexPath.row == 6
+        {
+            
+            return 0//44
         }
         return 44
     }
@@ -231,7 +272,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             let toolBar = UIToolbar()
             toolBar.sizeToFit()
             let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+            let button = UIBarButtonItem(title: NSLocalizedString("Done".uppercased(), comment: ""), style: .plain, target: self, action: #selector(self.action))
             toolBar.setItems([flexibleSpace,button], animated: true)
             toolBar.isUserInteractionEnabled = true
             genreTextField!.inputAccessoryView = toolBar
@@ -249,7 +290,7 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "Cover Song"
+            cell.textLabel?.text = NSLocalizedString("Cover Song".uppercased(), comment: "")
             
             let switchView = UISwitch(frame: .zero)
             switchView.setOn(false, animated: true)
