@@ -22,8 +22,8 @@ class DataManager
         return instance
     }
     
-    var selectedTrackData:TrackDataStruct? = nil
-    var selectedVideoData:VideosDataStruct? = nil
+//    var selectedTrackData:TrackDataStruct? = nil
+//    var selectedVideoData:VideosDataStruct? = nil
     
     
     var ckUtil:CloudKitUtil = CloudKitUtil.shared()
@@ -35,6 +35,7 @@ class DataManager
     var currentUser:UserDataStruct? = nil
 //    var currentUsers:[UserDataStruct]? = nil
     var currentUsersPrimitive:[PrimitiveUserDataStruct]? = nil
+//    let explorerController = ExplorerView.shared()
     
     // CloudKit Data
     var currentUserRec:CKRecord? = nil
@@ -95,17 +96,32 @@ class DataManager
         getAllMusic()
         getAllVideos()
         getAllArtist()
-        
+
     }
+//
+//    func initData() {
+//
+//    }
     
     func updateExplorerView()
     {
         DispatchQueue.main.async {
             
-            let rootView = UIApplication.shared.keyWindow?.rootViewController! as! UINavigationController
-            let tabBarView = rootView.viewControllers[0] as! UITabBarController
-            let explorerView = tabBarView.viewControllers![0] as! ExplorerView
-            explorerView.mainTableView.reloadData()
+//            let rootView = UIApplication.shared.keyWindow?.rootViewController! as! UINavigationController
+            var rootView = UIApplication.shared.keyWindow?.rootViewController
+            if rootView is UINavigationController {
+                while let pVC = rootView?.presentedViewController
+                {
+                    rootView = pVC
+                }
+                let navigationView = rootView as! UINavigationController
+                let tabBarView = navigationView.viewControllers[0] as! UITabBarController
+                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+                explorerView.mainTableView.reloadData()
+            }
+//            let tabBarView = rootView.viewControllers[0] as! UITabBarController
+//            let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+//            self.explorerController.mainTableView.reloadData()
 //            print("check arr \(tabBarView.viewControllers![0])")
 
         }
