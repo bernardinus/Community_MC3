@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,28 +16,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="artist-3" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-9r-V7H">
-                        <rect key="frame" x="8" y="10" width="93" height="84"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="130" id="c5Z-Hy-t5f"/>
-                            <constraint firstAttribute="height" constant="130" id="p6C-WN-tSw"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BL8-2T-QeZ">
-                        <rect key="frame" x="109" y="24" width="33.5" height="20.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BL8-2T-QeZ">
+                        <rect key="frame" x="112" y="24" width="33.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ph2-c3-XhW">
-                        <rect key="frame" x="109" y="55" width="44" height="14.5"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ph2-c3-XhW">
+                        <rect key="frame" x="112" y="54.5" width="44" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artist-3" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-9r-V7H">
+                        <rect key="frame" x="16" y="12" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="4GN-Fy-67z"/>
+                            <constraint firstAttribute="height" constant="80" id="gq1-Lz-JvK"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="xuk-9r-V7H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="K2Z-DZ-iMh"/>
+                    <constraint firstItem="Ph2-c3-XhW" firstAttribute="top" secondItem="BL8-2T-QeZ" secondAttribute="bottom" constant="10" id="Lkx-p7-jip"/>
+                    <constraint firstItem="Ph2-c3-XhW" firstAttribute="leading" secondItem="xuk-9r-V7H" secondAttribute="trailing" constant="16" id="Pzs-Vk-VLB"/>
+                    <constraint firstItem="BL8-2T-QeZ" firstAttribute="leading" secondItem="xuk-9r-V7H" secondAttribute="trailing" constant="16" id="e8G-Cm-LIK"/>
+                    <constraint firstAttribute="bottom" secondItem="xuk-9r-V7H" secondAttribute="bottom" constant="13" id="e95-QN-aC8"/>
+                    <constraint firstItem="xuk-9r-V7H" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hOP-m6-k73"/>
+                    <constraint firstItem="BL8-2T-QeZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="pDI-2f-ZH6"/>
+                    <constraint firstItem="Ph2-c3-XhW" firstAttribute="top" secondItem="BL8-2T-QeZ" secondAttribute="bottom" constant="10" id="t5P-cG-XHl"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
