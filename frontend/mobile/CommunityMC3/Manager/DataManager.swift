@@ -33,6 +33,8 @@ class DataManager
     
     
     var currentUser:UserDataStruct? = nil
+//    var currentUsers:[UserDataStruct]? = nil
+    var currentUsersPrimitive:[PrimitiveUserDataStruct]? = nil
     
     // CloudKit Data
     var currentUserRec:CKRecord? = nil
@@ -153,17 +155,76 @@ class DataManager
     func logout()
     {
         currentUserRec = nil
+        let loadEmail = userDefault.string(forKey: "email")
         userDefault.set("", forKey: "email")
         userDefault.set("", forKey: "password")
+        if let loadUsers = userDefault.value(forKey: "users"){
+            currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
+            var idx = 0
+            for currentUserPrimitive in currentUsersPrimitive! {
+                if currentUserPrimitive.email == loadEmail {
+                    currentUsersPrimitive?.remove(at: idx)
+                    userDefault.set(currentUsersPrimitive, forKey: "users")
+                }
+                idx += 1
+            }
+        }
         userDefault.synchronize()
     }
     
     // #MARK: REGISTER
-    func registerCurrentLoginInUserDefault(email:String, password:String)
+    func registerCurrentLoginInUserDefault(email:String, password:String, userData: UserDataStruct)
     {
         userDefault.set(email, forKey: "email")
         userDefault.set(password, forKey: "password")
+        if let loadUsers = userDefault.value(forKey: "users"){
+            currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
+            if currentUsersPrimitive == nil {
+                registerPrimitiveUserData(userData: userData)
+            }else {
+                var flag = false
+                for currentUserPrimitive in currentUsersPrimitive! {
+                    if currentUserPrimitive.name == userData.name {
+                        flag = true
+                    }
+                }
+                if !flag {
+                    registerPrimitiveUserData(userData: userData)
+                }
+            }
+        }else{
+            registerPrimitiveUserData(userData: userData)
+        }
         userDefault.synchronize()
+    }
+    
+    func registerPrimitiveUserData(userData: UserDataStruct) {
+//        let imageData = userData.profilePicture!.jpegData(compressionQuality: 1)
+//        let relativePath = "image_\(userData.email).jpg"
+//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+//        let path = paths[0] as String;
+//        let fullPath = path + relativePath
+//        imageData!.write(to: URL(fullPath))
+        let data = userData.profilePicture!.pngData(); // UIImage -> NSData, see also UIImageJPEGRepresentation
+        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(userData.name! + ".dat")
+        do {
+            try data!.write(to: url!, options: [])
+        } catch let e as NSError {
+            print("Error! \(e)");
+            return
+        }
+        let path = try? String(contentsOf: url!)
+        let tmp = PrimitiveUserDataStruct (
+            email: userData.email ?? "",
+            name: userData.name!,
+            role: userData.role!,
+//            profilePicture: url!.absoluteString
+            profilePicture: path!
+        )
+        currentUsersPrimitive?.append(tmp)
+        let temp = try? JSONEncoder().encode(currentUsersPrimitive)
+        userDefault.set(temp, forKey: "users")
+//        currentUsers?.append(userData)
     }
 
     func registerToCloudKit(email:String,
@@ -190,7 +251,7 @@ class DataManager
                         print("Register User Data Success")
                         self.currentUserRec = userData.getCKRecord()
                         self.currentUser = UserDataStruct(self.currentUserRec!)
-                        self.registerCurrentLoginInUserDefault(email: email, password: password)
+                        self.registerCurrentLoginInUserDefault(email: email, password: password, userData: self.currentUser!)
                     }
                     else
                     {
@@ -237,7 +298,7 @@ class DataManager
                         self.currentUserRec = userRecord
                         self.currentUser = UserDataStruct(self.currentUserRec!)
                         
-                        self.registerCurrentLoginInUserDefault(email: email, password: password)
+                        self.registerCurrentLoginInUserDefault(email: email, password: password, userData: self.currentUser!)
                         self.loginSuccess(isSuccess: isSuccess, errorString: errorString)
 //                        print("Account: \(self.currentUserRec!)")
 //

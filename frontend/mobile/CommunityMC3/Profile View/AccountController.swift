@@ -11,7 +11,7 @@ import UIKit
 class AccountController: UIViewController {
     
     @IBOutlet var switchAccountTable: UITableView!
-    var accounts: [UserDataStruct]!
+    var accounts: [PrimitiveUserDataStruct]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,10 @@ extension AccountController: UITableViewDelegate, UITableViewDataSource {
         return accounts.count + 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row == accounts.count)
         {
@@ -61,8 +65,28 @@ extension AccountController: UITableViewDelegate, UITableViewDataSource {
             let cell = switchAccountTable.dequeueReusableCell(withIdentifier: "switchCell") as! SwitchAccountTableViewCell
             cell.switchAccountName.text = accounts[indexPath.row].name
             cell.switchAccountRole.text = accounts[indexPath.row].role
-            cell.switchAccountImage.image = accounts[indexPath.row].profilePicture
+            if let data = NSData(contentsOf: URL(fileURLWithPath: accounts[indexPath.row].profilePicture)) {
+                cell.switchAccountImage.image = UIImage(data: data as Data)
+            }
            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == accounts.count)
+        {
+            self.performSegue(withIdentifier: "addAccount", sender: nil)
+        }else{
+            if accounts[indexPath.row].email != DataManager.shared().currentUser?.email {
+                DataManager.shared().currentUser?.email = accounts[indexPath.row].email
+                DataManager.shared().currentUser?.name = accounts[indexPath.row].name
+                DataManager.shared().currentUser?.role = accounts[indexPath.row].role
+                if let data = NSData(contentsOf: URL(fileURLWithPath: accounts[indexPath.row].profilePicture)) {
+                    DataManager.shared().currentUser?.profilePicture = UIImage(data: data as Data)
+                }
+                UserDefaults.standard.set(accounts[indexPath.row].email, forKey: "email")
+                UserDefaults.standard.synchronize()
+            }
         }
     }
     
