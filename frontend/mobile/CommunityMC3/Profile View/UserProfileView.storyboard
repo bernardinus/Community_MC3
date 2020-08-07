@@ -186,6 +186,7 @@
                         <outlet property="followButton" destination="dbn-s7-yIe" id="naE-3Q-Ynf"/>
                         <outlet property="menuButton" destination="dCY-Gi-Ntd" id="IVw-4E-ZT4"/>
                         <outlet property="otherMenu" destination="dCY-Gi-Ntd" id="Lic-f3-7ng"/>
+                        <outlet property="profileNavigationItem" destination="f7O-aJ-w7d" id="Uy6-dc-wfI"/>
                         <outlet property="secondTabButton" destination="3uJ-h5-yT1" id="chZ-NV-abj"/>
                         <outlet property="uploadMediaButton" destination="2O6-ae-cTg" id="zKN-FB-xH2"/>
                         <outlet property="userNameLabel" destination="Ja7-BB-0mE" id="OTY-mu-Tjy"/>
@@ -512,6 +513,7 @@
                     </view>
                     <connections>
                         <outlet property="switchAccountTable" destination="c9U-1e-qwa" id="p4a-JJ-pfw"/>
+                        <segue destination="p00-8a-ptt" kind="show" identifier="addAccount" id="Obl-Ca-sxE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkX-we-AHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -526,4 +528,7 @@
         <image name="ellipsis" catalog="system" width="64" height="18"/>
         <image name="segmented-bg-1" width="180" height="39"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Obl-Ca-sxE"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,6 @@ import UIKit
 
 class SearchContainerPageVC: UIPageViewController {
     
-    var allSearch:AllSearchVC? = nil
     
     lazy var items: [UIViewController] = {
         let sb = UIStoryboard(name: "Search", bundle: nil)
@@ -24,18 +23,64 @@ class SearchContainerPageVC: UIPageViewController {
         return [vc1, vc2, vc3, vc4, vc5]
     }()
     
+    var cVC:UIViewController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.dataSource = nil
         self.delegate = nil
-        allSearch = items[0] as!  AllSearchVC
-        
     }
     
     func moveToPageSearch(index:Int)
     {
-        setViewControllers([items[index]], direction: .forward, animated: false, completion: nil)
+        let nextVC = [items[index]]
+        cVC = nextVC[0]
+        
+        switch index {
+        case 0:
+            let currentSearchVC = cVC as! AllSearchVC
+//            currentSearchVC.allSearchTableView.reloadData()
+        case 1:
+            let currentSearchVC = cVC as! ArtistSearchVC
+//            currentSearchVC.artistSeachTableView.reloadData()
+        case 2:
+            let currentSearchVC = cVC as! MusicSearchVC
+//            currentSearchVC.musicSearchTableView.reloadData()
+        case 3:
+            let currentSearchVC = cVC as! VideoSearchVC
+//            currentSearchVC.videoSearchTableView.reloadData()
+        case 4:
+            let currentSearchVC = cVC as! PlaylistSearchVC
+//            currentSearchVC.playlistSearchTableView.reloadData()
+        default:
+            print("Must not go here")
+        }
+        setViewControllers(nextVC, direction: .forward, animated: false, completion: nil)
+    }
+    
+    func updateResultTable()
+    {
+        if cVC is AllSearchVC
+        {
+            let currentSearchVC = cVC as! AllSearchVC
+            currentSearchVC.allSearchTableView.reloadData()
+        }
+        else if cVC is ArtistSearchVC
+        {
+            let currentSearchVC = cVC as! ArtistSearchVC
+            currentSearchVC.artistSeachTableView.reloadData()
+        }
+        else if cVC is MusicSearchVC
+        {
+            let currentSearchVC = cVC as! MusicSearchVC
+            currentSearchVC.musicSearchTableView.reloadData()
+        }
+        else if cVC is VideoSearchVC
+        {
+            let currentSearchVC = cVC as! VideoSearchVC
+            currentSearchVC.videoSearchTableView.reloadData()
+        }
     }
     
 }

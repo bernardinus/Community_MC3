@@ -17,7 +17,7 @@ class VideosDataStruct
     var name:String
     var email:String
     var fileData:CKAsset? = nil
-    
+    var artistName:String? = nil
     var coverImage:UIImage? = nil
     
     // asset
