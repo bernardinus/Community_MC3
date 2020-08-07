@@ -67,7 +67,18 @@ class GenreProfileController: UIViewController {
     
     
     @IBAction func saveGenreProfile(_ sender: UIButton) {
-         dismiss(animated: true, completion: nil)
+        var temp = ""
+        var idx = 0
+        for genre in genreArray {
+            if genreTemp.contains(idx) {
+                temp += genre + ","
+            }
+            idx += 1
+        }
+        if let presenter = presentingViewController as? SettingController {
+            presenter.genreField.text = String(temp.dropLast())
+        }
+        dismiss(animated: true, completion: nil)
     }
     
 }

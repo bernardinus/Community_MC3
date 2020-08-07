@@ -38,7 +38,8 @@ class SearchView: UIViewController {
     
     func getSelectedActionType() -> ButtonType{
         //Set each button action by index
-        for (index, button) in searchCategoryButton.enumerated() {
+        for (index, button) in searchCategoryButton.enumerated()
+        {
             if button.backgroundColor == #colorLiteral(red: 0.3450980392, green: 0.2, blue: 0.8392156863, alpha: 1) {
                 vcSearch?.moveToPageSearch(index: index)
             }
@@ -73,25 +74,20 @@ class SearchView: UIViewController {
         let _: ButtonType = getSelectedActionType()
     }
     
-//    func filter(filterText:String)
-//    {
-//        print("asd+\(filterText)+asd")
-//        if(filterText.isEmpty || filterText == "")
-//        {
-//            filteredList = fileList
-//        }
-//        else
-//        {
-//            filteredList = fileList.filter{$0.lastPathComponent.lowercased().contains(filterText.lowercased())}
-//        }
-//        tableView.reloadData()
-//    }
+    func updateResultTable()
+    {
+        vcSearch?.updateResultTable()
+    }
 }
 
 extension SearchView:UISearchBarDelegate
 {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-//        filter(filterText: searchText)
+        DataManager.shared().filterArtist(searchText)
+        DataManager.shared().filterTracks(searchText)
+        DataManager.shared().filterVideo(searchText)
+        updateResultTable()
+        
     }
 }
