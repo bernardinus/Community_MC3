@@ -179,6 +179,7 @@
 		EA4A31C924CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */; };
 		EA4A31CC24CAB2B6003DCDA4 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A31CA24CAB2B6003DCDA4 /* VideoListCell.swift */; };
 		EA4A31CD24CAB2B6003DCDA4 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA4A31CB24CAB2B6003DCDA4 /* VideoListCell.xib */; };
+		EA6173F424DD02F500F18DCB /* TrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6173F324DD02F500F18DCB /* TrackManager.swift */; };
 		EA62938824DA827D00FDABB5 /* EditRandomizerContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62938624DA827D00FDABB5 /* EditRandomizerContextCell.swift */; };
 		EA62938924DA827D00FDABB5 /* EditRandomizerContextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA62938724DA827D00FDABB5 /* EditRandomizerContextCell.xib */; };
 		EA62938B24DA834E00FDABB5 /* EditRandomizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA62938A24DA834E00FDABB5 /* EditRandomizerViewController.swift */; };
@@ -414,6 +415,7 @@
 		EA4A31C724CAB075003DCDA4 /* HeaderCellRandomSpotlight.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCellRandomSpotlight.xib; sourceTree = "<group>"; };
 		EA4A31CA24CAB2B6003DCDA4 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
 		EA4A31CB24CAB2B6003DCDA4 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
+		EA6173F324DD02F500F18DCB /* TrackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackManager.swift; sourceTree = "<group>"; };
 		EA62938624DA827D00FDABB5 /* EditRandomizerContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRandomizerContextCell.swift; sourceTree = "<group>"; };
 		EA62938724DA827D00FDABB5 /* EditRandomizerContextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRandomizerContextCell.xib; sourceTree = "<group>"; };
 		EA62938A24DA834E00FDABB5 /* EditRandomizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRandomizerViewController.swift; sourceTree = "<group>"; };
@@ -705,6 +707,7 @@
 			children = (
 				A1689D3624C7B5F200A49732 /* DataManager.swift */,
 				A134D29D24C8EA41009A054F /* FileManager.swift */,
+				EA6173F324DD02F500F18DCB /* TrackManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1595,6 +1598,7 @@
 				A15C4D1924C5038C00ED0C0E /* DB_Model.xcdatamodeld in Sources */,
 				A19ACB6E24D0FB45009027B1 /* AlbumSelectorVC.swift in Sources */,
 				B7BEA4FB24D1466500AAB5C7 /* AboutHeaderCell.swift in Sources */,
+				EA6173F424DD02F500F18DCB /* TrackManager.swift in Sources */,
 				B7BEA4FF24D146C300AAB5C7 /* MusicGenreInfoCell.swift in Sources */,
 				B798B3E024DB31F6009472F4 /* CarouselPageViewController_.swift in Sources */,
 				EA1BF07F24CA9EAD00CE1B8F /* MusicListCell.swift in Sources */,

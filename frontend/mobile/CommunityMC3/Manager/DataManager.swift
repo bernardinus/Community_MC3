@@ -113,10 +113,10 @@ class DataManager
             {
                 let rootView = rootVC as! StartViewController
                 
-                let navVC = rootView.baseVC!
-                let tabBarView = navVC.viewControllers[0] as! UITabBarController
-                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
-                explorerView.mainTableView.reloadData()
+//                let navVC = rootView.baseVC!
+//                let tabBarView = navVC.viewControllers[0] as! UITabBarController
+//                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+//                explorerView.mainTableView.reloadData()
             }
 
         }
