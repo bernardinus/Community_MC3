@@ -15,7 +15,7 @@ class AccountController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dismissView()
+//        dismissView()
         setup()
     }
     
@@ -28,7 +28,8 @@ class AccountController: UIViewController {
     
     func dismissView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(dismissViewFunc))
-        tap.cancelsTouchesInView = false; view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     @objc func dismissViewFunc(){
@@ -77,7 +78,7 @@ extension AccountController: UITableViewDelegate, UITableViewDataSource {
         {
             self.performSegue(withIdentifier: "addAccount", sender: nil)
         }else{
-            if accounts[indexPath.row].email != DataManager.shared().currentUser?.email {
+            if accounts[indexPath.row].email != "" && accounts[indexPath.row].email != UserDefaults.standard.string(forKey: "email") {
                 DataManager.shared().currentUser?.email = accounts[indexPath.row].email
                 DataManager.shared().currentUser?.name = accounts[indexPath.row].name
                 DataManager.shared().currentUser?.role = accounts[indexPath.row].role
@@ -86,7 +87,20 @@ extension AccountController: UITableViewDelegate, UITableViewDataSource {
                 }
                 UserDefaults.standard.set(accounts[indexPath.row].email, forKey: "email")
                 UserDefaults.standard.synchronize()
+                let data:[String: Bool] = ["data": true]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: data)
             }
+            if let loadEmail = UserDefaults.standard.string(forKey: "email"){
+              print("changed", loadEmail)
+//                let userProfileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileStoryboard") as! UserProfileVC
+                //            let userProfileVC = UserProfileVC.shared
+//                userProfileVC.userNameLabel.text = loadEmail
+           }
+            let userProfileVC = UserProfileVC()
+            userProfileVC.overlayView.removeFromSuperview()
+            
+
+            dismiss(animated: true, completion: nil)
         }
     }
     

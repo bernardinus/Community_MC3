@@ -12,6 +12,7 @@ import CloudKit
 
 struct PrimitiveUserDataStruct: Codable {
     var email: String
+    var password: String
     var name: String
     var role: String
     var profilePicture: String

@@ -10,7 +10,7 @@
         <!--My Profile-->
         <scene sceneID="Dsh-5R-daz">
             <objects>
-                <viewController id="Vxp-ys-qqP" customClass="UserProfileVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileStoryboard" id="Vxp-ys-qqP" customClass="UserProfileVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v0j-ml-mTL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +170,7 @@
                     <navigationItem key="navigationItem" title="My Profile" id="f7O-aJ-w7d">
                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="fie-l6-pPY">
                             <connections>
-                                <segue destination="7f0-xS-jJw" kind="unwind" unwindAction="unwindToExplorerView:" id="NH3-Zs-4d5"/>
+                                <segue destination="7f0-xS-jJw" kind="unwind" identifier="profileExplorer" unwindAction="unwindToExplorerView:" id="NH3-Zs-4d5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ellipsis" catalog="system" id="dCY-Gi-Ntd">
@@ -529,6 +529,6 @@
         <image name="segmented-bg-1" width="180" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Obl-Ca-sxE"/>
+        <segue reference="OgK-dH-OHt"/>
     </inferredMetricsTieBreakers>
 </document>
