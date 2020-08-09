@@ -27,7 +27,7 @@
 		A124876724CD0BE400030723 /* SelectViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A124876924CD0BE400030723 /* SelectViewCell.xib */; };
 		A124876A24CD0BEE00030723 /* SelectFileView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A124876C24CD0BEE00030723 /* SelectFileView.storyboard */; };
 		A124877324CD2AC500030723 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124877224CD2AC500030723 /* MainTabController.swift */; };
-		A125311E24CE89C30038B215 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125311D24CE89C30038B215 /* UIImage+Extension.swift */; };
+		A125311E24CE89C30038B215 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A125311D24CE89C30038B215 /* UIImageExtension.swift */; };
 		A12F370424D23C02002F31E0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12F370324D23C02002F31E0 /* Utilities.swift */; };
 		A134D29E24C8EA41009A054F /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D29D24C8EA41009A054F /* FileManager.swift */; };
 		A134D2A024C907B4009A054F /* Featured+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134D29F24C907B4009A054F /* Featured+Extension.swift */; };
@@ -79,9 +79,11 @@
 		A16B44C724B2FBF700053D6C /* CommunityMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16B44C624B2FBF700053D6C /* CommunityMC3UITests.swift */; };
 		A17C3C6924CCA3C500153493 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C3C6824CCA3C500153493 /* Constant.swift */; };
 		A1824D9A24C7E3E200C68182 /* Account+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9924C7E3E200C68182 /* Account+Extension.swift */; };
-		A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */; };
+		A1824D9C24C7E45600C68182 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1824D9B24C7E45600C68182 /* UIViewControllerExtension.swift */; };
 		A183FBDD24DB31DF00FD248C /* GenreProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A183FBDB24DB31DF00FD248C /* GenreProfileTableViewCell.swift */; };
 		A183FBDE24DB31DF00FD248C /* GenreProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A183FBDC24DB31DF00FD248C /* GenreProfileTableViewCell.xib */; };
+		A194A9E524DDA25900C9E87D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A194A9E424DDA25900C9E87D /* StringExtension.swift */; };
+		A194A9E724DDA87B00C9E87D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A194A9E624DDA87B00C9E87D /* UIViewExtension.swift */; };
 		A19ACB6E24D0FB45009027B1 /* AlbumSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19ACB6D24D0FB45009027B1 /* AlbumSelectorVC.swift */; };
 		A19C320224C89FF100A4506F /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C320124C89FF100A4506F /* FileSystemManager.swift */; };
 		A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */; };
@@ -253,7 +255,7 @@
 		A124876824CD0BE400030723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SelectViewCell.xib; sourceTree = "<group>"; };
 		A124876B24CD0BEE00030723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SelectFileView.storyboard; sourceTree = "<group>"; };
 		A124877224CD2AC500030723 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
-		A125311D24CE89C30038B215 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		A125311D24CE89C30038B215 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		A12F370324D23C02002F31E0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A134D29D24C8EA41009A054F /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		A134D29F24C907B4009A054F /* Featured+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Featured+Extension.swift"; path = "CommunityMC3/Data/Featured+Extension.swift"; sourceTree = SOURCE_ROOT; };
@@ -311,9 +313,11 @@
 		A16B44C824B2FBF700053D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A17C3C6824CCA3C500153493 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A1824D9924C7E3E200C68182 /* Account+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Account+Extension.swift"; path = "CommunityMC3/Data/Account+Extension.swift"; sourceTree = SOURCE_ROOT; };
-		A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A1824D9B24C7E45600C68182 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		A183FBDB24DB31DF00FD248C /* GenreProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreProfileTableViewCell.swift; sourceTree = "<group>"; };
 		A183FBDC24DB31DF00FD248C /* GenreProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreProfileTableViewCell.xib; sourceTree = "<group>"; };
+		A194A9E424DDA25900C9E87D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		A194A9E624DDA87B00C9E87D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		A19ACB6D24D0FB45009027B1 /* AlbumSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSelectorVC.swift; sourceTree = "<group>"; };
 		A19C320124C89FF100A4506F /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableViewController.swift; sourceTree = "<group>"; };
@@ -619,11 +623,13 @@
 				A1432F5424C69958007656B1 /* ImagePicker.swift */,
 				A1689D3A24C7D76500A49732 /* CoreDataHelper.swift */,
 				A1689D3824C7D67700A49732 /* AlertViewHelper.swift */,
-				A1824D9B24C7E45600C68182 /* UIViewController+Extension.swift */,
+				A1824D9B24C7E45600C68182 /* UIViewControllerExtension.swift */,
 				A19C320124C89FF100A4506F /* FileSystemManager.swift */,
-				A125311D24CE89C30038B215 /* UIImage+Extension.swift */,
+				A125311D24CE89C30038B215 /* UIImageExtension.swift */,
 				A14B626724D0D3830015223C /* CloudKitUtil.swift */,
 				A12F370324D23C02002F31E0 /* Utilities.swift */,
+				A194A9E424DDA25900C9E87D /* StringExtension.swift */,
+				A194A9E624DDA87B00C9E87D /* UIViewExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1513,6 +1519,7 @@
 				B74C5A0624C714AF00C978F3 /* TrendingNowVC.swift in Sources */,
 				EA2D794724CFFD4F005998B4 /* FavoriteVideosView.swift in Sources */,
 				B73C836124C7F8AC0047B4EC /* FeaturedArtistVC.swift in Sources */,
+				A194A9E524DDA25900C9E87D /* StringExtension.swift in Sources */,
 				B7ECE0DC24D0214F008C4422 /* PlaylistSearchVC.swift in Sources */,
 				A136C2A324D9CADA0078F37E /* GenreProfileCollectionViewCell.swift in Sources */,
 				B74C5A0224C711FA00C978F3 /* NotificationsVC.swift in Sources */,
@@ -1521,7 +1528,7 @@
 				A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */,
 				EA2D793C24CFD651005998B4 /* FavoriteTracksCell.swift in Sources */,
 				A136C2A624D9CE5F0078F37E /* GenreProfileController.swift in Sources */,
-				A1824D9C24C7E45600C68182 /* UIViewController+Extension.swift in Sources */,
+				A1824D9C24C7E45600C68182 /* UIViewControllerExtension.swift in Sources */,
 				EA63453824D92A5B0045328C /* UploadPanelCell.swift in Sources */,
 				A1689CEB24C7A6D300A49732 /* SelectFileView.swift in Sources */,
 				B74C59FB24C6E38D00C978F3 /* FeaturedVideosCell.swift in Sources */,
@@ -1566,6 +1573,7 @@
 				A1E76E3E24CE1ADD00D9415B /* UploadFileHeaderCell.swift in Sources */,
 				A11A9FE924C94A58008D7867 /* albumTitleTableViewCell.swift in Sources */,
 				A134D29E24C8EA41009A054F /* FileManager.swift in Sources */,
+				A194A9E724DDA87B00C9E87D /* UIViewExtension.swift in Sources */,
 				B786385124CEC30A00952CF3 /* SecondPageVC.swift in Sources */,
 				A11A9FE724C94A58008D7867 /* albumListTableViewCell.swift in Sources */,
 				A1689D3924C7D67700A49732 /* AlertViewHelper.swift in Sources */,
@@ -1591,7 +1599,7 @@
 				A1689D3B24C7D76500A49732 /* CoreDataHelper.swift in Sources */,
 				B7ECE0D824D02133008C4422 /* MusicSearchVC.swift in Sources */,
 				A19C320224C89FF100A4506F /* FileSystemManager.swift in Sources */,
-				A125311E24CE89C30038B215 /* UIImage+Extension.swift in Sources */,
+				A125311E24CE89C30038B215 /* UIImageExtension.swift in Sources */,
 				A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */,
 				A134D2A324C908F3009A054F /* Album+Extension.swift in Sources */,
 				EA65FF5024DBC94500B3FAE1 /* MiniTrackPlayerController.swift in Sources */,

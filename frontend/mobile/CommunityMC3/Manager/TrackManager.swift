@@ -13,9 +13,11 @@ class TrackManager {
     static let shared = TrackManager()
     weak var delegate: MiniTrackPlayerDelegate?
     
-    init() {}
+    init() {
+        print("TrackManagerInit")
+    }
     
-    func play(trackURL: String){
+    func play(trackURL: URL){
         delegate?.play(trackURL: trackURL)
     }
     

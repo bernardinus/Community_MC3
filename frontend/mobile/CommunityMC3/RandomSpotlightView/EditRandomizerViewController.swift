@@ -150,52 +150,44 @@ extension EditRandomizerViewController: UITableViewDelegate, UITableViewDataSour
         if indexPath.section == EditRandomizer.SortBy.rawValue{
 
             if sortByTemp.contains(indexPath.row){
-                print("music remove")
                 self.sortByTemp.remove(at: self.sortByTemp.firstIndex(of: indexPath.row)!)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
             }else{
-                print("music add")
                 self.sortByTemp.append(indexPath.row)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             }
-            print("music \(sortByTemp)")
+//            print("music \(sortByTemp)")
         }else if indexPath.section == EditRandomizer.Genre.rawValue{
             if genreTemp.contains(indexPath.row){
-                print("genre remove")
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
                 self.genreTemp.remove(at: self.genreTemp.firstIndex(of: indexPath.row)!)
             }else{
-                print("genre aadd")
                 self.genreTemp.append(indexPath.row)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             }
-            print("genre \(genreTemp)")
+//            print("genre \(genreTemp)")
         }
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if indexPath.section == EditRandomizer.SortBy.rawValue{
             
             if sortByTemp.contains(indexPath.row){
-                print("music remove")
                 self.sortByTemp.remove(at: self.sortByTemp.firstIndex(of: indexPath.row)!)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
             }else{
-                print("music add")
                 self.sortByTemp.append(indexPath.row)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             }
-            print("music \(sortByTemp)")
+//            print("music \(sortByTemp)")
         }else if indexPath.section == EditRandomizer.Genre.rawValue{
             if genreTemp.contains(indexPath.row){
-                print("genre remove")
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
                 self.genreTemp.remove(at: self.genreTemp.firstIndex(of: indexPath.row)!)
             }else{
-                print("genre add")
                 self.genreTemp.append(indexPath.row)
                 tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
             }
-            print("genre \(genreTemp)")
+//            print("genre \(genreTemp)")
         }
     }
     

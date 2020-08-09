@@ -90,13 +90,9 @@ class UserDataStruct
 //        self.profilePicture = UIImage(data: record.value(forKey: "profilePicture") as! Data)
         
         let profPicData = record.value(forKey: "profilePicture")
-        if(isArtistData != nil )
+        if(profPicData != nil )
         {
             self.profilePicture = UIImage(data: record.value(forKey: "profilePicture") as! Data)
-        }
-        else
-        {
-            self.profilePicture = UIImage(color: .magenta)
         }
         
         self.email = record.value(forKey: "email") as? String

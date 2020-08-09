@@ -25,15 +25,21 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var innerCircleEffectImage: UIImageView!
     @IBOutlet weak var outerCircleEffectImage: UIImageView!
     @IBOutlet weak var searchButton: UIButton!
+    
     @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var genreCollectionView: UICollectionView!
-    @IBOutlet weak var musicAndVideoTableView: UITableView!
     @IBOutlet weak var popUpContentView: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var viewProfileButton: UIButton!
+    // popup data
+    
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var artistName: UILabel!
+    @IBOutlet weak var roleLabel: UILabel!
+    var genre:[String]? = []
+    @IBOutlet weak var genreCollectionView: UICollectionView!
+    @IBOutlet weak var musicAndVideoTableView: UITableView!
     
     var test = false
-    var musicGenreArray = ["Rock","Jazz","Pop","RnB","Acoustic","Blues"]
     var trackPlayer: AVAudioPlayer?
     var trackIndex = 0
     var musicPlaylist = ["dishes", "tiara", "yorushika"]
@@ -145,6 +151,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
             delay = 0.0
             duration = 1.2
             transitionDuration = 1.2
+            updatePopupView()
         }
         else
         {
@@ -162,14 +169,12 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
                 self.searchButton.isHidden = false
                 self.innerCircleEffectImage.isHidden = false
                 self.outerCircleEffectImage.isHidden = false
+                self.updatePopupView()
+                
             })
             delay = 0.8
         }
         
-//        popUpView.isHidden = false
-//        editButton.isHidden = false
-//        nextButton.isHidden = false
-
         UIView.animate(withDuration: duration,delay: delay, animations: {
             UIView.modifyAnimations(withRepeatCount: 0.6, autoreverses: true, animations: {
                 self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
@@ -210,6 +215,20 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         })
     }
     
+    func updatePopupView()
+    {
+        let user = DataManager.shared().randomSpotlightData.randomElement()
+        profilePicture.image = user?.profilePicture
+        artistName.text = user?.name
+        roleLabel.text = user?.role
+        genre = user?.genre!.components(separatedBy: ",")
+        musicAndVideoTableView.reloadData()
+        genreCollectionView.reloadData()
+    }
+    
+    @IBAction func ViewProfileButtonTouched(_ sender: Any) {
+        
+    }
     @IBAction func searchButtonAction(_ sender: UIButton) {
         
         startSearch(isFirstStartAnimation: false)
@@ -231,73 +250,12 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         startSearch(isFirstStartAnimation: false)
-/*
-        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
-            self.popUpView.alpha = 0
-            self.nextButton.alpha = 0
-            self.statusLabel.alpha = 1
-            self.searchButton.alpha = 1
-            self.innerCircleEffectImage.alpha = 1
-            self.outerCircleEffectImage.alpha = 1
-        }, completion: {_ in
-            self.popUpView.isHidden = true
-            self.nextButton.isHidden = true
-            self.statusLabel.isHidden = false
-            self.searchButton.isHidden = false
-            self.innerCircleEffectImage.isHidden = false
-            self.outerCircleEffectImage.isHidden = false
-        })
-        
-        
-        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
-            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
-                self.outerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.7 , y: 1.7)
-            })
-        }, completion: {(_ finished: Bool) -> Void in
-            self.outerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
-        })
-
-        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
-            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
-                self.innerCircleEffectImage?.transform = CGAffineTransform (scaleX:1.2 , y: 1.2)
-            })
-        }, completion: {(_ finished: Bool) -> Void in
-            self.innerCircleEffectImage?.transform = CGAffineTransform(scaleX: 1, y: 1)
-        })
-        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
-            UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true, animations: {
-                self.searchButton?.transform = CGAffineTransform (scaleX:0.9 , y: 0.9)
-            })
-        }, completion: {(_ finished: Bool) -> Void in
-            self.searchButton?.transform = CGAffineTransform(scaleX: 1, y: 1)
-            UIView.animate(withDuration: 1.0, delay: 0, options: .transitionCrossDissolve, animations: {
-                self.popUpView.alpha = 1
-                self.nextButton.alpha = 1
-                self.statusLabel.alpha = 0
-                self.searchButton.alpha = 0
-                self.innerCircleEffectImage.alpha = 0
-                self.outerCircleEffectImage.alpha = 0
-            }, completion: {_ in
-                self.popUpView.isHidden = false
-                self.statusLabel.isHidden = true
-                self.searchButton.isHidden = true
-                self.innerCircleEffectImage.isHidden = true
-                self.outerCircleEffectImage.isHidden = true
-                self.nextButton.isHidden = false
-                self.editButton.isHidden = false
-            })
-        })
- */
-
-        
-//        popUpContentView.slideLeft()
-        
-
     }
     
 }
-extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
+extension RandomSpotlightViewController:UITableViewDelegate, UITableViewDataSource
+{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == RandomSearch.Music.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
@@ -379,20 +337,6 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
         return 25
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! MusicGenreCell
-
-        cell.musicGenreLabel.text = musicGenreArray[indexPath.row]
-
-        setupUIViewForGenre(view: cell, genre: musicGenreArray[indexPath.row])
-        return cell
-    }
-    
-    
     @objc func clickPlayAudio(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
@@ -451,40 +395,33 @@ extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate,
             })
         }
     }
+}
+
+extension RandomSpotlightViewController:UICollectionViewDelegate, UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return genre!.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! MusicGenreCell
+
+        cell.musicGenreLabel.text = genre![indexPath.row]
+
+        setupUIViewForGenre(view: cell, genre: genre![indexPath.row])
+        return cell
+    }
+}
+
+
+extension RandomSpotlightViewController : UIViewControllerTransitioningDelegate
+{
+    
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
            return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
     }
 }
 
-extension UIView {
-    func slideLeft(duration: TimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
-        let slideFromRightToLeft = CATransition()
-        
-        if let delegate: AnyObject = completionDelegate {
-            slideFromRightToLeft.delegate = (delegate as! CAAnimationDelegate)
-        }
-        slideFromRightToLeft.type = CATransitionType.push
-        slideFromRightToLeft.subtype = CATransitionSubtype.fromRight
-        slideFromRightToLeft.duration = duration
-        slideFromRightToLeft.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        slideFromRightToLeft.fillMode = CAMediaTimingFillMode.removed
-        
-        self.layer.add(slideFromRightToLeft, forKey: "slideFromRightToLeft")
-    }
-    //    func slideRight(duration: TimeInterval = 1.0, completionDelegate: AnyObject? = nil){
-    //        let slideFromLeftToRight = CATransition()
-    //
-    //        if let delegate: AnyObject = completionDelegate {
-    //            slideFromLeftToRight.delegate = (delegate as! CAAnimationDelegate)
-    //        }
-    //        slideFromLeftToRight.type = CATransitionType.push
-    //        slideFromLeftToRight.subtype = CATransitionSubtype.fromLeft
-    //        slideFromLeftToRight.duration = duration
-    //        slideFromLeftToRight.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-    //        slideFromLeftToRight.fillMode = CAMediaTimingFillMode.removed
-    //
-    //        self.layer.add(slideFromLeftToRight, forKey: "slideFromLeftToRight")
-    //    }
-}
 

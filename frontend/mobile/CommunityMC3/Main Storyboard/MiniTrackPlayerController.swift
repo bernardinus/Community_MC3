@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol MiniTrackPlayerDelegate: class {
-    func play(trackURL: String?)
+    func play(trackURL: URL)
     func stop()
     func pause()
     func miniTrackPlayerButtonState(state: Bool?)
@@ -45,13 +45,14 @@ class MiniTrackPlayerController: UIViewController, AVAudioPlayerDelegate, MiniTr
         updater = CADisplayLink(target: self, selector: #selector(updateTrackProgress))
         updater.preferredFramesPerSecond = 1
         updater.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
+        TrackManager.shared.delegate = self
     }
     
-    func play(trackURL: String?) {
+    func play(trackURL: URL) {
                 var error: NSError? = nil
-        let audioPath = Bundle.main.path(forResource: trackURL, ofType: "mp3")
+//        let audioPath = Bundle.main.path(forResource: trackURL, ofType: "mp3")
         do{
-            trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
+            trackPlayer = try AVAudioPlayer(contentsOf: trackURL)
         } catch let error1 as NSError{
             error = error1
         }

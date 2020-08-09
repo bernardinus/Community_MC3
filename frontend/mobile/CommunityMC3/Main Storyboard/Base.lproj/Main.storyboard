@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z06-2e-1xw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z06-2e-1xw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +21,7 @@
                                     <constraint firstAttribute="width" secondItem="pZG-uE-87G" secondAttribute="height" multiplier="207:448" id="alu-Vc-L7S"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="S0o-tZ-Wgh" kind="embed" id="Bbe-Is-Cyr"/>
+                                    <segue destination="S0o-tZ-Wgh" kind="embed" identifier="baseSegue" id="Bbe-Is-Cyr"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-Zc-hmg">
@@ -32,12 +30,11 @@
                                     <constraint firstAttribute="width" secondItem="mUv-Zc-hmg" secondAttribute="height" multiplier="23:4" id="jvY-Vy-aHa"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="hkF-qu-W9n" kind="embed" id="kt6-BY-8hT"/>
+                                    <segue destination="hkF-qu-W9n" kind="embed" identifier="miniPlayerSegue" id="kt6-BY-8hT"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="c5X-Ev-bfu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mUv-Zc-hmg" firstAttribute="leading" secondItem="c5X-Ev-bfu" secondAttribute="leading" id="8Zd-Mh-K8f"/>
                             <constraint firstItem="pZG-uE-87G" firstAttribute="leading" secondItem="c5X-Ev-bfu" secondAttribute="leading" id="920-kW-Efl"/>
@@ -47,6 +44,7 @@
                             <constraint firstItem="pZG-uE-87G" firstAttribute="trailing" secondItem="c5X-Ev-bfu" secondAttribute="trailing" id="hZ1-P8-JT3"/>
                             <constraint firstItem="c5X-Ev-bfu" firstAttribute="bottom" secondItem="mUv-Zc-hmg" secondAttribute="bottom" constant="50" id="xEn-yP-Idg"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="c5X-Ev-bfu"/>
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                 </viewController>
@@ -137,7 +135,7 @@
                                     <constraint firstAttribute="width" secondItem="EPN-bZ-2Mq" secondAttribute="height" multiplier="209:2" id="7bV-yG-eGH"/>
                                 </constraints>
                                 <color key="progressTintColor" red="0.42330914739999997" green="0.43893313410000001" blue="0.90985465050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="trackTintColor" systemColor="opaqueSeparatorColor"/>
+                                <color key="trackTintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kl3-G3-Yhq">
                                 <rect key="frame" x="0.0" y="4.5" width="67.5" height="67.5"/>
@@ -173,7 +171,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8g-Zs-VjU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8g-Zs-VjU">
                                 <rect key="frame" x="0.0" y="0.0" width="341" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="I8g-Zs-VjU" secondAttribute="height" multiplier="341:72" id="vbQ-My-4k0"/>
@@ -183,7 +181,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="wut-ng-bfV"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="I8g-Zs-VjU" firstAttribute="bottom" secondItem="wut-ng-bfV" secondAttribute="bottom" id="0Rz-qc-6Lw"/>
@@ -207,6 +204,7 @@
                             <constraint firstItem="U0O-Ld-CKV" firstAttribute="leading" secondItem="Kl3-G3-Yhq" secondAttribute="trailing" constant="28.5" id="oip-fX-1nd"/>
                             <constraint firstItem="EPN-bZ-2Mq" firstAttribute="top" secondItem="U4f-g8-64a" secondAttribute="top" id="wh7-1U-Mqv"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="wut-ng-bfV"/>
                     </view>
                     <connections>
                         <outlet property="artistLabel" destination="7bD-0q-6Yp" id="E7b-14-Zmq"/>
@@ -233,11 +231,5 @@
     </scenes>
     <resources>
         <image name="PlayButtonFullColor" width="20" height="31"/>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

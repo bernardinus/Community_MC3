@@ -59,7 +59,9 @@ class DataManager
     var newFeaturedVideos:FeaturedDataStruct?
 
     
-    var latestFavourite:[CKRecord] = []
+    var latestFavouriteRec:[CKRecord] = []
+    var latestFavourite:[FavouritesDataStruct] = []
+    
     
     var allTracksRec:[CKRecord] = []
     var allTracks:[TrackDataStruct] = []
@@ -72,6 +74,9 @@ class DataManager
     var allArtistRec:[CKRecord] = []
     var allArtist:[UserDataStruct] = []
     var filteredArtist:[UserDataStruct] = []
+    
+    var randomSpotlightData:[UserDataStruct] = []
+    
     
     
     var registerData:AccountDataStruct?
@@ -93,7 +98,8 @@ class DataManager
         print("dataManager.init")
         
         ckUtil.setup(cloudKitContainerID: iCloudContainerID)
-        willUpdateFeaturedData = true
+        
+//        willUpdateFeaturedData = true
         
         getFeaturedData()
         autoLoginLastAccount()
@@ -113,10 +119,10 @@ class DataManager
             {
                 let rootView = rootVC as! StartViewController
                 
-//                let navVC = rootView.baseVC!
-//                let tabBarView = navVC.viewControllers[0] as! UITabBarController
-//                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
-//                explorerView.mainTableView.reloadData()
+                let navVC = rootView.baseVC!
+                let tabBarView = navVC.viewControllers[0] as! UITabBarController
+                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+                explorerView.mainTableView.reloadData()
             }
 
         }
@@ -148,7 +154,7 @@ class DataManager
     func loginSuccess(isSuccess:Bool, errorString:String)
     {
 //        print("Auto loginSuccess")
-        GetLatestFavourite()
+        getLatestFavourite()
 //        updateFeaturedArtist() // to test add user only
     }
     
@@ -321,6 +327,11 @@ class DataManager
                         {
                             self.loadPhotos(photosData: photosData)
                         }
+                        
+                        // TODO: ALBUM DATA
+                        // TODO: FAVOURITES DATA
+                        
+                        self.getLatestFavourite()
                     }
                     else
                     {
@@ -404,6 +415,12 @@ class DataManager
             }
         }
 
+    }
+    
+    // MARK: LOAD USER DATA
+    func loadUserData(dataRecordID:[CKRecord.Reference])
+    {
+        
     }
     
     // MARK: Update Current User
@@ -1025,7 +1042,7 @@ class DataManager
         
     }
     
-    func GetLatestFavourite()
+    func getLatestFavourite()
     {
         let query = CKQuery(recordType: "Favourites", predicate: NSPredicate(value: true))
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, record) in
@@ -1036,8 +1053,8 @@ class DataManager
             else
             {
                 print("GetLatestFavourite Success")
-                self.latestFavourite = record
-                print(self.latestFavourite)
+                self.latestFavouriteRec = record
+                print(self.latestFavouriteRec)
             }
         }
     }
@@ -1117,6 +1134,7 @@ class DataManager
                     self.allArtist.append(UserDataStruct(record))
                 }
                 self.filteredArtist = self.allArtist
+                self.randomSpotlightData = self.allArtist.shuffled()
                 print("FilterArtist \(self.filteredTracks.count)")
                 
                 if(self.willUpdateFeaturedData)
@@ -1137,10 +1155,20 @@ class DataManager
             if !(filterText!.isEmpty)
             {
                 filteredArtist = allArtist.filter({ (data) -> Bool in
-                    if(data.name!.contains(filterText!)) {return true}
-                    if(data.genre!.contains(filterText!)) {return true}
-                    if(data.role!.contains(filterText!)) {return true}
-                    return false
+                    var result:Bool = false
+                    if(data.name != nil)
+                    {
+                        if !result {result = data.name!.containsInsesitive(string: filterText!)}
+                    }
+                    if(data.genre != nil)
+                    {
+                        if !result {result = data.genre!.containsInsesitive(string: filterText!)}
+                    }
+                    if(data.role != nil)
+                    {
+                        if !result {result = data.role!.containsInsesitive(string: filterText!)}
+                    }
+                    return result
                 })
             }
         }
@@ -1154,14 +1182,14 @@ class DataManager
             if !(filterText!.isEmpty)
             {
                 filteredTracks = allTracks.filter({ (data) -> Bool in
-                    if(data.name.contains(filterText!)) {return true}
-                    if(data.artistName!.contains(filterText!)) {return true}
-                    if(data.genre.contains(filterText!)) {return true}
+                    var result:Bool = false
+                    if !result {result = data.name.containsInsesitive(string: filterText!)}
+                    if !result {result = data.genre.containsInsesitive(string: filterText!)}
                     if(data.album != nil)
                     {
-                        if(data.album!.name.contains(filterText!)) {return true}
+                        if !result {result = data.album!.name.containsInsesitive(string: filterText!)}
                     }
-                    return false
+                    return result
                 })
             }
         }
@@ -1175,16 +1203,28 @@ class DataManager
             if !(filterText!.isEmpty)
             {
                 filteredVideos = allVideos.filter({ (data) -> Bool in
-                    if(data.name.contains(filterText!)) {return true}
-                    if(data.genre.contains(filterText!)) {return true}
-//                    if(data.artistName!.contains(filterText!)) {return true}
+                    var result:Bool = false
+                    if !result {result = data.name.containsInsesitive(string: filterText!)}
+                    if !result {result = data.genre.containsInsesitive(string: filterText!)}
+                    if(data.artistName != nil)
+                    {
+                        if !result {result = data.artistName!.containsInsesitive(string: filterText!)}
+                    }
                     if(data.album != nil)
                     {
-                        if(data.album!.name.contains(filterText!)) {return true}
+                        if !result {result = data.album!.name.containsInsesitive(string: filterText!)}
                     }
-                    return false
+                    return result
+                    
                 })
             }
         }
+    }
+    
+    // MARK: RANDOM SPOTLIGHT
+    
+    func filterRandomSpotlight()
+    {
+        randomSpotlightData = []
     }
 }
