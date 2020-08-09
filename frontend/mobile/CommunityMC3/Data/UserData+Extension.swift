@@ -55,6 +55,7 @@ class UserDataStruct
     
     init(_ record:CKRecord)
     {
+        
         self.name = record.value(forKey: "name") as? String
         self.genre = record.value(forKey: "genre") as? String
         self.followerCount = record.value(forKey: "followerCount") as? Int

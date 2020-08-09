@@ -155,7 +155,7 @@ extension FavouritesView: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == Favorite.FavoriteTrack.rawValue
         {
             cell.cellTitleLabel.text = "Favorite Tracks"
-            cell.countLabel.text = String(countTracks.count)
+            cell.countLabel.text = String(DataManager.shared().favTrackNow.count)
         }
         else if indexPath.section == Favorite.FavoriteVideo.rawValue
         {

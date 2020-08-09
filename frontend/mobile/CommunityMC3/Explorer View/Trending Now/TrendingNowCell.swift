@@ -41,11 +41,19 @@ class TrendingNowCell: UITableViewCell {
         self.trackData = trackData
         trackTitleLabel.text = trackData.name
         artistNameLabel.text = trackData.artistName
+        musicImageView.image = trackData.coverImage
         if player {
             playMusicButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         }else{
             playMusicButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         }
+        
+        var isFavouriteMusic = DataManager.shared().isFavouriteMusic(recordName: (trackData.record?.recordID.recordName)!)
+        favoriteIconButton.isSelected = isFavouriteMusic
+//        if(isFavouriteMusic)
+//        {
+//
+//        }
     }
     
     func favoriteButtonStateChange(){

@@ -233,6 +233,7 @@ class UserProfileVC: UIViewController {
         }
         actionSheet.addAction(switchAccountAction)
         
+        /*
         let shareAction = UIAlertAction(title: NSLocalizedString("Share".uppercased(), comment: ""), style: .default)
         actionSheet.addAction(shareAction)
         
@@ -258,6 +259,7 @@ class UserProfileVC: UIViewController {
                                             self.imgPicker?.present(from: self.view) }
         )
         actionSheet.addAction(uploadPhotos)
+         */
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         actionSheet.addAction(cancelAction)

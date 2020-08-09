@@ -91,7 +91,65 @@ class DataManager
         return currentUserRec != nil
     }
     
+//    [<CKRecordID: 0x6000025c9560; recordName=, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c9c60;
+//    recordName=1308C17A-C61E-418A-9F0D-8DE866FCDAB2, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c9de0;
+//    recordName=FC600672-8645-4690-8C26-085BF5D95EDD, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025cdca0;
+//    recordName=3ADCEE6C-85E2-4409-85FD-B5BB8269AB54, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025ffbe0;
+//    recordName=D6BAD740-2E0F-4A49-BE1B-D5352B1295E6, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025ffda0;
+//    recordName=D3E83A7C-ECAA-4036-A3A8-EE472EA744AF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e6160;
+//    recordName=D37C13D8-9A28-42EC-AE39-CF4BB15BD2B7, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e61e0;
+//    recordName=6D3F3F6E-A670-412B-8DD0-4E73025B99FF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5ee0;
+//    recordName=2920EE82-FA14-4427-A3FD-3D9AF22F4152, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5dc0;
+//    recordName=D474D375-35C2-4C64-AA86-CC14201D1D63, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5c40;
+//    recordName=1CD9F0E2-16DE-43AE-8C06-20BDEDBFD828, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e59c0;
+//    recordName=692E80FB-24A6-45D6-AC2D-56676C7295BC, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e58c0;
+//    recordName=46A5CD72-3BCD-49E1-B313-DA23A9C05060, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5920;
+//    recordName=30461B86-0CF7-44C7-A050-051E86D1A84F, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e54e0;
+//    recordName=6395EB35-1F58-4B29-AEAF-CAC9863B17EA, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x600002589fc0;
+//    recordName=5E036B3D-F6F7-4815-BD8E-A8AA59E8B9D0, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x60000258d740;
+//    recordName=FD692C39-64B2-49E5-9769-2666703D56BE, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x60000257ce60;
+//    recordName=940233EB-C94F-4261-8201-3FA66221AB4A, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x60000257eee0;
+//    recordName=0B283ABF-F409-4042-A547-A7C5F0D638DF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x600002518780;
+//    recordName=D61C7F38-5B50-498E-8D20-4FCCEF5A0F0D, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c4080;
+//    recordName=D5805C61-1605-4973-89AA-D0FF16F75DDA, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c4100;
+//    recordName=2A73E6BE-8FCD-4E79-97AF-DF43ADEBB45A, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c43a0;
+//    recordName=B5DB44AF-997C-43CB-8873-5A87FC4670BF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c4540;
+//    recordName=2284B1A1-4113-4D8D-AB86-4200043ABEA8, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c45c0;
+//    recordName=1A4C51F4-73D5-4CFD-A536-7A8A4265EBDC, zoneID=_defaultZone:__defaultOwner__>]
+//
+    var favTrack:[String] = [
+        "67479FC3-8B0B-47DE-9FFF-6A3ACD42B13F",
+//        "1308C17A-C61E-418A-9F0D-8DE866FCDAB2",
+        "FC600672-8645-4690-8C26-085BF5D95EDD",
+//        "3ADCEE6C-85E2-4409-85FD-B5BB8269AB54",
+        "D6BAD740-2E0F-4A49-BE1B-D5352B1295E6",
+//        "D3E83A7C-ECAA-4036-A3A8-EE472EA744AF",
+        "D37C13D8-9A28-42EC-AE39-CF4BB15BD2B7",
+//        "6D3F3F6E-A670-412B-8DD0-4E73025B99FF",
+        "2920EE82-FA14-4427-A3FD-3D9AF22F4152",
+//        "D474D375-35C2-4C64-AA86-CC14201D1D63",
+        "1CD9F0E2-16DE-43AE-8C06-20BDEDBFD828",
+//        "692E80FB-24A6-45D6-AC2D-56676C7295BC",
+        "46A5CD72-3BCD-49E1-B313-DA23A9C05060",
+//        "30461B86-0CF7-44C7-A050-051E86D1A84F",
+        "6395EB35-1F58-4B29-AEAF-CAC9863B17EA",
+//        "5E036B3D-F6F7-4815-BD8E-A8AA59E8B9D0",
+        "FD692C39-64B2-49E5-9769-2666703D56BE",
+//        "940233EB-C94F-4261-8201-3FA66221AB4A",
+        "0B283ABF-F409-4042-A547-A7C5F0D638DF",
+//        "D61C7F38-5B50-498E-8D20-4FCCEF5A0F0D",
+        "D5805C61-1605-4973-89AA-D0FF16F75DDA",
+//        "2A73E6BE-8FCD-4E79-97AF-DF43ADEBB45A",
+        "B5DB44AF-997C-43CB-8873-5A87FC4670BF",
+//        "2284B1A1-4113-4D8D-AB86-4200043ABEA8",
+        "1A4C51F4-73D5-4CFD-A536-7A8A4265EBDC",
+    ]
+    var favTrackNow:[TrackDataStruct] = []
     
+    func isFavouriteMusic(recordName:String) -> Bool
+    {
+        return favTrack.contains(recordName)
+    }
     
     private init()
     {
@@ -184,10 +242,11 @@ class DataManager
     {
         userDefault.set(email, forKey: "email")
         userDefault.set(password, forKey: "password")
+        
         if let loadUsers = userDefault.value(forKey: "users"){
             currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
             if currentUsersPrimitive == nil {
-                registerPrimitiveUserData(userData: userData)
+//                registerPrimitiveUserData(userData: userData)
             }else {
                 var flag = false
                 for currentUserPrimitive in currentUsersPrimitive! {
@@ -196,11 +255,11 @@ class DataManager
                     }
                 }
                 if !flag {
-                    registerPrimitiveUserData(userData: userData)
+//                    registerPrimitiveUserData(userData: userData)
                 }
             }
         }else{
-            registerPrimitiveUserData(userData: userData)
+//            registerPrimitiveUserData(userData: userData)
         }
         userDefault.synchronize()
     }
@@ -322,13 +381,20 @@ class DataManager
                             self.loadVideos(videosData: videosData)
                         }
                         
-                        let photosData = userRecord?.value(forKey: "tracks")
+                        let photosData = userRecord?.value(forKey: "photos")
                         if(photosData != nil )
                         {
                             self.loadPhotos(photosData: photosData)
                         }
                         
                         // TODO: ALBUM DATA
+                        
+//                        let albumData = userRecord?.value(forKey: "album")
+//                        if(albumData != nil )
+//                        {
+//                            self.loadAlbum(albumData: albumData)
+//                        }
+//
                         // TODO: FAVOURITES DATA
                         
                         self.getLatestFavourite()
@@ -360,6 +426,7 @@ class DataManager
                 {
                     self.currentUser?.musics?.append(TrackDataStruct(record: tr))
                 }
+                print("Load UserTrack:\(self.currentUser?.musics?.count)")
             }
             else
             {
@@ -373,7 +440,7 @@ class DataManager
     {
         let videos = videosData as! [CKRecord.Reference]
         if videos.count == 0 {return}
-        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: videos)
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Videos", recordName: videos)
         {   (isSuccess, errorString, trackRecords:[CKRecord]) in
 
             if(isSuccess)
@@ -383,6 +450,7 @@ class DataManager
                 {
                     self.currentUser?.videos?.append(VideosDataStruct(record: tr))
                 }
+                print("Load UserVideos:\(self.currentUser?.videos?.count)")
             }
             else
             {
@@ -398,7 +466,7 @@ class DataManager
         if photos.count == 0 {return}
         print("photosCount :\(photos.count)")
         
-        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: photos)
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Photos", recordName: photos)
         {   (isSuccess, errorString, trackRecords:[CKRecord]) in
 
             if(isSuccess)
@@ -408,6 +476,7 @@ class DataManager
                 {
                     self.currentUser?.photos?.append(PhotoDataStruct(record: tr))
                 }
+                print("Load UserPhotos:\(self.currentUser?.photos?.count)")
             }
             else
             {
@@ -440,7 +509,7 @@ class DataManager
     }
     
     
-    // MARK: Upload Music
+    // MARK: Upload
     func UploadNewTrack(trackData:TrackDataStruct, completionHandler:@escaping(Bool, String)->Void)
     {
         ckUtil.saveRecordToPublicDB(
@@ -656,6 +725,9 @@ class DataManager
             self.trendingNow = newTrendingNow
             updateExplorerView()
             print("Trending Now :\(self.trendingNow!.tracks.count)")
+            print("Trending Now ID:\(self.trendingNow!.tracks.map({$0.record!.recordID}))")
+            favTrackNow = self.trendingNow!.tracks.filter{favTrack.contains(($0.record?.recordID.recordName)!)}
+            print("Trending Now Favourited:\(favTrackNow) \(favTrackNow.count)")
         }
         else
         {
@@ -1206,10 +1278,7 @@ class DataManager
                     var result:Bool = false
                     if !result {result = data.name.containsInsesitive(string: filterText!)}
                     if !result {result = data.genre.containsInsesitive(string: filterText!)}
-                    if(data.artistName != nil)
-                    {
-                        if !result {result = data.artistName!.containsInsesitive(string: filterText!)}
-                    }
+                    if !result {result = data.artistName.containsInsesitive(string: filterText!)}
                     if(data.album != nil)
                     {
                         if !result {result = data.album!.name.containsInsesitive(string: filterText!)}

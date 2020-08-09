@@ -45,7 +45,7 @@ class SecondPageVC: UIViewController {
         self.videos = videos
         self.photos = photos
         
-        print("\(tracks?.count) \(videos?.count) \(photos?.count)")
+        print("showcase T:\(tracks!.count) V:\(videos!.count) P:\(photos!.count)")
         if(showcaseTableView != nil)
         {
             showcaseTableView.reloadData()
@@ -128,7 +128,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == ShowcaseSection.Photos.rawValue)
         {
             let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "photosTableCell") as! PhotosTableViewCell
-//            cell.updateData(photosData: photos!)
+            cell.updateData(photosData: photos!)
             return cell
         }
         if(indexPath.section == ShowcaseSection.Videos.rawValue)

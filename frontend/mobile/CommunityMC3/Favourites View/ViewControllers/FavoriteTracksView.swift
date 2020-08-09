@@ -28,7 +28,8 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "FavoriteTracksCell", bundle: nil), forCellReuseIdentifier: "favoriteTracksCell")
-        convertFavourites()
+        countTracks = DataManager.shared().favTrackNow
+//        convertFavourites()
     }
     
     override func viewWillAppear(_ animated: Bool) {

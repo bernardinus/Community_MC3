@@ -11,6 +11,7 @@ import AVFoundation
 import CloudKit
 import UIKit
 
+
 struct PrimitiveTrackDataStruct: Codable
 {
     var genre:String
@@ -21,54 +22,74 @@ struct PrimitiveTrackDataStruct: Codable
 
 class TrackDataStruct
 {
-    
-    var genre:String
-    var name:String
-    
-//    var recordID: CKRecord.ID
-    var email: String
-    var fileData: CKAsset?
-    var coverImage:UIImage?
-    
-    var audioData:AVAudioPlayer?
-    
-    
+    var record: CKRecord?
+
     var album:AlbumDataStruct?
-    var artistName:String? = "artistName"
+    var artistName:String = "artistName"
+    var coverImage:UIImage?
+    var email: String = "email"
+    var fileData: CKAsset?
+    var genre:String = "musicGenre"
+    var isCoverSong:Bool = false
+    var name:String = "musicName"
+
+//    var audioData:AVAudioPlayer?
+    
+    
     
     init(record:CKRecord)
     {
-//        print("inputedData \(record)")
+        self.record = record
+        
+        let artistData = record.value(forKey: "artistName")
+        if artistData != nil
+        {
+            self.artistName = artistData as! String
+        }
+
+        let coverImageData = record.value(forKey: "coverImage")
+        if(coverImageData != nil)
+        {
+            coverImage = UIImage(data: coverImageData as! Data)
+        }
+        self.email = record.value(forKey: "email") as! String
+
+        self.fileData = record.value(forKey: "fileData") as? CKAsset
+
         let genreData = record.value(forKey: "genre")
         if genreData != nil
         {
             self.genre = genreData as! String
         }
-        else
+        
+        let isCoverSongData = record.value(forKey: "isCoverSong")
+        var isCoverSongDataIntValue:Int = 0
+        if(isCoverSongData != nil )
         {
-            self.genre = ""
+            isCoverSongDataIntValue = isCoverSongData as! Int
+            
+            if(isCoverSongDataIntValue == 1)
+            {
+                self.isCoverSong = true
+            }
         }
         
         let nameData = record.value(forKey: "name")
-        self.name = ""
         if(nameData != nil)
         {
             self.name = nameData as! String
         }
-        
-        
-        self.email = record.value(forKey: "email") as! String
-        self.fileData = record.value(forKey: "fileData") as? CKAsset
-        
+                
     }
     
-    init()
-    {
-        self.genre = ""
-        self.name = ""
-        self.email = ""
-        self.fileData = CKAsset(fileURL: URL(string: "")!)
-    }
+//    init()
+//    {
+//        self.genre = ""
+//        self.name = ""
+//        self.email = ""
+//        self.fileData = CKAsset(fileURL: URL(string: "")!)
+//    }
+//
     init(genre:String, name:String, email:String, fileURL:URL)
     {
         self.genre = genre
@@ -90,16 +111,3 @@ class TrackDataStruct
         return record
     }
 }
-
-//class TrackDataClass: NSObject
-//{
-//    var genre:String!
-//    var name:String!
-//
-//    var recordID: CKRecord.ID!
-//    var email: String!
-//
-//    var audioData:AVAudioPlayer?
-//
-//    var album:Album?
-//}
