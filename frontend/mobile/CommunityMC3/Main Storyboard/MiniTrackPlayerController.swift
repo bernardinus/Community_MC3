@@ -31,7 +31,9 @@ class MiniTrackPlayerController: UIViewController, AVAudioPlayerDelegate, MiniTr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        self.view.alpha = 0
+        self.view.isHidden = true
         setup()
     }
     
@@ -49,6 +51,10 @@ class MiniTrackPlayerController: UIViewController, AVAudioPlayerDelegate, MiniTr
     }
     
     func play(trackURL: URL) {
+
+UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations: {
+            self.view.alpha = 1
+        }, completion:{_ in self.view.isHidden = false} )
                 var error: NSError? = nil
 //        let audioPath = Bundle.main.path(forResource: trackURL, ofType: "mp3")
         do{
