@@ -47,10 +47,10 @@ class LatestMusicCell: UITableViewCell {
         }
         else
         {
-            print("uploadedTrack \(dt?.trackRecord)")
+//            print("uploadedTrack \(dt?.trackRecord)")
             trackTitleLabel.text = dt?.trackData?.name
 //            artistNameLabel.text = dt?.trackData?.artistName
-            print("masuk ", player)
+//            print("masuk ", player)
             if player
             {
                 playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")

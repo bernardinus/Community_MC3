@@ -21,6 +21,8 @@ class FavouritesDataStruct
     var videos:[PrimitiveVideosDataStruct]?
     var videoRef: CKRecord?
     
+    
+    
     func getCKRecord() -> CKRecord
     {
         let record = CKRecord(recordType: "Favourites")

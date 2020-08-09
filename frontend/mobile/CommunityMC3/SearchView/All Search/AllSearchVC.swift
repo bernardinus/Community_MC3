@@ -93,19 +93,19 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == SearchSection.Artist.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "artistSearchCell") as! ArtistSearchCell
-            cell.artistData = dm.filteredArtist[indexPath.row]
+            cell.updateData(dm.filteredArtist[indexPath.row])
             return cell
         }
         if(indexPath.section == SearchSection.Music.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "musicSearchCell") as! MusicSearchCell
-            cell.trackData = dm.filteredTracks[indexPath.row]
+            cell.updateData(dm.filteredTracks[indexPath.row])
             return cell
         }
         if(indexPath.section == SearchSection.Video.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "videoSearchCell") as! VideoSearchCell
-            cell.videoData = dm.filteredVideos[indexPath.row]
+            cell.updateData(dm.filteredVideos[indexPath.row])
             return cell
         }
         if(indexPath.section == SearchSection.Playlist.rawValue)
