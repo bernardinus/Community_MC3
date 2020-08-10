@@ -19,6 +19,8 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var otherMenu: UIBarButtonItem!
     @IBOutlet weak var uploadMediaButton: UIButton!
     @IBOutlet weak var customNavigationBar: UINavigationBar!
+var isNeedUpdate:Bool = false
+    
     var isPersonalProfile:Bool = true
     
     var userData:UserDataStruct?
@@ -53,6 +55,7 @@ class UserProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(listnerFunction(_:)), name: NSNotification.Name(rawValue: "notificationName"), object: nil)
         imgPicker = ImagePicker(presentationController: self, delegate: self)
         loadLocalisation()
         followButton.layer.cornerRadius = 10
@@ -82,9 +85,18 @@ class UserProfileVC: UIViewController {
         //        loadNavigationBar()
     }
     
+    @objc func listnerFunction(_ notification: NSNotification) {
+        if let data = notification.userInfo?["data"] as? Bool {
+            if data {
+                updateLayout()
+                let temp:[String: Bool] = ["data": false]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: temp)
+            }
+        }
+    }
     /*
     func loadNavigationBar() {
-        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 20,
+        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0,
                                                    width: UIScreen.main.bounds.size.width, height: 50))
         navbar.tintColor = .lightGray
         self.view.addSubview(navbar)
@@ -246,8 +258,12 @@ class UserProfileVC: UIViewController {
         let switchAccountAction = UIAlertAction(title: NSLocalizedString("Switch Account".uppercased(), comment: ""), style: .default) { (action) in
             let switchAccountVC = self.storyboard?.instantiateViewController(identifier: "SwitchAccountVC") as! AccountController
             if DataManager.shared().currentUsersPrimitive == nil {
-                DataManager.shared().currentUsersPrimitive = [PrimitiveUserDataStruct]()
-                DataManager.shared().registerPrimitiveUserData(userData: DataManager.shared().currentUser!)
+                if let loadEmail = self.userDefault.string(forKey: "email"){
+                    if let loadPassword = self.userDefault.string(forKey: "password"){
+                        DataManager.shared().currentUsersPrimitive = [PrimitiveUserDataStruct]()
+                        DataManager.shared().registerPrimitiveUserData(email: loadEmail, password: loadPassword, userData: DataManager.shared().currentUser!)
+                    }
+                }
             }
             switchAccountVC.accounts = DataManager.shared().currentUsersPrimitive
             switchAccountVC.transitioningDelegate = self

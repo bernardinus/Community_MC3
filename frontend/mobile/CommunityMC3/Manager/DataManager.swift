@@ -204,20 +204,29 @@ class DataManager
     
     func logout()
     {
-        currentUserRec = nil
         let loadEmail = userDefault.string(forKey: "email")
-        userDefault.set("", forKey: "email")
-        userDefault.set("", forKey: "password")
-        if let loadUsers = userDefault.value(forKey: "users"){
-            currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
-            var idx = 0
-            for currentUserPrimitive in currentUsersPrimitive! {
-                if currentUserPrimitive.email == loadEmail {
-                    currentUsersPrimitive?.remove(at: idx)
-                    userDefault.set(currentUsersPrimitive, forKey: "users")
-                }
-                idx += 1
+        if currentUsersPrimitive == nil {
+            if let loadUsers = userDefault.value(forKey: "users"){
+                currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
             }
+        }
+        var idx = 0
+        for currentUserPrimitive in currentUsersPrimitive! {
+            if currentUserPrimitive.email == loadEmail {
+                currentUsersPrimitive?.remove(at: idx)
+                if currentUsersPrimitive!.count > 0 {
+                    userDefault.set(currentUsersPrimitive![0].email, forKey: "email")
+                    userDefault.set(currentUsersPrimitive![0].password, forKey: "password")
+                }else{
+                    currentUserRec = nil
+                    userDefault.set("", forKey: "password")
+                    userDefault.set("", forKey: "email")
+                }
+                let temp = try? JSONEncoder().encode(currentUsersPrimitive)
+                userDefault.set(temp, forKey: "users")
+                break
+            }
+            idx += 1
         }
         userDefault.synchronize()
     }
@@ -231,25 +240,26 @@ class DataManager
         if let loadUsers = userDefault.value(forKey: "users"){
             currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
             if currentUsersPrimitive == nil {
-//                registerPrimitiveUserData(userData: userData)
+                registerPrimitiveUserData(email: email, password: password, userData: userData)
             }else {
                 var flag = false
                 for currentUserPrimitive in currentUsersPrimitive! {
                     if currentUserPrimitive.name == userData.name {
                         flag = true
+                        break
                     }
                 }
                 if !flag {
-//                    registerPrimitiveUserData(userData: userData)
+                    registerPrimitiveUserData(email: email, password: password, userData: userData)
                 }
             }
         }else{
-//            registerPrimitiveUserData(userData: userData)
+            registerPrimitiveUserData(email: email, password: password, userData: userData)
         }
         userDefault.synchronize()
     }
     
-    func registerPrimitiveUserData(userData: UserDataStruct) {
+    func registerPrimitiveUserData(email: String, password: String, userData: UserDataStruct) {
 //        let imageData = userData.profilePicture!.jpegData(compressionQuality: 1)
 //        let relativePath = "image_\(userData.email).jpg"
 //        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -264,13 +274,14 @@ class DataManager
             print("Error! \(e)");
             return
         }
-        let path = try? String(contentsOf: url!)
+//        let path = try? String(contentsOf: url!)
         let tmp = PrimitiveUserDataStruct (
-            email: userData.email ?? "",
+            email: email,
+            password: password,
             name: userData.name!,
             role: userData.role!,
-//            profilePicture: url!.absoluteString
-            profilePicture: path!
+            profilePicture: url!.absoluteString
+//            profilePicture: path!
         )
         currentUsersPrimitive?.append(tmp)
         let temp = try? JSONEncoder().encode(currentUsersPrimitive)
