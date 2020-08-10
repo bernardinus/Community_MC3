@@ -168,6 +168,8 @@ class DataManager
                 if currentUsersPrimitive!.count > 0 {
                     userDefault.set(currentUsersPrimitive![0].email, forKey: "email")
                     userDefault.set(currentUsersPrimitive![0].password, forKey: "password")
+                    let data:[String: Bool] = ["data": true]
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: data)
                 }else{
                     currentUserRec = nil
                     userDefault.set("", forKey: "password")

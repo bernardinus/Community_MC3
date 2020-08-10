@@ -79,13 +79,14 @@ extension AccountController: UITableViewDelegate, UITableViewDataSource {
             self.performSegue(withIdentifier: "addAccount", sender: nil)
         }else{
             if accounts[indexPath.row].email != "" && accounts[indexPath.row].email != UserDefaults.standard.string(forKey: "email") {
-                DataManager.shared().currentUser?.email = accounts[indexPath.row].email
-                DataManager.shared().currentUser?.name = accounts[indexPath.row].name
-                DataManager.shared().currentUser?.role = accounts[indexPath.row].role
-                if let data = NSData(contentsOf: URL(fileURLWithPath: accounts[indexPath.row].profilePicture)) {
-                    DataManager.shared().currentUser?.profilePicture = UIImage(data: data as Data)
-                }
+//                DataManager.shared().currentUser?.email = accounts[indexPath.row].email
+//                DataManager.shared().currentUser?.name = accounts[indexPath.row].name
+//                DataManager.shared().currentUser?.role = accounts[indexPath.row].role
+//                if let data = NSData(contentsOf: URL(fileURLWithPath: accounts[indexPath.row].profilePicture)) {
+//                    DataManager.shared().currentUser?.profilePicture = UIImage(data: data as Data)
+//                }
                 UserDefaults.standard.set(accounts[indexPath.row].email, forKey: "email")
+                UserDefaults.standard.set(accounts[indexPath.row].password, forKey: "password")
                 UserDefaults.standard.synchronize()
                 let data:[String: Bool] = ["data": true]
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil, userInfo: data)

@@ -13,7 +13,7 @@
 // Tab Bar
 "TAB_Explore" = "Jelajahi";
 "TAB_Search" = "Pencarian";
-"TAB_Favourites" = "Favourites";
+"TAB_Favourites" = "Favorit";
 
 // Explore View
 "Explore" = "Jelajahi";
@@ -25,7 +25,6 @@
 "More artist >" = "Artis lainnya >";
 "Featured Upload" = "Unggahan Unggul";
 "More videos >" = "Video lainnya >";
-
 
 "Highlights" = "Terkini";
 "Show all" = "Lihat Semua";
@@ -69,7 +68,7 @@
 "Gallery" = "Galeri";
 "History" = "Riwayat";
 "Settings" = "Setelan";
-"Genre" = "Aliran";
+"Genre" = "Genre";
 "Classic" = "Klasik";
 "Photo" = "Foto";
 
@@ -99,7 +98,7 @@
 "SHOWCASE" = "Etalase";
 "VIDEO" = "Video";
 "NEXT" = "Selanjutnya";
-"VIEW PROFILE" = "Lihat Profile";
+"VIEW PROFILE" = "Lihat Profil";
 
 "EDIT RANDOMIZER" = "Ubah acakan";
 "SORT BY" = "Urut berdasarkan";
@@ -115,13 +114,13 @@
 "COVER SONG" = "Lagu Cover";
 
 "TAKE PHOTO" = "Ambil foto";
-"CAMERA ROLL" = "Galeri foto";
-"PHOTO LIBRARY" = "Perpustakaan Foto";
+"CAMERA ROLL" = "Galeri kamera";
+"PHOTO LIBRARY" = "Perpustakaan foto";
 "CAMERA" = "Kamera";
 "BROWSE ATTACHMENT" = "Pilih unggahan";
 
 "NAME" = "Nama";
-"EMAIL" = "Surel";
+"EMAIL" = "Email";
 "SIGN IN DESCRIPTION" = "Daftar atau masuk untuk melihat musik terkini";
 "FORGOT PASSWORD" = "Lupa kata sandi?";
 "CREATE ACCOUNT" = "Buat akun baru!";
@@ -130,6 +129,6 @@
 "HAVE ACCOUNT" = "Sudah punya akun?";
 
 "SUPRISE" = "Tekan untuk kejutan!";
-"EDIT GENRE" = "Ubah aliran";
+"EDIT GENRE" = "Ubah genre";
 "SWITCH ACCOUNT" = "Ganti Akun";
 "ADD ACCOUNT" = "Tambah Akun";
