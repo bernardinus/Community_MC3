@@ -18,10 +18,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N5R-qH-NdS">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N5R-qH-NdS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="N5R-qH-NdS" secondAttribute="height" multiplier="32:3" id="DBo-kc-Sgx"/>
+                            <constraint firstAttribute="width" constant="320" id="RCP-cj-IEs"/>
+                            <constraint firstAttribute="height" constant="30" id="kzh-iY-feA"/>
+                        </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FO3-2M-bfL">
                             <size key="itemSize" width="70" height="24"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -34,6 +38,12 @@
                         </connections>
                     </collectionView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="N5R-qH-NdS" secondAttribute="trailing" id="E9Y-RM-BO5"/>
+                    <constraint firstItem="N5R-qH-NdS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MLO-ca-I2g"/>
+                    <constraint firstItem="N5R-qH-NdS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Uvp-hA-HnT"/>
+                    <constraint firstAttribute="bottom" secondItem="N5R-qH-NdS" secondAttribute="bottom" id="nzu-ov-Fjj"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
