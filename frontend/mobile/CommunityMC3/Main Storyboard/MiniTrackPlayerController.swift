@@ -24,6 +24,7 @@ class MiniTrackPlayerController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var coverTrackImage: UIImageView!
     @IBOutlet weak var playAndPauseButton: UIButton!
+    @IBOutlet weak var contentView: UIView!
     
     
     var trackPlayer: AVAudioPlayer?
@@ -33,7 +34,6 @@ class MiniTrackPlayerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.alpha = 0
         self.view.isHidden = true
         setup()
     }
@@ -43,6 +43,7 @@ class MiniTrackPlayerController: UIViewController {
         trackTitleLabel.text = trackData?.name
         artistLabel.text = trackData?.artistName
         coverTrackImage.image = trackData?.coverImage
+        contentView.frame = CGRect(x: contentView.frame.origin.x, y: contentView.frame.origin.y + 100, width: contentView.frame.width, height: contentView.frame.height)
     }
     
     func setup(){
@@ -102,9 +103,10 @@ extension MiniTrackPlayerController:MiniTrackPlayerDelegate
         trackData = data
         updateLayout()
         
-        UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations: {
-            self.view.alpha = 1
-        }, completion:{_ in self.view.isHidden = false} )
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveLinear, animations: {
+            self.contentView.frame = CGRect(x: self.contentView.frame.origin.x, y: self.contentView.frame.origin.y - 100, width: self.contentView.frame.width, height: self.contentView.frame.height)
+        }, completion: nil )
+        self.view.isHidden = false
         var error: NSError? = nil
         //        let audioPath = Bundle.main.path(forResource: trackURL, ofType: "mp3")
         do{

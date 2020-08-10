@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zdD-2G-j4z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zdD-2G-j4z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,15 +13,19 @@
         <!--Photos-->
         <scene sceneID="UZY-h9-Tmd">
             <objects>
-                <viewController id="zdD-2G-j4z" customClass="ShowcasePhotosVC" customModule="CommunityMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zdD-2G-j4z" customClass="ShowcasePhotosVC" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j9v-qi-Jrl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-E4-5vs">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nh1-E4-5vs">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="774" id="6nl-cV-RFq"/>
+                                    <constraint firstAttribute="width" secondItem="nh1-E4-5vs" secondAttribute="height" multiplier="23:43" id="Ljk-90-5yL"/>
+                                    <constraint firstAttribute="width" constant="414" id="sp6-nm-qf0"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vbw-oT-nqs">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,8 +48,14 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="imE-4i-m2C"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nh1-E4-5vs" firstAttribute="trailing" secondItem="imE-4i-m2C" secondAttribute="trailing" id="Apa-pb-bHX"/>
+                            <constraint firstItem="nh1-E4-5vs" firstAttribute="bottom" secondItem="imE-4i-m2C" secondAttribute="bottom" id="Yi2-SJ-kzj"/>
+                            <constraint firstItem="nh1-E4-5vs" firstAttribute="top" secondItem="imE-4i-m2C" secondAttribute="top" id="huT-ZS-oGM"/>
+                            <constraint firstItem="nh1-E4-5vs" firstAttribute="leading" secondItem="imE-4i-m2C" secondAttribute="leading" id="k31-zp-sDE"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="R7f-Sw-N2i">
                         <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="MUN-HZ-alO">
@@ -65,5 +77,8 @@
     </scenes>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
