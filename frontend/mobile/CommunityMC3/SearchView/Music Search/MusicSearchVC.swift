@@ -36,4 +36,8 @@ extension MusicSearchVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        TrackManager.shared.play(trackData: dm!.filteredTracks[indexPath.row])
+    }
+    
 }

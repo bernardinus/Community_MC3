@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,7 +50,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
-                                            <segue destination="xhr-7j-3ok" kind="presentation" modalPresentationStyle="fullScreen" id="2g8-rA-ECq"/>
+                                            <action selector="signInButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zlq-GI-61O"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -106,6 +106,7 @@
                     <connections>
                         <outlet property="btnNext" destination="EVs-gG-awe" id="Ros-Tv-SHJ"/>
                         <outlet property="vwContainer" destination="Qlf-zv-be8" id="Kbd-jZ-8tR"/>
+                        <segue destination="xhr-7j-3ok" kind="presentation" identifier="signInFromOnboarding" modalPresentationStyle="fullScreen" id="IQg-53-WHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -122,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="890" y="94"/>
         </scene>
-        <!--LoginScreen-->
+        <!--Main-->
         <scene sceneID="og5-Xq-HuR">
             <objects>
-                <viewControllerPlaceholder storyboardName="LoginScreen" id="xhr-7j-3ok" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="xhr-7j-3ok" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urb-ei-5iD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="685" y="418"/>
@@ -294,12 +295,12 @@ Simply tap the button and let us surprise you.</string>
             <point key="canvasLocation" x="2386" y="976"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="X3d-s5-OOB"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Onboarding BG 1" width="1125" height="1992"/>
         <image name="Onboarding BG 2" width="1125" height="1992"/>
         <image name="Onboarding BG 3" width="375" height="664"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="X3d-s5-OOB"/>
+    </inferredMetricsTieBreakers>
 </document>

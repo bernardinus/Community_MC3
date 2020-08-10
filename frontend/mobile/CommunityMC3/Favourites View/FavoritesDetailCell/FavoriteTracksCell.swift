@@ -17,11 +17,36 @@ class FavoriteTracksCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var trackDurationLabel: UILabel!
     
+    var trackData:TrackDataStruct? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         favoriteButton.isSelected = true
+        setupButtonImage()
     }
+    
+    func setupButtonImage()
+    {
+        playButton.setImage(#imageLiteral(resourceName: "playButtonFavorites"), for: .normal)
+        playButton.setImage(#imageLiteral(resourceName: "StopButtonFavorite"), for: .selected)
+
+        favoriteButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
+        favoriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
+    }
+    
+    func updateData(td:TrackDataStruct)
+    {
+        trackData = td
+        trackCoverImage.image = trackData?.coverImage
+        trackTitleLabel.text = trackData?.name
+        artistLabel.text = trackData?.artistName
+        trackDurationLabel.text = trackData?.duration
+
+        
+    }
+    
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

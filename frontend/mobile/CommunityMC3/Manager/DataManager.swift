@@ -10,6 +10,13 @@ import Foundation
 import CloudKit
 import UIKit
 
+enum UserFavourites {
+    case Track
+    case Video
+    case Artist
+}
+
+
 class DataManager
 {
     private static var instance:DataManager!
@@ -59,7 +66,9 @@ class DataManager
     var newFeaturedVideos:FeaturedDataStruct?
 
     
-    var latestFavourite:[CKRecord] = []
+    var latestFavouriteRec:[CKRecord] = []
+    var latestFavourite:[FavouritesDataStruct] = []
+    
     
     var allTracksRec:[CKRecord] = []
     var allTracks:[TrackDataStruct] = []
@@ -72,6 +81,9 @@ class DataManager
     var allArtistRec:[CKRecord] = []
     var allArtist:[UserDataStruct] = []
     var filteredArtist:[UserDataStruct] = []
+    
+    var randomSpotlightData:[UserDataStruct] = []
+    
     
     
     var registerData:AccountDataStruct?
@@ -86,14 +98,51 @@ class DataManager
         return currentUserRec != nil
     }
     
+    var favTrackData:[TrackDataStruct] = []
+    var favVideoData:[VideosDataStruct] = []
+    var favArtistData:[UserDataStruct] = []
     
+    var favTrack:[String] = [
+        "67479FC3-8B0B-47DE-9FFF-6A3ACD42B13F",
+//        "1308C17A-C61E-418A-9F0D-8DE866FCDAB2",
+        "FC600672-8645-4690-8C26-085BF5D95EDD",
+//        "3ADCEE6C-85E2-4409-85FD-B5BB8269AB54",
+        "D6BAD740-2E0F-4A49-BE1B-D5352B1295E6",
+//        "D3E83A7C-ECAA-4036-A3A8-EE472EA744AF",
+        "D37C13D8-9A28-42EC-AE39-CF4BB15BD2B7",
+//        "6D3F3F6E-A670-412B-8DD0-4E73025B99FF",
+        "2920EE82-FA14-4427-A3FD-3D9AF22F4152",
+//        "D474D375-35C2-4C64-AA86-CC14201D1D63",
+        "1CD9F0E2-16DE-43AE-8C06-20BDEDBFD828",
+//        "692E80FB-24A6-45D6-AC2D-56676C7295BC",
+        "46A5CD72-3BCD-49E1-B313-DA23A9C05060",
+//        "30461B86-0CF7-44C7-A050-051E86D1A84F",
+        "6395EB35-1F58-4B29-AEAF-CAC9863B17EA",
+//        "5E036B3D-F6F7-4815-BD8E-A8AA59E8B9D0",
+        "FD692C39-64B2-49E5-9769-2666703D56BE",
+//        "940233EB-C94F-4261-8201-3FA66221AB4A",
+        "0B283ABF-F409-4042-A547-A7C5F0D638DF",
+//        "D61C7F38-5B50-498E-8D20-4FCCEF5A0F0D",
+        "D5805C61-1605-4973-89AA-D0FF16F75DDA",
+//        "2A73E6BE-8FCD-4E79-97AF-DF43ADEBB45A",
+        "B5DB44AF-997C-43CB-8873-5A87FC4670BF",
+//        "2284B1A1-4113-4D8D-AB86-4200043ABEA8",
+        "1A4C51F4-73D5-4CFD-A536-7A8A4265EBDC",
+    ]
+    var favTrackNow:[TrackDataStruct] = []
+    
+    func isFavouriteMusic(recordName:String) -> Bool
+    {
+        return favTrack.contains(recordName)
+    }
     
     private init()
     {
         print("dataManager.init")
         
         ckUtil.setup(cloudKitContainerID: iCloudContainerID)
-        willUpdateFeaturedData = true
+        
+//        willUpdateFeaturedData = true
         
         getFeaturedData()
         autoLoginLastAccount()
@@ -113,9 +162,9 @@ class DataManager
             {
                 let rootView = rootVC as! StartViewController
                 
-                let navVC = rootView.baseVC!
-                let tabBarView = navVC.viewControllers[0] as! UITabBarController
-                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+                let tabBarView = rootView.baseVC
+                let navVC = tabBarView!.viewControllers![0] as! UINavigationController
+                let explorerView = navVC.viewControllers[0] as! ExplorerView
                 explorerView.mainTableView.reloadData()
             }
 
@@ -148,27 +197,36 @@ class DataManager
     func loginSuccess(isSuccess:Bool, errorString:String)
     {
 //        print("Auto loginSuccess")
-        GetLatestFavourite()
+//        getLatestFavourite()
 //        updateFeaturedArtist() // to test add user only
     }
     
     
     func logout()
     {
-        currentUserRec = nil
         let loadEmail = userDefault.string(forKey: "email")
-        userDefault.set("", forKey: "email")
-        userDefault.set("", forKey: "password")
-        if let loadUsers = userDefault.value(forKey: "users"){
-            currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
-            var idx = 0
-            for currentUserPrimitive in currentUsersPrimitive! {
-                if currentUserPrimitive.email == loadEmail {
-                    currentUsersPrimitive?.remove(at: idx)
-                    userDefault.set(currentUsersPrimitive, forKey: "users")
-                }
-                idx += 1
+        if currentUsersPrimitive == nil {
+            if let loadUsers = userDefault.value(forKey: "users"){
+                currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
             }
+        }
+        var idx = 0
+        for currentUserPrimitive in currentUsersPrimitive! {
+            if currentUserPrimitive.email == loadEmail {
+                currentUsersPrimitive?.remove(at: idx)
+                if currentUsersPrimitive!.count > 0 {
+                    userDefault.set(currentUsersPrimitive![0].email, forKey: "email")
+                    userDefault.set(currentUsersPrimitive![0].password, forKey: "password")
+                }else{
+                    currentUserRec = nil
+                    userDefault.set("", forKey: "password")
+                    userDefault.set("", forKey: "email")
+                }
+                let temp = try? JSONEncoder().encode(currentUsersPrimitive)
+                userDefault.set(temp, forKey: "users")
+                break
+            }
+            idx += 1
         }
         userDefault.synchronize()
     }
@@ -178,28 +236,30 @@ class DataManager
     {
         userDefault.set(email, forKey: "email")
         userDefault.set(password, forKey: "password")
+        
         if let loadUsers = userDefault.value(forKey: "users"){
             currentUsersPrimitive = try? JSONDecoder().decode([PrimitiveUserDataStruct].self, from: loadUsers as! Data)
             if currentUsersPrimitive == nil {
-                registerPrimitiveUserData(userData: userData)
+                registerPrimitiveUserData(email: email, password: password, userData: userData)
             }else {
                 var flag = false
                 for currentUserPrimitive in currentUsersPrimitive! {
                     if currentUserPrimitive.name == userData.name {
                         flag = true
+                        break
                     }
                 }
                 if !flag {
-                    registerPrimitiveUserData(userData: userData)
+                    registerPrimitiveUserData(email: email, password: password, userData: userData)
                 }
             }
         }else{
-            registerPrimitiveUserData(userData: userData)
+            registerPrimitiveUserData(email: email, password: password, userData: userData)
         }
         userDefault.synchronize()
     }
     
-    func registerPrimitiveUserData(userData: UserDataStruct) {
+    func registerPrimitiveUserData(email: String, password: String, userData: UserDataStruct) {
 //        let imageData = userData.profilePicture!.jpegData(compressionQuality: 1)
 //        let relativePath = "image_\(userData.email).jpg"
 //        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -214,13 +274,14 @@ class DataManager
             print("Error! \(e)");
             return
         }
-        let path = try? String(contentsOf: url!)
+//        let path = try? String(contentsOf: url!)
         let tmp = PrimitiveUserDataStruct (
-            email: userData.email ?? "",
+            email: email,
+            password: password,
             name: userData.name!,
             role: userData.role!,
-//            profilePicture: url!.absoluteString
-            profilePicture: path!
+            profilePicture: url!.absoluteString
+//            profilePicture: path!
         )
         currentUsersPrimitive?.append(tmp)
         let temp = try? JSONEncoder().encode(currentUsersPrimitive)
@@ -316,11 +377,23 @@ class DataManager
                             self.loadVideos(videosData: videosData)
                         }
                         
-                        let photosData = userRecord?.value(forKey: "tracks")
+                        let photosData = userRecord?.value(forKey: "photos")
                         if(photosData != nil )
                         {
                             self.loadPhotos(photosData: photosData)
                         }
+                        
+                        // TODO: ALBUM DATA
+                        
+//                        let albumData = userRecord?.value(forKey: "album")
+//                        if(albumData != nil )
+//                        {
+//                            self.loadAlbum(albumData: albumData)
+//                        }
+//
+                        // TODO: FAVOURITES DATA
+                        
+//                        self.getLatestFavourite()
                     }
                     else
                     {
@@ -349,6 +422,7 @@ class DataManager
                 {
                     self.currentUser?.musics?.append(TrackDataStruct(record: tr))
                 }
+                print("Load UserTrack:\(self.currentUser?.musics?.count)")
             }
             else
             {
@@ -362,7 +436,7 @@ class DataManager
     {
         let videos = videosData as! [CKRecord.Reference]
         if videos.count == 0 {return}
-        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: videos)
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Videos", recordName: videos)
         {   (isSuccess, errorString, trackRecords:[CKRecord]) in
 
             if(isSuccess)
@@ -372,6 +446,7 @@ class DataManager
                 {
                     self.currentUser?.videos?.append(VideosDataStruct(record: tr))
                 }
+                print("Load UserVideos:\(self.currentUser?.videos?.count)")
             }
             else
             {
@@ -387,7 +462,7 @@ class DataManager
         if photos.count == 0 {return}
         print("photosCount :\(photos.count)")
         
-        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: photos)
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Photos", recordName: photos)
         {   (isSuccess, errorString, trackRecords:[CKRecord]) in
 
             if(isSuccess)
@@ -397,6 +472,7 @@ class DataManager
                 {
                     self.currentUser?.photos?.append(PhotoDataStruct(record: tr))
                 }
+                print("Load UserPhotos:\(self.currentUser?.photos?.count)")
             }
             else
             {
@@ -405,6 +481,7 @@ class DataManager
         }
 
     }
+    
     
     // MARK: Update Current User
     func savecurrentUserRec()
@@ -423,7 +500,7 @@ class DataManager
     }
     
     
-    // MARK: Upload Music
+    // MARK: Upload
     func UploadNewTrack(trackData:TrackDataStruct, completionHandler:@escaping(Bool, String)->Void)
     {
         ckUtil.saveRecordToPublicDB(
@@ -639,12 +716,16 @@ class DataManager
             self.trendingNow = newTrendingNow
             updateExplorerView()
             print("Trending Now :\(self.trendingNow!.tracks.count)")
+//            print("Trending Now ID:\(self.trendingNow!.tracks.map({$0.record!.recordID}))")
+//            favTrackNow = self.trendingNow!.tracks.filter{favTrack.contains(($0.record?.recordID.recordName)!)}
+//            print("Trending Now Favourited:\(favTrackNow) \(favTrackNow.count)")
         }
         else
         {
             print("Trending now getTracks Failed \(errorString)")
         }
     }
+    
     
     func updateTrendingNow()
     {
@@ -730,6 +811,10 @@ class DataManager
                         upData.isVideo = false
                         usedRef = record.value(forKey: "track") as? CKRecord.Reference
                     }
+                    else
+                    {
+                        upData.isVideo = true
+                    }
                     let cIDX = idx
                     self.ckUtil.loadRecordFromPublicDB(recordID: usedRef!.recordID) { (dataIsSuccess, dataErrorStr, dataRecord) in
                         self.updateUploadedDataStuct(uploadedData: upData, idx: cIDX, isSuccess: dataIsSuccess, errorString: dataErrorStr, record: dataRecord!, maxRecords: maxRecords)
@@ -808,9 +893,16 @@ class DataManager
             {
                 let userData = UserDataStruct(record)
                 self.newFeaturedArtist?.users.append(userData)
-                
             }
             self.featuredArtist = newFeaturedArtist
+
+            var index = 0
+            for data in featuredArtist!.users
+            {
+                loadFeaturedArtistData(artistIndex: index, featuredArtistRecord: data.record!)
+                index += 1
+            }
+            
             updateExplorerView()
             print("FeaturedArtist :\(self.featuredArtist!.users.count)")
         }
@@ -819,6 +911,125 @@ class DataManager
             print("Featured Artist Get User Failed")
         }
     }
+    
+    func loadFeaturedArtistData(artistIndex:Int, featuredArtistRecord:CKRecord)
+    {
+        let tracksData = featuredArtistRecord.value(forKey: "tracks")
+        if(tracksData != nil )
+        {
+            self.loadFeaturedArtistTracks(artistIndex,tracksData: tracksData)
+        }
+        
+        let videosData = featuredArtistRecord.value(forKey: "videos")
+        if(videosData != nil )
+        {
+            self.loadFeaturedArtistVideos(artistIndex, videosData: videosData)
+        }
+        
+        let photosData = featuredArtistRecord.value(forKey: "photos")
+        if(photosData != nil )
+        {
+            self.loadFeaturedArtistPhotos(artistIndex, photosData: photosData)
+        }
+    }
+    
+    func loadFeaturedArtistTracks(_ artistIndex:Int, tracksData:Any?)
+    {
+        let tracks = tracksData as! [CKRecord.Reference]
+        if tracks.count == 0 {return}
+        var artistData = featuredArtist?.users[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: tracks)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                if(artistData!.musics == nil)
+                {
+                    artistData!.musics = []
+                }
+                artistData!.musics?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData!.musics?.append(TrackDataStruct(record: tr))
+                }
+                print("Load Featured Artist \(artistData?.name)Track:\(artistData!.musics?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadFeaturedArtistVideos(_ artistIndex:Int,videosData:Any?)
+    {
+        let videos = videosData as! [CKRecord.Reference]
+        if videos.count == 0 {return}
+        var artistData = featuredArtist?.users[artistIndex]
+        
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Videos", recordName: videos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                if(artistData!.videos == nil)
+                {
+                    artistData!.videos = []
+                }
+                artistData!.videos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData!.videos?.append(VideosDataStruct(record: tr))
+                }
+                print("Load featured artist \(artistData?.name) videos:\(artistData!.videos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadFeaturedArtistPhotos(_ artistIndex:Int,photosData:Any?)
+    {
+        let photos = photosData as! [CKRecord.Reference]
+        if photos.count == 0 {return}
+        print("photosCount :\(photos.count)")
+        var artistData = featuredArtist?.users[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Photos", recordName: photos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                if(artistData!.photos == nil)
+                {
+                    artistData!.photos = []
+                }
+                artistData!.photos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData!.photos?.append(PhotoDataStruct(record: tr))
+                }
+                print("Load featured artist \(artistData?.name) Photos:\(artistData!.photos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func getFavouritesData()
+    {
+        favTrackData = allTracks.filter{currentUser!.isFavMusic(recName:$0.record!.recordID.recordName)}
+        favVideoData = allVideos.filter{currentUser!.isFavVideo(recName:$0.record!.recordID.recordName)}
+        favArtistData = allArtist.filter{currentUser!.isFavArtist(recName:$0.record!.recordID.recordName)}
+    }
+
+    
     
     func updateFeaturedArtist()
     {
@@ -845,7 +1056,7 @@ class DataManager
                     {
                         let usedArr = self.allArtistRec.shuffled()
                                                 
-                        for i in 1...allArtistRecCount
+                        for i in 0..<allArtistRecCount
                         {
                             let ref = CKRecord.Reference(record: usedArr[i], action: .deleteSelf)
                             arr.add(ref)
@@ -1006,7 +1217,7 @@ class DataManager
     }
     
     // MARK: FAVOURITE
-    
+    /*
     func UploadNewFavourite(favouriteData:FavouritesDataStruct, completionHandler:(Bool, String)->Void)
     {
         
@@ -1025,7 +1236,7 @@ class DataManager
         
     }
     
-    func GetLatestFavourite()
+    func getLatestFavourite()
     {
         let query = CKQuery(recordType: "Favourites", predicate: NSPredicate(value: true))
         ckUtil.loadRecordFromPublicDB(query: query) { (isSuccess, errorString, record) in
@@ -1036,9 +1247,59 @@ class DataManager
             else
             {
                 print("GetLatestFavourite Success")
-                self.latestFavourite = record
-                print(self.latestFavourite)
+                self.latestFavouriteRec = record
+                print(self.latestFavouriteRec)
             }
+        }
+    }
+ */
+    func AddFavourites(favType:UserFavourites, recordName:String)
+    {
+        if(currentUser != nil)
+        {
+            switch favType {
+            case .Track:
+                if(!(currentUser?.favMusics?.contains(recordName))!)
+                {
+                    currentUser?.favMusics?.append(recordName)
+                }
+            case .Video:
+                if(!(currentUser?.favVideo?.contains(recordName))!)
+                {
+                    currentUser?.favArtist?.append(recordName)
+                }
+            case .Artist:
+                if(!(currentUser?.favArtist?.contains(recordName))!)
+                {
+                    currentUser?.favArtist?.append(recordName)
+                }
+            }
+            savecurrentUserRec()
+        }
+    }
+    
+    func RemoveFavourites(favType:UserFavourites, recordName:String)
+    {
+        if(currentUser != nil)
+        {
+            switch favType {
+            case .Track:
+                if((currentUser?.favMusics?.contains(recordName))!)
+                {
+                    currentUser!.favMusics!.remove(at:currentUser!.favMusics!.firstIndex(of:recordName)!)
+                }
+            case .Video:
+                if((currentUser?.favVideo?.contains(recordName))!)
+                {
+                    currentUser?.favVideo?.remove(at:(currentUser?.favVideo?.firstIndex(of:recordName))!)
+                }
+            case .Artist:
+                if((currentUser?.favArtist?.contains(recordName))!)
+                {
+                    currentUser?.favArtist?.remove(at:(currentUser?.favArtist?.firstIndex(of:recordName))!)
+                }
+            }
+            savecurrentUserRec()
         }
     }
     
@@ -1112,11 +1373,15 @@ class DataManager
                 print("getAllArtist Success")
                 self.allArtistRec = records
                 self.allArtist.removeAll()
+                var index:Int = 0
                 for record in records
                 {
                     self.allArtist.append(UserDataStruct(record))
+                    self.loadAllArtistData(artistIndex: index, artistRecord: record)
+                    index += 1
                 }
                 self.filteredArtist = self.allArtist
+                self.randomSpotlightData = self.allArtist.shuffled()
                 print("FilterArtist \(self.filteredTracks.count)")
                 
                 if(self.willUpdateFeaturedData)
@@ -1125,6 +1390,105 @@ class DataManager
                 }
             }
         }
+    }
+    
+    // MARK: LOAD USER DATA
+    func loadAllArtistData(artistIndex:Int, artistRecord:CKRecord)
+    {
+        let tracksData = artistRecord.value(forKey: "tracks")
+        if(tracksData != nil )
+        {
+            self.loadAllArtistTracks(artistIndex,tracksData: tracksData)
+        }
+        
+        let videosData = artistRecord.value(forKey: "videos")
+        if(videosData != nil )
+        {
+            self.loadAllArtistVideos(artistIndex, videosData: videosData)
+        }
+        
+        let photosData = artistRecord.value(forKey: "photos")
+        if(photosData != nil )
+        {
+            self.loadAllArtistPhotos(artistIndex, photosData: photosData)
+        }
+    }
+    
+    func loadAllArtistTracks(_ artistIndex:Int, tracksData:Any?)
+    {
+        let tracks = tracksData as! [CKRecord.Reference]
+        if tracks.count == 0 {return}
+        var artistData = allArtist[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: tracks)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                artistData.musics?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData.musics?.append(TrackDataStruct(record: tr))
+                }
+                print("Load all Artist \(artistData.name)Track:\(artistData.musics?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadAllArtistVideos(_ artistIndex:Int,videosData:Any?)
+    {
+        let videos = videosData as! [CKRecord.Reference]
+        if videos.count == 0 {return}
+        var artistData = allArtist[artistIndex]
+        
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Videos", recordName: videos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                artistData.videos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData.videos?.append(VideosDataStruct(record: tr))
+                }
+                print("Load all artist \(artistData.name) videos:\(artistData.videos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadAllArtistPhotos(_ artistIndex:Int,photosData:Any?)
+    {
+        let photos = photosData as! [CKRecord.Reference]
+        if photos.count == 0 {return}
+        print("photosCount :\(photos.count)")
+        var artistData = allArtist[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Photos", recordName: photos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                artistData.photos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData.photos?.append(PhotoDataStruct(record: tr))
+                }
+                print("Load All artist \(artistData.name) Photos:\(artistData.photos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
     }
     
     // MARK: SEARCH
@@ -1137,10 +1501,20 @@ class DataManager
             if !(filterText!.isEmpty)
             {
                 filteredArtist = allArtist.filter({ (data) -> Bool in
-                    if(data.name!.contains(filterText!)) {return true}
-                    if(data.genre!.contains(filterText!)) {return true}
-                    if(data.role!.contains(filterText!)) {return true}
-                    return false
+                    var result:Bool = false
+                    if(data.name != nil)
+                    {
+                        if !result {result = data.name!.containsInsesitive(string: filterText!)}
+                    }
+                    if(data.genre != nil)
+                    {
+                        if !result {result = data.genre!.containsInsesitive(string: filterText!)}
+                    }
+                    if(data.role != nil)
+                    {
+                        if !result {result = data.role!.containsInsesitive(string: filterText!)}
+                    }
+                    return result
                 })
             }
         }
@@ -1154,14 +1528,14 @@ class DataManager
             if !(filterText!.isEmpty)
             {
                 filteredTracks = allTracks.filter({ (data) -> Bool in
-                    if(data.name.contains(filterText!)) {return true}
-                    if(data.artistName!.contains(filterText!)) {return true}
-                    if(data.genre.contains(filterText!)) {return true}
+                    var result:Bool = false
+                    if !result {result = data.name.containsInsesitive(string: filterText!)}
+                    if !result {result = data.genre.containsInsesitive(string: filterText!)}
                     if(data.album != nil)
                     {
-                        if(data.album!.name.contains(filterText!)) {return true}
+                        if !result {result = data.album!.name.containsInsesitive(string: filterText!)}
                     }
-                    return false
+                    return result
                 })
             }
         }
@@ -1175,16 +1549,25 @@ class DataManager
             if !(filterText!.isEmpty)
             {
                 filteredVideos = allVideos.filter({ (data) -> Bool in
-                    if(data.name.contains(filterText!)) {return true}
-                    if(data.genre.contains(filterText!)) {return true}
-//                    if(data.artistName!.contains(filterText!)) {return true}
+                    var result:Bool = false
+                    if !result {result = data.name.containsInsesitive(string: filterText!)}
+                    if !result {result = data.genre.containsInsesitive(string: filterText!)}
+                    if !result {result = data.artistName.containsInsesitive(string: filterText!)}
                     if(data.album != nil)
                     {
-                        if(data.album!.name.contains(filterText!)) {return true}
+                        if !result {result = data.album!.name.containsInsesitive(string: filterText!)}
                     }
-                    return false
+                    return result
+                    
                 })
             }
         }
+    }
+    
+    // MARK: RANDOM SPOTLIGHT
+    
+    func filterRandomSpotlight()
+    {
+        randomSpotlightData = []
     }
 }

@@ -18,6 +18,15 @@ class FavoriteArtistsCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        artistName.isUserInteractionEnabled = false
+        artistImageButton.isUserInteractionEnabled = false
+        
     }
 
+    func updateData(data:UserDataStruct)
+    {
+        artistImage.image = data.profilePicture
+        artistName.titleLabel?.text = data.name
+        
+    }
 }

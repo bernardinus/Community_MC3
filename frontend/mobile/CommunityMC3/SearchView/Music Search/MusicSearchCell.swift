@@ -26,7 +26,7 @@ class MusicSearchCell: UITableViewCell {
         self.trackData = trackData
         trackImageView.image = trackData.coverImage
         trackTitleLabel.text = trackData.name
-        artistNameLabel.text = trackData.artistName!
+        artistNameLabel.text = trackData.artistName
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -61,20 +61,8 @@ class VideoPlayerViewController: UIViewController {
         
     }
     
-    //function to generate video thumbnail
-    func generateThumbnail(path: URL) -> UIImage? {
-        do {
-            let asset = AVURLAsset(url: path, options: nil)
-            let imgGenerator = AVAssetImageGenerator(asset: asset)
-            imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 5, timescale: 1), actualTime: nil)
-            let thumbNail = UIImage(cgImage: cgImage)
-            return thumbNail
-        } catch let error {
-            print("*** Error generating thumbnail: \(error.localizedDescription)")
-            return nil
-        }
-    }
+
+    
     
     
     @IBAction func playVideoButtonAction(_ sender: UIButton) {

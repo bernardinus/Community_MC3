@@ -20,7 +20,7 @@ extension UIViewController {
     
     func dismissKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(UIViewController.dismissKeyboardFunc))
-            tap.cancelsTouchesInView = false; view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false; view.addGestureRecognizer(tap)
         
     }
     
@@ -28,5 +28,5 @@ extension UIViewController {
         print("dismissKeyboard")
         view.endEditing(true)
     }
-
+    
 }

@@ -41,6 +41,9 @@ extension VideoSearchVC: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        TrackManager.shared.playVideo(view: self, videoData: dm!.filteredVideos[indexPath.row])
+    }
 }
 
 

@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ph2-c3-XhW">
-                        <rect key="frame" x="131" y="50" width="44" height="14.5"/>
+                        <rect key="frame" x="131" y="50" width="115" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
@@ -59,7 +59,7 @@
                 <outlet property="switchAccountName" destination="M1v-vw-DOo" id="apF-G2-J5J"/>
                 <outlet property="switchAccountRole" destination="Ph2-c3-XhW" id="qGu-g9-mqA"/>
             </connections>
-            <point key="canvasLocation" x="20" y="98"/>
+            <point key="canvasLocation" x="18.840579710144929" y="97.767857142857139"/>
         </tableViewCell>
     </objects>
     <resources>

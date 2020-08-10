@@ -13,13 +13,12 @@ class CarouselPageViewController: UIPageViewController {
     lazy var items: [UIViewController] = {
         let sb = UIStoryboard(name: "UserProfileView", bundle: nil)
         
-        let vc1 = sb.instantiateViewController(withIdentifier: "firstPageView")
-        let vc2 = sb.instantiateViewController(withIdentifier: "secondPageView")
+        let vc1 = sb.instantiateViewController(withIdentifier: "secondPageView")
+        let vc2 = sb.instantiateViewController(withIdentifier: "firstPageView")
         
         return [vc1, vc2]
     }()
     
-    var a:String = "pvc"
     override func viewDidLoad() {
         super.viewDidLoad() 
         self.dataSource = nil
