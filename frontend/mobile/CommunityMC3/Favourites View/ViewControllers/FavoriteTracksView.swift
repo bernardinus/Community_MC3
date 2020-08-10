@@ -33,7 +33,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "FavoriteTracksCell", bundle: nil), forCellReuseIdentifier: "favoriteTracksCell")
-        countTracks = DataManager.shared().favTrackNow
+        countTracks = DataManager.shared().favTrackData
         //        convertFavourites()
     }
     /*

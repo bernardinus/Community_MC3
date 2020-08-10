@@ -18,6 +18,7 @@ class FavoriteArtistsView: UIViewController {
         super.viewDidLoad()
 
         collectionView.register(UINib(nibName: "FavoriteArtistsCell", bundle: nil), forCellWithReuseIdentifier: "favoriteArtistsCell")
+        artistData = DataManager.shared().favArtistData
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)

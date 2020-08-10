@@ -106,6 +106,7 @@ class FavouritesView: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        DataManager.shared().getFavouritesData()
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.navigationBar.shadowImage = nil
         super.viewWillAppear(true)

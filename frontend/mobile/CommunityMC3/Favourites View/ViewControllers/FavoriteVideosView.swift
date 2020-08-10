@@ -24,6 +24,7 @@ class FavoriteVideosView: UIViewController {
         
         tableView.register(UINib(nibName: "FavoriteVideosCell", bundle: nil), forCellReuseIdentifier: "favoriteVideosCell")
         //        convertFavourites()
+        countVideos = DataManager.shared().favVideoData
     }
     
     func convertFavourites() {
