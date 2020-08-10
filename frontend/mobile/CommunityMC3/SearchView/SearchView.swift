@@ -20,7 +20,9 @@ class SearchView: UIViewController {
     
     @IBOutlet var searchCategoryButton: [UIButton]!
     
+    @IBOutlet weak var topButton: UIButton!
     var vcSearch:SearchContainerPageVC?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,18 @@ class SearchView: UIViewController {
         if segue.identifier == "searchContainer"
         {
             vcSearch = (segue.destination as! SearchContainerPageVC)
+            vcSearch?.callback = {
+                data in
+                self.performSegue(withIdentifier: "artistProfileSegue", sender: data)
+            }
+        }
+        else if segue.identifier == "artistProfileSegue"
+        {
+            let dest = segue.destination as! UserProfileVC
+            print("Sender :\(sender as! UserDataStruct)")
+            dest.userData = sender as? UserDataStruct
+            dest.isPersonalProfile = false
+            print("destName \(dest.userData?.name)")
         }
     }
     
@@ -62,16 +76,31 @@ class SearchView: UIViewController {
     @IBAction func searchTabSelected(_ sender: UIButton) {
         //Setup the active-inactive button color
         searchCategoryButton.forEach({
-            $0.backgroundColor = .none
-            $0.setTitleColor(#colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1), for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            setButtonAsUnselected($0)
+//            $0.backgroundColor = .none
+//            $0.setTitleColor(#colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1), for: .normal)
+//            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         })
+        
+        setButtonAsSelected(sender)
+        
+        //Assign each action button
+        let _: ButtonType = getSelectedActionType()
+    }
+    
+    func setButtonAsUnselected(_ sender:UIButton)
+    {
+        sender.backgroundColor = .none
+        sender.setTitleColor(#colorLiteral(red: 0.4117647059, green: 0.4745098039, blue: 0.9725490196, alpha: 1), for: .normal)
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+    }
+    
+    func setButtonAsSelected(_ sender:UIButton)
+    {
         sender.backgroundColor = #colorLiteral(red: 0.3450980392, green: 0.2, blue: 0.8392156863, alpha: 1)
         sender.setTitleColor(.white, for: .normal)
         sender.layer.cornerRadius = 15
         sender.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        //Assign each action button
-        let _: ButtonType = getSelectedActionType()
     }
     
     func updateResultTable()
@@ -88,6 +117,16 @@ extension SearchView:UISearchBarDelegate
         DataManager.shared().filterTracks(searchText)
         DataManager.shared().filterVideo(searchText)
         updateResultTable()
+        
+        if(!searchText.isEmpty)
+        {
+            searchTabSelected(topButton)
+        }
+        else
+        {
+            setButtonAsUnselected(topButton)
+        }
+        
         
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class FeaturedVideosVC: UIViewController {
     
     
-    var features: [FeaturedDataStruct]!
+    var features: FeaturedDataStruct? = nil
     var selectedRow = 0
     var mainTableView: UITableView!
     
@@ -32,12 +32,12 @@ class FeaturedVideosVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "trackPlayerSegue" {
             if let trackPlayerPage = segue.destination as? TrackPlayerViewController {
-                trackPlayerPage.track = features[selectedRow].track
+//                trackPlayerPage.track = features[selectedRow].track
             }
         }
         if segue.identifier == "videoPlayerSegue" {
             if let videoPlayerPage = segue.destination as? VideoPlayerViewController {
-                videoPlayerPage.video = features[selectedRow].video
+//                videoPlayerPage.video = features[selectedRow].video
             }
         }
     }
@@ -47,7 +47,7 @@ extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if features != nil {
-            return features.count
+            return features!.videos.count
         }
         //        return 10
         return 0
@@ -55,7 +55,7 @@ extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = featuredVideoTableView.dequeueReusableCell(withIdentifier: "featuredVideosCell") as! FeaturedVideosCell
-        cell.updateData(videoData: DataManager.shared().featuredVideos!.videos[indexPath.row])
+        cell.updateData(videoData: features!.videos[indexPath.row])
         
         return cell
     }
@@ -72,8 +72,9 @@ extension FeaturedVideosVC: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
-        if features[selectedRow].video != nil {
-            self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
-        }
+//        if features[selectedRow].video != nil {
+//            self.performSegue(withIdentifier: "videoPlayerSegue", sender: nil)
+//        }
+        TrackManager.shared.playVideo(view: self, videoData: features!.videos[indexPath.row])
     }
 }

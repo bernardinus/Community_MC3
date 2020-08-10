@@ -10,6 +10,8 @@ import UIKit
 
 class ShowcasePhotosVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var photoData:[PhotoDataStruct]? = nil
+    
     @IBOutlet weak var showcasePhotosCollectionView: UICollectionView!
     
     override func viewDidLoad() {

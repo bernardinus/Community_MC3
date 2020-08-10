@@ -24,4 +24,10 @@ class VideoListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    func update(vd:VideosDataStruct)
+    {
+        videoThumbnailImage.image = vd.coverImage
+        videoThumbnailImage.layer.borderWidth = 2
+    }
 }

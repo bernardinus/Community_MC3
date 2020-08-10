@@ -14,6 +14,7 @@ class PhotoDataStruct
 {
     //    var fileData:UIImage?
     
+    var record:CKRecord? =  nil
     var photosData: UIImage?
     var email: String? = nil
 //    var genre:String
@@ -21,15 +22,12 @@ class PhotoDataStruct
     
     init(record:CKRecord)
     {
+        self.record = record
+        
         let data = record.value(forKey: "photosData")
         if( data != nil)
         {
             photosData = UIImage(data: data as! Data)
-            email = record.value(forKey: "email") as! String
-        }
-        else
-        {
-            
         }
         
 //        genre = ""
@@ -47,10 +45,10 @@ class PhotoDataStruct
     
     func getCKRecord()->CKRecord
     {
-        var record = CKRecord(recordType: "Photos")
-        record.setValue(email, forKey: "email")
-        record.setValue(photosData?.pngData(), forKey: "photosData")
-        return record
+        var newRecord = CKRecord(recordType: "Photos")
+        newRecord.setValue(email, forKey: "email")
+        newRecord.setValue(photosData?.pngData(), forKey: "photosData")
+        return newRecord
     }
 }
 

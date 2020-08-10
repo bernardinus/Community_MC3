@@ -14,7 +14,9 @@ class StartViewController: UIViewController {
     @IBOutlet weak var baseContainerVC: UIView!
     @IBOutlet weak var miniPlayerVC: UIView!
     
-    var baseVC:UINavigationController? = nil
+    
+//    var baseVC:UINavigationController? = nil
+    var baseVC:UITabBarController? = nil
     
     var miniPlayerView:UIViewController? = nil
     
@@ -29,7 +31,8 @@ class StartViewController: UIViewController {
     {
         if segue.identifier == "baseSegue"
         {
-            baseVC = segue.destination as? UINavigationController
+            baseVC = segue.destination as? UITabBarController
+            
         }
         else if segue.identifier == "miniPlayerSegue"
         {

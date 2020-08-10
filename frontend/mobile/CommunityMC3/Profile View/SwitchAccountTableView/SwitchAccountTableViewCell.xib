@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,7 @@
                             <constraint firstAttribute="height" constant="59" id="aWO-MS-rWX"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1v-vw-DOo">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1v-vw-DOo">
                         <rect key="frame" x="131" y="21" width="115" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="0cN-kO-l24"/>
@@ -44,11 +44,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="M1v-vw-DOo" secondAttribute="trailing" constant="164" id="0VO-Bo-tJH"/>
-                    <constraint firstAttribute="bottom" secondItem="M1v-vw-DOo" secondAttribute="bottom" constant="39" id="4FJ-6e-GgM"/>
                     <constraint firstItem="Ph2-c3-XhW" firstAttribute="leading" secondItem="QKt-mR-4PX" secondAttribute="trailing" constant="42" id="7zF-86-eLa"/>
                     <constraint firstItem="QKt-mR-4PX" firstAttribute="top" secondItem="9rm-Bo-8hX" secondAttribute="top" constant="21" id="Cce-ke-DIG"/>
-                    <constraint firstItem="M1v-vw-DOo" firstAttribute="top" secondItem="9rm-Bo-8hX" secondAttribute="top" constant="40" id="ISS-dN-ehS"/>
                     <constraint firstItem="M1v-vw-DOo" firstAttribute="leading" secondItem="QKt-mR-4PX" secondAttribute="trailing" constant="42" id="Kcc-il-iW2"/>
+                    <constraint firstItem="M1v-vw-DOo" firstAttribute="top" secondItem="9rm-Bo-8hX" secondAttribute="top" constant="21" id="O2Z-M5-pNb"/>
                     <constraint firstAttribute="bottom" secondItem="QKt-mR-4PX" secondAttribute="bottom" constant="20" symbolic="YES" id="Or1-Rn-VNd"/>
                     <constraint firstItem="QKt-mR-4PX" firstAttribute="leading" secondItem="9rm-Bo-8hX" secondAttribute="leading" constant="20" symbolic="YES" id="Ub5-NC-vcg"/>
                     <constraint firstItem="Ph2-c3-XhW" firstAttribute="top" secondItem="M1v-vw-DOo" secondAttribute="bottom" constant="8" id="vZM-wT-MSs"/>

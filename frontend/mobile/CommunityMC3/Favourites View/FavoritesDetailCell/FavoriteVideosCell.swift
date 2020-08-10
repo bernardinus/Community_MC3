@@ -14,11 +14,33 @@ class FavoriteVideosCell: UITableViewCell {
     @IBOutlet weak var videoThumbnailImage: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
     
+    var videoData:VideosDataStruct? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         favoriteButton.isSelected = true
+        setupButtonImage()
     }
+    
+    func setupButtonImage()
+    {
+        playButton.setImage(#imageLiteral(resourceName: "playButtonFavorites"), for: .normal)
+        playButton.setImage(#imageLiteral(resourceName: "StopButtonFavorite"), for: .selected)
+
+        favoriteButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
+        favoriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
+
+        videoThumbnailImage.layer.borderWidth = 0
+    }
+    
+    func updateData(vd:VideosDataStruct)
+    {
+        videoData = vd
+        videoThumbnailImage.image = videoData?.coverImage
+        videoThumbnailImage.layer.borderWidth = 2
+    }
+
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

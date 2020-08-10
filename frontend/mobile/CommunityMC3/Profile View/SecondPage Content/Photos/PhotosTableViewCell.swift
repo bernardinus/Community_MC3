@@ -36,12 +36,12 @@ class PhotosTableViewCell: UITableViewCell {
 
 extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return min(5, photosData!.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = photosCollectionCell.dequeueReusableCell(withReuseIdentifier: "photosCollectionCell", for: indexPath as IndexPath) as! PhotosCollectionCell
-//        cell.photosCollectionImage.image = photosData![indexPath.row].photosData!
+        cell.photosCollectionImage.image = photosData![indexPath.row].photosData!
         return cell
     }
     

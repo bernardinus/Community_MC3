@@ -21,6 +21,7 @@ class AllSearchVC: UIViewController {
     @IBOutlet weak var allSearchTableView: UITableView!
     
     var dm:DataManager = DataManager.shared()
+    var callback:((UserDataStruct)->Void)? = nil
     
     override func viewDidLoad()
     {
@@ -93,19 +94,19 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == SearchSection.Artist.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "artistSearchCell") as! ArtistSearchCell
-            cell.artistData = dm.filteredArtist[indexPath.row]
+            cell.updateData(dm.filteredArtist[indexPath.row])
             return cell
         }
         if(indexPath.section == SearchSection.Music.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "musicSearchCell") as! MusicSearchCell
-            cell.trackData = dm.filteredTracks[indexPath.row]
+            cell.updateData(dm.filteredTracks[indexPath.row])
             return cell
         }
         if(indexPath.section == SearchSection.Video.rawValue)
         {
             let cell = allSearchTableView.dequeueReusableCell(withIdentifier: "videoSearchCell") as! VideoSearchCell
-            cell.videoData = dm.filteredVideos[indexPath.row]
+            cell.updateData(dm.filteredVideos[indexPath.row])
             return cell
         }
         if(indexPath.section == SearchSection.Playlist.rawValue)
@@ -125,4 +126,18 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         return 80
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == SearchSection.Artist.rawValue)
+        {
+            callback!(dm.filteredArtist[indexPath.row])
+        }
+        if(indexPath.section == SearchSection.Music.rawValue)
+        {
+            TrackManager.shared.play(trackData: dm.filteredTracks[indexPath.row])
+        }
+        if(indexPath.section == SearchSection.Video.rawValue)
+        {
+            TrackManager.shared.playVideo(view: self, videoData: dm.filteredVideos[indexPath.row])
+        }
+    }
 }

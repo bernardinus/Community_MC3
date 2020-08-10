@@ -81,7 +81,7 @@ extension UploadPanelViewController: ImagePickerDelegate{
     {
 //        coverImage?.image = image
         var photoData = PhotoDataStruct()
-        photoData.email = DataManager.shared().currentUser?.email
+        photoData.email = DataManager.shared().currentUser?.email!
         photoData.photosData = image
         
         DataManager.shared().UploadNewPhoto(photoData:photoData) { (isSuccess, errorString) in

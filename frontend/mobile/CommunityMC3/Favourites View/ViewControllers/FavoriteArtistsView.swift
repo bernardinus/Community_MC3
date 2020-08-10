@@ -12,10 +12,13 @@ class FavoriteArtistsView: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var artistData:[UserDataStruct]? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collectionView.register(UINib(nibName: "FavoriteArtistsCell", bundle: nil), forCellWithReuseIdentifier: "favoriteArtistsCell")
+        artistData = DataManager.shared().favArtistData
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -28,16 +31,23 @@ class FavoriteArtistsView: UIViewController {
 
 extension FavoriteArtistsView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if artistData != nil
+        {
+            return artistData!.count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteArtistsCell", for: indexPath) as! FavoriteArtistsCell
-        
+        cell.updateData(data: artistData![indexPath.row])
         cell.artistImage.image = #imageLiteral(resourceName: "artist-4")
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "artistProfileSegue", sender: nil)
+    }
     
 }

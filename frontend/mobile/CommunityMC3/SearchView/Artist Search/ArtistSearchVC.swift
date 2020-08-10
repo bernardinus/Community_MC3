@@ -13,6 +13,7 @@ class ArtistSearchVC: UIViewController {
     @IBOutlet weak var artistSeachTableView: UITableView!
     
     var dm:DataManager? = nil
+    var callback:((UserDataStruct)->Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,8 @@ extension ArtistSearchVC: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        callback!(dm!.filteredArtist[indexPath.row])
+    }
     
 }

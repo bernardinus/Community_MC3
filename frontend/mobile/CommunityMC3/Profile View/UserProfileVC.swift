@@ -18,19 +18,8 @@ class UserProfileVC: UIViewController {
     @IBOutlet weak var contactButton: UIButton!
     @IBOutlet weak var otherMenu: UIBarButtonItem!
     @IBOutlet weak var uploadMediaButton: UIButton!
-    
-//    private static var instance:UserProfileVC!
-//    static func shared() -> UserProfileVC
-//    {
-//        if instance == nil
-//        {
-//            instance = UserProfileVC()
-//        }
-//        return instance
-//    }
-    static let shared  = UserProfileVC()
-    
-    var isNeedUpdate:Bool = false
+    @IBOutlet weak var customNavigationBar: UINavigationBar!
+var isNeedUpdate:Bool = false
     
     var isPersonalProfile:Bool = true
     
@@ -41,6 +30,7 @@ class UserProfileVC: UIViewController {
     var showcaseVC:SecondPageVC?
     
     var aboutVC:FirstPageVC?
+    var signOutCallback:(()->Void)? = nil
     
     
     var isUploadVideo = false
@@ -48,6 +38,9 @@ class UserProfileVC: UIViewController {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userRoleLabel: UILabel!
+    @IBOutlet weak var totalFollowersLabel: UILabel!
+    @IBOutlet weak var profilePictureImage: UIImageView!
     
     var actionSheet:UIAlertController = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
     
@@ -61,9 +54,7 @@ class UserProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let loadEmail = userDefault.string(forKey: "email"){
-            userNameLabel.text = loadEmail
-        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(listnerFunction(_:)), name: NSNotification.Name(rawValue: "notificationName"), object: nil)
         imgPicker = ImagePicker(presentationController: self, delegate: self)
         loadLocalisation()
@@ -71,7 +62,7 @@ class UserProfileVC: UIViewController {
         contactButton.layer.cornerRadius = 10
         setupActionSheet()
         setupActionSheetToCall()
-
+        
         // Do any additional setup after loading the view.
         firstTabButton.alpha = 1
         secondTabButton.alpha = 0.5
@@ -80,7 +71,7 @@ class UserProfileVC: UIViewController {
         followButton.isHidden = isPersonalProfile
         contactButton.isHidden = isPersonalProfile
         uploadMediaButton.isHidden = !isPersonalProfile
-
+        
         if(!isPersonalProfile)
         {
             otherMenu.image = UIImage(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
@@ -91,7 +82,7 @@ class UserProfileVC: UIViewController {
             otherMenu.image = UIImage(systemName: "ellipsis")
             otherMenu.isEnabled = true
         }
-        loadNavigationBar()
+        //        loadNavigationBar()
     }
     
     @objc func listnerFunction(_ notification: NSNotification) {
@@ -103,7 +94,7 @@ class UserProfileVC: UIViewController {
             }
         }
     }
-    
+    /*
     func loadNavigationBar() {
         let navbar = UINavigationBar(frame: CGRect(x: 0, y: 0,
                                                    width: UIScreen.main.bounds.size.width, height: 50))
@@ -111,12 +102,13 @@ class UserProfileVC: UIViewController {
         self.view.addSubview(navbar)
         navbar.items = [profileNavigationItem]
     }
+     */
     
     func loadLocalisation() {
         followButton.titleLabel?.text = NSLocalizedString("Follow".uppercased(), comment: "")
         contactButton.titleLabel?.text = NSLocalizedString("Contact".uppercased(), comment: "")
-        firstTabButton.titleLabel?.text = NSLocalizedString("About", comment: "")
-        secondTabButton.titleLabel?.text = NSLocalizedString("Showcase".uppercased(), comment: "")
+        firstTabButton.titleLabel?.text = NSLocalizedString("Showcase".uppercased(), comment: "")
+        secondTabButton.titleLabel?.text =  NSLocalizedString("About", comment: "")
     }
     
     @IBAction func contactButtonTouched(_ sender: Any) {
@@ -132,27 +124,28 @@ class UserProfileVC: UIViewController {
         uploadPanelVC.modalTransitionStyle = .coverVertical
         uploadPanelVC.view.layer.cornerRadius = 34
         
-//        performSegue(withIdentifier: "uploadPanel", sender: self)
+        //        performSegue(withIdentifier: "uploadPanel", sender: self)
         self.present(uploadPanelVC, animated: true, completion: nil)
     }
     
     
     func updateLayout()
     {
-        if let loadEmail = userDefault.string(forKey: "email"){
-            userNameLabel.text = loadEmail
-        }
         
-
-//        userData = UserDataStruct(DataManager.shared().currentUserRec!)
+        
+        //        userData = UserDataStruct(DataManager.shared().currentUserRec!)
         if isPersonalProfile == true
         {
             userData = DataManager.shared().currentUser
         }
         print("Name :\(userData!.name!)")
         
-        // name
         userNameLabel.text = userData?.name
+        userRoleLabel.text = userData?.role
+        totalFollowersLabel.text = "\(userData!.followerCount!) followers"
+        totalFollowersLabel.isHidden = !(userData!.isArtist)
+        profilePictureImage.image = userData?.profilePicture
+        
         
         
         
@@ -162,7 +155,6 @@ class UserProfileVC: UIViewController {
             phoneNumber: userData!.phoneNumber!,
             socialMedia: userData!.instagram!
         )
-        aboutVC?.aboutTableView.reloadData()
         
         // showcase VC
         showcaseVC?.updateData(tracks: userData?.musics,
@@ -179,7 +171,7 @@ class UserProfileVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-
+        
         super.viewDidAppear(animated)
         
         
@@ -219,14 +211,34 @@ class UserProfileVC: UIViewController {
                 smVC.tracksData = userData?.musics
             }
         }
+        else if segue.identifier == "showcaseVideoSegue"
+        {
+            if let smVC = segue.destination as? ShowcaseVideosVC
+            {
+                smVC.videoData = userData?.videos
+            }
+        }
+        else if segue.identifier == "showcasePhotoSegue"
+        {
+            if let smVC = segue.destination as? ShowcasePhotosVC
+            {
+                smVC.photoData = userData?.photos
+            }
+        }
     }
     
     func signOut(action:UIAlertAction)
     {
-        DataManager.shared().logout()
-//        self.performSegue(withIdentifier: "logoutUser", sender: nil)
-        self.performSegue(withIdentifier: "profileExplorer", sender: nil)
-
+        let alert = AlertViewHelper.createAlertView(type: .SignOut,
+                                        rightHandler: { (yesAction) in
+                                                    DataManager.shared().logout()
+                                                    self.performSegue(withIdentifier: "unwindToExplorerView", sender: nil)
+                                            //        signOutCallback!()
+                                            //        self.performSegue(withIdentifier: "logoutUser", sender: nil)
+                                        },
+                                        leftHandler: nil,
+                                        replacementString: [:])
+        present(alert, animated: true, completion: nil)
     }
     
     func setupActionSheet()
@@ -263,31 +275,33 @@ class UserProfileVC: UIViewController {
         }
         actionSheet.addAction(switchAccountAction)
         
-        let shareAction = UIAlertAction(title: NSLocalizedString("Share".uppercased(), comment: ""), style: .default)
-        actionSheet.addAction(shareAction)
-        
-        let uploadMusic = UIAlertAction(title: NSLocalizedString("Upload Music".uppercased(), comment: ""), style: .default,
-                                         handler: {
-                                            action in
-                                            self.isUploadVideo = false
-                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
-        )
-        actionSheet.addAction(uploadMusic)
-        
-        let uploadVideo = UIAlertAction(title: NSLocalizedString("Upload Video".uppercased(), comment: ""), style: .default,
-                                         handler: {
-                                            action in
-                                            self.isUploadVideo = true
-                                            self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
-        )
-        actionSheet.addAction(uploadVideo)
-        
-        let uploadPhotos = UIAlertAction(title: NSLocalizedString("Upload Photos".uppercased(), comment: ""), style: .default,
-                                         handler: {
-                                            action in
-                                            self.imgPicker?.present(from: self.view) }
-        )
-        actionSheet.addAction(uploadPhotos)
+        /*
+         let shareAction = UIAlertAction(title: NSLocalizedString("Share".uppercased(), comment: ""), style: .default)
+         actionSheet.addAction(shareAction)
+         
+         let uploadMusic = UIAlertAction(title: NSLocalizedString("Upload Music".uppercased(), comment: ""), style: .default,
+         handler: {
+         action in
+         self.isUploadVideo = false
+         self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
+         )
+         actionSheet.addAction(uploadMusic)
+         
+         let uploadVideo = UIAlertAction(title: NSLocalizedString("Upload Video".uppercased(), comment: ""), style: .default,
+         handler: {
+         action in
+         self.isUploadVideo = true
+         self.performSegue(withIdentifier: "selectFileSegue", sender: nil) }
+         )
+         actionSheet.addAction(uploadVideo)
+         
+         let uploadPhotos = UIAlertAction(title: NSLocalizedString("Upload Photos".uppercased(), comment: ""), style: .default,
+         handler: {
+         action in
+         self.imgPicker?.present(from: self.view) }
+         )
+         actionSheet.addAction(uploadPhotos)
+         */
         
         let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel)
         actionSheet.addAction(cancelAction)
@@ -315,13 +329,23 @@ class UserProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
+        if(navigationController != nil)
+        {
+            customNavigationBar.isHidden = true 
+            navigationController?.setNavigationBarHidden(false, animated: false)
+            navigationController?.navigationBar.isTranslucent = false
+            navigationController?.navigationBar.shadowImage = UIImage(color: .white, size: CGSize(width: 1, height: 1))
+            
+        }
+        else
+        {
+            customNavigationBar.isHidden = false
+        }
         
-        aboutVC = cVC!.items[0] as? FirstPageVC
         
-        showcaseVC = cVC!.items[1] as? SecondPageVC
+        aboutVC = cVC!.items[1] as? FirstPageVC
+        
+        showcaseVC = cVC!.items[0] as? SecondPageVC
         showcaseVC?.showcaseVideoSegue = {
             self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
         }
@@ -355,17 +379,9 @@ class UserProfileVC: UIViewController {
         firstTabButton.alpha = 1
         secondTabButton.alpha = 0.5
         
-//        print(cVC?.a as Any)
+        //        print(cVC?.a as Any)
         cVC?.moveToPage(index: 0)
-    }
-    
-    @IBAction func secondPageTapped(_ sender: Any) {
-        firstTabButton.alpha = 0.5
-        secondTabButton.alpha = 1
-        
-//        print(cVC?.a as Any)
-        cVC?.moveToPage(index: 1)
-        showcaseVC = cVC!.items[1] as? SecondPageVC
+        showcaseVC = cVC!.items[0] as? SecondPageVC
         showcaseVC?.showcaseVideoSegue = {
             self.performSegue(withIdentifier: "showcaseVideoSegue", sender: nil)
         }
@@ -383,6 +399,14 @@ class UserProfileVC: UIViewController {
         }
         
         updateLayout()
+    }
+    
+    @IBAction func secondPageTapped(_ sender: Any) {
+        firstTabButton.alpha = 0.5
+        secondTabButton.alpha = 1
+        
+        //        print(cVC?.a as Any)
+        cVC?.moveToPage(index: 1)
         
     }
 }
@@ -390,9 +414,9 @@ class UserProfileVC: UIViewController {
 
 extension UserProfileVC : UIActionSheetDelegate, UIViewControllerTransitioningDelegate
 {
-
+    
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-           return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
+        return OverlayPresentationController(presentedViewController:presented, presenting:presenting)
     }
 }
 
@@ -400,7 +424,7 @@ extension UserProfileVC:ImagePickerDelegate
 {
     func didSelect(image: UIImage?)
     {
-//        coverImage?.image = image
+        //        coverImage?.image = image
         var photoData = PhotoDataStruct()
         photoData.email = DataManager.shared().currentUser?.email
         photoData.photosData = image
@@ -411,13 +435,13 @@ extension UserProfileVC:ImagePickerDelegate
                 print("Upload Photo File Success")
                 
                 
-//                    self.dismiss(animated: true, completion: nil)
+                //                    self.dismiss(animated: true, completion: nil)
                 DispatchQueue.main.async {
                     self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
                 }
                 AlertViewHelper.createAlertView(type: .OK, rightHandler:nil, leftHandler: nil, replacementString: [strKeyOK_MSG:"Upload Photo File Success"])
                 
-
+                
             }
             else
             {
@@ -429,16 +453,16 @@ extension UserProfileVC:ImagePickerDelegate
 }
 
 class OverlayPresentationController: UIPresentationController {
-
+    
     private let dimmedBackgroundView = UIView()
     private let height: CGFloat = 450
-
+    
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backgroundTapped))
         self.dimmedBackgroundView.addGestureRecognizer(tapGestureRecognizer)
     }
-
+    
     override var frameOfPresentedViewInContainerView: CGRect {
         var frame =  CGRect.zero
         if let containerBounds = containerView?.bounds {
@@ -449,7 +473,7 @@ class OverlayPresentationController: UIPresentationController {
         }
         return frame
     }
-
+    
     override func presentationTransitionWillBegin() {
         if let containerView = self.containerView, let coordinator = presentingViewController.transitionCoordinator {
             containerView.addSubview(self.dimmedBackgroundView)
@@ -461,14 +485,14 @@ class OverlayPresentationController: UIPresentationController {
             }, completion: nil)
         }
     }
-
+    
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         self.dimmedBackgroundView.removeFromSuperview()
     }
-
+    
     @objc private func backgroundTapped() {
-       self.presentedViewController.dismiss(animated: true, completion: nil)
+        self.presentedViewController.dismiss(animated: true, completion: nil)
     }
-
-
+    
+    
 }

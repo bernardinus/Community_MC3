@@ -19,4 +19,10 @@ class FeaturedArtistCollectionCell: UICollectionViewCell {
         // Initialization code
     }
     
+    func updateData(userData:UserDataStruct)
+    {
+        artistImageView.image = userData.profilePicture
+        name.text = userData.name
+    }
+    
 }

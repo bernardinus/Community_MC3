@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-b2-CLJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-b2-CLJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -106,17 +106,6 @@
                                     <constraint firstAttribute="height" constant="50" id="YGO-vO-EDr"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Af5-ie-1jm">
-                                <rect key="frame" x="132" y="822" width="150" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="HrG-YG-YvT"/>
-                                    <constraint firstAttribute="width" constant="150" id="Myb-Hp-WcH"/>
-                                </constraints>
-                                <state key="normal" title="Create new account!"/>
-                                <connections>
-                                    <segue destination="ub4-4C-5TT" kind="show" identifier="registerNewUser" id="Apg-5u-taB"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in or login to see the latest highlights " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94z-vq-zwl">
                                 <rect key="frame" x="107" y="158" width="200" height="48"/>
                                 <constraints>
@@ -134,9 +123,9 @@
                                     <constraint firstAttribute="height" constant="44" id="Nkn-Bf-xYD"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="chevron.left" catalog="system"/>
+                                <state key="normal" image="chevron.down" catalog="system"/>
                                 <connections>
-                                    <segue destination="azw-hV-Y6n" kind="unwind" identifier="loggedInSegue" unwindAction="unwindToExplorerView:" id="syy-Ax-Wxj"/>
+                                    <segue destination="azw-hV-Y6n" kind="unwind" unwindAction="unwindToExplorerView:" id="0rP-8C-QnU"/>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong username or password" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNH-uZ-fN4">
@@ -149,6 +138,17 @@
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Af5-ie-1jm">
+                                <rect key="frame" x="132" y="500" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HrG-YG-YvT"/>
+                                    <constraint firstAttribute="width" constant="150" id="Myb-Hp-WcH"/>
+                                </constraints>
+                                <state key="normal" title="Create new account!"/>
+                                <connections>
+                                    <segue destination="ub4-4C-5TT" kind="presentation" identifier="registerNewUser" modalPresentationStyle="fullScreen" id="Apg-5u-taB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -168,14 +168,14 @@
                             <constraint firstItem="ynh-9w-Cye" firstAttribute="leading" secondItem="Hsa-SJ-8n8" secondAttribute="leading" constant="20" id="LxS-z4-2ri"/>
                             <constraint firstItem="chz-jH-e0Y" firstAttribute="top" secondItem="FcE-WL-1FA" secondAttribute="bottom" constant="10" id="Ni4-6x-cbt"/>
                             <constraint firstItem="5jf-ZP-6xb" firstAttribute="top" secondItem="bsz-wV-PWI" secondAttribute="bottom" constant="10" id="QXz-gs-0BO"/>
-                            <constraint firstItem="Hsa-SJ-8n8" firstAttribute="bottom" secondItem="Af5-ie-1jm" secondAttribute="bottom" constant="10" id="SWL-iV-45T"/>
+                            <constraint firstItem="Hsa-SJ-8n8" firstAttribute="bottom" secondItem="Af5-ie-1jm" secondAttribute="bottom" constant="332" id="SWL-iV-45T"/>
                             <constraint firstItem="Af5-ie-1jm" firstAttribute="centerX" secondItem="6f4-zZ-woa" secondAttribute="centerX" id="UFf-dd-CbH"/>
                             <constraint firstItem="adB-lg-BJP" firstAttribute="top" secondItem="ynh-9w-Cye" secondAttribute="bottom" constant="8" id="XF7-VA-Eli"/>
                             <constraint firstItem="BIg-uO-U05" firstAttribute="top" secondItem="Hsa-SJ-8n8" secondAttribute="top" constant="60" id="YWS-5a-2MQ"/>
                             <constraint firstItem="4T2-9k-F6X" firstAttribute="top" secondItem="Hsa-SJ-8n8" secondAttribute="top" constant="10" id="cOb-gL-8PB"/>
                             <constraint firstItem="adB-lg-BJP" firstAttribute="top" secondItem="ynh-9w-Cye" secondAttribute="bottom" constant="8" id="cpd-RR-y5R"/>
                             <constraint firstItem="brE-PH-Op2" firstAttribute="top" secondItem="adB-lg-BJP" secondAttribute="bottom" constant="16" id="ftk-XU-oeS"/>
-                            <constraint firstItem="Af5-ie-1jm" firstAttribute="top" secondItem="c6B-MV-ODE" secondAttribute="bottom" constant="14" id="gRq-eY-gFa"/>
+                            <constraint firstItem="Af5-ie-1jm" firstAttribute="top" secondItem="c6B-MV-ODE" secondAttribute="bottom" constant="-308" id="gRq-eY-gFa"/>
                             <constraint firstItem="Hsa-SJ-8n8" firstAttribute="trailing" secondItem="FcE-WL-1FA" secondAttribute="trailing" constant="20" id="iLc-uI-FGJ"/>
                             <constraint firstItem="Oly-v8-ssm" firstAttribute="top" secondItem="brE-PH-Op2" secondAttribute="bottom" constant="8" id="ku7-ul-6Mn"/>
                             <constraint firstItem="BIg-uO-U05" firstAttribute="centerX" secondItem="6f4-zZ-woa" secondAttribute="centerX" id="mFT-3E-ciQ"/>
@@ -211,10 +211,10 @@
             </objects>
             <point key="canvasLocation" x="1053.6231884057972" y="95.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Forgot Password Controller-->
         <scene sceneID="gFS-vP-n51">
             <objects>
-                <viewController id="bRu-1V-bjE" sceneMemberID="viewController">
+                <viewController id="bRu-1V-bjE" customClass="ForgotPasswordController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MdE-vc-3Bi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -241,7 +241,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Input email here..." borderStyle="roundedRect" placeholder="Input email here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OfO-Kr-fqG">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Input email here..." borderStyle="roundedRect" placeholder="Input email here..." textAlignment="natural" clearsOnBeginEditing="YES" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OfO-Kr-fqG">
                                         <rect key="frame" x="20" y="301" width="374" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -259,7 +259,7 @@
                                         <rect key="frame" x="37" y="56" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="chevron.left" catalog="system"/>
+                                        <state key="normal" image="chevron.down" catalog="system"/>
                                         <connections>
                                             <segue destination="HYj-0m-wP3" kind="unwind" unwindAction="unwindToLoginController:" id="pPP-lf-oNY"/>
                                         </connections>
@@ -272,6 +272,9 @@
                                         <state key="normal" title="Submit">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="submitForgotPassword:" destination="bRu-1V-bjE" eventType="touchUpInside" id="b4G-TC-cQF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -316,7 +319,7 @@
                                         <rect key="frame" x="37" y="56" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="chevron.left" catalog="system"/>
+                                        <state key="normal" image="chevron.down" catalog="system"/>
                                         <connections>
                                             <segue destination="FEU-WH-BwV" kind="unwind" unwindAction="unwindToLoginController:" id="cPi-8w-dIz"/>
                                         </connections>
@@ -356,8 +359,29 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign up or register to see the latest highlights " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMi-Ej-n4Z">
+                                        <rect key="frame" x="111" y="161" width="206" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm Password" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFG-L9-i3h">
+                                        <rect key="frame" x="20" y="455" width="131" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your password here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zfq-HN-Vuk">
+                                        <rect key="frame" x="20" y="481" width="374" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7JL-Ty-NRX">
-                                        <rect key="frame" x="20" y="459" width="374" height="50"/>
+                                        <rect key="frame" x="20" y="551" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.3921568627" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
@@ -369,20 +393,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frV-EP-Z9F">
-                                        <rect key="frame" x="136" y="533" width="156" height="30"/>
+                                        <rect key="frame" x="136" y="625" width="156" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Already have account?"/>
                                         <connections>
                                             <segue destination="FEU-WH-BwV" kind="unwind" identifier="loggedInSegue" unwindAction="unwindToLoginController:" id="7KZ-gi-Wyz"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign up or register to see the latest highlights " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMi-Ej-n4Z">
-                                        <rect key="frame" x="111" y="161" width="206" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <viewLayoutGuide key="safeArea" id="uo7-jz-bjH"/>
@@ -424,11 +441,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xN3-fS-K2l"/>
+        <segue reference="f0o-3Q-oSI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple" width="975" height="150"/>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="fb" width="975" height="150"/>
         <image name="login" width="1125" height="2436"/>
     </resources>

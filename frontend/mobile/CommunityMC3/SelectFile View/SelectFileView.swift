@@ -62,8 +62,11 @@ class SelectFileView: UIViewController
         if segue.identifier == "uploadFileSegue"
         {
             let uploadFileVC = segue.destination as! UploadFileView
-            uploadFileVC.isUploadVideo = isUploadVideo
-            uploadFileVC.fileURL = filteredList[selectedIndex]
+            uploadFileVC.prepareData(isUploadVideo: isUploadVideo,
+                                     fileURL: filteredList[selectedIndex]
+            )
+//            uploadFileVC.isUploadVideo = isUploadVideo
+//            uploadFileVC.fileURL = filteredList[selectedIndex]
         }
      }
     

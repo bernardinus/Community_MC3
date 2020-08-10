@@ -12,29 +12,67 @@ import CloudKit
 
 class VideosDataStruct
 {
-    // normal param
-    var genre:String
-    var name:String
-    var email:String
-    var fileData:CKAsset? = nil
-    var artistName:String? = nil
-    var coverImage:UIImage? = nil
-    
-    // asset
-    var videoData:AVPlayer?
-    
-    
+    var record:CKRecord? = nil
     
     // ref
-    var album:AlbumDataStruct?
+    var album:AlbumDataStruct? = nil
+    
+    
+    // normal param
+    var artistName:String = "artistName"
+    var coverImage:UIImage? = nil
+    var email:String = "videoEmail"
+    var fileData:CKAsset? = nil
+    var genre:String = "videoGenre"
+    var isCoverSong:Bool = false
+    var name:String = "videoName"
+    
+    // asset
+    var videoData:AVPlayer? = nil
     
     init(record:CKRecord)
     {
-        self.genre = record.value(forKey: "genre") as! String
-        self.name = record.value(forKey: "name") as! String
-        self.email = record.value(forKey: "email") as! String
-        self.fileData = record.value(forKey: "fileData") as? CKAsset
+        self.record = record
         
+        let artistData = record.value(forKey: "artistName")
+        if artistData != nil
+        {
+            self.artistName = artistData as! String
+        }
+
+
+        let coverImageData = record.value(forKey: "coverImage")
+        if(coverImageData != nil)
+        {
+            coverImage = UIImage(data: coverImageData as! Data)
+        }
+        self.email = record.value(forKey: "email") as! String
+
+        self.fileData = record.value(forKey: "fileData") as? CKAsset
+
+        let genreData = record.value(forKey: "genre")
+        if genreData != nil
+        {
+            self.genre = genreData as! String
+        }
+        
+        let isCoverSongData = record.value(forKey: "isCoverSong")
+        var isCoverSongDataIntValue:Int = 0
+        if(isCoverSongData != nil )
+        {
+            isCoverSongDataIntValue = isCoverSongData as! Int
+            
+            if(isCoverSongDataIntValue == 1)
+            {
+                self.isCoverSong = true
+            }
+        }
+        
+        let nameData = record.value(forKey: "name")
+        if(nameData != nil)
+        {
+            self.name = nameData as! String
+        }
     }
     
     init()
@@ -45,6 +83,7 @@ class VideosDataStruct
         self.fileData = CKAsset(fileURL: URL(string: "")!)
 
     }
+    
     init(genre: String, name:String, email:String, fileURL:URL)
     {
         self.genre = genre

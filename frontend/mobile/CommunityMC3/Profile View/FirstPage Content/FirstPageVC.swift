@@ -41,6 +41,11 @@ class FirstPageVC: UIViewController {
         self.genreLabel = genre
         self.phoneNumberLabel = phoneNumber
         self.socialMediaLabel = socialMedia
+        
+        if(aboutTableView != nil)
+        {
+            aboutTableView.reloadData()
+        }
     }
 }
 

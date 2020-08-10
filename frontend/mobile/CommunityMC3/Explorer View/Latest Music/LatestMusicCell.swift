@@ -14,7 +14,7 @@ class LatestMusicCell: UITableViewCell {
     @IBOutlet weak var playMusicButton: UIButton!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var musicImageView: UIButton!
+    @IBOutlet weak var musicImageView: UIImageView!
 //    @IBOutlet weak var genreLabel: UILabel!
 //    @IBOutlet weak var indicatorImage: UIImageView!
     
@@ -41,16 +41,17 @@ class LatestMusicCell: UITableViewCell {
         {
             print("uploadedVideo \(dt?.videoRecord)")
             trackTitleLabel.text = dt?.videoData?.name
-//            artistNameLabel.text = dt?.videoData.artistName
-//            musicImageView.imageView?.image = videoController.generateThumbnail(path: uploads[indexPath.row].video!.fileURL)
+            artistNameLabel.text = dt?.videoData?.artistName
+            musicImageView.image = dt?.videoData?.coverImage
 
         }
         else
         {
-            print("uploadedTrack \(dt?.trackRecord)")
+//            print("uploadedTrack \(dt?.trackRecord)")
             trackTitleLabel.text = dt?.trackData?.name
-//            artistNameLabel.text = dt?.trackData?.artistName
-            print("masuk ", player)
+            artistNameLabel.text = dt?.trackData?.artistName
+            musicImageView.image = dt?.trackData?.coverImage
+//            print("masuk ", player)
             if player
             {
                 playMusicButton.imageView?.image = UIImage(systemName: "pause.fill")

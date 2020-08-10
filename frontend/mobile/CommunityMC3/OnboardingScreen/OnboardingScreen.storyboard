@@ -50,7 +50,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
-                                            <segue destination="xhr-7j-3ok" kind="presentation" modalPresentationStyle="fullScreen" id="2g8-rA-ECq"/>
+                                            <action selector="signInButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zlq-GI-61O"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -106,6 +106,7 @@
                     <connections>
                         <outlet property="btnNext" destination="EVs-gG-awe" id="Ros-Tv-SHJ"/>
                         <outlet property="vwContainer" destination="Qlf-zv-be8" id="Kbd-jZ-8tR"/>
+                        <segue destination="xhr-7j-3ok" kind="presentation" identifier="signInFromOnboarding" modalPresentationStyle="fullScreen" id="IQg-53-WHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -122,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="890" y="94"/>
         </scene>
-        <!--LoginScreen-->
+        <!--Main-->
         <scene sceneID="og5-Xq-HuR">
             <objects>
-                <viewControllerPlaceholder storyboardName="LoginScreen" id="xhr-7j-3ok" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" id="xhr-7j-3ok" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urb-ei-5iD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="685" y="418"/>

@@ -45,7 +45,7 @@ class SecondPageVC: UIViewController {
         self.videos = videos
         self.photos = photos
         
-        print("\(tracks?.count) \(videos?.count) \(photos?.count)")
+        print("showcase T:\(tracks!.count) V:\(videos!.count) P:\(photos!.count)")
         if(showcaseTableView != nil)
         {
             showcaseTableView.reloadData()
@@ -85,11 +85,13 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section == ShowcaseSection.Music.rawValue)
         {
-            playMusicSegue!(tracks![indexPath.row])
+//            playMusicSegue!(tracks![indexPath.row])
+            TrackManager.shared.play(trackData: tracks![indexPath.row])
         }
         if(indexPath.section == ShowcaseSection.Videos.rawValue)
         {
-            playVideoSegue!(videos![indexPath.row])
+//            playVideoSegue!(videos![indexPath.row])
+            TrackManager.shared.playVideo(view: self, videoData: videos![indexPath.row])
         }
         
     }
@@ -128,7 +130,7 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == ShowcaseSection.Photos.rawValue)
         {
             let cell = showcaseTableView.dequeueReusableCell(withIdentifier: "photosTableCell") as! PhotosTableViewCell
-//            cell.updateData(photosData: photos!)
+            cell.updateData(photosData: photos!)
             return cell
         }
         if(indexPath.section == ShowcaseSection.Videos.rawValue)
