@@ -8,6 +8,8 @@
 
 import Foundation
 
+var showLogin:Bool = false
+
 let iCloudContainerID:String = "iCloud.ada.mc3.music"
 
 let availableAudioFilesExt:[String] = [

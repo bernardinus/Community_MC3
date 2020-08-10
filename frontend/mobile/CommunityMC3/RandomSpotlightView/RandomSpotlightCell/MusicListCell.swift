@@ -27,4 +27,12 @@ class MusicListCell: UITableViewCell {
         
     }
     
+    func update(td:TrackDataStruct)
+    {
+        trackTitle.text = td.name
+        trackArtist.text = td.artistName
+        trackCurrent.text = td.duration
+        
+    }
+    
 }

@@ -197,6 +197,7 @@
                         <outletCollection property="searchCategoryButton" destination="R0z-Ft-hxH" collectionClass="NSMutableArray" id="RsF-tW-VjU"/>
                         <segue destination="PAs-GI-P6h" kind="presentation" identifier="loginScreenSegue" modalPresentationStyle="fullScreen" id="XSY-TL-X65"/>
                         <segue destination="b09-Rk-3EU" kind="presentation" identifier="userProfileSegue" modalPresentationStyle="fullScreen" id="lXQ-VS-CPx"/>
+                        <segue destination="b09-Rk-3EU" kind="show" identifier="artistProfileSegue" id="d80-XW-5t5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -405,6 +406,9 @@
             <point key="canvasLocation" x="919" y="-82"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="d80-XW-5t5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>

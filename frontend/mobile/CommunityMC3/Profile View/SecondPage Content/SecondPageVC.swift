@@ -85,11 +85,13 @@ extension SecondPageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.section == ShowcaseSection.Music.rawValue)
         {
-            playMusicSegue!(tracks![indexPath.row])
+//            playMusicSegue!(tracks![indexPath.row])
+            TrackManager.shared.play(trackData: tracks![indexPath.row])
         }
         if(indexPath.section == ShowcaseSection.Videos.rawValue)
         {
-            playVideoSegue!(videos![indexPath.row])
+//            playVideoSegue!(videos![indexPath.row])
+            TrackManager.shared.playVideo(view: self, videoData: videos![indexPath.row])
         }
         
     }

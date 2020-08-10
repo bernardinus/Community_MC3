@@ -10,6 +10,13 @@ import Foundation
 import CloudKit
 import UIKit
 
+enum UserFavourites {
+    case Track
+    case Video
+    case Artist
+}
+
+
 class DataManager
 {
     private static var instance:DataManager!
@@ -91,32 +98,10 @@ class DataManager
         return currentUserRec != nil
     }
     
-//    [<CKRecordID: 0x6000025c9560; recordName=, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c9c60;
-//    recordName=1308C17A-C61E-418A-9F0D-8DE866FCDAB2, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c9de0;
-//    recordName=FC600672-8645-4690-8C26-085BF5D95EDD, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025cdca0;
-//    recordName=3ADCEE6C-85E2-4409-85FD-B5BB8269AB54, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025ffbe0;
-//    recordName=D6BAD740-2E0F-4A49-BE1B-D5352B1295E6, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025ffda0;
-//    recordName=D3E83A7C-ECAA-4036-A3A8-EE472EA744AF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e6160;
-//    recordName=D37C13D8-9A28-42EC-AE39-CF4BB15BD2B7, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e61e0;
-//    recordName=6D3F3F6E-A670-412B-8DD0-4E73025B99FF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5ee0;
-//    recordName=2920EE82-FA14-4427-A3FD-3D9AF22F4152, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5dc0;
-//    recordName=D474D375-35C2-4C64-AA86-CC14201D1D63, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5c40;
-//    recordName=1CD9F0E2-16DE-43AE-8C06-20BDEDBFD828, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e59c0;
-//    recordName=692E80FB-24A6-45D6-AC2D-56676C7295BC, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e58c0;
-//    recordName=46A5CD72-3BCD-49E1-B313-DA23A9C05060, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e5920;
-//    recordName=30461B86-0CF7-44C7-A050-051E86D1A84F, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025e54e0;
-//    recordName=6395EB35-1F58-4B29-AEAF-CAC9863B17EA, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x600002589fc0;
-//    recordName=5E036B3D-F6F7-4815-BD8E-A8AA59E8B9D0, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x60000258d740;
-//    recordName=FD692C39-64B2-49E5-9769-2666703D56BE, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x60000257ce60;
-//    recordName=940233EB-C94F-4261-8201-3FA66221AB4A, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x60000257eee0;
-//    recordName=0B283ABF-F409-4042-A547-A7C5F0D638DF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x600002518780;
-//    recordName=D61C7F38-5B50-498E-8D20-4FCCEF5A0F0D, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c4080;
-//    recordName=D5805C61-1605-4973-89AA-D0FF16F75DDA, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c4100;
-//    recordName=2A73E6BE-8FCD-4E79-97AF-DF43ADEBB45A, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c43a0;
-//    recordName=B5DB44AF-997C-43CB-8873-5A87FC4670BF, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c4540;
-//    recordName=2284B1A1-4113-4D8D-AB86-4200043ABEA8, zoneID=_defaultZone:__defaultOwner__>, <CKRecordID: 0x6000025c45c0;
-//    recordName=1A4C51F4-73D5-4CFD-A536-7A8A4265EBDC, zoneID=_defaultZone:__defaultOwner__>]
-//
+    var favTrackData:[TrackDataStruct] = []
+    var favVideoData:[VideosDataStruct] = []
+    var favArtistData:[UserDataStruct] = []
+    
     var favTrack:[String] = [
         "67479FC3-8B0B-47DE-9FFF-6A3ACD42B13F",
 //        "1308C17A-C61E-418A-9F0D-8DE866FCDAB2",
@@ -177,9 +162,9 @@ class DataManager
             {
                 let rootView = rootVC as! StartViewController
                 
-                let navVC = rootView.baseVC!
-                let tabBarView = navVC.viewControllers[0] as! UITabBarController
-                let explorerView = tabBarView.viewControllers![0] as! ExplorerView
+                let tabBarView = rootView.baseVC
+                let navVC = tabBarView!.viewControllers![0] as! UINavigationController
+                let explorerView = navVC.viewControllers[0] as! ExplorerView
                 explorerView.mainTableView.reloadData()
             }
 
@@ -212,7 +197,7 @@ class DataManager
     func loginSuccess(isSuccess:Bool, errorString:String)
     {
 //        print("Auto loginSuccess")
-        getLatestFavourite()
+//        getLatestFavourite()
 //        updateFeaturedArtist() // to test add user only
     }
     
@@ -397,7 +382,7 @@ class DataManager
 //
                         // TODO: FAVOURITES DATA
                         
-                        self.getLatestFavourite()
+//                        self.getLatestFavourite()
                     }
                     else
                     {
@@ -486,11 +471,6 @@ class DataManager
 
     }
     
-    // MARK: LOAD USER DATA
-    func loadUserData(dataRecordID:[CKRecord.Reference])
-    {
-        
-    }
     
     // MARK: Update Current User
     func savecurrentUserRec()
@@ -725,15 +705,16 @@ class DataManager
             self.trendingNow = newTrendingNow
             updateExplorerView()
             print("Trending Now :\(self.trendingNow!.tracks.count)")
-            print("Trending Now ID:\(self.trendingNow!.tracks.map({$0.record!.recordID}))")
-            favTrackNow = self.trendingNow!.tracks.filter{favTrack.contains(($0.record?.recordID.recordName)!)}
-            print("Trending Now Favourited:\(favTrackNow) \(favTrackNow.count)")
+//            print("Trending Now ID:\(self.trendingNow!.tracks.map({$0.record!.recordID}))")
+//            favTrackNow = self.trendingNow!.tracks.filter{favTrack.contains(($0.record?.recordID.recordName)!)}
+//            print("Trending Now Favourited:\(favTrackNow) \(favTrackNow.count)")
         }
         else
         {
             print("Trending now getTracks Failed \(errorString)")
         }
     }
+    
     
     func updateTrendingNow()
     {
@@ -819,6 +800,10 @@ class DataManager
                         upData.isVideo = false
                         usedRef = record.value(forKey: "track") as? CKRecord.Reference
                     }
+                    else
+                    {
+                        upData.isVideo = true
+                    }
                     let cIDX = idx
                     self.ckUtil.loadRecordFromPublicDB(recordID: usedRef!.recordID) { (dataIsSuccess, dataErrorStr, dataRecord) in
                         self.updateUploadedDataStuct(uploadedData: upData, idx: cIDX, isSuccess: dataIsSuccess, errorString: dataErrorStr, record: dataRecord!, maxRecords: maxRecords)
@@ -897,9 +882,16 @@ class DataManager
             {
                 let userData = UserDataStruct(record)
                 self.newFeaturedArtist?.users.append(userData)
-                
             }
             self.featuredArtist = newFeaturedArtist
+
+            var index = 0
+            for data in featuredArtist!.users
+            {
+                loadFeaturedArtistData(artistIndex: index, featuredArtistRecord: data.record!)
+                index += 1
+            }
+            
             updateExplorerView()
             print("FeaturedArtist :\(self.featuredArtist!.users.count)")
         }
@@ -908,6 +900,125 @@ class DataManager
             print("Featured Artist Get User Failed")
         }
     }
+    
+    func loadFeaturedArtistData(artistIndex:Int, featuredArtistRecord:CKRecord)
+    {
+        let tracksData = featuredArtistRecord.value(forKey: "tracks")
+        if(tracksData != nil )
+        {
+            self.loadFeaturedArtistTracks(artistIndex,tracksData: tracksData)
+        }
+        
+        let videosData = featuredArtistRecord.value(forKey: "videos")
+        if(videosData != nil )
+        {
+            self.loadFeaturedArtistVideos(artistIndex, videosData: videosData)
+        }
+        
+        let photosData = featuredArtistRecord.value(forKey: "photos")
+        if(photosData != nil )
+        {
+            self.loadFeaturedArtistPhotos(artistIndex, photosData: photosData)
+        }
+    }
+    
+    func loadFeaturedArtistTracks(_ artistIndex:Int, tracksData:Any?)
+    {
+        let tracks = tracksData as! [CKRecord.Reference]
+        if tracks.count == 0 {return}
+        var artistData = featuredArtist?.users[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: tracks)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                if(artistData!.musics == nil)
+                {
+                    artistData!.musics = []
+                }
+                artistData!.musics?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData!.musics?.append(TrackDataStruct(record: tr))
+                }
+                print("Load Featured Artist \(artistData?.name)Track:\(artistData!.musics?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadFeaturedArtistVideos(_ artistIndex:Int,videosData:Any?)
+    {
+        let videos = videosData as! [CKRecord.Reference]
+        if videos.count == 0 {return}
+        var artistData = featuredArtist?.users[artistIndex]
+        
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Videos", recordName: videos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                if(artistData!.videos == nil)
+                {
+                    artistData!.videos = []
+                }
+                artistData!.videos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData!.videos?.append(VideosDataStruct(record: tr))
+                }
+                print("Load featured artist \(artistData?.name) videos:\(artistData!.videos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadFeaturedArtistPhotos(_ artistIndex:Int,photosData:Any?)
+    {
+        let photos = photosData as! [CKRecord.Reference]
+        if photos.count == 0 {return}
+        print("photosCount :\(photos.count)")
+        var artistData = featuredArtist?.users[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Photos", recordName: photos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                if(artistData!.photos == nil)
+                {
+                    artistData!.photos = []
+                }
+                artistData!.photos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData!.photos?.append(PhotoDataStruct(record: tr))
+                }
+                print("Load featured artist \(artistData?.name) Photos:\(artistData!.photos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func getFavouritesData()
+    {
+        favTrackData = allTracks.filter{currentUser!.isFavMusic(recName:$0.record!.recordID.recordName)}
+        favVideoData = allVideos.filter{currentUser!.isFavVideo(recName:$0.record!.recordID.recordName)}
+        favArtistData = allArtist.filter{currentUser!.isFavArtist(recName:$0.record!.recordID.recordName)}
+    }
+
+    
     
     func updateFeaturedArtist()
     {
@@ -934,7 +1045,7 @@ class DataManager
                     {
                         let usedArr = self.allArtistRec.shuffled()
                                                 
-                        for i in 1...allArtistRecCount
+                        for i in 0..<allArtistRecCount
                         {
                             let ref = CKRecord.Reference(record: usedArr[i], action: .deleteSelf)
                             arr.add(ref)
@@ -1095,7 +1206,7 @@ class DataManager
     }
     
     // MARK: FAVOURITE
-    
+    /*
     func UploadNewFavourite(favouriteData:FavouritesDataStruct, completionHandler:(Bool, String)->Void)
     {
         
@@ -1128,6 +1239,56 @@ class DataManager
                 self.latestFavouriteRec = record
                 print(self.latestFavouriteRec)
             }
+        }
+    }
+ */
+    func AddFavourites(favType:UserFavourites, recordName:String)
+    {
+        if(currentUser != nil)
+        {
+            switch favType {
+            case .Track:
+                if(!(currentUser?.favMusics?.contains(recordName))!)
+                {
+                    currentUser?.favMusics?.append(recordName)
+                }
+            case .Video:
+                if(!(currentUser?.favVideo?.contains(recordName))!)
+                {
+                    currentUser?.favArtist?.append(recordName)
+                }
+            case .Artist:
+                if(!(currentUser?.favArtist?.contains(recordName))!)
+                {
+                    currentUser?.favArtist?.append(recordName)
+                }
+            }
+            savecurrentUserRec()
+        }
+    }
+    
+    func RemoveFavourites(favType:UserFavourites, recordName:String)
+    {
+        if(currentUser != nil)
+        {
+            switch favType {
+            case .Track:
+                if((currentUser?.favMusics?.contains(recordName))!)
+                {
+                    currentUser!.favMusics!.remove(at:currentUser!.favMusics!.firstIndex(of:recordName)!)
+                }
+            case .Video:
+                if((currentUser?.favVideo?.contains(recordName))!)
+                {
+                    currentUser?.favVideo?.remove(at:(currentUser?.favVideo?.firstIndex(of:recordName))!)
+                }
+            case .Artist:
+                if((currentUser?.favArtist?.contains(recordName))!)
+                {
+                    currentUser?.favArtist?.remove(at:(currentUser?.favArtist?.firstIndex(of:recordName))!)
+                }
+            }
+            savecurrentUserRec()
         }
     }
     
@@ -1201,9 +1362,12 @@ class DataManager
                 print("getAllArtist Success")
                 self.allArtistRec = records
                 self.allArtist.removeAll()
+                var index:Int = 0
                 for record in records
                 {
                     self.allArtist.append(UserDataStruct(record))
+                    self.loadAllArtistData(artistIndex: index, artistRecord: record)
+                    index += 1
                 }
                 self.filteredArtist = self.allArtist
                 self.randomSpotlightData = self.allArtist.shuffled()
@@ -1215,6 +1379,105 @@ class DataManager
                 }
             }
         }
+    }
+    
+    // MARK: LOAD USER DATA
+    func loadAllArtistData(artistIndex:Int, artistRecord:CKRecord)
+    {
+        let tracksData = artistRecord.value(forKey: "tracks")
+        if(tracksData != nil )
+        {
+            self.loadAllArtistTracks(artistIndex,tracksData: tracksData)
+        }
+        
+        let videosData = artistRecord.value(forKey: "videos")
+        if(videosData != nil )
+        {
+            self.loadAllArtistVideos(artistIndex, videosData: videosData)
+        }
+        
+        let photosData = artistRecord.value(forKey: "photos")
+        if(photosData != nil )
+        {
+            self.loadAllArtistPhotos(artistIndex, photosData: photosData)
+        }
+    }
+    
+    func loadAllArtistTracks(_ artistIndex:Int, tracksData:Any?)
+    {
+        let tracks = tracksData as! [CKRecord.Reference]
+        if tracks.count == 0 {return}
+        var artistData = allArtist[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Track", recordName: tracks)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                artistData.musics?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData.musics?.append(TrackDataStruct(record: tr))
+                }
+                print("Load all Artist \(artistData.name)Track:\(artistData.musics?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadAllArtistVideos(_ artistIndex:Int,videosData:Any?)
+    {
+        let videos = videosData as! [CKRecord.Reference]
+        if videos.count == 0 {return}
+        var artistData = allArtist[artistIndex]
+        
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Videos", recordName: videos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                artistData.videos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData.videos?.append(VideosDataStruct(record: tr))
+                }
+                print("Load all artist \(artistData.name) videos:\(artistData.videos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
+    }
+    
+    func loadAllArtistPhotos(_ artistIndex:Int,photosData:Any?)
+    {
+        let photos = photosData as! [CKRecord.Reference]
+        if photos.count == 0 {return}
+        print("photosCount :\(photos.count)")
+        var artistData = allArtist[artistIndex]
+        self.ckUtil.loadRecordFromPublicDB(recordType: "Photos", recordName: photos)
+        {   (isSuccess, errorString, trackRecords:[CKRecord]) in
+
+            if(isSuccess)
+            {
+                artistData.photos?.removeAll()
+                for tr in trackRecords
+                {
+                    artistData.photos?.append(PhotoDataStruct(record: tr))
+                }
+                print("Load All artist \(artistData.name) Photos:\(artistData.photos?.count)")
+            }
+            else
+            {
+                print("failedGet Track: \(errorString)")
+            }
+        }
+
     }
     
     // MARK: SEARCH

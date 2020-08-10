@@ -9,5 +9,10 @@ class CarouselViewController_: UIViewController {
         super.viewDidLoad()
     }
   
+    @IBAction func signInButtonTouched(_ sender: Any) {
+        
+        showLogin = true
+        performSegue(withIdentifier: "signInFromOnboarding", sender: nil)
+    }
 }
 

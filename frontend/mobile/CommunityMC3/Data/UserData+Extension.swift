@@ -19,6 +19,8 @@ struct PrimitiveUserDataStruct: Codable {
 
 class UserDataStruct
 {
+    var record:CKRecord? = nil
+    
     // normal data
     var followerCount:Int? = 0
     var genre:String? = ""
@@ -45,6 +47,10 @@ class UserDataStruct
     var videos:[VideosDataStruct]? = []
     var recordID:CKRecord.ID? = nil
     
+    var favMusics:[String]? = []
+    var favArtist:[String]? = []
+    var favVideo:[String]? = []
+    
     init(){}
     init(genre:String, name:String, fileURL:URL, email:String){
         self.genre = genre
@@ -55,7 +61,7 @@ class UserDataStruct
     
     init(_ record:CKRecord)
     {
-        
+        self.record = record
         self.name = record.value(forKey: "name") as? String
         self.genre = record.value(forKey: "genre") as? String
         self.followerCount = record.value(forKey: "followerCount") as? Int
@@ -97,6 +103,52 @@ class UserDataStruct
         }
         
         self.email = record.value(forKey: "email") as? String
+        
+        let favMusicsData = record.value(forKey: "favTracks")
+        if(favMusicsData != nil )
+        {
+            self.favMusics = favMusicsData as? [String]
+        }
+
+        let favArtistData = record.value(forKey: "favArtist")
+        if(favArtistData != nil )
+        {
+            self.favArtist = favArtistData as? [String]
+        }
+
+        let favVideoData = record.value(forKey: "favVideo")
+        if(favVideoData != nil )
+        {
+            self.favVideo = favVideoData as? [String]
+        }
+
+    }
+    
+    func isFavMusic(recName:String)-> Bool
+    {
+        if(favMusics != nil)
+        {
+            return favMusics!.contains(recName)
+        }
+        return false
+    }
+    
+    func isFavArtist(recName:String) -> Bool
+    {
+        if(favArtist != nil)
+        {
+            return favArtist!.contains(recName)
+        }
+        return false
+    }
+    
+    func isFavVideo(recName:String) -> Bool
+    {
+        if(favVideo != nil)
+        {
+            return favVideo!.contains(recName)
+        }
+        return false
     }
     
   
@@ -134,9 +186,9 @@ class UserDataStruct
     
     func getCKRecord() -> CKRecord
     {
-        let record = CKRecord(recordType: "UserData")
-        record.setValuesForKeys(asDict())
-        return record
+        let newRecord = CKRecord(recordType: "UserData")
+        newRecord.setValuesForKeys(asDict())
+        return newRecord
     }
     
 }

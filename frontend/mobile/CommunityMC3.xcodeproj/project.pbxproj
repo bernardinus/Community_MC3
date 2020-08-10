@@ -89,6 +89,7 @@
 		A19C320424C8A7AC00A4506F /* DocumentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C320324C8A7AC00A4506F /* DocumentTableViewController.swift */; };
 		A1A96B3324BFF12700EF12AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1A96B3524BFF12700EF12AB /* Localizable.strings */; };
 		A1A96B3824C050F100EF12AB /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A96B3724C050F100EF12AB /* SettingController.swift */; };
+		A1DFB56024E0921F00059286 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFB55F24E0921F00059286 /* ForgotPasswordController.swift */; };
 		A1E3FFEE24C6A84500CA2228 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1E3FFED24C6A84500CA2228 /* Test.storyboard */; };
 		A1E76E3E24CE1ADD00D9415B /* UploadFileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E76E3C24CE1ADC00D9415B /* UploadFileHeaderCell.swift */; };
 		A1E76E3F24CE1ADD00D9415B /* UploadFileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E76E3D24CE1ADD00D9415B /* UploadFileHeaderCell.xib */; };
@@ -327,6 +328,7 @@
 		A1A96B3624BFF14400EF12AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1A96B3724C050F100EF12AB /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		A1CF317024C4B9E000E38E53 /* CommunityMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityMC3.entitlements; sourceTree = "<group>"; };
+		A1DFB55F24E0921F00059286 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		A1E3FFED24C6A84500CA2228 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		A1E76E3C24CE1ADC00D9415B /* UploadFileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileHeaderCell.swift; sourceTree = "<group>"; };
 		A1E76E3D24CE1ADD00D9415B /* UploadFileHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadFileHeaderCell.xib; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				A165068F24C7DCE4005822E7 /* RegisterController.swift */,
 				A1503D3924C4B79900AE317E /* LoginScreen.storyboard */,
 				A1503D3B24C4BA9B00AE317E /* LoginController.swift */,
+				A1DFB55F24E0921F00059286 /* ForgotPasswordController.swift */,
 			);
 			path = "Login View";
 			sourceTree = "<group>";
@@ -1602,6 +1605,7 @@
 				A125311E24CE89C30038B215 /* UIImageExtension.swift in Sources */,
 				A16B44A524B2FBF300053D6C /* SceneDelegate.swift in Sources */,
 				A134D2A324C908F3009A054F /* Album+Extension.swift in Sources */,
+				A1DFB56024E0921F00059286 /* ForgotPasswordController.swift in Sources */,
 				EA65FF5024DBC94500B3FAE1 /* MiniTrackPlayerController.swift in Sources */,
 				A15C4D1924C5038C00ED0C0E /* DB_Model.xcdatamodeld in Sources */,
 				A19ACB6E24D0FB45009027B1 /* AlbumSelectorVC.swift in Sources */,

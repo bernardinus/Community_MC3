@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import AVFoundation
+import AVKit
 
 func openInstagram(username:String)
 {
@@ -62,6 +64,7 @@ func setupUIViewForGenre(view:UIView, genre:String)
     view.layer.borderColor = genreBorderColor[genre]
 }
 
+/*
 func genreBorderColor(genre:String) -> CGColor
 {
     var color:CGColor? = nil
@@ -86,6 +89,7 @@ func genreBorderColor(genre:String) -> CGColor
     
     return color!
 }
+ */
 
 let genreBorderColor:[String:CGColor] = [
     "RnB": #colorLiteral(red: 0, green: 0.768627451, blue: 0.5490196078, alpha: 1),
@@ -95,3 +99,20 @@ let genreBorderColor:[String:CGColor] = [
     "Acoustic": #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1),
     "Blues": #colorLiteral(red: 0.07843137255, green: 0.2745098039, blue: 0.737254902, alpha: 1),
 ]
+
+// to generate video thumbnail
+func generateThumbnail(path: URL) -> UIImage? {
+    do {
+        let asset = AVURLAsset(url: path, options: nil)
+        let imgGenerator = AVAssetImageGenerator(asset: asset)
+        imgGenerator.appliesPreferredTrackTransform = true
+        let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 5, timescale: 1), actualTime: nil)
+        let thumbNail = UIImage(cgImage: cgImage)
+        return thumbNail
+    } catch let error {
+        print("*** Error generating thumbnail: \(error.localizedDescription)")
+        return nil
+    }
+}
+
+

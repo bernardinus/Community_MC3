@@ -10,6 +10,7 @@ import UIKit
 
 class SearchContainerPageVC: UIPageViewController {
     
+    var callback:((UserDataStruct)->Void)? = nil
     
     lazy var items: [UIViewController] = {
         let sb = UIStoryboard(name: "Search", bundle: nil)
@@ -30,6 +31,7 @@ class SearchContainerPageVC: UIPageViewController {
         
         self.dataSource = nil
         self.delegate = nil
+        
     }
     
     func moveToPageSearch(index:Int)
@@ -40,21 +42,12 @@ class SearchContainerPageVC: UIPageViewController {
         switch index {
         case 0:
             let currentSearchVC = cVC as! AllSearchVC
-//            currentSearchVC.allSearchTableView.reloadData()
+            currentSearchVC.callback = callback
         case 1:
             let currentSearchVC = cVC as! ArtistSearchVC
-//            currentSearchVC.artistSeachTableView.reloadData()
-        case 2:
-            let currentSearchVC = cVC as! MusicSearchVC
-//            currentSearchVC.musicSearchTableView.reloadData()
-        case 3:
-            let currentSearchVC = cVC as! VideoSearchVC
-//            currentSearchVC.videoSearchTableView.reloadData()
-        case 4:
-            let currentSearchVC = cVC as! PlaylistSearchVC
-//            currentSearchVC.playlistSearchTableView.reloadData()
+            currentSearchVC.callback = callback
         default:
-            print("Must not go here")
+            print("Other search go here")
         }
         setViewControllers(nextVC, direction: .forward, animated: false, completion: nil)
     }

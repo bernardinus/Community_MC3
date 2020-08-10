@@ -54,7 +54,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         navigationController?.setNavigationBarHidden(false, animated: false)
         retreiveTrack()
         retreiveFavorites()
-//        prepareTrack()
+        prepareTrack()
         prepareAndCustomizeSlider()
         buttonStateChange()
         receiveButtonState(state: playAndPauseBoolean)
@@ -140,7 +140,6 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
             
             do {
                 trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
-                
             } catch let error1 as NSError {
                 error = error1
             }

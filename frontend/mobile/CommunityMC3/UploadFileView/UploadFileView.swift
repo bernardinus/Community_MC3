@@ -20,6 +20,7 @@ class UploadFileView: UIViewController
     var trackData:TrackDataStruct?
     var isUploadVideo:Bool = false
     
+    var cvrImg:UIImage? = nil
     var coverImage:UIImageView?
     var tapRecognizer:UIGestureRecognizer?
     
@@ -51,12 +52,17 @@ class UploadFileView: UIViewController
         table.register(albumListTableViewCell.nib(), forCellReuseIdentifier: albumListTableViewCell.identifier)
         table.register(descTitleTableViewCell.nib(), forCellReuseIdentifier: descTitleTableViewCell.identifier)
         table.register(UploadFileHeaderCell.nib(), forCellReuseIdentifier: UploadFileHeaderCell.identifier)
+        
         table.delegate = self
         table.dataSource = self
         table.isScrollEnabled = false
         //        table.allowsSelection = false
         
         table.separatorColor = UIColor.clear
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func prepareLocalisation() {
@@ -69,6 +75,17 @@ class UploadFileView: UIViewController
         {
             let saVC = segue.destination as! AlbumSelectorVC
             saVC.UpdateAlbum()
+        }
+    }
+    
+    func prepareData(isUploadVideo:Bool,fileURL:URL)
+    {
+        self.isUploadVideo = isUploadVideo
+        self.fileURL = fileURL
+        cvrImg = nil
+        if isUploadVideo
+        {
+            cvrImg = generateThumbnail(path: fileURL)
         }
     }
     
@@ -158,6 +175,7 @@ class UploadFileView: UIViewController
     
 }
 
+// MARK: EXTENSION
 extension UploadFileView:ImagePickerDelegate
 {
     func didSelect(image: UIImage?)
@@ -218,12 +236,12 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
         if indexPath.row == 5
         {
             
-            return 225
+            return 0//225
         }
         if indexPath.row == 6
         {
             
-            return 0//44
+            return 44
         }
         return 44
     }
@@ -244,6 +262,8 @@ extension UploadFileView:UITableViewDelegate, UITableViewDataSource
             //            customCell.configure(with: "Add Cover", imageName: "camera 1")
             
             coverImage = customCell.addCoverImage
+            coverImage!.image = cvrImg
+            
             
             return customCell
         }

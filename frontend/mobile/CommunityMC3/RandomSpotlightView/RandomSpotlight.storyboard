@@ -205,6 +205,13 @@
                                             <segue destination="8gV-yL-ITh" kind="presentation" identifier="editRandomizerSegue" id="aqp-zx-2Rw"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1x-VJ-Upi">
+                                        <rect key="frame" x="372" y="740" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Yba-kK-sHr" firstAttribute="centerX" secondItem="bvu-Q6-tCP" secondAttribute="centerX" id="0Ef-ae-3WB"/>

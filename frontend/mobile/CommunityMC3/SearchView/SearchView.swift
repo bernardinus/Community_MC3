@@ -23,6 +23,7 @@ class SearchView: UIViewController {
     @IBOutlet weak var topButton: UIButton!
     var vcSearch:SearchContainerPageVC?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dismissKeyboard()
@@ -34,6 +35,18 @@ class SearchView: UIViewController {
         if segue.identifier == "searchContainer"
         {
             vcSearch = (segue.destination as! SearchContainerPageVC)
+            vcSearch?.callback = {
+                data in
+                self.performSegue(withIdentifier: "artistProfileSegue", sender: data)
+            }
+        }
+        else if segue.identifier == "artistProfileSegue"
+        {
+            let dest = segue.destination as! UserProfileVC
+            print("Sender :\(sender as! UserDataStruct)")
+            dest.userData = sender as? UserDataStruct
+            dest.isPersonalProfile = false
+            print("destName \(dest.userData?.name)")
         }
     }
     

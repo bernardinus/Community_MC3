@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import AVKit
 
 class TrackManager {
     
@@ -17,8 +19,8 @@ class TrackManager {
         print("TrackManagerInit")
     }
     
-    func play(trackURL: URL){
-        delegate?.play(trackURL: trackURL)
+    func play(trackData: TrackDataStruct){
+        delegate?.play(data: trackData)
     }
     
     func stop() {
@@ -28,4 +30,37 @@ class TrackManager {
         delegate?.pause()
     }
     
+    // to play videos in new view controller
+    func playVideo(view:UIViewController, videoData:VideosDataStruct)
+    {
+        let URL = saveVideoToLocalData(video: videoData)
+        let playerItem:AVPlayerItem = AVPlayerItem.init(url: URL!)
+        let video:AVPlayer? = AVPlayer(url: URL!)
+        video?.allowsExternalPlayback = true
+        if video != nil {
+            let videoPlayer = AVPlayerViewController()
+            videoPlayer.player = video!
+            
+            //enter video player mode
+            view.present(videoPlayer, animated: true, completion: {
+                video!.play()
+            })
+        }
+    }
+
+    func saveVideoToLocalData(video: VideosDataStruct?) -> URL?
+    {
+        if video != nil {
+            let videoURL = video!.fileData?.fileURL!
+            let videoData = NSData(contentsOf: videoURL! as URL)
+            
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+            let destinationPath = NSURL(fileURLWithPath: documentsPath).appendingPathComponent("cache" + ".mp4", isDirectory: false)
+            
+            FileManager.default.createFile(atPath: (destinationPath?.path)!, contents:videoData as Data?, attributes:nil)
+            
+            return destinationPath!
+        }
+        return nil
+    }
 }

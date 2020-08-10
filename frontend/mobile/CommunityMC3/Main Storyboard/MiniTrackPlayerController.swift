@@ -10,15 +10,15 @@ import UIKit
 import AVFoundation
 
 protocol MiniTrackPlayerDelegate: class {
-    func play(trackURL: URL)
+    func play(data: TrackDataStruct)
     func stop()
     func pause()
     func miniTrackPlayerButtonState(state: Bool?)
 }
 
-class MiniTrackPlayerController: UIViewController, AVAudioPlayerDelegate, MiniTrackPlayerDelegate {
+class MiniTrackPlayerController: UIViewController {
     
-
+    
     @IBOutlet weak var trackProgressView: UIProgressView!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
@@ -28,6 +28,7 @@ class MiniTrackPlayerController: UIViewController, AVAudioPlayerDelegate, MiniTr
     
     var trackPlayer: AVAudioPlayer?
     var updater : CADisplayLink! = nil
+    var trackData:TrackDataStruct? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,56 +38,27 @@ class MiniTrackPlayerController: UIViewController, AVAudioPlayerDelegate, MiniTr
         setup()
     }
     
+    func updateLayout()
+    {
+        trackTitleLabel.text = trackData?.name
+        artistLabel.text = trackData?.artistName
+        coverTrackImage.image = trackData?.coverImage
+    }
+    
     func setup(){
         playAndPauseButton.setImage(#imageLiteral(resourceName: "PlayButtonFullColor"), for: .normal)
         playAndPauseButton.setImage(#imageLiteral(resourceName: "pauseFullColor"), for: .selected)
         
         playAndPauseButton.isSelected = false
         trackProgressView.progress = 0.0
-
+        
         updater = CADisplayLink(target: self, selector: #selector(updateTrackProgress))
         updater.preferredFramesPerSecond = 1
         updater.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
         TrackManager.shared.delegate = self
     }
     
-    func play(trackURL: URL) {
-
-UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations: {
-            self.view.alpha = 1
-        }, completion:{_ in self.view.isHidden = false} )
-                var error: NSError? = nil
-//        let audioPath = Bundle.main.path(forResource: trackURL, ofType: "mp3")
-        do{
-            trackPlayer = try AVAudioPlayer(contentsOf: trackURL)
-        } catch let error1 as NSError{
-            error = error1
-        }
-        trackPlayer!.delegate = self
-        
-        if error == nil {
-            trackPlayer?.delegate = self
-            trackPlayer?.prepareToPlay()
-            trackPlayer?.play()
-            
-            playAndPauseButton.isSelected = true
-        }
-        
-    }
     
-    func stop(){
-        trackPlayer?.stop()
-        trackPlayer?.currentTime = 0
-        trackProgressView.progress = 0.0
-    }
-    
-    func pause() {
-        trackPlayer?.pause()
-    }
-    
-    func miniTrackPlayerButtonState(state: Bool?) {
-        playAndPauseButton.isSelected = state!
-    }
     
     @objc func updateTrackProgress(){
         if trackPlayer?.isPlaying == true{
@@ -120,7 +92,59 @@ UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations
             playAndPauseButton.isSelected = false
         }
     }
+}
+
+// MARK: EXTENSION
+extension MiniTrackPlayerController:MiniTrackPlayerDelegate
+{
+    func play(data: TrackDataStruct)
+    {
+        trackData = data
+        updateLayout()
+        
+        UIView.animate(withDuration: 1.0, delay: 0, options: .curveEaseInOut, animations: {
+            self.view.alpha = 1
+        }, completion:{_ in self.view.isHidden = false} )
+        var error: NSError? = nil
+        //        let audioPath = Bundle.main.path(forResource: trackURL, ofType: "mp3")
+        do{
+            trackPlayer = try AVAudioPlayer(contentsOf: data.fileData!.fileURL!)
+        }
+        catch let error1 as NSError
+        {
+            error = error1
+        }
+        trackPlayer!.delegate = self
+        
+        if error == nil {
+            trackPlayer?.delegate = self
+            trackPlayer?.prepareToPlay()
+            trackPlayer?.play()
+            
+            playAndPauseButton.isSelected = true
+        }
+        
+    }
     
-   
+    func stop(){
+        trackPlayer?.stop()
+        trackPlayer?.currentTime = 0
+        trackProgressView.progress = 0.0
+    }
     
+    func pause() {
+        trackPlayer?.pause()
+    }
+    
+    func miniTrackPlayerButtonState(state: Bool?) {
+        playAndPauseButton.isSelected = state!
+    }
+}
+
+extension MiniTrackPlayerController:AVAudioPlayerDelegate
+{
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        playAndPauseButton.isSelected = false
+    }
+
 }

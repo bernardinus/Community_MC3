@@ -11,8 +11,9 @@ import UIKit
 class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
+    
     @IBOutlet weak var featuredArtistCollectionView: UICollectionView!
-    var features: [FeaturedDataStruct]!
+    var features: FeaturedDataStruct?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +34,14 @@ class FeaturedArtistVC: UIViewController, UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if features != nil {
-            return features.count
+            return features!.users.count
         }
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = featuredArtistCollectionView.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell", for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
-        
+        cell.updateData(userData: features!.users[indexPath.row])
         return cell
     }
     

@@ -33,6 +33,8 @@ class FeaturedArtistCell: UITableViewCell
 
 extension FeaturedArtistCell : UICollectionViewDelegate, UICollectionViewDataSource
 {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("FeaturedArtist Total: \(featuredArtistList?.count)")
         if featuredArtistList != nil {
@@ -44,9 +46,7 @@ extension FeaturedArtistCell : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = featuredArtistsCollectionCell.dequeueReusableCell(withReuseIdentifier: "artistCollectionViewCell",
                                                                      for: indexPath as IndexPath) as! FeaturedArtistCollectionCell
-            
-        cell.artistImageView.image = featuredArtistList![indexPath.row].profilePicture
-        cell.name.text = featuredArtistList![indexPath.row].name
+        cell.updateData(userData: featuredArtistList![indexPath.row])
         
         /*
         if let data = NSData(contentsOf: featuredArtistList![indexPath.row].fileURL!)

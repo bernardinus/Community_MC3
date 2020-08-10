@@ -32,6 +32,7 @@ class TrackDataStruct
     var genre:String = "musicGenre"
     var isCoverSong:Bool = false
     var name:String = "musicName"
+    var duration:String = "00:00"
 
 //    var audioData:AVAudioPlayer?
     
@@ -55,6 +56,14 @@ class TrackDataStruct
         self.email = record.value(forKey: "email") as! String
 
         self.fileData = record.value(forKey: "fileData") as? CKAsset
+        do {
+            let player = try AVAudioPlayer(contentsOf: fileData!.fileURL!)
+            let minute = Int(player.duration / 60)
+            let second = Int(player.duration) - minute * 60
+            duration = "\(minute):\(String(format: "%2d", second))"
+        } catch let error as NSError {
+            print("Load \(artistName) Track \(name) Error:\(error)")
+        }
 
         let genreData = record.value(forKey: "genre")
         if genreData != nil

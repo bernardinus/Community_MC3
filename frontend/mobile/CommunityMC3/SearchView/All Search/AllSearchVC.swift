@@ -21,6 +21,7 @@ class AllSearchVC: UIViewController {
     @IBOutlet weak var allSearchTableView: UITableView!
     
     var dm:DataManager = DataManager.shared()
+    var callback:((UserDataStruct)->Void)? = nil
     
     override func viewDidLoad()
     {
@@ -125,4 +126,18 @@ extension AllSearchVC: UITableViewDelegate, UITableViewDataSource {
         return 80
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.section == SearchSection.Artist.rawValue)
+        {
+            callback!(dm.filteredArtist[indexPath.row])
+        }
+        if(indexPath.section == SearchSection.Music.rawValue)
+        {
+            TrackManager.shared.play(trackData: dm.filteredTracks[indexPath.row])
+        }
+        if(indexPath.section == SearchSection.Video.rawValue)
+        {
+            TrackManager.shared.playVideo(view: self, videoData: dm.filteredVideos[indexPath.row])
+        }
+    }
 }

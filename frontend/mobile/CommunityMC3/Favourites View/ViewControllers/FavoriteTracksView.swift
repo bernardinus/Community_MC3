@@ -24,20 +24,19 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
     var seconds = 0
     var tempIndex = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "FavoriteTracksCell", bundle: nil), forCellReuseIdentifier: "favoriteTracksCell")
         countTracks = DataManager.shared().favTrackNow
-//        convertFavourites()
+        //        convertFavourites()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.backItem?.title = ""
-    }
-    
+    /*
     func convertFavourites() {
         for track in countTracks {
             countFavorites.append(
@@ -49,6 +48,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
             )
         }
     }
+ */
     
     func changeFavourites(track: TrackDataStruct) {
         let temp = PrimitiveTrackDataStruct(
@@ -74,6 +74,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
     }
     
     @objc func directPlay(_ sender: UIButton){
+        /*
         sender.isSelected = !sender.isSelected
         let selectedIndex = IndexPath(row: sender.tag, section: 0)
         
@@ -123,9 +124,11 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
             timer!.invalidate()
         }
         tableView.reloadData()
+ */
     }
     
     @objc func favoriteButtonState(_ sender: UIButton){
+        /*
         sender.isSelected = !sender.isSelected
         let selectedIndex = IndexPath(row: sender.tag, section: 0)
         
@@ -138,6 +141,7 @@ class FavoriteTracksView: UIViewController, AVAudioPlayerDelegate {
             
             self.tableView.reloadData()
         }
+ */
     }
     
 }
@@ -152,35 +156,30 @@ extension FavoriteTracksView: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteTracksCell", for: indexPath) as! FavoriteTracksCell
+        cell.updateData(td: countTracks[indexPath.row])
+        
         cell.playButton.tag = indexPath.row
         cell.favoriteButton.tag = indexPath.row
         
-        cell.playButton.setImage(#imageLiteral(resourceName: "playButtonFavorites"), for: .normal)
-        cell.playButton.setImage(#imageLiteral(resourceName: "StopButtonFavorite"), for: .selected)
         cell.playButton.addTarget(self, action: #selector(directPlay(_:)), for: .touchUpInside)
         
-        cell.favoriteButton.setImage(#imageLiteral(resourceName: "HeartFill"), for: .selected)
-        cell.favoriteButton.setImage(#imageLiteral(resourceName: "HeartUnfill"), for: .normal)
         cell.favoriteButton.addTarget(self, action: #selector(favoriteButtonState(_:)), for: .touchUpInside)
         
-        cell.trackCoverImage.image = #imageLiteral(resourceName: "music-image-dummy1")
         
         if indexPath.row == tempIndex{
             
         }else{
             cell.playButton.isSelected = false
         }
-        
-        cell.trackTitleLabel.text = countTracks[indexPath.row].name
-        cell.artistLabel.text = countTracks[indexPath.row].email
-        
+                
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        performSegue(withIdentifier: "toTrackPlayer", sender: self)
-//    }
+        TrackManager.shared.play(trackData: countTracks[indexPath.row])
+    }
 }

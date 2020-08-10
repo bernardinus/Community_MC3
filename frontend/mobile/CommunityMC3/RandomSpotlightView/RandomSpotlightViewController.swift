@@ -32,6 +32,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     @IBOutlet weak var viewProfileButton: UIButton!
     // popup data
     
+    var user:UserDataStruct? = nil
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
@@ -92,19 +93,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         nextButton.layer.cornerRadius = 20
     }
     
-    func generateThumbnail(path: URL) -> UIImage? {
-        do {
-            let asset = AVURLAsset(url: path, options: nil)
-            let imgGenerator = AVAssetImageGenerator(asset: asset)
-            imgGenerator.appliesPreferredTrackTransform = true
-            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 5, timescale: 1), actualTime: nil)
-            let thumbNail = UIImage(cgImage: cgImage)
-            return thumbNail
-        } catch let error {
-            print("*** Error generating thumbnail: \(error.localizedDescription)")
-            return nil
-        }
-    }
+    
     @IBAction func unwindButton(_ sender: Any) {
         print("unwindButtonClicked")
     }
@@ -123,6 +112,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.left {
+            updatePopupView()
             popUpContentView.slideLeft()
         }
         //        else if gesture.direction == UISwipeGestureRecognizer.Direction.right{
@@ -217,12 +207,15 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     
     func updatePopupView()
     {
-        let user = DataManager.shared().randomSpotlightData.randomElement()
+        user = DataManager.shared().randomSpotlightData.randomElement()
         profilePicture.image = user?.profilePicture
         artistName.text = user?.name
         roleLabel.text = user?.role
         genre = user?.genre!.components(separatedBy: ",")
+        
+        
         musicAndVideoTableView.reloadData()
+        
         genreCollectionView.reloadData()
     }
     
@@ -256,6 +249,13 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
 
 extension RandomSpotlightViewController:UITableViewDelegate, UITableViewDataSource
 {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == RandomSearch.Music.rawValue{
+            TrackManager.shared.play(trackData: user!.musics![indexPath.row])
+        }else if indexPath.section == RandomSearch.Video.rawValue{
+            TrackManager.shared.playVideo(view: self, videoData: user!.videos![indexPath.row])
+        }
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == RandomSearch.Music.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "headerCellRandom") as! HeaderCellRandomSpotlight
@@ -275,9 +275,9 @@ extension RandomSpotlightViewController:UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == RandomSearch.Music.rawValue {
-            return musicPlaylist.count
+            return user!.musics!.count//musicPlaylist.count
         }else if section == RandomSearch.Video.rawValue{
-            return videoList.count
+            return user!.videos!.count// videoList.count
         }
         return 0
     }
@@ -285,7 +285,8 @@ extension RandomSpotlightViewController:UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == RandomSearch.Music.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "musicList", for: indexPath) as! MusicListCell
-            
+            cell.update(td:user!.musics![indexPath.row])
+            /*
             cell.playButton.tag = indexPath.row
             
             let audiopath = Bundle.main.path(forResource: musicPlaylist[indexPath.row], ofType: "mp3")
@@ -305,19 +306,15 @@ extension RandomSpotlightViewController:UITableViewDelegate, UITableViewDataSour
                 
             }else{
                 cell.playButton.isSelected = false
-            }
+            }*/
             
             return cell
         }else if indexPath.section == RandomSearch.Video.rawValue{
             let cell = tableView.dequeueReusableCell(withIdentifier: "videoList", for: indexPath) as! VideoListCell
             
-            //            let videoUrl = Bundle.main.path(forResource: " ", ofType: "mp4")
-            //            let urls = URL(fileURLWithPath: videoUrl!)
             
-            cell.videoThumbnailImage.layer.borderWidth = 2
-            //            cell.videoThumbnailImage.image = generateThumbnail(path: urls)
-            cell.playButton.tag = indexPath.row
-            cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayVideo(_:)), for: .touchUpInside)
+//            cell.playButton.tag = indexPath.row
+//            cell.playButton.addTarget(self, action: #selector(RandomSpotlightViewController.clickPlayVideo(_:)), for: .touchUpInside)
             
             return cell
         }
