@@ -229,7 +229,7 @@ var isNeedUpdate:Bool = false
     
     func signOut(action:UIAlertAction)
     {
-        AlertViewHelper.createAlertView(type: .SignOut,
+        let alert = AlertViewHelper.createAlertView(type: .SignOut,
                                         rightHandler: { (yesAction) in
                                                     DataManager.shared().logout()
                                                     self.performSegue(withIdentifier: "unwindToExplorerView", sender: nil)
@@ -238,7 +238,7 @@ var isNeedUpdate:Bool = false
                                         },
                                         leftHandler: nil,
                                         replacementString: [:])
-        
+        present(alert, animated: true, completion: nil)
     }
     
     func setupActionSheet()
