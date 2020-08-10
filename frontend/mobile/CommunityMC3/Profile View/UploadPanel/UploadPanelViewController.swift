@@ -16,11 +16,19 @@ class UploadPanelViewController: UIViewController {
     var iconList = ["audioIcon", "imageIcon", "videoIcon"]
     var imgPicker:ImagePicker?
     var isUploadVideo = false
+    @IBOutlet weak var uploadTitleLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadLocalisation()
         setupView()
+    }
+    
+    func loadLocalisation() {
+        uploadTitleLabel?.text = NSLocalizedString("upload".uppercased(), comment: "")
+        cancelButton.titleLabel?.text = NSLocalizedString("Cancel", comment: "")
     }
     
     func setupView(){

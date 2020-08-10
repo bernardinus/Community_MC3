@@ -39,6 +39,7 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
     var genre:[String]? = []
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var musicAndVideoTableView: UITableView!
+    @IBOutlet weak var randomSpotlightTitleLabel: UILabel!
     
     var test = false
     var trackPlayer: AVAudioPlayer?
@@ -59,11 +60,12 @@ class RandomSpotlightViewController: UIViewController, AVAudioPlayerDelegate{
         
         setupBackground()
         addSwipeGesture()
-        
+        setupLocalisation()
         
     }
     
     func setupLocalisation() {
+        randomSpotlightTitleLabel.text = NSLocalizedString("Random Spotlight", comment: "")
         editButton.titleLabel?.text = NSLocalizedString("Edit".uppercased(), comment: "")
         nextButton.titleLabel?.text = NSLocalizedString("Next".uppercased(), comment: "")
         viewProfileButton.titleLabel?.text = NSLocalizedString("View Profile".uppercased(), comment: "")

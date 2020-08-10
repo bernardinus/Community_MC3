@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5si-P9-bUY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5si-P9-bUY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -140,7 +138,7 @@
                                     <constraint firstAttribute="width" secondItem="2Zp-QL-Jxt" secondAttribute="height" multiplier="207:203" id="vBi-4B-rvd"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZA-ey-Cqp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZA-ey-Cqp">
                                 <rect key="frame" x="158" y="20" width="98" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FZA-ey-Cqp" secondAttribute="height" multiplier="14:3" id="zvk-5G-8Am"/>
@@ -161,7 +159,7 @@
                                     <action selector="favoriteButtonAction:" destination="5si-P9-bUY" eventType="touchUpInside" id="DWX-2h-Pql"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8J-YC-yHo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8J-YC-yHo">
                                 <rect key="frame" x="107" y="446" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6um-AM-koR"/>
@@ -203,8 +201,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="QWl-O2-JWf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="QWl-O2-JWf" firstAttribute="bottom" secondItem="Fpi-yp-x4I" secondAttribute="bottom" constant="14" id="0Yu-U8-Re9"/>
                             <constraint firstItem="FZA-ey-Cqp" firstAttribute="top" secondItem="QWl-O2-JWf" secondAttribute="top" constant="20" id="2d9-6I-4Ay"/>
@@ -251,6 +248,7 @@
                             <constraint firstItem="l8w-HM-Yla" firstAttribute="top" secondItem="kps-pa-Web" secondAttribute="bottom" constant="18" id="yIG-YJ-5Im"/>
                             <constraint firstItem="QWl-O2-JWf" firstAttribute="trailing" secondItem="3ef-7M-5zR" secondAttribute="trailing" constant="20" id="zEO-Pn-ljc"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="QWl-O2-JWf"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -268,6 +266,7 @@
                         <outlet property="trackCoverImageView" destination="2Zp-QL-Jxt" id="Mex-RD-Wbh"/>
                         <outlet property="trackCurrentTimeLabel" destination="kps-pa-Web" id="otf-Vg-xUa"/>
                         <outlet property="trackDurationLabel" destination="3ef-7M-5zR" id="Rru-NR-qME"/>
+                        <outlet property="trackPlayerTitleLabel" destination="FZA-ey-Cqp" id="lnZ-xF-pSL"/>
                         <outlet property="trackProgressSlider" destination="7WD-vs-KVV" id="GbR-7b-avf"/>
                         <outlet property="trackTitleLabel" destination="wuF-UQ-BCi" id="CbF-HD-XtF"/>
                     </connections>
@@ -279,7 +278,7 @@
     </scenes>
     <resources>
         <image name="HeartUnfill" width="38" height="34"/>
-        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="chevron.down" catalog="system" width="64" height="36"/>
         <image name="pause" width="51" height="50"/>
         <image name="repeat" width="35" height="36"/>
         <image name="repeatOneTrackOnly" width="35" height="35"/>
@@ -287,8 +286,5 @@
         <image name="shuffle" width="35" height="36"/>
         <image name="skip-back" width="51" height="50"/>
         <image name="skip-forward" width="51" height="50"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

@@ -31,6 +31,8 @@ class LoginController: UIViewController {
     }
     
     func setLocalisation() {
+        emailField.placeholder = NSLocalizedString("Insert Email Here".uppercased(), comment: "")
+        passwordField.placeholder = NSLocalizedString("Insert Password Here".uppercased(), comment: "")
         signInTitleLabel.text = NSLocalizedString("Sign In", comment: "")
         signInDescriptionLabel.text = NSLocalizedString("Sign In Description".uppercased(), comment: "")
         emailTitleLabel.text = NSLocalizedString("Email Address", comment: "")

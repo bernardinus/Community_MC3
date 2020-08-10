@@ -12,11 +12,19 @@ class AccountController: UIViewController {
     
     @IBOutlet var switchAccountTable: UITableView!
     var accounts: [PrimitiveUserDataStruct]!
+    @IBOutlet weak var accountTitleLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        dismissView()
         setup()
+        loadLocalisation()
+    }
+    
+    func loadLocalisation() {
+        accountTitleLabel?.text = NSLocalizedString("accounts".uppercased(), comment: "")
+        cancelButton.titleLabel?.text = NSLocalizedString("Cancel", comment: "")
     }
     
     func setup(){

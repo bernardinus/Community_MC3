@@ -104,8 +104,11 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="accountLabel" destination="aAC-cz-yDt" id="K4R-qk-dye"/>
                         <outlet property="btnNext" destination="EVs-gG-awe" id="Ros-Tv-SHJ"/>
+                        <outlet property="signInButton" destination="U6M-Gq-5kY" id="xyQ-gv-xEf"/>
                         <outlet property="vwContainer" destination="Qlf-zv-be8" id="Kbd-jZ-8tR"/>
+                        <outlet property="welcomeLabel" destination="iLs-pA-e2y" id="z3u-9A-bt9"/>
                         <segue destination="xhr-7j-3ok" kind="presentation" identifier="signInFromOnboarding" modalPresentationStyle="fullScreen" id="IQg-53-WHo"/>
                     </connections>
                 </viewController>
@@ -187,6 +190,10 @@ selected favorite artists.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q8a-d2-pcy"/>
                     </view>
+                    <connections>
+                        <outlet property="onboardingOneDescLabel" destination="v29-Jx-ey8" id="wgB-Cc-VvU"/>
+                        <outlet property="onboardingOneTitleLabel" destination="hki-wt-xmw" id="Fqb-zX-G4X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zd0-Wu-e4i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -239,6 +246,10 @@ Simply tap the button and let us surprise you.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w72-Tq-vXg"/>
                     </view>
+                    <connections>
+                        <outlet property="onboardingTwoDesc" destination="2yZ-Kw-oqt" id="V0C-wI-NbS"/>
+                        <outlet property="onboardingTwoTitle" destination="1d7-FG-4WF" id="Z7H-Px-yJk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHk-fT-Bzc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -289,6 +300,10 @@ Simply tap the button and let us surprise you.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iTT-nJ-eH6"/>
                     </view>
+                    <connections>
+                        <outlet property="onboardingThreeDescription" destination="VbW-RW-6Cl" id="vQ3-5g-sth"/>
+                        <outlet property="onboardingThreeTitle" destination="I8v-NC-ciX" id="egh-sv-x7X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUw-vC-3uC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

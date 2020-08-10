@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vxp-ys-qqP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vxp-ys-qqP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -353,7 +353,7 @@
                                     <outlet property="delegate" destination="ffe-rz-Djd" id="zBW-AQ-ica"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPLOAD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYe-T1-jzP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPLOAD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYe-T1-jzP">
                                 <rect key="frame" x="20" y="35" width="69" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iYe-T1-jzP" secondAttribute="height" multiplier="23:7" id="rXS-dq-u7B"/>
@@ -391,7 +391,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="IXu-dG-aiK"/>
                     <connections>
+                        <outlet property="cancelButton" destination="viU-kC-fKV" id="z78-Xv-jOD"/>
                         <outlet property="tableView" destination="D2o-84-MEH" id="hn5-cX-gEB"/>
+                        <outlet property="uploadTitleLabel" destination="iYe-T1-jzP" id="7jj-bg-YzV"/>
                         <segue destination="KlH-xT-DH8" kind="show" identifier="selectFileSegue" id="y6N-1T-lBs"/>
                     </connections>
                 </viewController>
@@ -482,7 +484,7 @@
                                             <outlet property="delegate" destination="tfg-1U-C64" id="bgR-kd-khx"/>
                                         </connections>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gl-rU-FmT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACCOUNTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gl-rU-FmT">
                                         <rect key="frame" x="20" y="52" width="95" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="3gl-rU-FmT" secondAttribute="height" multiplier="23:7" id="8by-Uj-q8N"/>
@@ -523,6 +525,8 @@
                         <viewLayoutGuide key="safeArea" id="rJC-lv-Jfd"/>
                     </view>
                     <connections>
+                        <outlet property="accountTitleLabel" destination="3gl-rU-FmT" id="xES-rr-fCV"/>
+                        <outlet property="cancelButton" destination="KBy-61-qSU" id="Qg3-hy-QD4"/>
                         <outlet property="switchAccountTable" destination="c9U-1e-qwa" id="p4a-JJ-pfw"/>
                         <segue destination="p00-8a-ptt" kind="show" identifier="addAccount" id="Obl-Ca-sxE"/>
                     </connections>
@@ -532,14 +536,14 @@
             <point key="canvasLocation" x="3761" y="130"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="OgK-dH-OHt"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Primary" width="225" height="65"/>
         <image name="artist-2" width="260" height="260"/>
-        <image name="chevron.down" catalog="system" width="128" height="72"/>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="chevron.down" catalog="system" width="64" height="36"/>
+        <image name="ellipsis" catalog="system" width="64" height="18"/>
         <image name="segmented-bg-1" width="180" height="39"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Obl-Ca-sxE"/>
+    </inferredMetricsTieBreakers>
 </document>

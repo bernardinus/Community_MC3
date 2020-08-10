@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDC-7D-ZKL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VDC-7D-ZKL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -169,7 +169,7 @@
                                             <action selector="nextButtonAction:" destination="VDC-7D-ZKL" eventType="touchUpInside" id="dXr-B3-Mog"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Spotlight" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-kK-sHr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Spotlight" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yba-kK-sHr">
                                         <rect key="frame" x="127" y="50" width="160" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="F4i-vt-GKL"/>
@@ -179,7 +179,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PUo-zC-8s1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUo-zC-8s1">
                                         <rect key="frame" x="20" y="50" width="48" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="C9q-8T-Wrd"/>
@@ -192,7 +192,7 @@
                                             <segue destination="a7v-7m-jet" kind="unwind" unwindAction="unwindToExplorerView:" id="3fU-6h-7fH"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r9j-zV-ERA">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9j-zV-ERA">
                                         <rect key="frame" x="346" y="50" width="48" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="Zts-xv-1HO"/>
@@ -205,7 +205,7 @@
                                             <segue destination="8gV-yL-ITh" kind="presentation" identifier="editRandomizerSegue" id="aqp-zx-2Rw"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1x-VJ-Upi">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1x-VJ-Upi">
                                         <rect key="frame" x="372" y="740" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -260,6 +260,7 @@
                         <outlet property="popUpContentView" destination="XkF-gC-F2C" id="U7E-Vy-UXe"/>
                         <outlet property="popUpView" destination="zoM-h3-Xtb" id="mek-Vu-W4K"/>
                         <outlet property="profilePicture" destination="uo0-WT-Mta" id="gdW-ya-aYo"/>
+                        <outlet property="randomSpotlightTitleLabel" destination="Yba-kK-sHr" id="Rxi-N9-bLi"/>
                         <outlet property="roleLabel" destination="1E3-1E-TpA" id="kOl-H2-C1Z"/>
                         <outlet property="searchButton" destination="GNB-Z5-1DJ" id="fa6-WH-haw"/>
                         <outlet property="statusLabel" destination="BTB-fU-38Y" id="ufA-fL-qKi"/>
@@ -409,6 +410,6 @@
         <image name="Mask Group" width="720" height="720"/>
         <image name="Outer Effect" width="250" height="250"/>
         <image name="artist-5" width="260" height="260"/>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
     </resources>
 </document>

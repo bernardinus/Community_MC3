@@ -30,6 +30,7 @@ class GenreTableViewCell: UITableViewCell {
         // Initialization code
         selectionStyle = .none
         genreLabel.text = NSLocalizedString("Genre", comment: "")
+        genreTextField.placeholder = NSLocalizedString("Choose your genre".uppercased(), comment: "")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

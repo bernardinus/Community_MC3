@@ -21,6 +21,7 @@ enum Favorite: Int{
 class FavouritesView: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var favouritesTitleLabel: UILabel!
     
     let documentController = DocumentTableViewController.shared
     var countTracks = [TrackDataStruct]()
@@ -31,6 +32,7 @@ class FavouritesView: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.register(UINib(nibName: "FavoritesMenuCell", bundle: nil), forCellReuseIdentifier: "favoriteMenuCell")
+        favouritesTitleLabel.text = NSLocalizedString("TAB_Favourites", comment: "")
         //        retrieveFavorite()
         //        retrieveUpload()
     }

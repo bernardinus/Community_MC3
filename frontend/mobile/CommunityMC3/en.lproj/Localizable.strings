@@ -130,9 +130,25 @@
 "SWITCH ACCOUNT" = "Switch Account";
 "ADD ACCOUNT" = "Add Account";
 
+"ONBOARDING_1_TITLE" = "Explore & Listen";
+"ONBOARDING_1_DESC" = "See the latest highlights of musician, listen to new music, and keep updated based on your selected favorite artists.";
+"ONBOARDING_2_DESC" = "Want to discover new artist or music? Simply tap the button and let us surprise you.";
+"ONBOARDING_3_TITLE" = "Show Your Music";
+"ONBOARDING_3_DESC" = "Showcase your work and let people know it by uploading directly from your profile.";
+"WELCOME TO ALLEGRO" = "Welcome to Allegro";
 
+"ACCOUNTS" = "Accounts";
+"COVER IMAGE" = "Cover Image";
+"CHOOSE YOUR GENRE" = "Choose your genre";
+"NOW PLAYING" = "Now Playing";
+"CONFIRM PASSWORD" = "Confirm Password";
 
+"INSERT EMAIL HERE" = "Insert email here...";
+"INSERT PASSWORD HERE" = "Insert password here...";
+"INSERT REPEATED PASSWORD HERE" = "Insert repeated password here...";
 
+"SUBMIT" = "Submit";
+"FORGOT DESC" = "Submit your email here to reset your password";
 
 
 

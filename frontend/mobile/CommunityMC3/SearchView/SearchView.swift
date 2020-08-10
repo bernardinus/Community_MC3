@@ -19,6 +19,7 @@ enum ButtonType:Int{
 class SearchView: UIViewController {
     
     @IBOutlet var searchCategoryButton: [UIButton]!
+    @IBOutlet weak var searchTitleLabel: UILabel!
     
     @IBOutlet weak var topButton: UIButton!
     var vcSearch:SearchContainerPageVC?
@@ -28,6 +29,7 @@ class SearchView: UIViewController {
         super.viewDidLoad()
         self.dismissKeyboard()
         
+        searchTitleLabel.text = NSLocalizedString("TAB_Search", comment: "")
         
     }
     

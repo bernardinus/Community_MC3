@@ -21,6 +21,8 @@ class RegisterController: UIViewController {
     @IBOutlet weak var haveAccountButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmPasswordTitleLabel: UILabel!
+    @IBOutlet weak var repeatedPasswordField: UITextField!
     var callBack: (() -> Void)? = nil
     
     override func viewDidLoad() {
@@ -35,12 +37,16 @@ class RegisterController: UIViewController {
     }
     
     func setLocalisation() {
+        emailField.placeholder = NSLocalizedString("Insert Email Here".uppercased(), comment: "")
+        passwordField.placeholder = NSLocalizedString("Insert Password Here".uppercased(), comment: "")
+        repeatedPasswordField.placeholder = NSLocalizedString("Insert Repeated Password Here".uppercased(), comment: "")
         signUpTitleLabel.text = NSLocalizedString("Sign Up", comment: "")
         signUpDescriptionLabel.text = NSLocalizedString("Sign Up Description".uppercased(), comment: "")
         emailTitleLabel.text = NSLocalizedString("Email Address", comment: "")
         passwordTitleLabel.text = NSLocalizedString("Password", comment: "")
         registerButton.titleLabel?.text = NSLocalizedString("Register Now".uppercased(), comment: "")
         haveAccountButton.titleLabel?.text = NSLocalizedString("Have Account".uppercased(), comment: "")
+        confirmPasswordTitleLabel.text = NSLocalizedString("Confirm Password".uppercased(), comment: "")
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

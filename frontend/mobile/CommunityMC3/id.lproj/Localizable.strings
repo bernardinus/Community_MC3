@@ -132,3 +132,23 @@
 "EDIT GENRE" = "Ubah genre";
 "SWITCH ACCOUNT" = "Ganti Akun";
 "ADD ACCOUNT" = "Tambah Akun";
+
+"ONBOARDING_1_TITLE" = "Jelajahi & Dengarkan";
+"ONBOARDING_1_DESC" = "Lihat unggahan terkini dari musisi, dengarkan musik baru mereka, dan tetap terhubung dengan artis favoritmu yang telah kamu ikuti.";
+"ONBOARDING_2_DESC" = "Ingin melihat musik atau musisi baru? Hanya tinggal tekan tombol dan akan kita acak.";
+"ONBOARDING_3_TITLE" = "Lihat Musik Anda";
+"ONBOARDING_3_DESC" = "Perlihatkan karyamu dan biarkan orang melihatnya dengan mengunggah langsung dari profil kamu.";
+"WELCOME TO ALLEGRO" = "Selamat datang di Allegro";
+
+"ACCOUNTS" = "Akun";
+"COVER IMAGE" = "Foto Cover";
+"CHOOSE YOUR GENRE" = "Silahkan pilih genre";
+"NOW PLAYING" = "Sedang Diputar";
+"CONFIRM PASSWORD" = "Konfirmasi Kata Sandi";
+
+"INSERT EMAIL HERE" = "Masukkan email disini...";
+"INSERT PASSWORD HERE" = "Masukkan kata sandi disini...";
+"INSERT REPEATED PASSWORD HERE" = "Ulangkan kata sandi disini...";
+
+"SUBMIT" = "Kirimkan";
+"FORGOT DESC" = "Kirimkan email anda disini untuk reset kata sandi";

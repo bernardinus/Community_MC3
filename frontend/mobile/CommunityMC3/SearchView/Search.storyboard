@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rJ-Kc-sve">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8rJ-Kc-sve">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -189,6 +189,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass.circle.fill" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="searchTitleLabel" destination="Q9W-zT-IVQ" id="d5V-vN-jEh"/>
                         <outlet property="topButton" destination="Vw5-Kj-LMC" id="Fmk-Bh-Ub4"/>
                         <outletCollection property="searchCategoryButton" destination="Vw5-Kj-LMC" collectionClass="NSMutableArray" id="iMr-5O-qdy"/>
                         <outletCollection property="searchCategoryButton" destination="6Uq-Hd-0Xz" collectionClass="NSMutableArray" id="1tm-yz-wmd"/>
@@ -406,12 +407,12 @@
             <point key="canvasLocation" x="919" y="-82"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d80-XW-5t5"/>
     </inferredMetricsTieBreakers>
-    <resources>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
-    </resources>
 </document>

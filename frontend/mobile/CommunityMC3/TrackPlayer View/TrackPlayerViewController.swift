@@ -11,6 +11,7 @@ import AVFoundation
 
 class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
     
+    @IBOutlet weak var trackPlayerTitleLabel: UILabel!
     @IBOutlet weak var trackCoverImageView: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var prevButton: UIButton!
@@ -50,6 +51,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         if let loadEmail = UserDefaults.standard.string(forKey: "email"){
             email = loadEmail
         }
+        trackPlayerTitleLabel.text = NSLocalizedString("Now Playing".uppercased(), comment: "")
         
         navigationController?.setNavigationBarHidden(false, animated: false)
         retreiveTrack()

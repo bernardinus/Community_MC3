@@ -2,12 +2,13 @@ import Foundation
 import UIKit
 
 class CarouselPageViewController_: UIPageViewController {
+    
     fileprivate var items: [UIViewController] = {
         let sb = UIStoryboard(name: "OnboardingScreen", bundle: nil)
         
-        let vc1 = sb.instantiateViewController(withIdentifier: "onboardingView1")
-        let vc2 = sb.instantiateViewController(withIdentifier: "onboardingView2")
-        let vc3 = sb.instantiateViewController(withIdentifier: "onboardingView3")
+        let vc1 = sb.instantiateViewController(withIdentifier: "onboardingView1") as! OnboardingView1
+        let vc2 = sb.instantiateViewController(withIdentifier: "onboardingView2") as! OnboardingView2
+        let vc3 = sb.instantiateViewController(withIdentifier: "onboardingView3") as! OnboardingView3
         
         
         return [vc1, vc2, vc3]
@@ -99,4 +100,53 @@ extension CarouselPageViewController_: UIPageViewControllerDataSource {
         
         return firstViewControllerIndex
     }
+}
+
+class OnboardingView1: UIViewController {
+    
+    @IBOutlet weak var onboardingOneTitleLabel: UILabel!
+    @IBOutlet weak var onboardingOneDescLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadLocalisation()
+    }
+    
+    func loadLocalisation() {
+        onboardingOneTitleLabel?.text = NSLocalizedString("onboarding_1_title".uppercased(), comment: "")
+        onboardingOneDescLabel?.text = NSLocalizedString("onboarding_1_desc".uppercased(), comment: "")
+    }
+    
+}
+
+class OnboardingView2: UIViewController {
+    
+    @IBOutlet weak var onboardingTwoTitle: UILabel!
+    @IBOutlet weak var onboardingTwoDesc: UILabel!
+    
+    override func viewDidLoad() {
+       super.viewDidLoad()
+       loadLocalisation()
+   }
+       
+   func loadLocalisation() {
+       onboardingTwoTitle?.text = NSLocalizedString("Random Spotlight", comment: "")
+       onboardingTwoDesc?.text = NSLocalizedString("onboarding_2_desc".uppercased(), comment: "")
+   }
+}
+
+class OnboardingView3: UIViewController {
+    
+    @IBOutlet weak var onboardingThreeTitle: UILabel!
+    @IBOutlet weak var onboardingThreeDescription: UILabel!
+    
+    override func viewDidLoad() {
+       super.viewDidLoad()
+       loadLocalisation()
+   }
+       
+   func loadLocalisation() {
+       onboardingThreeTitle?.text = NSLocalizedString("onboarding_3_title".uppercased(), comment: "")
+       onboardingThreeDescription?.text = NSLocalizedString("onboarding_3_desc".uppercased(), comment: "")
+   }
 }

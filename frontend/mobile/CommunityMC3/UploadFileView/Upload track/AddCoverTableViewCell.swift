@@ -29,7 +29,7 @@ class AddCoverTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         selectionStyle = .none
-        addCoverLabel.text = "Cover image"
+        addCoverLabel.text = NSLocalizedString("Cover image".uppercased(), comment: "")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

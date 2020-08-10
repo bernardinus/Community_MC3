@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ebx-ss-Lma">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ebx-ss-Lma">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,7 @@
                                     <outlet property="delegate" destination="ebx-ss-Lma" id="D60-6o-q3h"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ti5-N1-KTM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ti5-N1-KTM">
                                 <rect key="frame" x="20" y="69" width="150" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="0wE-ww-lfl"/>
@@ -67,6 +67,7 @@
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart" catalog="system" selectedImage="heart.fill" id="p41-jr-mGj"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="favouritesTitleLabel" destination="ti5-N1-KTM" id="Qbj-o0-c98"/>
                         <outlet property="tableView" destination="IYZ-7V-9tU" id="ojZ-5W-eAU"/>
                         <segue destination="Ayh-Sz-G3b" kind="show" identifier="favoriteTracks" id="c7h-eD-Ci2"/>
                         <segue destination="hBd-sJ-BVC" kind="show" identifier="favoriteVideos" id="9IG-t0-RA7"/>
@@ -143,8 +144,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="heart" catalog="system" width="64" height="54"/>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
