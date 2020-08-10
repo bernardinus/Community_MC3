@@ -131,7 +131,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
             let audioPath = track.fileData!.fileURL
             do {
                 trackPlayer = try AVAudioPlayer(contentsOf: audioPath!)
-                
+
             } catch let error1 as NSError {
                 error = error1
             }
@@ -139,7 +139,7 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
             print("track nil")
             let audioPath = Bundle.main.path(forResource: "\(trackPlaylist[counter])", ofType: "mp3")!
             //            let audioPath = Bundle.main.path(forResource: "", ofType: "mp3")!
-            
+
             do {
                 trackPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
             } catch let error1 as NSError {
