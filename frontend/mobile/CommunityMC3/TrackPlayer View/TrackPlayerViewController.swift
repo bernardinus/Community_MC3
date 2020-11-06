@@ -217,8 +217,6 @@ class TrackPlayerViewController: UIViewController, AVAudioPlayerDelegate{
         prepareTrack()
     }
     
-    
-    
     @IBAction func pauseAndPlayButtonAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
